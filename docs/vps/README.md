@@ -212,3 +212,14 @@ Download the latest installer from http://nodejs.org/download/
 	
 	haxelib install nodejs
 	haxelib git saffron https://github.com/janekp/saffron.git src
+
+# Setup nginx
+
+    chown -R root:nginx /var/lib/php
+    mkdir -p /var/nginx/cache/
+
+# Copy nginx configuration files from "/docs/vps/nginx" to "/etc/nginx"
+
+# Finally, restart the service
+
+    /etc/init.d/nginx restart
