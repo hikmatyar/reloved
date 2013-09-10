@@ -49,11 +49,9 @@ Performs a login or creates an account if possible (type=auto) and the account d
         hash [O] - Sha1 checksum of salt, type, public and private arguments
     
     Returns:
-    
         { "error": 0, "session": "12345678", "user": 1231 }
     
     Errors:
-    
         [standard]
 
 ## Logout
@@ -62,20 +60,29 @@ Performs a logout. The session is not valid after the call.
 
 	/logout
     
-    Arguments:
+    Parameters:
         [_v, _t, _u, _s]
     
     Returns:
-    
         { "error": 0 }
     
     Errors:
-    
         [standard]
 
 # Browse
 
-TDB:
+Returns a feed (potentially filtered) and settings that are stored server-side (like shipping info, available countries, user profile info).
+
+	/browse
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 # Posts
 
@@ -83,23 +90,68 @@ TDB:
 
 ## Search
 
-TDB:
+	/post/search
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 ## Post List
 
-TDB:
+	/post/list
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 ## Post States
 
-TDB: 
+	/post/states
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 ## Post Details
 
-TDB:
+	/post/details
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 ## Post Comments
 
-TDB:
+	/post/comments
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 # Me
 
@@ -107,19 +159,55 @@ TDB:
 
 ## Update Info
 
-TDB:
+	/user/details
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 ## Create Post
 
-TDB:
+	/user/post/create
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 ## Edit Post
 
-TDB:
+	/user/post/edit
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 ## Create Comment
 
-TDB:
+	/user/comment/create
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 # Checkout
 
@@ -127,25 +215,108 @@ TDB:
 
 ## Begin Checkout
 
-TDB:
+	/checkout/begin
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 ## End Checkout
 
-TDB: 
+	/checkout/end
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
 
 # Multimedia
 
-TDB:
+Media items are handled separately from posts and comments, so that it can handle background uploads before a post is formally created.
+
+Item status codes are standardized:
+
+    0 - Inactive (Item was deleted by the user/admin)
+    1 - Uploading (Item upload in progress)
+    2 - Uploaded (Item upload is complete, but the server hasn't processed it yet)
+    3 - Active (Item is available)
+    4 - Invalid (Item doesn't exist or is not available to the user)
 
 ## Create Item
 
-TDB:
+Creates a new multimedia item with metadata.
+
+	/media/create
+	
+	Parameters:
+		[session]
+		mime [R] - Mime type
+        size [R] - File size
+        csum [R] - MD5 checksum of the file
+	
+	Returns:
+		{ "error": 0, "id": "1234567890" }
+	
+	Errors:
+		[standard]
+
+## Query Item Status
+
+Allows to query about item status and upload progress.
+
+	/media/status
+	
+	Parameters:
+		[session]
+		id [R] - Item ID
+	
+	Returns:
+		{ "error": 0, "status": 2, "size": 12345 }
+	
+	Errors:
+		[standard]
 
 ## Upload Item
 
-TDB: 
+Uploads data for an item.
+
+	/media/upload
+	
+	Parameters:
+		[session]
+		id [R] - Item ID
+		offset [O=0] - Item data offset
+		
+		[MULTIPART DATA = "data" file]
+	
+	Returns:
+		{ "error": 0, "status": 2, "size": 12345 }
+	
+	Errors:
+		[standard]
 
 ## Download Item
 
-TDB:
+Downloads an item. Only API call that doesn't return a JSON error.
+
+	/media/download/{ID}
+	
+	Parameters:
+		[session]
+        size [O=o] - Preferred size ("o" - original, "s" - small, "m" - medium, "l" - large)
+    
+    Returns:
+        Raw data or HTTP error
+    
+    Errors:
+        HTTP 403 (No permission), HTTP 404 (Not found), HTTP 500 (Unknown problem)
 
