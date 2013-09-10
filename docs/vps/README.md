@@ -88,6 +88,7 @@ Provider: linode.com
     yum install -y php php-xml php-mysql php-mbstring php-pdo php-pecl-memcache
     yum install nginx
     yum install spawn-fcgi
+    yum install ocaml ocaml-camlp4-devel
     easy_install supervisor
 
 # Setup FTP
@@ -196,3 +197,18 @@ Download the latest installer from http://nodejs.org/download/
     cd ..
     rm -fr node*
 
+# Install HaXe
+
+	cd /opt
+	git clone git://github.com/HaxeFoundation/haxe.git
+	cd haxe
+	git submodule init
+	git submodule update
+	make
+	make install
+	
+	haxelib setup
+	> Hit enter for default (/usr/lib/haxe/lib) [ENTER]
+	
+	haxelib install nodejs
+	haxelib git saffron https://github.com/janekp/saffron.git src
