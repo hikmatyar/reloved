@@ -8,6 +8,14 @@ RAM: 1024 MB
 HDD: 48896 MB
 Provider: linode.com
 
+# Users and passwords
+
+* api: Dh434asdfX
+* api-dev: Rn290xa0s4
+* www: Dh434asdfX
+* www-dev: Rn290xa0s4
+* nginx: XeRfg0204Z
+
 # Setup time-zone
 
     cd /etc
@@ -15,12 +23,6 @@ Provider: linode.com
     ln -sf /usr/share/zoneinfo/Etc/GMT localtime
 
 # Setup users
-
-* api: Dh434asdfX
-* api-dev: Rn290xa0s4
-* www: Dh434asdfX
-* www-dev: Rn290xa0s4
-* nginx: XeRfg0204Z
 
 	groupadd web
 	groupadd web-dev
