@@ -298,7 +298,16 @@ typedef enum {
 
 - (void)openLeftSideMenuCompletion:(void (^)(void))completion {
     if(!self.leftMenuViewController) return;
-    [self.menuContainerView bringSubviewToFront:[self.leftMenuViewController view]];
+    UIView *view = [self.leftMenuViewController view];
+    
+    if(fabsf(view.frame.size.height - ((UIViewController *)self.centerViewController).view.frame.size.height) > FLT_EPSILON) {
+        CGRect frame = view.frame;
+        
+        frame.size.height = ((UIViewController *)self.centerViewController).view.frame.size.height;
+        view.frame = frame;
+    }
+    
+    [self.menuContainerView bringSubviewToFront:view];
     [self setCenterViewControllerOffset:self.leftMenuWidth animated:YES completion:completion];
 }
 
