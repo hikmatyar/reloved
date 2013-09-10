@@ -22,13 +22,13 @@ Provider: linode.com
 * www-dev: Rn290xa0s4
 * nginx: XeRfg0204Z
 
-    groupadd web
-    groupadd web-dev
-    
-    /usr/sbin/useradd nginx
-    passwd nginx
-    usermod -a -G web nginx
-    usermod -a -G web-dev nginx
+	groupadd web
+	groupadd web-dev
+	
+	/usr/sbin/useradd nginx
+	passwd nginx
+	usermod -a -G web nginx
+	usermod -a -G web-dev nginx
     
     /usr/sbin/useradd api
     passwd api
