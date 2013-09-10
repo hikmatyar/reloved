@@ -138,3 +138,17 @@ Provider: linode.com
 ## Finally, restart the service:
 
     /etc/init.d/vsftpd restart
+
+# Setup SSH
+
+## Modify /etc/ssh/sshd_config ("vi /etc/ssh/sshd_config")
+
+    # Prevent root logins:
+    PermitRootLogin no
+    
+    # Add the following
+    AllowUsers www www-dev api
+
+## Finally, restart the service:
+
+    service sshd restart
