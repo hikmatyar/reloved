@@ -15,6 +15,7 @@
 		8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13617DFA7C000A1C3A9 /* MFSearchController.m */; };
 		8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13917DFA82100A1C3A9 /* MFCartController.m */; };
 		8120C13E17DFA8F400A1C3A9 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */; };
+		8120C14117DFA90300A1C3A9 /* UIFont+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C14017DFA90300A1C3A9 /* UIFont+Additions.m */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -63,6 +64,8 @@
 		8120C13917DFA82100A1C3A9 /* MFCartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCartController.m; path = Sources/MFCartController.m; sourceTree = SOURCE_ROOT; };
 		8120C13C17DFA8F400A1C3A9 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Additions.h"; path = "Sources/Additions/UIColor+Additions.h"; sourceTree = SOURCE_ROOT; };
 		8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Additions.m"; path = "Sources/Additions/UIColor+Additions.m"; sourceTree = SOURCE_ROOT; };
+		8120C13F17DFA90300A1C3A9 /* UIFont+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Additions.h"; path = "Sources/Additions/UIFont+Additions.h"; sourceTree = SOURCE_ROOT; };
+		8120C14017DFA90300A1C3A9 /* UIFont+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Additions.m"; path = "Sources/Additions/UIFont+Additions.m"; sourceTree = SOURCE_ROOT; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -241,6 +244,8 @@
 			children = (
 				8120C13C17DFA8F400A1C3A9 /* UIColor+Additions.h */,
 				8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */,
+				8120C13F17DFA90300A1C3A9 /* UIFont+Additions.h */,
+				8120C14017DFA90300A1C3A9 /* UIFont+Additions.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				812F4AE117DEFEE900454747 /* ASIDataCompressor.m in Sources */,
+				8120C14117DFA90300A1C3A9 /* UIFont+Additions.m in Sources */,
 				812F4AB917DEFD4800454747 /* main.m in Sources */,
 				812F4AE517DEFEE900454747 /* ASIHTTPRequest.m in Sources */,
 				812F4AC217DEFE5300454747 /* JSONKit.m in Sources */,
