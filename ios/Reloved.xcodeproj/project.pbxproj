@@ -164,6 +164,7 @@
 				812F4ACB17DEFEC600454747 /* ASIHTTPRequest */,
 				812F4ABF17DEFE3600454747 /* JSONKit */,
 				812F4AC417DEFE8600454747 /* MBProgressHUD */,
+				818F915F17DF955F00D1A723 /* MFSideMenu */,
 				812F4AC317DEFE8000454747 /* Reachability */,
 				812F4AAC17DEFCD300454747 /* Info.plist */,
 				812F4AAD17DEFCD300454747 /* Prefix.pch */,
@@ -256,6 +257,13 @@
 				812F4ADF17DEFEE900454747 /* ASIProgressDelegate.h */,
 			);
 			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		818F915F17DF955F00D1A723 /* MFSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MFSideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
