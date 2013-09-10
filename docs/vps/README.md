@@ -118,12 +118,12 @@ Provider: linode.com
     force_dot_files=NO
     hide_ids=YES
 
-## Modify user_list ("vi userlist"):
+## Modify user_list ("vi userlist")
 
     www
     www-dev
 
-## Generate a security certificate:
+## Generate a security certificate
 
     /usr/bin/openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout vsftpd.pem -out vsftpd.pem
     
@@ -135,7 +135,7 @@ Provider: linode.com
     Common Name (eg, your name or your server's hostname) []:relovedapp.co.uk
     Email Address []:webmaster@relovedapp.co.uk
 
-## Finally, restart the service:
+## Finally, restart the service
 
     /etc/init.d/vsftpd restart
 
@@ -149,6 +149,29 @@ Provider: linode.com
     # Add the following
     AllowUsers www www-dev api
 
-## Finally, restart the service:
+## Finally, restart the service
 
     service sshd restart
+
+# Setup MySQL
+
+## Initialize MySQL
+
+    /etc/init.d/mysqld start
+    /usr/bin/mysqladmin -u root password 'R30xaAss0X'
+    mysql -p
+    
+## Create MySQL users and databases
+
+    mysql> CREATE DATABASE reloved;
+    mysql> CREATE DATABASE reloved_dev;
+    mysql> CREATE USER 'www'@'localhost' IDENTIFIED BY 'Bv34ka20xQ';
+    mysql> CREATE USER 'www-dev'@'localhost' IDENTIFIED BY 'Er0xAa3ecs';
+    mysql> GRANT ALL PRIVILEGES ON reloved.* TO 'www'@'localhost' WITH GRANT OPTION;
+    mysql> GRANT ALL PRIVILEGES ON reloved_dev.* TO 'www-dev'@'localhost' WITH GRANT OPTION;
+    mysql> exit
+    
+## Close direct web access to the database (open by default)
+
+    /sbin/iptables -A INPUT -p tcp -i eth1 ! -s 127.0.0.1 --dport 3306 -j DROP
+    /sbin/service iptables save
