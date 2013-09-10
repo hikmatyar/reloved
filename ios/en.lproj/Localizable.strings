@@ -1,6 +1,4 @@
 
-"Feed.Action.Home" = "Home";
-
 "Home.Action.About" = "Contact Us";
 "Home.Action.Bookmarks" = "Saved Items";
 "Home.Action.BrowseNew" = "Just In";
@@ -8,7 +6,7 @@
 "Home.Action.Editorial" = "Edutir's Picks";
 "Home.Action.Guarantee" = "Quality Guarantee";
 "Home.Action.History" = "My Listed Items";
-"Home.Action.Profile" = "My Contact Details"
+"Home.Action.Profile" = "My Contact Details";
 "Home.Action.Recents" = "Recently Viewed";
 "Home.Action.ReturnsPolicy" = "Returns Policy";
 "Home.Action.Security" = "Payment Security";

@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MFHomeController : UIViewController
+@interface MFNewPostController : UIViewController
 {
     @private
 }

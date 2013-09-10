@@ -1,10 +1,10 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
-#import "MFCartController.h"
+#import "MFNewPostController.h"
 #import "MFSideMenuContainerViewController.h"
 #import "UIViewController+MFSideMenuAdditions.h"
 
-@implementation MFCartController
+@implementation MFNewPostController
 
 - (IBAction)menu:(id)sender
 {

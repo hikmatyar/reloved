@@ -4,9 +4,13 @@
 #import "MFFeedController.h"
 #import "MFHomeController.h"
 #import "MFMenuController.h"
+#import "MFNewPostController.h"
+#import "MFNewsController.h"
 #import "MFSearchController.h"
+#import "MFSideMenuContainerViewController.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UIViewController+MFSideMenuAdditions.h"
 
 #define CELL_IDENTIFIER @"cell"
 #define ITEM(t, s, i) [[MFMenuController_Item alloc] initWithTitle:t selector:s icon:i]
@@ -59,24 +63,40 @@ typedef void (*MFMenuControllerAction)(id target, SEL sel, id sender);
     return (UITableView *)self.view;
 }
 
+- (void)setViewControllerClass:(Class)klass
+{
+    MFSideMenuContainerViewController *navigationController = self.menuContainerViewController;
+    
+    if(![((UINavigationController *)navigationController.centerViewController).topViewController.class isEqual:klass]) {
+        navigationController.centerViewController = [[UINavigationController alloc] initWithRootViewController:[[klass alloc] init]];
+    }
+    
+    [navigationController toggleLeftSideMenuCompletion:NULL];
+}
+
 - (IBAction)home:(id)sender
 {
+    [self setViewControllerClass:[MFHomeController class]];
 }
 
 - (IBAction)search:(id)sender
 {
+    [self setViewControllerClass:[MFSearchController class]];
 }
 
 - (IBAction)news:(id)sender
 {
+    [self setViewControllerClass:[MFNewsController class]];
 }
 
 - (IBAction)cart:(id)sender
 {
+    [self setViewControllerClass:[MFCartController class]];
 }
 
 - (IBAction)sell:(id)sender
 {
+    [self setViewControllerClass:[MFNewPostController class]];
 }
 
 #pragma mark UITableViewDataSource
@@ -120,9 +140,10 @@ typedef void (*MFMenuControllerAction)(id target, SEL sel, id sender);
 {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F) style:UITableViewStylePlain];
     
+    tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 20.0F)];
     tableView.dataSource = self;
     tableView.delegate = self;
-    tableView.rowHeight = 48.0F;
+    tableView.rowHeight = 65.0F;
     
     self.view = tableView;
 }

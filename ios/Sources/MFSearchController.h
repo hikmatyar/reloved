@@ -7,4 +7,6 @@
     @private
 }
 
+- (IBAction)menu:(id)sender;
+
 @end

@@ -25,6 +25,13 @@
 		8120C15117DFAD8C00A1C3A9 /* Menu-Search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C14817DFAD8C00A1C3A9 /* Menu-Search@2x.png */; };
 		8120C15217DFAD8C00A1C3A9 /* Menu-Sell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C14917DFAD8C00A1C3A9 /* Menu-Sell.png */; };
 		8120C15317DFAD8C00A1C3A9 /* Menu-Sell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C14A17DFAD8C00A1C3A9 /* Menu-Sell@2x.png */; };
+		8120C15517DFAD9600A1C3A9 /* Menu-Cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C15417DFAD9600A1C3A9 /* Menu-Cart.png */; };
+		8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C15717DFAF0B00A1C3A9 /* MFNewsController.m */; };
+		8120C15B17DFAFA600A1C3A9 /* MFNewPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C15A17DFAFA600A1C3A9 /* MFNewPostController.m */; };
+		8120C15E17DFB2F700A1C3A9 /* Navigation-Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C15C17DFB2F700A1C3A9 /* Navigation-Menu.png */; };
+		8120C15F17DFB2F700A1C3A9 /* Navigation-Menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C15D17DFB2F700A1C3A9 /* Navigation-Menu@2x.png */; };
+		8120C16217DFB48600A1C3A9 /* Navigation-Filter.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C16017DFB48600A1C3A9 /* Navigation-Filter.png */; };
+		8120C16317DFB48600A1C3A9 /* Navigation-Filter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C16117DFB48600A1C3A9 /* Navigation-Filter@2x.png */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -84,6 +91,15 @@
 		8120C14817DFAD8C00A1C3A9 /* Menu-Search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu-Search@2x.png"; path = "Images/Menu-Search@2x.png"; sourceTree = "<group>"; };
 		8120C14917DFAD8C00A1C3A9 /* Menu-Sell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu-Sell.png"; path = "Images/Menu-Sell.png"; sourceTree = "<group>"; };
 		8120C14A17DFAD8C00A1C3A9 /* Menu-Sell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu-Sell@2x.png"; path = "Images/Menu-Sell@2x.png"; sourceTree = "<group>"; };
+		8120C15417DFAD9600A1C3A9 /* Menu-Cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu-Cart.png"; path = "Images/Menu-Cart.png"; sourceTree = "<group>"; };
+		8120C15617DFAF0B00A1C3A9 /* MFNewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewsController.h; path = Sources/MFNewsController.h; sourceTree = SOURCE_ROOT; };
+		8120C15717DFAF0B00A1C3A9 /* MFNewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewsController.m; path = Sources/MFNewsController.m; sourceTree = SOURCE_ROOT; };
+		8120C15917DFAFA600A1C3A9 /* MFNewPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostController.h; path = Sources/MFNewPostController.h; sourceTree = SOURCE_ROOT; };
+		8120C15A17DFAFA600A1C3A9 /* MFNewPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostController.m; path = Sources/MFNewPostController.m; sourceTree = SOURCE_ROOT; };
+		8120C15C17DFB2F700A1C3A9 /* Navigation-Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Menu.png"; path = "Images/Navigation-Menu.png"; sourceTree = "<group>"; };
+		8120C15D17DFB2F700A1C3A9 /* Navigation-Menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Menu@2x.png"; path = "Images/Navigation-Menu@2x.png"; sourceTree = "<group>"; };
+		8120C16017DFB48600A1C3A9 /* Navigation-Filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Filter.png"; path = "Images/Navigation-Filter.png"; sourceTree = "<group>"; };
+		8120C16117DFB48600A1C3A9 /* Navigation-Filter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Filter@2x.png"; path = "Images/Navigation-Filter@2x.png"; sourceTree = "<group>"; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -208,6 +224,10 @@
 				8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */,
 				818F917417DF95F400D1A723 /* MFMenuController.h */,
 				818F917517DF95F400D1A723 /* MFMenuController.m */,
+				8120C15917DFAFA600A1C3A9 /* MFNewPostController.h */,
+				8120C15A17DFAFA600A1C3A9 /* MFNewPostController.m */,
+				8120C15617DFAF0B00A1C3A9 /* MFNewsController.h */,
+				8120C15717DFAF0B00A1C3A9 /* MFNewsController.m */,
 				8120C12F17DFA37100A1C3A9 /* MFPostController.h */,
 				8120C13017DFA37100A1C3A9 /* MFPostController.m */,
 				8120C13517DFA7C000A1C3A9 /* MFSearchController.h */,
@@ -253,6 +273,7 @@
 				812F4AE917DF003800454747 /* Icon114.png */,
 				812F4AEA17DF003800454747 /* Icon120.png */,
 				812F4AEB17DF003800454747 /* Icon144.png */,
+				8120C15417DFAD9600A1C3A9 /* Menu-Cart.png */,
 				8120C14217DFAD8C00A1C3A9 /* Menu-Cart@2x.png */,
 				8120C14317DFAD8C00A1C3A9 /* Menu-Home.png */,
 				8120C14417DFAD8C00A1C3A9 /* Menu-Home@2x.png */,
@@ -262,6 +283,10 @@
 				8120C14817DFAD8C00A1C3A9 /* Menu-Search@2x.png */,
 				8120C14917DFAD8C00A1C3A9 /* Menu-Sell.png */,
 				8120C14A17DFAD8C00A1C3A9 /* Menu-Sell@2x.png */,
+				8120C16017DFB48600A1C3A9 /* Navigation-Filter.png */,
+				8120C16117DFB48600A1C3A9 /* Navigation-Filter@2x.png */,
+				8120C15C17DFB2F700A1C3A9 /* Navigation-Menu.png */,
+				8120C15D17DFB2F700A1C3A9 /* Navigation-Menu@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -401,15 +426,20 @@
 				812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */,
 				812F4AEF17DF003800454747 /* Icon144.png in Resources */,
 				812F4AEE17DF003800454747 /* Icon120.png in Resources */,
+				8120C15E17DFB2F700A1C3A9 /* Navigation-Menu.png in Resources */,
+				8120C16217DFB48600A1C3A9 /* Navigation-Filter.png in Resources */,
+				8120C15517DFAD9600A1C3A9 /* Menu-Cart.png in Resources */,
 				812F4AEC17DF003800454747 /* Icon57.png in Resources */,
 				812F4AB417DEFD0300454747 /* Default@2x.png in Resources */,
 				8120C14E17DFAD8C00A1C3A9 /* Menu-News.png in Resources */,
 				8120C15217DFAD8C00A1C3A9 /* Menu-Sell.png in Resources */,
 				8120C15117DFAD8C00A1C3A9 /* Menu-Search@2x.png in Resources */,
+				8120C16317DFB48600A1C3A9 /* Navigation-Filter@2x.png in Resources */,
 				8120C15317DFAD8C00A1C3A9 /* Menu-Sell@2x.png in Resources */,
 				812F4AED17DF003800454747 /* Icon114.png in Resources */,
 				812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */,
 				812F4AFC17DF019600454747 /* InfoPlist.strings in Resources */,
+				8120C15F17DFB2F700A1C3A9 /* Navigation-Menu@2x.png in Resources */,
 				8120C15017DFAD8C00A1C3A9 /* Menu-Search.png in Resources */,
 				8120C14F17DFAD8C00A1C3A9 /* Menu-News@2x.png in Resources */,
 				812F4AB317DEFD0300454747 /* Default.png in Resources */,
@@ -426,11 +456,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */,
+				8120C15B17DFAFA600A1C3A9 /* MFNewPostController.m in Sources */,
 				8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */,
 				812F4ABA17DEFD4800454747 /* MFApplicationDelegate.m in Sources */,
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
+				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
 				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
 				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
 				8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */,
