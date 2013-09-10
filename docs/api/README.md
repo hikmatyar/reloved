@@ -49,7 +49,7 @@ Performs a login or creates an account if possible (type=auto) and the account d
         hash [O] - Sha1 checksum of salt, type, public and private arguments
     
     Returns:
-        { "error": 0, "session": "12345678", "user": 1231 }
+        { "error": 0, "session": "12345678", "user": "1231" }
     
     Errors:
         [standard]
@@ -77,6 +77,7 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 	
 	Parameters:
 		[session]
+		state [O=null] - State that is managed by the server and was returned with the previous response
 	
 	Returns:
 		{ "error": 0 }
