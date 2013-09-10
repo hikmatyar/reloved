@@ -35,6 +35,7 @@
 		8120C16617DFB7F100A1C3A9 /* MFWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C16517DFB7F100A1C3A9 /* MFWebController.m */; };
 		8120C16817DFBC4500A1C3A9 /* Pages in Resources */ = {isa = PBXBuildFile; fileRef = 8120C16717DFBC4500A1C3A9 /* Pages */; };
 		8120C16B17DFBD1200A1C3A9 /* MFPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C16A17DFBD1200A1C3A9 /* MFPreferences.m */; };
+		8120C16E17DFBF1200A1C3A9 /* NSDictionary+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C16D17DFBF1200A1C3A9 /* NSDictionary+Additions.m */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -108,6 +109,8 @@
 		8120C16717DFBC4500A1C3A9 /* Pages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pages; sourceTree = "<group>"; };
 		8120C16917DFBD1200A1C3A9 /* MFPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPreferences.h; path = Sources/MFPreferences.h; sourceTree = SOURCE_ROOT; };
 		8120C16A17DFBD1200A1C3A9 /* MFPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPreferences.m; path = Sources/MFPreferences.m; sourceTree = SOURCE_ROOT; };
+		8120C16C17DFBF1200A1C3A9 /* NSDictionary+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+Additions.h"; path = "Sources/Additions/NSDictionary+Additions.h"; sourceTree = SOURCE_ROOT; };
+		8120C16D17DFBF1200A1C3A9 /* NSDictionary+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+Additions.m"; path = "Sources/Additions/NSDictionary+Additions.m"; sourceTree = SOURCE_ROOT; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -307,6 +310,8 @@
 		812F4ABE17DEFE2600454747 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				8120C16C17DFBF1200A1C3A9 /* NSDictionary+Additions.h */,
+				8120C16D17DFBF1200A1C3A9 /* NSDictionary+Additions.m */,
 				8120C13C17DFA8F400A1C3A9 /* UIColor+Additions.h */,
 				8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */,
 				8120C13F17DFA90300A1C3A9 /* UIFont+Additions.h */,
@@ -481,6 +486,7 @@
 				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
 				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
 				8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */,
+				8120C16E17DFBF1200A1C3A9 /* NSDictionary+Additions.m in Sources */,
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				812F4AE117DEFEE900454747 /* ASIDataCompressor.m in Sources */,
