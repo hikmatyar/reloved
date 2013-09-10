@@ -177,3 +177,22 @@ Provider: linode.com
 
     /sbin/iptables -A INPUT -p tcp -i eth1 ! -s 127.0.0.1 --dport 3306 -j DROP
     /sbin/service iptables save
+
+# Setup Fast-CGI
+
+    rm /etc/rc.d/rc5.d/K20spawn-fcgi
+
+# Install NodeJS
+
+Download the latest installer from http://nodejs.org/download/
+
+    curl -o node.tar.gz http://nodejs.org/dist/v0.10.18/node-v0.10.18.tar.gz
+    gunzip node.tar.gz
+    tar xvf node.tar
+    cd node-v0.10.18
+    ./configure
+    make
+    make install
+    cd ..
+    rm -fr node*
+
