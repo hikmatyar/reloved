@@ -16,11 +16,11 @@ Provider: linode.com
 
 # Setup users
 
-api: Dh434asdfX
-api-dev: Rn290xa0s4
-www: Dh434asdfX
-www-dev: Rn290xa0s4
-nginx: XeRfg0204Z
+* api: Dh434asdfX
+* api-dev: Rn290xa0s4
+* www: Dh434asdfX
+* www-dev: Rn290xa0s4
+* nginx: XeRfg0204Z
 
     groupadd web
     groupadd web-dev
@@ -95,7 +95,7 @@ nginx: XeRfg0204Z
     cd /etc/vsftpd
     cp vsftpd.conf vsftpd.conf.default
 
-## Setup vsftpd.conf
+## Setup vsftpd.conf ("vsftpd.conf")
 
     anonymous_enable=NO
     local_enable=NO
@@ -118,7 +118,7 @@ nginx: XeRfg0204Z
     force_dot_files=NO
     hide_ids=YES
 
-## Modify user_list:
+## Modify user_list ("vi userlist"):
 
     www
     www-dev
@@ -127,13 +127,13 @@ nginx: XeRfg0204Z
 
     /usr/bin/openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout vsftpd.pem -out vsftpd.pem
     
-    Country Name (2 letter code) [XX]:EE
-    State or Province Name (full name) []:Harjumaa
-    Locality Name (eg, city) [Default City]:Tallinn
-    Organization Name (eg, company) [Default Company Ltd]:Nautest
+    Country Name (2 letter code) [XX]:UK
+    State or Province Name (full name) []:London
+    Locality Name (eg, city) [Default City]:London
+    Organization Name (eg, company) [Default Company Ltd]:Reloved
     Organizational Unit Name (eg, section) []:FTP
-    Common Name (eg, your name or your server's hostname) []:nautest.com
-    Email Address []:webmaster@nautest.com
+    Common Name (eg, your name or your server's hostname) []:relovedapp.co.uk
+    Email Address []:webmaster@relovedapp.co.uk
 
 ## Finally, restart the service:
 
