@@ -3,14 +3,12 @@
 #import "MFHomeController.h"
 #import "MFSideMenuContainerViewController.h"
 #import "UIViewController+MFSideMenuAdditions.h"
-#import "MFWebController.h"
 
 @implementation MFHomeController
 
 - (IBAction)menu:(id)sender
 {
-    //[self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
-    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Contact-Us"] animated:YES];
+    [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
 }
 
 #pragma mark UIView
