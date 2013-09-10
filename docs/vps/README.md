@@ -3,10 +3,10 @@ Reloved Virtual Private Server Setup
 
 # System
 
-OS: CentOS 6.2 64b
-RAM: 1024 MB
-HDD: 48896 MB
-Provider: linode.com
+* OS: CentOS 6.2 64b
+* RAM: 1024 MB
+* HDD: 48896 MB
+* Provider: linode.com
 
 # Users and passwords
 
@@ -218,8 +218,60 @@ Download the latest installer from http://nodejs.org/download/
     chown -R root:nginx /var/lib/php
     mkdir -p /var/nginx/cache/
 
-# Copy nginx configuration files from "/docs/vps/nginx" to "/etc/nginx"
+## Copy nginx configuration files from "/docs/vps/nginx" to "/etc/nginx"
 
-# Finally, restart the service
+## Finally, restart the service
 
     /etc/init.d/nginx restart
+
+# Setup github for automatic deployment
+
+	cd /home/api
+	su api
+	mkdir .ssh
+	cd .ssh
+	ssh-keygen -t rsa -C "<EMAIL ADDRESS IN GITHUB>"
+	# No passphrase (press ENTER)
+	exit
+	
+	cd /home/api-dev
+	su api-dev
+	mkdir .ssh
+	cd .ssh
+	ssh-keygen -t rsa -C "<EMAIL ADDRESS IN GITHUB>"
+	# No passphrase (press ENTER)
+	exit
+
+## Copy the contents of "/home/api/.ssh/id_rsa.pub" and "/home/api-dev/.ssh/id_rsa.pub" to github.com
+
+## Checkout git
+
+	cd /home/api
+	su api
+	mkdir -p log/index
+	git clone git@github.com:hikmatyar/reloved.git git
+	exit
+	
+	cd /home/api-dev
+	su api-dev
+	mkdir -p log/index
+	git clone git@github.com:hikmatyar/reloved.git git
+	exit
+
+# Setup supervisor
+
+## Copy supervisor configuration file from "/docs/vps/supervisor/supervisord.conf" to "/etc/supervisord.conf"
+
+## Copy api start-up script from "/docs/vps/supervisor/api/supervisor.sh" to "/home/api/supervisor.sh"
+
+## Copy api-dev start-up script from "/docs/vps/supervisor/api-dev/supervisor.sh" to "/home/api-dev/supervisor.sh"
+
+## Copy supervisor start-up script from "/docs/vps/supervisor/supervisord.sh" to "/etc/init.d/supervisord"
+
+## Move supervisord.sh to /etc/init.d/supervisord
+
+    chmod 755 /etc/init.d/supervisord
+    chkconfig --add supervisord
+    mkdir -p /var/log/supervisor
+    /etc/init.d/supervisord start
+    
