@@ -118,7 +118,6 @@
 				810D060517DEFC220058CE52 /* Supporting Files */,
 				812F4AAE17DEFCE400454747 /* Resources */,
 				810D05FD17DEFC220058CE52 /* Frameworks */,
-				812F4AF217DF00FD00454747 /* libz.dylib */,
 				810D05FC17DEFC220058CE52 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -141,6 +140,7 @@
 				810D05FE17DEFC220058CE52 /* UIKit.framework */,
 				810D060017DEFC220058CE52 /* Foundation.framework */,
 				810D060217DEFC220058CE52 /* CoreGraphics.framework */,
+				812F4AF217DF00FD00454747 /* libz.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -428,6 +428,7 @@
 		810D061917DEFC220058CE52 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
@@ -439,6 +440,7 @@
 		810D061A17DEFC220058CE52 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
