@@ -58,6 +58,14 @@ Reloved Virtual Private Server Setup
 	su www-dev
 	cd /home/www-dev
 	mkdir -p httpdocs/cgi-bin
+	cd httpdocs
+	echo "reloved:QFFLkbMwCCzrY" > .htpasswd
+	# user: "reloved", "password: "devoler"
+	echo "AuthName \"Reloved Zone\"" > .htaccess
+	echo "AuthType Basic" >> .htaccess
+	echo "AuthUserFile /home/www-dev/.htpasswd" >> .htaccess
+	echo "AuthGroupFile /dev/null" >> .htaccess
+	echo "require valid-user" >> .htaccess
 	exit
 
 # Setup package management
