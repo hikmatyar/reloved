@@ -24,39 +24,39 @@ Provider: linode.com
 
 	groupadd web
 	groupadd web-dev
-	
+
 	/usr/sbin/useradd nginx
 	passwd nginx
 	usermod -a -G web nginx
 	usermod -a -G web-dev nginx
-    
-    /usr/sbin/useradd api
-    passwd api
-    chmod g+rx /home/api
-    usermod -a -G web api
-    usermod -a -G api nginx
-    
-    /usr/sbin/useradd api-dev
-    passwd api-dev
-    chmod g+rx /home/api-dev
-    usermod -a -G web-dev api-dev
-    usermod -a -G api-dev nginx
-    
-    /usr/sbin/useradd -g web www
-    passwd www
-    chmod g+rx /home/www
-    su www
-    cd /home/www
-    mkdir -p httpdocs/cgi-bin
-    exit
-    
-    /usr/sbin/useradd -g web-dev www-dev
-    passwd www-dev
-    chmod g+rx /home/www-dev
-    su www-dev
-    cd /home/www-dev
-    mkdir -p httpdocs/cgi-bin
-    exit
+
+	/usr/sbin/useradd api
+	passwd api
+	chmod g+rx /home/api
+	usermod -a -G web api
+	usermod -a -G api nginx
+
+	/usr/sbin/useradd api-dev
+	passwd api-dev
+	chmod g+rx /home/api-dev
+	usermod -a -G web-dev api-dev
+	usermod -a -G api-dev nginx
+
+	/usr/sbin/useradd -g web www
+	passwd www
+	chmod g+rx /home/www
+	su www
+	cd /home/www
+	mkdir -p httpdocs/cgi-bin
+	exit
+
+	/usr/sbin/useradd -g web-dev www-dev
+	passwd www-dev
+	chmod g+rx /home/www-dev
+	su www-dev
+	cd /home/www-dev
+	mkdir -p httpdocs/cgi-bin
+	exit
 
 # Setup package management
 
