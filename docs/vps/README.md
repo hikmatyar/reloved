@@ -218,7 +218,7 @@ Download the latest installer from http://nodejs.org/download/
     chown -R root:nginx /var/lib/php
     mkdir -p /var/nginx/cache/
 
-## Copy nginx configuration files from "/docs/vps/nginx" to "/etc/nginx"
+Copy nginx configuration files from "/docs/vps/nginx" to "/etc/nginx"
 
 ## Finally, restart the service
 
@@ -242,7 +242,7 @@ Download the latest installer from http://nodejs.org/download/
 	# No passphrase (press ENTER)
 	exit
 
-## Copy the contents of "/home/api/.ssh/id_rsa.pub" and "/home/api-dev/.ssh/id_rsa.pub" to github.com
+Copy the contents of "/home/api/.ssh/id_rsa.pub" and "/home/api-dev/.ssh/id_rsa.pub" to github.com
 
 ## Checkout git
 
@@ -260,13 +260,15 @@ Download the latest installer from http://nodejs.org/download/
 
 # Setup supervisor
 
-## Copy supervisor configuration file from "/docs/vps/supervisor/supervisord.conf" to "/etc/supervisord.conf"
+Copy supervisor configuration file from "/docs/vps/supervisor/supervisord.conf" to "/etc/supervisord.conf"
 
-## Copy api start-up script from "/docs/vps/supervisor/api/supervisor.sh" to "/home/api/supervisor.sh"
+## Setup start-up scripts
 
-## Copy api-dev start-up script from "/docs/vps/supervisor/api-dev/supervisor.sh" to "/home/api-dev/supervisor.sh"
+Copy api start-up script from "/docs/vps/supervisor/api/supervisor.sh" to "/home/api/supervisor.sh"
 
-## Copy supervisor start-up script from "/docs/vps/supervisor/supervisord.sh" to "/etc/init.d/supervisord"
+Copy api-dev start-up script from "/docs/vps/supervisor/api-dev/supervisor.sh" to "/home/api-dev/supervisor.sh"
+
+Copy supervisor start-up script from "/docs/vps/supervisor/supervisord.sh" to "/etc/init.d/supervisord"
 
 ## Move supervisord.sh to /etc/init.d/supervisord
 
