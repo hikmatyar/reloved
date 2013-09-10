@@ -1,7 +1,9 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFApplicationDelegate.h"
-#import "MFFeedController.h"
+#import "MFHomeController.h"
+#import "MFMenuController.h"
+#import "MFSideMenuContainerViewController.h"
 
 @implementation MFApplicationDelegate
 
@@ -11,10 +13,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[MFFeedController alloc] init]];
+    MFSideMenuContainerViewController *controller = [MFSideMenuContainerViewController
+        containerWithCenterViewController:[[UINavigationController alloc] initWithRootViewController:[[MFHomeController alloc] init]]
+        leftMenuViewController:[[MFMenuController alloc] init]
+        rightMenuViewController:[[MFMenuController alloc] init]];
     
     m_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    m_window.rootViewController = navigationController;
+    m_window.rootViewController = controller;
     [m_window makeKeyAndVisible];
     
     return YES;

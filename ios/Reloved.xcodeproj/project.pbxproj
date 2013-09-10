@@ -10,6 +10,11 @@
 		810D05FF17DEFC220058CE52 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D05FE17DEFC220058CE52 /* UIKit.framework */; };
 		810D060117DEFC220058CE52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D060017DEFC220058CE52 /* Foundation.framework */; };
 		810D060317DEFC220058CE52 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D060217DEFC220058CE52 /* CoreGraphics.framework */; };
+		8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13017DFA37100A1C3A9 /* MFPostController.m */; };
+		8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */; };
+		8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13617DFA7C000A1C3A9 /* MFSearchController.m */; };
+		8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13917DFA82100A1C3A9 /* MFCartController.m */; };
+		8120C13E17DFA8F400A1C3A9 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -48,6 +53,16 @@
 		810D05FE17DEFC220058CE52 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		810D060017DEFC220058CE52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		810D060217DEFC220058CE52 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8120C12F17DFA37100A1C3A9 /* MFPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostController.h; path = Sources/MFPostController.h; sourceTree = SOURCE_ROOT; };
+		8120C13017DFA37100A1C3A9 /* MFPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostController.m; path = Sources/MFPostController.m; sourceTree = SOURCE_ROOT; };
+		8120C13217DFA7AD00A1C3A9 /* MFHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHomeController.h; path = Sources/MFHomeController.h; sourceTree = SOURCE_ROOT; };
+		8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFHomeController.m; path = Sources/MFHomeController.m; sourceTree = SOURCE_ROOT; };
+		8120C13517DFA7C000A1C3A9 /* MFSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSearchController.h; path = Sources/MFSearchController.h; sourceTree = SOURCE_ROOT; };
+		8120C13617DFA7C000A1C3A9 /* MFSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFSearchController.m; path = Sources/MFSearchController.m; sourceTree = SOURCE_ROOT; };
+		8120C13817DFA82100A1C3A9 /* MFCartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCartController.h; path = Sources/MFCartController.h; sourceTree = SOURCE_ROOT; };
+		8120C13917DFA82100A1C3A9 /* MFCartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCartController.m; path = Sources/MFCartController.m; sourceTree = SOURCE_ROOT; };
+		8120C13C17DFA8F400A1C3A9 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Additions.h"; path = "Sources/Additions/UIColor+Additions.h"; sourceTree = SOURCE_ROOT; };
+		8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Additions.m"; path = "Sources/Additions/UIColor+Additions.m"; sourceTree = SOURCE_ROOT; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -164,10 +179,18 @@
 				812F4ABE17DEFE2600454747 /* Additions */,
 				812F4AB717DEFD4800454747 /* MFApplicationDelegate.h */,
 				812F4AB817DEFD4800454747 /* MFApplicationDelegate.m */,
+				8120C13817DFA82100A1C3A9 /* MFCartController.h */,
+				8120C13917DFA82100A1C3A9 /* MFCartController.m */,
 				812F4ABB17DEFDB400454747 /* MFFeedController.h */,
 				812F4ABC17DEFDB400454747 /* MFFeedController.m */,
+				8120C13217DFA7AD00A1C3A9 /* MFHomeController.h */,
+				8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */,
 				818F917417DF95F400D1A723 /* MFMenuController.h */,
 				818F917517DF95F400D1A723 /* MFMenuController.m */,
+				8120C12F17DFA37100A1C3A9 /* MFPostController.h */,
+				8120C13017DFA37100A1C3A9 /* MFPostController.m */,
+				8120C13517DFA7C000A1C3A9 /* MFSearchController.h */,
+				8120C13617DFA7C000A1C3A9 /* MFSearchController.m */,
 			);
 			name = Sources;
 			path = Reloved;
@@ -216,6 +239,8 @@
 		812F4ABE17DEFE2600454747 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				8120C13C17DFA8F400A1C3A9 /* UIColor+Additions.h */,
+				8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -360,16 +385,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */,
+				8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */,
 				812F4ABA17DEFD4800454747 /* MFApplicationDelegate.m in Sources */,
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
+				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
+				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
+				8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */,
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				812F4AE117DEFEE900454747 /* ASIDataCompressor.m in Sources */,
 				812F4AB917DEFD4800454747 /* main.m in Sources */,
 				812F4AE517DEFEE900454747 /* ASIHTTPRequest.m in Sources */,
 				812F4AC217DEFE5300454747 /* JSONKit.m in Sources */,
+				8120C13E17DFA8F400A1C3A9 /* UIColor+Additions.m in Sources */,
 				812F4AE217DEFEE900454747 /* ASIDataDecompressor.m in Sources */,
 				812F4ABD17DEFDB400454747 /* MFFeedController.m in Sources */,
 				812F4AE717DEFEE900454747 /* ASINetworkQueue.m in Sources */,

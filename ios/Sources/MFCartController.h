@@ -2,9 +2,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MFMenuController : UIViewController
-{
-    @private
-}
+@interface MFCartController : UIViewController
 
 @end

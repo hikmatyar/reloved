@@ -2,11 +2,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MFFeedController : UIViewController
+@interface MFSearchController : UIViewController
 {
     @private
 }
-
-- (IBAction)menu:(id)sender;
 
 @end

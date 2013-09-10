@@ -1,2 +1,28 @@
-/* Localized versions of Info.plist keys */
 
+"Feed.Action.Home" = "Home";
+
+"Home.Action.About" = "Contact Us";
+"Home.Action.Bookmarks" = "Saved Items";
+"Home.Action.BrowseNew" = "Just In";
+"Home.Action.BrowseAll" = "View All";
+"Home.Action.Editorial" = "Edutir's Picks";
+"Home.Action.Guarantee" = "Quality Guarantee";
+"Home.Action.History" = "My Listed Items";
+"Home.Action.Profile" = "My Contact Details"
+"Home.Action.Recents" = "Recently Viewed";
+"Home.Action.ReturnsPolicy" = "Returns Policy";
+"Home.Action.Security" = "Payment Security";
+"Home.Action.ShippingInfo" = "Shipping Information";
+"Home.Action.ShopByColor" = "Shop by Color";
+"Home.Action.ShopByDress" = "Shop by Dress Type";
+"Home.Label.Copyright" = "© 2013, Reloved London";
+"Home.Label.CustomerCare" = "Customer Care";
+"Home.Label.Footer" = "We check every item that ships";
+"Home.Label.MyAccount" = "My Account";
+"Home.Label.MyItems" = "My Items";
+
+"Menu.Action.Home" = "Home";
+"Menu.Action.Search" = "Search";
+"Menu.Action.News" = "News Feed";
+"Menu.Action.Cart" = "My Cart";
+"Menu.Action.Sell" = "Sell";
