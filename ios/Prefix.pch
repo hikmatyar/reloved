@@ -1,0 +1,26 @@
+//
+// Prefix header for all source files of the 'Reloved' target in the 'Reloved' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#ifdef DEBUG
+#define MFLog(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
+#define MFDebug(fmt, ...) NSLog(@"[%@ -%s]: " fmt, self.class, sel_getName(_cmd), ##__VA_ARGS__)
+#else
+#define MFLog(fmt, ...) //NSLog
+#define MFDebug(fmt, ...) //NSLog
+#endif
+
+#define MFError(fmt, ...) NSLog(@"[%@ -%s]: " fmt, self.class, sel_getName(_cmd), ##__VA_ARGS__)
+
+#define MFEqual(a, b) (a == b || (b && [a isEqual:b]))

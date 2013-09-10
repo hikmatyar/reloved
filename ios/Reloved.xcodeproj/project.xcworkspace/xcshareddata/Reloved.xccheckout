@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D5E8AEE8-EDF9-45B6-B1DF-52AB44D4D916</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Reloved</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8B56DAE0-5EDF-4CA6-8E9F-4E48981C0C9F</key>
+		<string>ssh://github.com/hikmatyar/reloved.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ios/Reloved.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8B56DAE0-5EDF-4CA6-8E9F-4E48981C0C9F</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/hikmatyar/reloved.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8B56DAE0-5EDF-4CA6-8E9F-4E48981C0C9F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8B56DAE0-5EDF-4CA6-8E9F-4E48981C0C9F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Reloved</string>
+		</dict>
+	</array>
+</dict>
+</plist>
