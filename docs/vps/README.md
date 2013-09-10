@@ -270,7 +270,9 @@ Copy api-dev start-up script from "/docs/vps/supervisor/api-dev/supervisor.sh" t
 
 Copy supervisor start-up script from "/docs/vps/supervisor/supervisord.sh" to "/etc/init.d/supervisord"
 
-## Move supervisord.sh to /etc/init.d/supervisord
+## Finally, start the service
+
+Move supervisord.sh to /etc/init.d/supervisord
 
     chmod 755 /etc/init.d/supervisord
     chkconfig --add supervisord
