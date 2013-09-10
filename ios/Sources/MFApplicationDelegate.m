@@ -4,6 +4,7 @@
 #import "MFHomeController.h"
 #import "MFMenuController.h"
 #import "MFSideMenuContainerViewController.h"
+#import "MFWebController.h"
 
 @implementation MFApplicationDelegate
 
@@ -21,6 +22,8 @@
     m_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     m_window.rootViewController = controller;
     [m_window makeKeyAndVisible];
+    
+    [MFWebController preload];
     
     return YES;
 }
