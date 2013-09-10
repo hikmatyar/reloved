@@ -37,6 +37,10 @@
 		812F4AF517DF011E00454747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF417DF011E00454747 /* SystemConfiguration.framework */; };
 		812F4AF917DF017F00454747 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF817DF017F00454747 /* MobileCoreServices.framework */; };
 		812F4AFC17DF019600454747 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AFA17DF019600454747 /* InfoPlist.strings */; };
+		818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F916C17DF958D00D1A723 /* MFSideMenuContainerViewController.m */; };
+		818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F916E17DF958D00D1A723 /* MFSideMenuShadow.m */; };
+		818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */; };
+		818F917617DF95F400D1A723 /* MFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917517DF95F400D1A723 /* MFMenuController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +95,15 @@
 		812F4AF617DF015500454747 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		812F4AF817DF017F00454747 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		812F4AFB17DF019600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../../Nautest/trunk/ios/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		818F916A17DF958D00D1A723 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSideMenu.h; path = Sources/MFSideMenu/MFSideMenu.h; sourceTree = SOURCE_ROOT; };
+		818F916B17DF958D00D1A723 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSideMenuContainerViewController.h; path = Sources/MFSideMenu/MFSideMenuContainerViewController.h; sourceTree = SOURCE_ROOT; };
+		818F916C17DF958D00D1A723 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFSideMenuContainerViewController.m; path = Sources/MFSideMenu/MFSideMenuContainerViewController.m; sourceTree = SOURCE_ROOT; };
+		818F916D17DF958D00D1A723 /* MFSideMenuShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSideMenuShadow.h; path = Sources/MFSideMenu/MFSideMenuShadow.h; sourceTree = SOURCE_ROOT; };
+		818F916E17DF958D00D1A723 /* MFSideMenuShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFSideMenuShadow.m; path = Sources/MFSideMenu/MFSideMenuShadow.m; sourceTree = SOURCE_ROOT; };
+		818F916F17DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+MFSideMenuAdditions.h"; path = "Sources/MFSideMenu/UIViewController+MFSideMenuAdditions.h"; sourceTree = SOURCE_ROOT; };
+		818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MFSideMenuAdditions.m"; path = "Sources/MFSideMenu/UIViewController+MFSideMenuAdditions.m"; sourceTree = SOURCE_ROOT; };
+		818F917417DF95F400D1A723 /* MFMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFMenuController.h; path = Sources/MFMenuController.h; sourceTree = SOURCE_ROOT; };
+		818F917517DF95F400D1A723 /* MFMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMenuController.m; path = Sources/MFMenuController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +166,8 @@
 				812F4AB817DEFD4800454747 /* MFApplicationDelegate.m */,
 				812F4ABB17DEFDB400454747 /* MFFeedController.h */,
 				812F4ABC17DEFDB400454747 /* MFFeedController.m */,
+				818F917417DF95F400D1A723 /* MFMenuController.h */,
+				818F917517DF95F400D1A723 /* MFMenuController.m */,
 			);
 			name = Sources;
 			path = Reloved;
@@ -262,6 +277,13 @@
 		818F915F17DF955F00D1A723 /* MFSideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				818F916A17DF958D00D1A723 /* MFSideMenu.h */,
+				818F916B17DF958D00D1A723 /* MFSideMenuContainerViewController.h */,
+				818F916C17DF958D00D1A723 /* MFSideMenuContainerViewController.m */,
+				818F916D17DF958D00D1A723 /* MFSideMenuShadow.h */,
+				818F916E17DF958D00D1A723 /* MFSideMenuShadow.m */,
+				818F916F17DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.h */,
+				818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */,
 			);
 			name = MFSideMenu;
 			sourceTree = "<group>";
@@ -337,10 +359,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */,
 				812F4ABA17DEFD4800454747 /* MFApplicationDelegate.m in Sources */,
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
+				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
+				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				812F4AE117DEFEE900454747 /* ASIDataCompressor.m in Sources */,
 				812F4AB917DEFD4800454747 /* main.m in Sources */,
 				812F4AE517DEFEE900454747 /* ASIHTTPRequest.m in Sources */,
@@ -349,6 +374,7 @@
 				812F4ABD17DEFDB400454747 /* MFFeedController.m in Sources */,
 				812F4AE717DEFEE900454747 /* ASINetworkQueue.m in Sources */,
 				812F4AE017DEFEE900454747 /* ASIAuthenticationDialog.m in Sources */,
+				818F917617DF95F400D1A723 /* MFMenuController.m in Sources */,
 				812F4AE417DEFEE900454747 /* ASIFormDataRequest.m in Sources */,
 				812F4AC717DEFE9400454747 /* Reachability.m in Sources */,
 			);
