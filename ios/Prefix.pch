@@ -11,7 +11,14 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+    void MFLogEvent(NSString *category, NSString *action, NSString *label, int value);
+    void MFLogView(NSString *screen);
 #endif
+
+#define LOG_EVENT(category, action) MFLogEvent(category, action, nil, 0)
+#define LOG_EVENT_DETAILED(category, action, label, value) MFLogEvent(category, action, label, value)
+#define LOG_VIEW(view) MFLogView(view)
 
 #ifdef DEBUG
 #define MFLog(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
@@ -24,3 +31,7 @@
 #define MFError(fmt, ...) NSLog(@"[%@ -%s]: " fmt, self.class, sel_getName(_cmd), ##__VA_ARGS__)
 
 #define MFEqual(a, b) (a == b || (b && [a isEqual:b]))
+
+#pragma mark External Services
+
+#define GOOGLE_ANALYTICS @"UA-43966613-1"
