@@ -2,6 +2,7 @@
 
 #import "MFHomeHeaderView.h"
 #import "MFHomeHeaderViewDelegate.h"
+#import "MFMenuItem.h"
 #import "UIButton+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -25,6 +26,21 @@
 
 @synthesize delegate = m_delegate;
 
+@dynamic item;
+
+- (MFMenuItem *)item
+{
+    return m_item;
+}
+
+- (void)setItem:(MFMenuItem *)item
+{
+    if(m_item != item) {
+        m_item = item;
+        m_itemLabel.text = item.title;
+    }
+}
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame
@@ -44,6 +60,20 @@
         [shopByDressButton setTitle:NSLocalizedString(@"Home.Action.ShopByDress", nil) forState:UIControlStateNormal];
         shopByDressButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
         [self addSubview:shopByDressButton];
+        
+        m_itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0F, 162.0F, 300.0F, 31.0F)];
+        m_itemLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
+        m_itemLabel.backgroundColor = [UIColor grayColor];
+        m_itemLabel.font = [UIFont themeFontOfSize:12.0F];
+        m_itemLabel.textAlignment = NSTextAlignmentCenter;
+        m_itemLabel.text = @"GUCCI\n180";
+        m_itemLabel.numberOfLines = 0;
+        [self addSubview:m_itemLabel];
+        
+        m_itemImageView = [[UIImageView alloc] initWithFrame:CGRectMake(78.0F, 9.0F, 164.0F, 152.0F)];
+        m_itemImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
+        m_itemImageView.backgroundColor = [UIColor grayColor];
+        [self addSubview:m_itemImageView];
     }
     
     return self;

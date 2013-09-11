@@ -4,7 +4,7 @@
 
 typedef void (*MFMenuItemAction)(id target, SEL sel, id sender);
 
-#define MENU_ITEM(t, s, i) [[MFMenuItem alloc] initWithTitle:t selector:s image:i]
+#define MENU_ITEM(t, s, i) [[MFMenuItem alloc] initWithTitle:t image:i selector:s]
 
 @interface MFMenuItem : NSObject
 {
@@ -14,7 +14,7 @@ typedef void (*MFMenuItemAction)(id target, SEL sel, id sender);
     NSString *m_title;
 }
 
-- (id)initWithTitle:(NSString *)title selector:(SEL)selector image:(NSString *)image;
+- (id)initWithTitle:(NSString *)title image:(NSString *)image selector:(SEL)selector;
 
 @property (nonatomic, retain) NSString *image;
 @property (nonatomic, assign) SEL selector;

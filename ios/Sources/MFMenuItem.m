@@ -4,7 +4,7 @@
 
 @implementation MFMenuItem
 
-- (id)initWithTitle:(NSString *)title selector:(SEL)selector image:(NSString *)image
+- (id)initWithTitle:(NSString *)title image:(NSString *)image selector:(SEL)selector
 {
     self = [super init];
     
