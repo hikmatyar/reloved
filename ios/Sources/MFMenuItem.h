@@ -20,4 +20,6 @@ typedef void (*MFMenuItemAction)(id target, SEL sel, id sender);
 @property (nonatomic, assign) SEL selector;
 @property (nonatomic, retain) NSString *title;
 
+- (void)activate:(id)target;
+
 @end

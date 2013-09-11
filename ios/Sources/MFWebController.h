@@ -11,6 +11,7 @@
 + (void)preload;
 
 - (id)initWithContentsOfFile:(NSString *)path;
+- (id)initWithContentsOfFile:(NSString *)path title:(NSString *)title;
 
 @property (nonatomic, retain, readonly) NSString *path;
 

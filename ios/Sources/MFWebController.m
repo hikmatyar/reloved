@@ -24,10 +24,16 @@
 
 - (id)initWithContentsOfFile:(NSString *)path
 {
+    return [self initWithContentsOfFile:path title:nil];
+}
+
+- (id)initWithContentsOfFile:(NSString *)path title:(NSString *)title
+{
     self = [super init];
     
     if(self) {
         m_path = path;
+        self.navigationItem.title = title;
     }
     
     return self;

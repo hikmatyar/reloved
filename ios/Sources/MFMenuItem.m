@@ -21,4 +21,13 @@
 @synthesize selector = m_selector;
 @synthesize title = m_title;
 
+- (void)activate:(id)target
+{
+    MFMenuItemAction imp = (MFMenuItemAction)[target methodForSelector:m_selector];
+    
+    if(imp != NULL) {
+        imp(target, m_selector, self);
+    }
+}
+
 @end

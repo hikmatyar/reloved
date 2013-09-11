@@ -45,27 +45,27 @@
 
 - (IBAction)guarantee:(id)sender
 {
-    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Guarantee"] animated:YES];
+    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Guarantee" title:((MFMenuItem *)sender).title] animated:YES];
 }
 
 - (IBAction)returnsPolicy:(id)sender
 {
-    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Returns-Policy"] animated:YES];
+    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Returns-Policy" title:((MFMenuItem *)sender).title] animated:YES];
 }
 
 - (IBAction)shippingInfo:(id)sender
 {
-    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Shipping-Info"] animated:YES];
+    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Shipping-Info" title:((MFMenuItem *)sender).title] animated:YES];
 }
 
 - (IBAction)security:(id)sender
 {
-    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Payment-Security"] animated:YES];
+    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Payment-Security" title:((MFMenuItem *)sender).title] animated:YES];
 }
 
 - (IBAction)about:(id)sender
 {
-    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Contact-Us"] animated:YES];
+    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Contact-Us" title:((MFMenuItem *)sender).title] animated:YES];
 }
 
 - (IBAction)menu:(id)sender
@@ -112,10 +112,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MFMenuItem *item = [[m_menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    MFMenuItemAction imp = (MFMenuItemAction)[self methodForSelector:item.selector];
-    
-    imp(self, item.selector, nil);
+    [[[m_menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] activate:self];
 }
 
 #pragma mark UIView
