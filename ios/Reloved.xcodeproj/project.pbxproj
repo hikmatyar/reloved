@@ -63,6 +63,8 @@
 		8120C1A617E0470300A1C3A9 /* Home-Security@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C18E17E0470300A1C3A9 /* Home-Security@2x.png */; };
 		8120C1A717E0470300A1C3A9 /* Home-ShippingInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C18F17E0470300A1C3A9 /* Home-ShippingInfo.png */; };
 		8120C1A817E0470300A1C3A9 /* Home-ShippingInfo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C19017E0470300A1C3A9 /* Home-ShippingInfo@2x.png */; };
+		8120C1AB17E049B400A1C3A9 /* Navigation-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1A917E049B400A1C3A9 /* Navigation-Logo.png */; };
+		8120C1AC17E049B400A1C3A9 /* Navigation-Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1AA17E049B400A1C3A9 /* Navigation-Logo@2x.png */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -168,6 +170,8 @@
 		8120C18E17E0470300A1C3A9 /* Home-Security@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-Security@2x.png"; path = "Images/Home-Security@2x.png"; sourceTree = "<group>"; };
 		8120C18F17E0470300A1C3A9 /* Home-ShippingInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-ShippingInfo.png"; path = "Images/Home-ShippingInfo.png"; sourceTree = "<group>"; };
 		8120C19017E0470300A1C3A9 /* Home-ShippingInfo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-ShippingInfo@2x.png"; path = "Images/Home-ShippingInfo@2x.png"; sourceTree = "<group>"; };
+		8120C1A917E049B400A1C3A9 /* Navigation-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Logo.png"; path = "Images/Navigation-Logo.png"; sourceTree = "<group>"; };
+		8120C1AA17E049B400A1C3A9 /* Navigation-Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Logo@2x.png"; path = "Images/Navigation-Logo@2x.png"; sourceTree = "<group>"; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -386,6 +390,8 @@
 				8120C14A17DFAD8C00A1C3A9 /* Menu-Sell@2x.png */,
 				8120C16017DFB48600A1C3A9 /* Navigation-Filter.png */,
 				8120C16117DFB48600A1C3A9 /* Navigation-Filter@2x.png */,
+				8120C1A917E049B400A1C3A9 /* Navigation-Logo.png */,
+				8120C1AA17E049B400A1C3A9 /* Navigation-Logo@2x.png */,
 				8120C15C17DFB2F700A1C3A9 /* Navigation-Menu.png */,
 				8120C15D17DFB2F700A1C3A9 /* Navigation-Menu@2x.png */,
 			);
@@ -541,6 +547,7 @@
 				812F4AB417DEFD0300454747 /* Default@2x.png in Resources */,
 				8120C19917E0470300A1C3A9 /* Home-BrowseNew.png in Resources */,
 				8120C14E17DFAD8C00A1C3A9 /* Menu-News.png in Resources */,
+				8120C1AB17E049B400A1C3A9 /* Navigation-Logo.png in Resources */,
 				8120C19617E0470300A1C3A9 /* Home-BrowseAll@2x.png in Resources */,
 				8120C15217DFAD8C00A1C3A9 /* Menu-Sell.png in Resources */,
 				8120C19E17E0470300A1C3A9 /* Home-History@2x.png in Resources */,
@@ -575,6 +582,7 @@
 				8120C14B17DFAD8C00A1C3A9 /* Menu-Cart@2x.png in Resources */,
 				8120C19B17E0470300A1C3A9 /* Home-Guarantee.png in Resources */,
 				8120C14C17DFAD8C00A1C3A9 /* Menu-Home.png in Resources */,
+				8120C1AC17E049B400A1C3A9 /* Navigation-Logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
