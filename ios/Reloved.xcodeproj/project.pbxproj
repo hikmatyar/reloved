@@ -901,7 +901,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
+				HEADER_SEARCH_PATHS = Libraries/GoogleAnalytics/include;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = Libraries/GoogleAnalytics/lib;
+				OTHER_LDFLAGS = "-lGoogleAnalytics_debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -913,7 +916,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Prefix.pch;
+				HEADER_SEARCH_PATHS = Libraries/GoogleAnalytics/include;
 				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = Libraries/GoogleAnalytics/lib;
+				OTHER_LDFLAGS = "-lGoogleAnalytics";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
