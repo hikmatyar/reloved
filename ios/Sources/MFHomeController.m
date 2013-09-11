@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFHomeController.h"
+#import "MFHomeFooterView.h"
 #import "MFHomeHeaderView.h"
 #import "MFMenu.h"
 #import "MFMenuItem.h"
@@ -123,12 +124,13 @@
 {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     MFHomeHeaderView *headerView = [[MFHomeHeaderView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 256.0F)];
+    MFHomeFooterView *footerView = [[MFHomeFooterView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 85.0F)];
     
     tableView.tableHeaderView = headerView;
+    tableView.tableFooterView = footerView;
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.rowHeight = 45.0F;
-    
     self.view = tableView;
 }
 

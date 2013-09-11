@@ -71,6 +71,9 @@
 		8120C1B817E0532500A1C3A9 /* Home-ShopByDress@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1B517E0532500A1C3A9 /* Home-ShopByDress@2x.png */; };
 		8120C1BA17E0532E00A1C3A9 /* Home-ShopByColor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1B917E0532E00A1C3A9 /* Home-ShopByColor@2x.png */; };
 		8120C1BD17E053A100A1C3A9 /* UIButton+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1BC17E053A100A1C3A9 /* UIButton+Additions.m */; };
+		8120C1C117E05C9F00A1C3A9 /* MFHomeFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1C017E05C9F00A1C3A9 /* MFHomeFooterView.m */; };
+		8120C1C417E05D7500A1C3A9 /* Home-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1C217E05D7500A1C3A9 /* Home-Checkmark.png */; };
+		8120C1C517E05D7500A1C3A9 /* Home-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1C317E05D7500A1C3A9 /* Home-Checkmark@2x.png */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -187,6 +190,10 @@
 		8120C1BB17E053A100A1C3A9 /* UIButton+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Additions.h"; path = "Sources/Additions/UIButton+Additions.h"; sourceTree = SOURCE_ROOT; };
 		8120C1BC17E053A100A1C3A9 /* UIButton+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Additions.m"; path = "Sources/Additions/UIButton+Additions.m"; sourceTree = SOURCE_ROOT; };
 		8120C1BE17E0556900A1C3A9 /* MFHomeHeaderViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFHomeHeaderViewDelegate.h; path = Sources/MFHomeHeaderViewDelegate.h; sourceTree = SOURCE_ROOT; };
+		8120C1BF17E05C9F00A1C3A9 /* MFHomeFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHomeFooterView.h; path = Sources/MFHomeFooterView.h; sourceTree = SOURCE_ROOT; };
+		8120C1C017E05C9F00A1C3A9 /* MFHomeFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFHomeFooterView.m; path = Sources/MFHomeFooterView.m; sourceTree = SOURCE_ROOT; };
+		8120C1C217E05D7500A1C3A9 /* Home-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-Checkmark.png"; path = "Images/Home-Checkmark.png"; sourceTree = "<group>"; };
+		8120C1C317E05D7500A1C3A9 /* Home-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-Checkmark@2x.png"; path = "Images/Home-Checkmark@2x.png"; sourceTree = "<group>"; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -354,6 +361,8 @@
 		8120C1AD17E051B900A1C3A9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8120C1BF17E05C9F00A1C3A9 /* MFHomeFooterView.h */,
+				8120C1C017E05C9F00A1C3A9 /* MFHomeFooterView.m */,
 				8120C1B017E0520E00A1C3A9 /* MFHomeHeaderView.h */,
 				8120C1B117E0520E00A1C3A9 /* MFHomeHeaderView.m */,
 				8120C1BE17E0556900A1C3A9 /* MFHomeHeaderViewDelegate.h */,
@@ -402,6 +411,8 @@
 				8120C18017E0470300A1C3A9 /* Home-BrowseEditorial@2x.png */,
 				8120C18117E0470300A1C3A9 /* Home-BrowseNew.png */,
 				8120C18217E0470300A1C3A9 /* Home-BrowseNew@2x.png */,
+				8120C1C217E05D7500A1C3A9 /* Home-Checkmark.png */,
+				8120C1C317E05D7500A1C3A9 /* Home-Checkmark@2x.png */,
 				8120C18317E0470300A1C3A9 /* Home-Guarantee.png */,
 				8120C18417E0470300A1C3A9 /* Home-Guarantee@2x.png */,
 				8120C18517E0470300A1C3A9 /* Home-History.png */,
@@ -590,6 +601,7 @@
 				8120C19F17E0470300A1C3A9 /* Home-Profile.png in Resources */,
 				8120C19117E0470300A1C3A9 /* Home-About.png in Resources */,
 				8120C1BA17E0532E00A1C3A9 /* Home-ShopByColor@2x.png in Resources */,
+				8120C1C517E05D7500A1C3A9 /* Home-Checkmark@2x.png in Resources */,
 				8120C16217DFB48600A1C3A9 /* Navigation-Filter.png in Resources */,
 				8120C15517DFAD9600A1C3A9 /* Menu-Cart.png in Resources */,
 				812F4AEC17DF003800454747 /* Icon57.png in Resources */,
@@ -599,6 +611,7 @@
 				8120C14E17DFAD8C00A1C3A9 /* Menu-News.png in Resources */,
 				8120C1AB17E049B400A1C3A9 /* Navigation-Logo.png in Resources */,
 				8120C19617E0470300A1C3A9 /* Home-BrowseAll@2x.png in Resources */,
+				8120C1C417E05D7500A1C3A9 /* Home-Checkmark.png in Resources */,
 				8120C15217DFAD8C00A1C3A9 /* Menu-Sell.png in Resources */,
 				8120C19E17E0470300A1C3A9 /* Home-History@2x.png in Resources */,
 				8120C1A717E0470300A1C3A9 /* Home-ShippingInfo.png in Resources */,
@@ -671,6 +684,7 @@
 				812F4AC217DEFE5300454747 /* JSONKit.m in Sources */,
 				8120C13E17DFA8F400A1C3A9 /* UIColor+Additions.m in Sources */,
 				812F4AE217DEFEE900454747 /* ASIDataDecompressor.m in Sources */,
+				8120C1C117E05C9F00A1C3A9 /* MFHomeFooterView.m in Sources */,
 				8120C17117DFBFA700A1C3A9 /* NSString+Additions.m in Sources */,
 				812F4ABD17DEFDB400454747 /* MFFeedController.m in Sources */,
 				812F4AE717DEFEE900454747 /* ASINetworkQueue.m in Sources */,
