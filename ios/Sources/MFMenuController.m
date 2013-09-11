@@ -4,6 +4,7 @@
 #import "MFFeedController.h"
 #import "MFHomeController.h"
 #import "MFMenuController.h"
+#import "MFMenuItem.h"
 #import "MFNewPostController.h"
 #import "MFNewsController.h"
 #import "MFSearchController.h"
@@ -13,48 +14,6 @@
 #import "UIViewController+MFSideMenuAdditions.h"
 
 #define CELL_IDENTIFIER @"cell"
-#define ITEM(t, s, i) [[MFMenuController_Item alloc] initWithTitle:t selector:s icon:i]
-
-typedef void (*MFMenuControllerAction)(id target, SEL sel, id sender);
-
-@interface MFMenuController_Item : NSObject
-{
-    @private
-    NSString *m_icon;
-    SEL m_selector;
-    NSString *m_title;
-}
-
-- (id)initWithTitle:(NSString *)title selector:(SEL)selector icon:(NSString *)icon;
-
-@property (nonatomic, retain) NSString *icon;
-@property (nonatomic, assign) SEL selector;
-@property (nonatomic, retain) NSString *title;
-
-@end
-
-@implementation MFMenuController_Item
-
-- (id)initWithTitle:(NSString *)title selector:(SEL)selector icon:(NSString *)icon
-{
-    self = [super init];
-    
-    if(self) {
-        m_icon = icon;
-        m_selector = selector;
-        m_title = title;
-    }
-    
-    return self;
-}
-
-@synthesize icon = m_icon;
-@synthesize selector = m_selector;
-@synthesize title = m_title;
-
-@end
-
-#pragma mark -
 
 @implementation MFMenuController
 
@@ -108,7 +67,7 @@ typedef void (*MFMenuControllerAction)(id target, SEL sel, id sender);
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MFMenuController_Item *item = [m_menu objectAtIndex:indexPath.row];
+    MFMenuItem *item = [m_menu objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     
     if(!cell) {
@@ -118,7 +77,7 @@ typedef void (*MFMenuControllerAction)(id target, SEL sel, id sender);
         cell.textLabel.font = [UIFont themeBoldFontOfSize:18.0F];
     }
     
-    cell.imageView.image = (item.icon) ? [UIImage imageNamed:item.icon] : nil;
+    cell.imageView.image = (item.image) ? [UIImage imageNamed:item.image] : nil;
     cell.textLabel.text = item.title;
     
     return cell;
@@ -128,8 +87,8 @@ typedef void (*MFMenuControllerAction)(id target, SEL sel, id sender);
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MFMenuController_Item *item = [m_menu objectAtIndex:indexPath.row];
-    MFMenuControllerAction imp = (MFMenuControllerAction)[self methodForSelector:item.selector];
+    MFMenuItem *item = [m_menu objectAtIndex:indexPath.row];
+    MFMenuItemAction imp = (MFMenuItemAction)[self methodForSelector:item.selector];
     
     imp(self, item.selector, nil);
 }
@@ -168,11 +127,11 @@ typedef void (*MFMenuControllerAction)(id target, SEL sel, id sender);
     
     if(self) {
         m_menu = [[NSArray alloc] initWithObjects:
-                  ITEM(NSLocalizedString(@"Menu.Action.Home", nil), @selector(home:), @"Menu-Home.png"),
-                  ITEM(NSLocalizedString(@"Menu.Action.Search", nil), @selector(search:), @"Menu-Search.png"),
-                  ITEM(NSLocalizedString(@"Menu.Action.News", nil), @selector(news:), @"Menu-News.png"),
-                  ITEM(NSLocalizedString(@"Menu.Action.Cart", nil), @selector(cart:), @"Menu-Cart.png"),
-                  ITEM(NSLocalizedString(@"Menu.Action.Sell", nil), @selector(sell:), @"Menu-Sell.png"), nil];
+                  MENU_ITEM(NSLocalizedString(@"Menu.Action.Home", nil), @selector(home:), @"Menu-Home.png"),
+                  MENU_ITEM(NSLocalizedString(@"Menu.Action.Search", nil), @selector(search:), @"Menu-Search.png"),
+                  MENU_ITEM(NSLocalizedString(@"Menu.Action.News", nil), @selector(news:), @"Menu-News.png"),
+                  MENU_ITEM(NSLocalizedString(@"Menu.Action.Cart", nil), @selector(cart:), @"Menu-Cart.png"),
+                  MENU_ITEM(NSLocalizedString(@"Menu.Action.Sell", nil), @selector(sell:), @"Menu-Sell.png"), nil];
     }
     
     return self;

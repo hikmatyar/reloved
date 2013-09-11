@@ -2,9 +2,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MFHomeController : UIViewController
+@interface MFHomeController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     @private
+    NSArray *m_menu;
 }
 
 - (IBAction)menu:(id)sender;
