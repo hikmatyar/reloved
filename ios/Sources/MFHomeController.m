@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFHomeController.h"
+#import "MFHomeHeaderView.h"
 #import "MFMenu.h"
 #import "MFMenuItem.h"
 #import "MFSideMenuContainerViewController.h"
@@ -103,9 +104,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *title = ((MFMenu *)[m_menu objectAtIndex:section]).title;
-    
-    return (title) ? title : @" ";
+    return ((MFMenu *)[m_menu objectAtIndex:section]).title;
 }
 
 #pragma mark UITableViewDelegate
@@ -123,7 +122,9 @@
 - (void)loadView
 {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
+    MFHomeHeaderView *headerView = [[MFHomeHeaderView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 256.0F)];
     
+    tableView.tableHeaderView = headerView;
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.rowHeight = 45.0F;
@@ -141,7 +142,7 @@
         m_menu = [[NSArray alloc] initWithObjects:
                 MENU_SECTION(nil,
                     MENU_ITEM(NSLocalizedString(@"Home.Action.BrowseEditorial", nil), @selector(browseEditorial:), @"Home-BrowseEditorial.png")),
-                MENU_SECTION(nil,
+                MENU_SECTION(@" ",
                     MENU_ITEM(NSLocalizedString(@"Home.Action.BrowseNew", nil), @selector(browseNew:), @"Home-BrowseNew.png"),
                     MENU_ITEM(NSLocalizedString(@"Home.Action.BrowseAll", nil), @selector(browseAll:), @"Home-BrowseAll.png")),
                 MENU_SECTION(NSLocalizedString(@"Home.Label.MyItems", nil),

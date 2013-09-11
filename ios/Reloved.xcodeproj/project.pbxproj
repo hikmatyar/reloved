@@ -65,6 +65,12 @@
 		8120C1A817E0470300A1C3A9 /* Home-ShippingInfo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C19017E0470300A1C3A9 /* Home-ShippingInfo@2x.png */; };
 		8120C1AB17E049B400A1C3A9 /* Navigation-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1A917E049B400A1C3A9 /* Navigation-Logo.png */; };
 		8120C1AC17E049B400A1C3A9 /* Navigation-Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1AA17E049B400A1C3A9 /* Navigation-Logo@2x.png */; };
+		8120C1B217E0520E00A1C3A9 /* MFHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1B117E0520E00A1C3A9 /* MFHomeHeaderView.m */; };
+		8120C1B617E0532500A1C3A9 /* Home-ShopByColor.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1B317E0532500A1C3A9 /* Home-ShopByColor.png */; };
+		8120C1B717E0532500A1C3A9 /* Home-ShopByDress.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1B417E0532500A1C3A9 /* Home-ShopByDress.png */; };
+		8120C1B817E0532500A1C3A9 /* Home-ShopByDress@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1B517E0532500A1C3A9 /* Home-ShopByDress@2x.png */; };
+		8120C1BA17E0532E00A1C3A9 /* Home-ShopByColor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1B917E0532E00A1C3A9 /* Home-ShopByColor@2x.png */; };
+		8120C1BD17E053A100A1C3A9 /* UIButton+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1BC17E053A100A1C3A9 /* UIButton+Additions.m */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -172,6 +178,15 @@
 		8120C19017E0470300A1C3A9 /* Home-ShippingInfo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-ShippingInfo@2x.png"; path = "Images/Home-ShippingInfo@2x.png"; sourceTree = "<group>"; };
 		8120C1A917E049B400A1C3A9 /* Navigation-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Logo.png"; path = "Images/Navigation-Logo.png"; sourceTree = "<group>"; };
 		8120C1AA17E049B400A1C3A9 /* Navigation-Logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Logo@2x.png"; path = "Images/Navigation-Logo@2x.png"; sourceTree = "<group>"; };
+		8120C1B017E0520E00A1C3A9 /* MFHomeHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHomeHeaderView.h; path = Sources/MFHomeHeaderView.h; sourceTree = SOURCE_ROOT; };
+		8120C1B117E0520E00A1C3A9 /* MFHomeHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFHomeHeaderView.m; path = Sources/MFHomeHeaderView.m; sourceTree = SOURCE_ROOT; };
+		8120C1B317E0532500A1C3A9 /* Home-ShopByColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-ShopByColor.png"; path = "Images/Home-ShopByColor.png"; sourceTree = "<group>"; };
+		8120C1B417E0532500A1C3A9 /* Home-ShopByDress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-ShopByDress.png"; path = "Images/Home-ShopByDress.png"; sourceTree = "<group>"; };
+		8120C1B517E0532500A1C3A9 /* Home-ShopByDress@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-ShopByDress@2x.png"; path = "Images/Home-ShopByDress@2x.png"; sourceTree = "<group>"; };
+		8120C1B917E0532E00A1C3A9 /* Home-ShopByColor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-ShopByColor@2x.png"; path = "Images/Home-ShopByColor@2x.png"; sourceTree = "<group>"; };
+		8120C1BB17E053A100A1C3A9 /* UIButton+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Additions.h"; path = "Sources/Additions/UIButton+Additions.h"; sourceTree = SOURCE_ROOT; };
+		8120C1BC17E053A100A1C3A9 /* UIButton+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Additions.m"; path = "Sources/Additions/UIButton+Additions.m"; sourceTree = SOURCE_ROOT; };
+		8120C1BE17E0556900A1C3A9 /* MFHomeHeaderViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFHomeHeaderViewDelegate.h; path = Sources/MFHomeHeaderViewDelegate.h; sourceTree = SOURCE_ROOT; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -286,6 +301,9 @@
 			isa = PBXGroup;
 			children = (
 				812F4ABE17DEFE2600454747 /* Additions */,
+				8120C1AF17E051D000A1C3A9 /* Models */,
+				8120C1AE17E051C100A1C3A9 /* Web */,
+				8120C1AD17E051B900A1C3A9 /* Views */,
 				812F4AB717DEFD4800454747 /* MFApplicationDelegate.h */,
 				812F4AB817DEFD4800454747 /* MFApplicationDelegate.m */,
 				8120C13817DFA82100A1C3A9 /* MFCartController.h */,
@@ -333,6 +351,30 @@
 			path = Reloved;
 			sourceTree = "<group>";
 		};
+		8120C1AD17E051B900A1C3A9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8120C1B017E0520E00A1C3A9 /* MFHomeHeaderView.h */,
+				8120C1B117E0520E00A1C3A9 /* MFHomeHeaderView.m */,
+				8120C1BE17E0556900A1C3A9 /* MFHomeHeaderViewDelegate.h */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		8120C1AE17E051C100A1C3A9 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Web;
+			sourceTree = "<group>";
+		};
+		8120C1AF17E051D000A1C3A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		812F4AAE17DEFCE400454747 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +416,10 @@
 				8120C18E17E0470300A1C3A9 /* Home-Security@2x.png */,
 				8120C18F17E0470300A1C3A9 /* Home-ShippingInfo.png */,
 				8120C19017E0470300A1C3A9 /* Home-ShippingInfo@2x.png */,
+				8120C1B317E0532500A1C3A9 /* Home-ShopByColor.png */,
+				8120C1B917E0532E00A1C3A9 /* Home-ShopByColor@2x.png */,
+				8120C1B417E0532500A1C3A9 /* Home-ShopByDress.png */,
+				8120C1B517E0532500A1C3A9 /* Home-ShopByDress@2x.png */,
 				812F4AE817DF003800454747 /* Icon57.png */,
 				812F4AE917DF003800454747 /* Icon114.png */,
 				812F4AEA17DF003800454747 /* Icon120.png */,
@@ -405,6 +451,8 @@
 				8120C16D17DFBF1200A1C3A9 /* NSDictionary+Additions.m */,
 				8120C16F17DFBFA700A1C3A9 /* NSString+Additions.h */,
 				8120C17017DFBFA700A1C3A9 /* NSString+Additions.m */,
+				8120C1BB17E053A100A1C3A9 /* UIButton+Additions.h */,
+				8120C1BC17E053A100A1C3A9 /* UIButton+Additions.m */,
 				8120C13C17DFA8F400A1C3A9 /* UIColor+Additions.h */,
 				8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */,
 				8120C13F17DFA90300A1C3A9 /* UIFont+Additions.h */,
@@ -536,10 +584,12 @@
 				8120C14D17DFAD8C00A1C3A9 /* Menu-Home@2x.png in Resources */,
 				812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */,
 				812F4AEF17DF003800454747 /* Icon144.png in Resources */,
+				8120C1B617E0532500A1C3A9 /* Home-ShopByColor.png in Resources */,
 				812F4AEE17DF003800454747 /* Icon120.png in Resources */,
 				8120C15E17DFB2F700A1C3A9 /* Navigation-Menu.png in Resources */,
 				8120C19F17E0470300A1C3A9 /* Home-Profile.png in Resources */,
 				8120C19117E0470300A1C3A9 /* Home-About.png in Resources */,
+				8120C1BA17E0532E00A1C3A9 /* Home-ShopByColor@2x.png in Resources */,
 				8120C16217DFB48600A1C3A9 /* Navigation-Filter.png in Resources */,
 				8120C15517DFAD9600A1C3A9 /* Menu-Cart.png in Resources */,
 				812F4AEC17DF003800454747 /* Icon57.png in Resources */,
@@ -571,6 +621,7 @@
 				8120C19A17E0470300A1C3A9 /* Home-BrowseNew@2x.png in Resources */,
 				8120C19517E0470300A1C3A9 /* Home-BrowseAll.png in Resources */,
 				8120C14F17DFAD8C00A1C3A9 /* Menu-News@2x.png in Resources */,
+				8120C1B717E0532500A1C3A9 /* Home-ShopByDress.png in Resources */,
 				8120C1A217E0470300A1C3A9 /* Home-Recents@2x.png in Resources */,
 				8120C1A017E0470300A1C3A9 /* Home-Profile@2x.png in Resources */,
 				812F4AB317DEFD0300454747 /* Default.png in Resources */,
@@ -580,6 +631,7 @@
 				8120C19217E0470300A1C3A9 /* Home-About@2x.png in Resources */,
 				8120C19817E0470300A1C3A9 /* Home-BrowseEditorial@2x.png in Resources */,
 				8120C14B17DFAD8C00A1C3A9 /* Menu-Cart@2x.png in Resources */,
+				8120C1B817E0532500A1C3A9 /* Home-ShopByDress@2x.png in Resources */,
 				8120C19B17E0470300A1C3A9 /* Home-Guarantee.png in Resources */,
 				8120C14C17DFAD8C00A1C3A9 /* Menu-Home.png in Resources */,
 				8120C1AC17E049B400A1C3A9 /* Navigation-Logo@2x.png in Resources */,
@@ -602,9 +654,11 @@
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
 				8120C16617DFB7F100A1C3A9 /* MFWebController.m in Sources */,
 				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
+				8120C1BD17E053A100A1C3A9 /* UIButton+Additions.m in Sources */,
 				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
 				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
 				8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */,
+				8120C1B217E0520E00A1C3A9 /* MFHomeHeaderView.m in Sources */,
 				8120C16E17DFBF1200A1C3A9 /* NSDictionary+Additions.m in Sources */,
 				8120C17417E03CB900A1C3A9 /* MFMenu.m in Sources */,
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
