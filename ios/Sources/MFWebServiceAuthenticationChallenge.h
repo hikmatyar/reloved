@@ -2,6 +2,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class MFWebAuthorization;
+
 @protocol MFWebServiceAuthenticationChallenge <NSObject>
+
+@required
+
+- (void)abortAuthorization;
+- (void)useAuthorization:(MFWebAuthorization *)authorization;
+@property (nonatomic, assign, readonly) NSInteger failureCount;
 
 @end

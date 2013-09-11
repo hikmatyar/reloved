@@ -1,9 +1,9 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFWebResources.h"
 #import "MFWebService.h"
-#import "MFWebUser.h"
 
-@implementation MFWebUser
+@implementation MFWebResources
 
 - (id)initWithService:(MFWebService *)service
 {

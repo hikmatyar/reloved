@@ -4,7 +4,7 @@
 
 @class MFWebService;
 
-@interface MFWebUser : NSObject
+@interface MFWebResources : NSObject
 {
     @private
     __unsafe_unretained MFWebService *m_service;
