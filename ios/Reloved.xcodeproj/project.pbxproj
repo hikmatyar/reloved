@@ -13,6 +13,14 @@
 		8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFC917E06BCC007AEDC2 /* MFImageView.m */; };
 		8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCC17E06BDB007AEDC2 /* MFTableView.m */; };
 		8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCF17E06BE8007AEDC2 /* MFTableViewCell.m */; };
+		8119DFD317E06D85007AEDC2 /* MFWebFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFD217E06D85007AEDC2 /* MFWebFeed.m */; };
+		8119DFD617E06D90007AEDC2 /* MFWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFD517E06D90007AEDC2 /* MFWebRequest.m */; };
+		8119DFD917E06D9B007AEDC2 /* MFWebResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFD817E06D9B007AEDC2 /* MFWebResource.m */; };
+		8119DFDC17E06DAA007AEDC2 /* MFWebSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFDB17E06DAA007AEDC2 /* MFWebSession.m */; };
+		8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFDE17E06DB6007AEDC2 /* MFWebService.m */; };
+		8119DFE217E06DCF007AEDC2 /* MFWebUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFE117E06DCF007AEDC2 /* MFWebUser.m */; };
+		8119DFE517E06DF0007AEDC2 /* MFWebUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFE417E06DF0007AEDC2 /* MFWebUpload.m */; };
+		8119DFE817E06E0B007AEDC2 /* MFWebAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFE717E06E0B007AEDC2 /* MFWebAuthorization.m */; };
 		8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13017DFA37100A1C3A9 /* MFPostController.m */; };
 		8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */; };
 		8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13617DFA7C000A1C3A9 /* MFSearchController.m */; };
@@ -126,6 +134,25 @@
 		8119DFCC17E06BDB007AEDC2 /* MFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFTableView.m; path = Sources/MFTableView.m; sourceTree = SOURCE_ROOT; };
 		8119DFCE17E06BE8007AEDC2 /* MFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFTableViewCell.h; path = Sources/MFTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		8119DFCF17E06BE8007AEDC2 /* MFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFTableViewCell.m; path = Sources/MFTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		8119DFD117E06D85007AEDC2 /* MFWebFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebFeed.h; path = Sources/MFWebFeed.h; sourceTree = SOURCE_ROOT; };
+		8119DFD217E06D85007AEDC2 /* MFWebFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebFeed.m; path = Sources/MFWebFeed.m; sourceTree = SOURCE_ROOT; };
+		8119DFD417E06D90007AEDC2 /* MFWebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebRequest.h; path = Sources/MFWebRequest.h; sourceTree = SOURCE_ROOT; };
+		8119DFD517E06D90007AEDC2 /* MFWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebRequest.m; path = Sources/MFWebRequest.m; sourceTree = SOURCE_ROOT; };
+		8119DFD717E06D9B007AEDC2 /* MFWebResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebResource.h; path = Sources/MFWebResource.h; sourceTree = SOURCE_ROOT; };
+		8119DFD817E06D9B007AEDC2 /* MFWebResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebResource.m; path = Sources/MFWebResource.m; sourceTree = SOURCE_ROOT; };
+		8119DFDA17E06DAA007AEDC2 /* MFWebSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebSession.h; path = Sources/MFWebSession.h; sourceTree = SOURCE_ROOT; };
+		8119DFDB17E06DAA007AEDC2 /* MFWebSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebSession.m; path = Sources/MFWebSession.m; sourceTree = SOURCE_ROOT; };
+		8119DFDD17E06DB6007AEDC2 /* MFWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebService.h; path = Sources/MFWebService.h; sourceTree = SOURCE_ROOT; };
+		8119DFDE17E06DB6007AEDC2 /* MFWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebService.m; path = Sources/MFWebService.m; sourceTree = SOURCE_ROOT; };
+		8119DFE017E06DCF007AEDC2 /* MFWebUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebUser.h; path = Sources/MFWebUser.h; sourceTree = SOURCE_ROOT; };
+		8119DFE117E06DCF007AEDC2 /* MFWebUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebUser.m; path = Sources/MFWebUser.m; sourceTree = SOURCE_ROOT; };
+		8119DFE317E06DF0007AEDC2 /* MFWebUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebUpload.h; path = Sources/MFWebUpload.h; sourceTree = SOURCE_ROOT; };
+		8119DFE417E06DF0007AEDC2 /* MFWebUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebUpload.m; path = Sources/MFWebUpload.m; sourceTree = SOURCE_ROOT; };
+		8119DFE617E06E0B007AEDC2 /* MFWebAuthorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebAuthorization.h; path = Sources/MFWebAuthorization.h; sourceTree = SOURCE_ROOT; };
+		8119DFE717E06E0B007AEDC2 /* MFWebAuthorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebAuthorization.m; path = Sources/MFWebAuthorization.m; sourceTree = SOURCE_ROOT; };
+		8119DFE917E06E25007AEDC2 /* MFWebServiceAuthenticationChallenge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFWebServiceAuthenticationChallenge.h; path = Sources/MFWebServiceAuthenticationChallenge.h; sourceTree = SOURCE_ROOT; };
+		8119DFEA17E06E33007AEDC2 /* MFWebServiceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFWebServiceDelegate.h; path = Sources/MFWebServiceDelegate.h; sourceTree = SOURCE_ROOT; };
+		8119DFEB17E06E44007AEDC2 /* MFWebServiceError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFWebServiceError.h; path = Sources/MFWebServiceError.h; sourceTree = SOURCE_ROOT; };
 		8120C12F17DFA37100A1C3A9 /* MFPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostController.h; path = Sources/MFPostController.h; sourceTree = SOURCE_ROOT; };
 		8120C13017DFA37100A1C3A9 /* MFPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostController.m; path = Sources/MFPostController.m; sourceTree = SOURCE_ROOT; };
 		8120C13217DFA7AD00A1C3A9 /* MFHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHomeController.h; path = Sources/MFHomeController.h; sourceTree = SOURCE_ROOT; };
@@ -413,6 +440,25 @@
 		8120C1AE17E051C100A1C3A9 /* Web */ = {
 			isa = PBXGroup;
 			children = (
+				8119DFE617E06E0B007AEDC2 /* MFWebAuthorization.h */,
+				8119DFE717E06E0B007AEDC2 /* MFWebAuthorization.m */,
+				8119DFD117E06D85007AEDC2 /* MFWebFeed.h */,
+				8119DFD217E06D85007AEDC2 /* MFWebFeed.m */,
+				8119DFD417E06D90007AEDC2 /* MFWebRequest.h */,
+				8119DFD517E06D90007AEDC2 /* MFWebRequest.m */,
+				8119DFD717E06D9B007AEDC2 /* MFWebResource.h */,
+				8119DFD817E06D9B007AEDC2 /* MFWebResource.m */,
+				8119DFDA17E06DAA007AEDC2 /* MFWebSession.h */,
+				8119DFDB17E06DAA007AEDC2 /* MFWebSession.m */,
+				8119DFDD17E06DB6007AEDC2 /* MFWebService.h */,
+				8119DFDE17E06DB6007AEDC2 /* MFWebService.m */,
+				8119DFE917E06E25007AEDC2 /* MFWebServiceAuthenticationChallenge.h */,
+				8119DFEA17E06E33007AEDC2 /* MFWebServiceDelegate.h */,
+				8119DFEB17E06E44007AEDC2 /* MFWebServiceError.h */,
+				8119DFE317E06DF0007AEDC2 /* MFWebUpload.h */,
+				8119DFE417E06DF0007AEDC2 /* MFWebUpload.m */,
+				8119DFE017E06DCF007AEDC2 /* MFWebUser.h */,
+				8119DFE117E06DCF007AEDC2 /* MFWebUser.m */,
 			);
 			name = Web;
 			sourceTree = "<group>";
@@ -700,14 +746,18 @@
 			files = (
 				818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */,
 				8120C15B17DFAFA600A1C3A9 /* MFNewPostController.m in Sources */,
+				8119DFE817E06E0B007AEDC2 /* MFWebAuthorization.m in Sources */,
 				8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */,
 				812F4ABA17DEFD4800454747 /* MFApplicationDelegate.m in Sources */,
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
+				8119DFE217E06DCF007AEDC2 /* MFWebUser.m in Sources */,
 				8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */,
 				8120C16617DFB7F100A1C3A9 /* MFWebController.m in Sources */,
+				8119DFD917E06D9B007AEDC2 /* MFWebResource.m in Sources */,
 				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,
+				8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */,
 				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
 				8120C1BD17E053A100A1C3A9 /* UIButton+Additions.m in Sources */,
 				8120C1C817E0681300A1C3A9 /* MFBookmarksController.m in Sources */,
@@ -722,13 +772,17 @@
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
 				8120C1CE17E0685A00A1C3A9 /* MFHistoryController.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
+				8119DFD617E06D90007AEDC2 /* MFWebRequest.m in Sources */,
+				8119DFE517E06DF0007AEDC2 /* MFWebUpload.m in Sources */,
 				812F4AE117DEFEE900454747 /* ASIDataCompressor.m in Sources */,
+				8119DFDC17E06DAA007AEDC2 /* MFWebSession.m in Sources */,
 				8120C16B17DFBD1200A1C3A9 /* MFPreferences.m in Sources */,
 				8120C14117DFA90300A1C3A9 /* UIFont+Additions.m in Sources */,
 				812F4AB917DEFD4800454747 /* main.m in Sources */,
 				812F4AE517DEFEE900454747 /* ASIHTTPRequest.m in Sources */,
 				812F4AC217DEFE5300454747 /* JSONKit.m in Sources */,
 				8120C1D117E068EF00A1C3A9 /* MFRecentsController.m in Sources */,
+				8119DFD317E06D85007AEDC2 /* MFWebFeed.m in Sources */,
 				8120C13E17DFA8F400A1C3A9 /* UIColor+Additions.m in Sources */,
 				812F4AE217DEFEE900454747 /* ASIDataDecompressor.m in Sources */,
 				8120C1C117E05C9F00A1C3A9 /* MFHomeFooterView.m in Sources */,
