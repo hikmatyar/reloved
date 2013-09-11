@@ -10,6 +10,9 @@
 		810D05FF17DEFC220058CE52 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D05FE17DEFC220058CE52 /* UIKit.framework */; };
 		810D060117DEFC220058CE52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D060017DEFC220058CE52 /* Foundation.framework */; };
 		810D060317DEFC220058CE52 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D060217DEFC220058CE52 /* CoreGraphics.framework */; };
+		8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFC917E06BCC007AEDC2 /* MFImageView.m */; };
+		8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCC17E06BDB007AEDC2 /* MFTableView.m */; };
+		8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCF17E06BE8007AEDC2 /* MFTableViewCell.m */; };
 		8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13017DFA37100A1C3A9 /* MFPostController.m */; };
 		8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */; };
 		8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13617DFA7C000A1C3A9 /* MFSearchController.m */; };
@@ -117,6 +120,12 @@
 		810D05FE17DEFC220058CE52 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		810D060017DEFC220058CE52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		810D060217DEFC220058CE52 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8119DFC817E06BCC007AEDC2 /* MFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageView.h; path = Sources/MFImageView.h; sourceTree = SOURCE_ROOT; };
+		8119DFC917E06BCC007AEDC2 /* MFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageView.m; path = Sources/MFImageView.m; sourceTree = SOURCE_ROOT; };
+		8119DFCB17E06BDB007AEDC2 /* MFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFTableView.h; path = Sources/MFTableView.h; sourceTree = SOURCE_ROOT; };
+		8119DFCC17E06BDB007AEDC2 /* MFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFTableView.m; path = Sources/MFTableView.m; sourceTree = SOURCE_ROOT; };
+		8119DFCE17E06BE8007AEDC2 /* MFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFTableViewCell.h; path = Sources/MFTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		8119DFCF17E06BE8007AEDC2 /* MFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFTableViewCell.m; path = Sources/MFTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		8120C12F17DFA37100A1C3A9 /* MFPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostController.h; path = Sources/MFPostController.h; sourceTree = SOURCE_ROOT; };
 		8120C13017DFA37100A1C3A9 /* MFPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostController.m; path = Sources/MFPostController.m; sourceTree = SOURCE_ROOT; };
 		8120C13217DFA7AD00A1C3A9 /* MFHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHomeController.h; path = Sources/MFHomeController.h; sourceTree = SOURCE_ROOT; };
@@ -391,6 +400,12 @@
 				8120C1B017E0520E00A1C3A9 /* MFHomeHeaderView.h */,
 				8120C1B117E0520E00A1C3A9 /* MFHomeHeaderView.m */,
 				8120C1BE17E0556900A1C3A9 /* MFHomeHeaderViewDelegate.h */,
+				8119DFC817E06BCC007AEDC2 /* MFImageView.h */,
+				8119DFC917E06BCC007AEDC2 /* MFImageView.m */,
+				8119DFCB17E06BDB007AEDC2 /* MFTableView.h */,
+				8119DFCC17E06BDB007AEDC2 /* MFTableView.m */,
+				8119DFCE17E06BE8007AEDC2 /* MFTableViewCell.h */,
+				8119DFCF17E06BE8007AEDC2 /* MFTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -690,6 +705,7 @@
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
+				8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */,
 				8120C16617DFB7F100A1C3A9 /* MFWebController.m in Sources */,
 				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,
 				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
@@ -697,6 +713,7 @@
 				8120C1C817E0681300A1C3A9 /* MFBookmarksController.m in Sources */,
 				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
 				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
+				8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */,
 				8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */,
 				8120C1CB17E0684E00A1C3A9 /* MFProfileController.m in Sources */,
 				8120C1B217E0520E00A1C3A9 /* MFHomeHeaderView.m in Sources */,
@@ -722,6 +739,7 @@
 				818F917617DF95F400D1A723 /* MFMenuController.m in Sources */,
 				812F4AE417DEFEE900454747 /* ASIFormDataRequest.m in Sources */,
 				8120C17717E03CC700A1C3A9 /* MFMenuItem.m in Sources */,
+				8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */,
 				812F4AC717DEFE9400454747 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
