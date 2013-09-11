@@ -21,6 +21,8 @@
 		8119DFE217E06DCF007AEDC2 /* MFWebUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFE117E06DCF007AEDC2 /* MFWebUser.m */; };
 		8119DFE517E06DF0007AEDC2 /* MFWebUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFE417E06DF0007AEDC2 /* MFWebUpload.m */; };
 		8119DFE817E06E0B007AEDC2 /* MFWebAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFE717E06E0B007AEDC2 /* MFWebAuthorization.m */; };
+		8119DFEE17E06F00007AEDC2 /* MFPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFED17E06F00007AEDC2 /* MFPost.m */; };
+		8119DFF117E06F0C007AEDC2 /* MFMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFF017E06F0C007AEDC2 /* MFMoney.m */; };
 		8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13017DFA37100A1C3A9 /* MFPostController.m */; };
 		8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */; };
 		8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13617DFA7C000A1C3A9 /* MFSearchController.m */; };
@@ -153,6 +155,10 @@
 		8119DFE917E06E25007AEDC2 /* MFWebServiceAuthenticationChallenge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFWebServiceAuthenticationChallenge.h; path = Sources/MFWebServiceAuthenticationChallenge.h; sourceTree = SOURCE_ROOT; };
 		8119DFEA17E06E33007AEDC2 /* MFWebServiceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFWebServiceDelegate.h; path = Sources/MFWebServiceDelegate.h; sourceTree = SOURCE_ROOT; };
 		8119DFEB17E06E44007AEDC2 /* MFWebServiceError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFWebServiceError.h; path = Sources/MFWebServiceError.h; sourceTree = SOURCE_ROOT; };
+		8119DFEC17E06F00007AEDC2 /* MFPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPost.h; path = Sources/MFPost.h; sourceTree = SOURCE_ROOT; };
+		8119DFED17E06F00007AEDC2 /* MFPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPost.m; path = Sources/MFPost.m; sourceTree = SOURCE_ROOT; };
+		8119DFEF17E06F0C007AEDC2 /* MFMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFMoney.h; path = Sources/MFMoney.h; sourceTree = SOURCE_ROOT; };
+		8119DFF017E06F0C007AEDC2 /* MFMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMoney.m; path = Sources/MFMoney.m; sourceTree = SOURCE_ROOT; };
 		8120C12F17DFA37100A1C3A9 /* MFPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostController.h; path = Sources/MFPostController.h; sourceTree = SOURCE_ROOT; };
 		8120C13017DFA37100A1C3A9 /* MFPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostController.m; path = Sources/MFPostController.m; sourceTree = SOURCE_ROOT; };
 		8120C13217DFA7AD00A1C3A9 /* MFHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHomeController.h; path = Sources/MFHomeController.h; sourceTree = SOURCE_ROOT; };
@@ -466,6 +472,10 @@
 		8120C1AF17E051D000A1C3A9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8119DFEF17E06F0C007AEDC2 /* MFMoney.h */,
+				8119DFF017E06F0C007AEDC2 /* MFMoney.m */,
+				8119DFEC17E06F00007AEDC2 /* MFPost.h */,
+				8119DFED17E06F00007AEDC2 /* MFPost.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -770,6 +780,7 @@
 				8120C16E17DFBF1200A1C3A9 /* NSDictionary+Additions.m in Sources */,
 				8120C17417E03CB900A1C3A9 /* MFMenu.m in Sources */,
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
+				8119DFF117E06F0C007AEDC2 /* MFMoney.m in Sources */,
 				8120C1CE17E0685A00A1C3A9 /* MFHistoryController.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				8119DFD617E06D90007AEDC2 /* MFWebRequest.m in Sources */,
@@ -792,6 +803,7 @@
 				812F4AE017DEFEE900454747 /* ASIAuthenticationDialog.m in Sources */,
 				818F917617DF95F400D1A723 /* MFMenuController.m in Sources */,
 				812F4AE417DEFEE900454747 /* ASIFormDataRequest.m in Sources */,
+				8119DFEE17E06F00007AEDC2 /* MFPost.m in Sources */,
 				8120C17717E03CC700A1C3A9 /* MFMenuItem.m in Sources */,
 				8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */,
 				812F4AC717DEFE9400454747 /* Reachability.m in Sources */,
