@@ -74,6 +74,11 @@
 		8120C1C117E05C9F00A1C3A9 /* MFHomeFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1C017E05C9F00A1C3A9 /* MFHomeFooterView.m */; };
 		8120C1C417E05D7500A1C3A9 /* Home-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1C217E05D7500A1C3A9 /* Home-Checkmark.png */; };
 		8120C1C517E05D7500A1C3A9 /* Home-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C1C317E05D7500A1C3A9 /* Home-Checkmark@2x.png */; };
+		8120C1C817E0681300A1C3A9 /* MFBookmarksController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1C717E0681300A1C3A9 /* MFBookmarksController.m */; };
+		8120C1CB17E0684E00A1C3A9 /* MFProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1CA17E0684E00A1C3A9 /* MFProfileController.m */; };
+		8120C1CE17E0685A00A1C3A9 /* MFHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1CD17E0685A00A1C3A9 /* MFHistoryController.m */; };
+		8120C1D117E068EF00A1C3A9 /* MFRecentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1D017E068EF00A1C3A9 /* MFRecentsController.m */; };
+		8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -194,6 +199,16 @@
 		8120C1C017E05C9F00A1C3A9 /* MFHomeFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFHomeFooterView.m; path = Sources/MFHomeFooterView.m; sourceTree = SOURCE_ROOT; };
 		8120C1C217E05D7500A1C3A9 /* Home-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-Checkmark.png"; path = "Images/Home-Checkmark.png"; sourceTree = "<group>"; };
 		8120C1C317E05D7500A1C3A9 /* Home-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-Checkmark@2x.png"; path = "Images/Home-Checkmark@2x.png"; sourceTree = "<group>"; };
+		8120C1C617E0681300A1C3A9 /* MFBookmarksController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFBookmarksController.h; path = Sources/MFBookmarksController.h; sourceTree = SOURCE_ROOT; };
+		8120C1C717E0681300A1C3A9 /* MFBookmarksController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFBookmarksController.m; path = Sources/MFBookmarksController.m; sourceTree = SOURCE_ROOT; };
+		8120C1C917E0684E00A1C3A9 /* MFProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFProfileController.h; path = Sources/MFProfileController.h; sourceTree = SOURCE_ROOT; };
+		8120C1CA17E0684E00A1C3A9 /* MFProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFProfileController.m; path = Sources/MFProfileController.m; sourceTree = SOURCE_ROOT; };
+		8120C1CC17E0685A00A1C3A9 /* MFHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHistoryController.h; path = Sources/MFHistoryController.h; sourceTree = SOURCE_ROOT; };
+		8120C1CD17E0685A00A1C3A9 /* MFHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFHistoryController.m; path = Sources/MFHistoryController.m; sourceTree = SOURCE_ROOT; };
+		8120C1CF17E068EF00A1C3A9 /* MFRecentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFRecentsController.h; path = Sources/MFRecentsController.h; sourceTree = SOURCE_ROOT; };
+		8120C1D017E068EF00A1C3A9 /* MFRecentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFRecentsController.m; path = Sources/MFRecentsController.m; sourceTree = SOURCE_ROOT; };
+		8120C1D217E0698F00A1C3A9 /* MFBrowseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFBrowseController.h; path = Sources/MFBrowseController.h; sourceTree = SOURCE_ROOT; };
+		8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFBrowseController.m; path = Sources/MFBrowseController.m; sourceTree = SOURCE_ROOT; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -313,10 +328,16 @@
 				8120C1AD17E051B900A1C3A9 /* Views */,
 				812F4AB717DEFD4800454747 /* MFApplicationDelegate.h */,
 				812F4AB817DEFD4800454747 /* MFApplicationDelegate.m */,
+				8120C1C617E0681300A1C3A9 /* MFBookmarksController.h */,
+				8120C1C717E0681300A1C3A9 /* MFBookmarksController.m */,
+				8120C1D217E0698F00A1C3A9 /* MFBrowseController.h */,
+				8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */,
 				8120C13817DFA82100A1C3A9 /* MFCartController.h */,
 				8120C13917DFA82100A1C3A9 /* MFCartController.m */,
 				812F4ABB17DEFDB400454747 /* MFFeedController.h */,
 				812F4ABC17DEFDB400454747 /* MFFeedController.m */,
+				8120C1CC17E0685A00A1C3A9 /* MFHistoryController.h */,
+				8120C1CD17E0685A00A1C3A9 /* MFHistoryController.m */,
 				8120C13217DFA7AD00A1C3A9 /* MFHomeController.h */,
 				8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */,
 				818F917417DF95F400D1A723 /* MFMenuController.h */,
@@ -333,6 +354,10 @@
 				8120C13017DFA37100A1C3A9 /* MFPostController.m */,
 				8120C16917DFBD1200A1C3A9 /* MFPreferences.h */,
 				8120C16A17DFBD1200A1C3A9 /* MFPreferences.m */,
+				8120C1C917E0684E00A1C3A9 /* MFProfileController.h */,
+				8120C1CA17E0684E00A1C3A9 /* MFProfileController.m */,
+				8120C1CF17E068EF00A1C3A9 /* MFRecentsController.h */,
+				8120C1D017E068EF00A1C3A9 /* MFRecentsController.m */,
 				8120C13517DFA7C000A1C3A9 /* MFSearchController.h */,
 				8120C13617DFA7C000A1C3A9 /* MFSearchController.m */,
 				8120C16417DFB7F100A1C3A9 /* MFWebController.h */,
@@ -666,15 +691,19 @@
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
 				8120C16617DFB7F100A1C3A9 /* MFWebController.m in Sources */,
+				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,
 				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
 				8120C1BD17E053A100A1C3A9 /* UIButton+Additions.m in Sources */,
+				8120C1C817E0681300A1C3A9 /* MFBookmarksController.m in Sources */,
 				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
 				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
 				8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */,
+				8120C1CB17E0684E00A1C3A9 /* MFProfileController.m in Sources */,
 				8120C1B217E0520E00A1C3A9 /* MFHomeHeaderView.m in Sources */,
 				8120C16E17DFBF1200A1C3A9 /* NSDictionary+Additions.m in Sources */,
 				8120C17417E03CB900A1C3A9 /* MFMenu.m in Sources */,
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
+				8120C1CE17E0685A00A1C3A9 /* MFHistoryController.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				812F4AE117DEFEE900454747 /* ASIDataCompressor.m in Sources */,
 				8120C16B17DFBD1200A1C3A9 /* MFPreferences.m in Sources */,
@@ -682,6 +711,7 @@
 				812F4AB917DEFD4800454747 /* main.m in Sources */,
 				812F4AE517DEFEE900454747 /* ASIHTTPRequest.m in Sources */,
 				812F4AC217DEFE5300454747 /* JSONKit.m in Sources */,
+				8120C1D117E068EF00A1C3A9 /* MFRecentsController.m in Sources */,
 				8120C13E17DFA8F400A1C3A9 /* UIColor+Additions.m in Sources */,
 				812F4AE217DEFEE900454747 /* ASIDataDecompressor.m in Sources */,
 				8120C1C117E05C9F00A1C3A9 /* MFHomeFooterView.m in Sources */,

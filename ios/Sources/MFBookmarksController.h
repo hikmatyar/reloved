@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MFFeedController : UIViewController
+@interface MFBookmarksController : UIViewController
 {
     @private
 }

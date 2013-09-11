@@ -2,9 +2,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MFFeedController : UIViewController
-{
-    @private
-}
+@interface MFHistoryController : UIViewController
 
 @end

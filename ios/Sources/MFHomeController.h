@@ -1,8 +1,8 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
-#import <UIKit/UIKit.h>
+#import "MFHomeHeaderViewDelegate.h"
 
-@interface MFHomeController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MFHomeController : UIViewController <MFHomeHeaderViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     @private
     NSArray *m_menu;

@@ -1,10 +1,15 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFBookmarksController.h"
+#import "MFBrowseController.h"
+#import "MFHistoryController.h"
 #import "MFHomeController.h"
 #import "MFHomeFooterView.h"
 #import "MFHomeHeaderView.h"
 #import "MFMenu.h"
 #import "MFMenuItem.h"
+#import "MFProfileController.h"
+#import "MFRecentsController.h"
 #import "MFSideMenuContainerViewController.h"
 #import "MFWebController.h"
 #import "UIColor+Additions.h"
@@ -17,30 +22,37 @@
 
 - (IBAction)browseEditorial:(id)sender
 {
+    [self.navigationController pushViewController:[[MFBrowseController alloc] initWithScope:kMFBrowseControllerScopeEditorial] animated:YES];
 }
 
 - (IBAction)browseNew:(id)sender
 {
+    [self.navigationController pushViewController:[[MFBrowseController alloc] initWithScope:kMFBrowseControllerScopeNew] animated:YES];
 }
 
 - (IBAction)browseAll:(id)sender
 {
+    [self.navigationController pushViewController:[[MFBrowseController alloc] initWithScope:kMFBrowseControllerScopeAll] animated:YES];
 }
 
 - (IBAction)bookmarks:(id)sender
 {
+    [self.navigationController pushViewController:[[MFBookmarksController alloc] init] animated:YES];
 }
 
 - (IBAction)recents:(id)sender
 {
+    [self.navigationController pushViewController:[[MFRecentsController alloc] init] animated:YES];
 }
 
 - (IBAction)profile:(id)sender
 {
+    [self.navigationController pushViewController:[[MFProfileController alloc] init] animated:YES];
 }
 
 - (IBAction)history:(id)sender
 {
+    [self.navigationController pushViewController:[[MFHistoryController alloc] init] animated:YES];
 }
 
 - (IBAction)guarantee:(id)sender
@@ -71,6 +83,20 @@
 - (IBAction)menu:(id)sender
 {
     [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+}
+
+#pragma mark MFHomeHeaderViewDelegate
+
+- (void)headerViewDidSelectShopByColor:(MFHomeHeaderView *)headerView
+{
+}
+
+- (void)headerViewDidSelectShopByDress:(MFHomeHeaderView *)headerView
+{
+}
+
+- (void)headerViewDidSelectShopByFeatured:(MFHomeHeaderView *)headerView
+{
 }
 
 #pragma mark UITableViewDataSource
@@ -122,6 +148,8 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     MFHomeHeaderView *headerView = [[MFHomeHeaderView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 256.0F)];
     MFHomeFooterView *footerView = [[MFHomeFooterView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 85.0F)];
+    
+    headerView.delegate = self;
     
     tableView.tableHeaderView = headerView;
     tableView.tableFooterView = footerView;
