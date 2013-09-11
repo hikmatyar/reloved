@@ -23,7 +23,7 @@
         }
         
         if(!m_userId || !m_identifier) {
-            MFError(@"user ID and token must not be nil");
+            MFError(@"user ID or session cannot be nil");
             
             return nil;
         }
