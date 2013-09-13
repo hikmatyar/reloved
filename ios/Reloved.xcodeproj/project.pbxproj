@@ -121,7 +121,7 @@
 		812F4AF317DF00FD00454747 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF217DF00FD00454747 /* libz.dylib */; };
 		812F4AF517DF011E00454747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF417DF011E00454747 /* SystemConfiguration.framework */; };
 		812F4AF917DF017F00454747 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF817DF017F00454747 /* MobileCoreServices.framework */; };
-		812F4AFC17DF019600454747 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AFA17DF019600454747 /* InfoPlist.strings */; };
+		81689E0B17E32124003D243E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 81689E0917E32124003D243E /* InfoPlist.strings */; };
 		818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F916C17DF958D00D1A723 /* MFSideMenuContainerViewController.m */; };
 		818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F916E17DF958D00D1A723 /* MFSideMenuShadow.m */; };
 		818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */; };
@@ -305,7 +305,7 @@
 		812F4AF417DF011E00454747 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		812F4AF617DF015500454747 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		812F4AF817DF017F00454747 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		812F4AFB17DF019600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../../Nautest/trunk/ios/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		81689E0A17E32124003D243E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		818F916A17DF958D00D1A723 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSideMenu.h; path = Sources/MFSideMenu/MFSideMenu.h; sourceTree = SOURCE_ROOT; };
 		818F916B17DF958D00D1A723 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSideMenuContainerViewController.h; path = Sources/MFSideMenu/MFSideMenuContainerViewController.h; sourceTree = SOURCE_ROOT; };
 		818F916C17DF958D00D1A723 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFSideMenuContainerViewController.m; path = Sources/MFSideMenu/MFSideMenuContainerViewController.m; sourceTree = SOURCE_ROOT; };
@@ -499,7 +499,7 @@
 			children = (
 				812F4AB517DEFD0600454747 /* Images */,
 				8120C16717DFBC4500A1C3A9 /* Pages */,
-				812F4AFA17DF019600454747 /* InfoPlist.strings */,
+				81689E0917E32124003D243E /* InfoPlist.strings */,
 				812F4AA917DEFCC600454747 /* Localizable.strings */,
 			);
 			name = Resources;
@@ -703,6 +703,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8120C14D17DFAD8C00A1C3A9 /* Menu-Home@2x.png in Resources */,
+				81689E0B17E32124003D243E /* InfoPlist.strings in Resources */,
 				812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */,
 				812F4AEF17DF003800454747 /* Icon144.png in Resources */,
 				8120C1B617E0532500A1C3A9 /* Home-ShopByColor.png in Resources */,
@@ -736,7 +737,6 @@
 				812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */,
 				8120C19417E0470300A1C3A9 /* Home-Bookmarks@2x.png in Resources */,
 				8120C19D17E0470300A1C3A9 /* Home-History.png in Resources */,
-				812F4AFC17DF019600454747 /* InfoPlist.strings in Resources */,
 				8120C1A417E0470300A1C3A9 /* Home-ReturnsPolicy@2x.png in Resources */,
 				8120C1A117E0470300A1C3A9 /* Home-Recents.png in Resources */,
 				8120C15F17DFB2F700A1C3A9 /* Navigation-Menu@2x.png in Resources */,
@@ -838,10 +838,10 @@
 			path = Reloved;
 			sourceTree = "<group>";
 		};
-		812F4AFA17DF019600454747 /* InfoPlist.strings */ = {
+		81689E0917E32124003D243E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				812F4AFB17DF019600454747 /* en */,
+				81689E0A17E32124003D243E /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
