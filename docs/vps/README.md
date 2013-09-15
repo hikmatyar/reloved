@@ -219,7 +219,11 @@ Download the latest installer from http://nodejs.org/download/
 	> Hit enter for default (/usr/lib/haxe/lib) [ENTER]
 	
 	haxelib install nodejs
-	haxelib git saffron https://github.com/janekp/saffron.git src
+	haxelib git saffron https://github.com/janekp/saffron.git master src
+	npm install -g express
+	npm install -g watch-compile
+	npm install -g mysql generic-pool mapstrace formidable@latest
+	npm install -g jasmine-node winston send
 
 # Setup nginx
 
