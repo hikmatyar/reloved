@@ -189,4 +189,11 @@ CREATE TABLE `media` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+DROP TABLE IF EXISTS `countries`;
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- 2013-09-16 23:24:29
