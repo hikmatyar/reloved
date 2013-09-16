@@ -69,6 +69,16 @@ CREATE TABLE `users` (
   `type` varchar(5) COLLATE utf8_bin NOT NULL,
   `token` varchar(40) COLLATE utf8_bin NOT NULL,
   `secret` varchar(60) COLLATE utf8_bin NOT NULL,
+  `size_id` int(11) DEFAULT NULL,
+  `media_id` int(11) DEFAULT NULL,
+  `email` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `phone` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `first_name` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `last_name` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `country_id` int(11) DEFAULT NULL,
+  `city` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `address` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `zipcode` varchar(16) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
