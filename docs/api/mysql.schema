@@ -75,4 +75,94 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `created`, `modified`, `type`, `token`, `secret`) VALUES
 (1,	'2013-09-16 22:01:24',	'2013-09-16 22:01:24',	'email',	'webmaster@relovedapp.co.uk',	'e5e9fa1ba31ecd1ae84f75caaa474f3a663f05f4');
 
+DROP TABLE IF EXISTS `brands`;
+CREATE TABLE `brands` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `colors`;
+CREATE TABLE `colors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `post_colors`;
+CREATE TABLE `post_colors` (
+  `post_id` int(11) NOT NULL,
+  `color_id` int(11) NOT NULL,
+  UNIQUE KEY `post_id_color_id` (`post_id`,`color_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `post_comments`;
+CREATE TABLE `post_comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `message` varchar(140) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `post_media`;
+CREATE TABLE `post_media` (
+  `post_id` int(11) NOT NULL,
+  `media_id` int(11) NOT NULL,
+  UNIQUE KEY `post_id_media_id` (`post_id`,`media_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `post_tags`;
+CREATE TABLE `post_tags` (
+  `post_id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  UNIQUE KEY `post_id_name` (`post_id`,`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `brand_id` int(11) NOT NULL,
+  `type_id` int(11) NOT NULL,
+  `size_id` int(11) NOT NULL,
+  `condition` tinyint(4) NOT NULL,
+  `materials` varchar(64) NOT NULL,
+  `price` varchar(16) NOT NULL,
+  `price_original` varchar(16) NOT NULL,
+  `currency` varchar(3) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `fit` varchar(128) NOT NULL,
+  `notes` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `sizes`;
+CREATE TABLE `sizes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `types`;
+CREATE TABLE `types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- 2013-09-16 23:24:29
