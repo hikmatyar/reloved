@@ -165,4 +165,18 @@ CREATE TABLE `types` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `media`;
+CREATE TABLE `media` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int(11) NOT NULL COMMENT '0 - inactive, 1 - uploading, 2 - uploaded, 3 - active, 4 - invalid',
+  `mime` varchar(20) COLLATE utf8_bin NOT NULL,
+  `path` varchar(40) COLLATE utf8_bin NOT NULL,
+  `csum` varchar(32) COLLATE utf8_bin NOT NULL,
+  `filesize` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 -- 2013-09-16 23:24:29
