@@ -112,7 +112,7 @@ CREATE TABLE `post_colors` (
 DROP TABLE IF EXISTS `post_comments`;
 CREATE TABLE `post_comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL COMMENT '0 - deleted, 1 - active, 2 - inactive',
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -142,7 +142,7 @@ DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL COMMENT '0 - deleted, 1 - unlisted, 2 - listed, 3 - pending purchase, 4 - completed',
   `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `brand_id` int(11) NOT NULL,
@@ -156,6 +156,7 @@ CREATE TABLE `posts` (
   `title` varchar(128) NOT NULL,
   `fit` varchar(128) NOT NULL,
   `notes` varchar(255) NOT NULL,
+  `editorial` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -192,8 +193,55 @@ CREATE TABLE `media` (
 DROP TABLE IF EXISTS `countries`;
 CREATE TABLE `countries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(2) NOT NULL,
   `name` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `currencies`;
+CREATE TABLE `currencies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(3) COLLATE utf8_bin NOT NULL,
+  `country` varchar(2) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`),
+  UNIQUE KEY `country` (`country`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+DROP TABLE IF EXISTS `deliveries`;
+CREATE TABLE `deliveries` (
+  `id` int(11) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `country` varchar(2) NOT NULL,
+  `price` int(11) NOT NULL,
+  `currency` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0 -  cancelled, 1 - pending, 2 - declined, 3 - accepted, 4 - completed',
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `delivery_id` int(11) NOT NULL,
+  `service_fee` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `amount` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `currency` varchar(40) COLLATE utf8_bin DEFAULT NULL,
+  `stripeToken` varchar(64) COLLATE utf8_bin NOT NULL,
+  `stripeError` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `email` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `phone` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `first_name` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `last_name` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `country_id` int(11) DEFAULT NULL,
+  `city` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `address` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `zipcode` varchar(16) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- 2013-09-16 23:24:29
