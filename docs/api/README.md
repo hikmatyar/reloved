@@ -12,7 +12,7 @@ Error responses are standardized:
 List of possible error codes:
 
 	[standard]
-    0    - no error
+    0    - no error (default)
     1000 - invalid input parameter
     1001 - missing input parameter
     1020 - access denied
@@ -44,6 +44,7 @@ Performs a login or creates an account if possible (type=auto) and the account d
         type [R] - Login type. Use 'auto' to automatically create an account
         token [R] - Public token (username)
         secret [R] - Private token (password)
+        length [O=0] - Session length
         scope [O=mobile] - Scope ID (allows to have multiple sessions on different devices)
         os [O=ios] - Platform
         hash [O] - Sha1 checksum of salt, type, public and private arguments
