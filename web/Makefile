@@ -18,6 +18,12 @@ all: init
 all: api
 all: agent
 
+debug-api: DEBUG = -debug
+debug-api: api
+
+debug-agent: DEBUG = -debug
+debug-agent: agent
+
 release: init
 release: api
 release: agent
