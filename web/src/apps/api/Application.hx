@@ -52,6 +52,10 @@ class Application {
         server.post('/logout', LogoutHandler);
         server.post('/browse', BrowseHandler, auth_required);
         
+        server.get('/media/download/:id', MediaHandler.download, auth_optional);
+        server.post('/media/upload', MediaHandler.upload, auth_required_multipart);
+        server.post('/media/:action{create,status}', MediaHandler, auth_required);
+        
         // Start the server
         server.start(Config.port_api);
     }
