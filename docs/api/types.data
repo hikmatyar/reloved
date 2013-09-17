@@ -1,0 +1,13 @@
+INSERT INTO `types` (`name`) VALUES
+('Mini'),
+('Knee Length'),
+('Midi'),
+('Maxi'),
+('Gowns'),
+('Evening'),
+('Work'),
+('Off Duty'),
+('Vacation'),
+('Long Sleeved'),
+('Maternity'),
+('Bridal');

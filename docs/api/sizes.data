@@ -1,0 +1,9 @@
+INSERT INTO `sizes` (`name`) VALUES
+('Size 2'),
+('Size 4'),
+('Size 6'),
+('Size 8'),
+('Size 10'),
+('Size 12'),
+('Size 14'),
+('Size 16');

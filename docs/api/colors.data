@@ -1,0 +1,17 @@
+INSERT INTO `colors` (`name`) VALUES
+('Animal Print'),
+('Black'),
+('Blue'),
+('Brown'),
+('Gold'),
+('Gray'),
+('Green'),
+('Metallic'),
+('Neutrals'),
+('Orange'),
+('Pink'),
+('Purple'),
+('Red'),
+('Silver'),
+('White'),
+('Yellow');
