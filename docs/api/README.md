@@ -32,6 +32,7 @@ Session parameters are standardized:
 	_s [R] = session ID (required)
 	_v [O] = client version ID (optional)
 	_t [O] = timestamp (optional, but highly recommended to avoid agressive caching on certain client devices)
+	_l [O=en] = language code (optional)
 
 ## Login
 
@@ -79,9 +80,71 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 	Parameters:
 		[session]
 		state [O=null] - State that is managed by the server and was returned with the previous response
+		direction [O=forward] - Browse 'forward' or 'backward'? Only used with the state parameter
+		limit [O=100] - Maximum number of posts to return
 	
 	Returns:
-		{ "error": 0 }
+		{
+			"error": 0,
+			// Cursor position for UI. 'start', 'middle' or 'end'
+			"cursor": "start",
+			// State that can be used with the next request
+			"state": "eyJhIjowLCJiIjowfQ==",
+			// Prefix for media resources. Possible redirect to a CDN on separate domain
+			"prefix": "http://api.relovedapp.co.uk/media/download/",
+			// All the possible brands. Only included if state is missing/invalid.
+			"brands": [
+				{ "id": 1, "name": "Gucci" }
+			],
+			// All the possible dress colors. Only included if state is missing/invalid.
+			"colors": [
+				{ "id": 1, "name": "Red" }
+			],
+			// All the possible countries. Only included if state is missing/invalid.
+			"countries": [
+				{ "id": 1, "code": "GB", "name": "Great Britain" },
+				{ "id": 1, "code": "DE", "name": "Germany" },
+			],
+			// All the possible currencies. Only included if state is missing/invalid. '*' is wildcard.
+			"currencies": [
+				{ "id": 1, "code": "GBP", "country": "*" }
+			],
+			// All the possible delivery methods. Only included if state is missing/invalid. '*' is wildcard.
+			"deliveries": [
+				{ "id": 1, "country": "GB", "name": "Normal delivery", "price": 10000, "currency": "GBP" },
+				{ "id": 1, "country": "*", "name": "EU delivery", "price": 20000, "currency": "GBP" }
+			],
+			// All the possible dress sizes. Only included if state is missing/invalid.
+			"sizes": [
+				{ "id": 1, "name": "Size 10" }
+			],
+			// All the possible dress types. Only included if state is missing/invalid.
+			"types": [
+				{ "id": 1, "name": "Night" }
+			],
+			// Posts, all or max of limit.
+			"posts": [
+				{
+					"id": 1,
+					"user": 10,
+					"status": 1,
+					"mod": 12345678,
+					"brand": 1,
+					"color": 1,
+					"condition": 1,
+					"type": 1,
+					"size": 1,
+					"materials": "...",
+					"price": 12345,
+					"price_o": 23456,
+					"currency": "GBP",
+					"title": "...",
+					"fit": "...",
+					"notes": "...",
+					// Optional
+					"editorial": "..."
+				}
+			]
 	
 	Errors:
 		[standard]
