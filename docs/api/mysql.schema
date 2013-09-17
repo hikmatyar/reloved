@@ -160,6 +160,12 @@ CREATE TABLE `posts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `post_log`;
+CREATE TABLE `post_log` (
+  `post_id` int(11) NOT NULL,
+  `created` int(11) NOT NULL,
+  `delta` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 DROP TABLE IF EXISTS `sizes`;
 CREATE TABLE `sizes` (
