@@ -14,6 +14,7 @@ class Error {
     public static inline var unknown = 2000;
     public static inline var unsupported_api = 4000;
     
+    public static inline var http_ok = 200;
     public static inline var http_403 = 403;
     public static inline var http_404 = 404;
     public static inline var http_500 = 500;

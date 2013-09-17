@@ -17,7 +17,7 @@ class State {
            data = JSON.parse(data);
         }
         
-        return (Std.is(data, Dynamic)) ? new State(data) : null;
+        return (data != null && Std.is(data, Dynamic)) ? new State(data) : null;
     }
     
     public function new(?json : Dynamic) {

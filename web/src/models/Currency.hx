@@ -3,6 +3,7 @@
 package models;
 
 import saffron.Data;
+import saffron.tools.JSON;
 
 private typedef CurrencyRow = {
     var id : DataIdentifier;
@@ -31,5 +32,9 @@ class Currency {
         this.id = row.id;
         this.code = row.code;
         this.country = row.country;
+    }
+    
+    public function json() : String {
+        return JSON.stringify({ id: this.id, code: this.code, country: this.country });
     }
 }

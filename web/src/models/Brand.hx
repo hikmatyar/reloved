@@ -3,6 +3,7 @@
 package models;
 
 import saffron.Data;
+import saffron.tools.JSON;
 
 private typedef BrandRow = {
     var id : DataIdentifier;
@@ -28,5 +29,9 @@ class Brand {
     private function new(row : BrandRow) {
         this.id = row.id;
         this.name = row.name;
+    }
+    
+    public function json() : String {
+        return JSON.stringify({ id: this.id, name: this.name });
     }
 }

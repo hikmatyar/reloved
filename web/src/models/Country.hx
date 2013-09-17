@@ -3,6 +3,7 @@
 package models;
 
 import saffron.Data;
+import saffron.tools.JSON;
 
 private typedef CountryRow = {
     var id : DataIdentifier;
@@ -31,5 +32,9 @@ class Country {
         this.id = row.id;
         this.code = row.code;
         this.name = row.name;
+    }
+    
+    public function json() : String {
+        return JSON.stringify({ id: this.id, name: this.name, code: this.code });
     }
 }

@@ -129,6 +129,24 @@ class Post {
         });
     }
     
+    public static function cacheRelationsForPosts(posts : Array<Post>, fn : DataError -> Void) : Void {
+    	var postIds = new Array<Int>();
+        var cache : Dynamic = { };
+        
+        if(posts == null || posts.length == 0) {
+            fn(null);
+            return;
+        }
+        
+        for(post in posts) {
+            postIds.push(post.id);
+            cache[untyped post.id] = post;
+        }
+        
+        // TODO: Cache media ids, color ids etc
+        fn(null);
+    }
+    
     private function new(row : PostRow) {
 		this.id = row.id;
 		this.status = row.status;
