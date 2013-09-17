@@ -28,13 +28,7 @@ class Permission {
     public var code(default, null) : String;
     
     public static function find(id : DataIdentifier, fn : DataError -> Permission -> Void) : Void {
-        Data.query('SELECT * FROM permissions WHERE id = ?', [ id ], function(err, result) {
-            Permission.fetch(fn, err, result);
-        });
-    }
-    
-    private static inline function fetch(fn : DataError -> Permission -> Void, err : DataError, result : DataResult) : Void {
-        fn(err, (err == null && result != null && result.length == 1) ? new Permission(result[0]) : null);
+        Data.query('SELECT * FROM permissions WHERE id = ?', [ id ], function(err, result : Permission) { fn(err, result); });
     }
     
     private function new(row : PermissionRow) {

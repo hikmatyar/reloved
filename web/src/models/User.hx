@@ -25,10 +25,6 @@ class UserSession {
     private var code(default, null) : String;
     private var expires(default, null) : Int;
     
-    private static inline function fetch(fn : DataError -> UserSession -> Void, err : DataError, result : DataResult) : Void {
-        fn(err, (err == null && result != null && result.length == 1) ? new UserSession(result[0]) : null);
-    }
-    
     public static function create(userId : DataIdentifier, application : String, session : String, sessionLength : Int, fn : DataError -> Void) {
         Data.query('INSERT INTO user_sessions (user_id, application, code, expires) VALUES(?, ?, ?, DATE_ADD(CURRENT_TIMESTAMP, INTERVAL ? SECOND)) ON DUPLICATE KEY UPDATE code = ?, expires = DATE_ADD(CURRENT_TIMESTAMP, INTERVAL ? SECOND)', [ userId, application, session, sessionLength, session, sessionLength ], function(err, result) {
             fn(err);
@@ -58,10 +54,6 @@ class User {
     public var id(default, null) : DataIdentifier;
     public var session(default, null) : String;
     public var permissions(default, null) : Array<Permission>;
-    
-    private static inline function fetch(fn : DataError -> User -> Void, err : DataError, result : DataResult) : Void {
-        fn(err, (err == null && result != null && result.length == 1) ? new User(result[0]) : null);
-    }
     
     public static function generateSession() : String {
         var a : String = untyped Node.process.uptime().toString();
@@ -117,15 +109,11 @@ class User {
     }
     
     public static function find(id : DataIdentifier, fn : DataError -> User -> Void) : Void {
-        Data.query('SELECT id FROM users WHERE id = ?', [ id ], function(err, result) {
-            User.fetch(fn, err, result);
-        });
+        Data.query('SELECT id FROM users WHERE id = ?', [ id ], function(err, result : User) { fn(err, result); });
     }
     
     public static function findForSession(userId : String, session : String, fn : DataError -> User -> Void) : Void {
-        Data.query('SELECT users.id AS id, user_sessions.code AS session FROM users LEFT JOIN user_sessions ON users.id = user_id WHERE users.id = ? AND user_sessions.code = ? AND CURRENT_TIMESTAMP < user_sessions.expires', [ userId, session ], function(err, result) {
-            User.fetch(fn, err, result);
-        });
+        Data.query('SELECT users.id AS id, user_sessions.code AS session FROM users LEFT JOIN user_sessions ON users.id = user_id WHERE users.id = ? AND user_sessions.code = ? AND CURRENT_TIMESTAMP < user_sessions.expires', [ userId, session ], function(err, result : User) { fn(err, result); });
     }
     
     private function new(row : UserRow) {

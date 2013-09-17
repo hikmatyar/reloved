@@ -23,13 +23,9 @@ class Role {
     public var name(default, null) : String;
     
     public static function find(id : DataIdentifier, fn : DataError -> Role -> Void) : Void {
-        Data.query('SELECT * FROM roles WHERE id = ?', [ id ], function(err, result) {
-            Role.fetch(fn, err, result);
+        Data.query('SELECT * FROM roles WHERE id = ?', [ id ], function(err, result : Role) {
+            fn(err, result);
         });
-    }
-    
-    private static inline function fetch(fn : DataError -> Role -> Void, err : DataError, result : DataResult) : Void {
-        fn(err, (err == null && result != null && result.length == 1) ? new Role(result[0]) : null);
     }
     
     private function new(row : RoleRow) {
