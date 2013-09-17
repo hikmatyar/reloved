@@ -3,6 +3,7 @@
 package models;
 
 import saffron.Data;
+import saffron.tools.JSON;
     
 private typedef PostRow = {
     var id : DataIdentifier;
@@ -23,11 +24,21 @@ private typedef PostRow = {
     var editorial : String;
 }
 
+typedef PostChange = {
+	id : DataIdentifier,
+	?status : Int,
+	?mediaIds : String
+}
+
 class Post {
 	public static inline var condition_new_unused = 1;
 	public static inline var condition_new_tags = 2;
 	public static inline var condition_new_used = 3;
 	
+	public static inline var delta_status = 1;
+    public static inline var delta_media = 2;
+    public static inline var delta_contents = 3;
+    
     public static inline var status_deleted = 0;
     public static inline var status_unlisted = 1;
     public static inline var status_listed = 2;
@@ -59,6 +70,65 @@ class Post {
         });
     }
     
+    public static function findChanges(min : Int, max : Int, fn : DataError -> Array<PostChange> -> Void) : Void {
+        Data.query('SELECT DISTINCT posts.id, posts.status, post_log.delta AS delta FROM post_log INNER JOIN posts ON post_log.post_id = posts.id WHERE post_log.created > ? AND posts.created >= ? AND posts.created <= ?', [ max, min, max ], function(err, result) {
+        	if(err == null && result != null && result.length > 0) {
+                var changes = new Array<PostChange>();
+                var cache : Dynamic = { };
+                
+                for(row in result.rows()) {
+                    var change : PostChange = cache[row.id];
+                    
+                    if(change == null) {
+                        change = { id: row.id };
+                        cache[row.id] = change;
+                        changes.push(change);
+                    }
+                    
+                    if((row.delta & Post.delta_status) != 0) {
+                        cache.status = row.status;
+                    } else if((row.delta & Post.delta_media) != 0) {
+                        // TODO: Media ids ?!
+                    }
+                }
+                
+                fn(null, changes);
+            } else {
+                fn(err, null);
+            }   			
+        });
+    }
+    
+    public static function findForward(timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+        if(timestamp != null) {
+            Data.query('SELECT * FROM posts WHERE status = 2 AND created > ? ORDER BY created ASC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
+                fn(err, result);
+            });
+        } else {
+            Data.query('SELECT * FROM posts WHERE status = 2 ORDER BY created DESC LIMIT ?', [ limit ], function(err, result : Array<Post>) {
+                fn(err, result);
+            });
+        }
+    }
+    
+    public static function findBackward(timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+        Data.query('SELECT * FROM posts WHERE status = 2 AND created < ? ORDER BY created DESC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
+            fn(err, result);
+        });
+    }
+    
+    public static function findAllForIdentifiers(postIds : Array<DataIdentifier>, fn : DataError -> Array<Post> -> Void) : Void {
+        Data.query('SELECT * FROM posts WHERE id IN (?)', [ postIds ], function(err, result : Array<Post>) {
+            fn(err, result);
+        });
+    }
+    
+    public static function findAllForUser(userId : DataIdentifier, fn : DataError -> Array<Post> -> Void) : Void {
+        Data.query('SELECT * FROM posts WHERE user_id = ? AND status <> 0', [ userId ], function(err, result : Array<Post>) {
+        	fn(err, result);
+        });
+    }
+    
     private function new(row : PostRow) {
 		this.id = row.id;
 		this.status = row.status;
@@ -76,5 +146,16 @@ class Post {
 		this.fit = row.fit;
 		this.notes = row.notes;
 		this.editorial = row.editorial;
+    }
+    
+    public function json() : String {
+        var json : Dynamic = {
+            id: this.id,
+            s: this.status,
+            t: this.title,
+            n: this.notes
+        };
+        
+        return JSON.stringify(json);
     }
 }
