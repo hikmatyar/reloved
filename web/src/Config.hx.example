@@ -20,6 +20,7 @@ class Config {
     public static inline var mysql_user = '';
     public static inline var mysql_password = '';
     public static inline var port_api = 3000;
+    public static inline var port_admin = 3001;
     public static inline var session_length = 60;
     public static inline var session_length_http = 3600;
     

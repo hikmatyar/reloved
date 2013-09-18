@@ -2,6 +2,7 @@
 SRC_DIR=src
 DST_DIR=build
 MODULES_DIR=node_modules
+MODULE_PATH_DUSTJS=$(MODULES_DIR)/dustjs-linkedin
 MODULE_PATH_EXPRESS=$(MODULES_DIR)/express
 MODULE_PATH_FORMIDABLE=$(MODULES_DIR)/formidable
 MODULE_PATH_GENERIC_POOL=$(MODULES_DIR)/generic-pool
@@ -37,6 +38,7 @@ release: api
 
 init:
 	mkdir -p $(DST_DIR)/$(MODULES_DIR)
+	test -d $(DST_DIR)/$(MODULE_PATH_DUSTJS) || ln -s /usr/local/lib/$(MODULE_PATH_DUSTJS) $(DST_DIR)/$(MODULE_PATH_DUSTJS)
 	test -d $(DST_DIR)/$(MODULE_PATH_EXPRESS) || ln -s /usr/local/lib/$(MODULE_PATH_EXPRESS) $(DST_DIR)/$(MODULE_PATH_EXPRESS)
 	test -d $(DST_DIR)/$(MODULE_PATH_FORMIDABLE) || ln -s /usr/local/lib/$(MODULE_PATH_FORMIDABLE) $(DST_DIR)/$(MODULE_PATH_FORMIDABLE)
 	test -d $(DST_DIR)/$(MODULE_PATH_GENERIC_POOL) || ln -s /usr/local/lib/$(MODULE_PATH_GENERIC_POOL) $(DST_DIR)/$(MODULE_PATH_GENERIC_POOL)
@@ -48,6 +50,8 @@ init:
 
 admin:
 	haxe $(DEBUG) $(LIBS) -js $(DST_DIR)/admin.js -cp $(SRC_DIR) -cp ../../src -main apps.admin.$(MAIN_CLASS) $(CFLAGS)
+	rsync -a lib/* $(DST_DIR)/ --exclude='.*'
+	cat lib/styles/*.css > $(DST_DIR)/static/stylesheet.css
 
 agent:
 	haxe $(DEBUG) $(LIBS) -js $(DST_DIR)/agent.js -cp $(SRC_DIR) -cp ../../src -main apps.agent.$(MAIN_CLASS) $(CFLAGS)

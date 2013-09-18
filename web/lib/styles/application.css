@@ -1,0 +1,187 @@
+div#mainmenu {
+    background: #ed2e24;
+    padding: 0px;
+    margin-bottom: 0px;
+}
+
+.actionbar {
+}
+
+.actionbar + .actionbutton {
+    float: none !important;
+}
+
+.actionbar > .actionbutton {
+    float: right;
+}
+
+.actionbar > .actionbutton > a {
+    color: #ed2e24;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 767px) {
+    .actionbar > .actionbutton > a > span {
+        display: none;
+    }
+}
+
+.actionbar > .actionlabel {
+}
+
+.icon-add, .icon-remove, .icon-go {
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+}
+
+.icon-add {
+    background-image: url('images/action-add.png');
+}
+
+.icon-remove {
+    background-image: url('images/action-remove.png');
+}
+
+.icon-go {
+    background-image: url('images/action-go.png');
+}
+
+.navigation {
+    line-height: 40px;
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+.navigation#actions {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.navigation#actions > a {
+    background: url('images/actions.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+}
+
+.navigation#actions:hover > a {
+    background: url('images/actions-selected.png') #dadcdd;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navigation#actions > div {
+    margin: 0px;
+    background: #dadcdd;
+    right: 0px;
+    top: 40px;
+    position: absolute;
+    z-index: 100;
+    display: none;
+    text-align: right;
+}
+
+.navigation#actions > div > ul {
+    margin: 10px 10px 0px 10px;
+}
+
+.navigation#actions > div > ul > li > a {
+    color: #333;
+	text-decoration: none;
+}
+
+.navigation#actions > div > ul > li > a:hover {
+	font-weight: bold;
+}
+
+.navigation#actions:hover > div {
+    display: block;
+}
+
+@media only screen and (max-width: 767px) {
+    .navigation#actions > div {
+        left: 0px !important;
+        right: auto !important;
+        text-align: left;
+    }
+}
+
+.navigation > li {
+    display: inline;
+    height: 40px;
+    padding: 0px;
+	margin: 0px;
+}
+
+.navigation > li a {
+    font-size: 18px;
+    font-weight: bold;
+    vertical-align: middle;
+    padding: 10px 12px 8px 12px;
+    margin: 0px;
+}
+
+.navigation > li.selected a, .navigation > li.selected a:hover,
+.navigation > li.selected a:link, .navigation > li.selected a:visited {
+    background: #fcfeff;
+    color: #333;
+}
+
+.navigation > li a:hover, .navigation > li a:link, .navigation > li a:visited {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.navigation > li a:hover {
+    background: #dadcdd;
+    color: #333;
+}
+
+.notice {
+    color: #844;
+}
+
+.centered {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left-if-large {
+    text-align: left;
+}
+
+.right-if-large {
+    text-align: right;
+}
+
+@media only screen and (max-width: 767px) {
+    .left-if-large, .right-if-large {
+        text-align: center;
+    }
+}
+
+.centered div, .centered form, .centered .content,
+.left-if-large div, .left-if-large form, .left-if-large .content,
+.right-if-large div, .right-if-large form, .right-if-large .content {
+    display: inline-block;
+    text-align: left;
+}
+
+#login {
+    padding-top: 30px;
+}
