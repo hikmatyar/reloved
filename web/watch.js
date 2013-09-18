@@ -1,4 +1,4 @@
-var app = 'api'
+var app = (process.argv.length > 2) ? process.argv[2] : 'api'
 
 require('child_process').exec('make debug-' + app, function(error, stdout, stderr) {
 	if(stderr !== '') {
