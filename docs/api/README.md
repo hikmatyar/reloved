@@ -218,13 +218,26 @@ TDB:
 	Errors:
 		[standard]
 
+## Create Comment
+
+	/post/comment
+	
+	Parameters:
+		[session]
+	
+	Returns:
+		{ "error": 0 }
+	
+	Errors:
+		[standard]
+
 # Me
 
 TDB:
 
 ## Update Info
 
-	/user/details
+	/user/edit
 	
 	Parameters:
 		[session]
@@ -261,26 +274,13 @@ TDB:
 	Errors:
 		[standard]
 
-## Create Comment
-
-	/user/comment/create
-	
-	Parameters:
-		[session]
-	
-	Returns:
-		{ "error": 0 }
-	
-	Errors:
-		[standard]
-
 # Checkout
 
 TDB:
 
-## Begin Checkout
+## Checkout
 
-	/checkout/begin
+	/checkout
 	
 	Parameters:
 		[session]
@@ -291,9 +291,9 @@ TDB:
 	Errors:
 		[standard]
 
-## End Checkout
+## Checkout Status
 
-	/checkout/end
+	/checkout/status
 	
 	Parameters:
 		[session]

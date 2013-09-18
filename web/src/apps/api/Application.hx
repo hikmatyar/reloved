@@ -51,6 +51,10 @@ class Application {
         server.post('/login', LoginHandler);
         server.post('/logout', LogoutHandler);
         server.post('/browse', BrowseHandler, auth_required);
+        server.post('/checkout/:action', CheckoutHandler, auth_required);
+        server.post('/user/edit', UserHandler.edit, auth_required);
+        server.post('/user/post/:action{create,edit}', PostHandler, auth_required);
+        server.post('/post/:action{search,list,states,details,comment,comments}', PostHandler, auth_required);
         
         server.get('/media/download/:id', MediaHandler.download, auth_optional);
         server.post('/media/upload', MediaHandler.upload, auth_required_multipart);
