@@ -117,6 +117,12 @@ class Post {
         });
     }
     
+    public static function findAll(fn : DataError -> Array<Post> -> Void) : Void {
+        Data.query('SELECT * FROM posts WHERE status <> 0 ORDER BY created DESC', function(err, result : Array<Post>) {
+            fn(err, result);
+        });
+    }
+    
     public static function findAllForIdentifiers(postIds : Array<DataIdentifier>, fn : DataError -> Array<Post> -> Void) : Void {
         Data.query('SELECT * FROM posts WHERE id IN (?)', [ postIds ], function(err, result : Array<Post>) {
             fn(err, result);

@@ -9,10 +9,16 @@
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<link rel="stylesheet" href="stylesheet.css" />
+	<link rel="stylesheet" href="/stylesheet.css" />
 	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
+	<div id="mainmenu">
+		<ul class="navigation">
+			<li><a href="/">{@localize str="layout.action.posts" /}</a></li>
+			<li><a href="/upload">{@localize str="layout.action.upload" /}</a></li>
+		</ul>
+	</div>
     <div class="container">{body}</div>
     <div class="sixteen columns centered"><br /><small>{@localize str="layout.footer" escape="false" /}</small></div>
 </body>

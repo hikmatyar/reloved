@@ -31,7 +31,10 @@ class Application {
         server.express.use(Express.basicAuth('reloved', 'hello world'));
         
         // Routes
-        server.get('/posts/:action', PostPage);
+        server.get('/', IndexPage);
+        server.get('/post/create', PostPage.create);
+        server.get('/post/edit/:id', PostPage.edit);
+        server.get('/upload', UploadPage);
         
         // Start the server
         server.start(Config.port_admin);
