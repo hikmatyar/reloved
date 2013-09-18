@@ -18,6 +18,6 @@ class Strings {
         'post.edit.title': 'Edit Post',
         
         /* Upload page */
-        'upload.title': 'Upload Post'
+        'upload.title': 'Upload Media'
     };
 }

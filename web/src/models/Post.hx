@@ -65,8 +65,8 @@ class Post {
     public var editorial(default, null) : String;
     
     public static function find(id : DataIdentifier, fn : DataError -> Post -> Void) : Void {
-        Data.query('SELECT * FROM posts WHERE id = ?', [ id ], function(err, result : Post) {
-            fn(err, result);
+    	Data.query('SELECT * FROM posts WHERE id = ?', [ id ], function(err, result : Post) {
+    		fn(err, result);
         });
     }
     
@@ -170,6 +170,10 @@ class Post {
 		this.fit = row.fit;
 		this.notes = row.notes;
 		this.editorial = row.editorial;
+    }
+    
+    @:keep public function reference() : String {
+    	return '' + (100000 + this.id);
     }
     
     public function json() : String {

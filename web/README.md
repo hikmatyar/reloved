@@ -42,4 +42,4 @@ Using Autotools to recompile and deploy the applications can get time-consuming.
 
 To start it:
 
-	restart --watch src --watch lib --exec node watch.js
+	restart --watch src --exec node watch.js

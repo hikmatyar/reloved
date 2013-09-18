@@ -31,7 +31,7 @@ div#mainmenu {
 .actionbar > .actionlabel {
 }
 
-.icon-add, .icon-remove, .icon-go {
+.icon-home, .icon-upload {
     background-position: center;
     background-repeat: no-repeat;
     display: inline-block;
@@ -40,16 +40,12 @@ div#mainmenu {
     height: 32px;
 }
 
-.icon-add {
-    background-image: url('images/action-add.png');
+.icon-home {
+    background-image: url('images/action-home.png');
 }
 
-.icon-remove {
-    background-image: url('images/action-remove.png');
-}
-
-.icon-go {
-    background-image: url('images/action-go.png');
+.icon-upload {
+    background-image: url('images/action-upload.png');
 }
 
 .navigation {
@@ -58,68 +54,8 @@ div#mainmenu {
     margin-bottom: 0px;
 }
 
-.navigation#actions {
-    position: relative;
-    width: 40px;
-    height: 40px;
-}
-
-.navigation#actions > a {
-    background: url('images/actions.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    display: block;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 40px;
-    height: 40px;
-}
-
-.navigation#actions:hover > a {
-    background: url('images/actions-selected.png') #dadcdd;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.navigation#actions > div {
-    margin: 0px;
-    background: #dadcdd;
-    right: 0px;
-    top: 40px;
-    position: absolute;
-    z-index: 100;
-    display: none;
-    text-align: right;
-}
-
-.navigation#actions > div > ul {
-    margin: 10px 10px 0px 10px;
-}
-
-.navigation#actions > div > ul > li > a {
-    color: #333;
-	text-decoration: none;
-}
-
-.navigation#actions > div > ul > li > a:hover {
-	font-weight: bold;
-}
-
-.navigation#actions:hover > div {
-    display: block;
-}
-
-@media only screen and (max-width: 767px) {
-    .navigation#actions > div {
-        left: 0px !important;
-        right: auto !important;
-        text-align: left;
-    }
-}
-
 .navigation > li {
-    display: inline;
+    display: inline-block;
     height: 40px;
     padding: 0px;
 	margin: 0px;
@@ -180,8 +116,4 @@ div#mainmenu {
 .right-if-large div, .right-if-large form, .right-if-large .content {
     display: inline-block;
     text-align: left;
-}
-
-#login {
-    padding-top: 30px;
 }
