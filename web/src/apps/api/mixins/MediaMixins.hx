@@ -24,6 +24,6 @@ class MediaMixins {
     }
     
     public static inline function mediaPreferredSize(handler : Handler) : String {
-        return handler.request.body.size;
+        return handler.request.query.size;
     }
 }
