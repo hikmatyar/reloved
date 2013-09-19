@@ -25,9 +25,11 @@ class Application {
         Locale.register('en', Strings.en);
         
         // Configuration
+        server.config(auth, Application.auth);
         server.config(temp_root, 'tmp');
         server.config(file_root, 'static');
         server.config(database, Config.mysql_adapter);
+        server.config(multipart_hash, 'md5');
         server.express.use(Express.basicAuth('reloved', 'hello world'));
         
         // Routes
@@ -35,6 +37,7 @@ class Application {
         server.get('/post/create', PostPage.create);
         server.get('/post/edit/:id', PostPage.edit);
         server.get('/upload', UploadPage);
+        server.post('/upload', UploadPage.post, auth_required_multipart);
         
         // Start the server
         server.start(Config.port_admin);

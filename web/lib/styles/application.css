@@ -1,34 +1,8 @@
 div#mainmenu {
     background: #ed2e24;
     padding: 0px;
+    height: 40px;
     margin-bottom: 10px;
-}
-
-.actionbar {
-}
-
-.actionbar + .actionbutton {
-    float: none !important;
-}
-
-.actionbar > .actionbutton {
-    float: right;
-}
-
-.actionbar > .actionbutton > a {
-    color: #ed2e24;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-@media only screen and (max-width: 767px) {
-    .actionbar > .actionbutton > a > span {
-        display: none;
-    }
-}
-
-.actionbar > .actionlabel {
 }
 
 .icon-home, .icon-upload {
@@ -52,16 +26,17 @@ div#mainmenu {
     line-height: 40px;
     text-align: left;
     margin-bottom: 0px;
+    padding: 0px;
 }
 
 .navigation > li {
     display: inline-block;
-    height: 40px;
+    height: 35px;
     padding: 0px;
 	margin: 0px;
 }
 
-.navigation > li a {
+.navigation > li a span {
     font-size: 18px;
     font-weight: bold;
     vertical-align: middle;
@@ -80,9 +55,8 @@ div#mainmenu {
 	text-decoration: none;
 }
 
-.navigation > li a:hover {
-    background: #dadcdd;
-    color: #333;
+.navigation > li:hover {
+    background: #ff4f46;
 }
 
 .notice {

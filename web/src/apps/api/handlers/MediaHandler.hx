@@ -92,17 +92,13 @@ class MediaHandler extends Handler {
                             this.exit(Error.invalid_parameter);
                         // Great! Full upload!
                         } else if(file.size == media.fileSize) {
-                            Node.fs.unlink(Node.path.join(Media.root(), media.path, '0'), function(err) {
-                                // TODO: Add some locking!
-                                
-                                Node.fs.link(file.path, Node.path.join(Media.root(), media.path, '0'), function(err) {
-                                    if(err == null) {
-                                        this.writeMediaUploaded(media);
-                                    } else {
-                                        this.exit(Error.unknown);
-                                    }
-                                });
-                            });
+                        	Media.replaceFile(file.path, media.path, function(err) {
+								if(err == null) {
+									this.writeMediaUploaded(media);
+								} else {
+									this.exit(Error.unknown);
+								}
+							});
                         // A chunk or resumed upload
                         } else {
                             Node.fs.stat(Node.path.join(Media.root(), media.path, '0'), function(err, stats) {

@@ -38,6 +38,7 @@ release: api
 
 init:
 	mkdir -p $(DST_DIR)/$(MODULES_DIR)
+	mkdir -p $(DST_DIR)/tmp
 	test -d $(DST_DIR)/$(MODULE_PATH_DUSTJS) || ln -s /usr/local/lib/$(MODULE_PATH_DUSTJS) $(DST_DIR)/$(MODULE_PATH_DUSTJS)
 	test -d $(DST_DIR)/$(MODULE_PATH_EXPRESS) || ln -s /usr/local/lib/$(MODULE_PATH_EXPRESS) $(DST_DIR)/$(MODULE_PATH_EXPRESS)
 	test -d $(DST_DIR)/$(MODULE_PATH_FORMIDABLE) || ln -s /usr/local/lib/$(MODULE_PATH_FORMIDABLE) $(DST_DIR)/$(MODULE_PATH_FORMIDABLE)

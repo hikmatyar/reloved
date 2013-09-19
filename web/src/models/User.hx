@@ -8,8 +8,9 @@ import saffron.Data;
 using mixins.StringMixins;
 
 private typedef UserRow = {
-    var id : DataIdentifier;
-    var session : String;
+    id : DataIdentifier,
+    session : String,
+    ?token : String
 }
 
 private typedef UserSessionRow = {
@@ -50,8 +51,10 @@ class User {
 	
 	public static inline var type_auto = 'auto';
     public static inline var type_email = 'email';
+    public static inline var type_external = 'ext';
     
     public var id(default, null) : DataIdentifier;
+    public var token(default, null) : String;
     public var session(default, null) : String;
     public var permissions(default, null) : Array<Permission>;
     
@@ -109,15 +112,30 @@ class User {
     }
     
     public static function find(id : DataIdentifier, fn : DataError -> User -> Void) : Void {
-        Data.query('SELECT id FROM users WHERE id = ?', [ id ], function(err, result : User) { fn(err, result); });
+        Data.query('SELECT id FROM users WHERE id = ?', [ id ], function(err, result : User) {
+        	fn(err, result);
+        });
     }
     
     public static function findForSession(userId : String, session : String, fn : DataError -> User -> Void) : Void {
         Data.query('SELECT users.id AS id, user_sessions.code AS session FROM users LEFT JOIN user_sessions ON users.id = user_id WHERE users.id = ? AND user_sessions.code = ? AND CURRENT_TIMESTAMP < user_sessions.expires', [ userId, session ], function(err, result : User) { fn(err, result); });
     }
     
+    public static function findOfType(id : DataIdentifier, type : String, fn : DataError -> User -> Void) : Void {
+        Data.query('SELECT id, token FROM users WHERE id = ? AND type = ?', [ id, type ], function(err, result : User) {
+        	fn(err, result);
+        });
+    }
+    
+    public static function findAllOfType(type : String, fn : DataError -> Array<User> -> Void) {
+    	Data.query('SELECT id, token FROM users WHERE type = ? ORDER BY token ASC', [ type ], function(err, users : Array<User>) {
+    		fn(err, users);
+    	});
+    }
+    
     private function new(row : UserRow) {
         this.id = row.id;
+        this.token = row.token;
         this.session = row.session;
     }
 }

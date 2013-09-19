@@ -96,6 +96,16 @@ class Media {
         Media.generatePath(0, fn);    
     }
     
+    public static function replaceFile(from : String, path : String, fn : NodeErr -> Void) : Void {
+    	var root = Media.root();
+    	
+    	Node.fs.unlink(Node.path.join(root, path, '0'), function(err) {
+			// TODO: Add some locking!
+			
+			Node.fs.link(from, Node.path.join(root, path, '0'), fn);
+		});
+    }
+    
     public static function create(userId : DataIdentifier, mime : String, csum : String, fileSize : Int, fn : DataError -> Media -> Void) : Void {
         Media.createPath(function(path) {
             if(path != null) {

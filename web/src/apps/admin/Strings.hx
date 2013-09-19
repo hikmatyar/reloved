@@ -14,10 +14,18 @@ class Strings {
         'index.title': 'All Posts',
         
         /* Posts page */
-        'post.create.title': 'Create Post',
-        'post.edit.title': 'Edit Post',
+        'post.title.create': 'Create Post',
+        'post.title.edit': 'Edit Post',
         
         /* Upload page */
-        'upload.title': 'Upload Media'
+        'upload.action.create': 'Add another one',
+        'upload.action.submit': 'Upload',
+        'upload.error.unknown': 'Something bad happened. Maybe forgot to attach files or select an user? Try again?!',
+        'upload.label.identifiers': 'Identifiers:',
+        'upload.label.files': 'File(s): .png or .jpg',
+        'upload.label.user': 'User:',
+        'upload.title': 'Upload Media',
+        'upload.title.complete': 'Uploaded Media!',
+        'upload.title.error': 'Error! :('
     };
 }
