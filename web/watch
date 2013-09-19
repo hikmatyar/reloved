@@ -1,0 +1,2 @@
+#!/bin/sh
+nodemon -e hx,css,html,png --watch src --watch lib watch.js $*

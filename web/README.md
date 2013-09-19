@@ -36,10 +36,14 @@ The generated javascript files are used with NodeJS.
 
 # Development
 
-Using Autotools to recompile and deploy the applications can get time-consuming. So it's a good idea to install restart.
+Using Autotools to recompile and deploy the applications can get time-consuming. So it's a good idea to install nodemon.
 
-	sudo npm install -g restart
+	sudo npm install -g nodemon
 
 To start it:
 
-	restart --watch src --exec node watch.js
+	# Start api
+	./watch
+	
+	# Start admin
+	./watch admin
