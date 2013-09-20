@@ -68,7 +68,7 @@ class Processor extends Task {
         	}
         	
         	async(function() {
-        		this.reschedule();
+        		this.reschedule(true);
         	});
     	});
     }
