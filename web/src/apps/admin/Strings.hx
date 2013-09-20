@@ -30,6 +30,7 @@ class Strings {
         'post.label.price_original': 'Price (Original):',
         'post.label.materials': 'Materials:',
         'post.label.notes': 'Notes:',
+        'post.label.reference': 'Reference:',
         'post.label.size': 'Dress size:',
         'post.label.tags': 'Tags (use commas):',
         'post.label.title': 'Title:',

@@ -1,6 +1,14 @@
 <h3>{@localize str="post.title.edit" /}</h3>
 <div class="eight columns">
 	<form action="" enctype="multipart/form-data" method="post">
+		{#post}
+			<p>
+				<strong>{@localize str="post.label.reference" /}</strong> #{reference}<br />
+				<strong>{@localize str="post.label.title" /}</strong> {title}<br />
+				<strong>{@localize str="post.label.notes" /}</strong> {notes}
+			</p>
+		{/post}
+		<hr />
 		<label for="status">{@localize str="post.label.status" /}</label>
 		<select id="status" name="status">
 			{#statuses}
