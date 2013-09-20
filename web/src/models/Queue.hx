@@ -27,6 +27,12 @@ class Queue {
         });
     }
     
+    public static function create(task : String, data1 : DataIdentifier, data2 : String, fn : DataError -> Void) : Void {
+    	Data.query('INSERT INTO queue (task, data1, data2) VALUES (?, ?, ?)', [ task, data1, data2 ], function(err, result) {
+			fn(err);
+		});
+    }
+    
     public static function delete(id : DataIdentifier, fn : DataError -> Void) : Void {
     	Data.query('DELETE FROM queue WHERE id = ?', [ id ], function(err, result) {
             fn(err);

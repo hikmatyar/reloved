@@ -454,6 +454,12 @@ class Post {
     	return '' + (100000 + this.id);
     }
     
+    public function publish() : Void {
+    	if(this.id != null && this.status == Post.status_unlisted) {
+    		Queue.create(Queue.task_publish, this.id, null, function(err) { });
+    	}
+    }
+    
     public function json() : String {
         var json : Dynamic = {
             id: this.id,
