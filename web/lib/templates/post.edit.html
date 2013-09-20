@@ -1,4 +1,15 @@
-<h3>{@localize str="post.edit.title" /}</h3>
+<h3>{@localize str="post.title.edit" /}</h3>
 <div class="eight columns">
-    TDB:
+	<form action="" enctype="multipart/form-data" method="post">
+		<label for="status">{@localize str="post.label.status" /}</label>
+		<select id="status" name="status">
+			{#statuses}
+				<option value="{id}" {selected}>{name}</option>
+			{/statuses}
+		</select>
+		<hr />
+		<button type="submit">{@localize str="post.action.update" /}</button>
+		<br />
+		<small>{toast}</small>
+    </form>
 </div>

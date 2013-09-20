@@ -33,11 +33,11 @@ class Application {
         server.express.use(Express.basicAuth('reloved', 'hello world'));
         
         // Routes
-        server.get('/', IndexPage);
-        server.get('/post/create', PostPage.create);
-        server.get('/post/edit/:id', PostPage.edit);
-        server.get('/upload', UploadPage);
-        server.post('/upload', UploadPage.post, auth_required_multipart);
+        server.get('/', IndexPage, auth_required);
+        server.get('/post/create', PostPage.create, auth_required);
+        server.post('/post/create', PostPage.create_post, auth_required_multipart);
+        server.get('/post/edit/:id', PostPage.edit, auth_required);
+        server.post('/post/edit/:id', PostPage.edit, auth_required_multipart);
         
         // Start the server
         server.start(Config.port_admin);

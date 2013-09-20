@@ -1,4 +1,64 @@
-<h3>{@localize str="post.create.title" /}</h3>
+<h3>{@localize str="post.title.create" /}</h3>
 <div class="eight columns">
-    TDB:
+	<form action="/post/create" enctype="multipart/form-data" method="post">
+		<label for="title">{@localize str="post.label.title" /}</label>
+		<input type="text" id="title" name="title" required="required" />
+		<label for="user">{@localize str="post.label.user" /}</label>
+		<select id="user" name="user">
+			{#users}
+				<option value="{id}">{token}</option>
+			{/users}
+		</select>
+		<label for="brand">{@localize str="post.label.brand" /}</label>
+		<select id="brand" name="brand">
+			{#brands}
+				<option value="{id}">{name}</option>
+			{/brands}
+		</select>
+		<label for="type">{@localize str="post.label.type" /}</label>
+		<select id="type" name="type">
+			{#types}
+				<option value="{id}">{name}</option>
+			{/types}
+		</select>
+		<label for="size">{@localize str="post.label.size" /}</label>
+		<select id="size" name="size">
+			{#sizes}
+				<option value="{id}">{name}</option>
+			{/sizes}
+		</select>
+		<label for="colors">{@localize str="post.label.colors" /}</label>
+		<fieldset id="colors" name="colors">
+			{#colors}
+				<label for="colors_{id}"> 
+					<input type="checkbox" id="colors_{id}" name="colors[]" value="{id}" />
+					<span>{name}</span>
+				</label>
+			{/colors}
+		</fieldset>
+		<label for="condition">{@localize str="post.label.condition" /}</label>
+		<select id="condition" name="condition">
+			{#conditions}
+				<option value="{id}">{name}</option>
+			{/conditions}
+		</select>
+		<label for="price">{@localize str="post.label.price" /}</label>
+		<input type="text" id="price" name="price" required="required" />
+		<label for="price_original">{@localize str="post.label.price_original" /}</label>
+		<input type="text" id="price_original" name="price_original" required="required" />
+		<label for="currency">{@localize str="post.label.currency" /}</label>
+		<input type="text" id="currency" name="currency" required="required" value="GBP" />
+		<label for="tags">{@localize str="post.label.tags" /}</label>
+		<textarea id="tags" name="tags"></textarea>
+		<label for="materials">{@localize str="post.label.materials" /}</label>
+		<textarea id="materials" name="materials" required="required"></textarea>
+		<label for="fit">{@localize str="post.label.fit" /}</label>
+		<textarea id="fit" name="fit" required="required"></textarea>
+		<label for="notes">{@localize str="post.label.notes" /}</label>
+		<textarea id="notes" name="notes"></textarea>
+		<label for="upload">{@localize str="post.label.files" /}</label>
+        <input type="file" id="upload" name="upload" multiple="multiple" required="required" />
+        <hr />
+        <button type="submit">{@localize str="post.action.submit" /}</button>
+    </form>
 </div>
