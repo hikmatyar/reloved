@@ -241,6 +241,16 @@ TDB:
 	
 	Parameters:
 		[session]
+		size [O] - Dress size ID
+		media [O] - Profile picture ID
+		email [O] - Email address
+		phone [O] - Phone number
+		first_name [O] - First name,
+		last_name [O] - Last name,
+		country [O] - Country ID
+		city [O] - City
+		address [O] - Address
+		zipcode [O] - Zipcode
 	
 	Returns:
 		{ "error": 0 }

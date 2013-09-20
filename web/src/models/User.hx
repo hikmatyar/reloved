@@ -10,7 +10,30 @@ using mixins.StringMixins;
 private typedef UserRow = {
     id : DataIdentifier,
     session : String,
-    ?token : String
+    ?token : String,
+    ?size_id : DataIdentifier,
+    ?media_id : DataIdentifier,
+    ?email : String,
+    ?phone : String,
+    ?first_name : String,
+    ?last_name : String,
+    ?country_id : DataIdentifier,
+    ?city : String,
+    ?address : String,
+    ?zipcode : String
+}
+
+typedef UserAttributes = {
+    ?size_id : DataIdentifier,
+    ?media_id : DataIdentifier,
+    ?email : String,
+    ?phone : String,
+    ?first_name : String,
+    ?last_name : String,
+    ?country_id : DataIdentifier,
+    ?city : String,
+    ?address : String,
+    ?zipcode : String
 }
 
 private typedef UserSessionRow = {
@@ -57,6 +80,16 @@ class User {
     public var token(default, null) : String;
     public var session(default, null) : String;
     public var permissions(default, null) : Array<Permission>;
+    public var sizeId(default, null) : DataIdentifier;
+    public var mediaId(default, null) : DataIdentifier;
+    public var email(default, null) : String;
+    public var phone(default, null) : String;
+    public var firstName(default, null) : String;
+    public var lastName(default, null) : String;
+    public var countryId(default, null) : DataIdentifier;
+    public var city(default, null) : String;
+    public var address(default, null) : String;
+    public var zipcode(default, null) : String;
     
     public static function generateSession() : String {
         var a : String = untyped Node.process.uptime().toString();
@@ -133,9 +166,28 @@ class User {
     	});
     }
     
+    public static function update(id : DataIdentifier, attributes : UserAttributes, fn : DataError -> Void) : Void {
+        Data.query('UPDATE users SET ?, modified = UNIX_TIMESTAMP(CURRENT_TIMESTAMP) WHERE id = ?', [ attributes, id ], function(err, result) {
+            fn(err);
+        });
+    }
+    
     private function new(row : UserRow) {
+        // Basic attributes
         this.id = row.id;
         this.token = row.token;
         this.session = row.session;
+        
+        // Extended attributes
+        this.sizeId = row.size_id;
+        this.mediaId = row.media_id;
+        this.email = row.email;
+        this.phone = row.phone;
+        this.firstName = row.first_name;
+        this.lastName = row.last_name;
+        this.countryId = row.country_id;
+        this.city = row.city;
+        this.address = row.address;
+        this.zipcode = row.zipcode;
     }
 }
