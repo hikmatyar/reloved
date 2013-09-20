@@ -30,6 +30,170 @@ typedef PostChange = {
 	?mediaIds : String
 }
 
+private typedef PostColorRow = {
+    var post_id : DataIdentifier;
+    var color_id : DataIdentifier;
+}
+
+class PostColor {
+	public var postId(default, null) : DataIdentifier;
+    public var colorId(default, null) : DataIdentifier;
+    
+    public static function findAllForIdentifiers(postIds : Array<DataIdentifier>, fn : DataError -> Array<PostColor> -> Void) : Void {
+        Data.query('SELECT * FROM post_colors WHERE post_id IN (?)', [ postIds ], function(err, result : Array<PostColor>) {
+            fn(err, result);
+        });
+    }
+    
+    public static function create(postId : DataIdentifier, colorIds : Array<DataIdentifier>, fn : DataError -> Void) : Void {
+        var values : Array<Dynamic> = new Array<Dynamic>();
+        
+        for(colorId in colorIds) {
+        	values.push([ postId, colorId ]); 
+        }
+        
+        Data.query('INSERT INTO post_colors (post_id, color_id) VALUES ?', [ values ], function(err, result) {
+        	fn(err);
+        });
+    }
+    
+    private function new(row : PostColorRow) {
+        this.postId = row.post_id;
+        this.colorId = row.color_id;
+    }
+}
+
+private typedef PostCommentRow = {
+	var id : DataIdentifier;
+	var status : Int;
+    var post_id : DataIdentifier;
+    var user_id : DataIdentifier;
+    var created : Int;
+    var message : String;
+}
+
+class PostComment {
+	public static inline var status_deleted = 0;
+    public static inline var status_active = 1;
+    public static inline var status_inactive = 2;
+    
+	public var id(default, null) : DataIdentifier;
+	public var status(default, null) : Int;
+    public var postId(default, null) : DataIdentifier;
+    public var userId(default, null) : DataIdentifier;
+    public var message(default, null) : String;
+    
+	public static function findAll(postId : DataIdentifier, fn : DataError -> Array<PostComment> -> Void) : Void {
+        Data.query('SELECT * FROM post_comments WHERE post_id = ? AND status = 1 ORDER BY created ASC', [ postId ], function(err, result : Array<PostComment>) {
+            fn(err, result);
+        });
+    }
+    
+    private function new(row : PostCommentRow) {
+        this.id = row.id;
+        this.status = row.status;
+        this.postId = row.post_id;
+        this.userId = row.user_id;
+        this.message = row.message;
+    }
+    
+    public function json() : String {
+        return JSON.stringify({
+            id: this.id,
+            post: this.postId
+        });
+    }
+}
+
+private typedef PostMediaRow = {
+    var post_id : DataIdentifier;
+    var media_id : DataIdentifier;
+}
+
+class PostMedia {
+	public var postId(default, null) : DataIdentifier;
+    public var mediaId(default, null) : DataIdentifier;
+    
+    public static function findAllForIdentifiers(postIds : Array<DataIdentifier>, fn : DataError -> Array<PostMedia> -> Void) : Void {
+        Data.query('SELECT * FROM post_media WHERE post_id IN (?) ORDER BY media_id ASC', [ postIds ], function(err, result : Array<PostMedia>) {
+            fn(err, result);
+        });
+    }
+    
+    public static function create(postId : DataIdentifier, mediaIds : Array<DataIdentifier>, fn : DataError -> Void) : Void {
+        var values : Array<Dynamic> = new Array<Dynamic>();
+        
+        for(mediaId in mediaIds) {
+        	values.push([ postId, mediaId ]); 
+        }
+        
+        Data.query('INSERT INTO post_media (post_id, media_id) VALUES ?', [ values ], function(err, result) {
+        	fn(err);
+        });
+    }
+    
+    private function new(row : PostMediaRow) {
+        this.mediaId = row.media_id;
+        this.postId = row.post_id;
+    }
+    
+    public function json() : String {
+        return JSON.stringify({
+            id: this.mediaId,
+            post: this.postId
+        });
+    }
+}
+
+private typedef PostTagRow = {
+    var post_id : DataIdentifier;
+    var name : String;
+}
+
+class PostTag {
+	public var postId(default, null) : DataIdentifier;
+    public var name(default, null) : String;
+    
+    public static function findAllForIdentifiers(postIds : Array<DataIdentifier>, fn : DataError -> Array<PostTag> -> Void) : Void {
+        Data.query('SELECT * FROM post_tags WHERE post_id IN (?)', [ postIds ], function(err, result : Array<PostTag>) {
+            fn(err, result);
+        });
+    }
+    
+    public static function create(postId : DataIdentifier, tags : Array<String>, fn : DataError -> Void) : Void {
+        var values : Array<Dynamic> = new Array<Dynamic>();
+        
+        for(tag in tags) {
+        	values.push([ postId, tag ]); 
+        }
+        
+        Data.query('INSERT INTO post_tags (post_id, name) VALUES ?', [ values ], function(err, result) {
+        	fn(err);
+        });
+    }
+    
+    private function new(row : PostTagRow) {
+        this.postId = row.post_id;
+        this.name = row.name;
+    }
+}
+
+typedef PostAttributes_Create = {
+	brand_id : DataIdentifier,
+	user_id : DataIdentifier,
+	size_id : DataIdentifier,
+	type_id : DataIdentifier,
+	condition : Int,
+	materials : String,
+	price : Int,
+	price_original : Int,
+	currency : String,
+	title : String,
+	fit : String,
+	notes : String,
+	editorial : String
+}
+
 class Post {
 	public static inline var condition_new_unused = 1;
 	public static inline var condition_new_tags = 2;
@@ -132,6 +296,38 @@ class Post {
     public static function findAllForUser(userId : DataIdentifier, fn : DataError -> Array<Post> -> Void) : Void {
         Data.query('SELECT * FROM posts WHERE user_id = ? AND status <> 0', [ userId ], function(err, result : Array<Post>) {
         	fn(err, result);
+        });
+    }
+    
+    public static function create(attributes : PostAttributes_Create, fn : DataError -> Post -> Void) : Void {
+        Data.query('INSERT INTO posts SET ?, status = 1, created = UNIX_TIMESTAMP(CURRENT_TIMESTAMP), modified = UNIX_TIMESTAMP(CURRENT_TIMESTAMP)', [ attributes ], function(err, result) {
+            if(err == null && result != null) {
+                Post.find(result.insertId, fn);
+            } else {
+                fn(err, null);
+            }
+        });
+    }
+    
+    public static function update(id : DataIdentifier, attributes : Dynamic, fn : DataError -> Void) : Void {
+        Data.query('UPDATE posts SET ?, modified = UNIX_TIMESTAMP(CURRENT_TIMESTAMP) WHERE id = ?', [ attributes, id ], function(err, result) {
+            if(err == null) {
+                var delta = 0;
+                
+                if(Std.is(attributes.status, Int)) {
+                    delta |= Post.delta_status;
+                }
+                
+                if(attributes.media != null) {
+                    delta |= Post.delta_media;
+                }
+                
+                Data.query('INSERT INTO post_log (post_id, created, delta) VALUES (?, UNIX_TIMESTAMP(CURRENT_TIMESTAMP), ?)', [ id, delta ], function(err, result) {
+                	fn(err);
+                });
+            } else {
+                fn(err);
+            }
         });
     }
     
