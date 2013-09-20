@@ -19,7 +19,7 @@ class Application {
         
         // Spawn tasks
         spawn(new Watcher());
-        spawn(new Indexer());
+        spawn(new Processor());
         spawn(new ImageMagick());
     }
 }

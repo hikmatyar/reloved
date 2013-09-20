@@ -10,7 +10,7 @@ class Watcher extends Task {
     private var max : Int;
     
     public function new() {
-        super('Watcher', 1000);
+        super('Watcher', 60000);
         this.min = -1;
     }
     
@@ -28,7 +28,6 @@ class Watcher extends Task {
         } else {
             Post.findChanges(this.min, this.max, function(err, changes) {
                 if(changes != null && changes.length > 0) {
-                	// TODO: Launch Stripe task ?!
                 	// TODO: Send emails
                     trace('detected a change');
                 }
