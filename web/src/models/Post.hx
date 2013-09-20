@@ -228,6 +228,10 @@ class Post {
     public var notes(default, null) : String;
     public var editorial(default, null) : String;
     
+    private var _colors : Array<PostColor>;
+    private var _media : Array<PostMedia>;
+    private var _tags : Array<PostTag>;
+    
     public static function find(id : DataIdentifier, fn : DataError -> Post -> Void) : Void {
     	Data.query('SELECT * FROM posts WHERE id = ?', [ id ], function(err, result : Post) {
     		fn(err, result);
@@ -332,7 +336,7 @@ class Post {
     }
     
     public static function cacheRelationsForPosts(posts : Array<Post>, fn : DataError -> Void) : Void {
-    	var postIds = new Array<Int>();
+    	var postIds = new Array<DataIdentifier>();
         var cache : Dynamic = { };
         
         if(posts == null || posts.length == 0) {
@@ -342,11 +346,64 @@ class Post {
         
         for(post in posts) {
             postIds.push(post.id);
+            post._colors = [];
+            post._tags = [];
+            post._media = [];
             cache[untyped post.id] = post;
         }
         
-        // TODO: Cache media ids, color ids etc
-        fn(null);
+        PostColor.findAllForIdentifiers(postIds, function(err, colors) {
+        	if(err != null) {
+        		fn(err);
+        		return;
+        	}
+        	
+        	if(colors != null) {
+        		for(color in colors) {
+        			var post_ = cache[untyped color.postId];
+        			
+        			if(post_ != null) {
+        				post_._colors.push(color);
+        			}
+        		}
+        	}
+        	
+        	PostMedia.findAllForIdentifiers(postIds, function(err, media) {
+        		if(err != null) {
+        			fn(err);
+        			return;
+        		}
+        		
+        		if(media != null) {
+					for(m in media) {
+						var post_ = cache[untyped m.postId];
+					
+						if(post_ != null) {
+							post_._media.push(m);
+						}
+					}
+				}
+				
+				PostTag.findAllForIdentifiers(postIds, function(err, tags) {
+					if(err != null) {
+						fn(err);
+						return;
+					}
+					
+					if(tags != null) {
+						for(tag in tags) {
+							var post_ = cache[untyped tag.postId];
+					
+							if(post_ != null) {
+								post_._tags.push(tag);
+							}
+						}
+					}
+					
+					fn(null);
+				});
+        	});
+        });
     }
     
     private function new(row : PostRow) {
@@ -379,6 +436,18 @@ class Post {
             t: this.title,
             n: this.notes
         };
+        
+        if(this._colors != null) {
+        	// TODO: 
+        }
+        
+        if(this._media != null) {
+        	// TODO: 
+        }
+        
+        if(this._tags != null) {
+        	// TODO: 
+        }
         
         return JSON.stringify(json);
     }
