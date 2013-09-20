@@ -137,7 +137,6 @@ CREATE TABLE `post_tags` (
   UNIQUE KEY `post_id_name` (`post_id`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -249,5 +248,15 @@ CREATE TABLE `orders` (
   `zipcode` varchar(16) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+DROP TABLE IF EXISTS `queue`;
+CREATE TABLE `queue` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `task` varchar(32) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `data1` int(11) DEFAULT NULL,
+  `data2` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 2013-09-16 23:24:29
