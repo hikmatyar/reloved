@@ -2,11 +2,21 @@
 
 package apps.agent;
 
+#if !macro
 import js.Node;
 import saffron.Async;
 import saffron.tools.JSON;
+#else
+import haxe.macro.Context;
+import haxe.macro.Expr;
+#end
 
 class Task {
+	macro public function async(ethis : Expr, fn : Expr, ?parallel : Bool, ?nextTick : Bool) : Expr {
+        return saffron.Macros.generateAsync(ethis, fn, parallel, nextTick);
+    }
+    
+#if !macro
     public static var state_directory = 'tasks';
     
     private static var loggers : Dynamic = { };
@@ -148,4 +158,5 @@ class Task {
         this.running = false;
         this.load();
     }
+#end
 }

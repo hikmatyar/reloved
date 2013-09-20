@@ -238,6 +238,31 @@ class Post {
         });
     }
     
+    public static function findStatus(id : DataIdentifier, fn : DataError -> Int -> Bool -> Void) : Void {
+    	Data.query('SELECT posts.status AS postStatus, media.status AS mediaStatus FROM posts ' +
+    				'LEFT JOIN post_media ON post_media.post_id = posts.id ' +
+    				'LEFT JOIN media ON (post_media.media_id = media.id) ' +
+    					'WHERE posts.id = ?', [ id ], function(err, result) {
+    		var status = Post.status_deleted;
+    		var ready = false;
+    		
+    		if(err == null && result != null && result.length > 0) {
+    			ready = true;
+    			
+    			for(row in result.rows()) {
+    				status = row.postStatus;
+    				
+    				if(row.mediaStatus != null && (row.mediaStatus == Media.status_uploading || row.mediaStatus == Media.status_uploaded)) {
+    					ready = false;
+    					break;
+    				}
+    			}
+    		}
+    		
+    		fn(err, status, ready);
+        });
+    }
+    
     public static function findChanges(min : Int, max : Int, fn : DataError -> Array<PostChange> -> Void) : Void {
         Data.query('SELECT DISTINCT posts.id, posts.status, post_log.delta AS delta FROM post_log INNER JOIN posts ON post_log.post_id = posts.id WHERE post_log.created > ? AND posts.created >= ? AND posts.created <= ?', [ max, min, max ], function(err, result) {
         	if(err == null && result != null && result.length > 0) {

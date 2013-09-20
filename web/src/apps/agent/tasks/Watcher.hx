@@ -15,6 +15,8 @@ class Watcher extends Task {
     }
     
     private override function onRun() : Void {
+    	this.reschedule();
+    	/*
         if(this.min < 0) {
             Post.findForward(null, 1, function(err, posts) {
                 if(posts != null && posts.length > 0) {
@@ -34,6 +36,6 @@ class Watcher extends Task {
                 
                 this.reschedule();
             });
-        }
+        }*/
     }
 }
