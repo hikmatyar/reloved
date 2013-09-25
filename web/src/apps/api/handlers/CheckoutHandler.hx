@@ -31,13 +31,14 @@ class CheckoutHandler extends Handler {
     	   city != null && address != null && zipCode != null) {
     		Order.create({
     			user_id: this.user().id,
-    			post_id: postId, delivery_id: deliveryId, stripe_token: stripe_token,
+    			post_id: postId, delivery_id: deliveryId, stripe_token: stripeToken,
     			price: price, amount: amount, currency: currency, country_id: countryId,
     			email: email, phone: phone,
     			first_name: firstName, last_name: lastName,
     			city: city, address: address, zipcode: zipCode
     		}, function(err, order) {
     			if(order != null) {
+    				order.publish();
     				this.render(order.json());
     			} else {
     				this.exit(Error.unknown, 'order');
