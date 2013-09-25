@@ -88,8 +88,8 @@ class PostPage extends Page {
         var fit = this.request.body.fit;
         var notes = this.request.body.notes;
         var editorial : String = this.request.body.editorial;
-        var price = Std.parseInt(this.request.body.price) * 100;
-        var price_original = Std.parseInt(this.request.body.price_original) * 100;
+        var price = Math.round(Std.parseFloat(this.request.body.price) * 100);
+        var priceOriginal = Math.round(Std.parseFloat(this.request.body.price_original) * 100);
         var currency = this.request.body.currency;
         var tagsRaw : String = this.request.body.tags;
         var colors : Array<String> = this.request.body.colors_list;
@@ -125,7 +125,7 @@ class PostPage extends Page {
 					condition: conditionId,
 					materials: materials,
 					price: price,
-					price_original: price_original,
+					price_original: priceOriginal,
 					currency: currency,
 					title: title,
 					fit: fit,
