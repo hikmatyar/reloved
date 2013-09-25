@@ -184,9 +184,20 @@ TDB:
 	
 	Parameters:
 		[session]
+		ARRAY<INTEGER> ids [R] - List of Post IDs
 	
 	Returns:
-		{ "error": 0 }
+		{
+			"error": 0,
+			"posts": [
+				{
+					"id": 1,
+					"user": 10,
+					"status": 1
+					// ... (full post data)
+				}
+			]
+		}
 	
 	Errors:
 		[standard]
