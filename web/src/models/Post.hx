@@ -63,6 +63,38 @@ class PostColor {
     }
 }
 
+private typedef PostUserRow = {
+	var id : DataIdentifier;
+	var name : String;
+	var media_id : DataIdentifier;
+};
+
+class PostUser {
+	public var id(default, null) : DataIdentifier;
+    public var mediaId(default, null) : DataIdentifier;
+    public var name(default, null) : String;
+    
+    public static function findAllForIdentifiers(postUserIds : Array<DataIdentifier>, fn : DataError -> Array<PostUser> -> Void) : Void {
+        Data.query('SELECT id, first_name AS name, media_id FROM users WHERE id IN (?)', [ postUserIds ], function(err, result : Array<PostUser>) {
+            fn(err, result);
+        });
+    }
+    
+	private function new(row : PostUserRow) {
+        this.id = row.id;
+        this.name = row.name;
+        this.mediaId = row.media_id;
+    }
+    
+    public function json() : String {
+        return JSON.stringify({
+            id: this.id,
+            name: this.name,
+            media: this.mediaId
+        });
+    }
+}
+
 typedef PostCommentAttributes_Create = {
 	var message : String;
 	var user_id : DataIdentifier;
@@ -108,6 +140,28 @@ class PostComment {
         });
     }
     
+    public static function findAllPlusUsers(postId : DataIdentifier, fn : DataError -> Array<PostComment> -> Array<PostUser> -> Void) : Void {
+    	Data.query('SELECT * FROM post_comments WHERE post_id = ? AND status = 1 ORDER BY created ASC', [ postId ], function(err, comments : Array<PostComment>) {
+    		if(comments != null && comments.length > 0) {
+    			var userIdentifiers = new Array<DataIdentifier>();
+                var cache : Dynamic = { };
+                
+                for(comment in comments) {
+                    if(cache[comment.userId] == null) {
+                    	cache[comment.userId] = true;
+                    	userIdentifiers.push(comment.userId);
+                    }
+                }
+                
+                PostUser.findAllForIdentifiers(userIdentifiers, function(err, users) {
+                	fn(err, comments, users);
+                });
+    		} else {
+            	fn(err, comments, null);
+            }
+        });
+    }
+    
     public static function create(postId : DataIdentifier, attributes : PostCommentAttributes_Create, fn : DataError -> DataIdentifier -> Void) : Void {
     	Data.query('INSERT INTO post_comments SET ?, post_id = ?, status = 1, created = UNIX_TIMESTAMP(CURRENT_TIMESTAMP), modified = UNIX_TIMESTAMP(CURRENT_TIMESTAMP)', [ attributes, postId ], function(err, result) {
             if(err == null && result != null) {
@@ -137,7 +191,10 @@ class PostComment {
     public function json() : String {
         return JSON.stringify({
             id: this.id,
-            post: this.postId
+            user: this.userId,
+            date: this.created,
+            mod: this.modified,
+            message: this.message
         });
     }
 }

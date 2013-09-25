@@ -26,7 +26,50 @@ class PostHandler extends Handler {
     }
     
     public function comments() {
-    	this.exit(Error.unsupported_api);
+    	var postId = this.postIdentifier();
+    	
+    	if(postId != 0) {
+    		PostComment.findAllPlusUsers(postId, function(err, comments, users) {
+    			if(err == null) {
+    				var delimiter = '';
+    				
+    				this.begin(Error.http_ok);
+    				this.write('{ "error": 0, "cursor": "end", "state": ""');
+    				
+    				if(comments != null) {
+    					this.write(', "comments": ["');
+    					
+						for(comment in comments) {
+							this.write(delimiter);
+							this.write(comment.json());
+							delimiter = ',';
+						}
+						
+						this.write(']');
+					}
+					
+					if(users != null) {
+    					this.write(', "users": ["');
+    					
+    					delimiter = '';
+    					
+						for(user in users) {
+							this.write(delimiter);
+							this.write(user.json());
+							delimiter = ',';
+						}
+						
+						this.write(']');
+					}
+									
+    				this.end('}');
+    			} else {
+    				this.exit(Error.unknown, 'comments');
+    			}
+    		});
+    	} else {
+    		this.exit(Error.invalid_parameter, 'post id');
+    	}
     }
     
     public function create() {
