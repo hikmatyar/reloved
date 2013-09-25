@@ -11,6 +11,21 @@ class PostMixins {
         return Std.parseInt(handler.request.body.id);
     }
     
+    public static inline function postIdentifiers(handler : Handler) : Array<DataIdentifier> {
+    	var _ids : String = handler.request.body.ids;
+    	var ids : Array<DataIdentifier> = null;
+    	
+    	if(_ids != null && _ids.length > 0) {
+    		ids = new Array<DataIdentifier>();
+        	
+        	for(_id in _ids.split(',')) {
+        		ids.push(Std.parseInt(_id));
+        	}
+        }
+        	
+        return ids;
+    }
+    
     public static inline function postConditionIdentifier(handler : Handler) : DataIdentifier {
         return Std.parseInt(handler.request.body.condition);
     }
@@ -31,7 +46,7 @@ class PostMixins {
         return Std.parseInt(handler.request.body.brand);
     }
     
-    public static inline function postColorIdentifiers(handler : Handler) : Array<Int> {
+    public static inline function postColorIdentifiers(handler : Handler) : Array<DataIdentifier> {
     	var _ids : String = handler.request.body.colors;
     	var ids : Array<DataIdentifier> = null;
     	
@@ -46,7 +61,7 @@ class PostMixins {
         return ids;
     }
     
-    public static inline function postMediaIdentifiers(handler : Handler) : Array<Int> {
+    public static inline function postMediaIdentifiers(handler : Handler) : Array<DataIdentifier> {
     	var _ids : String = handler.request.body.media;
     	var ids : Array<DataIdentifier> = null;
     	

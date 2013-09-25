@@ -14,7 +14,28 @@ class PostHandler extends Handler {
     }
     
     public function list() {
-    	this.exit(Error.unsupported_api);
+    	var postIds = this.postIdentifiers();
+    	
+    	if(postIds != null && postIds.length > 0) {
+    		Post.findAllForIdentifiers(postIds, function(err, posts) {
+    			if(posts != null) {
+    				Post.cacheRelationsForPosts(posts, function(err) {
+    					if(err == null) {
+    						this.begin(Error.http_ok);
+							this.write('{ "error": 0, "cursor": "end", "state": ""');
+							this.writePosts(posts);	
+							this.end('}');
+    					} else {
+    						this.exit(Error.unknown, 'post relations');
+    					}
+    				});
+    			} else {
+    				this.exit(Error.unknown, 'posts');
+    			}
+    		});
+    	} else {
+    		this.exit(Error.missing_parameter, 'posts');
+    	}
     }
     
     public function states() {
