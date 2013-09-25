@@ -163,7 +163,7 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 
 # Posts
 
-TDB:
+API calls for retrieving posts and comments in various ways.
 
 ## Search
 
@@ -171,9 +171,24 @@ TDB:
 	
 	Parameters:
 		[session]
+		STRING tag [R] - Tag to search
+		STRING state [O] - State
+		INTEGER limit [O=100] - Maximum number of posts to return
 	
 	Returns:
-		{ "error": 0 }
+		{
+			"error": 0,
+			"state": "1234",
+			"cursor": "end",
+			"posts": [
+				{
+					"id": 1,
+					"user": 10,
+					"status": 1
+					// ... (full post data)
+				}
+			]
+		}
 	
 	Errors:
 		[standard]
