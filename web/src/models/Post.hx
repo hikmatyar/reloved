@@ -422,6 +422,12 @@ class Post {
         });
     }
     
+    public static function findAllForTag(tag : String, fn : DataError -> Array<Post> -> Void) : Void {
+    	Data.query('SELECT DISTINCT posts.* FROM posts INNER JOIN post_tags ON post_tags.post_id = posts.id WHERE posts.status IN (2,3,4) AND post_tags.name = ? ORDER BY created DESC', [ tag ], function(err, result : Array<Post>) {
+            fn(err, result);
+        });
+    }
+    
     public static function findAllForIdentifiers(postIds : Array<DataIdentifier>, fn : DataError -> Array<Post> -> Void) : Void {
         Data.query('SELECT * FROM posts WHERE id IN (?)', [ postIds ], function(err, result : Array<Post>) {
             fn(err, result);

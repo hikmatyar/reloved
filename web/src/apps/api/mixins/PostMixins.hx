@@ -76,6 +76,10 @@ class PostMixins {
         return ids;
     }
     
+    public static inline function postSearchTag(handler : Handler) : String {
+        return handler.request.body.tag;
+    }
+    
     public static inline function postMaterials(handler : Handler) : String {
         return handler.request.body.materials;
     }
