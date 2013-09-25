@@ -26,8 +26,7 @@ private typedef PostRow = {
 
 typedef PostChange = {
 	id : DataIdentifier,
-	?status : Int,
-	?mediaIds : String
+	?status : Int
 }
 
 private typedef PostColorRow = {
@@ -165,7 +164,11 @@ class PostComment {
     public static function create(postId : DataIdentifier, attributes : PostCommentAttributes_Create, fn : DataError -> DataIdentifier -> Void) : Void {
     	Data.query('INSERT INTO post_comments SET ?, post_id = ?, status = 1, created = UNIX_TIMESTAMP(CURRENT_TIMESTAMP), modified = UNIX_TIMESTAMP(CURRENT_TIMESTAMP)', [ attributes, postId ], function(err, result) {
             if(err == null && result != null) {
-                fn(null, result.insertId);
+                if(err == null) {
+            		PostLog.create(postId, Post.delta_comments, null);
+            	}
+            	
+            	fn(null, result.insertId);
             } else {
                 fn(err, null);
             }
@@ -278,6 +281,16 @@ class PostTag {
     }
 }
 
+class PostLog {
+	public static function create(id : DataIdentifier, delta : Int, fn : DataError -> Void) {
+    	Data.query('INSERT INTO post_log (post_id, created, delta) VALUES (?, UNIX_TIMESTAMP(CURRENT_TIMESTAMP), ?)', [ id, delta ], function(err, result) {
+			if(fn != null) {
+				fn(err);
+			}
+		});
+	}
+}
+
 typedef PostAttributes_Create = {
 	brand_id : DataIdentifier,
 	user_id : DataIdentifier,
@@ -301,7 +314,8 @@ class Post {
 	
 	public static inline var delta_status = 1;
     public static inline var delta_media = 2;
-    public static inline var delta_contents = 3;
+    public static inline var delta_contents = 4;
+    public static inline var delta_comments = 8;
     
     public static inline var status_deleted = 0;
     public static inline var status_unlisted = 1;
@@ -391,9 +405,11 @@ class Post {
                     }
                     
                     if((row.delta & Post.delta_status) != 0) {
-                        cache.status = row.status;
-                    } else if((row.delta & Post.delta_media) != 0) {
-                        // TODO: Media ids ?!
+                        change.status = row.status;
+                    } else if((row.delta & Post.delta_media) != 0 ||
+                    		  (row.delta & Post.delta_contents) != 0 ||
+                    		  (row.delta & Post.delta_comments) != 0) {
+                        // Do nothing?
                     }
                 }
                 
@@ -469,9 +485,7 @@ class Post {
                     delta |= Post.delta_media;
                 }
                 
-                Data.query('INSERT INTO post_log (post_id, created, delta) VALUES (?, UNIX_TIMESTAMP(CURRENT_TIMESTAMP), ?)', [ id, delta ], function(err, result) {
-                	fn(err);
-                });
+                PostLog.create(id, delta, null);
             } else {
                 fn(err);
             }
