@@ -232,6 +232,10 @@ TDB:
 	
 	Parameters:
 		[session]
+		INTEGER id [R] - Post ID
+		INTEGER cid [O] - Comment ID (no ID means a new comment)
+		INTEGER status [O] - Status (1 - inactive, 2 - active)
+		STRING message [O] - Message
 	
 	Returns:
 		{ "error": 0 }
@@ -301,7 +305,7 @@ TDB:
 	Parameters:
 		[session]
 		INTEGER id [R] - Post ID
-		INTEGER status [O] - New post status
+		INTEGER status [O] - New post status (1 - unlisted, 2 - listed)
 	
 	Returns:
 		{ "error": 0 }
