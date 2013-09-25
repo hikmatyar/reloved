@@ -332,6 +332,18 @@ class Post {
         });
     }
     
+    public static function findAndCacheRelations(id : DataIdentifier, fn : DataError -> Post -> Void) : Void {
+    	Post.find(id, function(err, post) {
+    		if(post != null) {
+    			Post.cacheRelationsForPosts([ post ], function(err) {
+    				fn(err, (err == null) ? post : null);
+    			});
+    		} else {
+    			fn(err, null);
+    		}
+    	});
+    }
+    
     public static function findStatus(id : DataIdentifier, fn : DataError -> Int -> Bool -> Void) : Void {
     	Data.query('SELECT posts.status AS postStatus, media.status AS mediaStatus FROM posts ' +
     				'LEFT JOIN post_media ON post_media.post_id = posts.id ' +
