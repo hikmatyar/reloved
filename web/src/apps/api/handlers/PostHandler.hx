@@ -6,6 +6,7 @@ import js.Node;
 import models.Post;
 
 using apps.api.mixins.PostMixins;
+using apps.api.mixins.PostCommentMixins;
 
 class PostHandler extends Handler {
     public function search() {
@@ -179,6 +180,96 @@ class PostHandler extends Handler {
     }
     
     public function comment() {
-    	this.exit(Error.unsupported_api);
+    	var postId = this.postIdentifier();
+    	var commentId = this.postCommentIdentifier();
+    	var status = this.postCommentStatus();
+    	var message = this.postCommentMessage();
+    	
+    	if(status != null && status != PostComment.status_inactive) {
+			status = null;
+    	}
+    	
+    	if(message != null) {
+    		message = InputValidator.textByRemovingLinksFromText(message);
+    	}
+    	
+    	if(postId != 0) {
+    		var result = { post: null };
+    		
+    		async(function(sync) {
+				Post.find(postId, function(err, post) {
+					if(post != null && post.status != Post.status_deleted) {
+						result.post = post;
+						sync();
+					} else if(err != null) {
+						this.exit(Error.unknown, 'post');
+					} else {
+						this.exit(Error.invalid_parameter, 'post');
+					}
+				});
+			});
+			
+			// Edit
+			if(commentId != 0) {
+				if(status != null || message != null) {				
+					async(function(sync) {
+						PostComment.find(commentId, function(err, comment) {
+							if(comment != null) {
+								if(comment.userId == this.user().id) {
+									sync();
+								} else {
+									this.exit(Error.access_denied, 'comment');
+								}
+							} else if(err != null) {
+								this.exit(Error.unknown, 'comment');
+							} else {
+								this.exit(Error.invalid_parameter, 'comment');
+							}
+						});
+					});
+					
+					async(function() {
+						var attributes : PostCommentAttributes_Update = { };
+						
+						if(status != null) {
+							attributes.status = status;
+						}
+						
+						if(message != null) {
+							attributes.message = message;
+						}
+						
+						PostComment.update(commentId, attributes, function(err) {
+							if(err == null) {
+								// Return all the comments!
+								this.comments();
+							} else {
+								this.exit(Error.unknown, 'update comment');
+							}
+						});
+					});
+				} else {
+					async(function() {
+						this.exit(Error.missing_parameter, 'status or message');
+					});
+				}
+			// Create
+			} else if(status == null && message != null) {
+				async(function() {
+					PostComment.create(postId, { user_id: this.user().id, message: message }, function(err, cid) {
+						if(err == null) {
+							// Return all the comments!
+							this.comments();
+						} else {
+							this.exit(Error.unknown, 'create comment');
+						}
+					});
+				});
+			} else {
+				this.exit(Error.missing_parameter, 'message');
+			}
+    	} else {
+    		this.exit(Error.missing_parameter, 'post');
+    	}
     }
 }

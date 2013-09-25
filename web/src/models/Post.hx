@@ -63,12 +63,23 @@ class PostColor {
     }
 }
 
+typedef PostCommentAttributes_Create = {
+	var message : String;
+	var user_id : DataIdentifier;
+};
+
+typedef PostCommentAttributes_Update = {
+	?status : Int,
+	?message : String
+};
+
 private typedef PostCommentRow = {
 	var id : DataIdentifier;
 	var status : Int;
     var post_id : DataIdentifier;
     var user_id : DataIdentifier;
     var created : Int;
+    var modified : Int;
     var message : String;
 }
 
@@ -81,11 +92,35 @@ class PostComment {
 	public var status(default, null) : Int;
     public var postId(default, null) : DataIdentifier;
     public var userId(default, null) : DataIdentifier;
+    public var created(default, null) : Int;
+    public var modified(default, null) : Int;
     public var message(default, null) : String;
+    
+    public static function find(id : DataIdentifier, fn : DataError -> PostComment -> Void) : Void {
+        Data.query('SELECT * FROM post_comments WHERE id = ?', [ id ], function(err, result : PostComment) {
+            fn(err, result);
+        });
+    }
     
 	public static function findAll(postId : DataIdentifier, fn : DataError -> Array<PostComment> -> Void) : Void {
         Data.query('SELECT * FROM post_comments WHERE post_id = ? AND status = 1 ORDER BY created ASC', [ postId ], function(err, result : Array<PostComment>) {
             fn(err, result);
+        });
+    }
+    
+    public static function create(postId : DataIdentifier, attributes : PostCommentAttributes_Create, fn : DataError -> DataIdentifier -> Void) : Void {
+    	Data.query('INSERT INTO post_comments SET ?, post_id = ?, status = 1, created = UNIX_TIMESTAMP(CURRENT_TIMESTAMP), modified = UNIX_TIMESTAMP(CURRENT_TIMESTAMP)', [ attributes, postId ], function(err, result) {
+            if(err == null && result != null) {
+                fn(null, result.insertId);
+            } else {
+                fn(err, null);
+            }
+        });
+    }
+    
+    public static function update(id : DataIdentifier, attributes : PostCommentAttributes_Update, fn : DataError -> Void) : Void {
+        Data.query('UPDATE post_comments SET ?, modified = UNIX_TIMESTAMP(CURRENT_TIMESTAMP) WHERE id = ?', [ attributes, id ], function(err, result) {
+            fn(err);
         });
     }
     
@@ -94,6 +129,8 @@ class PostComment {
         this.status = row.status;
         this.postId = row.post_id;
         this.userId = row.user_id;
+        this.created = row.created;
+        this.modified = row.modified;
         this.message = row.message;
     }
     
