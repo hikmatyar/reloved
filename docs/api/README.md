@@ -152,7 +152,11 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 					// Optional
 					"editorial": "..."
 				}
+			],
+			"users": [
+				{ "id": 10, "name": "Abc", "media": 123 }
 			]
+		}
 	
 	Errors:
 		[standard]
@@ -219,14 +223,29 @@ TDB:
 	
 	Parameters:
 		[session]
+		INTEGER id [R] - Post ID
+		STRING state [O] - State
+		INTEGER limit [O=100] - Maximum number of comments to return
 	
 	Returns:
-		{ "error": 0 }
+		{
+			"error": 0,
+			// Cursor position for UI. 'start', 'middle' or 'end'
+			"cursor": "start",
+			// State that can be used with the next request
+			"state": "eyJhIjowLCJiIjowfQ==",
+			"comments": [
+				{ "id": 1, "user": 10, "date": 434, "mod": 434, "message": "..." }
+			],
+			"users": [
+				{ "id": 10, "name": "Abc", "media": 123 }
+			]
+		}
 	
 	Errors:
 		[standard]
 
-## Create Comment
+## Create/Edit Comment
 
 	/post/comment
 	
@@ -236,16 +255,19 @@ TDB:
 		INTEGER cid [O] - Comment ID (no ID means a new comment)
 		INTEGER status [O] - Status (1 - inactive, 2 - active)
 		STRING message [O] - Message
+		
+		STRING state [O] - State
+		INTEGER limit [O=100] - Maximum number of comments to return
 	
 	Returns:
-		{ "error": 0 }
+		/post/comments
 	
 	Errors:
 		[standard]
 
 # Me
 
-TDB:
+API calls for updating personal information and posts.
 
 ## Update Info
 

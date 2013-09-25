@@ -115,8 +115,8 @@ CREATE TABLE `post_comments` (
   `status` int(11) NOT NULL COMMENT '0 - deleted, 1 - active, 2 - inactive',
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` int(11) NOT NULL,
+  `modified` int(11) NOT NULL,
   `message` varchar(140) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
