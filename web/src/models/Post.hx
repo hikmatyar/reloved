@@ -248,6 +248,12 @@ class PostTag {
 	public var postId(default, null) : DataIdentifier;
     public var name(default, null) : String;
     
+    public static function findAllPopular(limit : Int, fn : DataError -> Array<PostTag> -> Void) : Void {
+    	Data.query('SELECT DISTINCT name FROM post_tags GROUP BY name ORDER BY COUNT(name) DESC LIMIT ?', [ limit ], function(err, result : Array<PostTag>) {
+            fn(err, result);
+        });
+    }
+    
     public static function findAllForIdentifiers(postIds : Array<DataIdentifier>, fn : DataError -> Array<PostTag> -> Void) : Void {
         Data.query('SELECT * FROM post_tags WHERE post_id IN (?)', [ postIds ], function(err, result : Array<PostTag>) {
             fn(err, result);
