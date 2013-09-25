@@ -300,6 +300,8 @@ TDB:
 	
 	Parameters:
 		[session]
+		INTEGER id [R] - Post ID
+		INTEGER status [O] - New post status
 	
 	Returns:
 		{ "error": 0 }
