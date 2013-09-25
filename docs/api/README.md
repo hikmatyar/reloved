@@ -3,6 +3,14 @@ Reloved API v1.0
 
 Every API call returns a JSON response. The only exception is with multimedia, where both download and upload can be raw data (like png or jpg).
 
+# Data Types
+
+	ARRAY<TYPE> - An array value that's made of TYPEs such as INTEGERs ('1,2,3')
+	INTEGER - An integer value such as '2' or '50'
+	NUMBER - A number value such as '2' or '5.3'
+	STRING - A string value
+	STRING[X] - A string value that supports up-to X characters
+
 # Error codes
 
 Error responses are standardized:
@@ -28,11 +36,11 @@ Every API call requires a valid session, but accounts are created automatically 
 
 Session parameters are standardized:
 
-	_u [R] = user ID (required)
-	_s [R] = session ID (required)
-	_v [O] = client version ID (optional)
-	_t [O] = timestamp (optional, but highly recommended to avoid agressive caching on certain client devices)
-	_l [O=en] = language code (optional)
+	STRING _u [R] = user ID (required)
+	STRING _s [R] = session ID (required)
+	STRING _v [O] = client version ID (optional)
+	INTEGER _t [O] = timestamp (optional, but highly recommended to avoid agressive caching on certain client devices)
+	STRING _l [O=en] = language code (optional)
 
 ## Login
 
@@ -42,13 +50,13 @@ Performs a login or creates an account if possible (type=auto) and the account d
     
     Parameters:
         [session]
-        type [R] - Login type. Use 'auto' to automatically create an account
-        token [R] - Public token (username)
-        secret [R] - Private token (password)
-        length [O=0] - Session length
-        scope [O=mobile] - Scope ID (allows to have multiple sessions on different devices)
-        os [O=ios] - Platform
-        hash [O] - Sha1 checksum of salt, type, public and private arguments
+        STRING type [R] - Login type. Use 'auto' to automatically create an account
+        STRING token [R] - Public token (username)
+        STRING secret [R] - Private token (password)
+        INTEGER length [O=0] - Session length in seconds. 0 - automatic.
+        STRING scope [O=mobile] - Scope ID (allows to have multiple sessions on different devices)
+        STRING os [O=ios] - Platform
+        STRING[40] hash [O] - Sha1 checksum of salt, type, public and private arguments
     
     Returns:
         { "error": 0, "session": "12345678", "user": "1231" }
@@ -79,9 +87,9 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 	
 	Parameters:
 		[session]
-		state [O=null] - State that is managed by the server and was returned with the previous response
-		direction [O=forward] - Browse 'forward' or 'backward'? Only used with the state parameter
-		limit [O=100] - Maximum number of posts to return
+		STRING state [O=null] - State that is managed by the server and was returned with the previous response
+		STRING direction [O=forward] - Browse 'forward' or 'backward'? Only used with the state parameter
+		INTEGER limit [O=100] - Maximum number of posts to return
 	
 	Returns:
 		{
@@ -241,16 +249,16 @@ TDB:
 	
 	Parameters:
 		[session]
-		size [O] - Dress size ID
-		media [O] - Profile picture ID
-		email [O] - Email address
-		phone [O] - Phone number
-		first_name [O] - First name,
-		last_name [O] - Last name,
-		country [O] - Country ID
-		city [O] - City
-		address [O] - Address
-		zipcode [O] - Zipcode
+		INTEGER size [O] - Dress size ID
+		INTEGER media [O] - Profile picture ID
+		STRING email [O] - Email address
+		STRING phone [O] - Phone number
+		STRING first_name [O] - First name,
+		STRING last_name [O] - Last name,
+		INTEGER country [O] - Country ID
+		STRING city [O] - City
+		STRING address [O] - Address
+		STRING zipcode [O] - Zipcode
 	
 	Returns:
 		{ "error": 0 }
@@ -264,7 +272,22 @@ TDB:
 	
 	Parameters:
 		[session]
-	
+		INTEGER condition [R] - Dress condition ID
+		INTEGER type [R] - Dress type ID
+		INTEGER size [R] - Dress size ID
+		INTEGER brand [R] - Dress brand ID
+		ARRAY<INTEGER> colors [R] - List of dress color IDs
+		ARRAY<INTEGER> media [R] - List of media IDs
+		STRING materials [R] - Dress materials
+		STRING title [R] - Post title
+		STRING fit [R] - Fit info
+		STRING notes [R] - Notes for the post
+		STRING editorial [O] - Editorial text
+		INTEGER price [R] - Integer value with a price (100 = 1.00)
+		INTEGER price_original [R] - Integer value with a price (105 = 1.05)
+		STRING[3] currency [R] - 3 letter currency code, such as 'GBP'
+		ARRAY<STRING> tags [R] - List of tag names
+		
 	Returns:
 		{ "error": 0 }
 	
@@ -334,9 +357,9 @@ Creates a new multimedia item with metadata.
 	
 	Parameters:
 		[session]
-		mime [R] - Mime type
-        size [R] - File size
-        csum [R] - MD5 checksum of the file
+		STRING mime [R] - Mime type
+        INTEGER size [R] - File size in bytes
+        STRING[32] csum [R] - MD5 checksum of the file
 	
 	Returns:
 		{ "error": 0, "id": "1234567890" }
@@ -352,7 +375,7 @@ Allows to query about item status and upload progress.
 	
 	Parameters:
 		[session]
-		id [R] - Item ID
+		INTEGER id [R] - Item ID
 	
 	Returns:
 		{ "error": 0, "status": 2, "size": 12345 }
@@ -368,8 +391,8 @@ Uploads data for an item.
 	
 	Parameters:
 		[session]
-		id [R] - Item ID
-		offset [O=0] - Item data offset
+		INTEGER id [R] - Item ID
+		INTEGER offset [O=0] - Item data offset
 		
 		[MULTIPART DATA = "data" file]
 	
@@ -387,7 +410,7 @@ Downloads an item. Only API call that doesn't return a JSON error.
 	
 	Parameters:
 		[session]
-        size [O=o] - Preferred size ("o" - original, "s" - small, "m" - medium, "l" - large)
+        STRING[2] size [O=o] - Preferred size ("o" - original, "s" - small, "m" - medium, "l" - large)
     
     Returns:
         Raw data or HTTP error
