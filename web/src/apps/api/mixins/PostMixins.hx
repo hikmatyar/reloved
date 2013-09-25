@@ -15,6 +15,10 @@ class PostMixins {
         return Std.parseInt(handler.request.body.condition);
     }
     
+    public static inline function postStatus(handler : Handler) : DataIdentifier {
+        return (handler.request.body.status != null && handler.request.body.status.length > 0) ? Std.parseInt(handler.request.body.status) : null;
+    }
+    
     public static inline function postTypeIdentifier(handler : Handler) : DataIdentifier {
         return Std.parseInt(handler.request.body.type);
     }

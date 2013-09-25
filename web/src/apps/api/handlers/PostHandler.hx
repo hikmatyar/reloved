@@ -124,7 +124,58 @@ class PostHandler extends Handler {
     }
     
     public function edit() {
-    	this.exit(Error.unsupported_api);
+    	var id = this.postIdentifier();
+    	var status = this.postStatus();
+    	
+    	if(id != 0) {
+    		var result = { post: null };
+			
+			async(function(sync) {
+				Post.find(id, function(err, post) {
+					if(post != null) {
+						if(post.userId == this.user().id) {
+							result.post = post;
+							sync();
+						} else {
+							this.exit(Error.access_denied);
+						}
+					} else {
+						this.exit(Error.unknown, 'find');
+					}
+				});
+			});
+			
+			async(function(sync) {
+				if(status != null && result.post.status != status &&
+				  (result.post.status == Post.status_unlisted || result.post.status == Post.status_listed) &&
+				  (status == Post.status_unlisted || status == Post.status_listed)) {
+					Post.update(result.post.id, { status: status }, function(err) {
+						if(err == null) {
+							sync();
+						} else {
+							this.exit(Error.unknown, 'update');
+						}
+					});
+				} else {
+					sync();
+				}
+			});
+			
+			async(function(sync) {
+				Post.cacheRelationsForPosts([ result.post ], function(err) {
+					if(err == null) {
+						result.post.publish();
+						this.render(result.post.json());
+					} else {
+						this.exit(Error.unknown, 'edit');
+					}
+					
+					sync();
+				});
+			});
+    	} else {
+    		this.exit(Error.invalid_parameter);
+    	}
     }
     
     public function comment() {
