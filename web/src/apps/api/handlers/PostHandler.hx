@@ -39,7 +39,22 @@ class PostHandler extends Handler {
     }
     
     public function states() {
-    	this.exit(Error.unsupported_api);
+    	var postIds = this.postIdentifiers();
+    	
+    	if(postIds != null && postIds.length > 0) {
+    		Post.findAllForIdentifiers(postIds, function(err, posts) {
+    			if(err == null) {
+					this.begin(Error.http_ok);
+					this.write('{ "error": 0');
+					this.writePosts(posts);	
+					this.end('}');
+				} else {
+					this.exit(Error.unknown, 'posts');
+				}
+    		});
+    	} else {
+    		this.exit(Error.missing_parameter, 'posts');
+    	}
     }
     
     public function details() {
