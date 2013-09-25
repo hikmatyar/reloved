@@ -210,9 +210,28 @@ TDB:
 	
 	Parameters:
 		[session]
+		INTEGER id [R] - Post ID
+		STRING state [O] - State
+		INTEGER limit [O=100] - Maximum number of comments to return
 	
 	Returns:
-		{ "error": 0 }
+		{
+			"error": 0,
+			"post": {
+				"id": 1,
+				"user": 10,
+				"status": 1
+				// ... (full post data)
+			},
+			"comments": [
+				{
+					// ... (full comment data)
+				}
+			],
+			"users": [
+				{ "id": 10, "name": "Abc", "media": 123 }
+			]
+		}
 	
 	Errors:
 		[standard]
