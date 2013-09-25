@@ -126,6 +126,9 @@
 		818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F916E17DF958D00D1A723 /* MFSideMenuShadow.m */; };
 		818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */; };
 		818F917617DF95F400D1A723 /* MFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917517DF95F400D1A723 /* MFMenuController.m */; };
+		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
+		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
+		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -315,6 +318,12 @@
 		818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MFSideMenuAdditions.m"; path = "Sources/MFSideMenu/UIViewController+MFSideMenuAdditions.m"; sourceTree = SOURCE_ROOT; };
 		818F917417DF95F400D1A723 /* MFMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFMenuController.h; path = Sources/MFMenuController.h; sourceTree = SOURCE_ROOT; };
 		818F917517DF95F400D1A723 /* MFMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMenuController.m; path = Sources/MFMenuController.m; sourceTree = SOURCE_ROOT; };
+		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
+		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
+		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
+		81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryViewController.m; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.m; sourceTree = SOURCE_ROOT; };
+		81DE1CFA17F3920F00965401 /* UIPhotoItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoItemView.h; path = Sources/UIPhotoGallery/UIPhotoItemView.h; sourceTree = SOURCE_ROOT; };
+		81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoItemView.m; path = Sources/UIPhotoGallery/UIPhotoItemView.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +437,7 @@
 				812F4ABF17DEFE3600454747 /* JSONKit */,
 				812F4AC417DEFE8600454747 /* MBProgressHUD */,
 				818F915F17DF955F00D1A723 /* MFSideMenu */,
+				81DE1CF517F391FE00965401 /* UIPhotoGallery */,
 				812F4AC317DEFE8000454747 /* Reachability */,
 				812F4AAC17DEFCD300454747 /* Info.plist */,
 				812F4AAD17DEFCD300454747 /* Prefix.pch */,
@@ -650,6 +660,19 @@
 			name = MFSideMenu;
 			sourceTree = "<group>";
 		};
+		81DE1CF517F391FE00965401 /* UIPhotoGallery */ = {
+			isa = PBXGroup;
+			children = (
+				81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */,
+				81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */,
+				81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */,
+				81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */,
+				81DE1CFA17F3920F00965401 /* UIPhotoItemView.h */,
+				81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */,
+			);
+			name = UIPhotoGallery;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -773,6 +796,7 @@
 				8119DFE817E06E0B007AEDC2 /* MFWebAuthorization.m in Sources */,
 				8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */,
 				812F4ABA17DEFD4800454747 /* MFApplicationDelegate.m in Sources */,
+				81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */,
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
@@ -791,6 +815,7 @@
 				8119DFF417E09E58007AEDC2 /* MFWebResources.m in Sources */,
 				8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */,
 				8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */,
+				81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */,
 				8120C1CB17E0684E00A1C3A9 /* MFProfileController.m in Sources */,
 				8120C1B217E0520E00A1C3A9 /* MFHomeHeaderView.m in Sources */,
 				8120C16E17DFBF1200A1C3A9 /* NSDictionary+Additions.m in Sources */,
@@ -818,6 +843,7 @@
 				812F4AE717DEFEE900454747 /* ASINetworkQueue.m in Sources */,
 				812F4AE017DEFEE900454747 /* ASIAuthenticationDialog.m in Sources */,
 				818F917617DF95F400D1A723 /* MFMenuController.m in Sources */,
+				81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */,
 				812F4AE417DEFEE900454747 /* ASIFormDataRequest.m in Sources */,
 				8119DFEE17E06F00007AEDC2 /* MFPost.m in Sources */,
 				8120C17717E03CC700A1C3A9 /* MFMenuItem.m in Sources */,
