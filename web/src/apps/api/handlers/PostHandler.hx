@@ -150,6 +150,9 @@ class PostHandler extends Handler {
 		   tags != null) {
 			var result = { post: null };
 			
+			title = InputValidator.textByRemovingLinksFromText(title);
+			notes = InputValidator.textByRemovingLinksFromText(notes);
+			
 			async(function(sync) {
 				Post.create({
 					brand_id: brandId,
