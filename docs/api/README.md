@@ -71,7 +71,7 @@ Performs a logout. The session is not valid after the call.
 	/logout
     
     Parameters:
-        [_v, _t, _u, _s]
+        [session]
     
     Returns:
         { "error": 0 }
