@@ -6,8 +6,15 @@ extern NSString *MFWebServiceErrorDomain;
 
 typedef enum _MFWebServiceErrorCode {
     kMFWebServiceErrorNone = 0,
+    kMFWebServiceErrorParameterInvalid = 1000,
+    kMFWebServiceErrorParameterMissing = 1001,
+    kMFWebServiceErrorLimitExceeded = 1018,
+    kMFWebServiceErrorAccessDenied = 1019,
+    kMFWebServiceErrorSessionRequired = 1020,
+    kMFWebServiceErrorSessionExpired = 1021,
+    kMFWebServiceErrorSessionInvalid = 1022,
     kMFWebServiceErrorUnknown = 2000,
-    kMFWebServiceErrorUnsupportedAPI = 2001,
+    kMFWebServiceErrorUnsupportedAPI = 4000,
     kMFWebServiceErrorInternalData = 9000,
     kMFWebServiceErrorInternalAbort = 9001
 } MFWebServiceErrorCode;

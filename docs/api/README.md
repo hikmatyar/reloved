@@ -23,12 +23,13 @@ List of possible error codes:
     0    - no error (default)
     1000 - invalid input parameter
     1001 - missing input parameter
-    1020 - access denied
-    1021 - session is required
-    1022 - session is expired
-    1023 - session is invalid
+    1018 - limit exceeded (too many requests etc)
+    1019 - access denied
+    1020 - session is required
+    1021 - session is expired
+    1022 - session is invalid
     2000 - unknown error
-    2001 - API version is not supported
+    4000 - API version is not supported
 
 # Authentication
 

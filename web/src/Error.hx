@@ -5,7 +5,7 @@ package;
 class Error {
     public static inline var none = 0;
     public static inline var invalid_parameter = 1000;
-    public static inline var missing_parameter = 1010;
+    public static inline var missing_parameter = 1001;
     public static inline var limit_exceeded = 1018;
     public static inline var access_denied = 1019;
     public static inline var session_required = 1020;
