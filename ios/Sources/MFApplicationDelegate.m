@@ -17,7 +17,7 @@
     MFSideMenuContainerViewController *controller = [MFSideMenuContainerViewController
         containerWithCenterViewController:[[UINavigationController alloc] initWithRootViewController:[[MFHomeController alloc] init]]
         leftMenuViewController:[[MFMenuController alloc] init]
-        rightMenuViewController:[[MFMenuController alloc] init]];
+        rightMenuViewController:nil];
     
     m_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     m_window.rootViewController = controller;
