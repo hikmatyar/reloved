@@ -126,6 +126,7 @@
 		818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F916E17DF958D00D1A723 /* MFSideMenuShadow.m */; };
 		818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */; };
 		818F917617DF95F400D1A723 /* MFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917517DF95F400D1A723 /* MFMenuController.m */; };
+		81B27B0217F60BE200F9BC09 /* MFImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0117F60BE200F9BC09 /* MFImageButton.m */; };
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
@@ -322,6 +323,8 @@
 		818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MFSideMenuAdditions.m"; path = "Sources/MFSideMenu/UIViewController+MFSideMenuAdditions.m"; sourceTree = SOURCE_ROOT; };
 		818F917417DF95F400D1A723 /* MFMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFMenuController.h; path = Sources/MFMenuController.h; sourceTree = SOURCE_ROOT; };
 		818F917517DF95F400D1A723 /* MFMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMenuController.m; path = Sources/MFMenuController.m; sourceTree = SOURCE_ROOT; };
+		81B27B0017F60BE200F9BC09 /* MFImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageButton.h; path = Sources/MFImageButton.h; sourceTree = SOURCE_ROOT; };
+		81B27B0117F60BE200F9BC09 /* MFImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageButton.m; path = Sources/MFImageButton.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -468,6 +471,8 @@
 				8120C1BE17E0556900A1C3A9 /* MFHomeHeaderViewDelegate.h */,
 				81DE2D2E17F5F386001D0ADF /* MFHomeSectionView.h */,
 				81DE2D2F17F5F386001D0ADF /* MFHomeSectionView.m */,
+				81B27B0017F60BE200F9BC09 /* MFImageButton.h */,
+				81B27B0117F60BE200F9BC09 /* MFImageButton.m */,
 				8119DFC817E06BCC007AEDC2 /* MFImageView.h */,
 				8119DFC917E06BCC007AEDC2 /* MFImageView.m */,
 				81DE2D2B17F5F166001D0ADF /* MFSeparatorView.h */,
@@ -844,6 +849,7 @@
 				8120C17417E03CB900A1C3A9 /* MFMenu.m in Sources */,
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
 				8119DFF117E06F0C007AEDC2 /* MFMoney.m in Sources */,
+				81B27B0217F60BE200F9BC09 /* MFImageButton.m in Sources */,
 				8120C1CE17E0685A00A1C3A9 /* MFHistoryController.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				8119DFD617E06D90007AEDC2 /* MFWebRequest.m in Sources */,
