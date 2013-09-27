@@ -1,4 +1,6 @@
 
+/* Home Controller */
+
 "Home.Action.About" = "Contact Us";
 "Home.Action.Bookmarks" = "Saved Items";
 "Home.Action.BrowseNew" = "Just In";
@@ -19,8 +21,17 @@
 "Home.Label.MyAccount" = "My Account";
 "Home.Label.MyItems" = "My Items";
 
+/* Menu Controller */
+
 "Menu.Action.Home" = "Home";
 "Menu.Action.Search" = "Search";
 "Menu.Action.News" = "News Feed";
 "Menu.Action.Cart" = "My Cart";
 "Menu.Action.Sell" = "Sell";
+
+/* Reachability */
+
+"Reachability.Action.Cancel" = "Cancel";
+"Reachability.Action.TryAgain" = "Try Again";
+"Reachability.Message.NoConnection" = "Internet Connection is required";
+"Reachability.Title.NoConnection" = "No Connection";

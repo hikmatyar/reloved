@@ -4,11 +4,52 @@
 #import "MFHomeController.h"
 #import "MFMenuController.h"
 #import "MFSideMenuContainerViewController.h"
+#import "MFWebAuthorization.h"
 #import "MFWebController.h"
+#import "MFWebService.h"
+#import "MFWebServiceAuthenticationChallenge.h"
 
 @implementation MFApplicationDelegate
 
 @synthesize window = m_window;
+
+#pragma mark MFWebServiceDelegate
+
+- (void)webService:(MFWebService *)webService authenticationChallenge:(id <MFWebServiceAuthenticationChallenge>)challenge
+{
+    if(challenge.failureCount > 3) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Reachability.Title.NoConnection", nil)
+                                                            message:NSLocalizedString(@"Reachability.Message.NoConnection", nil)
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedString(@"Reachability.Action.Cancel", nil)
+                                                  otherButtonTitles:NSLocalizedString(@"Reachability.Action.TryAgain", nil), nil];
+        
+        [alertView show];
+    } else {
+        [challenge useAuthorization:[MFWebAuthorization authorizationForDeviceID:[UIDevice currentDevice].identifierForVendor.UUIDString]];
+    }
+}
+
+- (void)webServiceDidLogin:(MFWebService *)webService
+{
+    MFDebug(@"did login");
+}
+
+- (void)webServiceDidLogout:(MFWebService *)webService
+{
+    MFDebug(@"did logout");
+}
+
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex != alertView.cancelButtonIndex) {
+        [[MFWebService sharedService].challenge useAuthorization:[MFWebAuthorization authorizationForDeviceID:[UIDevice currentDevice].identifierForVendor.UUIDString]];
+    } else {
+        [[MFWebService sharedService].challenge abortAuthorization];
+    }
+}
 
 #pragma mark UIApplicationDelegate
 
@@ -19,6 +60,7 @@
         leftMenuViewController:[[MFMenuController alloc] init]
         rightMenuViewController:nil];
     
+    [MFWebService sharedService].delegate = self;
     m_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     m_window.rootViewController = controller;
     [m_window makeKeyAndVisible];

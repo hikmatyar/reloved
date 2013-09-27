@@ -12,4 +12,8 @@
 - (void)useAuthorization:(MFWebAuthorization *)authorization;
 @property (nonatomic, assign, readonly) NSInteger failureCount;
 
+@optional
+
+- (void)resetFailureCount;
+
 @end

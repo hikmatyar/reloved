@@ -4,7 +4,8 @@
 #import "NSDictionary+Additions.h"
 #import "NSString+Additions.h"
 
-NSString *MFWebAuthorizationTypePlaceholder = @"PA";
+NSString *MFWebAuthorizationTypeAutomatic = @"auto";
+NSString *MFWebAuthorizationTypeEmail = @"email";
 
 #define KEY_TOKEN @"token"
 #define KEY_SECRET @"secret"
@@ -15,7 +16,7 @@ NSString *MFWebAuthorizationTypePlaceholder = @"PA";
 + (id)authorizationForDeviceID:(NSString *)deviceId
 {
     return [[MFWebAuthorization alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                           MFWebAuthorizationTypePlaceholder, KEY_TYPE, 
+                                                           MFWebAuthorizationTypeAutomatic, KEY_TYPE,
                                                            deviceId.sha1Value, KEY_TOKEN,
                                                            ((NSString *)[NSString stringWithFormat:@"%@%@", deviceId, deviceId]).sha1Value, KEY_SECRET, nil]];
 }

@@ -3,6 +3,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *MFWebAuthorizationTypeAutomatic;
+extern NSString *MFWebAuthorizationTypeEmail;
 
 @interface MFWebAuthorization : NSObject
 {

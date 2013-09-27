@@ -3,7 +3,7 @@
 #import "MFWebSession.h"
 #import "NSDictionary+Additions.h"
 
-#define KEY_IDENTIFIER @"id"
+#define KEY_IDENTIFIER @"session"
 #define KEY_USERID @"user"
 #define KEY_TIMESTAMP @"timestamp"
 
@@ -15,7 +15,7 @@
     
     if(self) {
         m_identifier = [attributes stringForKey:KEY_IDENTIFIER];
-        m_userId = [attributes stringForKey:KEY_USERID];
+        m_userId = [attributes identifierForKey:KEY_USERID];
         m_timestamp = [attributes timeIntervalForKey:KEY_TIMESTAMP];
         
         if(m_timestamp < 1.0F) {
@@ -45,5 +45,12 @@
 @synthesize timestamp = m_timestamp;
 @synthesize identifier = m_identifier;
 @synthesize userId = m_userId;
+
+#pragma mark MFWebRequestTransform
+
++ (id)parseFromObject:(id)object
+{
+    return ([object isKindOfClass:[NSDictionary class]]) ? [[MFWebSession alloc] initWithAttributes:(NSDictionary *)object] : nil;
+}
 
 @end

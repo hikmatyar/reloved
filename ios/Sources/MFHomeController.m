@@ -16,6 +16,8 @@
 #import "UIFont+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
 
+#import "MFWebService.h"
+
 #define CELL_IDENTIFIER @"cell"
 
 @implementation MFHomeController
@@ -157,6 +159,8 @@
     tableView.delegate = self;
     tableView.rowHeight = 45.0F;
     self.view = tableView;
+    
+    [[MFWebService sharedService] login];
 }
 
 #pragma mark NSObject

@@ -324,6 +324,7 @@
 		81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryViewController.m; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.m; sourceTree = SOURCE_ROOT; };
 		81DE1CFA17F3920F00965401 /* UIPhotoItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoItemView.h; path = Sources/UIPhotoGallery/UIPhotoItemView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoItemView.m; path = Sources/UIPhotoGallery/UIPhotoItemView.m; sourceTree = SOURCE_ROOT; };
+		81DE2D2517F5CA6E001D0ADF /* MFWebRequestTransform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFWebRequestTransform.h; path = Sources/MFWebRequestTransform.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -474,6 +475,7 @@
 				8119DFD217E06D85007AEDC2 /* MFWebFeed.m */,
 				8119DFD417E06D90007AEDC2 /* MFWebRequest.h */,
 				8119DFD517E06D90007AEDC2 /* MFWebRequest.m */,
+				81DE2D2517F5CA6E001D0ADF /* MFWebRequestTransform.h */,
 				8119DFD717E06D9B007AEDC2 /* MFWebResource.h */,
 				8119DFD817E06D9B007AEDC2 /* MFWebResource.m */,
 				8119DFF217E09E58007AEDC2 /* MFWebResources.h */,

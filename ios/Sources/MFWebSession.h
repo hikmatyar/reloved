@@ -1,8 +1,8 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
-#import <Foundation/Foundation.h>
+#import "MFWebRequestTransform.h"
 
-@interface MFWebSession : NSObject
+@interface MFWebSession : NSObject <MFWebRequestTransform>
 {
     @private
     NSTimeInterval m_timestamp;

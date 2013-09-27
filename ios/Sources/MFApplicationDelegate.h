@@ -1,8 +1,8 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
-#import <UIKit/UIKit.h>
+#import "MFWebServiceDelegate.h"
 
-@interface MFApplicationDelegate : UIResponder <UIApplicationDelegate>
+@interface MFApplicationDelegate : UIResponder <MFWebServiceDelegate, UIAlertViewDelegate, UIApplicationDelegate>
 {
     @private
     UIWindow *m_window;
