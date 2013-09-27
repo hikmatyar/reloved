@@ -2,6 +2,7 @@
 
 #import "MFHomeHeaderView.h"
 #import "MFHomeHeaderViewDelegate.h"
+#import "MFImageButton.h"
 #import "MFMenuItem.h"
 #import "UIButton+Additions.h"
 #import "UIColor+Additions.h"
@@ -53,8 +54,8 @@
     self = [super initWithFrame:frame];
     
     if(self) {
-        UIButton *shopByColorButton = [UIButton themeButtonWithFrame:CGRectMake(10.0F, 194.0F, 160.0F, 49.0F)];
-        UIButton *shopByDressButton = [UIButton themeButtonWithFrame:CGRectMake(160.0F, 194.0F, 150.0F, 49.0F)];
+        UIButton *shopByColorButton = [MFImageButton themeButtonWithFrame:CGRectMake(10.0F, 194.0F, 160.0F, 49.0F)];
+        UIButton *shopByDressButton = [MFImageButton themeButtonWithFrame:CGRectMake(160.0F, 194.0F, 150.0F, 49.0F)];
         UIView *topSeparatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 194.0F, frame.size.width, 1.0F)];
         UIView *bottomSeparatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, frame.size.height - 1.0F, frame.size.width, 1.0F)];
         UIImageView *disclosureIndicatorView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
@@ -72,11 +73,13 @@
         [self addSubview:disclosureIndicatorView];
         
         [shopByColorButton addTarget:self action:@selector(shopByColor:) forControlEvents:UIControlEventTouchUpInside];
+        [shopByColorButton setImage:[UIImage imageNamed:@"Home-ShopByColor.png"] forState:UIControlStateNormal];
         [shopByColorButton setTitle:NSLocalizedString(@"Home.Action.ShopByColor", nil) forState:UIControlStateNormal];
         shopByColorButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
         [self addSubview:shopByColorButton];
         
         [shopByDressButton addTarget:self action:@selector(shopByDress:) forControlEvents:UIControlEventTouchUpInside];
+        [shopByDressButton setImage:[UIImage imageNamed:@"Home-ShopByDress.png"] forState:UIControlStateNormal];
         [shopByDressButton setTitle:NSLocalizedString(@"Home.Action.ShopByDress", nil) forState:UIControlStateNormal];
         shopByDressButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
         [self addSubview:shopByDressButton];
