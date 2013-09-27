@@ -7,4 +7,6 @@
 + (UIFont *)themeFontOfSize:(CGFloat)size;
 + (UIFont *)themeBoldFontOfSize:(CGFloat)size;
 
++ (UIFont *)themeMenuTextFont;
+
 @end

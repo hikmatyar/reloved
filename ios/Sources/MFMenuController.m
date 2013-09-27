@@ -71,10 +71,19 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     
     if(!cell) {
+        UIView *separatorView;
+        
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.backgroundColor = [UIColor themeMenuBackgroundColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.textColor = [UIColor themeMenuTextColor];
         cell.textLabel.font = [UIFont themeBoldFontOfSize:18.0F];
+        
+        separatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, cell.contentView.frame.size.height - 1.0F, 320.0F, 1.0F)];
+        separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        separatorView.backgroundColor = [UIColor themeMenuSeparatorColor];
+        [cell.contentView addSubview:separatorView];
     }
     
     cell.imageView.image = (item.image) ? [UIImage imageNamed:item.image] : nil;
@@ -99,10 +108,12 @@
 {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F) style:UITableViewStylePlain];
     
-    tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 20.0F)];
+    tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 6.0F)];
     tableView.dataSource = self;
     tableView.delegate = self;
-    tableView.rowHeight = 65.0F;
+    tableView.rowHeight = 66.0F;
+    tableView.backgroundColor = [UIColor themeMenuBackgroundColor];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.view = tableView;
 }

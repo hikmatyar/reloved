@@ -14,4 +14,9 @@
     return [UIFont fontWithName:@"HelveticaNeue-Bold" size:size];
 }
 
++ (UIFont *)themeMenuTextFont
+{
+    return [self themeFontOfSize:24.0F];
+}
+
 @end
