@@ -39,6 +39,41 @@
     return [self colorWithString:@"#000000"];
 }
 
++ (UIColor *)themeButtonBackgroundColor
+{
+    return [self colorWithString:@"#ffffff"];
+}
+
++ (UIColor *)themeButtonBackgroundHighlightColor
+{
+    return [self colorWithString:@"#eeeeee"];
+}
+
++ (UIColor *)themeButtonBorderColor
+{
+    return [self themeSeparatorColor];
+}
+
++ (UIColor *)themeButtonTextColor
+{
+    return [self colorWithString:@"#000000"];
+}
+
++ (UIColor *)themeButtonTextHighlightColor
+{
+    return [self colorWithString:@"#111111"];
+}
+
++ (UIColor *)themeSeparatorTopColor
+{
+    return [self colorWithString:@"#d8d8d8"];
+}
+
++ (UIColor *)themeSeparatorBottomColor
+{
+    return [self colorWithString:@"#e4e4e4"];
+}
+
 + (UIColor *)themeMenuBackgroundColor
 {
     return [self colorWithString:@"#dcdcdc"];
@@ -48,7 +83,7 @@
 {
     return [self colorWithString:@"#dabfa3"];
 }
-// d8d8d8 + e4e4e4
+
 + (UIColor *)themeMenuTextColor
 {
     return [self colorWithString:@"#000000"];

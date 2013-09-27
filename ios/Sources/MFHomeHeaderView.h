@@ -14,6 +14,8 @@
     UILabel *m_itemLabel;
 }
 
++ (CGFloat)preferredHeight;
+
 @property (nonatomic, assign) id <MFHomeHeaderViewDelegate> delegate;
 @property (nonatomic, retain) MFMenuItem *item;
 

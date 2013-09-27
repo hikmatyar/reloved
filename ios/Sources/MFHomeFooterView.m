@@ -1,10 +1,16 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFHomeFooterView.h"
+#import "MFSeparatorView.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
 @implementation MFHomeFooterView
+
++ (CGFloat)preferredHeight
+{
+    return 85.0F;
+}
 
 #pragma mark UIView
 
@@ -16,7 +22,11 @@
         UILabel *footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0F, 10.0F, 300.0F, 25.0F)];
         UILabel *copyrightLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0F, 50.0F, 300.0F, 25.0F)];
         UIImageView *checkmarkImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Home-Checkmark"]];
+        MFSeparatorView *separatorView = [[MFSeparatorView alloc] initWithPosition:1.0F];
         CGSize footerSize;
+        
+        separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        [self addSubview:separatorView];
         
         footerLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
         footerLabel.font = [UIFont themeFontOfSize:14.0F];

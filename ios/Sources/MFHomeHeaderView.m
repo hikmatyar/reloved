@@ -9,6 +9,11 @@
 
 @implementation MFHomeHeaderView
 
++ (CGFloat)preferredHeight
+{
+    return 256.0F;
+}
+
 - (IBAction)shopByColor:(id)sender
 {
     [m_delegate headerViewDidSelectShopByColor:self];
@@ -50,6 +55,21 @@
     if(self) {
         UIButton *shopByColorButton = [UIButton themeButtonWithFrame:CGRectMake(10.0F, 194.0F, 160.0F, 49.0F)];
         UIButton *shopByDressButton = [UIButton themeButtonWithFrame:CGRectMake(160.0F, 194.0F, 150.0F, 49.0F)];
+        UIView *topSeparatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 194.0F, frame.size.width, 1.0F)];
+        UIView *bottomSeparatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, frame.size.height - 1.0F, frame.size.width, 1.0F)];
+        UIImageView *disclosureIndicatorView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
+        
+        topSeparatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        topSeparatorView.backgroundColor = [UIColor themeSeparatorTopColor];
+        [self addSubview:topSeparatorView];
+        
+        bottomSeparatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        bottomSeparatorView.backgroundColor = [UIColor themeSeparatorBottomColor];
+        [self addSubview:bottomSeparatorView];
+        
+        disclosureIndicatorView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        disclosureIndicatorView.center = CGPointMake(frame.size.width - 20.0F, 91.0F);
+        [self addSubview:disclosureIndicatorView];
         
         [shopByColorButton addTarget:self action:@selector(shopByColor:) forControlEvents:UIControlEventTouchUpInside];
         [shopByColorButton setTitle:NSLocalizedString(@"Home.Action.ShopByColor", nil) forState:UIControlStateNormal];
@@ -63,7 +83,7 @@
         
         m_itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0F, 162.0F, 300.0F, 31.0F)];
         m_itemLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
-        m_itemLabel.backgroundColor = [UIColor grayColor];
+        m_itemLabel.backgroundColor = [UIColor clearColor];
         m_itemLabel.font = [UIFont themeFontOfSize:12.0F];
         m_itemLabel.textAlignment = NSTextAlignmentCenter;
         m_itemLabel.text = @"GUCCI\n180";

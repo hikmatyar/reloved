@@ -129,6 +129,10 @@
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
+		81DE2D2D17F5F166001D0ADF /* MFSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE2D2C17F5F166001D0ADF /* MFSeparatorView.m */; };
+		81DE2D3017F5F386001D0ADF /* MFHomeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE2D2F17F5F386001D0ADF /* MFHomeSectionView.m */; };
+		81DE2D3317F5FCC4001D0ADF /* Disclosure-Indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 81DE2D3117F5FCC4001D0ADF /* Disclosure-Indicator.png */; };
+		81DE2D3417F5FCC4001D0ADF /* Disclosure-Indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81DE2D3217F5FCC4001D0ADF /* Disclosure-Indicator@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -325,6 +329,12 @@
 		81DE1CFA17F3920F00965401 /* UIPhotoItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoItemView.h; path = Sources/UIPhotoGallery/UIPhotoItemView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoItemView.m; path = Sources/UIPhotoGallery/UIPhotoItemView.m; sourceTree = SOURCE_ROOT; };
 		81DE2D2517F5CA6E001D0ADF /* MFWebRequestTransform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFWebRequestTransform.h; path = Sources/MFWebRequestTransform.h; sourceTree = SOURCE_ROOT; };
+		81DE2D2B17F5F166001D0ADF /* MFSeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSeparatorView.h; path = Sources/MFSeparatorView.h; sourceTree = SOURCE_ROOT; };
+		81DE2D2C17F5F166001D0ADF /* MFSeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFSeparatorView.m; path = Sources/MFSeparatorView.m; sourceTree = SOURCE_ROOT; };
+		81DE2D2E17F5F386001D0ADF /* MFHomeSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFHomeSectionView.h; path = Sources/MFHomeSectionView.h; sourceTree = SOURCE_ROOT; };
+		81DE2D2F17F5F386001D0ADF /* MFHomeSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFHomeSectionView.m; path = Sources/MFHomeSectionView.m; sourceTree = SOURCE_ROOT; };
+		81DE2D3117F5FCC4001D0ADF /* Disclosure-Indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Disclosure-Indicator.png"; path = "Images/Disclosure-Indicator.png"; sourceTree = "<group>"; };
+		81DE2D3217F5FCC4001D0ADF /* Disclosure-Indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Disclosure-Indicator@2x.png"; path = "Images/Disclosure-Indicator@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,8 +466,12 @@
 				8120C1B017E0520E00A1C3A9 /* MFHomeHeaderView.h */,
 				8120C1B117E0520E00A1C3A9 /* MFHomeHeaderView.m */,
 				8120C1BE17E0556900A1C3A9 /* MFHomeHeaderViewDelegate.h */,
+				81DE2D2E17F5F386001D0ADF /* MFHomeSectionView.h */,
+				81DE2D2F17F5F386001D0ADF /* MFHomeSectionView.m */,
 				8119DFC817E06BCC007AEDC2 /* MFImageView.h */,
 				8119DFC917E06BCC007AEDC2 /* MFImageView.m */,
+				81DE2D2B17F5F166001D0ADF /* MFSeparatorView.h */,
+				81DE2D2C17F5F166001D0ADF /* MFSeparatorView.m */,
 				8119DFCB17E06BDB007AEDC2 /* MFTableView.h */,
 				8119DFCC17E06BDB007AEDC2 /* MFTableView.m */,
 				8119DFCE17E06BE8007AEDC2 /* MFTableViewCell.h */,
@@ -522,6 +536,8 @@
 			children = (
 				812F4AAF17DEFD0300454747 /* Default-568h@2x.png */,
 				812F4AB017DEFD0300454747 /* Default.png */,
+				81DE2D3117F5FCC4001D0ADF /* Disclosure-Indicator.png */,
+				81DE2D3217F5FCC4001D0ADF /* Disclosure-Indicator@2x.png */,
 				812F4AB117DEFD0300454747 /* Default@2x.png */,
 				8120C17917E0470300A1C3A9 /* Home-About.png */,
 				8120C17A17E0470300A1C3A9 /* Home-About@2x.png */,
@@ -746,6 +762,7 @@
 				8120C19917E0470300A1C3A9 /* Home-BrowseNew.png in Resources */,
 				8120C14E17DFAD8C00A1C3A9 /* Menu-News.png in Resources */,
 				8120C1AB17E049B400A1C3A9 /* Navigation-Logo.png in Resources */,
+				81DE2D3417F5FCC4001D0ADF /* Disclosure-Indicator@2x.png in Resources */,
 				8120C19617E0470300A1C3A9 /* Home-BrowseAll@2x.png in Resources */,
 				8120C1C417E05D7500A1C3A9 /* Home-Checkmark.png in Resources */,
 				8120C15217DFAD8C00A1C3A9 /* Menu-Sell.png in Resources */,
@@ -770,6 +787,7 @@
 				8120C19517E0470300A1C3A9 /* Home-BrowseAll.png in Resources */,
 				8120C14F17DFAD8C00A1C3A9 /* Menu-News@2x.png in Resources */,
 				8120C1B717E0532500A1C3A9 /* Home-ShopByDress.png in Resources */,
+				81DE2D3317F5FCC4001D0ADF /* Disclosure-Indicator.png in Resources */,
 				8120C1A217E0470300A1C3A9 /* Home-Recents@2x.png in Resources */,
 				8120C1A017E0470300A1C3A9 /* Home-Profile@2x.png in Resources */,
 				812F4AB317DEFD0300454747 /* Default.png in Resources */,
@@ -803,8 +821,10 @@
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
 				8119DFE217E06DCF007AEDC2 /* MFWebUser.m in Sources */,
+				81DE2D3017F5F386001D0ADF /* MFHomeSectionView.m in Sources */,
 				8119DFF817E0A1E6007AEDC2 /* MFTracker.m in Sources */,
 				8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */,
+				81DE2D2D17F5F166001D0ADF /* MFSeparatorView.m in Sources */,
 				8120C16617DFB7F100A1C3A9 /* MFWebController.m in Sources */,
 				8119DFD917E06D9B007AEDC2 /* MFWebResource.m in Sources */,
 				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,

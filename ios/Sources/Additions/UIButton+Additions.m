@@ -10,9 +10,13 @@
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    button.backgroundColor = [UIColor grayColor];
+    button.backgroundColor = [UIColor themeButtonBackgroundColor];
+    button.layer.borderWidth = 1.0F;
+    button.layer.borderColor = [UIColor themeButtonBorderColor].CGColor;
     button.frame = frame;
     button.titleLabel.font = [UIFont themeFontOfSize:14.0F];
+    [button setTitleColor:[UIColor themeButtonTextColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor themeButtonTextHighlightColor] forState:UIControlStateSelected];
     
     return button;
 }

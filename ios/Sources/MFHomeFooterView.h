@@ -4,4 +4,6 @@
 
 @interface MFHomeFooterView : UIView
 
++ (CGFloat)preferredHeight;
+
 @end

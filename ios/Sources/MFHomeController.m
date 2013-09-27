@@ -6,17 +6,17 @@
 #import "MFHomeController.h"
 #import "MFHomeFooterView.h"
 #import "MFHomeHeaderView.h"
+#import "MFHomeSectionView.h"
 #import "MFMenu.h"
 #import "MFMenuItem.h"
 #import "MFProfileController.h"
 #import "MFRecentsController.h"
+#import "MFSeparatorView.h"
 #import "MFSideMenuContainerViewController.h"
 #import "MFWebController.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
-
-#import "MFWebService.h"
 
 #define CELL_IDENTIFIER @"cell"
 
@@ -120,9 +120,9 @@
     
     if(!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.font = [UIFont themeBoldFontOfSize:18.0F];
+        cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
     }
     
     cell.imageView.image = (item.image) ? [UIImage imageNamed:item.image] : nil;
@@ -131,9 +131,18 @@
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return ((MFMenu *)[m_menu objectAtIndex:section]).title;
+    NSString *title = ((MFMenu *)[m_menu objectAtIndex:section]).title;
+    
+    return (title) ? ((title.length > 1) ? 1.0F : 0.5F) * [MFHomeSectionView preferredHeight] : 0.0F;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section;
+{
+    NSString *title = ((MFMenu *)[m_menu objectAtIndex:section]).title;
+    
+    return (title) ? [[MFHomeSectionView alloc] initWithTitle:title] : nil;
 }
 
 #pragma mark UITableViewDelegate
@@ -148,19 +157,22 @@
 - (void)loadView
 {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
-    MFHomeHeaderView *headerView = [[MFHomeHeaderView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 256.0F)];
-    MFHomeFooterView *footerView = [[MFHomeFooterView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 85.0F)];
+    MFHomeHeaderView *headerView = [[MFHomeHeaderView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFHomeHeaderView preferredHeight])];
+    MFHomeFooterView *footerView = [[MFHomeFooterView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFHomeFooterView preferredHeight])];
     
     headerView.delegate = self;
     
+    if([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        tableView.separatorInset = UIEdgeInsetsMake(0.0F, 0.0F, 0.0F, 0.0F);
+    }
+    
+    tableView.backgroundColor = [UIColor themeBackgroundColor];
     tableView.tableHeaderView = headerView;
     tableView.tableFooterView = footerView;
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.rowHeight = 45.0F;
     self.view = tableView;
-    
-    [[MFWebService sharedService] login];
 }
 
 #pragma mark NSObject
