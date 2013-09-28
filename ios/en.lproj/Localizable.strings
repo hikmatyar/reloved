@@ -1,4 +1,14 @@
 
+/* Browse Controller */
+
+"Browse.Action.ShowAll" = "View All";
+"Browse.Action.ShowEditorial" = "Editor's Picks";
+"Browse.Action.ShowNew" = "Just In";
+"Browse.Format.Results" = "%d result";
+"Browse.Format.Results.None" = "no results";
+"Browse.Format.Results.Plural" = "%d results";
+"Browse.Title" = "Browse";
+
 /* Home Controller */
 
 "Home.Action.About" = "Contact Us";
@@ -20,6 +30,7 @@
 "Home.Label.Footer" = "We check every item that ships";
 "Home.Label.MyAccount" = "My Account";
 "Home.Label.MyItems" = "My Items";
+"Home.Title" = "Home";
 
 /* Menu Controller */
 

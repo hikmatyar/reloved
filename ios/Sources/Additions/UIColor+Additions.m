@@ -39,6 +39,11 @@
     return [self colorWithString:@"#000000"];
 }
 
++ (UIColor *)themeTextAlternativeColor
+{
+    return [self colorWithString:@"#666666"];
+}
+
 + (UIColor *)themeButtonBackgroundColor
 {
     return [self colorWithString:@"#ffffff"];

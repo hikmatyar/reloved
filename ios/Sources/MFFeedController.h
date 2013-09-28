@@ -2,9 +2,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MFFeedController : UIViewController
+@class MFWebFeed;
+
+@interface MFFeedController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     @private
+    MFWebFeed *m_feed;
 }
+
+@property (nonatomic, retain) MFWebFeed *feed;
+@property (nonatomic, retain, readonly) UITableView *tableView;
 
 @end

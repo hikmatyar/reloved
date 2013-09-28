@@ -12,6 +12,7 @@ typedef enum _MFBrowseControllerScope {
 {
     @private
     MFBrowseControllerScope m_scope;
+    
 }
 
 - (id)initWithScope:(MFBrowseControllerScope)scope;

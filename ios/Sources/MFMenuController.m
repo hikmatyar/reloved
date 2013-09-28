@@ -26,7 +26,7 @@
 {
     MFSideMenuContainerViewController *navigationController = self.menuContainerViewController;
     
-    if(![((UINavigationController *)navigationController.centerViewController).topViewController.class isEqual:klass]) {
+    if(![((Class)((UINavigationController *)navigationController.centerViewController).viewControllers.firstObject).class isEqual:klass]) {
         navigationController.centerViewController = [[UINavigationController alloc] initWithRootViewController:[[klass alloc] init]];
     }
     

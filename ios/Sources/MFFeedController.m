@@ -2,8 +2,34 @@
 
 #import "MFFeedController.h"
 #import "MFPostController.h"
+#import "MFTableView.h"
+#import "MFWebFeed.h"
+#import "UIColor+Additions.h"
+#import "UIFont+Additions.h"
 
 @implementation MFFeedController
+
+@dynamic tableView;
+
+- (UITableView *)tableView
+{
+    return (UITableView *)self.view;
+}
+
+@dynamic feed;
+
+- (MFWebFeed *)feed
+{
+    return m_feed;
+}
+
+- (void)setFeed:(MFWebFeed *)feed
+{
+    if(m_feed != feed) {
+        m_feed = feed;
+        [self.tableView reloadData];
+    }
+}
 
 - (IBAction)filter:(id)sender
 {
@@ -12,14 +38,27 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+#pragma mark UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
+#pragma mark UITableViewDelegate
 
 #pragma mark UIView
 
 - (void)loadView
 {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
+    MFTableView *tableView = [[MFTableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     
-    tableView.backgroundColor = [UIColor blueColor];
+    tableView.backgroundColor = [UIColor themeBackgroundColor];
     
     self.view = tableView;
 }

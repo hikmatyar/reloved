@@ -4,4 +4,9 @@
 
 @implementation MFWebFeed
 
++ (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind
+{
+    return nil;
+}
+
 @end
