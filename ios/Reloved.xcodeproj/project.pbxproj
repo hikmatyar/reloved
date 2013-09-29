@@ -118,6 +118,13 @@
 		8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */; };
 		81233D4C17F8CD7900C27805 /* MFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */; };
 		81233D4F17F8CEA500C27805 /* MFWebPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4E17F8CEA500C27805 /* MFWebPost.m */; };
+		81233D5517F8DDDF00C27805 /* MFSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D5417F8DDDF00C27805 /* MFSize.m */; };
+		81233D5817F8DDEA00C27805 /* MFColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D5717F8DDEA00C27805 /* MFColor.m */; };
+		81233D5B17F8DDF400C27805 /* MFType.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D5A17F8DDF400C27805 /* MFType.m */; };
+		81233D6117F8E00500C27805 /* MFDatabase+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D6017F8E00500C27805 /* MFDatabase+Color.m */; };
+		81233D6417F8E01000C27805 /* MFDatabase+Type.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D6317F8E01000C27805 /* MFDatabase+Type.m */; };
+		81233D6717F8E01A00C27805 /* MFDatabase+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D6617F8E01A00C27805 /* MFDatabase+Size.m */; };
+		81233D6A17F8E39100C27805 /* MFDatabaseProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D6917F8E39100C27805 /* MFDatabaseProxy.m */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -368,6 +375,20 @@
 		81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostTableViewCell.m; path = Sources/MFPostTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		81233D4D17F8CEA500C27805 /* MFWebPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebPost.h; path = Sources/MFWebPost.h; sourceTree = SOURCE_ROOT; };
 		81233D4E17F8CEA500C27805 /* MFWebPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebPost.m; path = Sources/MFWebPost.m; sourceTree = SOURCE_ROOT; };
+		81233D5317F8DDDF00C27805 /* MFSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSize.h; path = Sources/MFSize.h; sourceTree = SOURCE_ROOT; };
+		81233D5417F8DDDF00C27805 /* MFSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFSize.m; path = Sources/MFSize.m; sourceTree = SOURCE_ROOT; };
+		81233D5617F8DDEA00C27805 /* MFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFColor.h; path = Sources/MFColor.h; sourceTree = SOURCE_ROOT; };
+		81233D5717F8DDEA00C27805 /* MFColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFColor.m; path = Sources/MFColor.m; sourceTree = SOURCE_ROOT; };
+		81233D5917F8DDF400C27805 /* MFType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFType.h; path = Sources/MFType.h; sourceTree = SOURCE_ROOT; };
+		81233D5A17F8DDF400C27805 /* MFType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFType.m; path = Sources/MFType.m; sourceTree = SOURCE_ROOT; };
+		81233D5F17F8E00500C27805 /* MFDatabase+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFDatabase+Color.h"; path = "Sources/MFDatabase+Color.h"; sourceTree = SOURCE_ROOT; };
+		81233D6017F8E00500C27805 /* MFDatabase+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Color.m"; path = "Sources/MFDatabase+Color.m"; sourceTree = SOURCE_ROOT; };
+		81233D6217F8E01000C27805 /* MFDatabase+Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFDatabase+Type.h"; path = "Sources/MFDatabase+Type.h"; sourceTree = SOURCE_ROOT; };
+		81233D6317F8E01000C27805 /* MFDatabase+Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Type.m"; path = "Sources/MFDatabase+Type.m"; sourceTree = SOURCE_ROOT; };
+		81233D6517F8E01A00C27805 /* MFDatabase+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFDatabase+Size.h"; path = "Sources/MFDatabase+Size.h"; sourceTree = SOURCE_ROOT; };
+		81233D6617F8E01A00C27805 /* MFDatabase+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Size.m"; path = "Sources/MFDatabase+Size.m"; sourceTree = SOURCE_ROOT; };
+		81233D6817F8E39100C27805 /* MFDatabaseProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFDatabaseProxy.h; path = Sources/MFDatabaseProxy.h; sourceTree = SOURCE_ROOT; };
+		81233D6917F8E39100C27805 /* MFDatabaseProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFDatabaseProxy.m; path = Sources/MFDatabaseProxy.m; sourceTree = SOURCE_ROOT; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -626,14 +647,22 @@
 				811082B617F8B83A005CC8ED /* Models */,
 				811082AD17F8B66D005CC8ED /* MFDatabase.h */,
 				811082AE17F8B66D005CC8ED /* MFDatabase.m */,
+				81233D6817F8E39100C27805 /* MFDatabaseProxy.h */,
+				81233D6917F8E39100C27805 /* MFDatabaseProxy.m */,
 				811082C017F8BE8A005CC8ED /* MFDatabase+Bookmark.h */,
 				811082C117F8BE8A005CC8ED /* MFDatabase+Bookmark.m */,
+				81233D5F17F8E00500C27805 /* MFDatabase+Color.h */,
+				81233D6017F8E00500C27805 /* MFDatabase+Color.m */,
 				811082BA17F8BC57005CC8ED /* MFDatabase+Currency.h */,
 				811082BB17F8BC57005CC8ED /* MFDatabase+Currency.m */,
 				811082B017F8B75C005CC8ED /* MFDatabase+Feed.h */,
 				811082B117F8B75C005CC8ED /* MFDatabase+Feed.m */,
 				811082BD17F8BD09005CC8ED /* MFDatabase+Post.h */,
 				811082BE17F8BD09005CC8ED /* MFDatabase+Post.m */,
+				81233D6517F8E01A00C27805 /* MFDatabase+Size.h */,
+				81233D6617F8E01A00C27805 /* MFDatabase+Size.m */,
+				81233D6217F8E01000C27805 /* MFDatabase+Type.h */,
+				81233D6317F8E01000C27805 /* MFDatabase+Type.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -641,6 +670,8 @@
 		811082B617F8B83A005CC8ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				81233D5617F8DDEA00C27805 /* MFColor.h */,
+				81233D5717F8DDEA00C27805 /* MFColor.m */,
 				811082B717F8BA81005CC8ED /* MFCurrency.h */,
 				811082B817F8BA81005CC8ED /* MFCurrency.m */,
 				811082B317F8B7A8005CC8ED /* MFFeed.h */,
@@ -649,6 +680,10 @@
 				8119DFF017E06F0C007AEDC2 /* MFMoney.m */,
 				8119DFEC17E06F00007AEDC2 /* MFPost.h */,
 				8119DFED17E06F00007AEDC2 /* MFPost.m */,
+				81233D5317F8DDDF00C27805 /* MFSize.h */,
+				81233D5417F8DDDF00C27805 /* MFSize.m */,
+				81233D5917F8DDF400C27805 /* MFType.h */,
+				81233D5A17F8DDF400C27805 /* MFType.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1137,9 +1172,11 @@
 			files = (
 				818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */,
 				8120C15B17DFAFA600A1C3A9 /* MFNewPostController.m in Sources */,
+				81233D5817F8DDEA00C27805 /* MFColor.m in Sources */,
 				811082AF17F8B66D005CC8ED /* MFDatabase.m in Sources */,
 				8119DFE817E06E0B007AEDC2 /* MFWebAuthorization.m in Sources */,
 				8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */,
+				81233D6417F8E01000C27805 /* MFDatabase+Type.m in Sources */,
 				812F4ABA17DEFD4800454747 /* MFApplicationDelegate.m in Sources */,
 				81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */,
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
@@ -1159,6 +1196,7 @@
 				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,
 				811082A717F8B299005CC8ED /* NSArray+Additions.m in Sources */,
 				8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */,
+				81233D6717F8E01A00C27805 /* MFDatabase+Size.m in Sources */,
 				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
 				811082CF17F8CA8E005CC8ED /* SQLConnection.m in Sources */,
 				81B27B2717F6103700F9BC09 /* PKCard.m in Sources */,
@@ -1176,6 +1214,7 @@
 				8120C1CB17E0684E00A1C3A9 /* MFProfileController.m in Sources */,
 				81B27B2C17F6103700F9BC09 /* PKUSAddressZip.m in Sources */,
 				8120C1B217E0520E00A1C3A9 /* MFHomeHeaderView.m in Sources */,
+				81233D5517F8DDDF00C27805 /* MFSize.m in Sources */,
 				8120C16E17DFBF1200A1C3A9 /* NSDictionary+Additions.m in Sources */,
 				8120C17417E03CB900A1C3A9 /* MFMenu.m in Sources */,
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
@@ -1196,6 +1235,7 @@
 				812F4AE117DEFEE900454747 /* ASIDataCompressor.m in Sources */,
 				8119DFDC17E06DAA007AEDC2 /* MFWebSession.m in Sources */,
 				811082B217F8B75C005CC8ED /* MFDatabase+Feed.m in Sources */,
+				81233D6117F8E00500C27805 /* MFDatabase+Color.m in Sources */,
 				8120C16B17DFBD1200A1C3A9 /* MFPreferences.m in Sources */,
 				8110829F17F8AF4A005CC8ED /* MFPullToLoadMoreView.m in Sources */,
 				8120C14117DFA90300A1C3A9 /* UIFont+Additions.m in Sources */,
@@ -1204,6 +1244,7 @@
 				812F4AC217DEFE5300454747 /* JSONKit.m in Sources */,
 				81B27B1217F60F3700F9BC09 /* Stripe.m in Sources */,
 				811082C217F8BE8A005CC8ED /* MFDatabase+Bookmark.m in Sources */,
+				81233D5B17F8DDF400C27805 /* MFType.m in Sources */,
 				8120C1D117E068EF00A1C3A9 /* MFRecentsController.m in Sources */,
 				8119DFD317E06D85007AEDC2 /* MFWebFeed.m in Sources */,
 				8120C13E17DFA8F400A1C3A9 /* UIColor+Additions.m in Sources */,
@@ -1225,6 +1266,7 @@
 				81B27B2B17F6103700F9BC09 /* PKTextField.m in Sources */,
 				8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */,
 				812F4AC717DEFE9400454747 /* Reachability.m in Sources */,
+				81233D6A17F8E39100C27805 /* MFDatabaseProxy.m in Sources */,
 				81B27B2917F6103700F9BC09 /* PKCardExpiry.m in Sources */,
 				811082AA17F8B302005CC8ED /* MFDelta.m in Sources */,
 			);

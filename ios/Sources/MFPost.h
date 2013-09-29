@@ -22,6 +22,8 @@ typedef enum _MFPostStatus {
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 
+@property (nonatomic, retain, readonly) NSDictionary *attributes;
+
 @property (nonatomic, assign, readonly, getter = isActive) BOOL active;
 @property (nonatomic, retain, readonly) NSDate *created;
 @property (nonatomic, retain, readonly) NSString *identifier;

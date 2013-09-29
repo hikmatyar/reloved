@@ -1,16 +1,22 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFColor.h"
 #import "MFCurrency.h"
 #import "MFFeed.h"
 #import "MFPost.h"
+#import "MFSize.h"
+#import "MFType.h"
 #import "NSDictionary+Additions.h"
 
 #define KEY_CHANGES @"changes"
+#define KEY_COLORS @"colors"
 #define KEY_CURSOR @"cursor"
 #define KEY_CURRENCIES @"currencies"
 #define KEY_PREFIX @"prefix"
 #define KEY_POSTS @"posts"
+#define KEY_SIZES @"sizes"
 #define KEY_STATE @"state"
+#define KEY_TYPES @"types"
 #define KEY_OFFSET @"offset"
 
 @implementation MFFeed
@@ -25,6 +31,9 @@
         NSString *prefix = [attributes stringForKey:KEY_PREFIX];
         NSMutableArray *currencies = nil;
         NSMutableArray *posts = nil;
+        NSMutableArray *colors = nil;
+        NSMutableArray *types = nil;
+        NSMutableArray *sizes = nil;
         
         for(NSDictionary *json in [attributes arrayForKey:KEY_CURRENCIES]) {
             if([json isKindOfClass:klass]) {
@@ -54,11 +63,56 @@
             }
         }
         
+        for(NSDictionary *json in [attributes arrayForKey:KEY_COLORS]) {
+            if([json isKindOfClass:klass]) {
+                MFColor *color = [[MFColor alloc] initWithAttributes:json];
+                
+                if(color) {
+                    if(!colors) {
+                        colors = [NSMutableArray array];
+                    }
+                    
+                    [colors addObject:color];
+                }
+            }
+        }
+        
+        for(NSDictionary *json in [attributes arrayForKey:KEY_SIZES]) {
+            if([json isKindOfClass:klass]) {
+                MFSize *size = [[MFSize alloc] initWithAttributes:json];
+                
+                if(size) {
+                    if(!sizes) {
+                        sizes = [NSMutableArray array];
+                    }
+                    
+                    [sizes addObject:size];
+                }
+            }
+        }
+        
+        for(NSDictionary *json in [attributes arrayForKey:KEY_TYPES]) {
+            if([json isKindOfClass:klass]) {
+                MFType *type = [[MFType alloc] initWithAttributes:json];
+                
+                if(type) {
+                    if(!types) {
+                        types = [NSMutableArray array];
+                    }
+                    
+                    [types addObject:type];
+                }
+            }
+        }
+        
         m_changes = [attributes arrayForKey:KEY_CHANGES];
         m_cursor = ([cursor isEqualToString:@"end"]) ? kMFFeedCursorEnd : (([cursor isEqualToString:@"middle"]) ? kMFFeedCursorMiddle : kMFFeedCursorStart);
         m_currencies = currencies;
         m_prefix = (prefix) ? [NSURL URLWithString:prefix] : nil;
         m_posts = posts;
+        m_colors = colors;
+        m_sizes = sizes;
+        m_types = types;
         m_state = [attributes stringForKey:KEY_STATE];
         m_offset = [attributes integerForKey:KEY_OFFSET];
     }
@@ -111,10 +165,13 @@
 
 @synthesize changes = m_changes;
 @synthesize offset = m_offset;
+@synthesize colors = m_colors;
 @synthesize cursor = m_cursor;
 @synthesize currencies = m_currencies;
 @synthesize prefix = m_prefix;
 @synthesize posts = m_posts;
+@synthesize sizes = m_sizes;
+@synthesize types = m_types;
 @synthesize state = m_state;
 
 #pragma mark MFWebRequestTransform

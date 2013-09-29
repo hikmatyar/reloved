@@ -15,6 +15,13 @@
     return self;
 }
 
+@dynamic attributes;
+
+- (NSDictionary *)attributes
+{
+    return nil;
+}
+
 @dynamic active;
 
 - (BOOL)isActive
