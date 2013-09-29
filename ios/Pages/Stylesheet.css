@@ -1,0 +1,25 @@
+* {
+    font-family: 'HelveticaNeue'
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-image: url('../Blue-Dot.png');
+    background-size: 16 16;
+    background-repeat: no-repeat;
+    background-position: 0 2;
+    padding-left: 20;
+}
+
+/* Retina */
+
+@media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    li {
+        background-image: url('../Blue-Dot@2x.png');
+    }
+}
