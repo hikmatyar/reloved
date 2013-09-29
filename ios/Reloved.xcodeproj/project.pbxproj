@@ -16,6 +16,8 @@
 		8110829F17F8AF4A005CC8ED /* MFPullToLoadMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8110829E17F8AF4A005CC8ED /* MFPullToLoadMoreView.m */; };
 		811082A317F8B0E1005CC8ED /* PullToRefresh-Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 811082A117F8B0E1005CC8ED /* PullToRefresh-Arrow.png */; };
 		811082A417F8B0E1005CC8ED /* PullToRefresh-Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 811082A217F8B0E1005CC8ED /* PullToRefresh-Arrow@2x.png */; };
+		811082A717F8B299005CC8ED /* NSArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 811082A617F8B299005CC8ED /* NSArray+Additions.m */; };
+		811082AA17F8B302005CC8ED /* MFDelta.m in Sources */ = {isa = PBXBuildFile; fileRef = 811082A917F8B302005CC8ED /* MFDelta.m */; };
 		8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFC917E06BCC007AEDC2 /* MFImageView.m */; };
 		8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCC17E06BDB007AEDC2 /* MFTableView.m */; };
 		8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCF17E06BE8007AEDC2 /* MFTableViewCell.m */; };
@@ -191,6 +193,10 @@
 		811082A017F8B02E005CC8ED /* MFPullToLoadMoreViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFPullToLoadMoreViewDelegate.h; path = Sources/MFPullToLoadMoreViewDelegate.h; sourceTree = SOURCE_ROOT; };
 		811082A117F8B0E1005CC8ED /* PullToRefresh-Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PullToRefresh-Arrow.png"; path = "Images/PullToRefresh-Arrow.png"; sourceTree = "<group>"; };
 		811082A217F8B0E1005CC8ED /* PullToRefresh-Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PullToRefresh-Arrow@2x.png"; path = "Images/PullToRefresh-Arrow@2x.png"; sourceTree = "<group>"; };
+		811082A517F8B299005CC8ED /* NSArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+Additions.h"; path = "Sources/Additions/NSArray+Additions.h"; sourceTree = SOURCE_ROOT; };
+		811082A617F8B299005CC8ED /* NSArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Additions.m"; path = "Sources/Additions/NSArray+Additions.m"; sourceTree = SOURCE_ROOT; };
+		811082A817F8B302005CC8ED /* MFDelta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFDelta.h; path = Sources/MFDelta.h; sourceTree = SOURCE_ROOT; };
+		811082A917F8B302005CC8ED /* MFDelta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFDelta.m; path = Sources/MFDelta.m; sourceTree = SOURCE_ROOT; };
 		8119DFC817E06BCC007AEDC2 /* MFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageView.h; path = Sources/MFImageView.h; sourceTree = SOURCE_ROOT; };
 		8119DFC917E06BCC007AEDC2 /* MFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageView.m; path = Sources/MFImageView.m; sourceTree = SOURCE_ROOT; };
 		8119DFCB17E06BDB007AEDC2 /* MFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFTableView.h; path = Sources/MFTableView.h; sourceTree = SOURCE_ROOT; };
@@ -511,6 +517,8 @@
 				8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */,
 				8120C13817DFA82100A1C3A9 /* MFCartController.h */,
 				8120C13917DFA82100A1C3A9 /* MFCartController.m */,
+				811082A817F8B302005CC8ED /* MFDelta.h */,
+				811082A917F8B302005CC8ED /* MFDelta.m */,
 				812F4ABB17DEFDB400454747 /* MFFeedController.h */,
 				812F4ABC17DEFDB400454747 /* MFFeedController.m */,
 				8120C1CC17E0685A00A1C3A9 /* MFHistoryController.h */,
@@ -714,6 +722,8 @@
 		812F4ABE17DEFE2600454747 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				811082A517F8B299005CC8ED /* NSArray+Additions.h */,
+				811082A617F8B299005CC8ED /* NSArray+Additions.m */,
 				8120C16C17DFBF1200A1C3A9 /* NSDictionary+Additions.h */,
 				8120C16D17DFBF1200A1C3A9 /* NSDictionary+Additions.m */,
 				8120C16F17DFBFA700A1C3A9 /* NSString+Additions.h */,
@@ -1051,6 +1061,7 @@
 				8120C16617DFB7F100A1C3A9 /* MFWebController.m in Sources */,
 				8119DFD917E06D9B007AEDC2 /* MFWebResource.m in Sources */,
 				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,
+				811082A717F8B299005CC8ED /* NSArray+Additions.m in Sources */,
 				8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */,
 				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
 				81B27B2717F6103700F9BC09 /* PKCard.m in Sources */,
@@ -1109,6 +1120,7 @@
 				8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */,
 				812F4AC717DEFE9400454747 /* Reachability.m in Sources */,
 				81B27B2917F6103700F9BC09 /* PKCardExpiry.m in Sources */,
+				811082AA17F8B302005CC8ED /* MFDelta.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
