@@ -1,8 +1,21 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFPost.h"
 #import "MFPostController.h"
+#import "MFWebPost.h"
 
 @implementation MFPostController
+
+- (id)initWithPost:(MFWebPost *)post
+{
+    self = [super init];
+    
+    if(self) {
+        m_post = post;
+    }
+    
+    return self;
+}
 
 #pragma mark UIView
 

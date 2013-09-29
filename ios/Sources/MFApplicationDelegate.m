@@ -62,6 +62,9 @@
         leftMenuViewController:[[MFMenuController alloc] init]
         rightMenuViewController:nil];
     
+    // This is needed only because iOS 7.0 has a nasty rendering bug with tableviews without it. Relevant since iOS 7 june betas. Why wasn't it fixed in GM? Beats me! -- JP
+    ((UINavigationController *)controller.centerViewController).navigationBar.translucent = NO;
+    
     // Navigation title font
     ((UINavigationController *)controller.centerViewController).navigationBar.titleTextAttributes =
         [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:12.0F], UITextAttributeFont, nil];

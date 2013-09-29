@@ -12,7 +12,21 @@
 
 - (id)initWithScope:(MFBrowseControllerScope)scope
 {
-    self = [super init];
+    MFWebFeed *feed = nil;
+    
+    switch(scope) {
+        case kMFBrowseControllerScopeEditorial:
+            feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyEditorial];
+            break;
+        case kMFBrowseControllerScopeNew:
+            feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyNew];
+            break;
+        case kMFBrowseControllerScopeAll:
+            feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindAll];
+            break;
+    }
+    
+    self = [self initWithFeed:feed];
     
     if(self) {
         m_scope = scope;
@@ -65,7 +79,7 @@
                 break;
             case kMFBrowseControllerScopeAll:
                 feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindAll];
-                selectedIndex= 2;
+                selectedIndex = 2;
                 break;
         }
         

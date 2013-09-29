@@ -168,9 +168,14 @@
     return ([m_delegate respondsToSelector:@selector(tableView: heightForRowAtIndexPath:)]) ? [m_delegate tableView:tableView heightForRowAtIndexPath:indexPath] : tableView.rowHeight;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return ([m_delegate respondsToSelector:@selector(tableView: heightForHeaderInSection:)]) ? [m_delegate tableView:tableView heightForHeaderInSection:section] : tableView.sectionHeaderHeight;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return ([m_delegate respondsToSelector:@selector(tableView: heightForFooterInSection:)]) ? [m_delegate tableView:tableView heightForFooterInSection:section] : 0.0F;
+    return ([m_delegate respondsToSelector:@selector(tableView: heightForFooterInSection:)]) ? [m_delegate tableView:tableView heightForFooterInSection:section] : tableView.sectionFooterHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section

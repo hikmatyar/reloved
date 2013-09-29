@@ -116,6 +116,8 @@
 		8120C1CE17E0685A00A1C3A9 /* MFHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1CD17E0685A00A1C3A9 /* MFHistoryController.m */; };
 		8120C1D117E068EF00A1C3A9 /* MFRecentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1D017E068EF00A1C3A9 /* MFRecentsController.m */; };
 		8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */; };
+		81233D4C17F8CD7900C27805 /* MFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */; };
+		81233D4F17F8CEA500C27805 /* MFWebPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4E17F8CEA500C27805 /* MFWebPost.m */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -362,6 +364,10 @@
 		8120C1D017E068EF00A1C3A9 /* MFRecentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFRecentsController.m; path = Sources/MFRecentsController.m; sourceTree = SOURCE_ROOT; };
 		8120C1D217E0698F00A1C3A9 /* MFBrowseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFBrowseController.h; path = Sources/MFBrowseController.h; sourceTree = SOURCE_ROOT; };
 		8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFBrowseController.m; path = Sources/MFBrowseController.m; sourceTree = SOURCE_ROOT; };
+		81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostTableViewCell.h; path = Sources/MFPostTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostTableViewCell.m; path = Sources/MFPostTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		81233D4D17F8CEA500C27805 /* MFWebPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebPost.h; path = Sources/MFWebPost.h; sourceTree = SOURCE_ROOT; };
+		81233D4E17F8CEA500C27805 /* MFWebPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebPost.m; path = Sources/MFWebPost.m; sourceTree = SOURCE_ROOT; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -676,6 +682,8 @@
 				81B27B0117F60BE200F9BC09 /* MFImageButton.m */,
 				8119DFC817E06BCC007AEDC2 /* MFImageView.h */,
 				8119DFC917E06BCC007AEDC2 /* MFImageView.m */,
+				81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */,
+				81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */,
 				8110829D17F8AF4A005CC8ED /* MFPullToLoadMoreView.h */,
 				8110829E17F8AF4A005CC8ED /* MFPullToLoadMoreView.m */,
 				811082A017F8B02E005CC8ED /* MFPullToLoadMoreViewDelegate.h */,
@@ -699,6 +707,8 @@
 				8119DFE717E06E0B007AEDC2 /* MFWebAuthorization.m */,
 				8119DFD117E06D85007AEDC2 /* MFWebFeed.h */,
 				8119DFD217E06D85007AEDC2 /* MFWebFeed.m */,
+				81233D4D17F8CEA500C27805 /* MFWebPost.h */,
+				81233D4E17F8CEA500C27805 /* MFWebPost.m */,
 				8119DFD417E06D90007AEDC2 /* MFWebRequest.h */,
 				8119DFD517E06D90007AEDC2 /* MFWebRequest.m */,
 				81DE2D2517F5CA6E001D0ADF /* MFWebRequestTransform.h */,
@@ -1144,6 +1154,7 @@
 				8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */,
 				81DE2D2D17F5F166001D0ADF /* MFSeparatorView.m in Sources */,
 				8120C16617DFB7F100A1C3A9 /* MFWebController.m in Sources */,
+				81233D4C17F8CD7900C27805 /* MFPostTableViewCell.m in Sources */,
 				8119DFD917E06D9B007AEDC2 /* MFWebResource.m in Sources */,
 				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,
 				811082A717F8B299005CC8ED /* NSArray+Additions.m in Sources */,
@@ -1177,6 +1188,7 @@
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				81B27B1317F60F3700F9BC09 /* StripeError.m in Sources */,
 				811082BC17F8BC57005CC8ED /* MFDatabase+Currency.m in Sources */,
+				81233D4F17F8CEA500C27805 /* MFWebPost.m in Sources */,
 				8119DFD617E06D90007AEDC2 /* MFWebRequest.m in Sources */,
 				81B27B2A17F6103700F9BC09 /* PKCardNumber.m in Sources */,
 				811082B517F8B7A8005CC8ED /* MFFeed.m in Sources */,
