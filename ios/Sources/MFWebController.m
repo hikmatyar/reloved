@@ -2,15 +2,35 @@
 
 #import "MFWebController.h"
 
+@interface MFWebController_Delegate : NSObject <UIWebViewDelegate>
+
+@end
+
+@implementation MFWebController_Delegate
+
+#pragma mark UIWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return YES;
+}
+
+@end
+
+#pragma mark -
+
 @implementation MFWebController
 
 + (UIWebView *)sharedWebView
 {
+    __strong static MFWebController_Delegate *sharedWebDelegate = nil;
     __strong static UIWebView *sharedWebView = nil;
     static dispatch_once_t loaded = 0;
     
     dispatch_once(&loaded, ^{
+        sharedWebDelegate = [[MFWebController_Delegate alloc] init];
         sharedWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
+        sharedWebView.delegate = sharedWebDelegate;
         [sharedWebView loadHTMLString:@"<html><body></body></html>" baseURL:nil];
     });
     
