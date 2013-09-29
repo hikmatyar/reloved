@@ -40,6 +40,17 @@
 "Menu.Action.Cart" = "My Cart";
 "Menu.Action.Sell" = "Sell";
 
+/* Pull to Refresh View */
+
+"PullToRefresh.Label.Loading" = "Loading...";
+"PullToRefresh.Label.Pull" = "Pull down to refresh...";
+"PullToRefresh.Label.Release" = "Release to refresh...";
+
+/* Pull to Load View */
+
+"PullToLoadMore.Label.Loading" = "Loading...";
+"PullToLoadMore.Label.Pull" = "Load More...";
+
 /* Reachability */
 
 "Reachability.Action.Cancel" = "Cancel";
