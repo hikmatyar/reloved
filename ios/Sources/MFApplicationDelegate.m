@@ -8,6 +8,8 @@
 #import "MFWebController.h"
 #import "MFWebService.h"
 #import "MFWebServiceAuthenticationChallenge.h"
+#import "UIColor+Additions.h"
+#import "UIFont+Additions.h"
 
 @implementation MFApplicationDelegate
 
@@ -59,6 +61,13 @@
         containerWithCenterViewController:[[UINavigationController alloc] initWithRootViewController:[[MFHomeController alloc] init]]
         leftMenuViewController:[[MFMenuController alloc] init]
         rightMenuViewController:nil];
+    
+    // Navigation title font
+    ((UINavigationController *)controller.centerViewController).navigationBar.titleTextAttributes =
+        [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:12.0F], UITextAttributeFont, nil];
+    // Navigation button font
+    [[UIBarButtonItem appearance] setTitleTextAttributes:
+        [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:12.0F], UITextAttributeFont, nil] forState:UIControlStateNormal];
     
     [MFWebService sharedService].delegate = self;
     m_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
