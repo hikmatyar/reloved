@@ -1,13 +1,35 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFFeedController.h"
+#import "MFDelta.h"
 #import "MFPostController.h"
+#import "MFPullToLoadMoreView.h"
+#import "MFPullToLoadMoreViewDelegate.h"
+#import "MFPullToRefreshView.h"
+#import "MFPullToRefreshViewDelegate.h"
 #import "MFTableView.h"
 #import "MFWebFeed.h"
+#import "NSArray+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
+#define TAG_TABLEVIEW 2000
+#define TAG_PULLTOREFRESH 2001
+
 @implementation MFFeedController
+
+- (id)initWithFeed:(MFWebFeed *)feed
+{
+    self = [super init];
+    
+    if(self) {
+        m_feed = feed;
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Filter"] style:UIBarButtonItemStyleBordered target:self action:@selector(filter:)];
+    }
+    
+    return self;
+}
 
 @dynamic tableView;
 
@@ -67,13 +89,7 @@
 
 - (id)init
 {
-    self = [super init];
-    
-    if(self) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Filter"] style:UIBarButtonItemStyleBordered target:self action:@selector(filter:)];
-    }
-    
-    return self;
+    return [self initWithFeed:nil];
 }
 
 @end

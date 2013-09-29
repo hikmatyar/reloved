@@ -2,7 +2,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class MFWebResources, MFWebSession, MFWebUser;
+@class MFWebRequest, MFWebResources, MFWebSession, MFWebUser;
 @protocol MFWebServiceAuthenticationChallenge, MFWebServiceDelegate;
 
 @interface MFWebService : NSObject
@@ -30,6 +30,7 @@
 - (void)login;
 - (void)logout;
 
+- (void)addRequest:(MFWebRequest *)request;
 - (void)cancelRequestsForTarget:(id)target;
 - (void)cancelRequestsForTarget:(id)target waitUntilFinished:(BOOL)flag;
 - (void)cancelAllRequests;
