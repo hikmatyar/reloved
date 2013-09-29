@@ -67,10 +67,10 @@
     
     // Navigation title font
     ((UINavigationController *)controller.centerViewController).navigationBar.titleTextAttributes =
-        [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:12.0F], UITextAttributeFont, nil];
+        [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], UITextAttributeFont, nil];
     // Navigation button font
     [[UIBarButtonItem appearance] setTitleTextAttributes:
-        [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:12.0F], UITextAttributeFont, nil] forState:UIControlStateNormal];
+        [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], UITextAttributeFont, nil] forState:UIControlStateNormal];
     
     [MFWebService sharedService].delegate = self;
     m_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
