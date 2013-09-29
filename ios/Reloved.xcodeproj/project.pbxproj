@@ -10,6 +10,8 @@
 		810D05FF17DEFC220058CE52 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D05FE17DEFC220058CE52 /* UIKit.framework */; };
 		810D060117DEFC220058CE52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D060017DEFC220058CE52 /* Foundation.framework */; };
 		810D060317DEFC220058CE52 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810D060217DEFC220058CE52 /* CoreGraphics.framework */; };
+		8110829817F8809F005CC8ED /* Blue-Dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 8110829617F8809F005CC8ED /* Blue-Dot.png */; };
+		8110829917F8809F005CC8ED /* Blue-Dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8110829717F8809F005CC8ED /* Blue-Dot@2x.png */; };
 		8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFC917E06BCC007AEDC2 /* MFImageView.m */; };
 		8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCC17E06BDB007AEDC2 /* MFTableView.m */; };
 		8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCF17E06BE8007AEDC2 /* MFTableViewCell.m */; };
@@ -176,6 +178,8 @@
 		810D05FE17DEFC220058CE52 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		810D060017DEFC220058CE52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		810D060217DEFC220058CE52 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8110829617F8809F005CC8ED /* Blue-Dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Blue-Dot.png"; path = "Images/Blue-Dot.png"; sourceTree = "<group>"; };
+		8110829717F8809F005CC8ED /* Blue-Dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Blue-Dot@2x.png"; path = "Images/Blue-Dot@2x.png"; sourceTree = "<group>"; };
 		8119DFC817E06BCC007AEDC2 /* MFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageView.h; path = Sources/MFImageView.h; sourceTree = SOURCE_ROOT; };
 		8119DFC917E06BCC007AEDC2 /* MFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageView.m; path = Sources/MFImageView.m; sourceTree = SOURCE_ROOT; };
 		8119DFCB17E06BDB007AEDC2 /* MFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFTableView.h; path = Sources/MFTableView.h; sourceTree = SOURCE_ROOT; };
@@ -628,6 +632,8 @@
 			isa = PBXGroup;
 			children = (
 				81B27B2E17F6105F00F9BC09 /* Stripe */,
+				8110829617F8809F005CC8ED /* Blue-Dot.png */,
+				8110829717F8809F005CC8ED /* Blue-Dot@2x.png */,
 				812F4AAF17DEFD0300454747 /* Default-568h@2x.png */,
 				812F4AB017DEFD0300454747 /* Default.png */,
 				81DE2D3117F5FCC4001D0ADF /* Disclosure-Indicator.png */,
@@ -975,6 +981,7 @@
 				8120C15017DFAD8C00A1C3A9 /* Menu-Search.png in Resources */,
 				8120C19A17E0470300A1C3A9 /* Home-BrowseNew@2x.png in Resources */,
 				8120C19517E0470300A1C3A9 /* Home-BrowseAll.png in Resources */,
+				8110829817F8809F005CC8ED /* Blue-Dot.png in Resources */,
 				8120C14F17DFAD8C00A1C3A9 /* Menu-News@2x.png in Resources */,
 				81B27B5017F6107100F9BC09 /* discover@2x.png in Resources */,
 				8120C1B717E0532500A1C3A9 /* Home-ShopByDress.png in Resources */,
@@ -982,6 +989,7 @@
 				81DE2D3317F5FCC4001D0ADF /* Disclosure-Indicator.png in Resources */,
 				8120C1A217E0470300A1C3A9 /* Home-Recents@2x.png in Resources */,
 				8120C1A017E0470300A1C3A9 /* Home-Profile@2x.png in Resources */,
+				8110829917F8809F005CC8ED /* Blue-Dot@2x.png in Resources */,
 				81B27B4F17F6107100F9BC09 /* discover.png in Resources */,
 				812F4AB317DEFD0300454747 /* Default.png in Resources */,
 				8120C19317E0470300A1C3A9 /* Home-Bookmarks.png in Resources */,
