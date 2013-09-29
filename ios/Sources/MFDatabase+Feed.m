@@ -2,13 +2,19 @@
 
 #import "JSONKit.h"
 #import "MFDatabase+Feed.h"
+#import "MFDatabase+Post.h"
 #import "MFDatabaseProxy.h"
 #import "MFFeed.h"
+#import "MFPost.h"
 #import "SQLObjectStore.h"
 
 NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
 
+#define FEED_EXPIRES 24.0F * 60.0F * 60.0F
+#define FEED_EXPIRES_HISTORY 24.0F * 60.0F * 60.0F * 7.0F
 #define FEED_BOOKMARKS @"bookmarks"
+#define FEED_HISTORY @"history"
+
 #define TABLE_FEED @"feeds"
 
 @interface MFDatabaseProxy_Feed : MFDatabaseProxy
@@ -38,6 +44,31 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
 
 @implementation MFDatabase(Feed)
 
++ (NSString *)feedTableName
+{
+    return TABLE_FEED;
+}
+
++ (NSTimeInterval)feedExpires
+{
+    return FEED_EXPIRES;
+}
+
++ (NSTimeInterval)feedExpiresHistory
+{
+    return FEED_EXPIRES_HISTORY;
+}
+
++ (NSString *)feedIdentifierBookmarks
+{
+    return FEED_BOOKMARKS;
+}
+
++ (NSString *)feedIdentifierHistory
+{
+    return FEED_HISTORY;
+}
+
 - (void)attach_proxy_feeds
 {
     [self.store setObjectUnlessExists:[[NSDictionary dictionary] JSONData] forKey:FEED_BOOKMARKS inTable:TABLE_FEED];
@@ -46,24 +77,53 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
 
 - (MFFeed *)feedForIdentifier:(NSString *)identifier ttl:(NSTimeInterval *)ttl
 {
-    return nil;
+    NSDictionary *attributes = [[m_store objectForKey:identifier inTable:TABLE_FEED ttl:ttl] objectFromJSONData];
+    
+    if(ttl && attributes) {
+        *ttl = ([identifier isEqualToString:FEED_HISTORY]) ? *ttl - FEED_EXPIRES_HISTORY : *ttl - FEED_EXPIRES;
+    }
+    
+    return ([attributes isKindOfClass:[NSDictionary class]]) ? [[MFFeed alloc] initWithAttributes:attributes] : nil;
 }
 
 - (void)setFeed:(MFFeed *)feed forIdentifier:(NSString *)identifier ttl:(NSTimeInterval *)ttl
 {
+    NSTimeInterval expires = [NSDate timeIntervalSinceReferenceDate];
+    
+    expires += ([identifier isEqualToString:FEED_HISTORY]) ? FEED_EXPIRES_HISTORY : FEED_EXPIRES;
+    
+    [m_store setObject:(feed) ? [feed.attributes JSONData] : nil
+               expires:expires
+                forKey:identifier
+               inTable:TABLE_FEED];
+    
+    if(ttl && [m_store objectForKey:identifier inTable:TABLE_FEED ttl:ttl]) {
+        *ttl = ([identifier isEqualToString:FEED_HISTORY]) ? *ttl - FEED_EXPIRES_HISTORY : *ttl - FEED_EXPIRES;
+    }
+    
+    [self addUpdate:MFDatabaseDidChangeFeedsNotification change:identifier];
 }
 
 - (NSArray *)postsForFeed:(NSString *)identifier
 {
-    return nil;
+    return [m_store associationsForKey:identifier inTable:TABLE_FEED forTable:[self.class postTableName] usingBlock:^id (NSString *key, NSData *value) {
+        return [[MFPost alloc] initWithAttributes:[value objectFromJSONData]];
+    }];
 }
 
 - (void)setPosts:(NSArray *)posts forFeed:(NSString *)identifier
 {
+    [m_store dissociateKey:identifier inTable:TABLE_FEED withKeysInTable:[self.class postTableName]];
+    [self addPosts:posts forFeed:identifier];
 }
 
 - (void)addPosts:(NSArray *)posts forFeed:(NSString *)identifier
 {
+    for(MFPost *post in posts) {
+        [m_store associateKey:identifier inTable:TABLE_FEED withKey:post.identifier inTable:[self.class postTableName]];
+    }
+    
+    [self addUpdate:MFDatabaseDidChangeFeedsNotification change:identifier];
 }
 
 @end

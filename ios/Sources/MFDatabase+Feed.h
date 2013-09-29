@@ -8,6 +8,12 @@ extern NSString *MFDatabaseDidChangeFeedsNotification;
 
 @interface MFDatabase(Feed)
 
++ (NSString *)feedTableName;
++ (NSTimeInterval)feedExpires;
++ (NSTimeInterval)feedExpiresHistory;
++ (NSString *)feedIdentifierBookmarks;
++ (NSString *)feedIdentifierHistory;
+
 - (MFFeed *)feedForIdentifier:(NSString *)identifier ttl:(NSTimeInterval *)ttl;
 - (void)setFeed:(MFFeed *)feed forIdentifier:(NSString *)identifier ttl:(NSTimeInterval *)ttl;
 

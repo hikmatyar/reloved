@@ -8,4 +8,6 @@ extern NSString *MFDatabaseDidChangeColorsNotification;
 
 @interface MFDatabase(Color)
 
+@property (nonatomic, copy) NSArray *colors;
+
 @end

@@ -8,4 +8,6 @@ extern NSString *MFDatabaseDidChangeTypesNotification;
 
 @interface MFDatabase(Type)
 
+@property (nonatomic, copy) NSArray *types;
+
 @end

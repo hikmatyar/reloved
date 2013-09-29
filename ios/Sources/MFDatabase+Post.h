@@ -8,6 +8,8 @@ extern NSString *MFDatabaseDidChangePostsNotification;
 
 @interface MFDatabase(Post)
 
++ (NSString *)postTableName;
+
 @property (nonatomic, copy) NSArray *posts;
 - (MFPost *)postForIdentifier:(NSString *)identifier;
 - (void)setPost:(MFPost *)post forIdentifier:(NSString *)identifier;

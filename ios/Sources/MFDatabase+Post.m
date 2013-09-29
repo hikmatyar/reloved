@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "JSONKit.h"
+#import "MFDatabase+Feed.h"
 #import "MFDatabase+Post.h"
 #import "MFDatabaseProxy.h"
 #import "MFPost.h"
@@ -8,7 +9,6 @@
 
 NSString *MFDatabaseDidChangePostsNotification = @"MFDatabaseDidChangePosts";
 
-#define FEED_EXPIRES 24.0F * 60.0F * 60.0F
 #define TABLE_POSTS @"posts"
 
 @interface MFDatabaseProxy_Post : MFDatabaseProxy
@@ -38,6 +38,11 @@ NSString *MFDatabaseDidChangePostsNotification = @"MFDatabaseDidChangePosts";
 #pragma mark -
 
 @implementation MFDatabase(Post)
+
++ (NSString *)postTableName
+{
+    return TABLE_POSTS;
+}
 
 - (void)attach_proxy_posts
 {
@@ -69,9 +74,9 @@ NSString *MFDatabaseDidChangePostsNotification = @"MFDatabaseDidChangePosts";
     NSArray *s_posts = [m_state objectForKey:TABLE_POSTS];
     
     if(!posts || s_posts != posts) {
-        NSTimeInterval expires = [NSDate timeIntervalSinceReferenceDate] + FEED_EXPIRES;
+        NSTimeInterval expires = [NSDate timeIntervalSinceReferenceDate] + [self.class feedExpires];
         
-        [m_state setObject:posts forKey:TABLE_POSTS];
+        [m_state setValue:posts forKey:TABLE_POSTS];
         [m_store removeAllObjectsInTable:TABLE_POSTS];
         
         for(MFPost *post in posts) {
@@ -96,7 +101,7 @@ NSString *MFDatabaseDidChangePostsNotification = @"MFDatabaseDidChangePosts";
 - (void)setPost:(MFPost *)post forIdentifier:(NSString *)identifier
 {
     [m_state removeObjectForKey:TABLE_POSTS];
-    [m_store setObject:[post.attributes JSONData] expires:[NSDate timeIntervalSinceReferenceDate] + FEED_EXPIRES forKey:post.identifier inTable:TABLE_POSTS];
+    [m_store setObject:[post.attributes JSONData] expires:[NSDate timeIntervalSinceReferenceDate] + [self.class feedExpires] forKey:post.identifier inTable:TABLE_POSTS];
     [self addUpdate:MFDatabaseDidChangePostsNotification change:identifier];
 }
 

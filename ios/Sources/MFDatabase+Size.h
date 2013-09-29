@@ -8,4 +8,6 @@ extern NSString *MFDatabaseDidChangeSizesNotification;
 
 @interface MFDatabase(Size)
 
+@property (nonatomic, copy) NSArray *sizes;
+
 @end
