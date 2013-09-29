@@ -7,6 +7,11 @@
 
 @implementation MFPullToLoadMoreView
 
++ (CGFloat)preferredHeight
+{
+    return 52.0F;
+}
+
 @synthesize delegate = m_delegate;
 @synthesize loading = m_loading;
 

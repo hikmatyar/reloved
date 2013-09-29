@@ -197,6 +197,7 @@
 		811082A617F8B299005CC8ED /* NSArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+Additions.m"; path = "Sources/Additions/NSArray+Additions.m"; sourceTree = SOURCE_ROOT; };
 		811082A817F8B302005CC8ED /* MFDelta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFDelta.h; path = Sources/MFDelta.h; sourceTree = SOURCE_ROOT; };
 		811082A917F8B302005CC8ED /* MFDelta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFDelta.m; path = Sources/MFDelta.m; sourceTree = SOURCE_ROOT; };
+		811082AB17F8B4C4005CC8ED /* MFPullToRefreshViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFPullToRefreshViewDelegate.h; path = Sources/MFPullToRefreshViewDelegate.h; sourceTree = SOURCE_ROOT; };
 		8119DFC817E06BCC007AEDC2 /* MFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageView.h; path = Sources/MFImageView.h; sourceTree = SOURCE_ROOT; };
 		8119DFC917E06BCC007AEDC2 /* MFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageView.m; path = Sources/MFImageView.m; sourceTree = SOURCE_ROOT; };
 		8119DFCB17E06BDB007AEDC2 /* MFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFTableView.h; path = Sources/MFTableView.h; sourceTree = SOURCE_ROOT; };
@@ -591,6 +592,7 @@
 				811082A017F8B02E005CC8ED /* MFPullToLoadMoreViewDelegate.h */,
 				8110829A17F8AF35005CC8ED /* MFPullToRefreshView.h */,
 				8110829B17F8AF35005CC8ED /* MFPullToRefreshView.m */,
+				811082AB17F8B4C4005CC8ED /* MFPullToRefreshViewDelegate.h */,
 				81DE2D2B17F5F166001D0ADF /* MFSeparatorView.h */,
 				81DE2D2C17F5F166001D0ADF /* MFSeparatorView.m */,
 				8119DFCB17E06BDB007AEDC2 /* MFTableView.h */,

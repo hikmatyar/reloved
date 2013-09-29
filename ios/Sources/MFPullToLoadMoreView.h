@@ -13,6 +13,8 @@
     UILabel *m_textLabel;
 }
 
++ (CGFloat)preferredHeight;
+
 @property (nonatomic, assign) id <MFPullToLoadMoreViewDelegate> delegate;
 @property (nonatomic, assign, readonly, getter = isLoading) BOOL loading;
 

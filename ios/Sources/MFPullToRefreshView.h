@@ -2,16 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MFPullToRefreshView;
-
-@protocol MFPullToRefreshViewDelegate <UITableViewDelegate>
-
-@optional
-
-- (void)pullToRefresh:(MFPullToRefreshView *)pullToRefreshView;
-- (void)pullToLoadMore:(MFPullToRefreshView *)pullToRefreshView;
-
-@end
+@protocol MFPullToRefreshViewDelegate;
 
 @interface MFPullToRefreshView : UIView <UIScrollViewDelegate, UITableViewDelegate>
 {

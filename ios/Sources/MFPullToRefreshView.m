@@ -2,6 +2,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "MFPullToRefreshView.h"
+#import "MFPullToRefreshViewDelegate.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
