@@ -35,6 +35,11 @@
     if(self) {
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         
+        if(feed && feed.kind != kMFWebFeedKindBookmarks) {
+            m_pullToLoadMoreView = [[MFPullToLoadMoreView alloc] initWithFrame:CGRectMake(0.0F, 30.0F, 320.0F, 52.0F)];
+            m_pullToLoadMoreView.delegate = (id <MFPullToLoadMoreViewDelegate>)self;
+        }
+        
         m_autoRefresh = YES;
         m_feed = feed;
         

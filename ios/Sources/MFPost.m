@@ -15,6 +15,7 @@
     if(self) {
         m_identifier = [attributes identifierForKey:KEY_IDENTIFIER];
         m_title = [attributes stringForKey:KEY_TITLE];
+        m_status = kMFPostStatusListed;
         
         if(!m_identifier) {
             return nil;
@@ -46,7 +47,7 @@
 
 - (BOOL)update:(NSDictionary *)changes
 {
-    return NO;
+    return YES;
 }
 
 @end
