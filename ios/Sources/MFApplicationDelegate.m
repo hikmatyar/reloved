@@ -66,8 +66,9 @@
     ((UINavigationController *)controller.centerViewController).navigationBar.translucent = NO;
     
     // Navigation title font
-    ((UINavigationController *)controller.centerViewController).navigationBar.titleTextAttributes =
-        [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], UITextAttributeFont, nil];
+    [[UINavigationBar appearance] setTitleTextAttributes:
+        [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], UITextAttributeFont, nil]];
+    
     // Navigation button font
     [[UIBarButtonItem appearance] setTitleTextAttributes:
         [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], UITextAttributeFont, nil] forState:UIControlStateNormal];

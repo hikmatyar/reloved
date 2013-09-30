@@ -3,6 +3,7 @@
 #import "MFPreferences.h"
 
 #define KEY_BOOKMARKS @"bookmarks"
+#define KEY_CATEGORY @"category"
 #define KEY_SIZES @"sizes"
 #define KEY_TYPES @"types"
 
@@ -32,6 +33,21 @@
     if(!MFEqual(m_bookmarks, bookmarks)) {
         m_bookmarks = bookmarks;
         [[NSUserDefaults standardUserDefaults] setObject:m_bookmarks forKey:KEY_BOOKMARKS];
+    }
+}
+
+@dynamic category;
+
+- (NSInteger)category
+{
+    return m_category;
+}
+
+- (void)setCategory:(NSInteger)category
+{
+    if(m_category != category) {
+        m_category = category;
+        [[NSUserDefaults standardUserDefaults] setInteger:m_category forKey:KEY_CATEGORY];
     }
 }
 
@@ -75,6 +91,7 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         m_bookmarks = [defaults arrayForKey:KEY_BOOKMARKS];
+        m_category = [defaults integerForKey:KEY_CATEGORY];
         m_sizes = [defaults arrayForKey:KEY_SIZES];
         m_types = [defaults arrayForKey:KEY_TYPES];
     }

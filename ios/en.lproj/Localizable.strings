@@ -1,12 +1,17 @@
 
 /* Browse Controller */
 
+"Browse.Action.Done" = "Done";
 "Browse.Action.ShowAll" = "View All";
 "Browse.Action.ShowEditorial" = "Editor's Picks";
 "Browse.Action.ShowNew" = "Just In";
+"Browse.Action.Size" = "Size";
+"Browse.Action.Type" = "Type";
 "Browse.Format.Results" = "%d result";
 "Browse.Format.Results.None" = "no results";
 "Browse.Format.Results.Plural" = "%d results";
+"Browse.Label.Size" = "UK Size";
+"Browse.Label.Type" = "Dress Type";
 "Browse.Title" = "Browse";
 
 /* Home Controller */

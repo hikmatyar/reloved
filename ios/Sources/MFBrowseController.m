@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFBrowseController.h"
+#import "MFBrowseFilterController.h"
 #import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -30,6 +31,7 @@
     
     if(self) {
         m_scope = scope;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Filter"] style:UIBarButtonItemStyleBordered target:self action:@selector(filter:)];
         self.navigationItem.title = NSLocalizedString(@"Browse.Title", nil);
     }
     
@@ -89,6 +91,13 @@
         
         self.feed = feed;
     }
+}
+
+- (IBAction)filter:(id)sender
+{
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:[[MFBrowseFilterController alloc] init]];
+    
+    [self presentViewController:controller animated:YES completion:NULL];
 }
 
 - (IBAction)scope:(id)sender

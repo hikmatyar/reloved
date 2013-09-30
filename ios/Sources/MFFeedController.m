@@ -18,7 +18,7 @@
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
-#define ID_CELL @"cell"
+#define CELL_IDENTIFIER @"cell"
 
 #define TAG_TABLEVIEW 2000
 #define TAG_PULLTOREFRESH 2001
@@ -37,8 +37,6 @@
         
         m_autoRefresh = YES;
         m_feed = feed;
-        
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Filter"] style:UIBarButtonItemStyleBordered target:self action:@selector(filter:)];
         
         [center addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     }
@@ -82,13 +80,6 @@
             [m_feed loadForward];
         }
     }
-}
-
-- (IBAction)filter:(id)sender
-{
-    MFPostController *controller = [[MFPostController alloc] init];
-    
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)applicationWillResignActive:(NSNotification *)notification
@@ -229,10 +220,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MFPost *post = [m_posts objectAtIndex:indexPath.row];
-    MFPostTableViewCell *cell = (MFPostTableViewCell *)[tableView dequeueReusableCellWithIdentifier:ID_CELL];
+    MFPostTableViewCell *cell = (MFPostTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     
     if(!cell) {
-        cell = [[MFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID_CELL];
+        cell = [[MFPostTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_IDENTIFIER];
     }
     
     cell.post = post;

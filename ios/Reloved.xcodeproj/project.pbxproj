@@ -132,6 +132,7 @@
 		81233D7917F8F27100C27805 /* MFDatabase+Delivery.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D7817F8F27100C27805 /* MFDatabase+Delivery.m */; };
 		81233D7C17F8F27C00C27805 /* MFDatabase+Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D7B17F8F27C00C27805 /* MFDatabase+Country.m */; };
 		81233D7F17F8F28700C27805 /* MFDatabase+Brand.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D7E17F8F28700C27805 /* MFDatabase+Brand.m */; };
+		81233D8217F8F9C800C27805 /* MFBrowseFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D8117F8F9C800C27805 /* MFBrowseFilterController.m */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -410,6 +411,8 @@
 		81233D7B17F8F27C00C27805 /* MFDatabase+Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Country.m"; path = "Sources/MFDatabase+Country.m"; sourceTree = SOURCE_ROOT; };
 		81233D7D17F8F28700C27805 /* MFDatabase+Brand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFDatabase+Brand.h"; path = "Sources/MFDatabase+Brand.h"; sourceTree = SOURCE_ROOT; };
 		81233D7E17F8F28700C27805 /* MFDatabase+Brand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Brand.m"; path = "Sources/MFDatabase+Brand.m"; sourceTree = SOURCE_ROOT; };
+		81233D8017F8F9C800C27805 /* MFBrowseFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFBrowseFilterController.h; path = Sources/MFBrowseFilterController.h; sourceTree = SOURCE_ROOT; };
+		81233D8117F8F9C800C27805 /* MFBrowseFilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFBrowseFilterController.m; path = Sources/MFBrowseFilterController.m; sourceTree = SOURCE_ROOT; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -604,6 +607,8 @@
 				8120C1C717E0681300A1C3A9 /* MFBookmarksController.m */,
 				8120C1D217E0698F00A1C3A9 /* MFBrowseController.h */,
 				8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */,
+				81233D8017F8F9C800C27805 /* MFBrowseFilterController.h */,
+				81233D8117F8F9C800C27805 /* MFBrowseFilterController.m */,
 				8120C13817DFA82100A1C3A9 /* MFCartController.h */,
 				8120C13917DFA82100A1C3A9 /* MFCartController.m */,
 				811082A817F8B302005CC8ED /* MFDelta.h */,
@@ -1227,6 +1232,7 @@
 				8119DFF817E0A1E6007AEDC2 /* MFTracker.m in Sources */,
 				8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */,
 				81DE2D2D17F5F166001D0ADF /* MFSeparatorView.m in Sources */,
+				81233D8217F8F9C800C27805 /* MFBrowseFilterController.m in Sources */,
 				8120C16617DFB7F100A1C3A9 /* MFWebController.m in Sources */,
 				81233D4C17F8CD7900C27805 /* MFPostTableViewCell.m in Sources */,
 				8119DFD917E06D9B007AEDC2 /* MFWebResource.m in Sources */,
