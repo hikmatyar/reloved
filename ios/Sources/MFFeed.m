@@ -1,17 +1,23 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFBrand.h"
 #import "MFColor.h"
+#import "MFCountry.h"
 #import "MFCurrency.h"
+#import "MFDelivery.h"
 #import "MFFeed.h"
 #import "MFPost.h"
 #import "MFSize.h"
 #import "MFType.h"
 #import "NSDictionary+Additions.h"
 
+#define KEY_BRANDS @"brands"
 #define KEY_CHANGES @"changes"
 #define KEY_COLORS @"colors"
+#define KEY_COUNTRIES @"countries"
 #define KEY_CURSOR @"cursor"
 #define KEY_CURRENCIES @"currencies"
+#define KEY_DELIVERIES @"deliveries"
 #define KEY_PREFIX @"prefix"
 #define KEY_POSTS @"posts"
 #define KEY_SIZES @"sizes"
@@ -31,7 +37,10 @@
         NSString *prefix = [attributes stringForKey:KEY_PREFIX];
         NSMutableArray *currencies = nil;
         NSMutableArray *posts = nil;
+        NSMutableArray *brands = nil;
         NSMutableArray *colors = nil;
+        NSMutableArray *countries = nil;
+        NSMutableArray *deliveries = nil;
         NSMutableArray *types = nil;
         NSMutableArray *sizes = nil;
         
@@ -63,6 +72,20 @@
             }
         }
         
+        for(NSDictionary *json in [attributes arrayForKey:KEY_BRANDS]) {
+            if([json isKindOfClass:klass]) {
+                MFBrand *brand = [[MFBrand alloc] initWithAttributes:json];
+                
+                if(brand) {
+                    if(!brands) {
+                        brands = [NSMutableArray array];
+                    }
+                    
+                    [brands addObject:brand];
+                }
+            }
+        }
+        
         for(NSDictionary *json in [attributes arrayForKey:KEY_COLORS]) {
             if([json isKindOfClass:klass]) {
                 MFColor *color = [[MFColor alloc] initWithAttributes:json];
@@ -73,6 +96,34 @@
                     }
                     
                     [colors addObject:color];
+                }
+            }
+        }
+        
+        for(NSDictionary *json in [attributes arrayForKey:KEY_COUNTRIES]) {
+            if([json isKindOfClass:klass]) {
+                MFCountry *country = [[MFCountry alloc] initWithAttributes:json];
+                
+                if(country) {
+                    if(!countries) {
+                        countries = [NSMutableArray array];
+                    }
+                    
+                    [countries addObject:country];
+                }
+            }
+        }
+        
+        for(NSDictionary *json in [attributes arrayForKey:KEY_DELIVERIES]) {
+            if([json isKindOfClass:klass]) {
+                MFDelivery *delivery = [[MFDelivery alloc] initWithAttributes:json];
+                
+                if(delivery) {
+                    if(!deliveries) {
+                        deliveries = [NSMutableArray array];
+                    }
+                    
+                    [deliveries addObject:delivery];
                 }
             }
         }
@@ -110,7 +161,10 @@
         m_currencies = currencies;
         m_prefix = (prefix) ? [NSURL URLWithString:prefix] : nil;
         m_posts = posts;
+        m_brands = brands;
         m_colors = colors;
+        m_countries = countries;
+        m_deliveries = deliveries;
         m_sizes = sizes;
         m_types = types;
         m_state = [attributes stringForKey:KEY_STATE];
@@ -163,7 +217,10 @@
     return attributes;
 }
 
+@synthesize brands = m_brands;
 @synthesize changes = m_changes;
+@synthesize countries = m_countries;
+@synthesize deliveries = m_deliveries;
 @synthesize offset = m_offset;
 @synthesize colors = m_colors;
 @synthesize cursor = m_cursor;
