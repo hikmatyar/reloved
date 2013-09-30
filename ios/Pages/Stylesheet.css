@@ -16,6 +16,10 @@ li {
     padding-left: 20;
 }
 
+table {
+    font-size: 12px;
+}
+
 /* Retina */
 
 @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
