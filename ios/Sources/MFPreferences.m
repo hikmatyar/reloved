@@ -4,8 +4,8 @@
 
 #define KEY_BOOKMARKS @"bookmarks"
 #define KEY_CATEGORY @"category"
-#define KEY_SIZES @"sizes"
-#define KEY_TYPES @"types"
+#define KEY_EXCLUDE_SIZES @"excludeSizes"
+#define KEY_EXCLUDE_TYPES @"excludeTypes"
 
 @implementation MFPreferences
 
@@ -51,33 +51,33 @@
     }
 }
 
-@dynamic sizes;
+@dynamic excludeSizes;
 
-- (NSArray *)sizes
+- (NSArray *)excludeSizes
 {
-    return m_sizes;
+    return m_excludeSizes;
 }
 
-- (void)setSizes:(NSArray *)sizes
+- (void)setExcludeSizes:(NSArray *)excludeSizes
 {
-    if(!MFEqual(m_sizes, sizes)) {
-        m_sizes = sizes;
-        [[NSUserDefaults standardUserDefaults] setObject:m_sizes forKey:KEY_SIZES];
+    if(!MFEqual(m_excludeSizes, excludeSizes)) {
+        m_excludeSizes = excludeSizes;
+        [[NSUserDefaults standardUserDefaults] setObject:m_excludeSizes forKey:KEY_EXCLUDE_SIZES];
     }
 }
 
-@dynamic types;
+@dynamic excludeTypes;
 
-- (NSArray *)types
+- (NSArray *)excludeTypes
 {
-    return m_types;
+    return m_excludeTypes;
 }
 
-- (void)setTypes:(NSArray *)types
+- (void)setExcludeTypes:(NSArray *)excludeTypes
 {
-    if(!MFEqual(m_types, types)) {
-        m_types = types;
-        [[NSUserDefaults standardUserDefaults] setObject:m_types forKey:KEY_TYPES];
+    if(!MFEqual(m_excludeTypes, excludeTypes)) {
+        m_excludeTypes = excludeTypes;
+        [[NSUserDefaults standardUserDefaults] setObject:m_excludeTypes forKey:KEY_EXCLUDE_TYPES];
     }
 }
 
@@ -92,8 +92,8 @@
         
         m_bookmarks = [defaults arrayForKey:KEY_BOOKMARKS];
         m_category = [defaults integerForKey:KEY_CATEGORY];
-        m_sizes = [defaults arrayForKey:KEY_SIZES];
-        m_types = [defaults arrayForKey:KEY_TYPES];
+        m_excludeSizes = [defaults arrayForKey:KEY_EXCLUDE_SIZES];
+        m_excludeTypes = [defaults arrayForKey:KEY_EXCLUDE_TYPES];
     }
     
     return self;

@@ -7,15 +7,15 @@
     @private
     NSArray *m_bookmarks;
     NSInteger m_category;
-    NSArray *m_sizes;
-    NSArray *m_types;
+    NSArray *m_excludeSizes;
+    NSArray *m_excludeTypes;
 }
 
 + (MFPreferences *)sharedPreferences;
 
 @property (nonatomic, retain) NSArray *bookmarks;
 @property (nonatomic, assign) NSInteger category;
-@property (nonatomic, retain) NSArray *sizes;
-@property (nonatomic, retain) NSArray *types;
+@property (nonatomic, retain) NSArray *excludeSizes;
+@property (nonatomic, retain) NSArray *excludeTypes;
 
 @end

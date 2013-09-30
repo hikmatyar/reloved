@@ -32,9 +32,31 @@
     self = [super init];
     
     if(self) {
+        MFPreferences *preferences = [MFPreferences sharedPreferences];
+        NSArray *excludeSizes = preferences.excludeSizes;
+        NSArray *excludeTypes = preferences.excludeTypes;
+        MFDatabase *database = [MFDatabase sharedDatabase];
+        NSInteger sizeIndex = 0, typeIndex = 0;
+        
         m_excludeSizes = [[NSMutableSet alloc] init];
         m_excludeTypes = [[NSMutableSet alloc] init];
         m_category = category;
+        
+        for(MFSize *size in database.sizes) {
+            if([excludeSizes containsObject:size.identifier]) {
+                [m_excludeSizes addObject:[NSNumber numberWithInteger:sizeIndex]];
+            }
+            
+            sizeIndex++;
+        }
+        
+        for(MFType *type in database.types) {
+            if([excludeTypes containsObject:type.identifier]) {
+                [m_excludeTypes addObject:[NSNumber numberWithInteger:typeIndex]];
+            }
+            
+            typeIndex++;
+        }
         
         self.navigationItem.title = NSLocalizedString(@"Browse.Title", nil);
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Browse.Action.Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
@@ -60,6 +82,11 @@
 - (IBAction)done:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)dataDidChange:(NSNotification *)notification
+{
+    [self.tableView reloadData];
 }
 
 #pragma mark UITableViewDataSource
@@ -204,12 +231,52 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
     [super viewWillAppear:animated];
+    [center addObserver:self selector:@selector(dataDidChange:) name:MFDatabaseDidChangeSizesNotification object:nil];
+    [center addObserver:self selector:@selector(dataDidChange:) name:MFDatabaseDidChangeTypesNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [MFPreferences sharedPreferences].category = m_category;
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    MFPreferences *preferences = [MFPreferences sharedPreferences];
+    NSMutableArray *excludeSizes = [NSMutableArray array];
+    NSMutableArray *excludeTypes = [NSMutableArray array];
+    MFDatabase *database = [MFDatabase sharedDatabase];
+    NSArray *sizes = database.sizes;
+    NSArray *types = database.types;
+    
+    for(NSNumber *row in m_excludeSizes) {
+        NSInteger index = row.integerValue;
+        
+        if(index >= 0 && index < sizes.count) {
+            MFSize *size = [sizes objectAtIndex:index];
+            
+            [excludeSizes addObject:size.identifier];
+        }
+    }
+    
+    for(NSNumber *row in m_excludeTypes) {
+        NSInteger index = row.integerValue;
+        
+        if(index >= 0 && index < types.count) {
+            MFType *type = [types objectAtIndex:index];
+            
+            [excludeTypes addObject:type.identifier];
+        }
+    }
+    
+    [excludeSizes sortedArrayUsingSelector:@selector(compare:)];
+    [excludeTypes sortedArrayUsingSelector:@selector(compare:)];
+    
+    preferences.category = m_category;
+    preferences.excludeSizes = (excludeSizes.count > 0) ? excludeSizes : nil;
+    preferences.excludeTypes = (excludeTypes.count > 0) ? excludeTypes : nil;
+    
+    [center removeObserver:self name:MFDatabaseDidChangeSizesNotification object:nil];
+    [center removeObserver:self name:MFDatabaseDidChangeTypesNotification object:nil];
     [super viewWillDisappear:animated];
 }
 
