@@ -1,10 +1,16 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFDatabase.h"
+#import "MFDatabase+Brand.h"
 #import "MFDatabase+Bookmark.h"
+#import "MFDatabase+Color.h"
+#import "MFDatabase+Country.h"
 #import "MFDatabase+Currency.h"
+#import "MFDatabase+Delivery.h"
 #import "MFDatabase+Feed.h"
 #import "MFDatabase+Post.h"
+#import "MFDatabase+Size.h"
+#import "MFDatabase+Type.h"
 #import "MFDelta.h"
 #import "MFFeed.h"
 #import "MFPost.h"
@@ -228,6 +234,36 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     if(feed) {
         if(feed.currencies && !MFEqual(database.currencies, feed.currencies)) {
             database.currencies = feed.currencies;
+            changed = YES;
+        }
+        
+        if(feed.brands && !MFEqual(database.brands, feed.brands)) {
+            database.brands = feed.brands;
+            changed = YES;
+        }
+        
+        if(feed.colors && !MFEqual(database.colors, feed.colors)) {
+            database.colors = feed.colors;
+            changed = YES;
+        }
+        
+        if(feed.countries && !MFEqual(database.countries, feed.countries)) {
+            database.countries = feed.countries;
+            changed = YES;
+        }
+        
+        if(feed.deliveries && !MFEqual(database.deliveries, feed.deliveries)) {
+            database.deliveries = feed.deliveries;
+            changed = YES;
+        }
+        
+        if(feed.sizes && !MFEqual(database.sizes, feed.sizes)) {
+            database.sizes = feed.sizes;
+            changed = YES;
+        }
+        
+        if(feed.types && !MFEqual(database.types, feed.types)) {
+            database.types = feed.types;
             changed = YES;
         }
         

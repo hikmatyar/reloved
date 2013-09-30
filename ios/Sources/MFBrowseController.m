@@ -97,6 +97,7 @@
 {
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:[[MFBrowseFilterController alloc] init]];
     
+    controller.navigationBar.translucent = self.navigationController.navigationBar.translucent;
     [self presentViewController:controller animated:YES completion:NULL];
 }
 

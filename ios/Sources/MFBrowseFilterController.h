@@ -14,6 +14,8 @@ typedef enum _MFBrowseFilterControllerCategory {
 {
     @private
     MFBrowseFilterControllerCategory m_category;
+    NSMutableSet *m_excludeSizes;
+    NSMutableSet *m_excludeTypes;
 }
 
 - (id)initWithCategory:(MFBrowseFilterControllerCategory)category;

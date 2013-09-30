@@ -162,6 +162,12 @@
     MFWebRequest *webRequest = [[self.class alloc] initWithURL:self.url];
     
     if(webRequest) {
+        webRequest->m_mode = m_mode;
+        webRequest->m_target = m_target;
+        webRequest->m_service = m_service;
+        webRequest->m_sign = m_sign;
+        webRequest->m_transform = m_transform;
+        
         for(NSDictionary *pair in postData) {
             NSString *key = [pair objectForKey:@"key"];
             NSString *value = [pair objectForKey:@"value"];
@@ -181,11 +187,6 @@
             }
         }
         
-        webRequest->m_target = m_target;
-        webRequest->m_service = m_service;
-        webRequest->m_sign = m_sign;
-        webRequest->m_mode = m_mode;
-        webRequest->m_transform = m_transform;
         webRequest.block = m_block;
     }
     

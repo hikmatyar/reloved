@@ -15,7 +15,7 @@
                                                                   (forward) ? @"forward" : @"backward", @"direction",
                                                                   [NSNumber numberWithInteger:limit], @"limit",
                                                                   (identifier) ? identifier : [NSNull null], @"id",
-                                                                  state, @"state", nil]];
+                                                                  nil]]; //state, @"state", nil]];
     
     request.block = block;
     request.transform = [MFFeed class];

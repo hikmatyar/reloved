@@ -133,6 +133,7 @@
 		81233D7C17F8F27C00C27805 /* MFDatabase+Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D7B17F8F27C00C27805 /* MFDatabase+Country.m */; };
 		81233D7F17F8F28700C27805 /* MFDatabase+Brand.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D7E17F8F28700C27805 /* MFDatabase+Brand.m */; };
 		81233D8217F8F9C800C27805 /* MFBrowseFilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D8117F8F9C800C27805 /* MFBrowseFilterController.m */; };
+		81233D8517F912B000C27805 /* MFSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D8417F912B000C27805 /* MFSectionHeaderView.m */; };
 		812F4AAB17DEFCC600454747 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AA917DEFCC600454747 /* Localizable.strings */; };
 		812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AAF17DEFD0300454747 /* Default-568h@2x.png */; };
 		812F4AB317DEFD0300454747 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 812F4AB017DEFD0300454747 /* Default.png */; };
@@ -413,6 +414,8 @@
 		81233D7E17F8F28700C27805 /* MFDatabase+Brand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Brand.m"; path = "Sources/MFDatabase+Brand.m"; sourceTree = SOURCE_ROOT; };
 		81233D8017F8F9C800C27805 /* MFBrowseFilterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFBrowseFilterController.h; path = Sources/MFBrowseFilterController.h; sourceTree = SOURCE_ROOT; };
 		81233D8117F8F9C800C27805 /* MFBrowseFilterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFBrowseFilterController.m; path = Sources/MFBrowseFilterController.m; sourceTree = SOURCE_ROOT; };
+		81233D8317F912B000C27805 /* MFSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSectionHeaderView.h; path = Sources/MFSectionHeaderView.h; sourceTree = SOURCE_ROOT; };
+		81233D8417F912B000C27805 /* MFSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFSectionHeaderView.m; path = Sources/MFSectionHeaderView.m; sourceTree = SOURCE_ROOT; };
 		812F4AAA17DEFCC600454747 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		812F4AAC17DEFCD300454747 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		812F4AAD17DEFCD300454747 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -765,6 +768,8 @@
 				8110829A17F8AF35005CC8ED /* MFPullToRefreshView.h */,
 				8110829B17F8AF35005CC8ED /* MFPullToRefreshView.m */,
 				811082AB17F8B4C4005CC8ED /* MFPullToRefreshViewDelegate.h */,
+				81233D8317F912B000C27805 /* MFSectionHeaderView.h */,
+				81233D8417F912B000C27805 /* MFSectionHeaderView.m */,
 				81DE2D2B17F5F166001D0ADF /* MFSeparatorView.h */,
 				81DE2D2C17F5F166001D0ADF /* MFSeparatorView.m */,
 				8119DFCB17E06BDB007AEDC2 /* MFTableView.h */,
@@ -1222,6 +1227,7 @@
 				81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */,
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
+				81233D8517F912B000C27805 /* MFSectionHeaderView.m in Sources */,
 				811082C517F8C805005CC8ED /* MFWebService+Feed.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
 				81B27B0F17F60F3700F9BC09 /* STPCard.m in Sources */,

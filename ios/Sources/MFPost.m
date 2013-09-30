@@ -1,6 +1,10 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFPost.h"
+#import "NSDictionary+Additions.h"
+
+#define KEY_IDENTIFIER @"id"
+#define KEY_TITLE @"title"
 
 @implementation MFPost
 
@@ -9,7 +13,12 @@
     self = [super init];
     
     if(self) {
+        m_identifier = [attributes identifierForKey:KEY_IDENTIFIER];
+        m_title = [attributes stringForKey:KEY_TITLE];
         
+        if(!m_identifier) {
+            return nil;
+        }
     }
     
     return self;
@@ -19,7 +28,8 @@
 
 - (NSDictionary *)attributes
 {
-    return nil;
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+        m_identifier, KEY_IDENTIFIER, nil];
 }
 
 @dynamic active;
