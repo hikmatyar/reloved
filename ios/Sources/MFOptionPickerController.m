@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFOptionPickerController.h"
+#import "MFOptionPickerControllerDelegate.h"
 #import "MFSectionHeaderView.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -68,6 +69,8 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
         }
     }
 }
+
+@synthesize delegate = m_delegate;
 
 @dynamic selectedItem;
 
@@ -252,6 +255,7 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
     id item = [(NSArray *)[m_sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSInteger index = [m_items indexOfObject:item];
+    BOOL changed = NO;
     
     if(!tableView.allowsMultipleSelection && m_selectedIndices.count > 0) {
         NSInteger itemCount = m_items.count;
@@ -273,6 +277,7 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
                     }
                     
                     [m_selectedIndices removeIndex:buffer[i]];
+                    changed = YES;
                 }
             }
         }
@@ -282,10 +287,16 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
         if(m_selectedIndices.count > 1 || m_allowsEmptySelection) {
             [m_selectedIndices removeIndex:index];
             cell.accessoryType = UITableViewCellAccessoryNone;
+            changed = YES;
         }
     } else {
         [m_selectedIndices addIndex:index];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        changed = YES;
+    }
+    
+    if(changed && [m_delegate respondsToSelector:@selector(optionPickerControllerDidChange:)]) {
+        [m_delegate optionPickerControllerDidChange:self];
     }
 }
 
@@ -308,6 +319,15 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
     tableView.allowsMultipleSelection = NO;
     
     self.view = tableView;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if([m_delegate respondsToSelector:@selector(optionPickerControllerDidComplete:)]) {
+        [m_delegate optionPickerControllerDidComplete:self];
+    }
+    
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark NSObject

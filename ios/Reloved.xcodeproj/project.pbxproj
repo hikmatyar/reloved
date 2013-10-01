@@ -527,6 +527,7 @@
 		81B27B5A17F610AE00F9BC09 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		81BC174117FB51CA00DF7AD4 /* MFOptionPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFOptionPickerController.h; path = Sources/MFOptionPickerController.h; sourceTree = SOURCE_ROOT; };
 		81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFOptionPickerController.m; path = Sources/MFOptionPickerController.m; sourceTree = SOURCE_ROOT; };
+		81BC174417FB6E7700DF7AD4 /* MFOptionPickerControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFOptionPickerControllerDelegate.h; path = Sources/MFOptionPickerControllerDelegate.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -637,6 +638,7 @@
 				8120C15717DFAF0B00A1C3A9 /* MFNewsController.m */,
 				81BC174117FB51CA00DF7AD4 /* MFOptionPickerController.h */,
 				81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */,
+				81BC174417FB6E7700DF7AD4 /* MFOptionPickerControllerDelegate.h */,
 				8120C12F17DFA37100A1C3A9 /* MFPostController.h */,
 				8120C13017DFA37100A1C3A9 /* MFPostController.m */,
 				8120C16917DFBD1200A1C3A9 /* MFPreferences.h */,
