@@ -201,6 +201,7 @@
 		81B27B5717F6107100F9BC09 /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B27B4517F6107100F9BC09 /* visa.png */; };
 		81B27B5817F6107100F9BC09 /* visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B27B4617F6107100F9BC09 /* visa@2x.png */; };
 		81B27B5B17F610AE00F9BC09 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B27B5A17F610AE00F9BC09 /* QuartzCore.framework */; };
+		81BC174317FB51CA00DF7AD4 /* MFOptionPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */; };
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
@@ -524,6 +525,8 @@
 		81B27B4517F6107100F9BC09 /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = visa.png; path = Images/Stripe/Cards/visa.png; sourceTree = "<group>"; };
 		81B27B4617F6107100F9BC09 /* visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "visa@2x.png"; path = "Images/Stripe/Cards/visa@2x.png"; sourceTree = "<group>"; };
 		81B27B5A17F610AE00F9BC09 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		81BC174117FB51CA00DF7AD4 /* MFOptionPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFOptionPickerController.h; path = Sources/MFOptionPickerController.h; sourceTree = SOURCE_ROOT; };
+		81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFOptionPickerController.m; path = Sources/MFOptionPickerController.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -632,6 +635,8 @@
 				8120C15A17DFAFA600A1C3A9 /* MFNewPostController.m */,
 				8120C15617DFAF0B00A1C3A9 /* MFNewsController.h */,
 				8120C15717DFAF0B00A1C3A9 /* MFNewsController.m */,
+				81BC174117FB51CA00DF7AD4 /* MFOptionPickerController.h */,
+				81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */,
 				8120C12F17DFA37100A1C3A9 /* MFPostController.h */,
 				8120C13017DFA37100A1C3A9 /* MFPostController.m */,
 				8120C16917DFBD1200A1C3A9 /* MFPreferences.h */,
@@ -1278,6 +1283,7 @@
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				81B27B1317F60F3700F9BC09 /* StripeError.m in Sources */,
 				811082BC17F8BC57005CC8ED /* MFDatabase+Currency.m in Sources */,
+				81BC174317FB51CA00DF7AD4 /* MFOptionPickerController.m in Sources */,
 				81233D7017F8F18A00C27805 /* MFDelivery.m in Sources */,
 				81233D4F17F8CEA500C27805 /* MFWebPost.m in Sources */,
 				8119DFD617E06D90007AEDC2 /* MFWebRequest.m in Sources */,

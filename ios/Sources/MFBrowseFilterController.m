@@ -190,7 +190,7 @@
     [self tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
-#pragma mark UIView
+#pragma mark UIViewController
 
 - (void)loadView
 {
