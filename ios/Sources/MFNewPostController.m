@@ -8,6 +8,7 @@
 #import "UIViewController+MFSideMenuAdditions.h"
 
 #define TAG_PROGRESS_VIEW 1000
+#define TAG_CONTENT_VIEW 1001
 
 #define STEP_ITEM(l, t) [[MFNewPostController_Step alloc] initWithLabel:l title:t]
 
@@ -16,11 +17,13 @@
     @private
     NSString *m_label;
     NSString *m_title;
+    UIView *m_page;
 }
 
 - (id)initWithLabel:(NSString *)label title:(NSString *)title;
 
 @property (nonatomic, retain, readonly) NSString *label;
+@property (nonatomic, retain, readonly) UIView *page;
 @property (nonatomic, retain, readonly) NSString *title;
 
 @end
@@ -34,12 +37,15 @@
     if(self) {
         m_label = label;
         m_title = title;
+        m_page = [[UILabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
+        ((UILabel *)m_page).text = label;
     }
     
     return self;
 }
 
 @synthesize label = m_label;
+@synthesize page = m_page;
 @synthesize title = m_title;
 
 @end
@@ -47,6 +53,11 @@
 #pragma mark -
 
 @implementation MFNewPostController
+
+- (UIScrollView *)contentView
+{
+    return (UIScrollView *)[self.view viewWithTag:TAG_CONTENT_VIEW];
+}
 
 - (MFNewPostProgressView *)progressView
 {
@@ -58,6 +69,11 @@
     [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
 }
 
+- (IBAction)next:(id)sender
+{
+    
+}
+
 #pragma mark MFNewPostProgressViewDelegate
 
 - (BOOL)progressView:(MFNewPostProgressView *)progressView shouldSelectItemAtIndex:(NSInteger)index
@@ -67,6 +83,9 @@
 
 - (void)progressView:(MFNewPostProgressView *)progressView didSelectItemAtIndex:(NSInteger)index
 {
+    UIScrollView *contentView = self.contentView;
+    
+    [contentView setContentOffset:CGPointMake(index * contentView.frame.size.width, 0.0F) animated:YES];
 }
 
 #pragma mark UIView
@@ -75,10 +94,22 @@
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     MFNewPostProgressView *progressView = [[MFNewPostProgressView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFNewPostProgressView preferredHeight])];
+    UIScrollView *contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0F, [MFNewPostProgressView preferredHeight], 320.0F, 480.0F - [MFNewPostProgressView preferredHeight])];
     NSMutableArray *items = [NSMutableArray array];
+    CGRect pageRect = CGRectMake(0.0F, 0.0F, 320.0F, 400.0F);
+    
+    contentView.contentSize = CGSizeMake(pageRect.size.width * m_steps.count, pageRect.size.height);
     
     for(MFNewPostController_Step *step in m_steps) {
+        UIView *page = step.page;
+        
+        if(page) {
+            page.frame = pageRect;
+            [contentView addSubview:page];
+        }
+        
         [items addObject:step.label];
+        pageRect.origin.x += pageRect.size.width;
     }
     
     progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
@@ -87,6 +118,14 @@
     progressView.selectedIndex = 0;
     progressView.tag = TAG_PROGRESS_VIEW;
     [view addSubview:progressView];
+    
+    contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    contentView.showsHorizontalScrollIndicator = NO;
+    contentView.showsVerticalScrollIndicator = NO;
+    contentView.pagingEnabled = YES;
+    contentView.scrollEnabled = NO;
+    contentView.tag = TAG_CONTENT_VIEW;
+    [view addSubview:contentView];
     
     view.backgroundColor = [UIColor themeBackgroundColor];
     
@@ -110,6 +149,7 @@
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Done", nil), NSLocalizedString(@"", nil)), nil];
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NewPost.Action.Next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(next:)];
     }
     
     return self;
