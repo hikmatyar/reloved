@@ -207,6 +207,8 @@
 		81BC174C17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174A17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png */; };
 		81BC174F17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174D17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png */; };
 		81BC175017FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174E17FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png */; };
+		81BC175417FCA55F00DF7AD4 /* MFPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC175317FCA55F00DF7AD4 /* MFPageScrollView.m */; };
+		81D0966417FCA6CD0044BD06 /* MFPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966317FCA6CD0044BD06 /* MFPageView.m */; };
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
@@ -540,6 +542,10 @@
 		81BC174A17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Selected@2x.png"; path = "Images/NewPost-Progress-Selected@2x.png"; sourceTree = "<group>"; };
 		81BC174D17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Unselected.png"; path = "Images/NewPost-Progress-Unselected.png"; sourceTree = "<group>"; };
 		81BC174E17FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Unselected@2x.png"; path = "Images/NewPost-Progress-Unselected@2x.png"; sourceTree = "<group>"; };
+		81BC175217FCA55F00DF7AD4 /* MFPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPageScrollView.h; path = Sources/MFPageScrollView.h; sourceTree = SOURCE_ROOT; };
+		81BC175317FCA55F00DF7AD4 /* MFPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPageScrollView.m; path = Sources/MFPageScrollView.m; sourceTree = SOURCE_ROOT; };
+		81D0966217FCA6CD0044BD06 /* MFPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPageView.h; path = Sources/MFPageView.h; sourceTree = SOURCE_ROOT; };
+		81D0966317FCA6CD0044BD06 /* MFPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPageView.m; path = Sources/MFPageView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -782,6 +788,10 @@
 				81BC174517FC429E00DF7AD4 /* MFNewPostProgressView.h */,
 				81BC174617FC429E00DF7AD4 /* MFNewPostProgressView.m */,
 				81BC174817FC432900DF7AD4 /* MFNewPostProgressViewDelegate.h */,
+				81D0966217FCA6CD0044BD06 /* MFPageView.h */,
+				81D0966317FCA6CD0044BD06 /* MFPageView.m */,
+				81BC175217FCA55F00DF7AD4 /* MFPageScrollView.h */,
+				81BC175317FCA55F00DF7AD4 /* MFPageScrollView.m */,
 				81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */,
 				81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */,
 				8110829D17F8AF4A005CC8ED /* MFPullToLoadMoreView.h */,
@@ -1283,6 +1293,7 @@
 				8120C1BD17E053A100A1C3A9 /* UIButton+Additions.m in Sources */,
 				8120C1C817E0681300A1C3A9 /* MFBookmarksController.m in Sources */,
 				811082BF17F8BD09005CC8ED /* MFDatabase+Post.m in Sources */,
+				81BC175417FCA55F00DF7AD4 /* MFPageScrollView.m in Sources */,
 				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
 				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
 				81B27B2D17F6103700F9BC09 /* PKView.m in Sources */,
@@ -1310,6 +1321,7 @@
 				81B27B1317F60F3700F9BC09 /* StripeError.m in Sources */,
 				811082BC17F8BC57005CC8ED /* MFDatabase+Currency.m in Sources */,
 				81BC174317FB51CA00DF7AD4 /* MFOptionPickerController.m in Sources */,
+				81D0966417FCA6CD0044BD06 /* MFPageView.m in Sources */,
 				81233D7017F8F18A00C27805 /* MFDelivery.m in Sources */,
 				81233D4F17F8CEA500C27805 /* MFWebPost.m in Sources */,
 				8119DFD617E06D90007AEDC2 /* MFWebRequest.m in Sources */,

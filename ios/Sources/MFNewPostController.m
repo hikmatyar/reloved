@@ -2,6 +2,8 @@
 
 #import "MFNewPostController.h"
 #import "MFNewPostProgressView.h"
+#import "MFPageView.h"
+#import "MFPageScrollView.h"
 #import "MFSideMenuContainerViewController.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -17,13 +19,13 @@
     @private
     NSString *m_label;
     NSString *m_title;
-    UIView *m_page;
+    MFPageView *m_page;
 }
 
 - (id)initWithLabel:(NSString *)label title:(NSString *)title;
 
 @property (nonatomic, retain, readonly) NSString *label;
-@property (nonatomic, retain, readonly) UIView *page;
+@property (nonatomic, retain, readonly) MFPageView *page;
 @property (nonatomic, retain, readonly) NSString *title;
 
 @end
@@ -37,8 +39,7 @@
     if(self) {
         m_label = label;
         m_title = title;
-        m_page = [[UILabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
-        ((UILabel *)m_page).text = label;
+        m_page = [[MFPageView alloc] initWithFrame:CGRectZero];
     }
     
     return self;
@@ -94,22 +95,13 @@
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     MFNewPostProgressView *progressView = [[MFNewPostProgressView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFNewPostProgressView preferredHeight])];
-    UIScrollView *contentView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0F, [MFNewPostProgressView preferredHeight], 320.0F, 480.0F - [MFNewPostProgressView preferredHeight])];
+    MFPageScrollView *contentView = [[MFPageScrollView alloc] initWithFrame:CGRectMake(0.0F, [MFNewPostProgressView preferredHeight], 320.0F, 480.0F - [MFNewPostProgressView preferredHeight])];
     NSMutableArray *items = [NSMutableArray array];
-    CGRect pageRect = CGRectMake(0.0F, 0.0F, 320.0F, 400.0F);
-    
-    contentView.contentSize = CGSizeMake(pageRect.size.width * m_steps.count, pageRect.size.height);
+    NSMutableArray *pages = [NSMutableArray array];
     
     for(MFNewPostController_Step *step in m_steps) {
-        UIView *page = step.page;
-        
-        if(page) {
-            page.frame = pageRect;
-            [contentView addSubview:page];
-        }
-        
         [items addObject:step.label];
-        pageRect.origin.x += pageRect.size.width;
+        [pages addObject:step.page];
     }
     
     progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
@@ -120,10 +112,7 @@
     [view addSubview:progressView];
     
     contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    contentView.showsHorizontalScrollIndicator = NO;
-    contentView.showsVerticalScrollIndicator = NO;
-    contentView.pagingEnabled = YES;
-    contentView.scrollEnabled = NO;
+    contentView.pages = pages;
     contentView.tag = TAG_CONTENT_VIEW;
     [view addSubview:contentView];
     
