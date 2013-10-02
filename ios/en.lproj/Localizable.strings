@@ -94,3 +94,18 @@
 "Reachability.Action.TryAgain" = "Try Again";
 "Reachability.Message.NoConnection" = "Internet Connection is required";
 "Reachability.Title.NoConnection" = "No Connection";
+
+/* Conditions */
+
+"Condition.1.Title" = "Brand New";
+"Condition.1.Comment1" = "This item is brand new with tags attached";
+"Condition.1.Comment2" = "Never used; in many cases direct from store";
+"Condition.1.Comment3" = "Certified by the Reloved team";
+"Condition.2.Title" = "New with tags";
+"Condition.2.Comment1" = "This item is new with tag attached";
+"Condition.2.Comment2" = "Used less than 5 times";
+"Condition.2.Comment3" = "Certified by the Reloved team";
+"Condition.3.Title" = "New barely used";
+"Condition.3.Comment1" = "This item is almost new, barely used";
+"Condition.3.Comment2" = "Used less than 10 times";
+"Condition.3.Comment3" = "Certified by the Reloved team";
