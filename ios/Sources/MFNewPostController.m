@@ -55,9 +55,9 @@
 
 @implementation MFNewPostController
 
-- (UIScrollView *)contentView
+- (MFPageScrollView *)contentView
 {
-    return (UIScrollView *)[self.view viewWithTag:TAG_CONTENT_VIEW];
+    return (MFPageScrollView *)[self.view viewWithTag:TAG_CONTENT_VIEW];
 }
 
 - (MFNewPostProgressView *)progressView
@@ -72,7 +72,17 @@
 
 - (IBAction)next:(id)sender
 {
+    MFNewPostProgressView *progressView = self.progressView;
+    NSInteger index = progressView.selectedIndex;
     
+    if(index + 1 < m_steps.count) {
+        index += 1;
+        
+        if([self progressView:progressView shouldSelectItemAtIndex:index]) {
+            progressView.selectedIndex = index;
+            [self progressView:progressView didSelectItemAtIndex:index];
+        }
+    }
 }
 
 #pragma mark MFNewPostProgressViewDelegate
@@ -84,9 +94,10 @@
 
 - (void)progressView:(MFNewPostProgressView *)progressView didSelectItemAtIndex:(NSInteger)index
 {
-    UIScrollView *contentView = self.contentView;
+    MFPageScrollView *contentView = self.contentView;
+    MFNewPostController_Step *step = [m_steps objectAtIndex:index];
     
-    [contentView setContentOffset:CGPointMake(index * contentView.frame.size.width, 0.0F) animated:YES];
+    [contentView setSelectedPage:step.page animated:YES];
 }
 
 #pragma mark UIView
