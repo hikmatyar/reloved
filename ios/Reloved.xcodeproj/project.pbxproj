@@ -209,6 +209,14 @@
 		81BC175017FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174E17FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png */; };
 		81BC175417FCA55F00DF7AD4 /* MFPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC175317FCA55F00DF7AD4 /* MFPageScrollView.m */; };
 		81D0966417FCA6CD0044BD06 /* MFPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966317FCA6CD0044BD06 /* MFPageView.m */; };
+		81D0966717FCCC270044BD06 /* MFNewPostController+Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966617FCCC270044BD06 /* MFNewPostController+Condition.m */; };
+		81D0966A17FCCE330044BD06 /* MFNewPostConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966917FCCE330044BD06 /* MFNewPostConditionTableViewCell.m */; };
+		81D0966D17FCCFD00044BD06 /* MFCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966C17FCCFD00044BD06 /* MFCondition.m */; };
+		81D0967017FCD43D0044BD06 /* MFNewPostController+Details.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966F17FCD43D0044BD06 /* MFNewPostController+Details.m */; };
+		81D0967317FCD4470044BD06 /* MFNewPostController+Photos.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967217FCD4470044BD06 /* MFNewPostController+Photos.m */; };
+		81D0967617FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967517FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m */; };
+		81D0967917FCD45E0044BD06 /* MFNewPostController+Price.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967817FCD45E0044BD06 /* MFNewPostController+Price.m */; };
+		81D0967C17FCD46F0044BD06 /* MFNewPostController+Notes.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967B17FCD46F0044BD06 /* MFNewPostController+Notes.m */; };
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
@@ -546,6 +554,22 @@
 		81BC175317FCA55F00DF7AD4 /* MFPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPageScrollView.m; path = Sources/MFPageScrollView.m; sourceTree = SOURCE_ROOT; };
 		81D0966217FCA6CD0044BD06 /* MFPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPageView.h; path = Sources/MFPageView.h; sourceTree = SOURCE_ROOT; };
 		81D0966317FCA6CD0044BD06 /* MFPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPageView.m; path = Sources/MFPageView.m; sourceTree = SOURCE_ROOT; };
+		81D0966517FCCC270044BD06 /* MFNewPostController+Condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+Condition.h"; path = "Sources/MFNewPostController+Condition.h"; sourceTree = SOURCE_ROOT; };
+		81D0966617FCCC270044BD06 /* MFNewPostController+Condition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+Condition.m"; path = "Sources/MFNewPostController+Condition.m"; sourceTree = SOURCE_ROOT; };
+		81D0966817FCCE330044BD06 /* MFNewPostConditionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostConditionTableViewCell.h; path = Sources/MFNewPostConditionTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		81D0966917FCCE330044BD06 /* MFNewPostConditionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostConditionTableViewCell.m; path = Sources/MFNewPostConditionTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		81D0966B17FCCFD00044BD06 /* MFCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCondition.h; path = Sources/MFCondition.h; sourceTree = SOURCE_ROOT; };
+		81D0966C17FCCFD00044BD06 /* MFCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCondition.m; path = Sources/MFCondition.m; sourceTree = SOURCE_ROOT; };
+		81D0966E17FCD43D0044BD06 /* MFNewPostController+Details.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+Details.h"; path = "Sources/MFNewPostController+Details.h"; sourceTree = SOURCE_ROOT; };
+		81D0966F17FCD43D0044BD06 /* MFNewPostController+Details.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+Details.m"; path = "Sources/MFNewPostController+Details.m"; sourceTree = SOURCE_ROOT; };
+		81D0967117FCD4470044BD06 /* MFNewPostController+Photos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+Photos.h"; path = "Sources/MFNewPostController+Photos.h"; sourceTree = SOURCE_ROOT; };
+		81D0967217FCD4470044BD06 /* MFNewPostController+Photos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+Photos.m"; path = "Sources/MFNewPostController+Photos.m"; sourceTree = SOURCE_ROOT; };
+		81D0967417FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+TypeSizeAndFit.h"; path = "Sources/MFNewPostController+TypeSizeAndFit.h"; sourceTree = SOURCE_ROOT; };
+		81D0967517FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+TypeSizeAndFit.m"; path = "Sources/MFNewPostController+TypeSizeAndFit.m"; sourceTree = SOURCE_ROOT; };
+		81D0967717FCD45E0044BD06 /* MFNewPostController+Price.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+Price.h"; path = "Sources/MFNewPostController+Price.h"; sourceTree = SOURCE_ROOT; };
+		81D0967817FCD45E0044BD06 /* MFNewPostController+Price.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+Price.m"; path = "Sources/MFNewPostController+Price.m"; sourceTree = SOURCE_ROOT; };
+		81D0967A17FCD46F0044BD06 /* MFNewPostController+Notes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+Notes.h"; path = "Sources/MFNewPostController+Notes.h"; sourceTree = SOURCE_ROOT; };
+		81D0967B17FCD46F0044BD06 /* MFNewPostController+Notes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+Notes.m"; path = "Sources/MFNewPostController+Notes.m"; sourceTree = SOURCE_ROOT; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -652,6 +676,18 @@
 				8120C17617E03CC700A1C3A9 /* MFMenuItem.m */,
 				8120C15917DFAFA600A1C3A9 /* MFNewPostController.h */,
 				8120C15A17DFAFA600A1C3A9 /* MFNewPostController.m */,
+				81D0966517FCCC270044BD06 /* MFNewPostController+Condition.h */,
+				81D0966617FCCC270044BD06 /* MFNewPostController+Condition.m */,
+				81D0966E17FCD43D0044BD06 /* MFNewPostController+Details.h */,
+				81D0966F17FCD43D0044BD06 /* MFNewPostController+Details.m */,
+				81D0967117FCD4470044BD06 /* MFNewPostController+Photos.h */,
+				81D0967217FCD4470044BD06 /* MFNewPostController+Photos.m */,
+				81D0967717FCD45E0044BD06 /* MFNewPostController+Price.h */,
+				81D0967817FCD45E0044BD06 /* MFNewPostController+Price.m */,
+				81D0967A17FCD46F0044BD06 /* MFNewPostController+Notes.h */,
+				81D0967B17FCD46F0044BD06 /* MFNewPostController+Notes.m */,
+				81D0967417FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.h */,
+				81D0967517FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m */,
 				8120C15617DFAF0B00A1C3A9 /* MFNewsController.h */,
 				8120C15717DFAF0B00A1C3A9 /* MFNewsController.m */,
 				81BC174117FB51CA00DF7AD4 /* MFOptionPickerController.h */,
@@ -734,6 +770,8 @@
 				81233D6C17F8F17E00C27805 /* MFBrand.m */,
 				81233D5617F8DDEA00C27805 /* MFColor.h */,
 				81233D5717F8DDEA00C27805 /* MFColor.m */,
+				81D0966B17FCCFD00044BD06 /* MFCondition.h */,
+				81D0966C17FCCFD00044BD06 /* MFCondition.m */,
 				81233D7117F8F1A100C27805 /* MFCountry.h */,
 				81233D7217F8F1A100C27805 /* MFCountry.m */,
 				811082B717F8BA81005CC8ED /* MFCurrency.h */,
@@ -785,6 +823,8 @@
 				81B27B0117F60BE200F9BC09 /* MFImageButton.m */,
 				8119DFC817E06BCC007AEDC2 /* MFImageView.h */,
 				8119DFC917E06BCC007AEDC2 /* MFImageView.m */,
+				81D0966817FCCE330044BD06 /* MFNewPostConditionTableViewCell.h */,
+				81D0966917FCCE330044BD06 /* MFNewPostConditionTableViewCell.m */,
 				81BC174517FC429E00DF7AD4 /* MFNewPostProgressView.h */,
 				81BC174617FC429E00DF7AD4 /* MFNewPostProgressView.m */,
 				81BC174817FC432900DF7AD4 /* MFNewPostProgressViewDelegate.h */,
@@ -1255,6 +1295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D0967617FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m in Sources */,
 				818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */,
 				81233D7F17F8F28700C27805 /* MFDatabase+Brand.m in Sources */,
 				8120C15B17DFAFA600A1C3A9 /* MFNewPostController.m in Sources */,
@@ -1263,6 +1304,7 @@
 				8119DFE817E06E0B007AEDC2 /* MFWebAuthorization.m in Sources */,
 				8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */,
 				81233D6417F8E01000C27805 /* MFDatabase+Type.m in Sources */,
+				81D0966717FCCC270044BD06 /* MFNewPostController+Condition.m in Sources */,
 				812F4ABA17DEFD4800454747 /* MFApplicationDelegate.m in Sources */,
 				81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */,
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
@@ -1270,6 +1312,7 @@
 				81233D8517F912B000C27805 /* MFSectionHeaderView.m in Sources */,
 				811082C517F8C805005CC8ED /* MFWebService+Feed.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
+				81D0967C17FCD46F0044BD06 /* MFNewPostController+Notes.m in Sources */,
 				81B27B0F17F60F3700F9BC09 /* STPCard.m in Sources */,
 				81233D6D17F8F17E00C27805 /* MFBrand.m in Sources */,
 				811082D017F8CA8E005CC8ED /* SQLCursor.m in Sources */,
@@ -1278,6 +1321,7 @@
 				8119DFF817E0A1E6007AEDC2 /* MFTracker.m in Sources */,
 				8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */,
 				81DE2D2D17F5F166001D0ADF /* MFSeparatorView.m in Sources */,
+				81D0967317FCD4470044BD06 /* MFNewPostController+Photos.m in Sources */,
 				81233D8217F8F9C800C27805 /* MFBrowseFilterController.m in Sources */,
 				8120C16617DFB7F100A1C3A9 /* MFWebController.m in Sources */,
 				81233D4C17F8CD7900C27805 /* MFPostTableViewCell.m in Sources */,
@@ -1311,12 +1355,14 @@
 				8120C17417E03CB900A1C3A9 /* MFMenu.m in Sources */,
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
 				81B27B2617F6103700F9BC09 /* PKAddressZip.m in Sources */,
+				81D0966D17FCCFD00044BD06 /* MFCondition.m in Sources */,
 				8110829C17F8AF35005CC8ED /* MFPullToRefreshView.m in Sources */,
 				8119DFF117E06F0C007AEDC2 /* MFMoney.m in Sources */,
 				81B27B0217F60BE200F9BC09 /* MFImageButton.m in Sources */,
 				811082B917F8BA81005CC8ED /* MFCurrency.m in Sources */,
 				8120C1CE17E0685A00A1C3A9 /* MFHistoryController.m in Sources */,
 				81233D7317F8F1A100C27805 /* MFCountry.m in Sources */,
+				81D0967017FCD43D0044BD06 /* MFNewPostController+Details.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				81B27B1317F60F3700F9BC09 /* StripeError.m in Sources */,
 				811082BC17F8BC57005CC8ED /* MFDatabase+Currency.m in Sources */,
@@ -1363,8 +1409,10 @@
 				81B27B2B17F6103700F9BC09 /* PKTextField.m in Sources */,
 				8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */,
 				81233D7617F8F1BC00C27805 /* MFUser.m in Sources */,
+				81D0966A17FCCE330044BD06 /* MFNewPostConditionTableViewCell.m in Sources */,
 				812F4AC717DEFE9400454747 /* Reachability.m in Sources */,
 				81233D6A17F8E39100C27805 /* MFDatabaseProxy.m in Sources */,
+				81D0967917FCD45E0044BD06 /* MFNewPostController+Price.m in Sources */,
 				81B27B2917F6103700F9BC09 /* PKCardExpiry.m in Sources */,
 				811082AA17F8B302005CC8ED /* MFDelta.m in Sources */,
 			);

@@ -1,6 +1,11 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFNewPostController.h"
+#import "MFNewPostController+Condition.h"
+#import "MFNewPostController+Details.h"
+#import "MFNewPostController+Photos.h"
+#import "MFNewPostController+Price.h"
+#import "MFNewPostController+Notes.h"
 #import "MFNewPostProgressView.h"
 #import "MFPageView.h"
 #import "MFPageScrollView.h"
@@ -12,7 +17,7 @@
 #define TAG_PROGRESS_VIEW 1000
 #define TAG_CONTENT_VIEW 1001
 
-#define STEP_ITEM(l, t) [[MFNewPostController_Step alloc] initWithLabel:l title:t]
+#define STEP_ITEM(l, t, p) [[MFNewPostController_Step alloc] initWithLabel:l title:t page:p]
 
 @interface MFNewPostController_Step : NSObject
 {
@@ -22,7 +27,7 @@
     MFPageView *m_page;
 }
 
-- (id)initWithLabel:(NSString *)label title:(NSString *)title;
+- (id)initWithLabel:(NSString *)label title:(NSString *)title page:(MFPageView *)page;
 
 @property (nonatomic, retain, readonly) NSString *label;
 @property (nonatomic, retain, readonly) MFPageView *page;
@@ -32,14 +37,14 @@
 
 @implementation MFNewPostController_Step
 
-- (id)initWithLabel:(NSString *)label title:(NSString *)title
+- (id)initWithLabel:(NSString *)label title:(NSString *)title page:(MFPageView *)page
 {
     self = [super init];
     
     if(self) {
         m_label = label;
         m_title = title;
-        m_page = [[MFPageView alloc] initWithFrame:CGRectZero];
+        m_page = (page) ? page : [[MFPageView alloc] initWithFrame:CGRectZero];
     }
     
     return self;
@@ -89,7 +94,9 @@
 
 - (BOOL)progressView:(MFNewPostProgressView *)progressView shouldSelectItemAtIndex:(NSInteger)index
 {
-    return YES;
+    MFNewPostController_Step *step = [m_steps objectAtIndex:index];
+    
+    return (step.title) ? YES : NO;
 }
 
 - (void)progressView:(MFNewPostProgressView *)progressView didSelectItemAtIndex:(NSInteger)index
@@ -140,13 +147,13 @@
     
     if(self) {
         m_steps = [[NSArray alloc] initWithObjects:
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Photos", nil), NSLocalizedString(@"NewPost.Title.Photos", nil)),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.TypeSizeFit", nil), NSLocalizedString(@"NewPost.Title.TypeSizeFit", nil)),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Condition", nil), NSLocalizedString(@"NewPost.Title.Condition", nil)),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Details", nil), NSLocalizedString(@"NewPost.Title.Details", nil)),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Price", nil), NSLocalizedString(@"NewPost.Title.Price", nil)),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.SellersNote", nil), NSLocalizedString(@"NewPost.Title.SellersNote", nil)),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Done", nil), NSLocalizedString(@"", nil)), nil];
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Photos", nil), NSLocalizedString(@"NewPost.Title.Photos", nil), [self createPhotosPageView]),
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.TypeSizeFit", nil), NSLocalizedString(@"NewPost.Title.TypeSizeFit", [self createTypeSizeAndFitPageView]), nil),
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Condition", nil), NSLocalizedString(@"NewPost.Title.Condition", nil), [self createConditionPageView]),
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Details", nil), NSLocalizedString(@"NewPost.Title.Details", [self createDetailsPageView]), nil),
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Price", nil), NSLocalizedString(@"NewPost.Title.Price", nil), [self createPricePageView]),
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.SellersNote", nil), NSLocalizedString(@"NewPost.Title.SellersNote", [self createNotesPageView]), nil),
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Done", nil), nil, nil), nil];
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NewPost.Action.Next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(next:)];
