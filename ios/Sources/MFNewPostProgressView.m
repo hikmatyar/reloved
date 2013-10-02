@@ -80,6 +80,14 @@
 {
     if(m_selectedIndex != selectedIndex) {
         m_selectedIndex = selectedIndex;
+        
+        for(UIView *subview in self.subviews) {
+            if([subview isKindOfClass:[UIButton class]]) {
+                UIButton *button = (UIButton *)subview;
+                
+                button.selected = (m_selectedIndex != NSNotFound && button.tag == m_selectedIndex + 1) ? YES : NO;
+            }
+        }
     }
 }
 
