@@ -202,6 +202,11 @@
 		81B27B5817F6107100F9BC09 /* visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B27B4617F6107100F9BC09 /* visa@2x.png */; };
 		81B27B5B17F610AE00F9BC09 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B27B5A17F610AE00F9BC09 /* QuartzCore.framework */; };
 		81BC174317FB51CA00DF7AD4 /* MFOptionPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */; };
+		81BC174717FC429E00DF7AD4 /* MFNewPostProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC174617FC429E00DF7AD4 /* MFNewPostProgressView.m */; };
+		81BC174B17FC528100DF7AD4 /* NewPost-Progress-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174917FC528100DF7AD4 /* NewPost-Progress-Selected.png */; };
+		81BC174C17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174A17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png */; };
+		81BC174F17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174D17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png */; };
+		81BC175017FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174E17FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png */; };
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
@@ -528,6 +533,13 @@
 		81BC174117FB51CA00DF7AD4 /* MFOptionPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFOptionPickerController.h; path = Sources/MFOptionPickerController.h; sourceTree = SOURCE_ROOT; };
 		81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFOptionPickerController.m; path = Sources/MFOptionPickerController.m; sourceTree = SOURCE_ROOT; };
 		81BC174417FB6E7700DF7AD4 /* MFOptionPickerControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFOptionPickerControllerDelegate.h; path = Sources/MFOptionPickerControllerDelegate.h; sourceTree = SOURCE_ROOT; };
+		81BC174517FC429E00DF7AD4 /* MFNewPostProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostProgressView.h; path = Sources/MFNewPostProgressView.h; sourceTree = SOURCE_ROOT; };
+		81BC174617FC429E00DF7AD4 /* MFNewPostProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostProgressView.m; path = Sources/MFNewPostProgressView.m; sourceTree = SOURCE_ROOT; };
+		81BC174817FC432900DF7AD4 /* MFNewPostProgressViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFNewPostProgressViewDelegate.h; path = Sources/MFNewPostProgressViewDelegate.h; sourceTree = SOURCE_ROOT; };
+		81BC174917FC528100DF7AD4 /* NewPost-Progress-Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Selected.png"; path = "Images/NewPost-Progress-Selected.png"; sourceTree = "<group>"; };
+		81BC174A17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Selected@2x.png"; path = "Images/NewPost-Progress-Selected@2x.png"; sourceTree = "<group>"; };
+		81BC174D17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Unselected.png"; path = "Images/NewPost-Progress-Unselected.png"; sourceTree = "<group>"; };
+		81BC174E17FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Unselected@2x.png"; path = "Images/NewPost-Progress-Unselected@2x.png"; sourceTree = "<group>"; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -767,6 +779,9 @@
 				81B27B0117F60BE200F9BC09 /* MFImageButton.m */,
 				8119DFC817E06BCC007AEDC2 /* MFImageView.h */,
 				8119DFC917E06BCC007AEDC2 /* MFImageView.m */,
+				81BC174517FC429E00DF7AD4 /* MFNewPostProgressView.h */,
+				81BC174617FC429E00DF7AD4 /* MFNewPostProgressView.m */,
+				81BC174817FC432900DF7AD4 /* MFNewPostProgressViewDelegate.h */,
 				81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */,
 				81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */,
 				8110829D17F8AF4A005CC8ED /* MFPullToLoadMoreView.h */,
@@ -886,6 +901,10 @@
 				8120C14817DFAD8C00A1C3A9 /* Menu-Search@2x.png */,
 				8120C14917DFAD8C00A1C3A9 /* Menu-Sell.png */,
 				8120C14A17DFAD8C00A1C3A9 /* Menu-Sell@2x.png */,
+				81BC174917FC528100DF7AD4 /* NewPost-Progress-Selected.png */,
+				81BC174A17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png */,
+				81BC174D17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png */,
+				81BC174E17FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png */,
 				8120C16017DFB48600A1C3A9 /* Navigation-Filter.png */,
 				8120C16117DFB48600A1C3A9 /* Navigation-Filter@2x.png */,
 				8120C1A917E049B400A1C3A9 /* Navigation-Logo.png */,
@@ -1180,11 +1199,14 @@
 				81B27B4B17F6107100F9BC09 /* cvc.png in Resources */,
 				812F4AED17DF003800454747 /* Icon114.png in Resources */,
 				8120C1A617E0470300A1C3A9 /* Home-Security@2x.png in Resources */,
+				81BC175017FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png in Resources */,
 				8120C1A517E0470300A1C3A9 /* Home-Security.png in Resources */,
 				812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */,
 				8120C19417E0470300A1C3A9 /* Home-Bookmarks@2x.png in Resources */,
 				8120C19D17E0470300A1C3A9 /* Home-History.png in Resources */,
+				81BC174C17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png in Resources */,
 				8120C1A417E0470300A1C3A9 /* Home-ReturnsPolicy@2x.png in Resources */,
+				81BC174F17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png in Resources */,
 				8120C1A117E0470300A1C3A9 /* Home-Recents.png in Resources */,
 				8120C15F17DFB2F700A1C3A9 /* Navigation-Menu@2x.png in Resources */,
 				8120C15017DFAD8C00A1C3A9 /* Menu-Search.png in Resources */,
@@ -1201,6 +1223,7 @@
 				8110829917F8809F005CC8ED /* Blue-Dot@2x.png in Resources */,
 				81B27B4F17F6107100F9BC09 /* discover.png in Resources */,
 				812F4AB317DEFD0300454747 /* Default.png in Resources */,
+				81BC174B17FC528100DF7AD4 /* NewPost-Progress-Selected.png in Resources */,
 				8120C19317E0470300A1C3A9 /* Home-Bookmarks.png in Resources */,
 				8120C1A817E0470300A1C3A9 /* Home-ShippingInfo@2x.png in Resources */,
 				8120C16817DFBC4500A1C3A9 /* Pages in Resources */,
@@ -1253,6 +1276,7 @@
 				811082A717F8B299005CC8ED /* NSArray+Additions.m in Sources */,
 				8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */,
 				81233D6717F8E01A00C27805 /* MFDatabase+Size.m in Sources */,
+				81BC174717FC429E00DF7AD4 /* MFNewPostProgressView.m in Sources */,
 				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
 				811082CF17F8CA8E005CC8ED /* SQLConnection.m in Sources */,
 				81B27B2717F6103700F9BC09 /* PKCard.m in Sources */,

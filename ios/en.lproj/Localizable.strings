@@ -45,6 +45,38 @@
 "Menu.Action.Cart" = "My Cart";
 "Menu.Action.Sell" = "Sell";
 
+/* New Post Controller */
+
+"NewPost.Action.Condition" = "Condition";
+"NewPost.Action.Details" = "Dress Details";
+"NewPost.Action.Done" = "Done";
+"NewPost.Action.Next" = "Next";
+"NewPost.Action.Photos" = "Photos";
+"NewPost.Action.Price" = "Price";
+"NewPost.Action.SellersNote" = "Seller's Note";
+"NewPost.Action.TypeSizeFit" = "Type, Size & Fit";
+"NewPost.Hint.Price" = "We ask for this so as to illustrate savings (vs. buying new) to potential buyers";
+"NewPost.Label.Brand" = "Brand";
+"NewPost.Label.Colors" = "Color(s)";
+"NewPost.Label.Fit" = "Fit Description";
+"NewPost.Label.Materials" = "Materials";
+"NewPost.Label.Note" = "Seller's Note";
+"NewPost.Label.Price" = "Sale Price";
+"NewPost.Label.OriginalPrice" = "Original Price";
+"NewPost.Label.Size" = "Size";
+"NewPost.Label.Subject" = "Post Subject";
+"NewPost.Label.Type" = "Dress Type";
+"NewPost.Title.Brand" = "Select Brand";
+"NewPost.Title.Colors" = "Select Colors";
+"NewPost.Title.Condition" = "Condition";
+"NewPost.Title.Details" = "Dress Details";
+"NewPost.Title.Photos" = "Add Photos";
+"NewPost.Title.Price" = "Set Price";
+"NewPost.Title.SellersNote" = "Seller's Note";
+"NewPost.Title.Size" = "Select Size";
+"NewPost.Title.Type" = "Select Dress Type";
+"NewPost.Title.TypeSizeFit" = "Type, Size & Fit";
+
 /* Pull to Refresh View */
 
 "PullToRefresh.Label.Loading" = "Loading...";

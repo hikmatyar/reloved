@@ -24,13 +24,16 @@
 
 - (void)setViewControllerClass:(Class)klass
 {
-    MFSideMenuContainerViewController *navigationController = self.menuContainerViewController;
+    MFSideMenuContainerViewController *controller = self.menuContainerViewController;
     
-    if(![((Class)((UINavigationController *)navigationController.centerViewController).viewControllers.firstObject).class isEqual:klass]) {
-        navigationController.centerViewController = [[UINavigationController alloc] initWithRootViewController:[[klass alloc] init]];
+    if(![((Class)((UINavigationController *)controller.centerViewController).viewControllers.firstObject).class isEqual:klass]) {
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[klass alloc] init]];
+        
+        navigationController.navigationBar.translucent = NO;
+        controller.centerViewController = navigationController;
     }
     
-    [navigationController toggleLeftSideMenuCompletion:NULL];
+    [controller toggleLeftSideMenuCompletion:NULL];
 }
 
 - (IBAction)home:(id)sender

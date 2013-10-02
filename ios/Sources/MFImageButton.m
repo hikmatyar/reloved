@@ -6,6 +6,7 @@
 
 @synthesize imageTopPadding = m_imageTopPadding;
 @synthesize textTopPadding = m_textTopPadding;
+@synthesize verticalBias = m_verticalBias;
 
 #pragma mark UIView
 
@@ -16,6 +17,7 @@
     if(self) {
         m_imageTopPadding = -2.0F;
         m_textTopPadding = -2.0F;
+        m_verticalBias = 1.0F;
     }
     
     return self;
@@ -31,6 +33,18 @@
         CGRect imageFrame = self.imageView.frame;
         CGSize fitBoxSize = { MAX(imageFrame.size.width, labelSize.width), labelSize.height + m_textTopPadding + imageFrame.size.height };
         CGRect fitBoxRect = CGRectInset(self.bounds, 0.5F * (self.bounds.size.width - fitBoxSize.width), 0.5F * (self.bounds.size.height - fitBoxSize.height));
+        
+        if(fitBoxRect.size.width <= 0.0F) {
+            fitBoxRect.origin.x = 0.0F;
+            fitBoxRect.size.width = self.bounds.size.width;
+        }
+        
+        if(fitBoxRect.size.height <= 0.0F) {
+            fitBoxRect.origin.y = 0.0F;
+            fitBoxRect.size.height = self.bounds.size.height;
+        } else {
+            fitBoxRect.origin.y *= m_verticalBias;
+        }
         
         imageFrame.origin.y = fitBoxRect.origin.y + m_imageTopPadding;
         imageFrame.origin.x = CGRectGetMidX(fitBoxRect) - 0.5F * imageFrame.size.width;
