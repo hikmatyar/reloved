@@ -4,4 +4,9 @@
 
 @interface MFPageView : UIView
 
+- (void)pageWillAppear;
+- (void)pageDidAppear;
+- (void)pageWillDisappear;
+- (void)pageDidDisappear;
+
 @end

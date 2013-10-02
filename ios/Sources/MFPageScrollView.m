@@ -45,6 +45,45 @@
     }
 }
 
+@dynamic selectedPage;
+
+- (MFPageView *)selectedPage
+{
+    NSInteger index = roundf(self.contentOffset.x / self.bounds.size.width);
+    
+    for(UIView *view in self.subviews) {
+        if([view isKindOfClass:[MFPageView class]]) {
+            if(index == 0) {
+                return (MFPageView *)view;
+            }
+            
+            index--;
+        }
+    }
+    
+    return nil;
+}
+
+- (void)setSelectedPage:(MFPageView *)selectedPage
+{
+    [self setSelectedPage:selectedPage animated:NO];
+}
+
+- (void)setSelectedPage:(MFPageView *)selectedPage animated:(BOOL)animated
+{
+    if(selectedPage.superview == self) {
+        MFPageView *selectedPage_ = self.selectedPage;
+        
+        if(selectedPage_ != selectedPage) {
+            [selectedPage_ pageWillDisappear];
+            [selectedPage pageWillAppear];
+            [self setContentOffset:CGPointMake(selectedPage.frame.origin.x, 0.0F) animated:animated];
+            [selectedPage_ pageDidDisappear];
+            [selectedPage pageDidAppear];
+        }
+    }
+}
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame
