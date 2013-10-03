@@ -6,6 +6,7 @@
 #import "MFNewPostController+Photos.h"
 #import "MFNewPostController+Price.h"
 #import "MFNewPostController+Notes.h"
+#import "MFNewPostController+TypeSizeAndFit.h"
 #import "MFNewPostProgressView.h"
 #import "MFPageView.h"
 #import "MFPageScrollView.h"
@@ -148,9 +149,9 @@
     if(self) {
         m_steps = [[NSArray alloc] initWithObjects:
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Photos", nil), NSLocalizedString(@"NewPost.Title.Photos", nil), [self createPhotosPageView]),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.TypeSizeFit", nil), NSLocalizedString(@"NewPost.Title.TypeSizeFit", [self createTypeSizeAndFitPageView]), nil),
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.TypeSizeFit", nil), NSLocalizedString(@"NewPost.Title.TypeSizeFit", nil), [self createTypeSizeAndFitPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Condition", nil), NSLocalizedString(@"NewPost.Title.Condition", nil), [self createConditionPageView]),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Details", nil), NSLocalizedString(@"NewPost.Title.Details", [self createDetailsPageView]), nil),
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Details", nil), NSLocalizedString(@"NewPost.Title.Details", nil), [self createDetailsPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Price", nil), NSLocalizedString(@"NewPost.Title.Price", nil), [self createPricePageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.SellersNote", nil), NSLocalizedString(@"NewPost.Title.SellersNote", [self createNotesPageView]), nil),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Done", nil), nil, nil), nil];
