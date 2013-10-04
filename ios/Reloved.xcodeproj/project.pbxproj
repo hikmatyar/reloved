@@ -167,6 +167,7 @@
 		817723E317FDAAD8004A28CC /* MFFormButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723E217FDAAD8004A28CC /* MFFormButton.m */; };
 		817723E617FDAAEC004A28CC /* MFFormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723E517FDAAEC004A28CC /* MFFormTextField.m */; };
 		817723E917FDAB61004A28CC /* MFFormSeparator.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723E817FDAB61004A28CC /* MFFormSeparator.m */; };
+		817723EC17FDADCC004A28CC /* MFFormAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723EB17FDADCC004A28CC /* MFFormAccessory.m */; };
 		818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F916C17DF958D00D1A723 /* MFSideMenuContainerViewController.m */; };
 		818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F916E17DF958D00D1A723 /* MFSideMenuShadow.m */; };
 		818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */; };
@@ -497,6 +498,8 @@
 		817723E517FDAAEC004A28CC /* MFFormTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFFormTextField.m; path = Sources/MFFormTextField.m; sourceTree = SOURCE_ROOT; };
 		817723E717FDAB61004A28CC /* MFFormSeparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFFormSeparator.h; path = Sources/MFFormSeparator.h; sourceTree = SOURCE_ROOT; };
 		817723E817FDAB61004A28CC /* MFFormSeparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFFormSeparator.m; path = Sources/MFFormSeparator.m; sourceTree = SOURCE_ROOT; };
+		817723EA17FDADCC004A28CC /* MFFormAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFFormAccessory.h; path = Sources/MFFormAccessory.h; sourceTree = SOURCE_ROOT; };
+		817723EB17FDADCC004A28CC /* MFFormAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFFormAccessory.m; path = Sources/MFFormAccessory.m; sourceTree = SOURCE_ROOT; };
 		818F916A17DF958D00D1A723 /* MFSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSideMenu.h; path = Sources/MFSideMenu/MFSideMenu.h; sourceTree = SOURCE_ROOT; };
 		818F916B17DF958D00D1A723 /* MFSideMenuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSideMenuContainerViewController.h; path = Sources/MFSideMenu/MFSideMenuContainerViewController.h; sourceTree = SOURCE_ROOT; };
 		818F916C17DF958D00D1A723 /* MFSideMenuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFSideMenuContainerViewController.m; path = Sources/MFSideMenu/MFSideMenuContainerViewController.m; sourceTree = SOURCE_ROOT; };
@@ -832,6 +835,8 @@
 			children = (
 				817723D817FDA877004A28CC /* MFForm.h */,
 				817723D917FDA877004A28CC /* MFForm.m */,
+				817723EA17FDADCC004A28CC /* MFFormAccessory.h */,
+				817723EB17FDADCC004A28CC /* MFFormAccessory.m */,
 				817723E117FDAAD8004A28CC /* MFFormButton.h */,
 				817723E217FDAAD8004A28CC /* MFFormButton.m */,
 				817723DE17FDAAC9004A28CC /* MFFormLabel.h */,
@@ -1436,6 +1441,7 @@
 				812F4AE717DEFEE900454747 /* ASINetworkQueue.m in Sources */,
 				811082D217F8CA8E005CC8ED /* SQLObjectStore.m in Sources */,
 				812F4AE017DEFEE900454747 /* ASIAuthenticationDialog.m in Sources */,
+				817723EC17FDADCC004A28CC /* MFFormAccessory.m in Sources */,
 				818F917617DF95F400D1A723 /* MFMenuController.m in Sources */,
 				81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */,
 				812F4AE417DEFEE900454747 /* ASIFormDataRequest.m in Sources */,

@@ -40,19 +40,14 @@
     BOOL inForm = NO;
     
     for(UIView *subview in self.subviews) {
-        if(!subview.hidden && subview.tag > 0) {
+        if(!subview.hidden && [subview conformsToProtocol:protocol]) {
             CGSize size = subview.frame.size;
             
-            if([subview conformsToProtocol:protocol]) {
-                if(!inForm) {
-                    rect.size.height += insets.top;
-                }
-                
-                inForm = YES;
-            } else {
+            if(!inForm) {
                 rect.size.height += insets.top;
-                inForm = NO;
             }
+            
+            inForm = YES;
             
             subview.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             subview.frame = CGRectMake(0.0F, rect.size.height, rect.size.width, size.height);
