@@ -4,4 +4,12 @@
 
 @implementation MFFormTextField
 
++ (CGFloat)preferredHeight
+{
+    return 50.0F;
+}
+
+#pragma mark UIView
+
+
 @end

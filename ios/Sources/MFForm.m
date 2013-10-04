@@ -25,7 +25,7 @@
     self = [super initWithFrame:frame];
     
     if(self) {
-        self.contentInset = UIEdgeInsetsMake(10.0F, 10.0F, 10.0F, 10.0F);
+        self.contentInset = UIEdgeInsetsMake(0.0F, 0.0F, 0.0F, 0.0F);
         self.showsHorizontalScrollIndicator = NO;
     }
     

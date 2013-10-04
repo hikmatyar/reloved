@@ -10,7 +10,7 @@
 
 + (CGFloat)preferredHeight
 {
-    return 75.0F;
+    return 60.0F;
 }
 
 @synthesize delegate = m_delegate;
@@ -65,6 +65,11 @@
         
         separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         separatorView.backgroundColor = [UIColor themeMenuSeparatorColor];
+        [self addSubview:separatorView];
+        
+        separatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, frame.size.height - 1.0F, frame.size.width, 1.0F)];
+        separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+        separatorView.backgroundColor = [UIColor themeSeparatorTopColor];
         [self addSubview:separatorView];
     }
 }
