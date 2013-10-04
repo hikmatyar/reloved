@@ -160,6 +160,7 @@
 		812F4AF317DF00FD00454747 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF217DF00FD00454747 /* libz.dylib */; };
 		812F4AF517DF011E00454747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF417DF011E00454747 /* SystemConfiguration.framework */; };
 		812F4AF917DF017F00454747 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF817DF017F00454747 /* MobileCoreServices.framework */; };
+		8151359317FF4E3500140E11 /* MFNewPostPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8151359217FF4E3500140E11 /* MFNewPostPhotoView.m */; };
 		81689E0B17E32124003D243E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 81689E0917E32124003D243E /* InfoPlist.strings */; };
 		817723DA17FDA877004A28CC /* MFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723D917FDA877004A28CC /* MFForm.m */; };
 		817723DD17FDA9A1004A28CC /* MFFormTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723DC17FDA9A1004A28CC /* MFFormTextView.m */; };
@@ -485,6 +486,8 @@
 		812F4AF417DF011E00454747 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		812F4AF617DF015500454747 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		812F4AF817DF017F00454747 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		8151359117FF4E3500140E11 /* MFNewPostPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostPhotoView.h; path = Sources/MFNewPostPhotoView.h; sourceTree = SOURCE_ROOT; };
+		8151359217FF4E3500140E11 /* MFNewPostPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostPhotoView.m; path = Sources/MFNewPostPhotoView.m; sourceTree = SOURCE_ROOT; };
 		81689E0A17E32124003D243E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		817723D817FDA877004A28CC /* MFForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFForm.h; path = Sources/MFForm.h; sourceTree = SOURCE_ROOT; };
 		817723D917FDA877004A28CC /* MFForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFForm.m; path = Sources/MFForm.m; sourceTree = SOURCE_ROOT; };
@@ -860,6 +863,8 @@
 				8119DFC917E06BCC007AEDC2 /* MFImageView.m */,
 				81D0966817FCCE330044BD06 /* MFNewPostConditionTableViewCell.h */,
 				81D0966917FCCE330044BD06 /* MFNewPostConditionTableViewCell.m */,
+				8151359117FF4E3500140E11 /* MFNewPostPhotoView.h */,
+				8151359217FF4E3500140E11 /* MFNewPostPhotoView.m */,
 				81BC174517FC429E00DF7AD4 /* MFNewPostProgressView.h */,
 				81BC174617FC429E00DF7AD4 /* MFNewPostProgressView.m */,
 				81BC174817FC432900DF7AD4 /* MFNewPostProgressViewDelegate.h */,
@@ -1385,6 +1390,7 @@
 				81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */,
 				81B27B2817F6103700F9BC09 /* PKCardCVC.m in Sources */,
 				8120C1CB17E0684E00A1C3A9 /* MFProfileController.m in Sources */,
+				8151359317FF4E3500140E11 /* MFNewPostPhotoView.m in Sources */,
 				81B27B2C17F6103700F9BC09 /* PKUSAddressZip.m in Sources */,
 				8120C1B217E0520E00A1C3A9 /* MFHomeHeaderView.m in Sources */,
 				81233D5517F8DDDF00C27805 /* MFSize.m in Sources */,

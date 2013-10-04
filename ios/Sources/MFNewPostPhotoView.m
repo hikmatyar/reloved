@@ -1,0 +1,70 @@
+/* Copyright (c) 2013 Meep Factory OU */
+
+#import "MFNewPostPhotoView.h"
+
+@implementation MFNewPostPhotoView
+
+@dynamic image;
+
+- (UIImage *)image
+{
+    return m_imageView.image;
+}
+
+- (void)setImage:(UIImage *)image
+{
+    m_imageView.image = image;
+}
+
+@dynamic imageIndex;
+
+- (NSInteger)imageIndex
+{
+    return m_imageIndex;
+}
+
+- (void)setImageIndex:(NSInteger)imageIndex
+{
+    if(m_imageIndex != imageIndex) {
+        m_imageIndex = imageIndex;
+        
+        [m_button setTitle:(m_imageIndex != NSNotFound) ? [NSString stringWithFormat:@"%d", (m_imageIndex + 1)] : @"" forState:UIControlStateNormal];
+    }
+}
+
+- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
+{
+    [m_button addTarget:target action:action forControlEvents:controlEvents];
+}
+
+- (void)removeTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
+{
+    [m_button removeTarget:target action:action forControlEvents:controlEvents];
+}
+
+#pragma mark UIView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    
+    if(self) {
+        m_imageIndex = NSNotFound;
+        
+        self.backgroundColor = [UIColor redColor];
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        self.layer.borderWidth = 1.0F;
+        
+        m_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
+        m_imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self addSubview:m_imageView];
+        
+        m_button = [[UIButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
+        m_button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self addSubview:m_button];
+    }
+    
+    return self;
+}
+
+@end
