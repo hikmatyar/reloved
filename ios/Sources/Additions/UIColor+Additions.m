@@ -69,6 +69,11 @@
     return [self colorWithString:@"#111111"];
 }
 
++ (UIColor *)themeButtonTextPlaceholderColor
+{
+    return [self themeInputTextPlaceholderColor];
+}
+
 + (UIColor *)themeInputBackgroundColor
 {
     return [self colorWithString:@"#ffffff"];

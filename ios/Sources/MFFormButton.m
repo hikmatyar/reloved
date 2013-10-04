@@ -11,6 +11,43 @@
     return 50.0F;
 }
 
+@dynamic placeholder;
+
+- (NSString *)placeholder
+{
+    return m_placeholder;
+}
+
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    if(!MFEqual(m_placeholder, placeholder)) {
+        BOOL noText = (self.titleLabel.text.length == 0 || [m_placeholder isEqualToString:self.titleLabel.text]) ? YES : NO;
+        
+        m_placeholder = placeholder;
+        
+        if(noText) {
+            [self setTitle:@"" forState:UIControlStateNormal];
+        }
+    }
+}
+
+#pragma mark UIButton
+
+- (void)setTitle:(NSString *)title forState:(UIControlState)state
+{
+    if(state == UIControlStateNormal) {
+        if(title.length > 0) {
+            [super setTitle:title forState:state];
+            [self setTitleColor:[UIColor themeButtonTextColor] forState:state];
+        } else {
+            [super setTitle:(m_placeholder) ? m_placeholder : @"" forState:state];
+            [self setTitleColor:[UIColor themeButtonTextPlaceholderColor] forState:state];
+        }
+    } else {
+        [super setTitle:title forState:state];
+    }
+}
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame
