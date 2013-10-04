@@ -4,4 +4,6 @@
 
 @interface MFFormButton : UIButton <MFFormElement>
 
++ (CGFloat)preferredHeight;
+
 @end
