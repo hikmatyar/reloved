@@ -69,6 +69,21 @@
     return [self colorWithString:@"#111111"];
 }
 
++ (UIColor *)themeInputBackgroundColor
+{
+    return [self colorWithString:@"#ffffff"];
+}
+
++ (UIColor *)themeInputTextColor
+{
+    return [self colorWithString:@"#000000"];
+}
+
++ (UIColor *)themeInputTextPlaceholderColor
+{
+    return [self colorWithString:@"#999999"];
+}
+
 + (UIColor *)themeSeparatorTopColor
 {
     return [self colorWithString:@"#d8d8d8"];

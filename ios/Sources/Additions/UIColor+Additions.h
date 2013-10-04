@@ -17,6 +17,10 @@
 + (UIColor *)themeButtonTextColor;
 + (UIColor *)themeButtonTextHighlightColor;
 
++ (UIColor *)themeInputBackgroundColor;
++ (UIColor *)themeInputTextColor;
++ (UIColor *)themeInputTextPlaceholderColor;
+
 + (UIColor *)themeSeparatorTopColor;
 + (UIColor *)themeSeparatorBottomColor;
 
