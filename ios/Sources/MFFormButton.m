@@ -11,6 +11,13 @@
     return 50.0F;
 }
 
+@dynamic empty;
+
+- (BOOL)isEmpty
+{
+    return (self.titleLabel.text.length == 0 || [m_placeholder isEqualToString:self.titleLabel.text]) ? YES : NO;
+}
+
 @dynamic placeholder;
 
 - (NSString *)placeholder

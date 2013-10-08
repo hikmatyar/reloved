@@ -11,5 +11,6 @@
 + (CGFloat)preferredHeight;
 
 @property (nonatomic, retain) NSString *placeholder;
+@property (nonatomic, assign, readonly, getter = isEmpty) BOOL empty;
 
 @end
