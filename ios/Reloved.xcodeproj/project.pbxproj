@@ -161,6 +161,7 @@
 		812F4AF517DF011E00454747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF417DF011E00454747 /* SystemConfiguration.framework */; };
 		812F4AF917DF017F00454747 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF817DF017F00454747 /* MobileCoreServices.framework */; };
 		8141AB3E180474070087B740 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB3D180474070087B740 /* UIViewController+Additions.m */; };
+		8141AB4118047B650087B740 /* NSFileManager+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4018047B650087B740 /* NSFileManager+Additions.m */; };
 		8151359317FF4E3500140E11 /* MFNewPostPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8151359217FF4E3500140E11 /* MFNewPostPhotoView.m */; };
 		81689E0B17E32124003D243E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 81689E0917E32124003D243E /* InfoPlist.strings */; };
 		817723DA17FDA877004A28CC /* MFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723D917FDA877004A28CC /* MFForm.m */; };
@@ -489,6 +490,8 @@
 		812F4AF817DF017F00454747 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8141AB3C180474070087B740 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Additions.h"; path = "Sources/Additions/UIViewController+Additions.h"; sourceTree = SOURCE_ROOT; };
 		8141AB3D180474070087B740 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Additions.m"; path = "Sources/Additions/UIViewController+Additions.m"; sourceTree = SOURCE_ROOT; };
+		8141AB3F18047B650087B740 /* NSFileManager+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Additions.h"; path = "Sources/Additions/NSFileManager+Additions.h"; sourceTree = SOURCE_ROOT; };
+		8141AB4018047B650087B740 /* NSFileManager+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+Additions.m"; path = "Sources/Additions/NSFileManager+Additions.m"; sourceTree = SOURCE_ROOT; };
 		8151359117FF4E3500140E11 /* MFNewPostPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostPhotoView.h; path = Sources/MFNewPostPhotoView.h; sourceTree = SOURCE_ROOT; };
 		8151359217FF4E3500140E11 /* MFNewPostPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostPhotoView.m; path = Sources/MFNewPostPhotoView.m; sourceTree = SOURCE_ROOT; };
 		81689E0A17E32124003D243E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1017,6 +1020,8 @@
 				811082A617F8B299005CC8ED /* NSArray+Additions.m */,
 				8120C16C17DFBF1200A1C3A9 /* NSDictionary+Additions.h */,
 				8120C16D17DFBF1200A1C3A9 /* NSDictionary+Additions.m */,
+				8141AB3F18047B650087B740 /* NSFileManager+Additions.h */,
+				8141AB4018047B650087B740 /* NSFileManager+Additions.m */,
 				8120C16F17DFBFA700A1C3A9 /* NSString+Additions.h */,
 				8120C17017DFBFA700A1C3A9 /* NSString+Additions.m */,
 				8120C1BB17E053A100A1C3A9 /* UIButton+Additions.h */,
@@ -1356,6 +1361,7 @@
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
 				817723E917FDAB61004A28CC /* MFFormSeparator.m in Sources */,
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
+				8141AB4118047B650087B740 /* NSFileManager+Additions.m in Sources */,
 				81233D8517F912B000C27805 /* MFSectionHeaderView.m in Sources */,
 				811082C517F8C805005CC8ED /* MFWebService+Feed.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
