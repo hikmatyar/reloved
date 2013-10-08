@@ -62,6 +62,8 @@
 "NewPost.Hint.Photo.3" = "Select Photo #3";
 "NewPost.Hint.Photo.4" = "Select Photo #4";
 "NewPost.Hint.Price" = "We ask for this so as to illustrate savings (vs. buying new) to potential buyers";
+"NewPost.Hint.SellersNote" = "(TDB)";
+"NewPost.Hint.Subject" = "(TDB)";
 "NewPost.Label.Brand" = "Brand";
 "NewPost.Label.Colors" = "Color(s)";
 "NewPost.Label.Fit" = "Fit Description";
