@@ -9,6 +9,7 @@
 }
 
 - (IBAction)menu:(id)sender;
+- (IBAction)next:(id)sender;
 
 - (void)invalidateNavigation;
 
