@@ -163,6 +163,7 @@
 		8141AB3E180474070087B740 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB3D180474070087B740 /* UIViewController+Additions.m */; };
 		8141AB4118047B650087B740 /* NSFileManager+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4018047B650087B740 /* NSFileManager+Additions.m */; };
 		8141AB4418048E550087B740 /* MFNewPostPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4318048E550087B740 /* MFNewPostPageView.m */; };
+		8141AB4718049DD70087B740 /* MFFormFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4618049DD70087B740 /* MFFormFooter.m */; };
 		8151359317FF4E3500140E11 /* MFNewPostPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8151359217FF4E3500140E11 /* MFNewPostPhotoView.m */; };
 		81689E0B17E32124003D243E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 81689E0917E32124003D243E /* InfoPlist.strings */; };
 		817723DA17FDA877004A28CC /* MFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723D917FDA877004A28CC /* MFForm.m */; };
@@ -495,6 +496,8 @@
 		8141AB4018047B650087B740 /* NSFileManager+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+Additions.m"; path = "Sources/Additions/NSFileManager+Additions.m"; sourceTree = SOURCE_ROOT; };
 		8141AB4218048E550087B740 /* MFNewPostPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostPageView.h; path = Sources/MFNewPostPageView.h; sourceTree = SOURCE_ROOT; };
 		8141AB4318048E550087B740 /* MFNewPostPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostPageView.m; path = Sources/MFNewPostPageView.m; sourceTree = SOURCE_ROOT; };
+		8141AB4518049DD70087B740 /* MFFormFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFFormFooter.h; path = Sources/MFFormFooter.h; sourceTree = SOURCE_ROOT; };
+		8141AB4618049DD70087B740 /* MFFormFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFFormFooter.m; path = Sources/MFFormFooter.m; sourceTree = SOURCE_ROOT; };
 		8151359117FF4E3500140E11 /* MFNewPostPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostPhotoView.h; path = Sources/MFNewPostPhotoView.h; sourceTree = SOURCE_ROOT; };
 		8151359217FF4E3500140E11 /* MFNewPostPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostPhotoView.m; path = Sources/MFNewPostPhotoView.m; sourceTree = SOURCE_ROOT; };
 		81689E0A17E32124003D243E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -851,6 +854,8 @@
 				817723EB17FDADCC004A28CC /* MFFormAccessory.m */,
 				817723E117FDAAD8004A28CC /* MFFormButton.h */,
 				817723E217FDAAD8004A28CC /* MFFormButton.m */,
+				8141AB4518049DD70087B740 /* MFFormFooter.h */,
+				8141AB4618049DD70087B740 /* MFFormFooter.m */,
 				817723DE17FDAAC9004A28CC /* MFFormLabel.h */,
 				817723DF17FDAAC9004A28CC /* MFFormLabel.m */,
 				817723E717FDAB61004A28CC /* MFFormSeparator.h */,
@@ -1413,6 +1418,7 @@
 				8120C1B217E0520E00A1C3A9 /* MFHomeHeaderView.m in Sources */,
 				81233D5517F8DDDF00C27805 /* MFSize.m in Sources */,
 				8120C16E17DFBF1200A1C3A9 /* NSDictionary+Additions.m in Sources */,
+				8141AB4718049DD70087B740 /* MFFormFooter.m in Sources */,
 				81233D7917F8F27100C27805 /* MFDatabase+Delivery.m in Sources */,
 				8120C17417E03CB900A1C3A9 /* MFMenu.m in Sources */,
 				818F917117DF958D00D1A723 /* MFSideMenuContainerViewController.m in Sources */,
