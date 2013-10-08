@@ -13,7 +13,7 @@ typedef enum _MFPostStatus {
 
 @interface MFPost : NSObject
 {
-    @private
+    @protected
     NSDate *m_created;
     NSString *m_identifier;
     MFPostStatus m_status;
@@ -31,5 +31,15 @@ typedef enum _MFPostStatus {
 @property (nonatomic, retain, readonly) NSString *title;
 
 - (BOOL)update:(NSDictionary *)changes;
+
+@end
+
+@interface MFMutablePost : MFPost
+{
+    @private
+    NSArray *m_imagePaths;
+}
+
+@property (nonatomic, retain) NSArray *imagePaths;
 
 @end

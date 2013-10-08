@@ -51,3 +51,11 @@
 }
 
 @end
+
+#pragma mark -
+
+@implementation MFMutablePost
+
+@synthesize imagePaths = m_imagePaths;
+
+@end

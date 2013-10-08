@@ -87,6 +87,7 @@
 "NewPost.Title.Colors" = "Select Colors";
 "NewPost.Title.Condition" = "Condition";
 "NewPost.Title.Details" = "Dress Details";
+"NewPost.Title.Done" = "Preview";
 "NewPost.Title.Photos" = "Add Photos";
 "NewPost.Title.Price" = "Set Price";
 "NewPost.Title.SellersNote" = "Seller's Note";

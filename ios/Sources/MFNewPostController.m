@@ -10,6 +10,7 @@
 #import "MFNewPostPageView.h"
 #import "MFNewPostProgressView.h"
 #import "MFPageScrollView.h"
+#import "MFPost.h"
 #import "MFSideMenuContainerViewController.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -78,9 +79,20 @@
     return (MFNewPostProgressView *)[self.view viewWithTag:TAG_PROGRESS_VIEW];
 }
 
+@synthesize post = m_post;
+
 - (IBAction)menu:(id)sender
 {
     [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+}
+
+- (IBAction)post:(id)sender
+{
+    for(MFNewPostController_Step *step in m_steps) {
+        [step.page submitting];
+    }
+    
+    
 }
 
 - (IBAction)next:(id)sender
@@ -88,12 +100,16 @@
     MFNewPostProgressView *progressView = self.progressView;
     NSInteger index = progressView.selectedIndex;
     
-    if(index + 1 < m_steps.count) {
-        index += 1;
-        
-        if([self progressView:progressView shouldSelectItemAtIndex:index]) {
-            progressView.selectedIndex = index;
-            [self progressView:progressView didSelectItemAtIndex:index];
+    if(index != NSNotFound) {
+        if(index + 1 < m_steps.count) {
+            index += 1;
+            
+            if([self progressView:progressView shouldSelectItemAtIndex:index]) {
+                progressView.selectedIndex = index;
+                [self progressView:progressView didSelectItemAtIndex:index];
+            }
+        } else if([(MFNewPostController_Step *)[m_steps objectAtIndex:m_steps.count - 1] canContinue]) {
+            [self post:nil];
         }
     }
 }
@@ -194,7 +210,8 @@
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Details", nil), NSLocalizedString(@"NewPost.Title.Details", nil), [self createDetailsPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Price", nil), NSLocalizedString(@"NewPost.Title.Price", nil), [self createPricePageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.SellersNote", nil), NSLocalizedString(@"NewPost.Title.SellersNote", nil), [self createNotesPageView]),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Done", nil), nil, nil), nil];
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Done", nil), NSLocalizedString(@"NewPost.Title.Done", nil), nil), nil];
+        m_post = [[MFMutablePost alloc] init];
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NewPost.Action.Next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(next:)];

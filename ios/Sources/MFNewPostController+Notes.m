@@ -123,6 +123,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
+    [m_controller invalidateNavigation];
 }
 
 @end

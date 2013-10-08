@@ -3,6 +3,7 @@
 #import "MFNewPostController+Photos.h"
 #import "MFNewPostPageView.h"
 #import "MFNewPostPhotoView.h"
+#import "MFPost.h"
 #import "NSFileManager+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -172,6 +173,26 @@
     }
     
     return m_canContinue;
+}
+
+- (void)submitting
+{
+    [m_imagePaths removeAllObjects];
+}
+
+#pragma mark MFPageView
+
+- (void)pageDidDisappear
+{
+    NSMutableArray *imagePaths = [NSMutableArray array];
+    
+    for(NSNumber *key in [m_imagePaths.allKeys sortedArrayUsingSelector:@selector(compare:)]) {
+        NSString *path = [m_imagePaths objectForKey:key];
+        
+        [imagePaths addObject:path];
+    }
+    
+    m_controller.post.imagePaths = imagePaths;
 }
 
 #pragma mark UIImagePickerControllerDelegate

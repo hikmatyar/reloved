@@ -13,5 +13,6 @@
 - (id)initWithFrame:(CGRect)frame controller:(MFNewPostController *)controller;
 
 - (BOOL)canContinue;
+- (void)submitting;
 
 @end

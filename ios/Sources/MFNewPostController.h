@@ -2,11 +2,16 @@
 
 #import "MFNewPostProgressViewDelegate.h"
 
+@class MFMutablePost;
+
 @interface MFNewPostController : UIViewController <MFNewPostProgressViewDelegate>
 {
     @private
     NSArray *m_steps;
+    MFMutablePost *m_post;
 }
+
+@property (nonatomic, retain, readonly) MFMutablePost *post;
 
 - (IBAction)menu:(id)sender;
 - (IBAction)next:(id)sender;
