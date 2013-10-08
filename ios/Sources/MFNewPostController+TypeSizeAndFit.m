@@ -17,7 +17,8 @@
 {
     @private
     MFFormAccessory *m_accessory;
-    UITextView *m_fitDescriptionTextView;
+    BOOL m_canContinue;
+    MFFormTextView *m_fitDescriptionTextView;
     MFForm *m_form;
 }
 
@@ -26,6 +27,22 @@
 @end
 
 @implementation MFNewPostController_TypeSizeAndFit
+
+- (IBAction)size:(id)sender
+{
+    MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+    
+    controller.delegate = self;
+    [m_controller.navigationController pushViewController:controller animated:YES];
+}
+
+- (IBAction)type:(id)sender
+{
+    MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+    
+    controller.delegate = self;
+    [m_controller.navigationController pushViewController:controller animated:YES];
+}
 
 #pragma mark MFNewPostPageView
 
@@ -73,20 +90,13 @@
     return self;
 }
 
-- (IBAction)size:(id)sender
+- (BOOL)canContinue
 {
-    MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+    if(!m_canContinue) {
+        m_canContinue = YES;
+    }
     
-    controller.delegate = self;
-    [m_controller.navigationController pushViewController:controller animated:YES];
-}
-
-- (IBAction)type:(id)sender
-{
-    MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
-    
-    controller.delegate = self;
-    [m_controller.navigationController pushViewController:controller animated:YES];
+    return m_canContinue;
 }
 
 #pragma mark MFOptionPickerControllerDelegate

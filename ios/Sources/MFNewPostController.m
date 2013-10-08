@@ -113,7 +113,7 @@
             item.style = UIBarButtonItemStyleDone;
         } else {
             item.title = NSLocalizedString(@"NewPost.Action.Next", nil);
-            item.enabled = [(MFNewPostController_Step *)[m_steps objectAtIndex:index + 1] canContinue];
+            item.enabled = [(MFNewPostController_Step *)[m_steps objectAtIndex:index] canContinue];
             item.style = UIBarButtonItemStylePlain;
         }
     }
@@ -127,7 +127,7 @@
     
     if(oldIndex != NSNotFound && index > oldIndex) {
         for(NSInteger i = oldIndex, c = index; i < c; i++) {
-            MFNewPostController_Step *step = [m_steps objectAtIndex:index];
+            MFNewPostController_Step *step = [m_steps objectAtIndex:i];
             
             if(![step canContinue]) {
                 return NO;
@@ -193,7 +193,7 @@
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Condition", nil), NSLocalizedString(@"NewPost.Title.Condition", nil), [self createConditionPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Details", nil), NSLocalizedString(@"NewPost.Title.Details", nil), [self createDetailsPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Price", nil), NSLocalizedString(@"NewPost.Title.Price", nil), [self createPricePageView]),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.SellersNote", nil), NSLocalizedString(@"NewPost.Title.SellersNote", [self createNotesPageView]), nil),
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.SellersNote", nil), NSLocalizedString(@"NewPost.Title.SellersNote", nil), [self createNotesPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Done", nil), nil, nil), nil];
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
