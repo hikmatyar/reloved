@@ -106,6 +106,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    [m_controller invalidateNavigation];
 }
 
 #pragma mark UITextViewDelegate
@@ -117,6 +118,7 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
+    [m_controller invalidateNavigation];
 }
 
 - (void)textViewDidChange:(UITextView *)textView

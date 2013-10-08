@@ -123,6 +123,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    [m_controller invalidateNavigation];
 }
 
 @end

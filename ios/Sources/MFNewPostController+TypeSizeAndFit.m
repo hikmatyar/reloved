@@ -12,6 +12,7 @@
 #import "MFOptionPickerControllerDelegate.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UIViewController+Additions.h"
 
 @interface MFNewPostController_TypeSizeAndFit : MFNewPostPageView <MFOptionPickerControllerDelegate, UITextViewDelegate>
 {
@@ -35,7 +36,7 @@
     MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
     
     controller.delegate = self;
-    [m_controller.navigationController pushViewController:controller animated:YES];
+    [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
 }
 
 - (IBAction)type:(id)sender
@@ -43,7 +44,7 @@
     MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
     
     controller.delegate = self;
-    [m_controller.navigationController pushViewController:controller animated:YES];
+    [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
 }
 
 #pragma mark MFNewPostPageView
@@ -94,10 +95,11 @@
     return self;
 }
 
+
 - (BOOL)canContinue
 {
     if(!m_canContinue) {
-        m_canContinue = YES;
+        m_canContinue = YES;//(m_fitDescriptionTextView.text.length > 0 && !m_typeButton.empty && !m_sizeButton.empty) ? YES : NO;
     }
     
     return m_canContinue;
@@ -108,6 +110,7 @@
 - (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller
 {
     // TODO:
+    [m_controller invalidateNavigation];
 }
 
 #pragma mark MFPageView
@@ -132,6 +135,7 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
+    [m_controller invalidateNavigation];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
