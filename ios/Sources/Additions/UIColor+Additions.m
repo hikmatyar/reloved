@@ -59,6 +59,11 @@
     return [self themeSeparatorColor];
 }
 
++ (UIColor *)themeButtonBorderSelectedColor
+{
+    return [self colorWithString:@"#996633"];
+}
+
 + (UIColor *)themeButtonTextColor
 {
     return [self colorWithString:@"#000000"];

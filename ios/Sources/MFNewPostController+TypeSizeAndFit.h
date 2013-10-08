@@ -2,10 +2,10 @@
 
 #import "MFNewPostController.h"
 
-@class MFPageView;
+@class MFNewPostPageView;
 
 @interface MFNewPostController(TypeSizeAndFit)
 
-- (MFPageView *)createTypeSizeAndFitPageView;
+- (MFNewPostPageView *)createTypeSizeAndFitPageView;
 
 @end

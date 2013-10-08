@@ -7,8 +7,8 @@
 #import "MFNewPostController+Price.h"
 #import "MFNewPostController+Notes.h"
 #import "MFNewPostController+TypeSizeAndFit.h"
+#import "MFNewPostPageView.h"
 #import "MFNewPostProgressView.h"
-#import "MFPageView.h"
 #import "MFPageScrollView.h"
 #import "MFSideMenuContainerViewController.h"
 #import "UIColor+Additions.h"
@@ -25,27 +25,29 @@
     @private
     NSString *m_label;
     NSString *m_title;
-    MFPageView *m_page;
+    MFNewPostPageView *m_page;
 }
 
-- (id)initWithLabel:(NSString *)label title:(NSString *)title page:(MFPageView *)page;
+- (id)initWithLabel:(NSString *)label title:(NSString *)title page:(MFNewPostPageView *)page;
 
 @property (nonatomic, retain, readonly) NSString *label;
-@property (nonatomic, retain, readonly) MFPageView *page;
+@property (nonatomic, retain, readonly) MFNewPostPageView *page;
 @property (nonatomic, retain, readonly) NSString *title;
+
+- (BOOL)canContinue;
 
 @end
 
 @implementation MFNewPostController_Step
 
-- (id)initWithLabel:(NSString *)label title:(NSString *)title page:(MFPageView *)page
+- (id)initWithLabel:(NSString *)label title:(NSString *)title page:(MFNewPostPageView *)page
 {
     self = [super init];
     
     if(self) {
         m_label = label;
         m_title = title;
-        m_page = (page) ? page : [[MFPageView alloc] initWithFrame:CGRectZero];
+        m_page = (page) ? page : [[MFNewPostPageView alloc] initWithFrame:CGRectZero controller:nil];
     }
     
     return self;
@@ -54,6 +56,11 @@
 @synthesize label = m_label;
 @synthesize page = m_page;
 @synthesize title = m_title;
+
+- (BOOL)canContinue
+{
+    return [m_page canContinue];
+}
 
 @end
 
@@ -91,13 +98,44 @@
     }
 }
 
+- (void)invalidateNavigation
+{
+    NSInteger index = self.progressView.selectedIndex;
+    
+    if(index != NSNotFound) {
+        UIBarButtonItem *item = (UIBarButtonItem *)self.navigationItem.rightBarButtonItem;
+        
+        self.navigationItem.title = ((MFNewPostController_Step *)[m_steps objectAtIndex:index]).title;
+        
+        if(index + 1 >= m_steps.count) {
+            item.title = NSLocalizedString(@"NewPost.Action.Done", nil);
+            item.enabled = YES;
+            item.style = UIBarButtonItemStyleDone;
+        } else {
+            item.title = NSLocalizedString(@"NewPost.Action.Next", nil);
+            item.enabled = [(MFNewPostController_Step *)[m_steps objectAtIndex:index + 1] canContinue];
+            item.style = UIBarButtonItemStylePlain;
+        }
+    }
+}
+
 #pragma mark MFNewPostProgressViewDelegate
 
 - (BOOL)progressView:(MFNewPostProgressView *)progressView shouldSelectItemAtIndex:(NSInteger)index
 {
-    MFNewPostController_Step *step = [m_steps objectAtIndex:index];
+    NSInteger oldIndex = progressView.selectedIndex;
     
-    return (step.title) ? YES : NO;
+    if(oldIndex != NSNotFound && index > oldIndex) {
+        for(NSInteger i = oldIndex, c = index; i < c; i++) {
+            MFNewPostController_Step *step = [m_steps objectAtIndex:index];
+            
+            if(![step canContinue]) {
+                return NO;
+            }
+        }
+    }
+    
+    return YES;
 }
 
 - (void)progressView:(MFNewPostProgressView *)progressView didSelectItemAtIndex:(NSInteger)index
@@ -106,6 +144,7 @@
     MFNewPostController_Step *step = [m_steps objectAtIndex:index];
     
     [contentView setSelectedPage:step.page animated:YES];
+    [self invalidateNavigation];
 }
 
 #pragma mark UIView
@@ -138,6 +177,7 @@
     view.backgroundColor = [UIColor themeBackgroundColor];
     
     self.view = view;
+    [self invalidateNavigation];
 }
 
 #pragma mark NSObject

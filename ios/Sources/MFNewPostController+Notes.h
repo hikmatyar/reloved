@@ -2,10 +2,10 @@
 
 #import "MFNewPostController.h"
 
-@class MFPageView;
+@class MFNewPostPageView;
 
 @interface MFNewPostController(Notes)
 
-- (MFPageView *)createNotesPageView;
+- (MFNewPostPageView *)createNotesPageView;
 
 @end

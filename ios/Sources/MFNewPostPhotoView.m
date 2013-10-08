@@ -1,6 +1,8 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFNewPostPhotoView.h"
+#import "UIColor+Additions.h"
+#import "UIFont+Additions.h"
 
 @implementation MFNewPostPhotoView
 
@@ -32,6 +34,21 @@
     }
 }
 
+@dynamic selected;
+
+- (BOOL)isSelected
+{
+    return m_selected;
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    if(m_selected != selected) {
+        m_selected = selected;
+        self.layer.borderColor = (m_selected) ? [UIColor themeButtonBorderSelectedColor].CGColor : [UIColor themeButtonBorderColor].CGColor;
+    }
+}
+
 - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
     [m_button addTarget:target action:action forControlEvents:controlEvents];
@@ -50,9 +67,10 @@
     
     if(self) {
         m_imageIndex = NSNotFound;
+        m_selected = NO;
         
-        self.backgroundColor = [UIColor redColor];
-        self.layer.borderColor = [UIColor blackColor].CGColor;
+        self.backgroundColor = [UIColor themeButtonBackgroundColor];
+        self.layer.borderColor = [UIColor themeButtonBorderColor].CGColor;
         self.layer.borderWidth = 1.0F;
         
         m_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
@@ -61,6 +79,7 @@
         
         m_button = [[UIButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
         m_button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [m_button setTitleColor:[UIColor themeTextColor] forState:UIControlStateNormal];
         [self addSubview:m_button];
     }
     

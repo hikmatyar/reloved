@@ -10,4 +10,6 @@
 
 - (IBAction)menu:(id)sender;
 
+- (void)invalidateNavigation;
+
 @end

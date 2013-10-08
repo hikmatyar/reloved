@@ -7,17 +7,16 @@
 #import "MFFormSeparator.h"
 #import "MFFormTextView.h"
 #import "MFNewPostController+TypeSizeAndFit.h"
+#import "MFNewPostPageView.h"
 #import "MFOptionPickerController.h"
 #import "MFOptionPickerControllerDelegate.h"
-#import "MFPageView.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
-@interface MFNewPostController_TypeSizeAndFit : MFPageView <MFOptionPickerControllerDelegate, UITextViewDelegate>
+@interface MFNewPostController_TypeSizeAndFit : MFNewPostPageView <MFOptionPickerControllerDelegate, UITextViewDelegate>
 {
     @private
     MFFormAccessory *m_accessory;
-    __unsafe_unretained MFNewPostController *m_controller;
     UITextView *m_fitDescriptionTextView;
     MFForm *m_form;
 }
@@ -28,15 +27,15 @@
 
 @implementation MFNewPostController_TypeSizeAndFit
 
+#pragma mark MFNewPostPageView
+
 - (id)initWithFrame:(CGRect)frame controller:(MFNewPostController *)controller
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:frame controller:controller];
     
     if(self) {
         MFFormButton *button;
         MFFormLabel *label;
-        
-        m_controller = controller;
         
         m_form = [[MFForm alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
         m_form.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -131,7 +130,7 @@
 
 @implementation MFNewPostController(TypeSizeAndFit)
 
-- (MFPageView *)createTypeSizeAndFitPageView
+- (MFNewPostPageView *)createTypeSizeAndFitPageView
 {
     return [[MFNewPostController_TypeSizeAndFit alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F) controller:self];
 }

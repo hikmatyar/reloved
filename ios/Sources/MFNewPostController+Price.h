@@ -2,10 +2,10 @@
 
 #import "MFNewPostController.h"
 
-@class MFPageView;
+@class MFNewPostPageView;
 
 @interface MFNewPostController(Price)
 
-- (MFPageView *)createPricePageView;
+- (MFNewPostPageView *)createPricePageView;
 
 @end
