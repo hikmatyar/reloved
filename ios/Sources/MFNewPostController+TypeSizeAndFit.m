@@ -17,6 +17,8 @@
 {
     @private
     MFFormAccessory *m_accessory;
+    MFFormButton *m_typeButton;
+    MFFormButton *m_sizeButton;
     BOOL m_canContinue;
     MFFormTextView *m_fitDescriptionTextView;
     MFForm *m_form;
@@ -51,7 +53,6 @@
     self = [super initWithFrame:frame controller:controller];
     
     if(self) {
-        MFFormButton *button;
         MFFormLabel *label;
         
         m_form = [[MFForm alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
@@ -62,19 +63,21 @@
         label.text = NSLocalizedString(@"NewPost.Label.Type", nil);
         [m_form addSubview:label];
         
-        button = [[MFFormButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormButton preferredHeight])];
-        [button addTarget:self action:@selector(type:) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:@"Mini" forState:UIControlStateNormal];
-        [m_form addSubview:button];
+        m_typeButton = [[MFFormButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormButton preferredHeight])];
+        m_typeButton.placeholder = NSLocalizedString(@"NewPost.Hint.Type", nil);
+        [m_typeButton addTarget:self action:@selector(type:) forControlEvents:UIControlEventTouchUpInside];
+        [m_typeButton setTitle:@"Mini" forState:UIControlStateNormal];
+        [m_form addSubview:m_typeButton];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
         label.text = NSLocalizedString(@"NewPost.Label.Size", nil);
         [m_form addSubview:label];
         
-        button = [[MFFormButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormButton preferredHeight])];
-        [button addTarget:self action:@selector(size:) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:@"Size 10" forState:UIControlStateNormal];
-        [m_form addSubview:button];
+        m_sizeButton = [[MFFormButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormButton preferredHeight])];
+        m_sizeButton.placeholder = NSLocalizedString(@"NewPost.Hint.Size", nil);
+        [m_sizeButton addTarget:self action:@selector(size:) forControlEvents:UIControlEventTouchUpInside];
+        [m_sizeButton setTitle:@"Size 10" forState:UIControlStateNormal];
+        [m_form addSubview:m_sizeButton];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
         label.text = NSLocalizedString(@"NewPost.Label.Fit", nil);
@@ -82,6 +85,7 @@
         
         m_fitDescriptionTextView = [[MFFormTextView alloc] initWithFrame:CGRectMake(10.0F, 220.0F, 300.0F, 100.0F)];
         m_fitDescriptionTextView.delegate = self;
+        m_fitDescriptionTextView.placeholder = NSLocalizedString(@"NewPost.Hint.Fit", nil);
         [m_form addSubview:m_fitDescriptionTextView];
         
         m_accessory = [[MFFormAccessory alloc] initWithContext:m_form];

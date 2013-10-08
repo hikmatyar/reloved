@@ -57,6 +57,7 @@
 "NewPost.Action.Replace" = "Replace";
 "NewPost.Action.SellersNote" = "Seller's Note";
 "NewPost.Action.TypeSizeFit" = "Type, Size & Fit";
+"NewPost.Hint.Fit" = "(TDB)";
 "NewPost.Hint.GBP" = "£";
 "NewPost.Hint.Photo.1" = "Select Photo #1";
 "NewPost.Hint.Photo.2" = "Select Photo #2";
@@ -66,7 +67,9 @@
 "NewPost.Hint.PriceOriginal" = "(TDB)";
 "NewPost.Hint.Price" = "We ask for this so as to illustrate savings (vs. buying new) to potential buyers";
 "NewPost.Hint.SellersNote" = "(TDB)";
+"NewPost.Hint.Size" = "(TDB)";
 "NewPost.Hint.Subject" = "(TDB)";
+"NewPost.Hint.Type" = "(TDB)";
 "NewPost.Label.Brand" = "Brand";
 "NewPost.Label.Colors" = "Color(s)";
 "NewPost.Label.Fit" = "Fit Description";
