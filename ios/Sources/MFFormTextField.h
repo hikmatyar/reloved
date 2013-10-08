@@ -6,4 +6,6 @@
 
 + (CGFloat)preferredHeight;
 
+@property (nonatomic, retain) NSString *leftText;
+
 @end
