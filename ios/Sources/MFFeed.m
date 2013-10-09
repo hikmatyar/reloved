@@ -22,6 +22,7 @@
 #define KEY_POSTS @"posts"
 #define KEY_SIZES @"sizes"
 #define KEY_STATE @"state"
+#define KEY_GLOBALS @"globals"
 #define KEY_TYPES @"types"
 #define KEY_OFFSET @"offset"
 
@@ -160,6 +161,7 @@
         m_cursor = ([cursor isEqualToString:@"end"]) ? kMFFeedCursorEnd : (([cursor isEqualToString:@"middle"]) ? kMFFeedCursorMiddle : kMFFeedCursorStart);
         m_currencies = currencies;
         m_prefix = (prefix) ? [NSURL URLWithString:prefix] : nil;
+        m_globals = [attributes stringForKey:KEY_GLOBALS];
         m_posts = posts;
         m_brands = brands;
         m_colors = colors;
@@ -226,6 +228,7 @@
 @synthesize cursor = m_cursor;
 @synthesize currencies = m_currencies;
 @synthesize prefix = m_prefix;
+@synthesize globals = m_globals;
 @synthesize posts = m_posts;
 @synthesize sizes = m_sizes;
 @synthesize types = m_types;

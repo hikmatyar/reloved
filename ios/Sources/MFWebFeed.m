@@ -10,6 +10,7 @@
 #import "MFDatabase+Feed.h"
 #import "MFDatabase+Post.h"
 #import "MFDatabase+Size.h"
+#import "MFDatabase+State.h"
 #import "MFDatabase+Type.h"
 #import "MFDelta.h"
 #import "MFFeed.h"
@@ -272,6 +273,16 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
             changed = YES;
         }
         
+        if(feed.prefix && ![database.globalPrefix isEqual:feed.prefix]) {
+            database.globalPrefix = feed.prefix;
+            changed = YES;
+        }
+        
+        if(feed.globals && ![database.globalState isEqualToString:feed.globals]) {
+            database.globalState = feed.globals;
+            changed = YES;
+        }
+        
         if(feed.posts.count > 0) {
             for(MFPost *post in feed.posts) {
                 [database setPost:post forIdentifier:post.identifier];
@@ -449,7 +460,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         m_loadingForward = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidBeginLoadingNotification object:self userInfo:nil];
         
-        [[MFWebService sharedService] requestFeed:m_identifier forward:YES limit:LOADING_LIMIT state:state target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
+        [[MFWebService sharedService] requestFeed:m_identifier forward:YES limit:LOADING_LIMIT state:state globals:[MFDatabase sharedDatabase].globalState target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
             if(feed) {
                 NSArray *changes = nil;
                 BOOL didChange = NO;
@@ -494,7 +505,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         } else {
             NSString *state = m_feed.state;
             
-            [[MFWebService sharedService] requestFeed:m_identifier forward:NO limit:LOADING_LIMIT state:state target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
+            [[MFWebService sharedService] requestFeed:m_identifier forward:NO limit:LOADING_LIMIT state:state globals:[MFDatabase sharedDatabase].globalState target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
                 if(feed && MFEqual(m_feed.state, state)) {
                     NSArray *changes = [self mergeState:feed expand:LOADING_LIMIT];
                     

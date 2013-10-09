@@ -5,6 +5,7 @@
 
 @interface MFWebService(Feed)
 
-- (void)requestFeed:(NSString *)identifier forward:(BOOL)forward limit:(NSInteger)limit state:(NSString *)state target:(id)target usingBlock:(MFWebRequestBlock)block;
+- (void)requestGlobals:(NSString *)globals target:(id)target usingBlock:(MFWebRequestBlock)block;
+- (void)requestFeed:(NSString *)identifier forward:(BOOL)forward limit:(NSInteger)limit state:(NSString *)state globals:(NSString *)globals target:(id)target usingBlock:(MFWebRequestBlock)block;
 
 @end

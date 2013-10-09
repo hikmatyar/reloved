@@ -88,7 +88,9 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 	
 	Parameters:
 		[session]
-		STRING state [O=null] - State that is managed by the server and was returned with the previous response
+		STRING id [O=all] - Feed identifier
+		STRING state [O=null] - Feed state that is managed by the server and was returned with the previous response
+		STRING globals [O=null] - Global state that is managed by the server
 		STRING direction [O=forward] - Browse 'forward' or 'backward'? Only used with the state parameter
 		INTEGER limit [O=100] - Maximum number of posts to return
 	
@@ -99,6 +101,8 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 			"cursor": "start",
 			// State that can be used with the next request
 			"state": "eyJhIjowLCJiIjowfQ==",
+			// Global state
+			"globals": "eyJhIjowLCJiIjowfQ==",
 			// Prefix for media resources. Possible redirect to a CDN on separate domain
 			"prefix": "http://api.relovedapp.co.uk/media/download/",
 			// All the possible brands. Only included if state is missing/invalid.
@@ -158,6 +162,22 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 				{ "id": 10, "name": "Abc", "media": 123 }
 			]
 		}
+	
+	Errors:
+		[standard]
+
+# Globals
+
+Returns global settings that are stored server-side.
+
+	/globals
+	
+	Parameters:
+		[session]
+		STRING state [O=all] - Global state that is managed by the server
+	
+	Returns:
+		/browse
 	
 	Errors:
 		[standard]

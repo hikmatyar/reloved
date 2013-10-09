@@ -5,7 +5,12 @@
 
 @implementation MFWebService(Feed)
 
-- (void)requestFeed:(NSString *)identifier forward:(BOOL)forward limit:(NSInteger)limit state:(NSString *)state target:(id)target usingBlock:(MFWebRequestBlock)block
+- (void)requestGlobals:(NSString *)globals target:(id)target usingBlock:(MFWebRequestBlock)block
+{
+    
+}
+
+- (void)requestFeed:(NSString *)identifier forward:(BOOL)forward limit:(NSInteger)limit state:(NSString *)state globals:(NSString *)globals target:(id)target usingBlock:(MFWebRequestBlock)block
 {
     MFWebRequest *request = [[MFWebRequest alloc] initWithService:self
                                                              mode:kMFWebRequestModeJsonPost
@@ -15,6 +20,7 @@
                                                                   (forward) ? @"forward" : @"backward", @"direction",
                                                                   [NSNumber numberWithInteger:limit], @"limit",
                                                                   (identifier) ? identifier : [NSNull null], @"id",
+                                                                  (globals) ? globals : [NSNull null], @"globals",
                                                                   nil]]; //state, @"state", nil]];
     
     request.block = block;

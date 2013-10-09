@@ -19,6 +19,7 @@ typedef enum _MFFeedCursor {
     NSArray *m_currencies;
     NSArray *m_deliveries;
     NSArray *m_posts;
+    NSString *m_globals;
     NSURL *m_prefix;
     NSArray *m_sizes;
     NSString *m_state;
@@ -41,6 +42,7 @@ typedef enum _MFFeedCursor {
 @property (nonatomic, assign, readonly) MFFeedCursor cursor;
 @property (nonatomic, retain, readonly) NSArray *currencies;
 @property (nonatomic, retain, readonly) NSArray *posts;
+@property (nonatomic, retain, readonly) NSString *globals;
 @property (nonatomic, retain, readonly) NSURL *prefix;
 @property (nonatomic, retain, readonly) NSArray *sizes;
 @property (nonatomic, retain, readonly) NSString *state;
