@@ -1,5 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFColor.h"
 #import "MFDatabase.h"
 #import "MFDatabase+Brand.h"
 #import "MFDatabase+Bookmark.h"
@@ -16,6 +17,7 @@
 #import "MFDelta.h"
 #import "MFFeed.h"
 #import "MFPost.h"
+#import "MFType.h"
 #import "MFWebFeed.h"
 #import "MFWebService.h"
 #import "MFWebService+Feed.h"
@@ -50,40 +52,52 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 @implementation MFWebFeed
 
-+ (MFWebFeed *)sharedFeed
++ (NSMutableDictionary *)sharedFeeds
 {
-    __strong static MFWebFeed *sharedFeed = nil;
+    __strong static NSMutableDictionary *sharedFeeds = nil;
     static dispatch_once_t loaded = 0;
     
     dispatch_once(&loaded, ^{
-        sharedFeed = [[self alloc] initWithIdentifier:FEED_ALL];
+        sharedFeeds = [[NSMutableDictionary alloc] init];
     });
     
-    return sharedFeed;
+    return sharedFeeds;
 }
 
-+ (MFWebFeed *)sharedNewFeed
++ (MFWebFeed *)sharedFeedWithIdentifier:(NSString *)identifier filters:(NSArray *)filters
 {
-    __strong static MFWebFeed *sharedNewFeed = nil;
-    static dispatch_once_t loaded = 0;
+    NSMutableDictionary *feeds = [self sharedFeeds];
+    MFWebFeed *feed;
     
-    dispatch_once(&loaded, ^{
-        sharedNewFeed = [[self alloc] initWithIdentifier:FEED_ONLY_NEW];
-    });
+    if(filters.count > 0) {
+        NSMutableArray *colors = [[NSMutableArray alloc] init];
+        NSMutableArray *types = [[NSMutableArray alloc] init];
+        
+        for(id filter in filters) {
+            if([filter isKindOfClass:[MFType class]]) {
+                [types addObject:((MFType *)filter).identifier];
+            } else if([filter isKindOfClass:[MFColor class]]) {
+                [colors addObject:((MFColor *)filter).identifier];
+            }
+        }
+        
+        if(colors.count > 0) {
+            identifier = [identifier stringByAppendingFormat:@"+color,%@", [colors componentsJoinedByString:@","]];
+        }
+        
+        if(types.count > 0) {
+            identifier = [identifier stringByAppendingFormat:@"+type,%@", [types componentsJoinedByString:@","]];
+        }
+    }
     
-    return sharedNewFeed;
-}
-
-+ (MFWebFeed *)sharedEditorialFeed
-{
-    __strong static MFWebFeed *sharedEditorialFeed = nil;
-    static dispatch_once_t loaded = 0;
+    feed = [feeds objectForKey:identifier];
     
-    dispatch_once(&loaded, ^{
-        sharedEditorialFeed = [[self alloc] initWithIdentifier:FEED_ONLY_EDITORIAL];
-    });
+    if(!feed) {
+        feed = [[MFWebFeed alloc] initWithIdentifier:identifier];
+        [feeds setObject:feed forKey:identifier];
+    }
     
-    return sharedEditorialFeed;
+    return feed;
 }
 
 + (MFWebFeed *)sharedBookmarksFeed
@@ -98,15 +112,32 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     return sharedBookmarksFeed;
 }
 
++ (MFWebFeed *)sharedFeed
+{
+    __strong static MFWebFeed *sharedFeed = nil;
+    static dispatch_once_t loaded = 0;
+    
+    dispatch_once(&loaded, ^{
+        sharedFeed = [[self alloc] initWithIdentifier:nil];
+    });
+    
+    return sharedFeed;
+}
+
 + (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind
+{
+    return [self sharedFeedOfKind:kind filters:nil];
+}
+
++ (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind filters:(NSArray *)filters
 {
     switch(kind) {
         case kMFWebFeedKindAll:
-            return [self sharedFeed];
+            return [self sharedFeedWithIdentifier:FEED_ALL filters:nil];
         case kMFWebFeedKindOnlyNew:
-            return [self sharedNewFeed];
+            return [self sharedFeedWithIdentifier:FEED_ONLY_NEW filters:nil];
         case kMFWebFeedKindOnlyEditorial:
-            return [self sharedEditorialFeed];
+            return [self sharedFeedWithIdentifier:FEED_ONLY_EDITORIAL filters:nil];
         case kMFWebFeedKindBookmarks:
             return [self sharedBookmarksFeed];
         default:
@@ -460,7 +491,27 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 - (void)loadForward
 {
-    if(!m_loadingForward && ![m_identifier isEqualToString:FEED_BOOKMARKS]) {
+    if(!m_identifier && !m_loadingBackward) {
+        m_loadingForward = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidBeginLoadingNotification object:self userInfo:nil];
+        
+        [[MFWebService sharedService] requestGlobals:[MFDatabase sharedDatabase].globalState target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
+            if(feed) {
+                NSArray *changes = nil;
+                
+                [self beginEditing];
+                
+                if((changes = [self mergeState:feed expand:0]) != nil) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(nil, nil)];
+                }
+                
+                [self endEditing];
+            }
+            
+            m_loadingForward = NO;
+            [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(nil, error)];
+        }];
+    } else if(!m_loadingForward && ![m_identifier isEqualToString:FEED_BOOKMARKS]) {
         NSString *state = m_feed.state;
         
         m_loadingForward = YES;
@@ -492,7 +543,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 - (void)loadBackward
 {
-    if(!m_loadingBackward && ![m_identifier isEqualToString:FEED_BOOKMARKS]) {
+    if(m_identifier && !m_loadingBackward && ![m_identifier isEqualToString:FEED_BOOKMARKS]) {
         m_loadingBackward = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidBeginLoadingNotification object:self userInfo:nil];
         
