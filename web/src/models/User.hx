@@ -126,7 +126,7 @@ class User {
                         fn(err, (err == null) ? user : null);
                     });
                 } else {
-                    fn({ code: Error.toString(Error.access_denied), fatal: false }, null);
+                    fn({ code: ErrorCode.toString(ErrorCode.access_denied), fatal: false }, null);
                 }
             } else {
                 fn(err, null);

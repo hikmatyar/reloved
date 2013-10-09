@@ -17,7 +17,7 @@ class Strings {
         'post.action.create': 'Add another one',
         'post.action.update': 'Update',
         'post.action.submit': 'Create',
-        'post.error.unknown': 'Something bad happened. Maybe forgot to attach files or select an user? Try again?!',
+        'post.ErrorCode.unknown': 'Something bad happened. Maybe forgot to attach files or select an user? Try again?!',
         'post.label.brand': 'Brand:',
         'post.label.colors': 'Dress colors:',
         'post.label.condition': 'Condition:',

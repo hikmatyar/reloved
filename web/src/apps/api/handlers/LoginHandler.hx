@@ -23,9 +23,9 @@ class LoginHandler extends Handler {
             if(user != null) {
                 this.render({ 'session': user.session, 'user': user.id });
             } else if(err != null && err.fatal == false) {
-                this.exit(Error.access_denied);
+                this.exit(ErrorCode.access_denied);
             } else {
-                this.exit(Error.unknown);
+                this.exit(ErrorCode.unknown);
             }
         }
         
@@ -44,7 +44,7 @@ class LoginHandler extends Handler {
                 }
             });
         } else {
-            this.exit(Error.missing_parameter, (secret != null) ? 'token' : 'secret');
+            this.exit(ErrorCode.missing_parameter, (secret != null) ? 'token' : 'secret');
         }
     }
 }

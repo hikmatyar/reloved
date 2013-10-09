@@ -17,20 +17,20 @@ class PostHandler extends Handler {
     			if(posts != null) {
     				Post.cacheRelationsForPosts(posts, function(err) {
     					if(err == null) {
-    						this.begin(Error.http_ok);
+    						this.begin(ErrorCode.http_ok);
 							this.write('{ "error": 0, "cursor": "end", "state": ""');
 							this.writePosts(posts);	
 							this.end('}');
     					} else {
-    						this.exit(Error.unknown, 'post relations');
+    						this.exit(ErrorCode.unknown, 'post relations');
     					}
     				});
     			} else {
-    				this.exit(Error.unknown, 'posts');
+    				this.exit(ErrorCode.unknown, 'posts');
     			}
     		});
     	} else {
-    		this.exit(Error.none);
+    		this.exit(ErrorCode.none);
     	}
     }
     
@@ -42,20 +42,20 @@ class PostHandler extends Handler {
     			if(posts != null) {
     				Post.cacheRelationsForPosts(posts, function(err) {
     					if(err == null) {
-    						this.begin(Error.http_ok);
+    						this.begin(ErrorCode.http_ok);
 							this.write('{ "error": 0, "cursor": "end", "state": ""');
 							this.writePosts(posts);	
 							this.end('}');
     					} else {
-    						this.exit(Error.unknown, 'post relations');
+    						this.exit(ErrorCode.unknown, 'post relations');
     					}
     				});
     			} else {
-    				this.exit(Error.unknown, 'posts');
+    				this.exit(ErrorCode.unknown, 'posts');
     			}
     		});
     	} else {
-    		this.exit(Error.missing_parameter, 'posts');
+    		this.exit(ErrorCode.missing_parameter, 'posts');
     	}
     }
     
@@ -65,16 +65,16 @@ class PostHandler extends Handler {
     	if(postIds != null && postIds.length > 0) {
     		Post.findAllForIdentifiers(postIds, function(err, posts) {
     			if(err == null) {
-					this.begin(Error.http_ok);
+					this.begin(ErrorCode.http_ok);
 					this.write('{ "error": 0');
 					this.writePosts(posts);	
 					this.end('}');
 				} else {
-					this.exit(Error.unknown, 'posts');
+					this.exit(ErrorCode.unknown, 'posts');
 				}
     		});
     	} else {
-    		this.exit(Error.missing_parameter, 'posts');
+    		this.exit(ErrorCode.missing_parameter, 'posts');
     	}
     }
     
@@ -86,24 +86,24 @@ class PostHandler extends Handler {
     			if(post != null) {
     				PostComment.findAllPlusUsers(postId, function(err, comments, users) {
     					if(err == null) {
-    						this.begin(Error.http_ok);
+    						this.begin(ErrorCode.http_ok);
 							this.write('{ "error": 0, "cursor": "end", "state": "", "post": ');
 							this.write(post.json());
 							this.writeComments(comments);
 							this.writeUsers(users);			
 							this.end('}');	
     					} else {
-    						this.exit(Error.unknown, 'comments');
+    						this.exit(ErrorCode.unknown, 'comments');
     					}
     				});
     			} else if(err != null) {
-    				this.exit(Error.unknown, 'post');
+    				this.exit(ErrorCode.unknown, 'post');
     			} else {
-    				this.exit(Error.invalid_parameter, 'post');
+    				this.exit(ErrorCode.invalid_parameter, 'post');
     			}
     		});
     	} else {
-    		this.exit(Error.missing_parameter, 'post');
+    		this.exit(ErrorCode.missing_parameter, 'post');
     	}
     }
     
@@ -113,17 +113,17 @@ class PostHandler extends Handler {
     	if(postId != 0) {
     		PostComment.findAllPlusUsers(postId, function(err, comments, users) {
     			if(err == null) {
-    				this.begin(Error.http_ok);
+    				this.begin(ErrorCode.http_ok);
     				this.write('{ "error": 0, "cursor": "end", "state": ""');
     				this.writeComments(comments);
     				this.writeUsers(users);			
     				this.end('}');
     			} else {
-    				this.exit(Error.unknown, 'comments');
+    				this.exit(ErrorCode.unknown, 'comments');
     			}
     		});
     	} else {
-    		this.exit(Error.invalid_parameter, 'post id');
+    		this.exit(ErrorCode.invalid_parameter, 'post id');
     	}
     }
     
@@ -173,7 +173,7 @@ class PostHandler extends Handler {
 						result.post = post;
 						sync();
 					} else {
-						this.exit(Error.unknown, 'post');
+						this.exit(ErrorCode.unknown, 'post');
 					}
 				});
 			});
@@ -181,7 +181,7 @@ class PostHandler extends Handler {
 			async(function(sync) {
 				PostMedia.create(result.post.id, mediaIds, function(err) {
 					if(err != null) {
-						this.exit(Error.unknown, 'media');
+						this.exit(ErrorCode.unknown, 'media');
 					} else {
 						sync();
 					}
@@ -191,7 +191,7 @@ class PostHandler extends Handler {
 			async(function(sync) {
 				PostColor.create(result.post.id, colorIds, function(err) {
 					if(err != null) {
-						this.exit(Error.unknown, 'colors');
+						this.exit(ErrorCode.unknown, 'colors');
 					} else {
 						sync();
 					}
@@ -201,7 +201,7 @@ class PostHandler extends Handler {
 			async(function(sync) {
 				PostTag.create(result.post.id, tags, function(err) {
 					if(err != null) {
-						this.exit(Error.unknown, 'tags');
+						this.exit(ErrorCode.unknown, 'tags');
 					} else {
 						sync();
 					}
@@ -214,14 +214,14 @@ class PostHandler extends Handler {
 						result.post.publish();
 						this.render(result.post.json());
 					} else {
-						this.exit(Error.unknown, 'relations');
+						this.exit(ErrorCode.unknown, 'relations');
 					}
 					
 					sync();
 				});
 			});
 		} else {
-			this.exit(Error.invalid_parameter);
+			this.exit(ErrorCode.invalid_parameter);
 		}
     }
     
@@ -239,10 +239,10 @@ class PostHandler extends Handler {
 							result.post = post;
 							sync();
 						} else {
-							this.exit(Error.access_denied);
+							this.exit(ErrorCode.access_denied);
 						}
 					} else {
-						this.exit(Error.unknown, 'find');
+						this.exit(ErrorCode.unknown, 'find');
 					}
 				});
 			});
@@ -255,7 +255,7 @@ class PostHandler extends Handler {
 						if(err == null) {
 							sync();
 						} else {
-							this.exit(Error.unknown, 'update');
+							this.exit(ErrorCode.unknown, 'update');
 						}
 					});
 				} else {
@@ -269,14 +269,14 @@ class PostHandler extends Handler {
 						result.post.publish();
 						this.render(result.post.json());
 					} else {
-						this.exit(Error.unknown, 'edit');
+						this.exit(ErrorCode.unknown, 'edit');
 					}
 					
 					sync();
 				});
 			});
     	} else {
-    		this.exit(Error.invalid_parameter);
+    		this.exit(ErrorCode.invalid_parameter);
     	}
     }
     
@@ -303,9 +303,9 @@ class PostHandler extends Handler {
 						result.post = post;
 						sync();
 					} else if(err != null) {
-						this.exit(Error.unknown, 'post');
+						this.exit(ErrorCode.unknown, 'post');
 					} else {
-						this.exit(Error.invalid_parameter, 'post');
+						this.exit(ErrorCode.invalid_parameter, 'post');
 					}
 				});
 			});
@@ -319,12 +319,12 @@ class PostHandler extends Handler {
 								if(comment.userId == this.user().id) {
 									sync();
 								} else {
-									this.exit(Error.access_denied, 'comment');
+									this.exit(ErrorCode.access_denied, 'comment');
 								}
 							} else if(err != null) {
-								this.exit(Error.unknown, 'comment');
+								this.exit(ErrorCode.unknown, 'comment');
 							} else {
-								this.exit(Error.invalid_parameter, 'comment');
+								this.exit(ErrorCode.invalid_parameter, 'comment');
 							}
 						});
 					});
@@ -345,13 +345,13 @@ class PostHandler extends Handler {
 								// Return all the comments!
 								this.comments();
 							} else {
-								this.exit(Error.unknown, 'update comment');
+								this.exit(ErrorCode.unknown, 'update comment');
 							}
 						});
 					});
 				} else {
 					async(function() {
-						this.exit(Error.missing_parameter, 'status or message');
+						this.exit(ErrorCode.missing_parameter, 'status or message');
 					});
 				}
 			// Create
@@ -362,15 +362,15 @@ class PostHandler extends Handler {
 							// Return all the comments!
 							this.comments();
 						} else {
-							this.exit(Error.unknown, 'create comment');
+							this.exit(ErrorCode.unknown, 'create comment');
 						}
 					});
 				});
 			} else {
-				this.exit(Error.missing_parameter, 'message');
+				this.exit(ErrorCode.missing_parameter, 'message');
 			}
     	} else {
-    		this.exit(Error.missing_parameter, 'post');
+    		this.exit(ErrorCode.missing_parameter, 'post');
     	}
     }
     

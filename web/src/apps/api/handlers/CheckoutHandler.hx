@@ -41,11 +41,11 @@ class CheckoutHandler extends Handler {
     				order.publish();
     				this.render(order.json());
     			} else {
-    				this.exit(Error.unknown, 'order');
+    				this.exit(ErrorCode.unknown, 'order');
     			}
     		});
     	} else {
-    		this.exit(Error.missing_parameter, 'order');
+    		this.exit(ErrorCode.missing_parameter, 'order');
     	}
     }
     
@@ -57,13 +57,13 @@ class CheckoutHandler extends Handler {
     			if(order != null && order.userId == this.user().id) {
     				this.render(order.json());
     			} else if(err != null) {
-    				this.exit(Error.unknown, 'order');
+    				this.exit(ErrorCode.unknown, 'order');
     			} else {
-    				this.exit(Error.access_denied, 'order');
+    				this.exit(ErrorCode.access_denied, 'order');
     			}
     		});
     	} else {
-    		this.exit(Error.missing_parameter, 'order');
+    		this.exit(ErrorCode.missing_parameter, 'order');
     	}
     }
 }

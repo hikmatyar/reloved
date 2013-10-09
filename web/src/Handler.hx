@@ -13,7 +13,7 @@ class Handler extends saffron.Handler {
 			trace('{ "error": ' + code + ', "reason": "' + reason + '" }');
 		}
 #end
-    	this.response.json((code == Error.none) ? 200 : (((Error.isSecurityRelated(code))) ? 403 : 500), { 'error': code });
+    	this.response.json((code == ErrorCode.none) ? 200 : (((ErrorCode.isSecurityRelated(code))) ? 403 : 500), { 'error': code });
     }
     
     private inline function begin(code : Int) : Void {

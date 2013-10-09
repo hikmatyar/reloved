@@ -14,10 +14,10 @@ class LogoutHandler extends Handler {
         
         if(session != null && userId != null) {
             User.logout(userId, session, function(err, result) {
-                this.exit((result) ? Error.none : Error.unknown);
+                this.exit((result) ? ErrorCode.none : ErrorCode.unknown);
             });
         } else {
-            this.exit(Error.missing_parameter, 'session');
+            this.exit(ErrorCode.missing_parameter, 'session');
         }
     }
 }

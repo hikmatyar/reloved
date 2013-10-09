@@ -62,7 +62,7 @@ class ImageMagick extends Task {
             options.gid = ImageMagick.tool_group;
         }
         
-        process = Node.childProcess.spawn(ImageMagick.tool_identify, arguments, options);
+        process = Node.child_process.spawn(ImageMagick.tool_identify, arguments, options);
         process.stdout.on('data', function(data) {
             state.data = state.data + data;
         });
@@ -134,7 +134,7 @@ class ImageMagick extends Task {
             arguments.push(Node.path.join(dir, parameter.id));
             arguments.push(Node.path.join(dir, '0'));
             
-            process = Node.childProcess.spawn(ImageMagick.tool_mogrify, arguments, options);
+            process = Node.child_process.spawn(ImageMagick.tool_mogrify, arguments, options);
             process.on('error', function(error : String, stdout : NodeReadStream, stderr : NodeReadStream) {
                 if(stdout != null) {
                     this.error('onMogrify: ' + stdout, { id: media.id });

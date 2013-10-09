@@ -62,7 +62,7 @@ class UserHandler extends Handler {
     	}
     	
     	User.update(this.user().id, attributes, function(err) {
-    		this.exit((err == null) ? Error.none : Error.unknown);
+    		this.exit((err == null) ? ErrorCode.none : ErrorCode.unknown);
     	});
     }
 }

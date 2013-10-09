@@ -2,7 +2,7 @@
 
 package;
 
-class Error {
+class ErrorCode {
     public static inline var none = 0;
     public static inline var invalid_parameter = 1000;
     public static inline var missing_parameter = 1001;
@@ -20,10 +20,10 @@ class Error {
     public static inline var http_500 = 500;
     
     public static inline function isSecurityRelated(err : Int) : Bool {
-        return err == Error.session_required ||
-               err == Error.session_expired ||
-               err == Error.session_invalid ||
-               err == Error.access_denied;
+        return err == ErrorCode.session_required ||
+               err == ErrorCode.session_expired ||
+               err == ErrorCode.session_invalid ||
+               err == ErrorCode.access_denied;
     }
     
     public static inline function toString(err : Int) : String {

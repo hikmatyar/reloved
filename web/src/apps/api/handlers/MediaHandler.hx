@@ -14,8 +14,8 @@ class MediaHandler extends Handler {
     private function writeMedia(media : Media) : Void {
         Node.fs.stat(Node.path.join(Media.root(), media.path), function(err, stats) {
             this.render((media.status == Media.status_uploading && stats == null) ?
-                { error: Error.none, id: media.id } :
-                { error: Error.none, id: media.id, status: media.status, size: (stats != null) ? stats.size : 0 }
+                { error: ErrorCode.none, id: media.id } :
+                { error: ErrorCode.none, id: media.id, status: media.status, size: (stats != null) ? stats.size : 0 }
             );
         });
     }
@@ -23,9 +23,9 @@ class MediaHandler extends Handler {
     private function writeMediaUploaded(media : Media) : Void {
         Media.update(media.id, { status: Media.status_uploaded }, function(err, result) {
             if(err == null) {
-                this.render(JSON.stringify({ error: Error.none, status: Media.status_uploaded, size: media.fileSize }));
+                this.render(JSON.stringify({ error: ErrorCode.none, status: Media.status_uploaded, size: media.fileSize }));
             } else {
-                this.exit(Error.unknown);
+                this.exit(ErrorCode.unknown);
             }
         });
     }
@@ -40,16 +40,16 @@ class MediaHandler extends Handler {
                     if(media.userId == user.id) {
                         this.writeMedia(media);
                     } else {
-                        this.exit(Error.access_denied);
+                        this.exit(ErrorCode.access_denied);
                     }
                 } else if(err == null) {
-                    this.exit(Error.invalid_parameter);
+                    this.exit(ErrorCode.invalid_parameter);
                 } else {
-                    this.exit(Error.unknown);
+                    this.exit(ErrorCode.unknown);
                 }
             });
         } else {
-            this.exit(Error.missing_parameter);
+            this.exit(ErrorCode.missing_parameter);
         }
     }
     
@@ -63,16 +63,16 @@ class MediaHandler extends Handler {
             if(csum.length == Media.checksum_length && size > 0 && (mime == Media.mime_png || mime == Media.mime_jpg)) {
                 Media.create(user.id, mime.toLowerCase(), csum.toLowerCase(), size, function(err, media) {
                     if(media != null) {
-                        this.render({ error: Error.none, id: media.id });
+                        this.render({ error: ErrorCode.none, id: media.id });
                     } else {
-                        this.exit(Error.unknown);
+                        this.exit(ErrorCode.unknown);
                     }
                 });
             } else {
-                this.exit(Error.invalid_parameter);
+                this.exit(ErrorCode.invalid_parameter);
             }
         } else {
-            this.exit(Error.missing_parameter);
+            this.exit(ErrorCode.missing_parameter);
         }
     }
     
@@ -89,14 +89,14 @@ class MediaHandler extends Handler {
                     if(media.userId == user.id) {
                         // Must be waiting for an upload
                         if(media.status != Media.status_uploading) {
-                            this.exit(Error.invalid_parameter);
+                            this.exit(ErrorCode.invalid_parameter);
                         // Great! Full upload!
                         } else if(file.size == media.fileSize) {
                         	Media.replaceFile(file.path, media.path, function(err) {
 								if(err == null) {
 									this.writeMediaUploaded(media);
 								} else {
-									this.exit(Error.unknown);
+									this.exit(ErrorCode.unknown);
 								}
 							});
                         // A chunk or resumed upload
@@ -119,21 +119,21 @@ class MediaHandler extends Handler {
                                     
                                     rs.pipe(ws);
                                 } else {
-                                    this.exit(Error.invalid_parameter);
+                                    this.exit(ErrorCode.invalid_parameter);
                                 }
                             });
                         }
                     } else {
-                        this.exit(Error.access_denied);
+                        this.exit(ErrorCode.access_denied);
                     }
                 } else if(err == null) {
-                    this.exit(Error.invalid_parameter);
+                    this.exit(ErrorCode.invalid_parameter);
                 } else {
-                    this.exit(Error.unknown);
+                    this.exit(ErrorCode.unknown);
                 }
             });
         } else {
-            this.exit(Error.missing_parameter);
+            this.exit(ErrorCode.missing_parameter);
         }
     }
     
@@ -161,7 +161,7 @@ class MediaHandler extends Handler {
             
             Media.find(id, function(err, media) {
                 if(media == null || media.status == Media.status_uploaded) {
-                	this.response.send(Error.http_404);
+                	this.response.send(ErrorCode.http_404);
                 } else if(media.status == Media.status_active) {
                     var send : NodeHttpServerReq -> String -> NodeReadStream = untyped require('send');
                     var sendMedia = function(p) {
@@ -201,18 +201,18 @@ class MediaHandler extends Handler {
                                 // Final attempt!
                                 sendMedia((preferredSize != null) ? sizeSeries + preferredSize : '0');
                             } else {
-                                this.response.send(Error.http_500);
+                                this.response.send(ErrorCode.http_500);
                             }
                         });
                     } else {
                         sendMedia('0');
                     }
                 } else {
-                    this.response.send(Error.http_403);
+                    this.response.send(ErrorCode.http_403);
                 }
             });
         } else {
-            this.response.send(Error.http_404);
+            this.response.send(ErrorCode.http_404);
         }
     }
 }

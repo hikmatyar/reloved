@@ -18,20 +18,20 @@ class Application {
         if(session != null && userId != null) {
             User.findForSession(userId, session, function(err, user) {
                 if(err != null) {
-                    fn(Error.unknown);
+                    fn(ErrorCode.unknown);
                 } else if(user != null) {
                     if(user.session != null) {
                     	request.user = user;
                         fn(null);
                     } else {
-                        fn(Error.session_expired);
+                        fn(ErrorCode.session_expired);
                     }
                 } else {
-                    fn(Error.session_invalid);
+                    fn(ErrorCode.session_invalid);
                 }
             });
         } else {
-            fn(Error.session_required);
+            fn(ErrorCode.session_required);
         }
     }
     

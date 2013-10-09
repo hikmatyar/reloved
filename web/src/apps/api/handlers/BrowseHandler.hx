@@ -42,12 +42,12 @@ class BrowseHandler extends Handler {
 					globals.events = events;
 					sync();
 				} else {
-					this.exit(Error.unknown, 'events');
+					this.exit(ErrorCode.unknown, 'events');
 				}
 			});
 		});
 		
-    	async(function() { this.begin(Error.http_ok); });
+    	async(function() { this.begin(ErrorCode.http_ok); });
     	this.writeGlobals(globals);
     	async(function() {
     		if(globals.events != null) {
@@ -86,17 +86,17 @@ class BrowseHandler extends Handler {
 					globals.events = events;
 					sync();
 				} else {
-					this.exit(Error.unknown, 'events');
+					this.exit(ErrorCode.unknown, 'events');
 				}
 			});
 		});
 		
     	if(globalState == null) {
-    		async(function() { this.begin(Error.http_ok); });
+    		async(function() { this.begin(ErrorCode.http_ok); });
     		this.writeGlobals(globals);
     	} else {
     		async(function() {	
-				this.begin(Error.http_ok);
+				this.begin(ErrorCode.http_ok);
 				this.write('{');
 			});
     	}
@@ -124,7 +124,7 @@ class BrowseHandler extends Handler {
                 if(err == null) {
                     sync(posts);
                 } else {
-                    this.exit(Error.unknown, 'posts');
+                    this.exit(ErrorCode.unknown, 'posts');
                 }
             };
             
@@ -144,7 +144,7 @@ class BrowseHandler extends Handler {
                 if(err == null) {
                     sync(posts);
                 } else {
-                    this.end('"error": ' + Error.unknown + '}');
+                    this.end('"error": ' + ErrorCode.unknown + '}');
                 }
             });
         });
@@ -302,7 +302,7 @@ class BrowseHandler extends Handler {
 					globals.brands = brands;
 					sync();
 				} else {
-					this.exit(Error.unknown, 'brands');
+					this.exit(ErrorCode.unknown, 'brands');
 				}
 			});
 		});
@@ -313,7 +313,7 @@ class BrowseHandler extends Handler {
 					globals.colors = colors;
 					sync();
 				} else {
-					this.exit(Error.unknown, 'colors');
+					this.exit(ErrorCode.unknown, 'colors');
 				}
 			});
 		});
@@ -324,7 +324,7 @@ class BrowseHandler extends Handler {
 					globals.countries = countries;
 					sync();
 				} else {
-					this.exit(Error.unknown, 'countries');
+					this.exit(ErrorCode.unknown, 'countries');
 				}
 			});
 		});
@@ -335,7 +335,7 @@ class BrowseHandler extends Handler {
 					globals.currencies = currencies;
 					sync();
 				} else {
-					this.exit(Error.unknown, 'currencies');
+					this.exit(ErrorCode.unknown, 'currencies');
 				}
 			});
 		});
@@ -346,7 +346,7 @@ class BrowseHandler extends Handler {
 					globals.deliveries = deliveries;
 					sync();
 				} else {
-					this.exit(Error.unknown, 'deliveries');
+					this.exit(ErrorCode.unknown, 'deliveries');
 				}
 			});
 		});
@@ -357,7 +357,7 @@ class BrowseHandler extends Handler {
 					globals.sizes = sizes;
 					sync();
 				} else {
-					this.exit(Error.unknown, 'sizes');
+					this.exit(ErrorCode.unknown, 'sizes');
 				}
 			});
 		});
@@ -368,7 +368,7 @@ class BrowseHandler extends Handler {
 					globals.types = types;
 					sync();
 				} else {
-					this.exit(Error.unknown, 'types');
+					this.exit(ErrorCode.unknown, 'types');
 				}
 			});
 		});
