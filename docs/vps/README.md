@@ -94,9 +94,10 @@ Reloved Virtual Private Server Setup
     
     rpm -ivh http://mirror.cogentco.com/pub/linux/epel/6/x86_64/epel-release-6-8.noarch.rpm
     yum install -y php php-xml php-mysql php-mbstring php-pdo php-pecl-memcache
-    yum install nginx
-    yum install spawn-fcgi
-    yum install ocaml ocaml-camlp4-devel
+    yum install -y nginx
+    yum install -y spawn-fcgi
+    yum install -y ocaml ocaml-camlp4-devel
+    yum install -y ImageMagick
     easy_install supervisor
 
 # Setup FTP
