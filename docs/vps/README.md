@@ -276,11 +276,19 @@ Copy supervisor configuration file from "/docs/vps/supervisor/supervisord.conf" 
 
 ## Setup start-up scripts
 
-Copy api start-up script from "/docs/vps/supervisor/api/supervisor.sh" to "/home/api/supervisor.sh"
+Copy api start-up script from "/docs/vps/supervisor/api/supervisor-api.sh" to "/home/api/supervisor-api.sh"
 
-Copy api-dev start-up script from "/docs/vps/supervisor/api-dev/supervisor.sh" to "/home/api-dev/supervisor.sh"
+Copy admin start-up script from "/docs/vps/supervisor/api/supervisor-admin.sh" to "/home/api/supervisor-admin.sh"
+
+Copy agent start-up script from "/docs/vps/supervisor/api/supervisor-agent.sh" to "/home/api/supervisor-agent.sh"
+
+Copy api-dev start-up script from "/docs/vps/supervisor/api-dev/supervisor-api.sh" to "/home/api-dev/supervisor-api.sh"
 
 Copy supervisor start-up script from "/docs/vps/supervisor/supervisord.sh" to "/etc/init.d/supervisord"
+
+Make scripts executable
+
+	chmod 755 supervisor-*
 
 ## Finally, start the service
 
