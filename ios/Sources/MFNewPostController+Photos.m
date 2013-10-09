@@ -57,14 +57,31 @@
         controller.sourceType = UIImagePickerControllerSourceTypeCamera;
         
         if(m_cameraOverlayView) {
-            m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.1", nil);
+            switch(self.selectedImageIndex) {
+                case 0:
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.1", nil);
+                    break;
+                case 1:
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.2", nil);
+                    break;
+                case 2:
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.3", nil);
+                    break;
+                case 3:
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.4", nil);
+                    break;
+                default:
+                    m_cameraOverlayView.text = @"";
+                    break;
+            }
+            
             controller.cameraOverlayView = m_cameraOverlayView;
         }
     } else {
         controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     
-    [m_controller.navigationController presentViewController:controller animated:YES completion:NULL];
+    [m_controller.navigationController presentViewController:controller animated:(sender) ? YES : NO completion:NULL];
 }
 
 - (IBAction)selectThumbnail:(UIView *)sender
@@ -153,12 +170,14 @@
         button = [[UIButton alloc] initWithFrame:CGRectMake(0.0F, frame.size.height - ACTIONBAR_HEIGHT, 0.5F * frame.size.width, ACTIONBAR_HEIGHT)];
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         button.backgroundColor = [UIColor greenColor];
+        [button addTarget:self action:@selector(removeImage:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:NSLocalizedString(@"NewPost.Action.Remove", nil) forState:UIControlStateNormal];
         [self addSubview:button];
         
         button = [[UIButton alloc] initWithFrame:CGRectMake(0.5F * frame.size.width, frame.size.height - ACTIONBAR_HEIGHT, 0.5F * frame.size.width, ACTIONBAR_HEIGHT)];
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         button.backgroundColor = [UIColor blueColor];
+        [button addTarget:self action:@selector(replaceImage:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:NSLocalizedString(@"NewPost.Action.Replace", nil) forState:UIControlStateNormal];
         [self addSubview:button];
     }
@@ -232,8 +251,15 @@
         ((MFNewPostPhotoView *)[m_thumbnailViews objectAtIndex:selectedImageIndex]).image = image;
         m_imageView.image = image;
         
+        if(selectedImageIndex + 1 < m_thumbnailViews.count) {
+            [self selectThumbnail:[m_thumbnailViews objectAtIndex:selectedImageIndex + 1]];
+        } else {
+            m_cameraOverlayView = nil;
+        }
+        
         if(m_cameraOverlayView) {
-            
+            [picker dismissViewControllerAnimated:NO completion:NULL];
+            [self selectImage:nil];
         } else {
             [picker dismissViewControllerAnimated:YES completion:NULL];
         }

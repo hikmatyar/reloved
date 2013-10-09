@@ -16,6 +16,7 @@
 - (void)setImage:(UIImage *)image
 {
     m_imageView.image = image;
+    //m_button.alpha = (image) ? 0.0F : 1.0F;
 }
 
 @dynamic imageIndex;
