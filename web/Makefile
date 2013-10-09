@@ -31,7 +31,6 @@ debug-agent: agent
 debug-api: DEBUG = -debug
 debug-api: api
 
-release: init
 release: admin
 release: agent
 release: api
