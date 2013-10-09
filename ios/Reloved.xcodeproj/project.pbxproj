@@ -177,6 +177,7 @@
 		818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F916E17DF958D00D1A723 /* MFSideMenuShadow.m */; };
 		818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */; };
 		818F917617DF95F400D1A723 /* MFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917517DF95F400D1A723 /* MFMenuController.m */; };
+		819E12AF18055956008D2D36 /* MFDatabase+State.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12AE18055956008D2D36 /* MFDatabase+State.m */; };
 		81B27B0217F60BE200F9BC09 /* MFImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0117F60BE200F9BC09 /* MFImageButton.m */; };
 		81B27B0F17F60F3700F9BC09 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0517F60F3700F9BC09 /* STPCard.m */; };
 		81B27B1017F60F3700F9BC09 /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0717F60F3700F9BC09 /* STPToken.m */; };
@@ -524,6 +525,8 @@
 		818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MFSideMenuAdditions.m"; path = "Sources/MFSideMenu/UIViewController+MFSideMenuAdditions.m"; sourceTree = SOURCE_ROOT; };
 		818F917417DF95F400D1A723 /* MFMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFMenuController.h; path = Sources/MFMenuController.h; sourceTree = SOURCE_ROOT; };
 		818F917517DF95F400D1A723 /* MFMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMenuController.m; path = Sources/MFMenuController.m; sourceTree = SOURCE_ROOT; };
+		819E12AD18055956008D2D36 /* MFDatabase+State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFDatabase+State.h"; path = "Sources/MFDatabase+State.h"; sourceTree = SOURCE_ROOT; };
+		819E12AE18055956008D2D36 /* MFDatabase+State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+State.m"; path = "Sources/MFDatabase+State.m"; sourceTree = SOURCE_ROOT; };
 		81B27B0017F60BE200F9BC09 /* MFImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageButton.h; path = Sources/MFImageButton.h; sourceTree = SOURCE_ROOT; };
 		81B27B0117F60BE200F9BC09 /* MFImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageButton.m; path = Sources/MFImageButton.m; sourceTree = SOURCE_ROOT; };
 		81B27B0417F60F3700F9BC09 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPCard.h; path = Sources/Stripe/STPCard.h; sourceTree = SOURCE_ROOT; };
@@ -791,6 +794,8 @@
 				811082B117F8B75C005CC8ED /* MFDatabase+Feed.m */,
 				811082BD17F8BD09005CC8ED /* MFDatabase+Post.h */,
 				811082BE17F8BD09005CC8ED /* MFDatabase+Post.m */,
+				819E12AD18055956008D2D36 /* MFDatabase+State.h */,
+				819E12AE18055956008D2D36 /* MFDatabase+State.m */,
 				81233D6517F8E01A00C27805 /* MFDatabase+Size.h */,
 				81233D6617F8E01A00C27805 /* MFDatabase+Size.m */,
 				81233D6217F8E01000C27805 /* MFDatabase+Type.h */,
@@ -1398,6 +1403,7 @@
 				81233D6717F8E01A00C27805 /* MFDatabase+Size.m in Sources */,
 				81BC174717FC429E00DF7AD4 /* MFNewPostProgressView.m in Sources */,
 				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
+				819E12AF18055956008D2D36 /* MFDatabase+State.m in Sources */,
 				811082CF17F8CA8E005CC8ED /* SQLConnection.m in Sources */,
 				81B27B2717F6103700F9BC09 /* PKCard.m in Sources */,
 				8120C1BD17E053A100A1C3A9 /* UIButton+Additions.m in Sources */,
