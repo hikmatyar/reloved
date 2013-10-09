@@ -7,7 +7,17 @@
 
 - (void)requestGlobals:(NSString *)globals target:(id)target usingBlock:(MFWebRequestBlock)block
 {
+    MFWebRequest *request = [[MFWebRequest alloc] initWithService:self
+                                                             mode:kMFWebRequestModeJsonPost
+                                                           target:target
+                                                             path:@"/globals"
+                                                       parameters:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                  (globals) ? globals : [NSNull null], @"state",
+                                                                  nil]];
     
+    request.block = block;
+    request.transform = [MFFeed class];
+    [self addRequest:request];
 }
 
 - (void)requestFeed:(NSString *)identifier forward:(BOOL)forward limit:(NSInteger)limit state:(NSString *)state globals:(NSString *)globals target:(id)target usingBlock:(MFWebRequestBlock)block

@@ -8,6 +8,7 @@ import models.Color;
 import models.Country;
 import models.Currency;
 import models.Delivery;
+import models.Event;
 import models.Post;
 import models.Size;
 import models.Type;
@@ -22,6 +23,7 @@ private typedef BrowseHandlerGlobals = {
 	?countries : Array<Country>,
 	?currencies : Array<Currency>,
 	?deliveries : Array<Delivery>,
+	?events : Array<Event>,
 	?sizes : Array<Size>,
 	?types : Array<Type>
 }
@@ -30,6 +32,43 @@ class BrowseHandler extends Handler {
 	public static inline var direction_forward = 'future';
     public static inline var direction_backward = 'past';
     
+    public function globals() : Void {
+    	var globalState = this.feedGlobalsAlternative();
+    	var globals : BrowseHandlerGlobals = { };
+    	
+    	async(function(sync) {
+			Event.findAll(this.user().id, globalState, function(err, events) {
+				if(events != null) {
+					globals.events = events;
+					sync();
+				} else {
+					this.exit(Error.unknown, 'events');
+				}
+			});
+		});
+		
+    	async(function() { this.begin(Error.http_ok); });
+    	this.writeGlobals(globals);
+    	async(function() {
+    		if(globals.events != null) {
+    			var delimiter = '';
+    			
+				this.write('"events": [');
+				
+				for(event in globals.events) {
+					this.write(delimiter);
+					this.write(event.json());
+					delimiter = ',';
+				}
+				
+				this.write('],');
+			}
+			
+			this.write(' "globals": ' + Math.round(new saffron.tools.Date().getTime() / 1000));
+			this.end('}');
+    	});
+    }
+    
     public function index() : Void {
     	// TODO: Cache brands, currencies, countries etc
     	var globals : BrowseHandlerGlobals = { };
@@ -37,160 +76,47 @@ class BrowseHandler extends Handler {
     	var forward = (this.feedDirection() != BrowseHandler.direction_forward) ? true : false;
     	var limit = this.feedLimit();
     	var state = this.feedState();
+    	var globalState = this.feedGlobals();
     	var range = (state != null) ? { min: state.min, max: state.max } : null;
     	
-    	if(state == null) {
-			async(function(sync) {
-				Brand.findAll(function(err, brands) {
-					if(brands != null) {
-						globals.brands = brands;
-						sync();
-					} else {
-						this.exit(Error.unknown, 'brands');
-					}
-				});
+    	async(function(sync) {
+			Event.findAll(this.user().id, globalState, function(err, events) {
+				if(events != null) {
+					globals.events = events;
+					sync();
+				} else {
+					this.exit(Error.unknown, 'events');
+				}
 			});
+		});
 		
-			async(function(sync) {
-				Color.findAll(function(err, colors) {
-					if(colors != null) {
-						globals.colors = colors;
-						sync();
-					} else {
-						this.exit(Error.unknown, 'colors');
-					}
-				});
-			});
-			
-			async(function(sync) {
-				Country.findAll(function(err, countries) {
-					if(countries != null) {
-						globals.countries = countries;
-						sync();
-					} else {
-						this.exit(Error.unknown, 'countries');
-					}
-				});
-			});
-		
-			async(function(sync) {
-				Currency.findAll(function(err, currencies) {
-					if(currencies != null) {
-						globals.currencies = currencies;
-						sync();
-					} else {
-						this.exit(Error.unknown, 'currencies');
-					}
-				});
-			});
-			
-			async(function(sync) {
-				Delivery.findAll(function(err, deliveries) {
-					if(deliveries != null) {
-						globals.deliveries = deliveries;
-						sync();
-					} else {
-						this.exit(Error.unknown, 'deliveries');
-					}
-				});
-			});
-			
-			async(function(sync) {
-				Size.findAll(function(err, sizes) {
-					if(sizes != null) {
-						globals.sizes = sizes;
-						sync();
-					} else {
-						this.exit(Error.unknown, 'sizes');
-					}
-				});
-			});
-		
-			async(function(sync) {
-				Type.findAll(function(err, types) {
-					if(types != null) {
-						globals.types = types;
-						sync();
-					} else {
-						this.exit(Error.unknown, 'types');
-					}
-				});
-			});
-			
-			async(function() {
-				var delimiter = '';
-            	
-				this.begin(Error.http_ok);
-				this.write('{ "brands": [');
-				
-				for(brand in globals.brands) {
-					this.write(delimiter);
-					this.write(brand.json());
-					delimiter = ',';
-				}
-				
-				delimiter = '';
-				this.write('], "colors": [');
-				
-				for(color in globals.colors) {
-					this.write(delimiter);
-					this.write(color.json());
-					delimiter = ',';
-				}
-				
-				delimiter = '';
-				this.write('], "countries": [');
-				
-				for(country in globals.countries) {
-					this.write(delimiter);
-					this.write(country.json());
-					delimiter = ',';
-				}
-				
-				delimiter = '';
-				this.write('], "currencies": [');
-				
-				for(country in globals.countries) {
-					this.write(delimiter);
-					this.write(country.json());
-					delimiter = ',';
-				}
-				
-				delimiter = '';
-				this.write('], "deliveries": [');
-				
-				for(delivery in globals.deliveries) {
-					this.write(delimiter);
-					this.write(delivery.json());
-					delimiter = ',';
-				}
-				
-				delimiter = '';
-				this.write('], "sizes": [');
-				
-				for(size in globals.sizes) {
-					this.write(delimiter);
-					this.write(size.json());
-					delimiter = ',';
-				}
-				
-				delimiter = '';
-				this.write('], "types": [');
-				
-				for(type in globals.types) {
-					this.write(delimiter);
-					this.write(type.json());
-					delimiter = ',';
-				}
-				
-				this.write('],');
-			});
+    	if(globalState == null) {
+    		async(function() { this.begin(Error.http_ok); });
+    		this.writeGlobals(globals);
     	} else {
     		async(function() {	
 				this.begin(Error.http_ok);
 				this.write('{');
 			});
     	}
+    	
+    	async(function() {
+    		if(globals.events != null) {
+    			var delimiter = '';
+    			
+				this.write('"events": [');
+				
+				for(event in globals.events) {
+					this.write(delimiter);
+					this.write(event.json());
+					delimiter = ',';
+				}
+				
+				this.write('],');
+			}
+			
+			this.write(' "globals": ' + Math.round(new saffron.tools.Date().getTime() / 1000) + ',');
+    	});
     	
     	async(function(sync) {
             var writePostFields = function(err : DataError, posts : Array<Post>) : Void {
@@ -296,5 +222,154 @@ class BrowseHandler extends Handler {
             this.end('}');
             sync();
         });
+    }
+    
+    private function writeGlobals(globals : BrowseHandlerGlobals) : Void {
+    	async(function() {
+			var delimiter = '';
+			
+			this.write('{ "brands": [');
+			
+			for(brand in globals.brands) {
+				this.write(delimiter);
+				this.write(brand.json());
+				delimiter = ',';
+			}
+			
+			delimiter = '';
+			this.write('], "colors": [');
+			
+			for(color in globals.colors) {
+				this.write(delimiter);
+				this.write(color.json());
+				delimiter = ',';
+			}
+			
+			delimiter = '';
+			this.write('], "countries": [');
+			
+			for(country in globals.countries) {
+				this.write(delimiter);
+				this.write(country.json());
+				delimiter = ',';
+			}
+			
+			delimiter = '';
+			this.write('], "currencies": [');
+			
+			for(country in globals.countries) {
+				this.write(delimiter);
+				this.write(country.json());
+				delimiter = ',';
+			}
+			
+			delimiter = '';
+			this.write('], "deliveries": [');
+			
+			for(delivery in globals.deliveries) {
+				this.write(delimiter);
+				this.write(delivery.json());
+				delimiter = ',';
+			}
+			
+			delimiter = '';
+			this.write('], "sizes": [');
+			
+			for(size in globals.sizes) {
+				this.write(delimiter);
+				this.write(size.json());
+				delimiter = ',';
+			}
+			
+			delimiter = '';
+			this.write('], "types": [');
+			
+			for(type in globals.types) {
+				this.write(delimiter);
+				this.write(type.json());
+				delimiter = ',';
+			}
+			
+			this.write('],');
+		});
+    }
+    
+    private function cacheGlobals(globals : BrowseHandlerGlobals) : Void {
+    	async(function(sync) {
+			Brand.findAll(function(err, brands) {
+				if(brands != null) {
+					globals.brands = brands;
+					sync();
+				} else {
+					this.exit(Error.unknown, 'brands');
+				}
+			});
+		});
+		
+		async(function(sync) {
+			Color.findAll(function(err, colors) {
+				if(colors != null) {
+					globals.colors = colors;
+					sync();
+				} else {
+					this.exit(Error.unknown, 'colors');
+				}
+			});
+		});
+		
+		async(function(sync) {
+			Country.findAll(function(err, countries) {
+				if(countries != null) {
+					globals.countries = countries;
+					sync();
+				} else {
+					this.exit(Error.unknown, 'countries');
+				}
+			});
+		});
+	
+		async(function(sync) {
+			Currency.findAll(function(err, currencies) {
+				if(currencies != null) {
+					globals.currencies = currencies;
+					sync();
+				} else {
+					this.exit(Error.unknown, 'currencies');
+				}
+			});
+		});
+		
+		async(function(sync) {
+			Delivery.findAll(function(err, deliveries) {
+				if(deliveries != null) {
+					globals.deliveries = deliveries;
+					sync();
+				} else {
+					this.exit(Error.unknown, 'deliveries');
+				}
+			});
+		});
+		
+		async(function(sync) {
+			Size.findAll(function(err, sizes) {
+				if(sizes != null) {
+					globals.sizes = sizes;
+					sync();
+				} else {
+					this.exit(Error.unknown, 'sizes');
+				}
+			});
+		});
+	
+		async(function(sync) {
+			Type.findAll(function(err, types) {
+				if(types != null) {
+					globals.types = types;
+					sync();
+				} else {
+					this.exit(Error.unknown, 'types');
+				}
+			});
+		});
     }
 }

@@ -3,7 +3,8 @@
 #import <Foundation/Foundation.h>
 
 typedef enum _MFEventType {
-    kMFEventTypePurchased = 1,
+    kMFEventTypeUnknown = 0,
+    kMFEventTypePurchase = 1,
     kMFEventTypeComment = 2
 } MFEventType;
 

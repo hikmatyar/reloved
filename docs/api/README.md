@@ -141,7 +141,8 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 					"id": 1,
 					"user": 10,
 					"status": 1,
-					"mod": 12345678,
+					"date": "2013-12-30T12:00:00.000Z",
+					"mod": "2013-12-30T12:00:00.000Z",
 					"brand": 1,
 					"color": 1,
 					"condition": 1,
@@ -157,6 +158,9 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 					// Optional
 					"editorial": "..."
 				}
+			],
+			"events": [
+				{ "id": 1, "type": 1, "date": "2013-12-30T12:00:00.000Z", "link": "reloved:post/100/comment/10", "meta": [ "Someone" ] }
 			],
 			"users": [
 				{ "id": 10, "name": "Abc", "media": 123 }
@@ -307,7 +311,7 @@ API calls for retrieving posts and comments in various ways.
 			// State that can be used with the next request
 			"state": "eyJhIjowLCJiIjowfQ==",
 			"comments": [
-				{ "id": 1, "user": 10, "date": 434, "mod": 434, "message": "..." }
+				{ "id": 1, "user": 10, "date": "2013-12-30T12:00:00.000Z", "mod": "2013-12-30T12:00:00.000Z", "message": "..." }
 			],
 			"users": [
 				{ "id": 10, "name": "Abc", "media": 123 }

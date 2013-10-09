@@ -223,6 +223,17 @@ CREATE TABLE `deliveries` (
   `currency` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `events`;
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0 - unknown, 1 - comment, 2 - purchase',
+  `created` int(11) NOT NULL,
+  `link` varchar(128) NOT NULL,
+  `meta` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
