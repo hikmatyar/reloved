@@ -112,6 +112,7 @@
         if([view isKindOfClass:[MFPageView class]]) {
             view.frame = pageRect;
             pageRect.origin.x += pageRect.size.width;
+            contentSize.width += pageRect.size.width;
         }
     }
     

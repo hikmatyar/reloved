@@ -181,19 +181,26 @@
     progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     progressView.delegate = self;
     progressView.items = items;
-    progressView.selectedIndex = 0;
+    progressView.selectedIndex = m_stepIndex;
     progressView.tag = TAG_PROGRESS_VIEW;
     [view addSubview:progressView];
     
     contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     contentView.pages = pages;
     contentView.tag = TAG_CONTENT_VIEW;
+    contentView.selectedPage = [pages objectAtIndex:m_stepIndex];
     [view addSubview:contentView];
     
     view.backgroundColor = [UIColor themeBackgroundColor];
     
     self.view = view;
     [self invalidateNavigation];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    m_stepIndex = self.progressView.selectedIndex;
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark NSObject
@@ -203,6 +210,7 @@
     self = [super init];
     
     if(self) {
+        m_stepIndex = 0;
         m_steps = [[NSArray alloc] initWithObjects:
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Photos", nil), NSLocalizedString(@"NewPost.Title.Photos", nil), [self createPhotosPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.TypeSizeFit", nil), NSLocalizedString(@"NewPost.Title.TypeSizeFit", nil), [self createTypeSizeAndFitPageView]),

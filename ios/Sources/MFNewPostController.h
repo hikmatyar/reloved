@@ -8,6 +8,7 @@
 {
     @private
     NSArray *m_steps;
+    NSInteger m_stepIndex;
     MFMutablePost *m_post;
 }
 
