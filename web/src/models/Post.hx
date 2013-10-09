@@ -563,7 +563,7 @@ class Post {
                     delta |= Post.delta_media;
                 }
                 
-                PostLog.create(id, delta, null);
+                PostLog.create(id, delta, fn);
             } else {
                 fn(err);
             }
