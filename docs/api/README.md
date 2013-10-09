@@ -88,7 +88,7 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 	
 	Parameters:
 		[session]
-		STRING id [O=all] - Feed identifier
+		STRING id [O=all] - Feed identifier and optional filters. Supports colors and types ("all+color,1,2,3+type,3")
 		STRING state [O=null] - Feed state that is managed by the server and was returned with the previous response
 		STRING globals [O=null] - Global state that is managed by the server
 		STRING direction [O=forward] - Browse 'forward' or 'backward'? Only used with the state parameter

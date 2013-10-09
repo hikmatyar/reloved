@@ -307,6 +307,54 @@ typedef PostAttributes_Create = {
 	editorial : String
 }
 
+private class PostFeed {
+	public static inline var identifier_all = 'all';
+    public static inline var identifier_only_editorial = 'only_editorial';
+    public static inline var identifier_only_new = 'only_new';
+    
+    private static inline var prefix_color = 'color';
+    private static inline var prefix_type = 'type';
+    
+    public var id(default, null) : String;
+    public var colors(default, null) : Array<DataIdentifier>;
+    public var types(default, null) : Array<DataIdentifier>;
+    
+    public function new(str : String) {
+    	if(str != null) {
+    		for(part in str.split('+')) {
+        		if(part == '' ||
+        		   part == PostFeed.identifier_all) {
+        			this.id = PostFeed.identifier_all;
+        		} else if(part == PostFeed.identifier_only_editorial ||
+        				  part == PostFeed.identifier_only_new) {
+        			this.id = part;
+        		} else {
+        			var ids = new Array<DataIdentifier>();
+        			var mode : String = null;
+        			
+        			for(_v in part.split(',')) {
+        				if(mode == null) {
+        					mode = _v;
+        				} else {
+        					ids.push(Std.parseInt(_v));
+        				}
+        			}
+        			
+        			if(ids.length > 0) {
+        				if(mode == PostFeed.prefix_color) {
+        					this.colors = ids;
+        				} else if(mode == PostFeed.prefix_type) {
+        					this.types = ids;
+        				}
+        			}
+        		}
+        	}
+    	} else {
+    		this.id = PostFeed.identifier_all;
+    	}
+    }
+}
+
 class Post {
 	public static inline var condition_new_unused = 1;
 	public static inline var condition_new_tags = 2;
@@ -420,20 +468,50 @@ class Post {
         });
     }
     
-    public static function findForward(timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+    public static function findForward(identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+    	var feed = new PostFeed(identifier);
+    	var order = (feed.id == PostFeed.identifier_all) ? 'created' : 'modified';
+    	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial <> NULL' : '';
+    	var fcriteria = '';
+    	var ftables = '';
+    	
+    	if(feed.colors != null) {
+    		ftables = ' INNER JOIN post_colors ON post_colors.post_id = posts.id ';
+    		fcriteria = ' AND post_colors.color_id IN (' + feed.colors.join(',') + ')';
+    	}
+    	
+    	if(feed.types != null) {
+    		fcriteria = fcriteria + ' AND type_id IN (' + feed.types.join(',') + ')';
+    	}
+    	
         if(timestamp != null) {
-            Data.query('SELECT * FROM posts WHERE status = 2 AND created > ? ORDER BY created ASC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
+            Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status = 2 AND ' + order + ' > ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' ASC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
                 fn(err, result);
             });
         } else {
-            Data.query('SELECT * FROM posts WHERE status = 2 ORDER BY created DESC LIMIT ?', [ limit ], function(err, result : Array<Post>) {
+            Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status = 2 ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ limit ], function(err, result : Array<Post>) {
                 fn(err, result);
             });
         }
     }
     
-    public static function findBackward(timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
-        Data.query('SELECT * FROM posts WHERE status = 2 AND created < ? ORDER BY created DESC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
+    public static function findBackward(identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+    	var feed = new PostFeed(identifier);
+    	var order = (feed.id == PostFeed.identifier_only_new) ? 'created' : 'modified';
+    	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial <> NULL' : '';
+    	var fcriteria = '';
+    	var ftables = '';
+    	
+    	if(feed.colors != null) {
+    		ftables = ' INNER JOIN post_colors ON post_colors.post_id = posts.id ';
+    		fcriteria = ' AND post_colors.color_id IN (' + feed.colors.join(',') + ')';
+    	}
+    	
+    	if(feed.types != null) {
+    		fcriteria = fcriteria + ' AND type_id IN (' + feed.types.join(',') + ')';
+    	}
+    	
+        Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status = 2 AND ' + order + ' < ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
             fn(err, result);
         });
     }

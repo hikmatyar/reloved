@@ -7,6 +7,10 @@ class FeedMixins {
         return handler.request.body.direction;
     }
     
+    public static inline function feedIdentifier(handler : Handler) : String {
+    	return handler.request.body.id;
+    }
+    
     public static inline function feedLimit(handler : Handler) : Int {
         var limit = Std.parseInt(handler.request.body.limit);
         

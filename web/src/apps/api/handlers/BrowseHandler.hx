@@ -77,6 +77,7 @@ class BrowseHandler extends Handler {
     	var limit = this.feedLimit();
     	var state = this.feedState();
     	var globalState = this.feedGlobals();
+    	var identifier = this.feedIdentifier();
     	var range = (state != null) ? { min: state.min, max: state.max } : null;
     	
     	async(function(sync) {
@@ -129,12 +130,12 @@ class BrowseHandler extends Handler {
             
             if(state != null) {
                 if(forward) {
-                    Post.findForward(state.max, limit, writePostFields);
+                    Post.findForward(identifier, state.max, limit, writePostFields);
                 } else {
-                    Post.findBackward(state.min, limit, writePostFields);
+                    Post.findBackward(identifier, state.min, limit, writePostFields);
                 }
             } else {
-                Post.findForward(null, limit, writePostFields);
+                Post.findForward(identifier, null, limit, writePostFields);
             }
         });
         
