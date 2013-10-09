@@ -5,6 +5,7 @@
 #import "MFCountry.h"
 #import "MFCurrency.h"
 #import "MFDelivery.h"
+#import "MFEvent.h"
 #import "MFFeed.h"
 #import "MFPost.h"
 #import "MFSize.h"
@@ -18,6 +19,7 @@
 #define KEY_CURSOR @"cursor"
 #define KEY_CURRENCIES @"currencies"
 #define KEY_DELIVERIES @"deliveries"
+#define KEY_EVENTS @"events"
 #define KEY_PREFIX @"prefix"
 #define KEY_POSTS @"posts"
 #define KEY_SIZES @"sizes"
@@ -42,6 +44,7 @@
         NSMutableArray *colors = nil;
         NSMutableArray *countries = nil;
         NSMutableArray *deliveries = nil;
+        NSMutableArray *events = nil;
         NSMutableArray *types = nil;
         NSMutableArray *sizes = nil;
         
@@ -129,6 +132,20 @@
             }
         }
         
+        for(NSDictionary *json in [attributes arrayForKey:KEY_EVENTS]) {
+            if([json isKindOfClass:klass]) {
+                MFEvent *event = [[MFEvent alloc] initWithAttributes:json];
+                
+                if(event) {
+                    if(!events) {
+                        events = [NSMutableArray array];
+                    }
+                    
+                    [events addObject:event];
+                }
+            }
+        }
+        
         for(NSDictionary *json in [attributes arrayForKey:KEY_SIZES]) {
             if([json isKindOfClass:klass]) {
                 MFSize *size = [[MFSize alloc] initWithAttributes:json];
@@ -167,6 +184,7 @@
         m_colors = colors;
         m_countries = countries;
         m_deliveries = deliveries;
+        m_events = events;
         m_sizes = sizes;
         m_types = types;
         m_state = [attributes stringForKey:KEY_STATE];
@@ -223,6 +241,7 @@
 @synthesize changes = m_changes;
 @synthesize countries = m_countries;
 @synthesize deliveries = m_deliveries;
+@synthesize events = m_events;
 @synthesize offset = m_offset;
 @synthesize colors = m_colors;
 @synthesize cursor = m_cursor;

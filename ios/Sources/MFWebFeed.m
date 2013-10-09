@@ -7,6 +7,7 @@
 #import "MFDatabase+Country.h"
 #import "MFDatabase+Currency.h"
 #import "MFDatabase+Delivery.h"
+#import "MFDatabase+Event.h"
 #import "MFDatabase+Feed.h"
 #import "MFDatabase+Post.h"
 #import "MFDatabase+Size.h"
@@ -255,6 +256,11 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         
         if(feed.deliveries && !MFEqual(database.deliveries, feed.deliveries)) {
             database.deliveries = feed.deliveries;
+            changed = YES;
+        }
+        
+        if(feed.events.count > 0) {
+            [database addEvents:feed.events];
             changed = YES;
         }
         
