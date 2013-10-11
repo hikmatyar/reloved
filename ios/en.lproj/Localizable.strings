@@ -8,7 +8,7 @@
 "Browse.Action.Size" = "Size";
 "Browse.Action.Type" = "Type";
 "Browse.Format.Results" = "%d result";
-"Browse.Format.Results.None" = "no results";
+"Browse.Format.Results.None" = "No results";
 "Browse.Format.Results.Plural" = "%d results";
 "Browse.Label.Size" = "UK Size";
 "Browse.Label.Type" = "Dress Type";
@@ -57,22 +57,22 @@
 "NewPost.Action.Replace" = "Replace";
 "NewPost.Action.SellersNote" = "Seller's Note";
 "NewPost.Action.TypeSizeFit" = "Type, Size & Fit";
-"NewPost.Hint.Brand" = "(TDB)";
-"NewPost.Hint.Colors" = "(TDB)";
-"NewPost.Hint.Fit" = "(TDB)";
+"NewPost.Hint.Brand" = "Select Brand";
+"NewPost.Hint.Colors" = "Select Color(s)";
+"NewPost.Hint.Fit" = "e.g. 'True to size' or 'Buy 1 size smaller.'";
 "NewPost.Hint.GBP" = "£";
-"NewPost.Hint.Materials" = "(TDB)";
-"NewPost.Hint.Photo.1" = "Select Photo #1";
-"NewPost.Hint.Photo.2" = "Select Photo #2";
-"NewPost.Hint.Photo.3" = "Select Photo #3";
-"NewPost.Hint.Photo.4" = "Select Photo #4";
-"NewPost.Hint.PriceNew" = "(TDB)";
-"NewPost.Hint.PriceOriginal" = "(TDB)";
+"NewPost.Hint.Materials" = "e.g. Exterior is 100% cotton, lining is 91% cotton 9% silk";
+"NewPost.Hint.Photo.1" = "Front View";
+"NewPost.Hint.Photo.2" = "Back View";
+"NewPost.Hint.Photo.3" = "Close-Up";
+"NewPost.Hint.Photo.4" = "Side View ";
+"NewPost.Hint.PriceNew" = "";
+"NewPost.Hint.PriceOriginal" = "";
 "NewPost.Hint.Price" = "We ask for this so as to illustrate savings (vs. buying new) to potential buyers";
-"NewPost.Hint.SellersNote" = "(TDB)";
-"NewPost.Hint.Size" = "(TDB)";
+"NewPost.Hint.SellersNote" = "e.g. a chique and wearable daytime option. Constructed from pure silk, it has sultry spagetti strps, cross back detail and a relaxed silhoutte.";
+"NewPost.Hint.Size" = "Select UK size/equivalent";
 "NewPost.Hint.Subject" = "(TDB)";
-"NewPost.Hint.Type" = "(TDB)";
+"NewPost.Hint.Type" = "Select dress type";
 "NewPost.Label.Brand" = "Brand";
 "NewPost.Label.Colors" = "Color(s)";
 "NewPost.Label.Fit" = "Fit Description";
@@ -98,7 +98,7 @@
 /* Pull to Refresh View */
 
 "PullToRefresh.Label.Loading" = "Loading...";
-"PullToRefresh.Label.Pull" = "Pull down to refresh...";
+"PullToRefresh.Label.Pull" = "Pull to refresh...";
 "PullToRefresh.Label.Release" = "Release to refresh...";
 
 /* Pull to Load View */
@@ -109,7 +109,7 @@
 /* Reachability */
 
 "Reachability.Action.Cancel" = "Cancel";
-"Reachability.Action.TryAgain" = "Try Again";
+"Reachability.Action.TryAgain" = "Please try Again";
 "Reachability.Message.NoConnection" = "Internet Connection is required";
 "Reachability.Title.NoConnection" = "No Connection";
 
@@ -120,7 +120,7 @@
 "Condition.1.Comment2" = "Never used; in many cases direct from store";
 "Condition.1.Comment3" = "Certified by the Reloved team";
 "Condition.2.Title" = "New with tags";
-"Condition.2.Comment1" = "This item is new with tag attached";
+"Condition.2.Comment1" = "This item is new with tags attached";
 "Condition.2.Comment2" = "Used less than 5 times";
 "Condition.2.Comment3" = "Certified by the Reloved team";
 "Condition.3.Title" = "New barely used";
