@@ -3,6 +3,7 @@
 package apps.api.handlers;
 
 import js.Node;
+import models.Event;
 import models.Post;
 
 using apps.api.mixins.PostMixins;
@@ -359,6 +360,8 @@ class PostHandler extends Handler {
 				async(function() {
 					PostComment.create(postId, { user_id: this.user().id, message: message }, function(err, cid) {
 						if(err == null) {
+							Event.logComment(result.post.userId, result.post.id, cid);
+							
 							// Return all the comments!
 							this.comments();
 						} else {

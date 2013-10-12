@@ -26,6 +26,18 @@ class Event {
     public var link(default, null) : String;
     public var meta(default, null) : String;
     
+    public static function logComment(userId : DataIdentifier, postId : DataIdentifier, commentId : DataIdentifier) : Void {
+    	Event.create(Event.type_comment, userId, '/post/' + postId + '#' + commentId, null, null);
+    }
+    
+    public static function create(type : Int, userId : DataIdentifier, link : String, meta : String, fn : DataError -> Void) : Void {
+    	Data.query('INSERT INTO events (user_id, type, link, meta, created) VALUES (?, ?, ?, ?, UNIX_TIMESTAMP(CURRENT_TIMESTAMP))', [ userId, type, link, meta ], function(err, result) {
+			if(fn != null) {
+				fn(err);
+			}
+		});
+    }
+    
     public static function find(id : DataIdentifier, fn : DataError -> Event -> Void) : Void {
         Data.query('SELECT * FROM events WHERE id = ?', [ id ], function(err, result : Event) {
             fn(err, result);
