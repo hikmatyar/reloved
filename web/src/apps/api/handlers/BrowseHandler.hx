@@ -36,6 +36,8 @@ class BrowseHandler extends Handler {
     	var globalState = this.feedGlobalsAlternative();
     	var globals : BrowseHandlerGlobals = { };
     	
+    	this.cacheGlobals(globals);
+    	
     	async(function(sync) {
 			Event.findAll(this.user().id, globalState, function(err, events) {
 				if(events != null) {
@@ -64,15 +66,13 @@ class BrowseHandler extends Handler {
 				this.write('],');
 			}
 			
-			this.write(' "globals": ' + Math.round(new saffron.tools.Date().getTime() / 1000));
+			this.write(' "globals": "' + Math.round(new saffron.tools.Date().getTime() / 1000) + '"');
 			this.end('}');
     	});
     }
     
     public function index() : Void {
-    	// TODO: Cache brands, currencies, countries etc
     	var globals : BrowseHandlerGlobals = { };
-    	
     	var forward = (this.feedDirection() != BrowseHandler.direction_forward) ? true : false;
     	var limit = this.feedLimit();
     	var state = this.feedState();
@@ -92,6 +92,7 @@ class BrowseHandler extends Handler {
 		});
 		
     	if(globalState == null) {
+    		this.cacheGlobals(globals);
     		async(function() { this.begin(ErrorCode.http_ok); });
     		this.writeGlobals(globals);
     	} else {
@@ -116,7 +117,7 @@ class BrowseHandler extends Handler {
 				this.write('],');
 			}
 			
-			this.write(' "globals": ' + Math.round(new saffron.tools.Date().getTime() / 1000) + ',');
+			this.write(' "globals": "' + Math.round(new saffron.tools.Date().getTime() / 1000) + '",');
     	});
     	
     	async(function(sync) {
@@ -295,6 +296,7 @@ class BrowseHandler extends Handler {
 		});
     }
     
+    // TODO: Cache brands, currencies, countries etc in RAM
     private function cacheGlobals(globals : BrowseHandlerGlobals) : Void {
     	async(function(sync) {
 			Brand.findAll(function(err, brands) {
