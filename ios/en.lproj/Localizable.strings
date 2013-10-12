@@ -48,16 +48,16 @@
 /* New Post Controller */
 
 "NewPost.Action.Condition" = "Condition";
-"NewPost.Action.Details" = "Dress Details";
+"NewPost.Action.Details" = "Brand";
 "NewPost.Action.Done" = "Done";
 "NewPost.Action.Next" = "Next";
 "NewPost.Action.Photos" = "Photos";
 "NewPost.Action.Price" = "Price";
 "NewPost.Action.Remove" = "Remove";
 "NewPost.Action.Replace" = "Replace";
-"NewPost.Action.SellersNote" = "Seller's Note";
-"NewPost.Action.TypeSizeFit" = "Type, Size & Fit";
-"NewPost.Format.Photo.Long" = "Select photo #%d";
+"NewPost.Action.SellersNote" = "Note";
+"NewPost.Action.TypeSizeFit" = "Size";
+"NewPost.Format.Photo.Long" = "Select photo #%d.";
 "NewPost.Format.Photo.Short" = "Photo #%d";
 "NewPost.Hint.Brand" = "Select Brand";
 "NewPost.Hint.Colors" = "Select Color(s)";
