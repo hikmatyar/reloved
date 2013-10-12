@@ -224,6 +224,10 @@
 		81BC174F17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174D17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png */; };
 		81BC175017FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174E17FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png */; };
 		81BC175417FCA55F00DF7AD4 /* MFPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC175317FCA55F00DF7AD4 /* MFPageScrollView.m */; };
+		81C5A2151809969C000427A9 /* NewPost-Photos-X.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C5A2131809969C000427A9 /* NewPost-Photos-X.png */; };
+		81C5A2161809969C000427A9 /* NewPost-Photos-X@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C5A2141809969C000427A9 /* NewPost-Photos-X@2x.png */; };
+		81C5A219180996EA000427A9 /* NewPost-Photos-Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C5A217180996EA000427A9 /* NewPost-Photos-Placeholder.png */; };
+		81C5A21A180996EA000427A9 /* NewPost-Photos-Placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C5A218180996EA000427A9 /* NewPost-Photos-Placeholder@2x.png */; };
 		81D0966417FCA6CD0044BD06 /* MFPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966317FCA6CD0044BD06 /* MFPageView.m */; };
 		81D0966717FCCC270044BD06 /* MFNewPostController+Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966617FCCC270044BD06 /* MFNewPostController+Condition.m */; };
 		81D0966A17FCCE330044BD06 /* MFNewPostConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966917FCCE330044BD06 /* MFNewPostConditionTableViewCell.m */; };
@@ -600,6 +604,10 @@
 		81BC174E17FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Unselected@2x.png"; path = "Images/NewPost-Progress-Unselected@2x.png"; sourceTree = "<group>"; };
 		81BC175217FCA55F00DF7AD4 /* MFPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPageScrollView.h; path = Sources/MFPageScrollView.h; sourceTree = SOURCE_ROOT; };
 		81BC175317FCA55F00DF7AD4 /* MFPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPageScrollView.m; path = Sources/MFPageScrollView.m; sourceTree = SOURCE_ROOT; };
+		81C5A2131809969C000427A9 /* NewPost-Photos-X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Photos-X.png"; path = "Images/NewPost-Photos-X.png"; sourceTree = "<group>"; };
+		81C5A2141809969C000427A9 /* NewPost-Photos-X@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Photos-X@2x.png"; path = "Images/NewPost-Photos-X@2x.png"; sourceTree = "<group>"; };
+		81C5A217180996EA000427A9 /* NewPost-Photos-Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Photos-Placeholder.png"; path = "Images/NewPost-Photos-Placeholder.png"; sourceTree = "<group>"; };
+		81C5A218180996EA000427A9 /* NewPost-Photos-Placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Photos-Placeholder@2x.png"; path = "Images/NewPost-Photos-Placeholder@2x.png"; sourceTree = "<group>"; };
 		81D0966217FCA6CD0044BD06 /* MFPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPageView.h; path = Sources/MFPageView.h; sourceTree = SOURCE_ROOT; };
 		81D0966317FCA6CD0044BD06 /* MFPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPageView.m; path = Sources/MFPageView.m; sourceTree = SOURCE_ROOT; };
 		81D0966517FCCC270044BD06 /* MFNewPostController+Condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+Condition.h"; path = "Sources/MFNewPostController+Condition.h"; sourceTree = SOURCE_ROOT; };
@@ -1025,6 +1033,10 @@
 				8120C14817DFAD8C00A1C3A9 /* Menu-Search@2x.png */,
 				8120C14917DFAD8C00A1C3A9 /* Menu-Sell.png */,
 				8120C14A17DFAD8C00A1C3A9 /* Menu-Sell@2x.png */,
+				81C5A217180996EA000427A9 /* NewPost-Photos-Placeholder.png */,
+				81C5A218180996EA000427A9 /* NewPost-Photos-Placeholder@2x.png */,
+				81C5A2131809969C000427A9 /* NewPost-Photos-X.png */,
+				81C5A2141809969C000427A9 /* NewPost-Photos-X@2x.png */,
 				81BC174917FC528100DF7AD4 /* NewPost-Progress-Selected.png */,
 				81BC174A17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png */,
 				81BC174D17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png */,
@@ -1279,6 +1291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8120C14D17DFAD8C00A1C3A9 /* Menu-Home@2x.png in Resources */,
+				81C5A21A180996EA000427A9 /* NewPost-Photos-Placeholder@2x.png in Resources */,
 				81B27B5617F6107100F9BC09 /* placeholder@2x.png in Resources */,
 				81B27B5717F6107100F9BC09 /* visa.png in Resources */,
 				811082A417F8B0E1005CC8ED /* PullToRefresh-Arrow@2x.png in Resources */,
@@ -1303,6 +1316,7 @@
 				8120C19917E0470300A1C3A9 /* Home-BrowseNew.png in Resources */,
 				8120C14E17DFAD8C00A1C3A9 /* Menu-News.png in Resources */,
 				81B27B4A17F6107100F9BC09 /* cvc-amex@2x.png in Resources */,
+				81C5A2161809969C000427A9 /* NewPost-Photos-X@2x.png in Resources */,
 				81B27B4917F6107100F9BC09 /* cvc-amex.png in Resources */,
 				81B27B3217F6106800F9BC09 /* gradient@2x.png in Resources */,
 				8120C1AB17E049B400A1C3A9 /* Navigation-Logo.png in Resources */,
@@ -1316,9 +1330,11 @@
 				81B27B4E17F6107100F9BC09 /* diners@2x.png in Resources */,
 				81B27B3317F6106800F9BC09 /* textfield.png in Resources */,
 				8120C1A717E0470300A1C3A9 /* Home-ShippingInfo.png in Resources */,
+				81C5A2151809969C000427A9 /* NewPost-Photos-X.png in Resources */,
 				811082A317F8B0E1005CC8ED /* PullToRefresh-Arrow.png in Resources */,
 				81B27B5117F6107100F9BC09 /* jcb.png in Resources */,
 				8120C15117DFAD8C00A1C3A9 /* Menu-Search@2x.png in Resources */,
+				81C5A219180996EA000427A9 /* NewPost-Photos-Placeholder.png in Resources */,
 				8120C16317DFB48600A1C3A9 /* Navigation-Filter@2x.png in Resources */,
 				8120C19C17E0470300A1C3A9 /* Home-Guarantee@2x.png in Resources */,
 				81B27B4C17F6107100F9BC09 /* cvc@2x.png in Resources */,
