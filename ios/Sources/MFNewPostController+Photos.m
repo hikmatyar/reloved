@@ -10,7 +10,6 @@
 
 #define THUMBNAIL_COUNT 4
 #define THUMBNAIL_PADDING 10.0F
-#define ACTIONBAR_HEIGHT 46.0F
 
 @interface MFNewPostController_Photos : MFNewPostPageView <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -140,8 +139,7 @@
     
     if(self) {
         const CGFloat thumbnailSize = roundf((frame.size.width - THUMBNAIL_PADDING) / THUMBNAIL_COUNT) - THUMBNAIL_PADDING;
-        CGRect thumbnailRect = CGRectMake(THUMBNAIL_PADDING, frame.size.height - thumbnailSize - ACTIONBAR_HEIGHT, thumbnailSize, thumbnailSize);
-        UIButton *button;
+        CGRect thumbnailRect = CGRectMake(THUMBNAIL_PADDING, frame.size.height - thumbnailSize, thumbnailSize, thumbnailSize);
         
         m_controller = controller;
         m_thumbnailViews = [[NSMutableArray alloc] init];
@@ -150,14 +148,14 @@
         m_cameraOverlayView = [[UILabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 40.0F)];
         m_cameraOverlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
-        m_imageView = [[MFNewPostPhotoView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height - ACTIONBAR_HEIGHT)];
+        m_imageView = [[MFNewPostPhotoView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
         m_imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         m_imageView.imageIndex = 0;
         [m_imageView addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:m_imageView];
         
         for(NSInteger i = 0; i < THUMBNAIL_COUNT; i++, thumbnailRect.origin.x += THUMBNAIL_PADDING + thumbnailSize) {
-            MFNewPostPhotoView *thumbnailView = [[MFNewPostPhotoView alloc] initWithFrame:thumbnailRect];
+            MFNewPostPhotoView *thumbnailView = [[MFNewPostPhotoView alloc] initWithFrame:thumbnailRect thumbnail:YES];
             
             thumbnailView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
             thumbnailView.imageIndex = i;
@@ -166,20 +164,6 @@
             [m_thumbnailViews addObject:thumbnailView];
             [self addSubview:thumbnailView];
         }
-        
-        button = [[UIButton alloc] initWithFrame:CGRectMake(0.0F, frame.size.height - ACTIONBAR_HEIGHT, 0.5F * frame.size.width, ACTIONBAR_HEIGHT)];
-        button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        button.backgroundColor = [UIColor greenColor];
-        [button addTarget:self action:@selector(removeImage:) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:NSLocalizedString(@"NewPost.Action.Remove", nil) forState:UIControlStateNormal];
-        [self addSubview:button];
-        
-        button = [[UIButton alloc] initWithFrame:CGRectMake(0.5F * frame.size.width, frame.size.height - ACTIONBAR_HEIGHT, 0.5F * frame.size.width, ACTIONBAR_HEIGHT)];
-        button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        button.backgroundColor = [UIColor blueColor];
-        [button addTarget:self action:@selector(replaceImage:) forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:NSLocalizedString(@"NewPost.Action.Replace", nil) forState:UIControlStateNormal];
-        [self addSubview:button];
     }
     
     return self;

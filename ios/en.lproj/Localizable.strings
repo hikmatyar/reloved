@@ -57,6 +57,8 @@
 "NewPost.Action.Replace" = "Replace";
 "NewPost.Action.SellersNote" = "Seller's Note";
 "NewPost.Action.TypeSizeFit" = "Type, Size & Fit";
+"NewPost.Format.Photo.Long" = "Select photo #%d";
+"NewPost.Format.Photo.Short" = "Photo #%d";
 "NewPost.Hint.Brand" = "Select Brand";
 "NewPost.Hint.Colors" = "Select Color(s)";
 "NewPost.Hint.Fit" = "e.g. 'True to size' or 'Buy 1 size smaller.'";
