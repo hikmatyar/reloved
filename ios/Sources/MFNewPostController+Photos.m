@@ -285,7 +285,7 @@
         ((MFNewPostPhotoView *)[m_thumbnailViews objectAtIndex:selectedImageIndex]).image = image;
         m_imageView.image = image;
         
-        if(selectedImageIndex + 1 < m_thumbnailViews.count) {
+        if(selectedImageIndex + 1 < THUMBNAIL_MIN) {
             [self selectThumbnail:[m_thumbnailViews objectAtIndex:selectedImageIndex + 1]];
         } else {
             m_cameraOverlayView = nil;
