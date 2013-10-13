@@ -153,9 +153,9 @@ CREATE TABLE `posts` (
   `price_original` int(11) NOT NULL,
   `currency` varchar(3) NOT NULL,
   `title` varchar(128) NOT NULL,
-  `fit` varchar(128) NOT NULL,
-  `notes` varchar(255) NOT NULL,
-  `editorial` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `fit` varchar(200) NOT NULL,
+  `notes` varchar(400) NOT NULL,
+  `editorial` varchar(400) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
