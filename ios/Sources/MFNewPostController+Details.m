@@ -125,20 +125,47 @@
     return m_canContinue;
 }
 
+- (void)saveState
+{
+    m_controller.post.materials = m_materialsTextField.text;
+}
+
 #pragma mark MFOptionPickerControllerDelegate
 
 - (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller
 {
+    NSMutableArray *colorIdentifiers = nil;
+    NSMutableString *colorTitle = nil;
+    
     for(id selection in controller.selectedItems) {
         if([selection isKindOfClass:[MFBrand class]]) {
             MFBrand *brand = (MFBrand *)selection;
             
             [m_brandButton setTitle:brand.name forState:UIControlStateNormal];
+            m_controller.post.brandId = brand.identifier;
         } else if([selection isKindOfClass:[MFColor class]]) {
             MFColor *color = (MFColor *)selection;
             
-            [m_colorsButton setTitle:color.name forState:UIControlStateNormal];
+            if(colorTitle) {
+                [colorTitle appendFormat:@", %@", color.name];
+            } else {
+                colorTitle = [NSMutableString stringWithString:color.name];
+            }
+            
+            if(!colorIdentifiers) {
+                colorIdentifiers = [NSMutableArray array];
+            }
+            
+            [colorIdentifiers addObject:color.identifier];
         }
+    }
+    
+    if(colorTitle) {
+        [m_colorsButton setTitle:colorTitle forState:UIControlStateNormal];
+    }
+    
+    if(colorIdentifiers) {
+        m_controller.post.colorIds = colorIdentifiers;
     }
     
     [m_controller invalidateNavigation];
@@ -155,6 +182,7 @@
 {
     [m_materialsTextField resignFirstResponder];
     //[m_accessory deactivate];
+    [super pageWillDisappear];
 }
 
 #pragma mark UITextFieldDelegate

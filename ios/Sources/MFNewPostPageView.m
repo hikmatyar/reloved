@@ -21,8 +21,19 @@
     return YES;
 }
 
+- (void)saveState
+{
+}
+
 - (void)submitting
 {
+}
+
+#pragma mark MFPageView
+
+- (void)pageWillDisappear
+{
+    [self saveState];
 }
 
 @end

@@ -127,6 +127,11 @@
     return m_canContinue;
 }
 
+- (void)saveState
+{
+    m_controller.post.fit = m_fitDescriptionTextView.text;
+}
+
 #pragma mark MFOptionPickerControllerDelegate
 
 - (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller
@@ -138,10 +143,12 @@
             MFType *type = (MFType *)selection;
             
             [m_typeButton setTitle:type.name forState:UIControlStateNormal];
+            m_controller.post.typeId = type.identifier;
         } else if([selection isKindOfClass:[MFSize class]]) {
             MFSize *size = (MFSize *)selection;
             
             [m_sizeButton setTitle:size.name forState:UIControlStateNormal];
+            m_controller.post.sizeId = size.identifier;
         }
     }
     
@@ -159,6 +166,7 @@
 {
     [m_fitDescriptionTextView resignFirstResponder];
     //[m_accessory deactivate];
+    [super pageWillDisappear];
 }
 
 #pragma mark UITextViewDelegate

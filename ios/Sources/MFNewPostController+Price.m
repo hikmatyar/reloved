@@ -10,6 +10,7 @@
 #import "MFMoney.h"
 #import "MFNewPostController+Price.h"
 #import "MFNewPostPageView.h"
+#import "MFPost.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
@@ -86,6 +87,19 @@
     }
     
     return m_canContinue;
+}
+
+- (void)saveState
+{
+    MFMoney *money;
+    
+    money = [[MFMoney alloc] initWithLocalizedString:m_priceTextField.text currency:nil];
+    m_controller.post.price = money.value;
+    
+    money = [[MFMoney alloc] initWithLocalizedString:m_priceOriginalTextField.text currency:nil];
+    m_controller.post.priceOriginal = money.value;
+    
+    m_controller.post.currency = [MFCurrency gbp].code;
 }
 
 #pragma mark MFPageView

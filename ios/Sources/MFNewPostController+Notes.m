@@ -7,6 +7,7 @@
 #import "MFFormTextView.h"
 #import "MFNewPostController+Notes.h"
 #import "MFNewPostPageView.h"
+#import "MFPost.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
@@ -71,6 +72,12 @@
     return m_canContinue;
 }
 
+- (void)saveState
+{
+    m_controller.post.title = m_subjectTextField.text;
+    m_controller.post.notes = m_notesTextView.text;
+}
+
 #pragma mark MFPageView
 
 - (void)pageWillAppear
@@ -88,6 +95,8 @@
     m_notesTextView = notesTextView;
     
     //[m_accessory deactivate];
+    
+    [super pageWillDisappear];
 }
 
 #pragma mark UITextFieldDelegate

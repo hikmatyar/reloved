@@ -5,6 +5,7 @@
 #import "MFNewPostController+Condition.h"
 #import "MFNewPostPageView.h"
 #import "MFPageView.h"
+#import "MFPost.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 

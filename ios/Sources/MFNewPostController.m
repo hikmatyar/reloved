@@ -89,6 +89,10 @@
 - (IBAction)post:(id)sender
 {
     for(MFNewPostController_Step *step in m_steps) {
+        [step.page saveState];
+    }
+    
+    for(MFNewPostController_Step *step in m_steps) {
         [step.page submitting];
     }
     
