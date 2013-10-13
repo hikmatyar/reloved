@@ -31,6 +31,10 @@
 		811082D117F8CA8E005CC8ED /* SQLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 811082CC17F8CA8E005CC8ED /* SQLObject.m */; };
 		811082D217F8CA8E005CC8ED /* SQLObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 811082CE17F8CA8E005CC8ED /* SQLObjectStore.m */; };
 		811082D417F8CAEF005CC8ED /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 811082D317F8CAEF005CC8ED /* libsqlite3.dylib */; };
+		81136AB9180B5555009142AE /* MFWebService+Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136AB8180B5555009142AE /* MFWebService+Post.m */; };
+		81136ABC180B563D009142AE /* NSData+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136ABB180B563D009142AE /* NSData+Additions.m */; };
+		81136AC0180B5703009142AE /* MFWebService+Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136ABF180B5703009142AE /* MFWebService+Media.m */; };
+		81136AC3180B5A8E009142AE /* MFMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136AC2180B5A8E009142AE /* MFMedia.m */; };
 		8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFC917E06BCC007AEDC2 /* MFImageView.m */; };
 		8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCC17E06BDB007AEDC2 /* MFTableView.m */; };
 		8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCF17E06BE8007AEDC2 /* MFTableViewCell.m */; };
@@ -292,6 +296,14 @@
 		811082CD17F8CA8E005CC8ED /* SQLObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLObjectStore.h; path = Sources/SQLKit/SQLObjectStore.h; sourceTree = SOURCE_ROOT; };
 		811082CE17F8CA8E005CC8ED /* SQLObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SQLObjectStore.m; path = Sources/SQLKit/SQLObjectStore.m; sourceTree = SOURCE_ROOT; };
 		811082D317F8CAEF005CC8ED /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		81136AB7180B5555009142AE /* MFWebService+Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFWebService+Post.h"; path = "Sources/MFWebService+Post.h"; sourceTree = SOURCE_ROOT; };
+		81136AB8180B5555009142AE /* MFWebService+Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFWebService+Post.m"; path = "Sources/MFWebService+Post.m"; sourceTree = SOURCE_ROOT; };
+		81136ABA180B563D009142AE /* NSData+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Additions.h"; path = "Sources/Additions/NSData+Additions.h"; sourceTree = SOURCE_ROOT; };
+		81136ABB180B563D009142AE /* NSData+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Additions.m"; path = "Sources/Additions/NSData+Additions.m"; sourceTree = SOURCE_ROOT; };
+		81136ABE180B5703009142AE /* MFWebService+Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFWebService+Media.h"; path = "Sources/MFWebService+Media.h"; sourceTree = SOURCE_ROOT; };
+		81136ABF180B5703009142AE /* MFWebService+Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFWebService+Media.m"; path = "Sources/MFWebService+Media.m"; sourceTree = SOURCE_ROOT; };
+		81136AC1180B5A8E009142AE /* MFMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFMedia.h; path = Sources/MFMedia.h; sourceTree = SOURCE_ROOT; };
+		81136AC2180B5A8E009142AE /* MFMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMedia.m; path = Sources/MFMedia.m; sourceTree = SOURCE_ROOT; };
 		8119DFC817E06BCC007AEDC2 /* MFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageView.h; path = Sources/MFImageView.h; sourceTree = SOURCE_ROOT; };
 		8119DFC917E06BCC007AEDC2 /* MFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageView.m; path = Sources/MFImageView.m; sourceTree = SOURCE_ROOT; };
 		8119DFCB17E06BDB007AEDC2 /* MFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFTableView.h; path = Sources/MFTableView.h; sourceTree = SOURCE_ROOT; };
@@ -846,6 +858,8 @@
 				819E12B118057E68008D2D36 /* MFEvent.m */,
 				811082B317F8B7A8005CC8ED /* MFFeed.h */,
 				811082B417F8B7A8005CC8ED /* MFFeed.m */,
+				81136AC1180B5A8E009142AE /* MFMedia.h */,
+				81136AC2180B5A8E009142AE /* MFMedia.m */,
 				8119DFEF17E06F0C007AEDC2 /* MFMoney.h */,
 				8119DFF017E06F0C007AEDC2 /* MFMoney.m */,
 				8119DFEC17E06F00007AEDC2 /* MFPost.h */,
@@ -960,6 +974,10 @@
 				8119DFDE17E06DB6007AEDC2 /* MFWebService.m */,
 				811082C317F8C805005CC8ED /* MFWebService+Feed.h */,
 				811082C417F8C805005CC8ED /* MFWebService+Feed.m */,
+				81136ABE180B5703009142AE /* MFWebService+Media.h */,
+				81136ABF180B5703009142AE /* MFWebService+Media.m */,
+				81136AB7180B5555009142AE /* MFWebService+Post.h */,
+				81136AB8180B5555009142AE /* MFWebService+Post.m */,
 				8119DFE917E06E25007AEDC2 /* MFWebServiceAuthenticationChallenge.h */,
 				8119DFEA17E06E33007AEDC2 /* MFWebServiceDelegate.h */,
 				8119DFEB17E06E44007AEDC2 /* MFWebServiceError.h */,
@@ -1064,6 +1082,8 @@
 			children = (
 				811082A517F8B299005CC8ED /* NSArray+Additions.h */,
 				811082A617F8B299005CC8ED /* NSArray+Additions.m */,
+				81136ABA180B563D009142AE /* NSData+Additions.h */,
+				81136ABB180B563D009142AE /* NSData+Additions.m */,
 				819E12B618058340008D2D36 /* NSDate+Additions.h */,
 				819E12B718058340008D2D36 /* NSDate+Additions.m */,
 				8120C16C17DFBF1200A1C3A9 /* NSDictionary+Additions.h */,
@@ -1407,7 +1427,9 @@
 				8120C15B17DFAFA600A1C3A9 /* MFNewPostController.m in Sources */,
 				819E12B818058340008D2D36 /* NSDate+Additions.m in Sources */,
 				81233D5817F8DDEA00C27805 /* MFColor.m in Sources */,
+				81136AB9180B5555009142AE /* MFWebService+Post.m in Sources */,
 				811082AF17F8B66D005CC8ED /* MFDatabase.m in Sources */,
+				81136ABC180B563D009142AE /* NSData+Additions.m in Sources */,
 				8119DFE817E06E0B007AEDC2 /* MFWebAuthorization.m in Sources */,
 				8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */,
 				81233D6417F8E01000C27805 /* MFDatabase+Type.m in Sources */,
@@ -1429,6 +1451,7 @@
 				81233D6D17F8F17E00C27805 /* MFBrand.m in Sources */,
 				811082D017F8CA8E005CC8ED /* SQLCursor.m in Sources */,
 				8119DFE217E06DCF007AEDC2 /* MFWebUser.m in Sources */,
+				81136AC0180B5703009142AE /* MFWebService+Media.m in Sources */,
 				81DE2D3017F5F386001D0ADF /* MFHomeSectionView.m in Sources */,
 				8119DFF817E0A1E6007AEDC2 /* MFTracker.m in Sources */,
 				8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */,
@@ -1483,6 +1506,7 @@
 				81B27B1317F60F3700F9BC09 /* StripeError.m in Sources */,
 				811082BC17F8BC57005CC8ED /* MFDatabase+Currency.m in Sources */,
 				81BC174317FB51CA00DF7AD4 /* MFOptionPickerController.m in Sources */,
+				81136AC3180B5A8E009142AE /* MFMedia.m in Sources */,
 				81D0966417FCA6CD0044BD06 /* MFPageView.m in Sources */,
 				81233D7017F8F18A00C27805 /* MFDelivery.m in Sources */,
 				81233D4F17F8CEA500C27805 /* MFWebPost.m in Sources */,

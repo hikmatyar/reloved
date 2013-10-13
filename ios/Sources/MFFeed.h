@@ -8,7 +8,7 @@ typedef enum _MFFeedCursor {
     kMFFeedCursorEnd
 } MFFeedCursor;
 
-@interface MFFeed : NSObject
+@interface MFFeed : NSObject <MFWebRequestTransform>
 {
     @private
     NSArray *m_brands;

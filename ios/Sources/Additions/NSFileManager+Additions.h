@@ -4,7 +4,9 @@
 
 @interface NSFileManager(Additions)
 
+- (NSString *)md5ForFileAtPath:(NSString *)path;
 - (NSString *)pathForTemporaryFile;
 - (NSString *)pathForTemporaryFileWithPrefix:(NSString *)prefix;
+- (UInt64)sizeForFileAtPath:(NSString *)path;
 
 @end

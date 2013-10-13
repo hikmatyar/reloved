@@ -1,5 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MBProgressHUD.h"
 #import "MFNewPostController.h"
 #import "MFNewPostController+Condition.h"
 #import "MFNewPostController+Details.h"
@@ -12,6 +13,8 @@
 #import "MFPageScrollView.h"
 #import "MFPost.h"
 #import "MFSideMenuContainerViewController.h"
+#import "MFWebService+Post.h"
+#import "MFWebUpload.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
@@ -96,7 +99,13 @@
         [step.page submitting];
     }
     
-    
+    if(!m_hud) {
+        m_hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].windows.lastObject animated:YES];
+        m_hud.dimBackground = YES;
+        m_hud.labelText = NSLocalizedString(@"PostAdd.PostingHUD.Title", nil);
+        m_hud.detailsLabelText = NSLocalizedString(@"PostAdd.PostingHUD.Message", nil);
+        m_hud.minShowTime = 1.0F;
+    }
 }
 
 - (IBAction)next:(id)sender

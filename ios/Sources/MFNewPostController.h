@@ -2,11 +2,13 @@
 
 #import "MFNewPostProgressViewDelegate.h"
 
+@class MBProgressHUD;
 @class MFMutablePost;
 
 @interface MFNewPostController : UIViewController <MFNewPostProgressViewDelegate>
 {
     @private
+    MBProgressHUD *m_hud;
     NSArray *m_steps;
     NSInteger m_stepIndex;
     MFMutablePost *m_post;
