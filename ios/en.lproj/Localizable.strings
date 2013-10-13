@@ -57,7 +57,7 @@
 "NewPost.Action.Replace" = "Replace";
 "NewPost.Action.SellersNote" = "Note";
 "NewPost.Action.TypeSizeFit" = "Size";
-"NewPost.Format.Photo.Long" = "Select photo #%d.";
+"NewPost.Format.Photo.Long" = "";
 "NewPost.Format.Photo.Short" = "Photo #%d";
 "NewPost.Hint.Brand" = "Select Brand";
 "NewPost.Hint.Colors" = "Select Color(s)";
