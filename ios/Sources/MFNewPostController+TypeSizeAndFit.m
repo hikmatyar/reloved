@@ -1,5 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFDatabase+Size.h"
+#import "MFDatabase+Type.h"
 #import "MFForm.h"
 #import "MFFormAccessory.h"
 #import "MFFormButton.h"
@@ -10,6 +12,10 @@
 #import "MFNewPostPageView.h"
 #import "MFOptionPickerController.h"
 #import "MFOptionPickerControllerDelegate.h"
+#import "MFPost.h"
+#import "MFSize.h"
+#import "MFType.h"
+#import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UIViewController+Additions.h"
@@ -33,18 +39,34 @@
 
 - (IBAction)size:(id)sender
 {
-    MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+    NSArray *sizes = [MFDatabase sharedDatabase].sizes;
     
-    controller.delegate = self;
-    [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
+    if(sizes.count > 0) {
+        MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+        
+        controller.items = [sizes sortedArrayUsingSelector:@selector(compare:)];
+        controller.delegate = self;
+        controller.title = NSLocalizedString(@"NewPost.Title.Size", nil);
+        [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
+    } else {
+        [[MFWebFeed sharedFeed] loadForward];
+    }
 }
 
 - (IBAction)type:(id)sender
 {
-    MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+    NSArray *types = [MFDatabase sharedDatabase].types;
     
-    controller.delegate = self;
-    [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
+    if(types.count > 0) {
+        MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+        
+        controller.items = [types sortedArrayUsingSelector:@selector(compare:)];
+        controller.delegate = self;
+        controller.title = NSLocalizedString(@"NewPost.Title.Type", nil);
+        [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
+    } else {
+        [[MFWebFeed sharedFeed] loadForward];
+    }
 }
 
 #pragma mark MFNewPostPageView
@@ -67,7 +89,7 @@
         m_typeButton = [[MFFormButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormButton preferredHeight])];
         m_typeButton.placeholder = NSLocalizedString(@"NewPost.Hint.Type", nil);
         [m_typeButton addTarget:self action:@selector(type:) forControlEvents:UIControlEventTouchUpInside];
-        [m_typeButton setTitle:@"Mini" forState:UIControlStateNormal];
+        [m_typeButton setTitle:nil forState:UIControlStateNormal];
         [m_form addSubview:m_typeButton];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
@@ -77,7 +99,7 @@
         m_sizeButton = [[MFFormButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormButton preferredHeight])];
         m_sizeButton.placeholder = NSLocalizedString(@"NewPost.Hint.Size", nil);
         [m_sizeButton addTarget:self action:@selector(size:) forControlEvents:UIControlEventTouchUpInside];
-        [m_sizeButton setTitle:@"Size 10" forState:UIControlStateNormal];
+        [m_sizeButton setTitle:nil forState:UIControlStateNormal];
         [m_form addSubview:m_sizeButton];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
@@ -109,7 +131,20 @@
 
 - (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller
 {
-    // TODO:
+    id selection = controller.selectedItem;
+    
+    if(selection) {
+        if([selection isKindOfClass:[MFType class]]) {
+            MFType *type = (MFType *)selection;
+            
+            [m_typeButton setTitle:type.name forState:UIControlStateNormal];
+        } else if([selection isKindOfClass:[MFSize class]]) {
+            MFSize *size = (MFSize *)selection;
+            
+            [m_sizeButton setTitle:size.name forState:UIControlStateNormal];
+        }
+    }
+    
     [m_controller invalidateNavigation];
 }
 

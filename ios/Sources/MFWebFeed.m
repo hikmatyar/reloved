@@ -202,50 +202,57 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 - (void)loadState
 {
-    MFDatabase *database = [MFDatabase sharedDatabase];
-    
-    [self beginEditing];
-    
-    m_feed = [database feedForIdentifier:m_identifier ttl:&m_ttl];
-    
-    if(!m_feed) {
-        m_feed = [[MFFeed alloc] init];
-        [database setFeed:m_feed forIdentifier:m_identifier ttl:&m_ttl];
+    if(m_identifier) {
+        MFDatabase *database = [MFDatabase sharedDatabase];
+        
+        [self beginEditing];
+        
+        m_feed = [database feedForIdentifier:m_identifier ttl:&m_ttl];
+        
+        if(!m_feed) {
+            m_feed = [[MFFeed alloc] init];
+            [database setFeed:m_feed forIdentifier:m_identifier ttl:&m_ttl];
+        }
+        
+        m_posts = [self fetchPosts];
+        
+        if(m_feed.offset > m_posts.count) {
+            MFError(@"Inconsistent internal db (%d > %d", m_feed.offset, m_posts.count);
+            m_feed = [[MFFeed alloc] initWithState:m_feed.state cursor:m_feed.cursor offset:m_posts.count];
+        }
+        
+        [self endEditing];
     }
-    
-    m_posts = [self fetchPosts];
-    
-    if(m_feed.offset > m_posts.count) {
-        MFError(@"Inconsistent internal db (%d > %d", m_feed.offset, m_posts.count);
-        m_feed = [[MFFeed alloc] initWithState:m_feed.state cursor:m_feed.cursor offset:m_posts.count];
-    }
-    
-    [self endEditing];
 }
 
 - (void)saveState
 {
-    MFDatabase *database = [MFDatabase sharedDatabase];
-    
-    [self beginEditing];
-    
-    [database setFeed:m_feed forIdentifier:m_identifier ttl:&m_ttl];
-    
-    [self endEditing];
+    if(m_identifier) {
+        MFDatabase *database = [MFDatabase sharedDatabase];
+        
+        [self beginEditing];
+        
+        [database setFeed:m_feed forIdentifier:m_identifier ttl:&m_ttl];
+        
+        [self endEditing];
+    }
 }
 
 - (BOOL)clearState
 {
-    MFDatabase *database = [MFDatabase sharedDatabase];
     BOOL changed = (m_posts.count > 0) ? YES : NO;
     
-    [self beginEditing];
-    
-    m_feed = [[MFFeed alloc] init];
-    [database setFeed:m_feed forIdentifier:m_identifier ttl:&m_ttl];
-    m_posts = [[NSMutableArray alloc] init];
-    
-    [self endEditing];
+    if(m_identifier) {
+        MFDatabase *database = [MFDatabase sharedDatabase];
+        
+        [self beginEditing];
+        
+        m_feed = [[MFFeed alloc] init];
+        [database setFeed:m_feed forIdentifier:m_identifier ttl:&m_ttl];
+        m_posts = [[NSMutableArray alloc] init];
+        
+        [self endEditing];
+    }
     
     return changed;
 }

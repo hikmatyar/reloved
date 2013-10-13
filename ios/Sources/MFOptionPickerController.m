@@ -189,6 +189,8 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
     }
 }
 
+@synthesize userInfo = m_userInfo;
+
 #pragma mark UISearchBarDelegate
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar

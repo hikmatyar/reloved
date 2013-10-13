@@ -15,6 +15,7 @@
     NSArray *m_sections;
     NSMutableIndexSet *m_selectedIndices;
     NSString *m_sectionHeaderTitle;
+    id m_userInfo;
 }
 
 @property (nonatomic, assign) BOOL allowsEmptySelection;
@@ -25,5 +26,6 @@
 @property (nonatomic, retain) NSSet *selectedItems;
 @property (nonatomic, retain) NSArray *items;
 @property (nonatomic, retain) NSString *sectionHeaderTitle;
+@property (nonatomic, retain) id userInfo;
 
 @end

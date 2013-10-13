@@ -6,6 +6,7 @@
 #import "MFSideMenuContainerViewController.h"
 #import "MFWebAuthorization.h"
 #import "MFWebController.h"
+#import "MFWebFeed.h"
 #import "MFWebService.h"
 #import "MFWebServiceAuthenticationChallenge.h"
 #import "UIColor+Additions.h"
@@ -79,6 +80,7 @@
     [m_window makeKeyAndVisible];
     
     [MFWebController preload];
+    [[MFWebFeed sharedFeed] loadForward];
     
     return YES;
 }
