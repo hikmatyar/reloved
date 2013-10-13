@@ -61,7 +61,7 @@
         
         m_priceOriginalTextField = [[MFFormTextField alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormTextField preferredHeight])];
         m_priceOriginalTextField.delegate = self;
-        m_priceOriginalTextField.returnKeyType = UIReturnKeyNext;
+        m_priceOriginalTextField.returnKeyType = UIReturnKeyDone;
         m_priceOriginalTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         m_priceOriginalTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         m_priceOriginalTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
@@ -113,7 +113,7 @@
     if(textField == m_priceTextField) {
         [m_priceOriginalTextField becomeFirstResponder];
     } else if(textField == m_priceOriginalTextField) {
-        [m_controller next:nil];
+        [m_priceOriginalTextField resignFirstResponder];
     }
     
     return NO;
@@ -127,6 +127,13 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [m_controller invalidateNavigation];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [m_controller invalidateNavigation];
+    
+    return YES;
 }
 
 @end
