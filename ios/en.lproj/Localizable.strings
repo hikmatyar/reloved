@@ -47,6 +47,7 @@
 
 /* New Post Controller */
 
+"NewPost.Action.Cancel" = "Cancel";
 "NewPost.Action.Condition" = "Condition";
 "NewPost.Action.Details" = "Brand";
 "NewPost.Action.Done" = "Done";
@@ -57,17 +58,35 @@
 "NewPost.Action.Replace" = "Replace";
 "NewPost.Action.SellersNote" = "Note";
 "NewPost.Action.TypeSizeFit" = "Size";
-"NewPost.Format.Photo.Long" = "";
-"NewPost.Format.Photo.Short" = "Photo #%d";
 "NewPost.Hint.Brand" = "Select Brand";
 "NewPost.Hint.Colors" = "Select Color(s)";
 "NewPost.Hint.Fit" = "e.g. 'True to size' or 'Buy 1 size smaller.'";
 "NewPost.Hint.GBP" = "£";
 "NewPost.Hint.Materials" = "e.g. Exterior is 100% cotton, lining is 91% cotton 9% silk";
-"NewPost.Hint.Photo.1" = "Front View";
-"NewPost.Hint.Photo.2" = "Back View";
-"NewPost.Hint.Photo.3" = "Close-Up";
-"NewPost.Hint.Photo.4" = "Side View ";
+"NewPost.Hint.Photo.1.Picker" = "Take Front View Picture";
+"NewPost.Hint.Photo.1.Large" = "Take Front View Picture";
+"NewPost.Hint.Photo.1.Small" = "Front View";
+"NewPost.Hint.Photo.2.Picker" = "Take Back View Picture";
+"NewPost.Hint.Photo.2.Large" = "Take Back View Picture";
+"NewPost.Hint.Photo.2.Small" = "Back View";
+"NewPost.Hint.Photo.3.Picker" = "Take Close-Up Picture";
+"NewPost.Hint.Photo.3.Large" = "Take Close-Up Picture";
+"NewPost.Hint.Photo.3.Small" = "Close-Up";
+"NewPost.Hint.Photo.4.Picker" = "Take Side View Picture";
+"NewPost.Hint.Photo.4.Large" = "Take Side View Picture";
+"NewPost.Hint.Photo.4.Small" = "Side View";
+"NewPost.Hint.Photo.5.Picker" = "Take Picture";
+"NewPost.Hint.Photo.5.Large" = "Take Picture";
+"NewPost.Hint.Photo.5.Small" = "Additional View";
+"NewPost.Hint.Photo.6.Picker" = "Take Picture";
+"NewPost.Hint.Photo.6.Large" = "Take Picture";
+"NewPost.Hint.Photo.6.Small" = "Additional View";
+"NewPost.Hint.Photo.7.Picker" = "Take Picture";
+"NewPost.Hint.Photo.7.Large" = "Take Picture";
+"NewPost.Hint.Photo.7.Small" = "Additional View";
+"NewPost.Hint.Photo.8.Picker" = "Take Picture";
+"NewPost.Hint.Photo.8.Large" = "Take Picture";
+"NewPost.Hint.Photo.8.Small" = "Additional View";
 "NewPost.Hint.PriceNew" = "";
 "NewPost.Hint.PriceOriginal" = "";
 "NewPost.Hint.Price" = "We ask for this so as to illustrate savings (vs. buying new) to potential buyers";

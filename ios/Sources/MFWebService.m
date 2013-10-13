@@ -14,6 +14,7 @@
 
 #if DEBUG
 #define SERVICE_URL @"http://127.0.0.1:3000/"
+//#define SERVICE_URL @"http://api.relovedapp.co.uk"
 #else
 #define SERVICE_URL @"http://api.relovedapp.co.uk"
 #endif

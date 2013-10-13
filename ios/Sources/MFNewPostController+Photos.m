@@ -8,10 +8,12 @@
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
-#define THUMBNAIL_COUNT 4
+#define THUMBNAIL_MIN 4
+#define THUMBNAIL_COUNT 8
 #define THUMBNAIL_PADDING 10.0F
+#define THUMBNAIL_TOP 16.0F
 
-@interface MFNewPostController_Photos : MFNewPostPageView <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MFNewPostController_Photos : MFNewPostPageView <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     @private
     NSMutableDictionary *m_imagePaths;
@@ -26,7 +28,7 @@
 @property (nonatomic, assign, readonly) NSInteger selectedImageIndex;
 
 @end
-//320x380
+
 @implementation MFNewPostController_Photos
 
 @dynamic selectedImageIndex;
@@ -58,16 +60,28 @@
         if(m_cameraOverlayView) {
             switch(self.selectedImageIndex) {
                 case 0:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.1", nil);
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.1.Picker", nil);
                     break;
                 case 1:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.2", nil);
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.2.Picker", nil);
                     break;
                 case 2:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.3", nil);
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.3.Picker", nil);
                     break;
                 case 3:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.4", nil);
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.4.Picker", nil);
+                    break;
+                case 4:
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.5.Picker", nil);
+                    break;
+                case 5:
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.6.Picker", nil);
+                    break;
+                case 6:
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.7.Picker", nil);
+                    break;
+                case 7:
+                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.8.Picker", nil);
                     break;
                 default:
                     m_cameraOverlayView.text = @"";
@@ -81,6 +95,32 @@
     }
     
     [m_controller.navigationController presentViewController:controller animated:(sender) ? YES : NO completion:NULL];
+}
+
+- (IBAction)editImage:(UIView *)sender
+{
+    while(sender && ![sender isKindOfClass:[MFNewPostPhotoView class]]) {
+        sender = sender.superview;
+    }
+    
+    if(sender) {
+        NSInteger selectedImageIndex = [m_thumbnailViews indexOfObject:sender];
+        
+        if(selectedImageIndex != NSNotFound) {
+            NSNumber *key = [NSNumber numberWithInteger:selectedImageIndex];
+            
+            if([m_imagePaths objectForKey:key]) {
+                UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                   delegate:self
+                                                          cancelButtonTitle:NSLocalizedString(@"NewPost.Action.Cancel" , nil)
+                                                     destructiveButtonTitle:NSLocalizedString(@"NewPost.Action.Remove" , nil)
+                                                          otherButtonTitles:NSLocalizedString(@"NewPost.Action.Replace" , nil), nil];
+                
+                sheet.tag = selectedImageIndex;
+                [sheet showInView:m_controller.view];
+            }
+        }
+    }
 }
 
 - (IBAction)selectThumbnail:(UIView *)sender
@@ -110,27 +150,6 @@
     }
 }
 
-- (IBAction)removeImage:(id)sender
-{
-    NSInteger selectedImageIndex = self.selectedImageIndex;
-    NSNumber *key = [NSNumber numberWithInteger:selectedImageIndex];
-    NSString *value;
-    
-    if((value = [m_imagePaths objectForKey:key]) != nil) {
-        [[NSFileManager defaultManager] removeItemAtPath:value error:NULL];
-        [m_imagePaths removeObjectForKey:key];
-    }
-    
-    ((MFNewPostPhotoView *)[m_thumbnailViews objectAtIndex:selectedImageIndex]).image = nil;
-    m_imageView.image = nil;
-}
-
-- (IBAction)replaceImage:(id)sender
-{
-    m_cameraOverlayView = nil;
-    [self selectImage:nil];
-}
-
 #pragma mark MFNewPostPageView
 
 - (id)initWithFrame:(CGRect)frame controller:(MFNewPostController *)controller
@@ -138,8 +157,9 @@
     self = [super initWithFrame:frame controller:controller];
     
     if(self) {
-        const CGFloat thumbnailSize = roundf((frame.size.width - THUMBNAIL_PADDING) / THUMBNAIL_COUNT) - THUMBNAIL_PADDING;
-        CGRect thumbnailRect = CGRectMake(THUMBNAIL_PADDING, frame.size.height - thumbnailSize, thumbnailSize, thumbnailSize);
+        const CGFloat thumbnailSize = roundf((frame.size.width - THUMBNAIL_PADDING) / THUMBNAIL_MIN) - THUMBNAIL_PADDING;
+        CGRect thumbnailRect = CGRectMake(THUMBNAIL_PADDING, THUMBNAIL_TOP, thumbnailSize, thumbnailSize);
+        UIScrollView *thumbnailScollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0F, frame.size.height - thumbnailSize - THUMBNAIL_TOP, frame.size.width, thumbnailSize + THUMBNAIL_TOP)];
         
         m_controller = controller;
         m_thumbnailViews = [[NSMutableArray alloc] init];
@@ -160,10 +180,17 @@
             thumbnailView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
             thumbnailView.imageIndex = i;
             thumbnailView.selected = (i == 0) ? YES : NO;
+            [thumbnailView.editButton addTarget:self action:@selector(editImage:) forControlEvents:UIControlEventTouchUpInside];
             [thumbnailView addTarget:self action:@selector(selectThumbnail:) forControlEvents:UIControlEventTouchUpInside];
             [m_thumbnailViews addObject:thumbnailView];
-            [self addSubview:thumbnailView];
+            [thumbnailScollView addSubview:thumbnailView];
         }
+        
+        thumbnailScollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        thumbnailScollView.showsVerticalScrollIndicator = NO;
+        thumbnailScollView.directionalLockEnabled = YES;
+        thumbnailScollView.contentSize = CGSizeMake(thumbnailRect.origin.x, thumbnailRect.origin.y + thumbnailRect.size.height);
+        [self addSubview:thumbnailScollView];
     }
     
     return self;
@@ -172,7 +199,7 @@
 - (BOOL)canContinue
 {
     if(!m_canContinue) {
-        m_canContinue = YES;//(m_imagePaths.count == THUMBNAIL_COUNT) ? YES : NO;
+        m_canContinue = YES;//(m_imagePaths.count >= THUMBNAIL_MIN) ? YES : NO;
     }
     
     return m_canContinue;
@@ -196,6 +223,29 @@
     }
     
     m_controller.post.imagePaths = imagePaths;
+}
+
+#pragma mark UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)sheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(sheet.cancelButtonIndex != buttonIndex) {
+        NSInteger selectedImageIndex = sheet.tag;
+        NSNumber *key = [NSNumber numberWithInteger:selectedImageIndex];
+        NSString *value = [m_imagePaths objectForKey:key];
+        
+        if(value) {
+            if(sheet.destructiveButtonIndex == buttonIndex) {
+                [[NSFileManager defaultManager] removeItemAtPath:value error:NULL];
+                [m_imagePaths removeObjectForKey:key];
+                ((MFNewPostPhotoView *)[m_thumbnailViews objectAtIndex:selectedImageIndex]).image = nil;
+                m_imageView.image = nil;
+            } else {
+                m_cameraOverlayView = nil;
+                [self selectImage:nil];
+            }
+        }
+    }
 }
 
 #pragma mark UIImagePickerControllerDelegate

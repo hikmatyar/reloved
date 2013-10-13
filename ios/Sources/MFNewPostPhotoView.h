@@ -6,6 +6,7 @@
 {
     @private
     NSInteger m_imageIndex;
+    UIButton *m_editButton;
     UIButton *m_placeholder;
     UIButton *m_button;
     UIImageView *m_imageView;
@@ -15,6 +16,7 @@
 
 - (id)initWithFrame:(CGRect)frame thumbnail:(BOOL)thumbnail;
 
+@property (nonatomic, retain, readonly) UIButton *editButton;
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, assign) NSInteger imageIndex;
 @property (nonatomic, assign, readonly, getter = isThumbnail) BOOL thumbnail;

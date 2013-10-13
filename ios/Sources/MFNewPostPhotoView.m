@@ -16,16 +16,16 @@
         m_selected = NO;
         m_thumbnail = thumbnail;
         
-        self.clipsToBounds = YES;
         self.backgroundColor = [UIColor themeButtonBackgroundColor];
-        self.layer.borderColor = [UIColor themeButtonBorderColor].CGColor;
-        self.layer.borderWidth = 1.0F;
         
         m_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
         m_imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        m_imageView.layer.borderColor = [UIColor themeButtonBorderColor].CGColor;
+        m_imageView.layer.borderWidth = 1.0F;
         [self addSubview:m_imageView];
         
         m_placeholder = [[MFImageButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height - ((m_thumbnail) ? 0.0F : 60.0F))];
+        m_placeholder.clipsToBounds = YES;
         m_placeholder.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         m_placeholder.titleLabel.font = [UIFont themeFontOfSize:(m_thumbnail) ? 9.0F : 15.0F];
         ((MFImageButton *)m_placeholder).textTopPadding = 3.0F;
@@ -36,6 +36,15 @@
         m_button = [[UIButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
         m_button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:m_button];
+        
+        if(thumbnail) {
+            m_editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            m_editButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+            m_editButton.hidden = YES;
+            m_editButton.frame = CGRectMake(frame.size.width - 16.0F, -16.0F, 32.0F, 32.0F);
+            [m_editButton setImage:[UIImage imageNamed:@"NewPost-Photos-X.png"] forState:UIControlStateNormal];
+            [self addSubview:m_editButton];
+        }
     }
     
     return self;
@@ -52,6 +61,7 @@
 {
     m_imageView.image = image;
     m_placeholder.hidden = (image) ? YES : NO;
+    m_editButton.hidden = (image) ? NO : YES;
 }
 
 @dynamic imageIndex;
@@ -64,12 +74,14 @@
 - (void)setImageIndex:(NSInteger)imageIndex
 {
     if(m_imageIndex != imageIndex) {
+        NSString *format = [NSString stringWithFormat:((m_thumbnail) ? @"NewPost.Hint.Photo.%d.Small" : @"NewPost.Hint.Photo.%d.Large"), (imageIndex + 1)];
+        
         m_imageIndex = imageIndex;
-        [m_placeholder setTitle:(m_imageIndex != NSNotFound) ?
-            [NSString stringWithFormat:NSLocalizedString((m_thumbnail) ? @"NewPost.Format.Photo.Short" : @"NewPost.Format.Photo.Long", nil), (m_imageIndex + 1)] : @"" forState:UIControlStateNormal];
+        [m_placeholder setTitle:(m_imageIndex != NSNotFound) ? NSLocalizedString(format, nil) : @"" forState:UIControlStateNormal];
     }
 }
 
+@synthesize editButton = m_editButton;
 @synthesize thumbnail = m_thumbnail;
 
 @dynamic selected;
@@ -83,7 +95,7 @@
 {
     if(m_selected != selected) {
         m_selected = selected;
-        self.layer.borderColor = (m_selected) ? [UIColor themeButtonBorderSelectedColor].CGColor : [UIColor themeButtonBorderColor].CGColor;
+        m_imageView.layer.borderColor = (m_selected) ? [UIColor themeButtonBorderSelectedColor].CGColor : [UIColor themeButtonBorderColor].CGColor;
     }
 }
 
