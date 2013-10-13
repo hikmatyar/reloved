@@ -144,7 +144,7 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 					"date": "2013-12-30T12:00:00.000Z",
 					"mod": "2013-12-30T12:00:00.000Z",
 					"brand": 1,
-					"color": 1,
+					"colors": [ 1 ],
 					"condition": 1,
 					"type": 1,
 					"size": 1,
@@ -155,12 +155,13 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 					"title": "...",
 					"fit": "...",
 					"notes": "...",
+					"media": [ 1 ],
 					// Optional
 					"editorial": "..."
 				}
 			],
 			"events": [
-				{ "id": 1, "type": 1, "date": "2013-12-30T12:00:00.000Z", "link": "reloved:post/100/comment/10", "meta": [ "Someone" ] }
+				{ "id": 1, "type": 1, "date": "2013-12-30T12:00:00.000Z", "link": "post/123#10", "meta": [ "Someone" ] }
 			],
 			"users": [
 				{ "id": 10, "name": "Abc", "media": 123 }
