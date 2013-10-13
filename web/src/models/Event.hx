@@ -46,7 +46,7 @@ class Event {
     
     public static function findAll(user_id : DataIdentifier, timestamp : Int, fn : DataError -> Array<Event> -> Void) : Void {
     	if(timestamp != null) {
-            Data.query('SELECT * FROM events WHERE user_id = ? AND created > ? ORDER BY created ASC LIMIT ?', [ user_id, timestamp ], function(err, result : Array<Event>) {
+            Data.query('SELECT * FROM events WHERE user_id = ? AND created > ? ORDER BY created ASC', [ user_id, timestamp ], function(err, result : Array<Event>) {
                 fn(err, result);
             });
         } else {
