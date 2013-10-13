@@ -9,5 +9,6 @@ extern NSString *MFDatabaseDidChangeBrandsNotification;
 @interface MFDatabase(Brand)
 
 @property (nonatomic, copy) NSArray *brands;
+- (MFBrand *)brandForIdentifier:(NSString *)identifier;
 
 @end

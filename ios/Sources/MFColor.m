@@ -46,4 +46,9 @@
     return ([m_identifier isEqualToString:color.identifier] && [m_name isEqualToString:color.name]) ? YES : NO;
 }
 
+- (NSString *)description
+{
+    return (m_name) ? m_name : [NSString stringWithFormat:@"<color:%@>", m_identifier];
+}
+
 @end

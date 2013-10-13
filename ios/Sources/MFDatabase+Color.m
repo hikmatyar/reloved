@@ -47,4 +47,32 @@ NSString *MFDatabaseDidChangeColorsNotification = @"MFDatabaseDidChangeColors";
     }
 }
 
+- (MFColor *)colorForIdentifier:(NSString *)identifier
+{
+    for(MFColor *color in self.colors) {
+        if([identifier isEqualToString:color.identifier]) {
+            return color;
+        }
+    }
+    
+    return nil;
+}
+
+- (NSArray *)colorsForIdentifiers:(NSArray *)identifiers
+{
+    NSMutableArray *colors = nil;
+    
+    for(MFColor *color in self.colors) {
+        if([identifiers containsObject:color.identifier]) {
+            if(!colors) {
+                colors = [NSMutableArray array];
+            }
+            
+            [colors addObject:color];
+        }
+    }
+    
+    return colors;
+}
+
 @end

@@ -47,4 +47,15 @@ NSString *MFDatabaseDidChangeBrandsNotification = @"MFDatabaseDidChangeBrands";
     }
 }
 
+- (MFBrand *)brandForIdentifier:(NSString *)identifier
+{
+    for(MFBrand *brand in self.brands) {
+        if([identifier isEqualToString:brand.identifier]) {
+            return brand;
+        }
+    }
+    
+    return nil;
+}
+
 @end

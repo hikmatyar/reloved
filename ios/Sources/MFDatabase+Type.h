@@ -9,5 +9,6 @@ extern NSString *MFDatabaseDidChangeTypesNotification;
 @interface MFDatabase(Type)
 
 @property (nonatomic, copy) NSArray *types;
+- (MFType *)typeForIdentifier:(NSString *)identifier;
 
 @end

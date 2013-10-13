@@ -47,4 +47,15 @@ NSString *MFDatabaseDidChangeTypesNotification = @"MFDatabaseDidChangeTypes";
     }
 }
 
+- (MFType *)typeForIdentifier:(NSString *)identifier
+{
+    for(MFType *type in self.types) {
+        if([identifier isEqualToString:type.identifier]) {
+            return type;
+        }
+    }
+    
+    return nil;
+}
+
 @end

@@ -47,4 +47,15 @@ NSString *MFDatabaseDidChangeSizesNotification = @"MFDatabaseDidChangeSizes";
     }
 }
 
+- (MFSize *)sizeForIdentifier:(NSString *)identifier
+{
+    for(MFSize *size in self.sizes) {
+        if([identifier isEqualToString:size.identifier]) {
+            return size;
+        }
+    }
+    
+    return nil;
+}
+
 @end
