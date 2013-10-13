@@ -92,7 +92,7 @@
 "NewPost.Hint.Price" = "We ask for this so as to illustrate savings (vs. buying new) to potential buyers";
 "NewPost.Hint.SellersNote" = "e.g. a chique and wearable daytime option. Constructed from pure silk, it has sultry spagetti strps, cross back detail and a relaxed silhoutte.";
 "NewPost.Hint.Size" = "Select UK size/equivalent";
-"NewPost.Hint.Subject" = "(TDB)";
+"NewPost.Hint.Subject" = "Post Subject";
 "NewPost.Hint.Type" = "Select dress type";
 "NewPost.Label.Brand" = "Brand";
 "NewPost.Label.Colors" = "Color(s)";
@@ -108,7 +108,6 @@
 "NewPost.Title.Colors" = "Select Colors";
 "NewPost.Title.Condition" = "Condition";
 "NewPost.Title.Details" = "Dress Details";
-"NewPost.Title.Done" = "Preview";
 "NewPost.Title.Photos" = "Add Photos";
 "NewPost.Title.Price" = "Set Price";
 "NewPost.Title.SellersNote" = "Seller's Note";

@@ -186,9 +186,8 @@ NSString *MFWebServiceErrorDomain = @"MFWebServiceErrorDomain";
 
 - (void)login
 {
-    MFDebug(@"login");
-    
     if(!m_challenge) {
+        MFDebug(@"login");
         m_challenge = [[MFWebService_AuthenticationChallenge alloc] initWithService:self];
         
         dispatch_async(dispatch_get_main_queue(), ^{

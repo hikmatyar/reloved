@@ -118,7 +118,7 @@
 {
     NSInteger index = self.progressView.selectedIndex;
     
-    if(index != NSNotFound) {
+    if(index != NSNotFound && index < m_steps.count) {
         UIBarButtonItem *item = (UIBarButtonItem *)self.navigationItem.rightBarButtonItem;
         
         self.navigationItem.title = ((MFNewPostController_Step *)[m_steps objectAtIndex:index]).title;
@@ -156,11 +156,13 @@
 
 - (void)progressView:(MFNewPostProgressView *)progressView didSelectItemAtIndex:(NSInteger)index
 {
-    MFPageScrollView *contentView = self.contentView;
-    MFNewPostController_Step *step = [m_steps objectAtIndex:index];
-    
-    [contentView setSelectedPage:step.page animated:YES];
-    [self invalidateNavigation];
+    if(index >= 0 && index < m_steps.count) {
+        MFPageScrollView *contentView = self.contentView;
+        MFNewPostController_Step *step = [m_steps objectAtIndex:index];
+        
+        [contentView setSelectedPage:step.page animated:YES];
+        [self invalidateNavigation];
+    }
 }
 
 #pragma mark UIView
@@ -177,6 +179,8 @@
         [items addObject:step.label];
         [pages addObject:step.page];
     }
+    
+    [items addObject:NSLocalizedString(@"NewPost.Action.Done", nil)];
     
     progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     progressView.delegate = self;
@@ -217,8 +221,7 @@
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Condition", nil), NSLocalizedString(@"NewPost.Title.Condition", nil), [self createConditionPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Details", nil), NSLocalizedString(@"NewPost.Title.Details", nil), [self createDetailsPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Price", nil), NSLocalizedString(@"NewPost.Title.Price", nil), [self createPricePageView]),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.SellersNote", nil), NSLocalizedString(@"NewPost.Title.SellersNote", nil), [self createNotesPageView]),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Done", nil), NSLocalizedString(@"NewPost.Title.Done", nil), nil), nil];
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.SellersNote", nil), NSLocalizedString(@"NewPost.Title.SellersNote", nil), [self createNotesPageView]), nil];
         m_post = [[MFMutablePost alloc] init];
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
