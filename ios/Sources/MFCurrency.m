@@ -9,6 +9,18 @@
 
 @implementation MFCurrency
 
++ (MFCurrency *)gbp
+{
+    __strong static MFCurrency *sharedGBP = nil;
+    static dispatch_once_t loaded = 0;
+    
+    dispatch_once(&loaded, ^{
+        sharedGBP = [[self alloc] initWithIdentifier:@"1" code:@"GBP" country:@"*" fallback:true];
+    });
+    
+    return sharedGBP;
+}
+
 - (id)initWithAttributes:(NSDictionary *)attributes
 {
     self = [super init];
@@ -17,7 +29,7 @@
         m_identifier = [attributes identifierForKey:KEY_IDENTIFIER];
         m_code = [attributes stringForKey:KEY_CODE];
         m_country = [attributes stringForKey:KEY_COUNTRY];
-        m_fallback = [m_identifier isEqualToString:@"*"];
+        m_fallback = [m_country isEqualToString:@"*"];
         
         if(!m_identifier || !m_country) {
             return nil;

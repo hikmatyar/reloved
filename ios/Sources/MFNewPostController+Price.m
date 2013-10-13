@@ -1,10 +1,13 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFCurrency.h"
+#import "MFDatabase+Currency.h"
 #import "MFForm.h"
 #import "MFFormAccessory.h"
 #import "MFFormFooter.h"
 #import "MFFormLabel.h"
 #import "MFFormTextField.h"
+#import "MFMoney.h"
 #import "MFNewPostController+Price.h"
 #import "MFNewPostPageView.h"
 #import "UIColor+Additions.h"

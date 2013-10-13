@@ -11,6 +11,8 @@
     BOOL m_fallback;
 }
 
++ (MFCurrency *)gbp;
+
 - (id)initWithAttributes:(NSDictionary *)attributes;
 - (id)initWithIdentifier:(NSString *)identifier code:(NSString *)code country:(NSString *)country fallback:(BOOL)fallback;
 
