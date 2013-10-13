@@ -1,5 +1,9 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFBrand.h"
+#import "MFColor.h"
+#import "MFDatabase+Brand.h"
+#import "MFDatabase+Color.h"
 #import "MFForm.h"
 #import "MFFormAccessory.h"
 #import "MFFormButton.h"
@@ -9,6 +13,8 @@
 #import "MFNewPostPageView.h"
 #import "MFOptionPickerController.h"
 #import "MFOptionPickerControllerDelegate.h"
+#import "MFPost.h"
+#import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UIViewController+Additions.h"
@@ -30,19 +36,35 @@
 
 - (IBAction)brand:(id)sender
 {
-    MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+    NSArray *brands = [MFDatabase sharedDatabase].brands;
     
-    controller.delegate = self;
-    [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
+    if(brands.count > 0) {
+        MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+        
+        controller.items = [brands sortedArrayUsingSelector:@selector(compare:)];
+        controller.delegate = self;
+        controller.title = NSLocalizedString(@"NewPost.Title.Brand", nil);
+        [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
+    } else {
+        [[MFWebFeed sharedFeed] loadForward];
+    }
 }
 
 - (IBAction)colors:(id)sender
 {
-    MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+    NSArray *colors = [MFDatabase sharedDatabase].colors;
     
-    controller.delegate = self;
-    controller.allowsMultipleSelection = YES;
-    [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
+    if(colors.count > 0) {
+        MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+        
+        controller.allowsMultipleSelection = YES;
+        controller.items = [colors sortedArrayUsingSelector:@selector(compare:)];
+        controller.delegate = self;
+        controller.title = NSLocalizedString(@"NewPost.Title.Colors", nil);
+        [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
+    } else {
+        [[MFWebFeed sharedFeed] loadForward];
+    }
 }
 
 #pragma mark MFNewPostPageView
@@ -75,7 +97,7 @@
         m_colorsButton = [[MFFormButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormButton preferredHeight])];
         m_colorsButton.placeholder = NSLocalizedString(@"NewPost.Hint.Colors", nil);
         [m_colorsButton addTarget:self action:@selector(colors:) forControlEvents:UIControlEventTouchUpInside];
-        [m_colorsButton setTitle:@"Black, Purple" forState:UIControlStateNormal];
+        [m_colorsButton setTitle:nil forState:UIControlStateNormal];
         [m_form addSubview:m_colorsButton];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
@@ -85,7 +107,7 @@
         m_brandButton = [[MFFormButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormButton preferredHeight])];
         m_brandButton.placeholder = NSLocalizedString(@"NewPost.Hint.Brand", nil);
         [m_brandButton addTarget:self action:@selector(brand:) forControlEvents:UIControlEventTouchUpInside];
-        [m_brandButton setTitle:@"Gucci" forState:UIControlStateNormal];
+        [m_brandButton setTitle:nil forState:UIControlStateNormal];
         [m_form addSubview:m_brandButton];
         
         m_accessory = [[MFFormAccessory alloc] initWithContext:m_form];
@@ -107,7 +129,18 @@
 
 - (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller
 {
-    // TODO:
+    for(id selection in controller.selectedItems) {
+        if([selection isKindOfClass:[MFBrand class]]) {
+            MFBrand *brand = (MFBrand *)selection;
+            
+            [m_brandButton setTitle:brand.name forState:UIControlStateNormal];
+        } else if([selection isKindOfClass:[MFColor class]]) {
+            MFColor *color = (MFColor *)selection;
+            
+            [m_colorsButton setTitle:color.name forState:UIControlStateNormal];
+        }
+    }
+    
     [m_controller invalidateNavigation];
 }
 
