@@ -148,7 +148,7 @@ CREATE TABLE `posts` (
   `type_id` int(11) NOT NULL,
   `size_id` int(11) NOT NULL,
   `condition` tinyint(4) NOT NULL,
-  `materials` varchar(128) NOT NULL,
+  `materials` varchar(200) NOT NULL,
   `price` int(11) NOT NULL,
   `price_original` int(11) NOT NULL,
   `currency` varchar(3) NOT NULL,
