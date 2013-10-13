@@ -11,6 +11,26 @@
     return ([obj isKindOfClass:[NSArray class]]) ? (NSArray *)obj : nil;
 }
 
+- (NSArray *)arrayOfIdentifiersForKey:(id)key
+{
+    NSMutableArray *identifiers = nil;
+    id obj = [self objectForKey:key];
+    
+    if([obj isKindOfClass:[NSArray class]]) {
+        identifiers = [NSMutableArray array];
+        
+        for(id obj_ in (NSArray *)obj) {
+            NSString *obj__ = ([obj_ isKindOfClass:[NSNumber class]]) ? ((NSNumber *)obj_).stringValue : (([obj_ isKindOfClass:[NSString class]]) ? obj_ : nil);
+            
+            if(obj__) {
+                [identifiers addObject:obj__];
+            }
+        }
+    }
+    
+    return identifiers;
+}
+
 - (NSDictionary *)dictionaryForKey:(id)key
 {
     id obj = [self objectForKey:key];

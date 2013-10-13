@@ -5,6 +5,7 @@
 @interface NSDictionary(Additions)
 
 - (NSArray *)arrayForKey:(id)key;
+- (NSArray *)arrayOfIdentifiersForKey:(id)key;
 - (NSDictionary *)dictionaryForKey:(id)key;
 - (NSString *)identifierForKey:(id)key;
 - (NSInteger)integerForKey:(id)key;

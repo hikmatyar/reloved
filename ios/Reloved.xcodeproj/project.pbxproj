@@ -1064,6 +1064,8 @@
 			children = (
 				811082A517F8B299005CC8ED /* NSArray+Additions.h */,
 				811082A617F8B299005CC8ED /* NSArray+Additions.m */,
+				819E12B618058340008D2D36 /* NSDate+Additions.h */,
+				819E12B718058340008D2D36 /* NSDate+Additions.m */,
 				8120C16C17DFBF1200A1C3A9 /* NSDictionary+Additions.h */,
 				8120C16D17DFBF1200A1C3A9 /* NSDictionary+Additions.m */,
 				8141AB3F18047B650087B740 /* NSFileManager+Additions.h */,
@@ -1074,8 +1076,6 @@
 				8120C1BC17E053A100A1C3A9 /* UIButton+Additions.m */,
 				8120C13C17DFA8F400A1C3A9 /* UIColor+Additions.h */,
 				8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */,
-				819E12B618058340008D2D36 /* NSDate+Additions.h */,
-				819E12B718058340008D2D36 /* NSDate+Additions.m */,
 				8120C13F17DFA90300A1C3A9 /* UIFont+Additions.h */,
 				8120C14017DFA90300A1C3A9 /* UIFont+Additions.m */,
 				8141AB3C180474070087B740 /* UIViewController+Additions.h */,

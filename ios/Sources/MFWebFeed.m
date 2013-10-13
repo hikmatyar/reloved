@@ -178,9 +178,9 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         }
     } else {
         [posts sortUsingComparator:^NSComparisonResult (MFPost *post1, MFPost *post2) {
-            NSDate *created1 = post1.created;
-            NSDate *created2 = post2.created;
-            NSComparisonResult r = (created1 && created2) ? [created2 compare:created1] : NSOrderedSame;
+            NSDate *date1 = post1.date;
+            NSDate *date2 = post2.date;
+            NSComparisonResult r = (date1 && date2) ? [date2 compare:date1] : NSOrderedSame;
             
             if(r == NSOrderedSame) {
                 long long id1 = post1.identifier.longLongValue;
