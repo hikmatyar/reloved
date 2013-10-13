@@ -36,6 +36,20 @@
 
 #pragma mark NSObject
 
+- (NSComparisonResult)compare:(MFSize *)size
+{
+    NSInteger l1 = m_name.length;
+    NSInteger l2 = size.name.length;
+    
+    if(l1 < l2) {
+        return NSOrderedAscending;
+    } else if(l1 > l2) {
+        return NSOrderedDescending;
+    }
+    
+    return [m_name compare:size.name];
+}
+
 - (BOOL)isEqual:(MFSize *)size
 {
     return ([m_identifier isEqualToString:size.identifier] && [m_name isEqualToString:size.name]) ? YES : NO;

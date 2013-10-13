@@ -36,6 +36,11 @@
 
 #pragma mark NSObject
 
+- (NSComparisonResult)compare:(MFType *)type
+{
+    return [m_name compare:type.name];
+}
+
 - (BOOL)isEqual:(MFType *)type
 {
     return ([m_identifier isEqualToString:type.identifier] && [m_name isEqualToString:type.name]) ? YES : NO;

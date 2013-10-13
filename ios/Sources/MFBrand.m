@@ -36,6 +36,11 @@
 
 #pragma mark NSObject
 
+- (NSComparisonResult)compare:(MFBrand *)brand
+{
+    return [m_name compare:brand.name];
+}
+
 - (BOOL)isEqual:(MFBrand *)brand
 {
     return ([m_identifier isEqualToString:brand.identifier] && [m_name isEqualToString:brand.name]) ? YES : NO;

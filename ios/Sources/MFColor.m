@@ -36,6 +36,11 @@
 
 #pragma mark NSObject
 
+- (NSComparisonResult)compare:(MFColor *)color
+{
+    return [m_name compare:color.name];
+}
+
 - (BOOL)isEqual:(MFColor *)color
 {
     return ([m_identifier isEqualToString:color.identifier] && [m_name isEqualToString:color.name]) ? YES : NO;

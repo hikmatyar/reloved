@@ -39,6 +39,11 @@
 
 #pragma mark NSObject
 
+- (NSComparisonResult)compare:(MFCountry *)country
+{
+    return [m_name compare:country.name];
+}
+
 - (BOOL)isEqual:(MFCountry *)country
 {
     return ([m_identifier isEqualToString:country.identifier] && [m_name isEqualToString:country.name] && [m_code isEqualToString:country.code]) ? YES : NO;
