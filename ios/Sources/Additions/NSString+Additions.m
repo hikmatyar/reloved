@@ -62,4 +62,31 @@
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
+@dynamic allTags;
+
+- (NSArray *)allTags
+{
+    NSCharacterSet *chars = [NSCharacterSet alphanumericCharacterSet];
+    NSScanner *scanner = [[NSScanner alloc] initWithString:self];
+    NSMutableSet *tags = nil;
+    
+    while(!scanner.isAtEnd) {
+        if([scanner scanUpToString:@"#" intoString:nil] && [scanner scanString:@"#" intoString:nil]) {
+            NSString *tag = nil;
+            
+            if([scanner scanCharactersFromSet:chars intoString:&tag] && tag.length > 2) {
+                if(!tags) {
+                    tags = [NSMutableSet set];
+                }
+                
+                [tags addObject:tag.lowercaseString];
+            }
+        } else {
+            break;
+        }
+    }
+    
+    return tags.allObjects;
+}
+
 @end
