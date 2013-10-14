@@ -35,6 +35,8 @@
 		81136ABC180B563D009142AE /* NSData+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136ABB180B563D009142AE /* NSData+Additions.m */; };
 		81136AC0180B5703009142AE /* MFWebService+Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136ABF180B5703009142AE /* MFWebService+Media.m */; };
 		81136AC3180B5A8E009142AE /* MFMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136AC2180B5A8E009142AE /* MFMedia.m */; };
+		81136AC6180C51E6009142AE /* MFWebService+Checkout.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136AC5180C51E6009142AE /* MFWebService+Checkout.m */; };
+		81136AC9180C527F009142AE /* MFComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136AC8180C527F009142AE /* MFComment.m */; };
 		8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFC917E06BCC007AEDC2 /* MFImageView.m */; };
 		8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCC17E06BDB007AEDC2 /* MFTableView.m */; };
 		8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCF17E06BE8007AEDC2 /* MFTableViewCell.m */; };
@@ -304,6 +306,10 @@
 		81136ABF180B5703009142AE /* MFWebService+Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFWebService+Media.m"; path = "Sources/MFWebService+Media.m"; sourceTree = SOURCE_ROOT; };
 		81136AC1180B5A8E009142AE /* MFMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFMedia.h; path = Sources/MFMedia.h; sourceTree = SOURCE_ROOT; };
 		81136AC2180B5A8E009142AE /* MFMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMedia.m; path = Sources/MFMedia.m; sourceTree = SOURCE_ROOT; };
+		81136AC4180C51E6009142AE /* MFWebService+Checkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFWebService+Checkout.h"; path = "Sources/MFWebService+Checkout.h"; sourceTree = SOURCE_ROOT; };
+		81136AC5180C51E6009142AE /* MFWebService+Checkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFWebService+Checkout.m"; path = "Sources/MFWebService+Checkout.m"; sourceTree = SOURCE_ROOT; };
+		81136AC7180C527F009142AE /* MFComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFComment.h; path = Sources/MFComment.h; sourceTree = SOURCE_ROOT; };
+		81136AC8180C527F009142AE /* MFComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFComment.m; path = Sources/MFComment.m; sourceTree = SOURCE_ROOT; };
 		8119DFC817E06BCC007AEDC2 /* MFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageView.h; path = Sources/MFImageView.h; sourceTree = SOURCE_ROOT; };
 		8119DFC917E06BCC007AEDC2 /* MFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageView.m; path = Sources/MFImageView.m; sourceTree = SOURCE_ROOT; };
 		8119DFCB17E06BDB007AEDC2 /* MFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFTableView.h; path = Sources/MFTableView.h; sourceTree = SOURCE_ROOT; };
@@ -846,6 +852,8 @@
 				81233D6C17F8F17E00C27805 /* MFBrand.m */,
 				81233D5617F8DDEA00C27805 /* MFColor.h */,
 				81233D5717F8DDEA00C27805 /* MFColor.m */,
+				81136AC7180C527F009142AE /* MFComment.h */,
+				81136AC8180C527F009142AE /* MFComment.m */,
 				81D0966B17FCCFD00044BD06 /* MFCondition.h */,
 				81D0966C17FCCFD00044BD06 /* MFCondition.m */,
 				81233D7117F8F1A100C27805 /* MFCountry.h */,
@@ -972,6 +980,8 @@
 				8119DFDB17E06DAA007AEDC2 /* MFWebSession.m */,
 				8119DFDD17E06DB6007AEDC2 /* MFWebService.h */,
 				8119DFDE17E06DB6007AEDC2 /* MFWebService.m */,
+				81136AC4180C51E6009142AE /* MFWebService+Checkout.h */,
+				81136AC5180C51E6009142AE /* MFWebService+Checkout.m */,
 				811082C317F8C805005CC8ED /* MFWebService+Feed.h */,
 				811082C417F8C805005CC8ED /* MFWebService+Feed.m */,
 				81136ABE180B5703009142AE /* MFWebService+Media.h */,
@@ -1502,6 +1512,7 @@
 				8120C1CE17E0685A00A1C3A9 /* MFHistoryController.m in Sources */,
 				81233D7317F8F1A100C27805 /* MFCountry.m in Sources */,
 				81D0967017FCD43D0044BD06 /* MFNewPostController+Details.m in Sources */,
+				81136AC6180C51E6009142AE /* MFWebService+Checkout.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				81B27B1317F60F3700F9BC09 /* StripeError.m in Sources */,
 				811082BC17F8BC57005CC8ED /* MFDatabase+Currency.m in Sources */,
@@ -1520,6 +1531,7 @@
 				817723E017FDAAC9004A28CC /* MFFormLabel.m in Sources */,
 				81233D6117F8E00500C27805 /* MFDatabase+Color.m in Sources */,
 				8120C16B17DFBD1200A1C3A9 /* MFPreferences.m in Sources */,
+				81136AC9180C527F009142AE /* MFComment.m in Sources */,
 				8110829F17F8AF4A005CC8ED /* MFPullToLoadMoreView.m in Sources */,
 				8120C14117DFA90300A1C3A9 /* UIFont+Additions.m in Sources */,
 				812F4AB917DEFD4800454747 /* main.m in Sources */,

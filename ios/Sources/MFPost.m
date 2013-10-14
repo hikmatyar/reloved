@@ -24,6 +24,7 @@
 #define KEY_FIT @"fit"
 #define KEY_NOTES @"notes"
 #define KEY_EDITORIAL @"editorial"
+#define KEY_TAGS @"tags"
 
 @implementation MFPost
 
@@ -51,6 +52,7 @@
         m_fit = [attributes stringForKey:KEY_FIT];
         m_notes = [attributes stringForKey:KEY_NOTES];
         m_editorial = [attributes stringForKey:KEY_EDITORIAL];
+        m_tags = [attributes arrayForKey:KEY_TAGS];
         
         if(!m_identifier && !m_title && !m_date) {
             return nil;
@@ -64,27 +66,39 @@
 
 - (NSDictionary *)attributes
 {
+    return [self attributesForChanges:kMFPostChangeAll];
+}
+
+- (NSDictionary *)attributesForChanges:(MFPostChange)changes
+{
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     
     [attributes setValue:m_identifier forKey:KEY_IDENTIFIER];
-    [attributes setValue:m_userId forKey:KEY_USER];
-    [attributes setValue:[NSNumber numberWithInteger:m_status] forKey:KEY_STATUS];
-    [attributes setValue:m_date.datetimeString forKey:KEY_DATE];
-    [attributes setValue:m_modified.datetimeString forKey:KEY_MODIFIED];
-    [attributes setValue:m_brandId forKey:KEY_BRAND];
-    [attributes setValue:m_colorIds forKey:KEY_COLOR];
-    [attributes setValue:m_mediaIds forKey:KEY_MEDIA];
-    [attributes setValue:m_conditionId forKey:KEY_CONDITION];
-    [attributes setValue:m_typeId forKey:KEY_TYPE];
-    [attributes setValue:m_sizeId forKey:KEY_SIZE];
-    [attributes setValue:m_materials forKey:KEY_MATERIALS];
-    [attributes setValue:[NSNumber numberWithInteger:m_price] forKey:KEY_PRICE];
-    [attributes setValue:[NSNumber numberWithInteger:m_priceOriginal] forKey:KEY_PRICE_ORIGINAL];
-    [attributes setValue:m_currency forKey:KEY_CURRENCY];
-    [attributes setValue:m_title forKey:KEY_TITLE];
-    [attributes setValue:m_fit forKey:KEY_FIT];
-    [attributes setValue:m_notes forKey:KEY_NOTES];
-    [attributes setValue:m_editorial forKey:KEY_EDITORIAL];
+    
+    if((changes & kMFPostChangeStatus) == kMFPostChangeStatus) {
+        [attributes setValue:[NSNumber numberWithInteger:m_status] forKey:KEY_STATUS];
+    }
+    
+    if((changes & kMFPostChangeAll) == kMFPostChangeAll) {
+        [attributes setValue:m_userId forKey:KEY_USER];
+        [attributes setValue:m_date.datetimeString forKey:KEY_DATE];
+        [attributes setValue:m_modified.datetimeString forKey:KEY_MODIFIED];
+        [attributes setValue:m_brandId forKey:KEY_BRAND];
+        [attributes setValue:m_colorIds forKey:KEY_COLOR];
+        [attributes setValue:m_mediaIds forKey:KEY_MEDIA];
+        [attributes setValue:m_conditionId forKey:KEY_CONDITION];
+        [attributes setValue:m_typeId forKey:KEY_TYPE];
+        [attributes setValue:m_sizeId forKey:KEY_SIZE];
+        [attributes setValue:m_materials forKey:KEY_MATERIALS];
+        [attributes setValue:[NSNumber numberWithInteger:m_price] forKey:KEY_PRICE];
+        [attributes setValue:[NSNumber numberWithInteger:m_priceOriginal] forKey:KEY_PRICE_ORIGINAL];
+        [attributes setValue:m_currency forKey:KEY_CURRENCY];
+        [attributes setValue:m_title forKey:KEY_TITLE];
+        [attributes setValue:m_fit forKey:KEY_FIT];
+        [attributes setValue:m_notes forKey:KEY_NOTES];
+        [attributes setValue:m_editorial forKey:KEY_EDITORIAL];
+        [attributes setValue:m_tags forKey:KEY_TAGS];
+    }
     
     return attributes;
 }
@@ -115,6 +129,7 @@
 @synthesize editorial = m_editorial;
 @synthesize fit = m_fit;
 @synthesize notes = m_notes;
+@synthesize tags = m_tags;
 
 - (BOOL)update:(NSDictionary *)changes
 {
@@ -218,7 +233,19 @@
         changed = YES;
     }
     
+    if((arr = [changes arrayForKey:KEY_TAGS]) != nil && !MFEqual(m_tags, arr)) {
+        m_tags = arr;
+        changed = YES;
+    }
+    
     return changed;
+}
+
+#pragma mark MFWebRequestTransform
+
++ (id)parseFromObject:(id)object
+{
+    return ([object isKindOfClass:[NSDictionary class]]) ? [[self alloc] initWithAttributes:(NSDictionary *)object] : nil;
 }
 
 @end
@@ -325,6 +352,13 @@
 - (void)setNotes:(NSString *)notes
 {
     m_notes = notes;
+}
+
+@dynamic tags;
+
+- (void)setTags:(NSArray *)tags
+{
+    m_tags = tags;
 }
 
 #pragma mark NSObject

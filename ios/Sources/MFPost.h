@@ -1,6 +1,12 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
-#import <Foundation/Foundation.h>
+#import "MFWebRequestTransform.h"
+
+typedef enum _MFPostChange {
+    kMFPostChangeNone = 0x00,
+    kMFPostChangeStatus = (1 << 0),
+    kMFPostChangeAll = 0xFF
+} MFPostChange;
 
 typedef enum _MFPostStatus {
     kMFPostStatusDeleted = 0,
@@ -11,7 +17,7 @@ typedef enum _MFPostStatus {
     kMFPostStatusUnlistedBought = 5
 } MFPostStatus;
 
-@interface MFPost : NSObject
+@interface MFPost : NSObject <MFWebRequestTransform>
 {
     @protected
     NSDate *m_date;
@@ -33,11 +39,13 @@ typedef enum _MFPostStatus {
     NSString *m_editorial;
     NSString *m_fit;
     NSString *m_notes;
+    NSArray *m_tags;
 }
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 
 @property (nonatomic, retain, readonly) NSDictionary *attributes;
+- (NSDictionary *)attributesForChanges:(MFPostChange)changes;
 
 @property (nonatomic, assign, readonly, getter = isActive) BOOL active;
 @property (nonatomic, retain, readonly) NSDate *date;
@@ -59,6 +67,7 @@ typedef enum _MFPostStatus {
 @property (nonatomic, retain, readonly) NSString *editorial;
 @property (nonatomic, retain, readonly) NSString *fit;
 @property (nonatomic, retain, readonly) NSString *notes;
+@property (nonatomic, retain, readonly) NSArray *tags;
 
 - (BOOL)update:(NSDictionary *)changes;
 
@@ -85,5 +94,6 @@ typedef enum _MFPostStatus {
 @property (nonatomic, retain) NSString *editorial;
 @property (nonatomic, retain) NSString *fit;
 @property (nonatomic, retain) NSString *notes;
+@property (nonatomic, retain) NSArray *tags;
 
 @end
