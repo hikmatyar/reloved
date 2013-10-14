@@ -37,6 +37,12 @@
 		81136AC3180B5A8E009142AE /* MFMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136AC2180B5A8E009142AE /* MFMedia.m */; };
 		81136AC6180C51E6009142AE /* MFWebService+Checkout.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136AC5180C51E6009142AE /* MFWebService+Checkout.m */; };
 		81136AC9180C527F009142AE /* MFComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136AC8180C527F009142AE /* MFComment.m */; };
+		81136AD0180C549B009142AE /* Cartoon1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81136ACA180C549B009142AE /* Cartoon1.jpg */; };
+		81136AD1180C549B009142AE /* Cartoon1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81136ACB180C549B009142AE /* Cartoon1@2x.jpg */; };
+		81136AD2180C549B009142AE /* Cartoon2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81136ACC180C549B009142AE /* Cartoon2.jpg */; };
+		81136AD3180C549B009142AE /* Cartoon2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81136ACD180C549B009142AE /* Cartoon2@2x.jpg */; };
+		81136AD4180C549B009142AE /* Cartoon3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81136ACE180C549B009142AE /* Cartoon3.jpg */; };
+		81136AD5180C549B009142AE /* Cartoon3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81136ACF180C549B009142AE /* Cartoon3@2x.jpg */; };
 		8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFC917E06BCC007AEDC2 /* MFImageView.m */; };
 		8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCC17E06BDB007AEDC2 /* MFTableView.m */; };
 		8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFCF17E06BE8007AEDC2 /* MFTableViewCell.m */; };
@@ -310,6 +316,12 @@
 		81136AC5180C51E6009142AE /* MFWebService+Checkout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFWebService+Checkout.m"; path = "Sources/MFWebService+Checkout.m"; sourceTree = SOURCE_ROOT; };
 		81136AC7180C527F009142AE /* MFComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFComment.h; path = Sources/MFComment.h; sourceTree = SOURCE_ROOT; };
 		81136AC8180C527F009142AE /* MFComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFComment.m; path = Sources/MFComment.m; sourceTree = SOURCE_ROOT; };
+		81136ACA180C549B009142AE /* Cartoon1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Cartoon1.jpg; path = Images/Cartoon1.jpg; sourceTree = "<group>"; };
+		81136ACB180C549B009142AE /* Cartoon1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Cartoon1@2x.jpg"; path = "Images/Cartoon1@2x.jpg"; sourceTree = "<group>"; };
+		81136ACC180C549B009142AE /* Cartoon2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Cartoon2.jpg; path = Images/Cartoon2.jpg; sourceTree = "<group>"; };
+		81136ACD180C549B009142AE /* Cartoon2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Cartoon2@2x.jpg"; path = "Images/Cartoon2@2x.jpg"; sourceTree = "<group>"; };
+		81136ACE180C549B009142AE /* Cartoon3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Cartoon3.jpg; path = Images/Cartoon3.jpg; sourceTree = "<group>"; };
+		81136ACF180C549B009142AE /* Cartoon3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Cartoon3@2x.jpg"; path = "Images/Cartoon3@2x.jpg"; sourceTree = "<group>"; };
 		8119DFC817E06BCC007AEDC2 /* MFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageView.h; path = Sources/MFImageView.h; sourceTree = SOURCE_ROOT; };
 		8119DFC917E06BCC007AEDC2 /* MFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageView.m; path = Sources/MFImageView.m; sourceTree = SOURCE_ROOT; };
 		8119DFCB17E06BDB007AEDC2 /* MFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFTableView.h; path = Sources/MFTableView.h; sourceTree = SOURCE_ROOT; };
@@ -1016,6 +1028,12 @@
 				81B27B2E17F6105F00F9BC09 /* Stripe */,
 				8110829617F8809F005CC8ED /* Blue-Dot.png */,
 				8110829717F8809F005CC8ED /* Blue-Dot@2x.png */,
+				81136ACA180C549B009142AE /* Cartoon1.jpg */,
+				81136ACB180C549B009142AE /* Cartoon1@2x.jpg */,
+				81136ACC180C549B009142AE /* Cartoon2.jpg */,
+				81136ACD180C549B009142AE /* Cartoon2@2x.jpg */,
+				81136ACE180C549B009142AE /* Cartoon3.jpg */,
+				81136ACF180C549B009142AE /* Cartoon3@2x.jpg */,
 				812F4AAF17DEFD0300454747 /* Default-568h@2x.png */,
 				812F4AB017DEFD0300454747 /* Default.png */,
 				81DE2D3117F5FCC4001D0ADF /* Disclosure-Indicator.png */,
@@ -1346,6 +1364,8 @@
 				8120C16217DFB48600A1C3A9 /* Navigation-Filter.png in Resources */,
 				8120C15517DFAD9600A1C3A9 /* Menu-Cart.png in Resources */,
 				81B27B4D17F6107100F9BC09 /* diners.png in Resources */,
+				81136AD1180C549B009142AE /* Cartoon1@2x.jpg in Resources */,
+				81136AD0180C549B009142AE /* Cartoon1.jpg in Resources */,
 				812F4AEC17DF003800454747 /* Icon57.png in Resources */,
 				8120C1A317E0470300A1C3A9 /* Home-ReturnsPolicy.png in Resources */,
 				812F4AB417DEFD0300454747 /* Default@2x.png in Resources */,
@@ -1354,6 +1374,7 @@
 				81B27B4A17F6107100F9BC09 /* cvc-amex@2x.png in Resources */,
 				81C5A2161809969C000427A9 /* NewPost-Photos-X@2x.png in Resources */,
 				81B27B4917F6107100F9BC09 /* cvc-amex.png in Resources */,
+				81136AD4180C549B009142AE /* Cartoon3.jpg in Resources */,
 				81B27B3217F6106800F9BC09 /* gradient@2x.png in Resources */,
 				8120C1AB17E049B400A1C3A9 /* Navigation-Logo.png in Resources */,
 				81B27B4717F6107100F9BC09 /* amex.png in Resources */,
@@ -1371,6 +1392,7 @@
 				811082A317F8B0E1005CC8ED /* PullToRefresh-Arrow.png in Resources */,
 				81B27B5117F6107100F9BC09 /* jcb.png in Resources */,
 				8120C15117DFAD8C00A1C3A9 /* Menu-Search@2x.png in Resources */,
+				81136AD5180C549B009142AE /* Cartoon3@2x.jpg in Resources */,
 				81C5A219180996EA000427A9 /* NewPost-Photos-Placeholder.png in Resources */,
 				8120C16317DFB48600A1C3A9 /* Navigation-Filter@2x.png in Resources */,
 				8120C19C17E0470300A1C3A9 /* Home-Guarantee@2x.png in Resources */,
@@ -1391,6 +1413,7 @@
 				8120C1A417E0470300A1C3A9 /* Home-ReturnsPolicy@2x.png in Resources */,
 				81BC174F17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png in Resources */,
 				8120C1A117E0470300A1C3A9 /* Home-Recents.png in Resources */,
+				81136AD2180C549B009142AE /* Cartoon2.jpg in Resources */,
 				8120C15F17DFB2F700A1C3A9 /* Navigation-Menu@2x.png in Resources */,
 				8120C15017DFAD8C00A1C3A9 /* Menu-Search.png in Resources */,
 				8120C19A17E0470300A1C3A9 /* Home-BrowseNew@2x.png in Resources */,
@@ -1398,6 +1421,7 @@
 				8110829817F8809F005CC8ED /* Blue-Dot.png in Resources */,
 				8120C14F17DFAD8C00A1C3A9 /* Menu-News@2x.png in Resources */,
 				81B27B5017F6107100F9BC09 /* discover@2x.png in Resources */,
+				81136AD3180C549B009142AE /* Cartoon2@2x.jpg in Resources */,
 				8120C1B717E0532500A1C3A9 /* Home-ShopByDress.png in Resources */,
 				81B27B3417F6106800F9BC09 /* textfield@2x.png in Resources */,
 				81DE2D3317F5FCC4001D0ADF /* Disclosure-Indicator.png in Resources */,
