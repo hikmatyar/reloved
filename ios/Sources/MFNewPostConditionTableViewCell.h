@@ -7,6 +7,7 @@
     @private
     NSString *m_text;
     NSArray *m_comments;
+    UIView *m_commentsView;
 }
 
 + (CGFloat)preferredHeight;

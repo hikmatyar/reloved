@@ -165,7 +165,7 @@
         }
         
         if(typeTitle) {
-            [m_sizeButton setTitle:typeTitle forState:UIControlStateNormal];
+            [m_typeButton setTitle:typeTitle forState:UIControlStateNormal];
         }
         
         if(typeIdentifiers) {

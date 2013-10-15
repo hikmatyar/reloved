@@ -35,10 +35,20 @@
         m_tableView.dataSource = self;
         m_tableView.delegate = self;
         m_tableView.rowHeight = [MFNewPostConditionTableViewCell preferredHeight];
+        
+        if([m_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+            m_tableView.separatorInset = UIEdgeInsetsMake(0.0F, 0.0F, 0.0F, 0.0F);
+        }
+        
         [self addSubview:m_tableView];
     }
     
     return self;
+}
+
+- (BOOL)canContinue
+{
+    return (m_controller.post.conditionId) ? YES : NO;
 }
 
 #pragma mark UITableViewDataSource
@@ -59,6 +69,7 @@
     
     cell.text = condition.title;
     cell.comments = condition.comments;
+    cell.selected = [m_controller.post.conditionId isEqualToString:condition.identifier];
     
     return cell;
 }
@@ -67,6 +78,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    MFCondition *condition = [m_conditions objectAtIndex:indexPath.row];
+    
+    for(UITableViewCell *cell in tableView.visibleCells) {
+        cell.selected = (cell == selectedCell) ? YES : NO;
+    }
+    
+    m_controller.post.conditionId = condition.identifier;
+    [m_controller invalidateNavigation];
 }
 
 @end
