@@ -15,12 +15,15 @@
 				<option value="{id}">{name}</option>
 			{/brands}
 		</select>
-		<label for="type">{@localize str="post.label.type" /}</label>
-		<select id="type" name="type">
+		<label for="types">{@localize str="post.label.type" /}</label>
+		<fieldset id="types" name="types">
 			{#types}
-				<option value="{id}">{name}</option>
+				<label for="types_{id}"> 
+					<input type="checkbox" id="types_{id}" name="types[]" value="{id}" />
+					<span>{name}</span>
+				</label>
 			{/types}
-		</select>
+		</fieldset>
 		<label for="size">{@localize str="post.label.size" /}</label>
 		<select id="size" name="size">
 			{#sizes}

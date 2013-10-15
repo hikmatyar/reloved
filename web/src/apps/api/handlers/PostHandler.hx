@@ -130,9 +130,9 @@ class PostHandler extends Handler {
     
     public function create() {
     	var conditionId = this.postConditionIdentifier();
-		var typeId = this.postTypeIdentifier();
 		var sizeId = this.postSizeIdentifier();
 		var brandId = this.postBrandIdentifier();
+		var typeIds = this.postTypeIdentifiers();
 		var colorIds = this.postColorIdentifiers();
 		var mediaIds = this.postMediaIdentifiers();
 		var materials = this.postMaterials();
@@ -145,7 +145,7 @@ class PostHandler extends Handler {
 		var currency = this.postCurrency();
 		var tags = this.postTags();
 		
-		if(conditionId != 0 && typeId != 0 && sizeId != 0 && brandId != 0 &&
+		if(conditionId != 0 && typeIds != null && sizeId != 0 && brandId != 0 &&
 		   colorIds != null && mediaIds != null && materials != null && title != null &&
 		   fit != null && notes != null && price > 0 && priceOriginal > 0 && currency != null &&
 		   tags != null) {
@@ -159,7 +159,6 @@ class PostHandler extends Handler {
 					brand_id: brandId,
 					user_id: this.user().id,
 					size_id: sizeId,
-					type_id: typeId,
 					condition: conditionId,
 					materials: materials,
 					price: price,
@@ -193,6 +192,16 @@ class PostHandler extends Handler {
 				PostColor.create(result.post.id, colorIds, function(err) {
 					if(err != null) {
 						this.exit(ErrorCode.unknown, 'colors');
+					} else {
+						sync();
+					}
+				});
+			});
+			
+			async(function(sync) {
+				PostType.create(result.post.id, typeIds, function(err) {
+					if(err != null) {
+						this.exit(ErrorCode.unknown, 'types');
 					} else {
 						sync();
 					}

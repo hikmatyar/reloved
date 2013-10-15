@@ -80,7 +80,7 @@ class PostPage extends Page {
     	var files : Array<FormidableFile> = this.request.files.upload;
         var userId = Std.parseInt(this.request.body.user);
         var conditionId = Std.parseInt(this.request.body.condition);
-        var typeId = Std.parseInt(this.request.body.type);
+        var types : Array<String> = this.request.body.types_list;
         var sizeId = Std.parseInt(this.request.body.size);
         var brandId = Std.parseInt(this.request.body.brand);
         var materials = this.request.body.materials;
@@ -94,11 +94,16 @@ class PostPage extends Page {
         var tagsRaw : String = this.request.body.tags;
         var colors : Array<String> = this.request.body.colors_list;
         
-        if(userId != null && conditionId != null && typeId != null &&
+        if(userId != null && conditionId != null && types != null &&
            sizeId != null && brandId != null && title != null &&
            files != null && colors != null && files.length > 0 && tagsRaw != null) {
         	var colorIds = new Array<DataIdentifier>();
+        	var typeIds = new Array<DataIdentifier>();
         	var tags = new Array<String>();
+        	
+        	for(type in types) {
+        		typeIds.push(Std.parseInt(type));
+        	}
         	
         	for(color in colors) {
         		colorIds.push(Std.parseInt(color));
@@ -121,7 +126,6 @@ class PostPage extends Page {
 					brand_id: brandId,
 					user_id: userId,
 					size_id: sizeId,
-					type_id: typeId,
 					condition: conditionId,
 					materials: materials,
 					price: price,
@@ -171,6 +175,17 @@ class PostPage extends Page {
 						PostMedia.create(post.id, mediaIds, function(err) {
 							if(err != null) {
 								this.render({ reason: 'post_media' }, template_error);
+								return;
+							}
+							
+							sync();
+						});
+					});
+					
+					async(function(sync) {
+						PostType.create(post.id, typeIds, function(err) {
+							if(err != null) {
+								this.render({ reason: 'post_types' }, template_error);
 								return;
 							}
 							

@@ -11,7 +11,6 @@ private typedef PostRow = {
     var created : Int;
     var modified : Int;
     var brand_id : DataIdentifier;
-    var type_id : DataIdentifier;
     var size_id : DataIdentifier;
     var condition : Int;
     var materials : String;
@@ -59,6 +58,39 @@ class PostColor {
     private function new(row : PostColorRow) {
         this.postId = row.post_id;
         this.colorId = row.color_id;
+    }
+}
+
+private typedef PostTypeRow = {
+    var post_id : DataIdentifier;
+    var type_id : DataIdentifier;
+}
+
+class PostType {
+	public var postId(default, null) : DataIdentifier;
+    public var typeId(default, null) : DataIdentifier;
+    
+    public static function findAllForIdentifiers(postIds : Array<DataIdentifier>, fn : DataError -> Array<PostType> -> Void) : Void {
+        Data.query('SELECT * FROM post_types WHERE post_id IN (?)', [ postIds ], function(err, result : Array<PostType>) {
+            fn(err, result);
+        });
+    }
+    
+    public static function create(postId : DataIdentifier, typeIds : Array<DataIdentifier>, fn : DataError -> Void) : Void {
+        var values : Array<Dynamic> = new Array<Dynamic>();
+        
+        for(typeId in typeIds) {
+        	values.push([ postId, typeId ]); 
+        }
+        
+        Data.query('INSERT INTO post_types (post_id, type_id) VALUES ?', [ values ], function(err, result) {
+        	fn(err);
+        });
+    }
+    
+    private function new(row : PostTypeRow) {
+        this.postId = row.post_id;
+        this.typeId = row.type_id;
     }
 }
 
@@ -295,7 +327,6 @@ typedef PostAttributes_Create = {
 	brand_id : DataIdentifier,
 	user_id : DataIdentifier,
 	size_id : DataIdentifier,
-	type_id : DataIdentifier,
 	condition : Int,
 	materials : String,
 	price : Int,
@@ -378,7 +409,6 @@ class Post {
     public var created(default, null) : Int;
     public var modified(default, null) : Int;
     public var brandId(default, null) : DataIdentifier;
-    public var typeId(default, null) : DataIdentifier;
     public var sizeId(default, null) : DataIdentifier;
     public var condition(default, null) : Int;
     public var materials(default, null) : String;
@@ -391,6 +421,7 @@ class Post {
     public var editorial(default, null) : String;
     
     private var _colors : Array<PostColor>;
+    private var _types : Array<PostType>;
     private var _media : Array<PostMedia>;
     private var _tags : Array<PostTag>;
     
@@ -481,7 +512,8 @@ class Post {
     	}
     	
     	if(feed.types != null) {
-    		fcriteria = fcriteria + ' AND type_id IN (' + feed.types.join(',') + ')';
+    		ftables = ftables + ' INNER JOIN post_types ON post_types.post_id = posts.id ';
+    		fcriteria = fcriteria + ' AND post_types.type_id IN (' + feed.types.join(',') + ')';
     	}
     	
         if(timestamp != null) {
@@ -508,7 +540,8 @@ class Post {
     	}
     	
     	if(feed.types != null) {
-    		fcriteria = fcriteria + ' AND type_id IN (' + feed.types.join(',') + ')';
+    		ftables = ftables + ' INNER JOIN post_types ON post_types.post_id = posts.id ';
+    		fcriteria = fcriteria + ' AND post_types.type_id IN (' + feed.types.join(',') + ')';
     	}
     	
         Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status = 2 AND ' + order + ' < ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
@@ -583,62 +616,80 @@ class Post {
             postIds.push(post.id);
             post._colors = [];
             post._tags = [];
+            post._types = [];
             post._media = [];
             cache[untyped post.id] = post;
         }
         
-        PostColor.findAllForIdentifiers(postIds, function(err, colors) {
+        PostType.findAllForIdentifiers(postIds, function(err, types) {
         	if(err != null) {
-        		fn(err);
-        		return;
-        	}
-        	
-        	if(colors != null) {
-        		for(color in colors) {
-        			var post_ = cache[untyped color.postId];
-        			
-        			if(post_ != null) {
-        				post_._colors.push(color);
-        			}
-        		}
-        	}
-        	
-        	PostMedia.findAllForIdentifiers(postIds, function(err, media) {
-        		if(err != null) {
-        			fn(err);
-        			return;
-        		}
-        		
-        		if(media != null) {
-					for(m in media) {
-						var post_ = cache[untyped m.postId];
+				fn(err);
+				return;
+			}
+			
+			if(types != null) {
+				for(type in types) {
+					var post_ = cache[untyped type.postId];
+				
+					if(post_ != null) {
+						post_._types.push(type);
+					}
+				}
+			}
+			
+			PostColor.findAllForIdentifiers(postIds, function(err, colors) {
+				if(err != null) {
+					fn(err);
+					return;
+				}
+			
+				if(colors != null) {
+					for(color in colors) {
+						var post_ = cache[untyped color.postId];
 					
 						if(post_ != null) {
-							post_._media.push(m);
+							post_._colors.push(color);
 						}
 					}
 				}
-				
-				PostTag.findAllForIdentifiers(postIds, function(err, tags) {
+			
+				PostMedia.findAllForIdentifiers(postIds, function(err, media) {
 					if(err != null) {
 						fn(err);
 						return;
 					}
-					
-					if(tags != null) {
-						for(tag in tags) {
-							var post_ = cache[untyped tag.postId];
+				
+					if(media != null) {
+						for(m in media) {
+							var post_ = cache[untyped m.postId];
 					
 							if(post_ != null) {
-								post_._tags.push(tag);
+								post_._media.push(m);
 							}
 						}
 					}
+				
+					PostTag.findAllForIdentifiers(postIds, function(err, tags) {
+						if(err != null) {
+							fn(err);
+							return;
+						}
 					
-					fn(null);
+						if(tags != null) {
+							for(tag in tags) {
+								var post_ = cache[untyped tag.postId];
+					
+								if(post_ != null) {
+									post_._tags.push(tag);
+								}
+							}
+						}
+					
+						fn(null);
+					});
 				});
-        	});
-        });
+			});
+		});
     }
     
     private function new(row : PostRow) {
@@ -647,7 +698,6 @@ class Post {
 		this.created = row.created;
 		this.modified = row.modified;
 		this.brandId = row.brand_id;
-		this.typeId = row.type_id;
 		this.sizeId = row.size_id;
 		this.condition = row.condition;
 		this.materials = row.materials;

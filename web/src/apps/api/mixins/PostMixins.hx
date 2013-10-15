@@ -34,16 +34,27 @@ class PostMixins {
         return (handler.request.body.status != null && handler.request.body.status.length > 0) ? Std.parseInt(handler.request.body.status) : null;
     }
     
-    public static inline function postTypeIdentifier(handler : Handler) : DataIdentifier {
-        return Std.parseInt(handler.request.body.type);
-    }
-    
     public static inline function postSizeIdentifier(handler : Handler) : DataIdentifier {
         return Std.parseInt(handler.request.body.size);
     }
     
     public static inline function postBrandIdentifier(handler : Handler) : DataIdentifier {
         return Std.parseInt(handler.request.body.brand);
+    }
+    
+    public static inline function postTypeIdentifiers(handler : Handler) : Array<DataIdentifier> {
+        var _ids : String = handler.request.body.types;
+    	var ids : Array<DataIdentifier> = null;
+    	
+    	if(_ids != null && _ids.length > 0) {
+    		ids = new Array<DataIdentifier>();
+        	
+        	for(_id in _ids.split(',')) {
+        		ids.push(Std.parseInt(_id));
+        	}
+        }
+        	
+        return ids;
     }
     
     public static inline function postColorIdentifiers(handler : Handler) : Array<DataIdentifier> {
