@@ -96,7 +96,8 @@ class PostPage extends Page {
         
         if(userId != null && conditionId != null && types != null &&
            sizeId != null && brandId != null && title != null &&
-           files != null && colors != null && files.length > 0 && tagsRaw != null) {
+           files != null && colors != null && files.length > 0 && tagsRaw != null &&
+           colors.length > 0 && types.length > 0) {
         	var colorIds = new Array<DataIdentifier>();
         	var typeIds = new Array<DataIdentifier>();
         	var tags = new Array<String>();
@@ -204,16 +205,18 @@ class PostPage extends Page {
 						});
 					});
 					
-					async(function(sync) {
-						PostTag.create(post.id, tags, function(err) {
-							if(err != null) {
-								this.render({ reason: 'post_tags' }, template_error);
-								return;
-							}
+					if(tags.length > 0) {
+						async(function(sync) {
+							PostTag.create(post.id, tags, function(err) {
+								if(err != null) {
+									this.render({ reason: 'post_tags' }, template_error);
+									return;
+								}
 							
-							sync();
+								sync();
+							});
 						});
-					});
+					}
 					
 					async(function() {
 						this.render({ user: user.token, post: post }, template_complete);
