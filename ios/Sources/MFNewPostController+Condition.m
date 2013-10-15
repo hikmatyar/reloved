@@ -34,6 +34,7 @@
         m_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         m_tableView.dataSource = self;
         m_tableView.delegate = self;
+        m_tableView.separatorColor = [UIColor themeSeparatorColor];
         m_tableView.rowHeight = [MFNewPostConditionTableViewCell preferredHeight];
         
         if([m_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
