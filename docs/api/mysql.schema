@@ -137,6 +137,13 @@ CREATE TABLE `post_tags` (
   UNIQUE KEY `post_id_name` (`post_id`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `post_types`;
+CREATE TABLE `post_types` (
+  `post_id` int(11) NOT NULL,
+  `type_id` int(11) NOT NULL,
+  UNIQUE KEY `post_id_type_id` (`post_id`,`type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -145,7 +152,6 @@ CREATE TABLE `posts` (
   `created` int(11) NOT NULL,
   `modified` int(11) NOT NULL,
   `brand_id` int(11) NOT NULL,
-  `type_id` int(11) NOT NULL,
   `size_id` int(11) NOT NULL,
   `condition` tinyint(4) NOT NULL,
   `materials` varchar(200) NOT NULL,
