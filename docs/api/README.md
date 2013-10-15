@@ -146,7 +146,7 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 					"brand": 1,
 					"colors": [ 1 ],
 					"condition": 1,
-					"type": 1,
+					"types": [ 1 ],
 					"size": 1,
 					"materials": "...",
 					"price": 12345,
@@ -376,7 +376,7 @@ API calls for updating personal information and posts.
 	Parameters:
 		[session]
 		INTEGER condition [R] - Dress condition ID
-		INTEGER type [R] - Dress type ID
+		ARRAY<INTEGER> types [R] - List of dress type IDs
 		INTEGER size [R] - Dress size ID
 		INTEGER brand [R] - Dress brand ID
 		ARRAY<INTEGER> colors [R] - List of dress color IDs
@@ -390,9 +390,9 @@ API calls for updating personal information and posts.
 		INTEGER price_original [R] - Integer value with a price (105 = 1.05)
 		STRING[3] currency [R] - 3 letter currency code, such as 'GBP'
 		ARRAY<STRING> tags [R] - List of tag names
-		
+	
 	Returns:
-		{ "error": 0 }
+		{ "error": 0, "status": 2, "price": ... }
 	
 	Errors:
 		[standard]
