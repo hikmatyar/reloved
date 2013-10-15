@@ -29,7 +29,7 @@ typedef enum _MFPostStatus {
     NSString *m_sizeId;
     NSString *m_brandId;
     NSString *m_conditionId;
-    NSString *m_typeId;
+    NSArray *m_typeIds;
     NSArray *m_colorIds;
     NSArray *m_mediaIds;
     NSInteger m_price;
@@ -57,7 +57,7 @@ typedef enum _MFPostStatus {
 @property (nonatomic, retain, readonly) NSString *sizeId;
 @property (nonatomic, retain, readonly) NSString *brandId;
 @property (nonatomic, retain, readonly) NSString *conditionId;
-@property (nonatomic, retain, readonly) NSString *typeId;
+@property (nonatomic, retain, readonly) NSArray *typeIds;
 @property (nonatomic, retain, readonly) NSArray *colorIds;
 @property (nonatomic, retain, readonly) NSArray *mediaIds;
 @property (nonatomic, assign, readonly) NSInteger price;
@@ -84,7 +84,7 @@ typedef enum _MFPostStatus {
 @property (nonatomic, retain) NSString *sizeId;
 @property (nonatomic, retain) NSString *brandId;
 @property (nonatomic, retain) NSString *conditionId;
-@property (nonatomic, retain) NSString *typeId;
+@property (nonatomic, retain) NSArray *typeIds;
 @property (nonatomic, retain) NSArray *colorIds;
 @property (nonatomic, retain) NSArray *mediaIds;
 @property (nonatomic, assign) NSInteger price;

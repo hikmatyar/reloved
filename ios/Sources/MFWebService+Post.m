@@ -11,7 +11,7 @@
     MFWebRequest *request;
     
     [parameters setValue:post.conditionId forKey:@"condition"];
-    [parameters setValue:post.typeId forKey:@"type"];
+    [parameters setValue:[post.typeIds componentsJoinedByString:@","] forKey:@"types"];
     [parameters setValue:post.sizeId forKey:@"size"];
     [parameters setValue:post.brandId forKey:@"brand"];
     [parameters setValue:[post.colorIds componentsJoinedByString:@","] forKey:@"colors"];

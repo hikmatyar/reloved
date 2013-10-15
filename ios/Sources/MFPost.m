@@ -14,7 +14,7 @@
 #define KEY_COLOR @"color"
 #define KEY_MEDIA @"media"
 #define KEY_CONDITION @"condition"
-#define KEY_TYPE @"type"
+#define KEY_TYPES @"types"
 #define KEY_SIZE @"size"
 #define KEY_MATERIALS @"materials"
 #define KEY_PRICE @"price"
@@ -42,7 +42,7 @@
         m_colorIds = [attributes arrayOfIdentifiersForKey:KEY_COLOR];
         m_mediaIds = [attributes arrayOfIdentifiersForKey:KEY_MEDIA];
         m_conditionId = [attributes identifierForKey:KEY_CONDITION];
-        m_typeId = [attributes identifierForKey:KEY_TYPE];
+        m_typeIds = [attributes arrayOfIdentifiersForKey:KEY_TYPES];
         m_sizeId = [attributes identifierForKey:KEY_SIZE];
         m_materials = [attributes stringForKey:KEY_MATERIALS];
         m_price = [attributes integerForKey:KEY_PRICE];
@@ -87,7 +87,7 @@
         [attributes setValue:m_colorIds forKey:KEY_COLOR];
         [attributes setValue:m_mediaIds forKey:KEY_MEDIA];
         [attributes setValue:m_conditionId forKey:KEY_CONDITION];
-        [attributes setValue:m_typeId forKey:KEY_TYPE];
+        [attributes setValue:m_typeIds forKey:KEY_TYPES];
         [attributes setValue:m_sizeId forKey:KEY_SIZE];
         [attributes setValue:m_materials forKey:KEY_MATERIALS];
         [attributes setValue:[NSNumber numberWithInteger:m_price] forKey:KEY_PRICE];
@@ -119,7 +119,7 @@
 @synthesize sizeId = m_sizeId;
 @synthesize brandId = m_brandId;
 @synthesize conditionId = m_conditionId;
-@synthesize typeId = m_typeId;
+@synthesize typeIds = m_typeIds;
 @synthesize colorIds = m_colorIds;
 @synthesize mediaIds = m_mediaIds;
 @synthesize price = m_price;
@@ -183,8 +183,8 @@
         changed = YES;
     }
     
-    if((str = [changes identifierForKey:KEY_TYPE]) != nil && !MFEqual(m_typeId, str)) {
-        m_typeId = str;
+    if((arr = [changes arrayOfIdentifiersForKey:KEY_TYPES]) != nil && !MFEqual(m_typeIds, arr)) {
+        m_typeIds = arr;
         changed = YES;
     }
     
@@ -284,11 +284,11 @@
     m_conditionId = conditionId;
 }
 
-@dynamic typeId;
+@dynamic typeIds;
 
-- (void)setTypeId:(NSString *)typeId
+- (void)setTypeIds:(NSArray *)typeIds
 {
-    m_typeId = typeId;
+    m_typeIds = typeIds;
 }
 
 @dynamic colorIds;
