@@ -7,6 +7,7 @@ import saffron.tools.JSON;
     
 private typedef PostRow = {
     var id : DataIdentifier;
+    var user_id : DataIdentifier;
     var status : Int;
     var created : Int;
     var modified : Int;
@@ -694,6 +695,7 @@ class Post {
     
     private function new(row : PostRow) {
 		this.id = row.id;
+		this.userId = row.user_id;
 		this.status = row.status;
 		this.created = row.created;
 		this.modified = row.modified;
@@ -720,24 +722,90 @@ class Post {
     	}
     }
     
+    /*
+    "id": 1,
+					"user": 10,
+					"status": 1,
+					"date": "2013-12-30T12:00:00.000Z",
+					"mod": "2013-12-30T12:00:00.000Z",
+					"brand": 1,
+					"colors": [ 1 ],
+					"condition": 1,
+					"types": [ 1 ],
+					"size": 1,
+					"materials": "...",
+					"price": 12345,
+					"price_o": 23456,
+					"currency": "GBP",
+					"title": "...",
+					"fit": "...",
+					"notes": "...",
+					"media": [ 1 ],
+					// Optional
+					"editorial": "..."*/
+	
     public function json() : String {
         var json : Dynamic = {
             id: this.id,
-            s: this.status,
-            t: this.title,
-            n: this.notes
+            user: this.userId,
+            status: this.status,
+            brand: this.brandId,
+            size: this.sizeId,
+            condition: this.condition,
+            title: this.title,
+            materials: this.materials,
+            notes: this.notes,
+            fit: this.fit,
+            price: this.price,
+            price_o: this.priceOriginal,
+            currency: this.currency,
+            date: new saffron.tools.Date(this.created * 1000).toISOString(),
+            mod: new saffron.tools.Date(this.modified * 1000).toISOString()
         };
+        var arr : Array<DataIdentifier>;
+        
+        if(this.editorial != null) {
+        	json.editorial = this.editorial;
+        }
+        
+        if(this._types != null) {
+        	arr = new Array<DataIdentifier>();
+        	
+        	for(type in this._types) {
+        		arr.push(type.typeId);
+        	}
+        	
+        	json.types = arr;
+        }
         
         if(this._colors != null) {
-        	// TODO: 
+        	arr = new Array<DataIdentifier>();
+        	
+        	for(color in this._colors) {
+        		arr.push(color.colorId);
+        	}
+        	
+        	json.colors = arr;
         }
         
         if(this._media != null) {
-        	// TODO: 
+        	arr = new Array<DataIdentifier>();
+        	
+        	for(media in this._media) {
+        		arr.push(media.mediaId);
+        	}
+        	
+        	json.media = arr;
         }
         
         if(this._tags != null) {
-        	// TODO: 
+        	var tags = new Array<String>();
+        	
+        	for(tag in this._tags) {
+        		tags.push(tag.name);
+        	}
+        	
+        	json.tags = tags;
         }
         
         return JSON.stringify(json);
