@@ -58,6 +58,7 @@
         MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
         
         controller.allowsMultipleSelection = YES;
+        controller.maximumSelectedItems = 5;
         controller.items = [colors sortedArrayUsingSelector:@selector(compare:)];
         controller.delegate = self;
         controller.title = NSLocalizedString(@"NewPost.Title.Colors", nil);

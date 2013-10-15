@@ -62,6 +62,7 @@
         
         controller.items = [types sortedArrayUsingSelector:@selector(compare:)];
         controller.allowsMultipleSelection = YES;
+        controller.maximumSelectedItems = 2;
         controller.delegate = self;
         controller.title = NSLocalizedString(@"NewPost.Title.Type", nil);
         [m_controller presentNavigableViewController:controller animated:YES completion:NULL];
@@ -137,12 +138,10 @@
 
 - (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller
 {
-    id selection = controller.selectedItem;
+    NSMutableArray *typeIdentifiers = nil;
+    NSMutableString *typeTitle = nil;
     
-    if(selection) {
-        NSMutableArray *typeIdentifiers = nil;
-        NSMutableString *typeTitle = nil;
-        
+    for(id selection in controller.selectedItems) {
         if([selection isKindOfClass:[MFType class]]) {
             MFType *type = (MFType *)selection;
             
@@ -163,14 +162,14 @@
             [m_sizeButton setTitle:size.name forState:UIControlStateNormal];
             m_controller.post.sizeId = size.identifier;
         }
-        
-        if(typeTitle) {
-            [m_typeButton setTitle:typeTitle forState:UIControlStateNormal];
-        }
-        
-        if(typeIdentifiers) {
-            m_controller.post.typeIds = typeIdentifiers;
-        }
+    }
+    
+    if(typeTitle) {
+        [m_typeButton setTitle:typeTitle forState:UIControlStateNormal];
+    }
+    
+    if(typeIdentifiers) {
+        m_controller.post.typeIds = typeIdentifiers;
     }
     
     [m_controller invalidateNavigation];

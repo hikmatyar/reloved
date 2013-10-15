@@ -190,6 +190,7 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
 }
 
 @synthesize userInfo = m_userInfo;
+@synthesize maximumSelectedItems = m_maximumSelectedItems;
 
 #pragma mark UISearchBarDelegate
 
@@ -291,7 +292,7 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
             cell.accessoryType = UITableViewCellAccessoryNone;
             changed = YES;
         }
-    } else {
+    } else if(m_maximumSelectedItems == 0 || m_selectedIndices.count < m_maximumSelectedItems) {
         [m_selectedIndices addIndex:index];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         changed = YES;

@@ -12,6 +12,7 @@
     __unsafe_unretained id <MFOptionPickerControllerDelegate> m_delegate;
     NSArray *m_items;
     NSArray *m_index;
+    NSInteger m_maximumSelectedItems;
     NSArray *m_sections;
     NSMutableIndexSet *m_selectedIndices;
     NSString *m_sectionHeaderTitle;
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) NSSet *selectedItems;
 @property (nonatomic, retain) NSArray *items;
 @property (nonatomic, retain) NSString *sectionHeaderTitle;
+@property (nonatomic, assign) NSInteger maximumSelectedItems;
 @property (nonatomic, retain) id userInfo;
 
 @end
