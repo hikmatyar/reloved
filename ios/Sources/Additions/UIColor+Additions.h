@@ -23,6 +23,10 @@
 + (UIColor *)themeInputTextColor;
 + (UIColor *)themeInputTextPlaceholderColor;
 
++ (UIColor *)themeProgressSeparatorColor;
++ (UIColor *)themeProgressTextColor;
++ (UIColor *)themeProgressTextSelectedColor;
+
 + (UIColor *)themeSeparatorTopColor;
 + (UIColor *)themeSeparatorBottomColor;
 

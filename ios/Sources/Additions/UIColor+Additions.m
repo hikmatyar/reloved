@@ -94,6 +94,21 @@
     return [self colorWithString:@"#999999"];
 }
 
++ (UIColor *)themeProgressSeparatorColor
+{
+    return [self colorWithString:@"#f3c78b"];
+}
+
++ (UIColor *)themeProgressTextColor
+{
+    return [self colorWithString:@"#7677a7"];
+}
+
++ (UIColor *)themeProgressTextSelectedColor
+{
+    return [self colorWithString:@"#000000"];
+}
+
 + (UIColor *)themeSeparatorTopColor
 {
     return [self colorWithString:@"#d8d8d8"];

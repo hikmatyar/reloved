@@ -36,21 +36,23 @@
         }
         
         if(m_items.count > 0) {
-            CGRect cellRect = CGRectMake(0.0F, 0.0F, roundf(frame.size.width / m_items.count), frame.size.height);
+            CGRect cellRect = CGRectMake(0.0F, 4.0F, roundf(frame.size.width / m_items.count), frame.size.height);
             
             for(NSString *item in m_items) {
                 MFImageButton *button = [[MFImageButton alloc] initWithFrame:cellRect];
                 
                 button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
                 button.imageTopPadding = 3.0F;
-                button.textTopPadding = 2.0F;
+                button.textTopPadding = -2.0F;
                 button.verticalBias = 0.0F;
                 button.titleLabel.font = [UIFont themeFontOfSize:8.0F];
                 button.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
                 button.titleLabel.textAlignment = NSTextAlignmentCenter;
                 button.tag = ++tag;
                 
-                [button setTitleColor:[UIColor themeTextColor] forState:UIControlStateNormal];
+                [button setTitleColor:[UIColor themeProgressTextColor] forState:UIControlStateNormal];
+                [button setTitleColor:[UIColor themeProgressTextSelectedColor] forState:UIControlStateSelected];
+                [button setTitleColor:[UIColor themeProgressTextSelectedColor] forState:UIControlStateSelected | UIControlStateHighlighted];
                 [button addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
                 [button setImage:[UIImage imageNamed:@"NewPost-Progress-Unselected.png"] forState:UIControlStateNormal];
                 [button setTitle:item forState:UIControlStateNormal];
@@ -64,7 +66,7 @@
         }
         
         separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        separatorView.backgroundColor = [UIColor themeMenuSeparatorColor];
+        separatorView.backgroundColor = [UIColor themeProgressSeparatorColor];
         [self addSubview:separatorView];
         
         separatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, frame.size.height - 1.0F, frame.size.width, 1.0F)];
