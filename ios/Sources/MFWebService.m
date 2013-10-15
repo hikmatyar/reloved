@@ -1,8 +1,8 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFWebAuthorization.h"
+#import "MFWebCache.h"
 #import "MFWebRequest.h"
-#import "MFWebResources.h"
 #import "MFWebService.h"
 #import "MFWebServiceAuthenticationChallenge.h"
 #import "MFWebServiceDelegate.h"
@@ -153,7 +153,7 @@ NSString *MFWebServiceErrorDomain = @"MFWebServiceErrorDomain";
 @synthesize delegate = m_delegate;
 
 @synthesize URL = m_URL;
-@synthesize resources = m_resources;
+@synthesize cache = m_cache;
 @synthesize user = m_user;
 
 @dynamic session;
@@ -293,7 +293,7 @@ NSString *MFWebServiceErrorDomain = @"MFWebServiceErrorDomain";
         m_currentRequests.maxConcurrentOperationCount = MAX_CONCURRENT;
         m_pendingRequests = [[NSMutableSet alloc] init];
         m_URL = [[NSURL alloc] initWithString:SERVICE_URL];
-        m_resources = [[MFWebResources alloc] initWithService:self];
+        m_cache = [[MFWebCache alloc] initWithService:self];
         m_user = [[MFWebUser alloc] initWithService:self];
     }
     

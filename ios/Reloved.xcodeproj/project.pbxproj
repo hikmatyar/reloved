@@ -56,7 +56,7 @@
 		8119DFE817E06E0B007AEDC2 /* MFWebAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFE717E06E0B007AEDC2 /* MFWebAuthorization.m */; };
 		8119DFEE17E06F00007AEDC2 /* MFPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFED17E06F00007AEDC2 /* MFPost.m */; };
 		8119DFF117E06F0C007AEDC2 /* MFMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFF017E06F0C007AEDC2 /* MFMoney.m */; };
-		8119DFF417E09E58007AEDC2 /* MFWebResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFF317E09E58007AEDC2 /* MFWebResources.m */; };
+		8119DFF417E09E58007AEDC2 /* MFWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFF317E09E58007AEDC2 /* MFWebCache.m */; };
 		8119DFF817E0A1E6007AEDC2 /* MFTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8119DFF717E0A1E6007AEDC2 /* MFTracker.m */; };
 		8119DFFA17E0A4D5007AEDC2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8119DFF917E0A4D5007AEDC2 /* CoreData.framework */; };
 		8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13017DFA37100A1C3A9 /* MFPostController.m */; };
@@ -231,6 +231,7 @@
 		81B27B5B17F610AE00F9BC09 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B27B5A17F610AE00F9BC09 /* QuartzCore.framework */; };
 		81B30E2F180DC8E600FF414D /* Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B30E2D180DC8E600FF414D /* Checkmark.png */; };
 		81B30E30180DC8E600FF414D /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B30E2E180DC8E600FF414D /* Checkmark@2x.png */; };
+		81B30E35180DE5AD00FF414D /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 81B30E33180DE5AD00FF414D /* base64.c */; };
 		81BC174317FB51CA00DF7AD4 /* MFOptionPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */; };
 		81BC174717FC429E00DF7AD4 /* MFNewPostProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC174617FC429E00DF7AD4 /* MFNewPostProgressView.m */; };
 		81BC174B17FC528100DF7AD4 /* NewPost-Progress-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174917FC528100DF7AD4 /* NewPost-Progress-Selected.png */; };
@@ -353,8 +354,8 @@
 		8119DFED17E06F00007AEDC2 /* MFPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPost.m; path = Sources/MFPost.m; sourceTree = SOURCE_ROOT; };
 		8119DFEF17E06F0C007AEDC2 /* MFMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFMoney.h; path = Sources/MFMoney.h; sourceTree = SOURCE_ROOT; };
 		8119DFF017E06F0C007AEDC2 /* MFMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMoney.m; path = Sources/MFMoney.m; sourceTree = SOURCE_ROOT; };
-		8119DFF217E09E58007AEDC2 /* MFWebResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebResources.h; path = Sources/MFWebResources.h; sourceTree = SOURCE_ROOT; };
-		8119DFF317E09E58007AEDC2 /* MFWebResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebResources.m; path = Sources/MFWebResources.m; sourceTree = SOURCE_ROOT; };
+		8119DFF217E09E58007AEDC2 /* MFWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebCache.h; path = Sources/MFWebCache.h; sourceTree = SOURCE_ROOT; };
+		8119DFF317E09E58007AEDC2 /* MFWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFWebCache.m; path = Sources/MFWebCache.m; sourceTree = SOURCE_ROOT; };
 		8119DFF617E0A1E6007AEDC2 /* MFTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFTracker.h; path = Sources/MFTracker.h; sourceTree = SOURCE_ROOT; };
 		8119DFF717E0A1E6007AEDC2 /* MFTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFTracker.m; path = Sources/MFTracker.m; sourceTree = SOURCE_ROOT; };
 		8119DFF917E0A4D5007AEDC2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -628,6 +629,8 @@
 		81B27B5A17F610AE00F9BC09 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		81B30E2D180DC8E600FF414D /* Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Checkmark.png; path = Images/Checkmark.png; sourceTree = "<group>"; };
 		81B30E2E180DC8E600FF414D /* Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkmark@2x.png"; path = "Images/Checkmark@2x.png"; sourceTree = "<group>"; };
+		81B30E33180DE5AD00FF414D /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = base64.c; path = Sources/Base64/base64.c; sourceTree = SOURCE_ROOT; };
+		81B30E34180DE5AD00FF414D /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = base64.h; path = Sources/Base64/base64.h; sourceTree = SOURCE_ROOT; };
 		81BC174117FB51CA00DF7AD4 /* MFOptionPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFOptionPickerController.h; path = Sources/MFOptionPickerController.h; sourceTree = SOURCE_ROOT; };
 		81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFOptionPickerController.m; path = Sources/MFOptionPickerController.m; sourceTree = SOURCE_ROOT; };
 		81BC174417FB6E7700DF7AD4 /* MFOptionPickerControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFOptionPickerControllerDelegate.h; path = Sources/MFOptionPickerControllerDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -810,6 +813,7 @@
 			isa = PBXGroup;
 			children = (
 				812F4ACB17DEFEC600454747 /* ASIHTTPRequest */,
+				81B30E32180DE5A000FF414D /* Base64 */,
 				812F4ABF17DEFE3600454747 /* JSONKit */,
 				812F4AC417DEFE8600454747 /* MBProgressHUD */,
 				818F915F17DF955F00D1A723 /* MFSideMenu */,
@@ -981,6 +985,8 @@
 			children = (
 				8119DFE617E06E0B007AEDC2 /* MFWebAuthorization.h */,
 				8119DFE717E06E0B007AEDC2 /* MFWebAuthorization.m */,
+				8119DFF217E09E58007AEDC2 /* MFWebCache.h */,
+				8119DFF317E09E58007AEDC2 /* MFWebCache.m */,
 				8119DFD117E06D85007AEDC2 /* MFWebFeed.h */,
 				8119DFD217E06D85007AEDC2 /* MFWebFeed.m */,
 				81233D4D17F8CEA500C27805 /* MFWebPost.h */,
@@ -990,8 +996,6 @@
 				81DE2D2517F5CA6E001D0ADF /* MFWebRequestTransform.h */,
 				8119DFD717E06D9B007AEDC2 /* MFWebResource.h */,
 				8119DFD817E06D9B007AEDC2 /* MFWebResource.m */,
-				8119DFF217E09E58007AEDC2 /* MFWebResources.h */,
-				8119DFF317E09E58007AEDC2 /* MFWebResources.m */,
 				8119DFDA17E06DAA007AEDC2 /* MFWebSession.h */,
 				8119DFDB17E06DAA007AEDC2 /* MFWebSession.m */,
 				8119DFDD17E06DB6007AEDC2 /* MFWebService.h */,
@@ -1285,6 +1289,15 @@
 			name = Cards;
 			sourceTree = "<group>";
 		};
+		81B30E32180DE5A000FF414D /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				81B30E34180DE5AD00FF414D /* base64.h */,
+				81B30E33180DE5AD00FF414D /* base64.c */,
+			);
+			name = Base64;
+			sourceTree = "<group>";
+		};
 		81DE1CF517F391FE00965401 /* UIPhotoGallery */ = {
 			isa = PBXGroup;
 			children = (
@@ -1484,6 +1497,7 @@
 				817723E917FDAB61004A28CC /* MFFormSeparator.m in Sources */,
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
 				8141AB4118047B650087B740 /* NSFileManager+Additions.m in Sources */,
+				81B30E35180DE5AD00FF414D /* base64.c in Sources */,
 				81233D8517F912B000C27805 /* MFSectionHeaderView.m in Sources */,
 				811082C517F8C805005CC8ED /* MFWebService+Feed.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
@@ -1520,7 +1534,7 @@
 				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
 				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
 				81B27B2D17F6103700F9BC09 /* PKView.m in Sources */,
-				8119DFF417E09E58007AEDC2 /* MFWebResources.m in Sources */,
+				8119DFF417E09E58007AEDC2 /* MFWebCache.m in Sources */,
 				8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */,
 				8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */,
 				81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */,
