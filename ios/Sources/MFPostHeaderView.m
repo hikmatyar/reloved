@@ -1,5 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFButton.h"
 #import "MFDatabase+State.h"
 #import "MFImageView.h"
 #import "MFPost.h"
@@ -29,6 +30,20 @@
 
 @implementation MFPostTableViewCell_Header
 
+- (IBAction)thumbnail:(MFButton *)sender
+{
+    NSString *mediaId = sender.userInfo;
+    MFPost *post = self.post;
+    
+    if(post && mediaId) {
+        NSInteger index = [post.mediaIds indexOfObject:mediaId];
+        
+        if(index != NSNotFound) {
+            self.selectedImageIndex = index;
+        }
+    }
+}
+
 #pragma mark MFPostTableViewCell
 
 + (CGFloat)preferredHeight
@@ -51,11 +66,18 @@
     
     for(NSString *mediaId in post.mediaIds) {
         MFImageView *imageView = [[MFImageView alloc] initWithFrame:thumbnailRect];
+        MFButton *imageButton = [MFButton buttonWithType:UIButtonTypeCustom];
         
         imageView.layer.borderWidth = 1.0F;
         imageView.layer.borderColor = [UIColor themeButtonBorderColor].CGColor;
         imageView.URL = [database URLForMedia:mediaId size:kMFMediaSizeThumbnailSmall];
         [m_scrollView addSubview:imageView];
+        
+        imageButton.userInfo = mediaId;
+        imageButton.frame = thumbnailRect;
+        [imageButton addTarget:self action:@selector(thumbnail:) forControlEvents:UIControlEventTouchUpInside];
+        [m_scrollView addSubview:imageButton];
+        
         thumbnailRect.origin.x += thumbnailRect.size.width + 10.0F;
     }
     

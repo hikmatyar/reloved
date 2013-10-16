@@ -214,6 +214,7 @@
 		81B14B8E180ED3C80089D19F /* User-Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B8C180ED3C80089D19F /* User-Placeholder.png */; };
 		81B14B8F180ED3C80089D19F /* User-Placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B8D180ED3C80089D19F /* User-Placeholder@2x.png */; };
 		81B14B92180EE1820089D19F /* UIApplication+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B14B91180EE1820089D19F /* UIApplication+Additions.m */; };
+		81B14B95180EFE9B0089D19F /* MFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B14B94180EFE9B0089D19F /* MFButton.m */; };
 		81B27B0217F60BE200F9BC09 /* MFImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0117F60BE200F9BC09 /* MFImageButton.m */; };
 		81B27B0F17F60F3700F9BC09 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0517F60F3700F9BC09 /* STPCard.m */; };
 		81B27B1017F60F3700F9BC09 /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0717F60F3700F9BC09 /* STPToken.m */; };
@@ -623,6 +624,8 @@
 		81B14B8D180ED3C80089D19F /* User-Placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "User-Placeholder@2x.png"; path = "Images/User-Placeholder@2x.png"; sourceTree = "<group>"; };
 		81B14B90180EE1820089D19F /* UIApplication+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication+Additions.h"; path = "Sources/Additions/UIApplication+Additions.h"; sourceTree = SOURCE_ROOT; };
 		81B14B91180EE1820089D19F /* UIApplication+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+Additions.m"; path = "Sources/Additions/UIApplication+Additions.m"; sourceTree = SOURCE_ROOT; };
+		81B14B93180EFE9B0089D19F /* MFButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFButton.h; path = Sources/MFButton.h; sourceTree = SOURCE_ROOT; };
+		81B14B94180EFE9B0089D19F /* MFButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFButton.m; path = Sources/MFButton.m; sourceTree = SOURCE_ROOT; };
 		81B27B0017F60BE200F9BC09 /* MFImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageButton.h; path = Sources/MFImageButton.h; sourceTree = SOURCE_ROOT; };
 		81B27B0117F60BE200F9BC09 /* MFImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageButton.m; path = Sources/MFImageButton.m; sourceTree = SOURCE_ROOT; };
 		81B27B0417F60F3700F9BC09 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPCard.h; path = Sources/Stripe/STPCard.h; sourceTree = SOURCE_ROOT; };
@@ -970,6 +973,8 @@
 		8120C1AD17E051B900A1C3A9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				81B14B93180EFE9B0089D19F /* MFButton.h */,
+				81B14B94180EFE9B0089D19F /* MFButton.m */,
 				817723D817FDA877004A28CC /* MFForm.h */,
 				817723D917FDA877004A28CC /* MFForm.m */,
 				817723EA17FDADCC004A28CC /* MFFormAccessory.h */,
@@ -1582,6 +1587,7 @@
 				81233D6417F8E01000C27805 /* MFDatabase+Type.m in Sources */,
 				81D0966717FCCC270044BD06 /* MFNewPostController+Condition.m in Sources */,
 				817723DD17FDA9A1004A28CC /* MFFormTextView.m in Sources */,
+				81B14B95180EFE9B0089D19F /* MFButton.m in Sources */,
 				812F4ABA17DEFD4800454747 /* MFApplicationDelegate.m in Sources */,
 				819E12B518057E79008D2D36 /* MFDatabase+Event.m in Sources */,
 				81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */,

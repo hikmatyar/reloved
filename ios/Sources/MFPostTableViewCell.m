@@ -35,8 +35,8 @@
         MFMoney *priceOriginal = [[MFMoney alloc] initWithValue:post.priceOriginal currency:post.currency];
         NSString *title = post.title;
         NSString *desc = [post.notes stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-        NSURL *oldURL = [database URLForMedia:m_post.mediaIds.firstObject size:kMFMediaSizeThumbnailLarge];
-        NSURL *newURL = [database URLForMedia:post.mediaIds.firstObject size:kMFMediaSizeThumbnailLarge];
+        NSURL *oldURL = [database URLForMedia:(m_selectedImageIndex == 0) ? m_post.mediaIds.firstObject : [m_post.mediaIds objectAtIndex:m_selectedImageIndex] size:kMFMediaSizeThumbnailLarge];
+        NSURL *newURL = [database URLForMedia:(m_selectedImageIndex == 0) ? post.mediaIds.firstObject : [m_post.mediaIds objectAtIndex:m_selectedImageIndex] size:kMFMediaSizeThumbnailLarge];
         
         if(!oldURL || !MFEqual(oldURL, newURL)) {
             self.imageView.image = nil;
@@ -71,6 +71,26 @@
     }
 }
 
+@dynamic selectedImageIndex;
+
+- (NSInteger)selectedImageIndex
+{
+    return m_selectedImageIndex;
+}
+
+- (void)setSelectedImageIndex:(NSInteger)selectedImageIndex
+{
+    if(m_selectedImageIndex != selectedImageIndex) {
+        m_selectedImageIndex = selectedImageIndex;
+        self.imageView.image = nil;
+        self.imageView.tag = -1;
+        
+        if(self.superview) {
+            [self prepareForDisplay];
+        }
+    }
+}
+
 #pragma mark MFTableViewCell
 
 - (void)prepareForDisplay
@@ -78,7 +98,7 @@
     UIImageView *imageView = self.imageView;
     
     if(!imageView.image || imageView.tag == -1) {
-        NSURL *URL = [[MFDatabase sharedDatabase] URLForMedia:m_post.mediaIds.firstObject size:kMFMediaSizeThumbnailLarge];
+        NSURL *URL = [[MFDatabase sharedDatabase] URLForMedia:(m_selectedImageIndex == 0) ? m_post.mediaIds.firstObject : [m_post.mediaIds objectAtIndex:m_selectedImageIndex] size:kMFMediaSizeThumbnailLarge];
         
         if(URL != nil) {
             BOOL exists;
