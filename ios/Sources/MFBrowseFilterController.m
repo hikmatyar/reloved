@@ -59,6 +59,7 @@
         }
         
         self.navigationItem.title = NSLocalizedString(@"Browse.Title", nil);
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Browse.Action.SelectAll", nil) style:UIBarButtonItemStylePlain target:self action:@selector(selectAll:)];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Browse.Action.Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
     }
     
@@ -77,6 +78,20 @@
     }
     
     [self.tableView reloadData];
+}
+
+- (IBAction)selectAll:(id)sender
+{
+    switch(m_category) {
+        case kMFBrowseFilterControllerCategorySize:
+            [m_excludeSizes removeAllObjects];
+            [self.tableView reloadData];
+            break;
+        case kMFBrowseFilterControllerCategoryType:
+            [m_excludeTypes removeAllObjects];
+            [self.tableView reloadData];
+            break;
+    }
 }
 
 - (IBAction)done:(id)sender

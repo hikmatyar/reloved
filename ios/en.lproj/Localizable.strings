@@ -2,6 +2,7 @@
 /* Browse Controller */
 
 "Browse.Action.Done" = "Done";
+"Browse.Action.SelectAll" = "Select All";
 "Browse.Action.ShowAll" = "View All";
 "Browse.Action.ShowEditorial" = "Editor's Picks";
 "Browse.Action.ShowNew" = "Just In";
