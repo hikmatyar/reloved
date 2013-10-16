@@ -182,7 +182,7 @@
     UIBarButtonItem *btnDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                              target:self
                                                                              action:@selector(btnDonePressed)];
-    [topViewBar setItems:@[btnDone] animated:YES];
+    [topViewBar setItems:@[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL], btnDone] animated:YES];
     
     topView = [[UIView alloc] initWithFrame:topViewBar.frame];
     topView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
