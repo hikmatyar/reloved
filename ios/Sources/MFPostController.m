@@ -13,6 +13,7 @@
 #import "MFPostSectionView.h"
 #import "MFSize.h"
 #import "MFWebPost.h"
+#import "MFWebController.h"
 #import "UIApplication+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -34,7 +35,7 @@
         m_post = post;
         m_menu = [[NSArray alloc] initWithObjects:
                 MENU_SECTION(NSLocalizedString(@"Post.Label.AboutThisDress", nil),
-                    MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.SizeAndFit", nil), post.size.name, @selector(sizeAndFit:), @"Post-SizeAndFit.png"),
+                    MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.SizeAndFit", nil), post.size.localizedName, @selector(sizeAndFit:), @"Post-SizeAndFit.png"),
                     MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.Condition", nil), post.condition.title, @selector(condition:), @"Post-Condition.png"),
                     MENU_ITEM(NSLocalizedString(@"Post.Action.Description", nil), @selector(description:), @"Post-Description.png")),
                 MENU_SECTION(NSLocalizedString(@"Post.Label.ShippingAndReturns", nil),
@@ -59,6 +60,7 @@
 
 - (IBAction)sizeAndFit:(id)sender
 {
+    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Size-And-Fit" title:((MFMenuItem *)sender).title] animated:YES];
 }
 
 - (IBAction)condition:(id)sender
@@ -71,10 +73,12 @@
 
 - (IBAction)shippingInfo:(id)sender
 {
+    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Shipping-Info" title:((MFMenuItem *)sender).title] animated:YES];
 }
 
 - (IBAction)returnsPolicy:(id)sender
 {
+    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Returns-Policy" title:((MFMenuItem *)sender).title] animated:YES];
 }
 
 - (IBAction)comments:(id)sender

@@ -34,6 +34,14 @@
 @synthesize name = m_name;
 @synthesize identifier = m_identifier;
 
+@dynamic localizedName;
+
+- (NSString *)localizedName
+{
+    // FIXME: Quick hack. Should probably add another column for UK/EU/US measurements.
+    return [m_name stringByReplacingOccurrencesOfString:@"Size" withString:@"UK"];
+}
+
 #pragma mark NSObject
 
 - (NSComparisonResult)compare:(MFSize *)size

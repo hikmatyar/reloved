@@ -15,5 +15,6 @@
 
 @property (nonatomic, retain, readonly) NSString *identifier;
 @property (nonatomic, retain, readonly) NSString *name;
+@property (nonatomic, retain, readonly) NSString *localizedName;
 
 @end

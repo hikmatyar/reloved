@@ -20,6 +20,14 @@ table {
     font-size: 12px;
 }
 
+table td {
+	text-align: center;
+}
+
+table .alternate {
+	background-color: #CCC;
+}
+
 /* Retina */
 
 @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
