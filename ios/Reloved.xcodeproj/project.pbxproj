@@ -195,6 +195,18 @@
 		819E12B218057E68008D2D36 /* MFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12B118057E68008D2D36 /* MFEvent.m */; };
 		819E12B518057E79008D2D36 /* MFDatabase+Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12B418057E79008D2D36 /* MFDatabase+Event.m */; };
 		819E12B818058340008D2D36 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12B718058340008D2D36 /* NSDate+Additions.m */; };
+		81B14B73180EC3A20089D19F /* Post-Comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B67180EC3A20089D19F /* Post-Comments.png */; };
+		81B14B74180EC3A20089D19F /* Post-Comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B68180EC3A20089D19F /* Post-Comments@2x.png */; };
+		81B14B75180EC3A20089D19F /* Post-Condition.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B69180EC3A20089D19F /* Post-Condition.png */; };
+		81B14B76180EC3A20089D19F /* Post-Condition@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6A180EC3A20089D19F /* Post-Condition@2x.png */; };
+		81B14B77180EC3A20089D19F /* Post-Description.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6B180EC3A20089D19F /* Post-Description.png */; };
+		81B14B78180EC3A20089D19F /* Post-Description@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6C180EC3A20089D19F /* Post-Description@2x.png */; };
+		81B14B79180EC3A20089D19F /* Post-Returns.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6D180EC3A20089D19F /* Post-Returns.png */; };
+		81B14B7A180EC3A20089D19F /* Post-Returns@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6E180EC3A20089D19F /* Post-Returns@2x.png */; };
+		81B14B7B180EC3A20089D19F /* Post-ShippingInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6F180EC3A20089D19F /* Post-ShippingInfo.png */; };
+		81B14B7C180EC3A20089D19F /* Post-ShippingInfo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B70180EC3A20089D19F /* Post-ShippingInfo@2x.png */; };
+		81B14B7D180EC3A20089D19F /* Post-SizeAndFit.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B71180EC3A20089D19F /* Post-SizeAndFit.png */; };
+		81B14B7E180EC3A20089D19F /* Post-SizeAndFit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B72180EC3A20089D19F /* Post-SizeAndFit@2x.png */; };
 		81B27B0217F60BE200F9BC09 /* MFImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0117F60BE200F9BC09 /* MFImageButton.m */; };
 		81B27B0F17F60F3700F9BC09 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0517F60F3700F9BC09 /* STPCard.m */; };
 		81B27B1017F60F3700F9BC09 /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0717F60F3700F9BC09 /* STPToken.m */; };
@@ -579,6 +591,18 @@
 		819E12B418057E79008D2D36 /* MFDatabase+Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Event.m"; path = "Sources/MFDatabase+Event.m"; sourceTree = SOURCE_ROOT; };
 		819E12B618058340008D2D36 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Additions.h"; path = "Sources/Additions/NSDate+Additions.h"; sourceTree = SOURCE_ROOT; };
 		819E12B718058340008D2D36 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Additions.m"; path = "Sources/Additions/NSDate+Additions.m"; sourceTree = SOURCE_ROOT; };
+		81B14B67180EC3A20089D19F /* Post-Comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Comments.png"; path = "Images/Post-Comments.png"; sourceTree = "<group>"; };
+		81B14B68180EC3A20089D19F /* Post-Comments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Comments@2x.png"; path = "Images/Post-Comments@2x.png"; sourceTree = "<group>"; };
+		81B14B69180EC3A20089D19F /* Post-Condition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Condition.png"; path = "Images/Post-Condition.png"; sourceTree = "<group>"; };
+		81B14B6A180EC3A20089D19F /* Post-Condition@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Condition@2x.png"; path = "Images/Post-Condition@2x.png"; sourceTree = "<group>"; };
+		81B14B6B180EC3A20089D19F /* Post-Description.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Description.png"; path = "Images/Post-Description.png"; sourceTree = "<group>"; };
+		81B14B6C180EC3A20089D19F /* Post-Description@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Description@2x.png"; path = "Images/Post-Description@2x.png"; sourceTree = "<group>"; };
+		81B14B6D180EC3A20089D19F /* Post-Returns.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Returns.png"; path = "Images/Post-Returns.png"; sourceTree = "<group>"; };
+		81B14B6E180EC3A20089D19F /* Post-Returns@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Returns@2x.png"; path = "Images/Post-Returns@2x.png"; sourceTree = "<group>"; };
+		81B14B6F180EC3A20089D19F /* Post-ShippingInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-ShippingInfo.png"; path = "Images/Post-ShippingInfo.png"; sourceTree = "<group>"; };
+		81B14B70180EC3A20089D19F /* Post-ShippingInfo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-ShippingInfo@2x.png"; path = "Images/Post-ShippingInfo@2x.png"; sourceTree = "<group>"; };
+		81B14B71180EC3A20089D19F /* Post-SizeAndFit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-SizeAndFit.png"; path = "Images/Post-SizeAndFit.png"; sourceTree = "<group>"; };
+		81B14B72180EC3A20089D19F /* Post-SizeAndFit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-SizeAndFit@2x.png"; path = "Images/Post-SizeAndFit@2x.png"; sourceTree = "<group>"; };
 		81B27B0017F60BE200F9BC09 /* MFImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageButton.h; path = Sources/MFImageButton.h; sourceTree = SOURCE_ROOT; };
 		81B27B0117F60BE200F9BC09 /* MFImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageButton.m; path = Sources/MFImageButton.m; sourceTree = SOURCE_ROOT; };
 		81B27B0417F60F3700F9BC09 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPCard.h; path = Sources/Stripe/STPCard.h; sourceTree = SOURCE_ROOT; };
@@ -1115,6 +1139,18 @@
 				8120C15D17DFB2F700A1C3A9 /* Navigation-Menu@2x.png */,
 				812ED33C180E8ED400ABB387 /* Photo-Placeholder.png */,
 				812ED33D180E8ED400ABB387 /* Photo-Placeholder@2x.png */,
+				81B14B67180EC3A20089D19F /* Post-Comments.png */,
+				81B14B68180EC3A20089D19F /* Post-Comments@2x.png */,
+				81B14B69180EC3A20089D19F /* Post-Condition.png */,
+				81B14B6A180EC3A20089D19F /* Post-Condition@2x.png */,
+				81B14B6B180EC3A20089D19F /* Post-Description.png */,
+				81B14B6C180EC3A20089D19F /* Post-Description@2x.png */,
+				81B14B6D180EC3A20089D19F /* Post-Returns.png */,
+				81B14B6E180EC3A20089D19F /* Post-Returns@2x.png */,
+				81B14B6F180EC3A20089D19F /* Post-ShippingInfo.png */,
+				81B14B70180EC3A20089D19F /* Post-ShippingInfo@2x.png */,
+				81B14B71180EC3A20089D19F /* Post-SizeAndFit.png */,
+				81B14B72180EC3A20089D19F /* Post-SizeAndFit@2x.png */,
 				811082A117F8B0E1005CC8ED /* PullToRefresh-Arrow.png */,
 				811082A217F8B0E1005CC8ED /* PullToRefresh-Arrow@2x.png */,
 			);
@@ -1370,6 +1406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8120C14D17DFAD8C00A1C3A9 /* Menu-Home@2x.png in Resources */,
+				81B14B78180EC3A20089D19F /* Post-Description@2x.png in Resources */,
 				81C5A21A180996EA000427A9 /* NewPost-Photos-Placeholder@2x.png in Resources */,
 				81B27B5617F6107100F9BC09 /* placeholder@2x.png in Resources */,
 				81B27B5717F6107100F9BC09 /* visa.png in Resources */,
@@ -1382,12 +1419,14 @@
 				812F4AEE17DF003800454747 /* Icon120.png in Resources */,
 				8120C15E17DFB2F700A1C3A9 /* Navigation-Menu.png in Resources */,
 				8120C19F17E0470300A1C3A9 /* Home-Profile.png in Resources */,
+				81B14B73180EC3A20089D19F /* Post-Comments.png in Resources */,
 				8120C19117E0470300A1C3A9 /* Home-About.png in Resources */,
 				8120C1BA17E0532E00A1C3A9 /* Home-ShopByColor@2x.png in Resources */,
 				8120C1C517E05D7500A1C3A9 /* Home-Checkmark@2x.png in Resources */,
 				81B27B5217F6107100F9BC09 /* jcb@2x.png in Resources */,
 				8120C16217DFB48600A1C3A9 /* Navigation-Filter.png in Resources */,
 				8120C15517DFAD9600A1C3A9 /* Menu-Cart.png in Resources */,
+				81B14B79180EC3A20089D19F /* Post-Returns.png in Resources */,
 				81B27B4D17F6107100F9BC09 /* diners.png in Resources */,
 				81136AD1180C549B009142AE /* Cartoon1@2x.jpg in Resources */,
 				81136AD0180C549B009142AE /* Cartoon1.jpg in Resources */,
@@ -1395,6 +1434,7 @@
 				8120C1A317E0470300A1C3A9 /* Home-ReturnsPolicy.png in Resources */,
 				812F4AB417DEFD0300454747 /* Default@2x.png in Resources */,
 				8120C19917E0470300A1C3A9 /* Home-BrowseNew.png in Resources */,
+				81B14B7E180EC3A20089D19F /* Post-SizeAndFit@2x.png in Resources */,
 				8120C14E17DFAD8C00A1C3A9 /* Menu-News.png in Resources */,
 				81B27B4A17F6107100F9BC09 /* cvc-amex@2x.png in Resources */,
 				81C5A2161809969C000427A9 /* NewPost-Photos-X@2x.png in Resources */,
@@ -1411,18 +1451,22 @@
 				8120C15217DFAD8C00A1C3A9 /* Menu-Sell.png in Resources */,
 				8120C19E17E0470300A1C3A9 /* Home-History@2x.png in Resources */,
 				81B27B4E17F6107100F9BC09 /* diners@2x.png in Resources */,
+				81B14B7A180EC3A20089D19F /* Post-Returns@2x.png in Resources */,
 				81C5A21E18099B52000427A9 /* NewPost-Photos-Thumbnail@2x.png in Resources */,
 				81B27B3317F6106800F9BC09 /* textfield.png in Resources */,
 				8120C1A717E0470300A1C3A9 /* Home-ShippingInfo.png in Resources */,
 				81C5A2151809969C000427A9 /* NewPost-Photos-X.png in Resources */,
+				81B14B76180EC3A20089D19F /* Post-Condition@2x.png in Resources */,
 				811082A317F8B0E1005CC8ED /* PullToRefresh-Arrow.png in Resources */,
 				81B27B5117F6107100F9BC09 /* jcb.png in Resources */,
 				8120C15117DFAD8C00A1C3A9 /* Menu-Search@2x.png in Resources */,
 				81136AD5180C549B009142AE /* Cartoon3@2x.jpg in Resources */,
 				81C5A219180996EA000427A9 /* NewPost-Photos-Placeholder.png in Resources */,
+				81B14B7D180EC3A20089D19F /* Post-SizeAndFit.png in Resources */,
 				8120C16317DFB48600A1C3A9 /* Navigation-Filter@2x.png in Resources */,
 				8120C19C17E0470300A1C3A9 /* Home-Guarantee@2x.png in Resources */,
 				81B27B4C17F6107100F9BC09 /* cvc@2x.png in Resources */,
+				81B14B7C180EC3A20089D19F /* Post-ShippingInfo@2x.png in Resources */,
 				8120C15317DFAD8C00A1C3A9 /* Menu-Sell@2x.png in Resources */,
 				8120C19717E0470300A1C3A9 /* Home-BrowseEditorial.png in Resources */,
 				81B27B5317F6107100F9BC09 /* mastercard.png in Resources */,
@@ -1431,7 +1475,9 @@
 				81B27B4B17F6107100F9BC09 /* cvc.png in Resources */,
 				812F4AED17DF003800454747 /* Icon114.png in Resources */,
 				8120C1A617E0470300A1C3A9 /* Home-Security@2x.png in Resources */,
+				81B14B75180EC3A20089D19F /* Post-Condition.png in Resources */,
 				81BC175017FC52F200DF7AD4 /* NewPost-Progress-Unselected@2x.png in Resources */,
+				81B14B74180EC3A20089D19F /* Post-Comments@2x.png in Resources */,
 				81B30E30180DC8E600FF414D /* Checkmark@2x.png in Resources */,
 				8120C1A517E0470300A1C3A9 /* Home-Security.png in Resources */,
 				812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */,
@@ -1451,6 +1497,7 @@
 				81B27B5017F6107100F9BC09 /* discover@2x.png in Resources */,
 				81136AD3180C549B009142AE /* Cartoon2@2x.jpg in Resources */,
 				8120C1B717E0532500A1C3A9 /* Home-ShopByDress.png in Resources */,
+				81B14B7B180EC3A20089D19F /* Post-ShippingInfo.png in Resources */,
 				81B27B3417F6106800F9BC09 /* textfield@2x.png in Resources */,
 				81DE2D3317F5FCC4001D0ADF /* Disclosure-Indicator.png in Resources */,
 				8120C1A217E0470300A1C3A9 /* Home-Recents@2x.png in Resources */,
@@ -1467,6 +1514,7 @@
 				8120C19217E0470300A1C3A9 /* Home-About@2x.png in Resources */,
 				8120C19817E0470300A1C3A9 /* Home-BrowseEditorial@2x.png in Resources */,
 				8120C14B17DFAD8C00A1C3A9 /* Menu-Cart@2x.png in Resources */,
+				81B14B77180EC3A20089D19F /* Post-Description.png in Resources */,
 				8120C1B817E0532500A1C3A9 /* Home-ShopByDress@2x.png in Resources */,
 				8120C19B17E0470300A1C3A9 /* Home-Guarantee.png in Resources */,
 				81B27B5817F6107100F9BC09 /* visa@2x.png in Resources */,
