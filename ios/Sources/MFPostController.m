@@ -2,6 +2,7 @@
 
 #import "MFBrand.h"
 #import "MFCondition.h"
+#import "MFConditionController.h"
 #import "MFImageView.h"
 #import "MFMediaGalleryController.h"
 #import "MFMenu.h"
@@ -65,6 +66,7 @@
 
 - (IBAction)condition:(id)sender
 {
+    [self.navigationController pushViewController:[[MFConditionController alloc] initWithCondition:m_post.condition] animated:YES];
 }
 
 - (IBAction)description:(id)sender

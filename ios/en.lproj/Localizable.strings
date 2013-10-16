@@ -139,6 +139,10 @@
 "Post.Label.ReturnsPolicy" = "Yes";
 "Post.Label.QAWithSeller" = "Q&A with Seller";
 
+/* Condition Controller */
+
+"Condition.Title" = "Condition";
+
 /* Pull to Refresh View */
 
 "PullToRefresh.Label.Loading" = "Loading...";

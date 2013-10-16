@@ -277,6 +277,7 @@
 		81D0967617FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967517FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m */; };
 		81D0967917FCD45E0044BD06 /* MFNewPostController+Price.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967817FCD45E0044BD06 /* MFNewPostController+Price.m */; };
 		81D0967C17FCD46F0044BD06 /* MFNewPostController+Notes.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967B17FCD46F0044BD06 /* MFNewPostController+Notes.m */; };
+		81D54BB0180F2658002D3449 /* MFConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BAF180F2658002D3449 /* MFConditionController.m */; };
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
@@ -721,6 +722,8 @@
 		81D0967817FCD45E0044BD06 /* MFNewPostController+Price.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+Price.m"; path = "Sources/MFNewPostController+Price.m"; sourceTree = SOURCE_ROOT; };
 		81D0967A17FCD46F0044BD06 /* MFNewPostController+Notes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+Notes.h"; path = "Sources/MFNewPostController+Notes.h"; sourceTree = SOURCE_ROOT; };
 		81D0967B17FCD46F0044BD06 /* MFNewPostController+Notes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+Notes.m"; path = "Sources/MFNewPostController+Notes.m"; sourceTree = SOURCE_ROOT; };
+		81D54BAE180F2658002D3449 /* MFConditionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFConditionController.h; path = Sources/MFConditionController.h; sourceTree = SOURCE_ROOT; };
+		81D54BAF180F2658002D3449 /* MFConditionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFConditionController.m; path = Sources/MFConditionController.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -813,6 +816,8 @@
 				81233D8117F8F9C800C27805 /* MFBrowseFilterController.m */,
 				8120C13817DFA82100A1C3A9 /* MFCartController.h */,
 				8120C13917DFA82100A1C3A9 /* MFCartController.m */,
+				81D54BAE180F2658002D3449 /* MFConditionController.h */,
+				81D54BAF180F2658002D3449 /* MFConditionController.m */,
 				811082A817F8B302005CC8ED /* MFDelta.h */,
 				811082A917F8B302005CC8ED /* MFDelta.m */,
 				812F4ABB17DEFDB400454747 /* MFFeedController.h */,
@@ -1666,6 +1671,7 @@
 				81136AC6180C51E6009142AE /* MFWebService+Checkout.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				81B27B1317F60F3700F9BC09 /* StripeError.m in Sources */,
+				81D54BB0180F2658002D3449 /* MFConditionController.m in Sources */,
 				81B14B81180ECBAE0089D19F /* MFPostSectionView.m in Sources */,
 				811082BC17F8BC57005CC8ED /* MFDatabase+Currency.m in Sources */,
 				81BC174317FB51CA00DF7AD4 /* MFOptionPickerController.m in Sources */,
