@@ -19,4 +19,6 @@
 @property (nonatomic, retain) MFWebFeed *feed;
 @property (nonatomic, retain, readonly) UITableView *tableView;
 
+- (void)feedDidChange;
+
 @end

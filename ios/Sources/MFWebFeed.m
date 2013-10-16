@@ -463,6 +463,13 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     return [m_posts subarrayWithRange:NSMakeRange(0, m_feed.offset)];
 }
 
+@dynamic numberOfResults;
+
+- (NSInteger)numberOfResults
+{
+    return m_feed.count;
+}
+
 @dynamic kind;
 
 - (MFWebFeedKind)kind

@@ -48,6 +48,41 @@
     }
 }
 
+- (NSURL *)URLForMedia:(NSString *)mediaId size:(MFMediaSize)size
+{
+    if(mediaId) {
+        BOOL retina = ([UIScreen mainScreen].scale > 1.5F) ? YES : NO;
+        NSURL *prefix = [m_state objectForKey:KEY_PREFIX];
+        
+        if(!prefix) {
+            prefix = [NSURL URLWithString:@"http://api.relovedapp.co.uk/media/download/"];
+        }
+        
+        switch(size) {
+            case kMFMediaSizeOriginal:
+                // Do nothing
+                break;
+            case kMFMediaSizeThumbnailSmall:
+                mediaId = [mediaId stringByAppendingString:(retina) ? @"?size=t2" : @"?size=t1"];
+                break;
+            case kMFMediaSizeThumbnailLarge:
+                mediaId = [mediaId stringByAppendingString:(retina) ? @"?size=t4" : @"?size=t3"];
+                break;
+            case kMFMediaSizePhoto:
+                if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                    mediaId = [mediaId stringByAppendingString:(retina) ? @"?size=i4" : @"?size=i3"];
+                } else {
+                    mediaId = [mediaId stringByAppendingString:(retina) ? @"?size=i2" : @"?size=i1"];
+                }
+                break;
+        }
+        
+        return ((NSURL *)[NSURL URLWithString:mediaId relativeToURL:prefix]).absoluteURL;
+    }
+    
+    return nil;
+}
+
 - (NSURL *)URLForString:(NSString *)str
 {
     return (str) ? ((NSURL *)[NSURL URLWithString:str relativeToURL:[m_state objectForKey:KEY_PREFIX]]).absoluteURL : nil;

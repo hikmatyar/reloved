@@ -14,6 +14,7 @@
 
 #define KEY_BRANDS @"brands"
 #define KEY_CHANGES @"changes"
+#define KEY_COUNT @"results"
 #define KEY_COLORS @"colors"
 #define KEY_COUNTRIES @"countries"
 #define KEY_CURSOR @"cursor"
@@ -175,6 +176,7 @@
         }
         
         m_changes = [attributes arrayForKey:KEY_CHANGES];
+        m_count = [attributes integerForKey:KEY_COUNT];
         m_cursor = ([cursor isEqualToString:@"end"]) ? kMFFeedCursorEnd : (([cursor isEqualToString:@"middle"]) ? kMFFeedCursorMiddle : kMFFeedCursorStart);
         m_currencies = currencies;
         m_prefix = (prefix) ? [NSURL URLWithString:prefix] : nil;
@@ -234,11 +236,16 @@
         [attributes setValue:m_prefix.absoluteString forKey:KEY_PREFIX];
     }
     
+    if(m_count != 0) {
+        [attributes setValue:[NSNumber numberWithInteger:m_count] forKey:KEY_COUNT];
+    }
+    
     return attributes;
 }
 
 @synthesize brands = m_brands;
 @synthesize changes = m_changes;
+@synthesize count = m_count;
 @synthesize countries = m_countries;
 @synthesize deliveries = m_deliveries;
 @synthesize events = m_events;

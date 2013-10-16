@@ -11,6 +11,7 @@ typedef enum _MFFeedCursor {
 @interface MFFeed : NSObject <MFWebRequestTransform>
 {
     @private
+    NSInteger m_count;
     NSArray *m_brands;
     NSArray *m_changes;
     NSArray *m_colors;
@@ -37,6 +38,7 @@ typedef enum _MFFeedCursor {
 @property (nonatomic, retain, readonly) NSArray *brands;
 @property (nonatomic, retain, readonly) NSArray *changes;
 @property (nonatomic, retain, readonly) NSArray *colors;
+@property (nonatomic, assign, readonly) NSInteger count;
 @property (nonatomic, retain, readonly) NSArray *deliveries;
 @property (nonatomic, assign, readonly) NSInteger offset;
 @property (nonatomic, retain, readonly) NSArray *countries;

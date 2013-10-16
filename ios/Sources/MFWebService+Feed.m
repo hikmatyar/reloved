@@ -31,7 +31,7 @@
                                                                   [NSNumber numberWithInteger:limit], @"limit",
                                                                   (identifier) ? identifier : [NSNull null], @"id",
                                                                   (globals) ? globals : [NSNull null], @"globals",
-                                                                  nil]]; //state, @"state", nil]];
+                                                                  state, @"state", nil]];
     
     request.block = block;
     request.transform = [MFFeed class];

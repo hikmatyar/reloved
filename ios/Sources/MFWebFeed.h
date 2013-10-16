@@ -46,6 +46,7 @@ extern NSString *MFWebFeedDidChangeNotification;
 @property (nonatomic, retain, readonly) NSString *identifier;
 @property (nonatomic, assign, readonly) MFWebFeedKind kind;
 @property (nonatomic, retain, readonly) NSArray *posts;
+@property (nonatomic, assign, readonly) NSInteger numberOfResults;
 
 - (void)loadForward;
 - (void)loadBackward;

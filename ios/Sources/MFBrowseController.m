@@ -117,6 +117,14 @@
     }
 }
 
+#pragma mark MFFeedController
+
+- (void)feedDidChange
+{
+    [self updateScopeLabel:self.feed.numberOfResults];
+    [super feedDidChange];
+}
+
 #pragma mark UIViewController
 
 - (void)loadView

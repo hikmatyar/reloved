@@ -186,7 +186,13 @@
         } else {
             [tableView reloadData];
         }
+        
+        [self feedDidChange];
     }
+}
+
+- (void)feedDidChange
+{
 }
 
 #pragma mark MFPullToLoadMoreViewDelegate
