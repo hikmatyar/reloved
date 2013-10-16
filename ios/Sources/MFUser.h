@@ -5,6 +5,7 @@
 @interface MFUser : NSObject
 {
     @private
+    NSDate *m_date;
     NSString *m_identifier;
     NSString *m_media;
     NSString *m_name;
@@ -14,6 +15,7 @@
 
 @property (nonatomic, retain, readonly) NSDictionary *attributes;
 
+@property (nonatomic, retain, readonly) NSDate *date;
 @property (nonatomic, retain, readonly) NSString *identifier;
 @property (nonatomic, retain, readonly) NSString *media;
 @property (nonatomic, retain, readonly) NSString *name;
