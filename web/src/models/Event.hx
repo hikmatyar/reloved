@@ -8,6 +8,7 @@ import saffron.tools.JSON;
 private typedef EventRow = {
     var id : DataIdentifier;
     var user_id : DataIdentifier;
+    var media_id : DataIdentifier;
     var created : Int;
     var type : Int;
     var link : String;
@@ -21,17 +22,18 @@ class Event {
     
     public var id(default, null) : DataIdentifier;
     public var userId(default, null) : DataIdentifier;
+    public var mediaId(default, null) : DataIdentifier;
     public var created(default, null) : Int;
     public var type(default, null) : Int;
     public var link(default, null) : String;
     public var meta(default, null) : String;
     
     public static function logComment(userId : DataIdentifier, postId : DataIdentifier, commentId : DataIdentifier) : Void {
-    	Event.create(Event.type_comment, userId, '/post/' + postId + '#' + commentId, null, null);
+    	Event.create(Event.type_comment, userId, null, '/post/' + postId + '#' + commentId, null, null);
     }
     
-    public static function create(type : Int, userId : DataIdentifier, link : String, meta : String, fn : DataError -> Void) : Void {
-    	Data.query('INSERT INTO events (user_id, type, link, meta, created) VALUES (?, ?, ?, ?, UNIX_TIMESTAMP(CURRENT_TIMESTAMP))', [ userId, type, link, meta ], function(err, result) {
+    public static function create(type : Int, userId : DataIdentifier, mediaId : DataIdentifier, link : String, meta : String, fn : DataError -> Void) : Void {
+    	Data.query('INSERT INTO events (user_id, media_id, type, link, meta, created) VALUES (?, ?, ?, ?, ?, UNIX_TIMESTAMP(CURRENT_TIMESTAMP))', [ userId, mediaId, type, link, meta ], function(err, result) {
 			if(fn != null) {
 				fn(err);
 			}
@@ -59,6 +61,7 @@ class Event {
     private function new(row : EventRow) {
         this.id = row.id;
         this.userId = row.user_id;
+        this.mediaId = row.media_id;
         this.created = row.created;
         this.type = row.type;
         this.link = row.link;
@@ -66,6 +69,6 @@ class Event {
     }
     
     public function json() : String {
-        return JSON.stringify({ id: this.id, type: this.type, date: new saffron.tools.Date(this.created * 1000).toISOString(), link: this.link, meta: this.meta });
+        return JSON.stringify({ id: this.id, media: this.mediaId, type: this.type, date: new saffron.tools.Date(this.created * 1000).toISOString(), link: this.link, meta: this.meta });
     }
 }
