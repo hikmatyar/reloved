@@ -1,6 +1,8 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFBrand.h"
+#import "MFImageView.h"
+#import "MFMediaGalleryController.h"
 #import "MFMenu.h"
 #import "MFMenuItem.h"
 #import "MFPost.h"
@@ -82,7 +84,14 @@
 
 - (void)headerView:(MFPostHeaderView *)headerView didSelectMedia:(NSString *)media
 {
+    MFMediaGalleryController *controller = [[MFMediaGalleryController alloc] init];
+    MFPost *post = m_post.post;
     
+    controller.mediaIds = post.mediaIds;
+    controller.initialIndex = [post.mediaIds indexOfObject:media];
+    
+    [self.navigationController presentViewController:controller animated:YES completion:NULL];
+    //[self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark MFPostFooterViewDelegate

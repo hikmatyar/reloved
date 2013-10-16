@@ -215,6 +215,7 @@
 		81B14B8F180ED3C80089D19F /* User-Placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B8D180ED3C80089D19F /* User-Placeholder@2x.png */; };
 		81B14B92180EE1820089D19F /* UIApplication+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B14B91180EE1820089D19F /* UIApplication+Additions.m */; };
 		81B14B95180EFE9B0089D19F /* MFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B14B94180EFE9B0089D19F /* MFButton.m */; };
+		81B14B98180F035A0089D19F /* MFMediaGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B14B97180F035A0089D19F /* MFMediaGalleryController.m */; };
 		81B27B0217F60BE200F9BC09 /* MFImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0117F60BE200F9BC09 /* MFImageButton.m */; };
 		81B27B0F17F60F3700F9BC09 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0517F60F3700F9BC09 /* STPCard.m */; };
 		81B27B1017F60F3700F9BC09 /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0717F60F3700F9BC09 /* STPToken.m */; };
@@ -626,6 +627,8 @@
 		81B14B91180EE1820089D19F /* UIApplication+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+Additions.m"; path = "Sources/Additions/UIApplication+Additions.m"; sourceTree = SOURCE_ROOT; };
 		81B14B93180EFE9B0089D19F /* MFButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFButton.h; path = Sources/MFButton.h; sourceTree = SOURCE_ROOT; };
 		81B14B94180EFE9B0089D19F /* MFButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFButton.m; path = Sources/MFButton.m; sourceTree = SOURCE_ROOT; };
+		81B14B96180F035A0089D19F /* MFMediaGalleryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFMediaGalleryController.h; path = Sources/MFMediaGalleryController.h; sourceTree = SOURCE_ROOT; };
+		81B14B97180F035A0089D19F /* MFMediaGalleryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMediaGalleryController.m; path = Sources/MFMediaGalleryController.m; sourceTree = SOURCE_ROOT; };
 		81B27B0017F60BE200F9BC09 /* MFImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageButton.h; path = Sources/MFImageButton.h; sourceTree = SOURCE_ROOT; };
 		81B27B0117F60BE200F9BC09 /* MFImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageButton.m; path = Sources/MFImageButton.m; sourceTree = SOURCE_ROOT; };
 		81B27B0417F60F3700F9BC09 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPCard.h; path = Sources/Stripe/STPCard.h; sourceTree = SOURCE_ROOT; };
@@ -818,6 +821,8 @@
 				8120C1CD17E0685A00A1C3A9 /* MFHistoryController.m */,
 				8120C13217DFA7AD00A1C3A9 /* MFHomeController.h */,
 				8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */,
+				81B14B96180F035A0089D19F /* MFMediaGalleryController.h */,
+				81B14B97180F035A0089D19F /* MFMediaGalleryController.m */,
 				818F917417DF95F400D1A723 /* MFMenuController.h */,
 				818F917517DF95F400D1A723 /* MFMenuController.m */,
 				8120C17217E03CB900A1C3A9 /* MFMenu.h */,
@@ -1616,6 +1621,7 @@
 				81233D4C17F8CD7900C27805 /* MFPostTableViewCell.m in Sources */,
 				8141AB3E180474070087B740 /* UIViewController+Additions.m in Sources */,
 				8119DFD917E06D9B007AEDC2 /* MFWebResource.m in Sources */,
+				81B14B98180F035A0089D19F /* MFMediaGalleryController.m in Sources */,
 				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,
 				811082A717F8B299005CC8ED /* NSArray+Additions.m in Sources */,
 				8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */,
