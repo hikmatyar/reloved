@@ -135,6 +135,8 @@
 "Post.Format.Email.Body" = "(TDB)";
 "Post.Label.AboutThisDress" = "About This Dress";
 "Post.Label.ShippingAndReturns" = "Shipping & Returns";
+"Post.Label.ShippingInfo" = "3-5 days";
+"Post.Label.ReturnsPolicy" = "Yes";
 "Post.Label.QAWithSeller" = "Q&A with Seller";
 
 /* Pull to Refresh View */

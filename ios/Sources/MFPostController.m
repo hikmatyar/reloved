@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFBrand.h"
+#import "MFCondition.h"
 #import "MFImageView.h"
 #import "MFMediaGalleryController.h"
 #import "MFMenu.h"
@@ -33,12 +34,12 @@
         m_post = post;
         m_menu = [[NSArray alloc] initWithObjects:
                 MENU_SECTION(NSLocalizedString(@"Post.Label.AboutThisDress", nil),
-                    MENU_ITEM(NSLocalizedString(@"Post.Action.SizeAndFit", nil), @selector(sizeAndFit:), @"Post-SizeAndFit.png"),
-                    MENU_ITEM(NSLocalizedString(@"Post.Action.Condition", nil), @selector(condition:), @"Post-Condition.png"),
+                    MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.SizeAndFit", nil), post.size.name, @selector(sizeAndFit:), @"Post-SizeAndFit.png"),
+                    MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.Condition", nil), post.condition.title, @selector(condition:), @"Post-Condition.png"),
                     MENU_ITEM(NSLocalizedString(@"Post.Action.Description", nil), @selector(description:), @"Post-Description.png")),
                 MENU_SECTION(NSLocalizedString(@"Post.Label.ShippingAndReturns", nil),
-                    MENU_ITEM(NSLocalizedString(@"Post.Action.ShippingInfo", nil), @selector(shippingInfo:), @"Post-ShippingInfo.png"),
-                    MENU_ITEM(NSLocalizedString(@"Post.Action.ReturnsPolicy", nil), @selector(returnsPolicy:), @"Post-Returns.png")),
+                    MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.ShippingInfo", nil), NSLocalizedString(@"Post.Label.ShippingInfo", nil), @selector(shippingInfo:), @"Post-ShippingInfo.png"),
+                    MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.ReturnsPolicy", nil), NSLocalizedString(@"Post.Label.ReturnsPolicy", nil), @selector(returnsPolicy:), @"Post-Returns.png")),
                 MENU_SECTION(NSLocalizedString(@"Post.Label.QAWithSeller", nil),
                     MENU_ITEM(NSLocalizedString(@"Post.Action.Comments", nil), @selector(comments:), @"Post-Comments.png")), nil];
     }
@@ -129,14 +130,16 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     
     if(!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_IDENTIFIER];
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
+        cell.detailTextLabel.font = [UIFont themeFontOfSize:13.0F];
     }
     
     cell.imageView.image = (item.image) ? [UIImage imageNamed:item.image] : nil;
     cell.textLabel.text = item.title;
+    cell.detailTextLabel.text = item.subtitle;
     
     return cell;
 }

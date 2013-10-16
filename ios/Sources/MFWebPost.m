@@ -2,6 +2,7 @@
 
 #import "MFBrand.h"
 #import "MFColor.h"
+#import "MFCondition.h"
 #import "MFDatabase+Brand.h"
 #import "MFDatabase+Color.h"
 #import "MFDatabase+Size.h"
@@ -49,6 +50,21 @@
 - (NSArray *)colors
 {
     return [[MFDatabase sharedDatabase] colorsForIdentifiers:m_post.colorIds];
+}
+
+@dynamic condition;
+
+- (MFCondition *)condition
+{
+    NSString *identifier = m_post.conditionId;
+    
+    for(MFCondition *condition in [MFCondition allConditions]) {
+        if([identifier isEqualToString:condition.identifier]) {
+            return condition;
+        }
+    }
+    
+    return nil;
 }
 
 @dynamic size;

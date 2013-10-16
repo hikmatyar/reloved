@@ -2,7 +2,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class MFBrand, MFPost, MFSize;
+@class MFBrand, MFCondition, MFPost, MFSize;
 
 @interface MFWebPost : NSObject
 {
@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain, readonly) MFBrand *brand;
 @property (nonatomic, retain, readonly) NSArray *colors;
+@property (nonatomic, retain, readonly) MFCondition *condition;
 @property (nonatomic, retain, readonly) MFPost *post;
 @property (nonatomic, retain, readonly) MFSize *size;
 @property (nonatomic, retain, readonly) NSArray *types;
