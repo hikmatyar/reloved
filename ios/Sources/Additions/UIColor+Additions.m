@@ -79,6 +79,11 @@
     return [self themeInputTextPlaceholderColor];
 }
 
++ (UIColor *)themeImageBorderColor
+{
+    return [self colorWithString:@"#e4e4e4"];
+}
+
 + (UIColor *)themeInputBackgroundColor
 {
     return [self colorWithString:@"#ffffff"];

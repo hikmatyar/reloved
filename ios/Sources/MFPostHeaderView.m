@@ -74,7 +74,7 @@
         MFButton *imageButton = [MFButton buttonWithType:UIButtonTypeCustom];
         
         imageView.layer.borderWidth = 1.0F;
-        imageView.layer.borderColor = [UIColor themeButtonBorderColor].CGColor;
+        imageView.layer.borderColor = [UIColor themeImageBorderColor].CGColor;
         imageView.URL = [database URLForMedia:mediaId size:kMFMediaSizeThumbnailSmall];
         [m_scrollView addSubview:imageView];
         
