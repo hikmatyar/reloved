@@ -66,7 +66,7 @@
         button = [UIButton themeButtonWithFrame:CGRectInset(CGRectMake(floorf(1.0F / 2.0F * frame.size.width), PADDING_TOP, floorf(1.0F / 2.0F * frame.size.width), frame.size.height - PADDING_TOP), PADDING, PADDING)];
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         button.tag = TAG_RIGHTBUTTON;
-        [button addTarget:self action:@selector(middleButton:) forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self action:@selector(rightButton:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:NSLocalizedString(@"Post.Action.Share", nil) forState:UIControlStateNormal];
         [self addSubview:button];
     }
