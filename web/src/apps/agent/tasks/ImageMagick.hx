@@ -34,8 +34,10 @@ class ImageMagick extends Task {
         
         if(this.parameters == null) {
             this.parameters = new Array<ImageMagickParameter>();
-            this.parameters.push({ id: 't1', width: 32, height: 32, format: ImageMagick.format_jpg, crop: true });
-            this.parameters.push({ id: 't2', width: 64, height: 64, format: ImageMagick.format_jpg, crop: true });
+            this.parameters.push({ id: 't1', width: 64, height: 64, format: ImageMagick.format_jpg, crop: true });
+            this.parameters.push({ id: 't2', width: 128, height: 128, format: ImageMagick.format_jpg, crop: true });
+            this.parameters.push({ id: 't3', width: 320, height: 320, format: ImageMagick.format_jpg, crop: true });
+            this.parameters.push({ id: 't4', width: 640, height: 640, format: ImageMagick.format_jpg, crop: true });
             this.parameters.push({ id: 'i1', width: 320, height: 480, format: ImageMagick.format_jpg, crop: false });
             this.parameters.push({ id: 'i2', width: 640, height: 1136, format: ImageMagick.format_jpg, crop: false });
             this.parameters.push({ id: 'i3', width: 1024, height: 1024, format: ImageMagick.format_jpg, crop: false });
