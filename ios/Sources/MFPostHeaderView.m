@@ -24,7 +24,10 @@
 {
     @private
     UIScrollView *m_scrollView;
+    UIButton *m_imageButton;
 }
+
+@property (nonatomic, retain, readonly) UIButton *imageButton;
 
 @end
 
@@ -43,6 +46,8 @@
         }
     }
 }
+
+@synthesize imageButton = m_imageButton;
 
 #pragma mark MFPostTableViewCell
 
@@ -95,6 +100,9 @@
         m_scrollView.directionalLockEnabled = YES;
         m_scrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:m_scrollView];
+        
+        m_imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self addSubview:m_imageButton];
     }
     
     return self;
@@ -107,6 +115,7 @@
     [super layoutSubviews];
     
     self.imageView.frame = CGRectMake(10.0F, 0.0F, 300.0F, 285.0F);
+    m_imageButton.frame = self.imageView.frame;
     m_scrollView.frame = CGRectMake(0.0F, 296.0F, 320.0F, 40.0F);
     self.textLabel.frame = CGRectMake(10.0F, 290.0F + 56.0F, 300.0F, 180.0F);
 }
@@ -182,6 +191,18 @@
 - (void)setPost:(MFPost *)post
 {
     m_cell.post = post;
+}
+
+- (IBAction)openImage:(id)sender
+{
+    if([m_delegate respondsToSelector:@selector(headerView:didSelectMedia:)]) {
+        NSInteger selectedIndex = m_cell.selectedImageIndex;
+        NSString *mediaId = (selectedIndex == 0) ? m_cell.post.mediaIds.firstObject : [m_cell.post.mediaIds objectAtIndex:selectedIndex];
+        
+        if(mediaId) {
+            [m_delegate headerView:self didSelectMedia:mediaId];
+        }
+    }
 }
 
 #pragma mark MFTableView
@@ -282,6 +303,7 @@
         m_resources = [[NSMutableDictionary alloc] init];
         m_cell = [[MFPostTableViewCell_Header alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         m_cell.frame = CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height);
+        [((MFPostTableViewCell_Header *)m_cell).imageButton addTarget:self action:@selector(openImage:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:m_cell];
     }
     

@@ -80,6 +80,13 @@
 
 #pragma mark MFPostFooterViewDelegate
 
+- (void)headerView:(MFPostHeaderView *)headerView didSelectMedia:(NSString *)media
+{
+    
+}
+
+#pragma mark MFPostFooterViewDelegate
+
 - (void)footerViewDidSelectSave:(MFPostFooterView *)footerView
 {
 }
