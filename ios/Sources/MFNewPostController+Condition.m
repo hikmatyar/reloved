@@ -1,7 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFCondition.h"
-#import "MFNewPostConditionTableViewCell.h"
+#import "MFConditionTableViewCell.h"
 #import "MFNewPostController+Condition.h"
 #import "MFNewPostPageView.h"
 #import "MFPageView.h"
@@ -35,7 +35,7 @@
         m_tableView.dataSource = self;
         m_tableView.delegate = self;
         m_tableView.separatorColor = [UIColor themeSeparatorColor];
-        m_tableView.rowHeight = [MFNewPostConditionTableViewCell preferredHeight];
+        m_tableView.rowHeight = [MFConditionTableViewCell preferredHeight];
         
         if([m_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
             m_tableView.separatorInset = UIEdgeInsetsMake(0.0F, 0.0F, 0.0F, 0.0F);
@@ -62,10 +62,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MFCondition *condition = [m_conditions objectAtIndex:indexPath.row];
-    MFNewPostConditionTableViewCell *cell = (MFNewPostConditionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+    MFConditionTableViewCell *cell = (MFConditionTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     
     if(!cell) {
-        cell = [[MFNewPostConditionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
+        cell = [[MFConditionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
     }
     
     cell.text = condition.title;

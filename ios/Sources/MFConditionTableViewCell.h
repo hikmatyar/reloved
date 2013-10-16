@@ -2,7 +2,7 @@
 
 #import "MFTableViewCell.h"
 
-@interface MFNewPostConditionTableViewCell : MFTableViewCell
+@interface MFConditionTableViewCell : MFTableViewCell
 {
     @private
     NSString *m_text;

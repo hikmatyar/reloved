@@ -270,7 +270,7 @@
 		81C5A21E18099B52000427A9 /* NewPost-Photos-Thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C5A21C18099B52000427A9 /* NewPost-Photos-Thumbnail@2x.png */; };
 		81D0966417FCA6CD0044BD06 /* MFPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966317FCA6CD0044BD06 /* MFPageView.m */; };
 		81D0966717FCCC270044BD06 /* MFNewPostController+Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966617FCCC270044BD06 /* MFNewPostController+Condition.m */; };
-		81D0966A17FCCE330044BD06 /* MFNewPostConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966917FCCE330044BD06 /* MFNewPostConditionTableViewCell.m */; };
+		81D0966A17FCCE330044BD06 /* MFConditionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966917FCCE330044BD06 /* MFConditionTableViewCell.m */; };
 		81D0966D17FCCFD00044BD06 /* MFCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966C17FCCFD00044BD06 /* MFCondition.m */; };
 		81D0967017FCD43D0044BD06 /* MFNewPostController+Details.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0966F17FCD43D0044BD06 /* MFNewPostController+Details.m */; };
 		81D0967317FCD4470044BD06 /* MFNewPostController+Photos.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967217FCD4470044BD06 /* MFNewPostController+Photos.m */; };
@@ -707,8 +707,8 @@
 		81D0966317FCA6CD0044BD06 /* MFPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPageView.m; path = Sources/MFPageView.m; sourceTree = SOURCE_ROOT; };
 		81D0966517FCCC270044BD06 /* MFNewPostController+Condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+Condition.h"; path = "Sources/MFNewPostController+Condition.h"; sourceTree = SOURCE_ROOT; };
 		81D0966617FCCC270044BD06 /* MFNewPostController+Condition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+Condition.m"; path = "Sources/MFNewPostController+Condition.m"; sourceTree = SOURCE_ROOT; };
-		81D0966817FCCE330044BD06 /* MFNewPostConditionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostConditionTableViewCell.h; path = Sources/MFNewPostConditionTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		81D0966917FCCE330044BD06 /* MFNewPostConditionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostConditionTableViewCell.m; path = Sources/MFNewPostConditionTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		81D0966817FCCE330044BD06 /* MFConditionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFConditionTableViewCell.h; path = Sources/MFConditionTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		81D0966917FCCE330044BD06 /* MFConditionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFConditionTableViewCell.m; path = Sources/MFConditionTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		81D0966B17FCCFD00044BD06 /* MFCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCondition.h; path = Sources/MFCondition.h; sourceTree = SOURCE_ROOT; };
 		81D0966C17FCCFD00044BD06 /* MFCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCondition.m; path = Sources/MFCondition.m; sourceTree = SOURCE_ROOT; };
 		81D0966E17FCD43D0044BD06 /* MFNewPostController+Details.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+Details.h"; path = "Sources/MFNewPostController+Details.h"; sourceTree = SOURCE_ROOT; };
@@ -980,6 +980,8 @@
 			children = (
 				81B14B93180EFE9B0089D19F /* MFButton.h */,
 				81B14B94180EFE9B0089D19F /* MFButton.m */,
+				81D0966817FCCE330044BD06 /* MFConditionTableViewCell.h */,
+				81D0966917FCCE330044BD06 /* MFConditionTableViewCell.m */,
 				817723D817FDA877004A28CC /* MFForm.h */,
 				817723D917FDA877004A28CC /* MFForm.m */,
 				817723EA17FDADCC004A28CC /* MFFormAccessory.h */,
@@ -1007,8 +1009,6 @@
 				81B27B0117F60BE200F9BC09 /* MFImageButton.m */,
 				8119DFC817E06BCC007AEDC2 /* MFImageView.h */,
 				8119DFC917E06BCC007AEDC2 /* MFImageView.m */,
-				81D0966817FCCE330044BD06 /* MFNewPostConditionTableViewCell.h */,
-				81D0966917FCCE330044BD06 /* MFNewPostConditionTableViewCell.m */,
 				8141AB4218048E550087B740 /* MFNewPostPageView.h */,
 				8141AB4318048E550087B740 /* MFNewPostPageView.m */,
 				8151359117FF4E3500140E11 /* MFNewPostPhotoView.h */,
@@ -1719,7 +1719,7 @@
 				81B27B2B17F6103700F9BC09 /* PKTextField.m in Sources */,
 				8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */,
 				81233D7617F8F1BC00C27805 /* MFUser.m in Sources */,
-				81D0966A17FCCE330044BD06 /* MFNewPostConditionTableViewCell.m in Sources */,
+				81D0966A17FCCE330044BD06 /* MFConditionTableViewCell.m in Sources */,
 				812F4AC717DEFE9400454747 /* Reachability.m in Sources */,
 				81233D6A17F8E39100C27805 /* MFDatabaseProxy.m in Sources */,
 				81D0967917FCD45E0044BD06 /* MFNewPostController+Price.m in Sources */,

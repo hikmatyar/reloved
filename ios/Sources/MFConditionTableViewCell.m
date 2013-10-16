@@ -1,6 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
-#import "MFNewPostConditionTableViewCell.h"
+#import "MFConditionTableViewCell.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
@@ -8,7 +8,7 @@
 #define TEXT_HEIGHT 44.0F
 #define COMMENT_HEIGHT 20.0F
 
-@implementation MFNewPostConditionTableViewCell
+@implementation MFConditionTableViewCell
 
 + (CGFloat)preferredHeight
 {
