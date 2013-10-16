@@ -74,6 +74,14 @@
                                                   otherButtonTitles:NSLocalizedString(@"Post.Alert.AddedToCart.Action.OK", nil), nil];
         
         [alertView show];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.RemovedFromCart.Title", nil)
+                                                            message:NSLocalizedString(@"Post.Alert.RemovedFromCart.Message", nil)
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:NSLocalizedString(@"Post.Alert.RemovedFromCart.Action.OK", nil), nil];
+        
+        [alertView show];
     }
 }
 
@@ -140,6 +148,14 @@
                                                            delegate:nil
                                                   cancelButtonTitle:nil
                                                   otherButtonTitles:NSLocalizedString(@"Post.Alert.Saved.Action.OK", nil), nil];
+        
+        [alertView show];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.Unsaved.Title", nil)
+                                                            message:NSLocalizedString(@"Post.Alert.Unsaved.Message", nil)
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:NSLocalizedString(@"Post.Alert.Unsaved.Action.OK", nil), nil];
         
         [alertView show];
     }
