@@ -41,7 +41,7 @@
                 MENU_SECTION(NSLocalizedString(@"Post.Label.AboutThisDress", nil),
                     MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.SizeAndFit", nil), post.size.localizedName, @selector(sizeAndFit:), @"Post-SizeAndFit.png"),
                     MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.Condition", nil), post.condition.title, @selector(condition:), @"Post-Condition.png"),
-                    MENU_ITEM(NSLocalizedString(@"Post.Action.Material", nil), @selector(material:), @"Post-Description.png")),
+                    MENU_ITEM(NSLocalizedString(@"Post.Action.Material", nil), @selector(material:), @"Post-Material.png")),
                 MENU_SECTION(NSLocalizedString(@"Post.Label.ShippingAndReturns", nil),
                     MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.ShippingInfo", nil), NSLocalizedString(@"Post.Label.ShippingInfo", nil), @selector(shippingInfo:), @"Post-ShippingInfo.png"),
                     MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.ReturnsPolicy", nil), NSLocalizedString(@"Post.Label.ReturnsPolicy", nil), @selector(returnsPolicy:), @"Post-Returns.png")),

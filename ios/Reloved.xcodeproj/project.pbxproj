@@ -199,8 +199,8 @@
 		81B14B74180EC3A20089D19F /* Post-Comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B68180EC3A20089D19F /* Post-Comments@2x.png */; };
 		81B14B75180EC3A20089D19F /* Post-Condition.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B69180EC3A20089D19F /* Post-Condition.png */; };
 		81B14B76180EC3A20089D19F /* Post-Condition@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6A180EC3A20089D19F /* Post-Condition@2x.png */; };
-		81B14B77180EC3A20089D19F /* Post-Description.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6B180EC3A20089D19F /* Post-Description.png */; };
-		81B14B78180EC3A20089D19F /* Post-Description@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6C180EC3A20089D19F /* Post-Description@2x.png */; };
+		81B14B77180EC3A20089D19F /* Post-Material.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6B180EC3A20089D19F /* Post-Material.png */; };
+		81B14B78180EC3A20089D19F /* Post-Material@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6C180EC3A20089D19F /* Post-Material@2x.png */; };
 		81B14B79180EC3A20089D19F /* Post-Returns.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6D180EC3A20089D19F /* Post-Returns.png */; };
 		81B14B7A180EC3A20089D19F /* Post-Returns@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6E180EC3A20089D19F /* Post-Returns@2x.png */; };
 		81B14B7B180EC3A20089D19F /* Post-ShippingInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B6F180EC3A20089D19F /* Post-ShippingInfo.png */; };
@@ -609,8 +609,8 @@
 		81B14B68180EC3A20089D19F /* Post-Comments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Comments@2x.png"; path = "Images/Post-Comments@2x.png"; sourceTree = "<group>"; };
 		81B14B69180EC3A20089D19F /* Post-Condition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Condition.png"; path = "Images/Post-Condition.png"; sourceTree = "<group>"; };
 		81B14B6A180EC3A20089D19F /* Post-Condition@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Condition@2x.png"; path = "Images/Post-Condition@2x.png"; sourceTree = "<group>"; };
-		81B14B6B180EC3A20089D19F /* Post-Description.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Description.png"; path = "Images/Post-Description.png"; sourceTree = "<group>"; };
-		81B14B6C180EC3A20089D19F /* Post-Description@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Description@2x.png"; path = "Images/Post-Description@2x.png"; sourceTree = "<group>"; };
+		81B14B6B180EC3A20089D19F /* Post-Material.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Material.png"; path = "Images/Post-Material.png"; sourceTree = "<group>"; };
+		81B14B6C180EC3A20089D19F /* Post-Material@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Material@2x.png"; path = "Images/Post-Material@2x.png"; sourceTree = "<group>"; };
 		81B14B6D180EC3A20089D19F /* Post-Returns.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Returns.png"; path = "Images/Post-Returns.png"; sourceTree = "<group>"; };
 		81B14B6E180EC3A20089D19F /* Post-Returns@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Returns@2x.png"; path = "Images/Post-Returns@2x.png"; sourceTree = "<group>"; };
 		81B14B6F180EC3A20089D19F /* Post-ShippingInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-ShippingInfo.png"; path = "Images/Post-ShippingInfo.png"; sourceTree = "<group>"; };
@@ -1208,8 +1208,8 @@
 				81B14B68180EC3A20089D19F /* Post-Comments@2x.png */,
 				81B14B69180EC3A20089D19F /* Post-Condition.png */,
 				81B14B6A180EC3A20089D19F /* Post-Condition@2x.png */,
-				81B14B6B180EC3A20089D19F /* Post-Description.png */,
-				81B14B6C180EC3A20089D19F /* Post-Description@2x.png */,
+				81B14B6B180EC3A20089D19F /* Post-Material.png */,
+				81B14B6C180EC3A20089D19F /* Post-Material@2x.png */,
 				81B14B6D180EC3A20089D19F /* Post-Returns.png */,
 				81B14B6E180EC3A20089D19F /* Post-Returns@2x.png */,
 				81B14B6F180EC3A20089D19F /* Post-ShippingInfo.png */,
@@ -1475,7 +1475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8120C14D17DFAD8C00A1C3A9 /* Menu-Home@2x.png in Resources */,
-				81B14B78180EC3A20089D19F /* Post-Description@2x.png in Resources */,
+				81B14B78180EC3A20089D19F /* Post-Material@2x.png in Resources */,
 				81B14B8E180ED3C80089D19F /* User-Placeholder.png in Resources */,
 				81C5A21A180996EA000427A9 /* NewPost-Photos-Placeholder@2x.png in Resources */,
 				81B14B8F180ED3C80089D19F /* User-Placeholder@2x.png in Resources */,
@@ -1585,7 +1585,7 @@
 				8120C19217E0470300A1C3A9 /* Home-About@2x.png in Resources */,
 				8120C19817E0470300A1C3A9 /* Home-BrowseEditorial@2x.png in Resources */,
 				8120C14B17DFAD8C00A1C3A9 /* Menu-Cart@2x.png in Resources */,
-				81B14B77180EC3A20089D19F /* Post-Description.png in Resources */,
+				81B14B77180EC3A20089D19F /* Post-Material.png in Resources */,
 				8120C1B817E0532500A1C3A9 /* Home-ShopByDress@2x.png in Resources */,
 				8120C19B17E0470300A1C3A9 /* Home-Guarantee.png in Resources */,
 				81B27B5817F6107100F9BC09 /* visa@2x.png in Resources */,
