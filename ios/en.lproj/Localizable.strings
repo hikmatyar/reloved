@@ -158,6 +158,36 @@
 "PostComments.Hint.Text" = "Add Comment";
 "PostComments.Title" = "Comments";
 
+/* My Profile Controller */
+
+"Profile.Action.Cancel" = "Cancel";
+"Profile.Action.Done" = "Done";
+"Profile.Action.Next" = "Next";
+"Profile.Action.Prev" = "Prev";
+"Profile.Alert.AddedToCart.Action.Close" = "Close";
+"Profile.Alert.AddedToCart.Action.Retry" = "Retry";
+"Profile.Alert.AddedToCart.Message" = "Unable to save. Retry?";
+"Profile.Alert.AddedToCart.Title" = "Failed to save";
+"Profile.Hint.AddressLine" = "(TDB)";
+"Profile.Hint.Country" = "(TDB)";
+"Profile.Hint.Email" = "(TDB)";
+"Profile.Hint.Footer" = "Your contact details are not visible to anyone other than yourself.\nWe need your contact details to keep you properly informed when you buy or sell dresses through us.";
+"Profile.Hint.FullName" = "(TDB)";
+"Profile.Hint.City" = "(TDB)";
+"Profile.Hint.Phone" = "(TDB)";
+"Profile.Hint.Postcode" = "(TDB)";
+"Profile.Hint.Size" = "(TDB)";
+"Profile.Label.AddressLine" = "Address Line";
+"Profile.Label.Country" = "Country";
+"Profile.Label.FullName" = "Full Name";
+"Profile.Label.City" = "Town/City";
+"Profile.Label.Email" = "Email";
+"Profile.Label.Phone" = "Telephone Number";
+"Profile.Label.Postcode" = "Postcode";
+"Profile.Label.Size" = "Your dress size";
+"Profile.Label.Uploading" = "Saving data...";
+"Profile.Title" = "My Profile";
+
 /* Condition Controller */
 
 "Condition.Title" = "Condition";

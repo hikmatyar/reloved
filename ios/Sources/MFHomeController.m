@@ -16,6 +16,7 @@
 #import "MFWebController.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UIViewController+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
 
 #define CELL_IDENTIFIER @"cell"
@@ -49,7 +50,7 @@
 
 - (IBAction)profile:(id)sender
 {
-    [self.navigationController pushViewController:[[MFProfileController alloc] init] animated:YES];
+    [self presentNavigableViewController:[[MFProfileController alloc] init] animated:YES completion:NULL];
 }
 
 - (IBAction)history:(id)sender
