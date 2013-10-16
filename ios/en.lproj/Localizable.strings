@@ -129,6 +129,12 @@
 "Post.Action.ShippingInfo" = "Shipping";
 "Post.Action.SizeAndFit" = "Size & Fit";
 "Post.Action.Unsave" = "Unsave";
+"Post.Alert.AddedToCart.Action.OK" = "OK";
+"Post.Alert.AddedToCart.Message" = "This dress has been added to your shopping cart. You can access shopping cart from the side navigation menu";
+"Post.Alert.AddedToCart.Title" = "Added to Cart";
+"Post.Alert.Saved.Action.OK" = "OK";
+"Post.Alert.Saved.Message" = "This dress has been saved to your home screen";
+"Post.Alert.Saved.Title" = "Saved Dress";
 "Post.Format.Comments" = "See %d comment";
 "Post.Format.Comments.None" = "No comments";
 "Post.Format.Comments.Plural" = "See %d comments";

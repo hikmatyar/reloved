@@ -33,7 +33,7 @@
     if(self) {
         MFBrand *brand = post.brand;
         
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((post.insideCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
         self.title = brand.name;
         
         m_post = post;
@@ -61,6 +61,20 @@
 
 - (IBAction)toggleCart:(id)sender
 {
+    BOOL insideCart = !m_post.insideCart;
+    
+    m_post.insideCart = insideCart;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((insideCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+    
+    if(insideCart) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.AddedToCart.Title", nil)
+                                                            message:NSLocalizedString(@"Post.Alert.AddedToCart.Message", nil)
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:NSLocalizedString(@"Post.Alert.AddedToCart.Action.OK", nil), nil];
+        
+        [alertView show];
+    }
 }
 
 - (IBAction)sizeAndFit:(id)sender
@@ -119,6 +133,16 @@
     
     m_post.saved = saved;
     footerView.leftTitle = NSLocalizedString((saved) ? @"Post.Action.Unsave" : @"Post.Action.Save", nil);
+    
+    if(saved) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.Saved.Title", nil)
+                                                            message:NSLocalizedString(@"Post.Alert.Saved.Message", nil)
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:NSLocalizedString(@"Post.Alert.Saved.Action.OK", nil), nil];
+        
+        [alertView show];
+    }
 }
 
 - (void)footerViewDidSelectShare:(MFPostFooterView *)footerView
@@ -126,10 +150,6 @@
     [[UIApplication sharedApplication] sendEmail:nil
                                          subject:[NSString stringWithFormat:NSLocalizedString(@"Post.Format.Email.Subject", nil)]
                                             body:[NSString stringWithFormat:NSLocalizedString(@"Post.Format.Email.Body", nil)]];
-}
-
-- (void)footerViewDidSelectAddToCart:(MFPostFooterView *)footerView
-{
 }
 
 #pragma mark UITableViewDataSource
