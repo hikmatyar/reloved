@@ -58,4 +58,21 @@ NSString *MFDatabaseDidChangeTypesNotification = @"MFDatabaseDidChangeTypes";
     return nil;
 }
 
+- (NSArray *)typesForIdentifiers:(NSArray *)identifiers
+{
+    NSMutableArray *types = nil;
+    
+    for(MFType *type in self.types) {
+        if([identifiers containsObject:type.identifier]) {
+            if(!types) {
+                types = [NSMutableArray array];
+            }
+            
+            [types addObject:type];
+        }
+    }
+    
+    return types;
+}
+
 @end

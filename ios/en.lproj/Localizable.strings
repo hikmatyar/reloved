@@ -114,6 +114,23 @@
 "NewPost.Title.Size" = "Select Size";
 "NewPost.Title.Type" = "Select Dress Type";
 "NewPost.Title.TypeSizeFit" = "Type, Size & Fit";
+"Post.Action.AddToCart" = "Add to Cart";
+"Post.Action.Comments" = "See 24 comments";
+"Post.Action.Condition" = "Condition";
+"Post.Action.Description" = "Description";
+"Post.Action.ReturnsPolicy" = "Returns";
+"Post.Action.RemoveFromCart" = "Remove from Cart";
+"Post.Action.Save" = "Save";
+"Post.Action.Share" = "Share";
+"Post.Action.ShippingInfo" = "Shipping";
+"Post.Action.SizeAndFit" = "Size & Fit";
+"Post.Action.Unsave" = "Unsave";
+"Post.Format.Comments" = "See %d comment";
+"Post.Format.Comments.None" = "No comments";
+"Post.Format.Comments.Plural" = "See %d comments";
+"Post.Label.AboutThisDress" = "About This Dress";
+"Post.Label.ShippingAndReturns" = "Shipping & Returns";
+"Post.Label.QAWithSeller" = "Q&A with Seller";
 
 /* Pull to Refresh View */
 

@@ -207,6 +207,10 @@
 		81B14B7C180EC3A20089D19F /* Post-ShippingInfo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B70180EC3A20089D19F /* Post-ShippingInfo@2x.png */; };
 		81B14B7D180EC3A20089D19F /* Post-SizeAndFit.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B71180EC3A20089D19F /* Post-SizeAndFit.png */; };
 		81B14B7E180EC3A20089D19F /* Post-SizeAndFit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B72180EC3A20089D19F /* Post-SizeAndFit@2x.png */; };
+		81B14B81180ECBAE0089D19F /* MFPostSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B14B80180ECBAE0089D19F /* MFPostSectionView.m */; };
+		81B14B84180ECC3E0089D19F /* MFPostHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B14B83180ECC3E0089D19F /* MFPostHeaderView.m */; };
+		81B14B87180ECC4A0089D19F /* MFPostFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B14B86180ECC4A0089D19F /* MFPostFooterView.m */; };
+		81B14B8B180ED02E0089D19F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B14B8A180ED02E0089D19F /* MessageUI.framework */; };
 		81B27B0217F60BE200F9BC09 /* MFImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0117F60BE200F9BC09 /* MFImageButton.m */; };
 		81B27B0F17F60F3700F9BC09 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0517F60F3700F9BC09 /* STPCard.m */; };
 		81B27B1017F60F3700F9BC09 /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0717F60F3700F9BC09 /* STPToken.m */; };
@@ -603,6 +607,15 @@
 		81B14B70180EC3A20089D19F /* Post-ShippingInfo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-ShippingInfo@2x.png"; path = "Images/Post-ShippingInfo@2x.png"; sourceTree = "<group>"; };
 		81B14B71180EC3A20089D19F /* Post-SizeAndFit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-SizeAndFit.png"; path = "Images/Post-SizeAndFit.png"; sourceTree = "<group>"; };
 		81B14B72180EC3A20089D19F /* Post-SizeAndFit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-SizeAndFit@2x.png"; path = "Images/Post-SizeAndFit@2x.png"; sourceTree = "<group>"; };
+		81B14B7F180ECBAE0089D19F /* MFPostSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostSectionView.h; path = Sources/MFPostSectionView.h; sourceTree = SOURCE_ROOT; };
+		81B14B80180ECBAE0089D19F /* MFPostSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostSectionView.m; path = Sources/MFPostSectionView.m; sourceTree = SOURCE_ROOT; };
+		81B14B82180ECC3E0089D19F /* MFPostHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostHeaderView.h; path = Sources/MFPostHeaderView.h; sourceTree = SOURCE_ROOT; };
+		81B14B83180ECC3E0089D19F /* MFPostHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostHeaderView.m; path = Sources/MFPostHeaderView.m; sourceTree = SOURCE_ROOT; };
+		81B14B85180ECC4A0089D19F /* MFPostFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostFooterView.h; path = Sources/MFPostFooterView.h; sourceTree = SOURCE_ROOT; };
+		81B14B86180ECC4A0089D19F /* MFPostFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostFooterView.m; path = Sources/MFPostFooterView.m; sourceTree = SOURCE_ROOT; };
+		81B14B88180ECEF70089D19F /* MFPostFooterViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFPostFooterViewDelegate.h; path = Sources/MFPostFooterViewDelegate.h; sourceTree = SOURCE_ROOT; };
+		81B14B89180ECF0C0089D19F /* MFPostHeaderViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFPostHeaderViewDelegate.h; path = Sources/MFPostHeaderViewDelegate.h; sourceTree = SOURCE_ROOT; };
+		81B14B8A180ED02E0089D19F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		81B27B0017F60BE200F9BC09 /* MFImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageButton.h; path = Sources/MFImageButton.h; sourceTree = SOURCE_ROOT; };
 		81B27B0117F60BE200F9BC09 /* MFImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageButton.m; path = Sources/MFImageButton.m; sourceTree = SOURCE_ROOT; };
 		81B27B0417F60F3700F9BC09 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPCard.h; path = Sources/Stripe/STPCard.h; sourceTree = SOURCE_ROOT; };
@@ -715,6 +728,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81B14B8B180ED02E0089D19F /* MessageUI.framework in Frameworks */,
 				812F4AF917DF017F00454747 /* MobileCoreServices.framework in Frameworks */,
 				812F4AF517DF011E00454747 /* SystemConfiguration.framework in Frameworks */,
 				812F4AF117DF00F100454747 /* CFNetwork.framework in Frameworks */,
@@ -753,6 +767,7 @@
 		810D05FD17DEFC220058CE52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81B14B8A180ED02E0089D19F /* MessageUI.framework */,
 				812F4AF017DF00F100454747 /* CFNetwork.framework */,
 				8119DFF917E0A4D5007AEDC2 /* CoreData.framework */,
 				810D060217DEFC220058CE52 /* CoreGraphics.framework */,
@@ -988,6 +1003,14 @@
 				81D0966317FCA6CD0044BD06 /* MFPageView.m */,
 				81BC175217FCA55F00DF7AD4 /* MFPageScrollView.h */,
 				81BC175317FCA55F00DF7AD4 /* MFPageScrollView.m */,
+				81B14B82180ECC3E0089D19F /* MFPostHeaderView.h */,
+				81B14B83180ECC3E0089D19F /* MFPostHeaderView.m */,
+				81B14B89180ECF0C0089D19F /* MFPostHeaderViewDelegate.h */,
+				81B14B85180ECC4A0089D19F /* MFPostFooterView.h */,
+				81B14B86180ECC4A0089D19F /* MFPostFooterView.m */,
+				81B14B88180ECEF70089D19F /* MFPostFooterViewDelegate.h */,
+				81B14B7F180ECBAE0089D19F /* MFPostSectionView.h */,
+				81B14B80180ECBAE0089D19F /* MFPostSectionView.m */,
 				81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */,
 				81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */,
 				8110829D17F8AF4A005CC8ED /* MFPullToLoadMoreView.h */,
@@ -1584,6 +1607,7 @@
 				811082CF17F8CA8E005CC8ED /* SQLConnection.m in Sources */,
 				81B27B2717F6103700F9BC09 /* PKCard.m in Sources */,
 				8120C1BD17E053A100A1C3A9 /* UIButton+Additions.m in Sources */,
+				81B14B87180ECC4A0089D19F /* MFPostFooterView.m in Sources */,
 				8120C1C817E0681300A1C3A9 /* MFBookmarksController.m in Sources */,
 				811082BF17F8BD09005CC8ED /* MFDatabase+Post.m in Sources */,
 				81BC175417FCA55F00DF7AD4 /* MFPageScrollView.m in Sources */,
@@ -1617,6 +1641,7 @@
 				81136AC6180C51E6009142AE /* MFWebService+Checkout.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				81B27B1317F60F3700F9BC09 /* StripeError.m in Sources */,
+				81B14B81180ECBAE0089D19F /* MFPostSectionView.m in Sources */,
 				811082BC17F8BC57005CC8ED /* MFDatabase+Currency.m in Sources */,
 				81BC174317FB51CA00DF7AD4 /* MFOptionPickerController.m in Sources */,
 				81136AC3180B5A8E009142AE /* MFMedia.m in Sources */,
@@ -1656,6 +1681,7 @@
 				81B27B1117F60F3700F9BC09 /* STPView.m in Sources */,
 				812F4AE717DEFEE900454747 /* ASINetworkQueue.m in Sources */,
 				811082D217F8CA8E005CC8ED /* SQLObjectStore.m in Sources */,
+				81B14B84180ECC3E0089D19F /* MFPostHeaderView.m in Sources */,
 				812F4AE017DEFEE900454747 /* ASIAuthenticationDialog.m in Sources */,
 				817723EC17FDADCC004A28CC /* MFFormAccessory.m in Sources */,
 				818F917617DF95F400D1A723 /* MFMenuController.m in Sources */,

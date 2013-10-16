@@ -1,6 +1,14 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFBrand.h"
+#import "MFColor.h"
+#import "MFDatabase+Brand.h"
+#import "MFDatabase+Color.h"
+#import "MFDatabase+Size.h"
+#import "MFDatabase+Type.h"
 #import "MFPost.h"
+#import "MFSize.h"
+#import "MFType.h"
 #import "MFWebPost.h"
 
 @implementation MFWebPost
@@ -21,9 +29,40 @@
     self = [self initWithIdentifier:post.identifier];
     
     if(self) {
+        m_post = post;
     }
     
     return self;
+}
+
+@synthesize post = m_post;
+
+@dynamic brand;
+
+- (MFBrand *)brand
+{
+    return [[MFDatabase sharedDatabase] brandForIdentifier:m_post.brandId];
+}
+
+@dynamic colors;
+
+- (NSArray *)colors
+{
+    return [[MFDatabase sharedDatabase] colorsForIdentifiers:m_post.colorIds];
+}
+
+@dynamic size;
+
+- (MFSize *)size
+{
+    return [[MFDatabase sharedDatabase] sizeForIdentifier:m_post.sizeId];
+}
+
+@dynamic types;
+
+- (NSArray *)types
+{
+    return [[MFDatabase sharedDatabase] typesForIdentifiers:m_post.typeIds];
 }
 
 @end

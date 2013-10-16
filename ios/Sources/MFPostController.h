@@ -1,12 +1,14 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
-#import <UIKit/UIKit.h>
+#import "MFPostFooterViewDelegate.h"
+#import "MFPostHeaderViewDelegate.h"
 
 @class MFWebPost;
 
-@interface MFPostController : UIViewController
+@interface MFPostController : UIViewController <MFPostFooterViewDelegate, MFPostHeaderViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     @private
+    NSArray *m_menu;
     MFWebPost *m_post;
 }
 
