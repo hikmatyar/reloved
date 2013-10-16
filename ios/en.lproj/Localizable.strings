@@ -120,7 +120,7 @@
 "Post.Action.AddToCart" = "Add to Cart";
 "Post.Action.Comments" = "See 24 comments";
 "Post.Action.Condition" = "Condition";
-"Post.Action.Description" = "Description";
+"Post.Action.Material" = "Material";
 "Post.Action.ReturnsPolicy" = "Returns";
 "Post.Action.RemoveFromCart" = "Remove from Cart";
 "Post.Action.Save" = "Save";

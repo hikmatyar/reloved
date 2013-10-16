@@ -44,6 +44,11 @@
     return [self colorWithString:@"#666666"];
 }
 
++ (UIColor *)themeTextBackgroundColor
+{
+    return [self colorWithString:@"#ffffff"];
+}
+
 + (UIColor *)themeButtonBackgroundColor
 {
     return [self colorWithString:@"#ffffff"];

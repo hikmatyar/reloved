@@ -10,6 +10,7 @@
 + (UIColor *)themeSeparatorColor;
 + (UIColor *)themeTextColor;
 + (UIColor *)themeTextAlternativeColor;
++ (UIColor *)themeTextBackgroundColor;
 
 + (UIColor *)themeButtonBackgroundColor;
 + (UIColor *)themeButtonBackgroundHighlightColor;

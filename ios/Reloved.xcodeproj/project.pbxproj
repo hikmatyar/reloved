@@ -278,6 +278,7 @@
 		81D0967917FCD45E0044BD06 /* MFNewPostController+Price.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967817FCD45E0044BD06 /* MFNewPostController+Price.m */; };
 		81D0967C17FCD46F0044BD06 /* MFNewPostController+Notes.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967B17FCD46F0044BD06 /* MFNewPostController+Notes.m */; };
 		81D54BB0180F2658002D3449 /* MFConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BAF180F2658002D3449 /* MFConditionController.m */; };
+		81D54BB3180F28E7002D3449 /* MFListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BB2180F28E7002D3449 /* MFListController.m */; };
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
@@ -724,6 +725,8 @@
 		81D0967B17FCD46F0044BD06 /* MFNewPostController+Notes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+Notes.m"; path = "Sources/MFNewPostController+Notes.m"; sourceTree = SOURCE_ROOT; };
 		81D54BAE180F2658002D3449 /* MFConditionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFConditionController.h; path = Sources/MFConditionController.h; sourceTree = SOURCE_ROOT; };
 		81D54BAF180F2658002D3449 /* MFConditionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFConditionController.m; path = Sources/MFConditionController.m; sourceTree = SOURCE_ROOT; };
+		81D54BB1180F28E7002D3449 /* MFListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFListController.h; path = Sources/MFListController.h; sourceTree = SOURCE_ROOT; };
+		81D54BB2180F28E7002D3449 /* MFListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFListController.m; path = Sources/MFListController.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -826,6 +829,8 @@
 				8120C1CD17E0685A00A1C3A9 /* MFHistoryController.m */,
 				8120C13217DFA7AD00A1C3A9 /* MFHomeController.h */,
 				8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */,
+				81D54BB1180F28E7002D3449 /* MFListController.h */,
+				81D54BB2180F28E7002D3449 /* MFListController.m */,
 				81B14B96180F035A0089D19F /* MFMediaGalleryController.h */,
 				81B14B97180F035A0089D19F /* MFMediaGalleryController.m */,
 				818F917417DF95F400D1A723 /* MFMenuController.h */,
@@ -1686,6 +1691,7 @@
 				812F4AE117DEFEE900454747 /* ASIDataCompressor.m in Sources */,
 				8119DFDC17E06DAA007AEDC2 /* MFWebSession.m in Sources */,
 				811082B217F8B75C005CC8ED /* MFDatabase+Feed.m in Sources */,
+				81D54BB3180F28E7002D3449 /* MFListController.m in Sources */,
 				817723E017FDAAC9004A28CC /* MFFormLabel.m in Sources */,
 				81233D6117F8E00500C27805 /* MFDatabase+Color.m in Sources */,
 				8120C16B17DFBD1200A1C3A9 /* MFPreferences.m in Sources */,
