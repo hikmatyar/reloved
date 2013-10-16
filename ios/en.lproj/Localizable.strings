@@ -114,6 +114,9 @@
 "NewPost.Title.Size" = "Select Size";
 "NewPost.Title.Type" = "Select Dress Type";
 "NewPost.Title.TypeSizeFit" = "Type, Size & Fit";
+
+/* Post Controller */
+
 "Post.Action.AddToCart" = "Add to Cart";
 "Post.Action.Comments" = "See 24 comments";
 "Post.Action.Condition" = "Condition";
@@ -128,6 +131,8 @@
 "Post.Format.Comments" = "See %d comment";
 "Post.Format.Comments.None" = "No comments";
 "Post.Format.Comments.Plural" = "See %d comments";
+"Post.Format.Email.Subject" = "(TDB)";
+"Post.Format.Email.Body" = "(TDB)";
 "Post.Label.AboutThisDress" = "About This Dress";
 "Post.Label.ShippingAndReturns" = "Shipping & Returns";
 "Post.Label.QAWithSeller" = "Q&A with Seller";
@@ -149,6 +154,12 @@
 "Reachability.Action.TryAgain" = "Please try Again";
 "Reachability.Message.NoConnection" = "Internet Connection is required";
 "Reachability.Title.NoConnection" = "No Connection";
+
+/* Email */
+
+"Email.Error.Action.OK" = "OK";
+"Email.Error.Message" = "You need to configure your email client";
+"Email.Error.Title" = "Cannot open Mail";
 
 /* Conditions */
 

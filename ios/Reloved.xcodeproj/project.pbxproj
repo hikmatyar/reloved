@@ -213,6 +213,7 @@
 		81B14B8B180ED02E0089D19F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81B14B8A180ED02E0089D19F /* MessageUI.framework */; };
 		81B14B8E180ED3C80089D19F /* User-Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B8C180ED3C80089D19F /* User-Placeholder.png */; };
 		81B14B8F180ED3C80089D19F /* User-Placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B8D180ED3C80089D19F /* User-Placeholder@2x.png */; };
+		81B14B92180EE1820089D19F /* UIApplication+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B14B91180EE1820089D19F /* UIApplication+Additions.m */; };
 		81B27B0217F60BE200F9BC09 /* MFImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0117F60BE200F9BC09 /* MFImageButton.m */; };
 		81B27B0F17F60F3700F9BC09 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0517F60F3700F9BC09 /* STPCard.m */; };
 		81B27B1017F60F3700F9BC09 /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B27B0717F60F3700F9BC09 /* STPToken.m */; };
@@ -620,6 +621,8 @@
 		81B14B8A180ED02E0089D19F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		81B14B8C180ED3C80089D19F /* User-Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "User-Placeholder.png"; path = "Images/User-Placeholder.png"; sourceTree = "<group>"; };
 		81B14B8D180ED3C80089D19F /* User-Placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "User-Placeholder@2x.png"; path = "Images/User-Placeholder@2x.png"; sourceTree = "<group>"; };
+		81B14B90180EE1820089D19F /* UIApplication+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication+Additions.h"; path = "Sources/Additions/UIApplication+Additions.h"; sourceTree = SOURCE_ROOT; };
+		81B14B91180EE1820089D19F /* UIApplication+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+Additions.m"; path = "Sources/Additions/UIApplication+Additions.m"; sourceTree = SOURCE_ROOT; };
 		81B27B0017F60BE200F9BC09 /* MFImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFImageButton.h; path = Sources/MFImageButton.h; sourceTree = SOURCE_ROOT; };
 		81B27B0117F60BE200F9BC09 /* MFImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFImageButton.m; path = Sources/MFImageButton.m; sourceTree = SOURCE_ROOT; };
 		81B27B0417F60F3700F9BC09 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPCard.h; path = Sources/Stripe/STPCard.h; sourceTree = SOURCE_ROOT; };
@@ -1201,6 +1204,8 @@
 				8141AB4018047B650087B740 /* NSFileManager+Additions.m */,
 				8120C16F17DFBFA700A1C3A9 /* NSString+Additions.h */,
 				8120C17017DFBFA700A1C3A9 /* NSString+Additions.m */,
+				81B14B90180EE1820089D19F /* UIApplication+Additions.h */,
+				81B14B91180EE1820089D19F /* UIApplication+Additions.m */,
 				8120C1BB17E053A100A1C3A9 /* UIButton+Additions.h */,
 				8120C1BC17E053A100A1C3A9 /* UIButton+Additions.m */,
 				8120C13C17DFA8F400A1C3A9 /* UIColor+Additions.h */,
@@ -1674,6 +1679,7 @@
 				812F4AE517DEFEE900454747 /* ASIHTTPRequest.m in Sources */,
 				812F4AC217DEFE5300454747 /* JSONKit.m in Sources */,
 				81B27B1217F60F3700F9BC09 /* Stripe.m in Sources */,
+				81B14B92180EE1820089D19F /* UIApplication+Additions.m in Sources */,
 				811082C217F8BE8A005CC8ED /* MFDatabase+Bookmark.m in Sources */,
 				81233D5B17F8DDF400C27805 /* MFType.m in Sources */,
 				8120C1D117E068EF00A1C3A9 /* MFRecentsController.m in Sources */,

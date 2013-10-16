@@ -10,6 +10,7 @@
 #import "MFPostSectionView.h"
 #import "MFSize.h"
 #import "MFWebPost.h"
+#import "UIApplication+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
@@ -53,7 +54,7 @@
     
 }
 
-- (IBAction)sizeAntFit:(id)sender
+- (IBAction)sizeAndFit:(id)sender
 {
 }
 
@@ -85,6 +86,9 @@
 
 - (void)footerViewDidSelectShare:(MFPostFooterView *)footerView
 {
+    [[UIApplication sharedApplication] sendEmail:nil
+                                         subject:[NSString stringWithFormat:NSLocalizedString(@"Post.Format.Email.Subject", nil)]
+                                            body:[NSString stringWithFormat:NSLocalizedString(@"Post.Format.Email.Body", nil)]];
 }
 
 - (void)footerViewDidSelectAddToCart:(MFPostFooterView *)footerView
@@ -149,6 +153,9 @@
     MFPostHeaderView *headerView = [[MFPostHeaderView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFPostHeaderView preferredHeight])];
     MFPostFooterView *footerView = [[MFPostFooterView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFPostFooterView preferredHeight])];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
+    
+    headerView.delegate = self;
+    footerView.delegate = self;
     
     if([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         tableView.separatorInset = UIEdgeInsetsMake(0.0F, 0.0F, 0.0F, 0.0F);
