@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFPost.h"
+#import "MFPostDetails.h"
 #import "MFWebService+Post.h"
 
 @implementation MFWebService(Post)
@@ -33,6 +34,22 @@
                                          parameters:parameters];
     request.block = block;
     request.transform = [MFPost class];
+    [self addRequest:request];
+}
+
+- (void)requestPostDetails:(NSString *)identifier state:(NSString *)state limit:(NSInteger)limit target:(id)target usingBlock:(MFWebRequestBlock)block
+{
+    MFWebRequest *request = [[MFWebRequest alloc] initWithService:self
+                                                             mode:kMFWebRequestModeJsonPost
+                                                           target:target
+                                                             path:@"/post/details"
+                                                       parameters:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                  identifier, @"id",
+                                                                  [NSNumber numberWithInteger:limit], @"limit",
+                                                                  state, @"state", nil]];
+    
+    request.block = block;
+    request.transform = [MFPostDetails class];
     [self addRequest:request];
 }
 

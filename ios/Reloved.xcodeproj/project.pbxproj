@@ -280,6 +280,8 @@
 		81D54BB0180F2658002D3449 /* MFConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BAF180F2658002D3449 /* MFConditionController.m */; };
 		81D54BB3180F28E7002D3449 /* MFListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BB2180F28E7002D3449 /* MFListController.m */; };
 		81D54BB6180F337E002D3449 /* MFPostCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BB5180F337E002D3449 /* MFPostCommentsController.m */; };
+		81D54BB9180F384B002D3449 /* MFCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BB8180F384B002D3449 /* MFCommentTableViewCell.m */; };
+		81D54BBC180F3D79002D3449 /* MFPostDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BBB180F3D79002D3449 /* MFPostDetails.m */; };
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
@@ -730,6 +732,10 @@
 		81D54BB2180F28E7002D3449 /* MFListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFListController.m; path = Sources/MFListController.m; sourceTree = SOURCE_ROOT; };
 		81D54BB4180F337E002D3449 /* MFPostCommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostCommentsController.h; path = Sources/MFPostCommentsController.h; sourceTree = SOURCE_ROOT; };
 		81D54BB5180F337E002D3449 /* MFPostCommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostCommentsController.m; path = Sources/MFPostCommentsController.m; sourceTree = SOURCE_ROOT; };
+		81D54BB7180F384B002D3449 /* MFCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCommentTableViewCell.h; path = Sources/MFCommentTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		81D54BB8180F384B002D3449 /* MFCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCommentTableViewCell.m; path = Sources/MFCommentTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		81D54BBA180F3D79002D3449 /* MFPostDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostDetails.h; path = Sources/MFPostDetails.h; sourceTree = SOURCE_ROOT; };
+		81D54BBB180F3D79002D3449 /* MFPostDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostDetails.m; path = Sources/MFPostDetails.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -965,6 +971,8 @@
 				8119DFF017E06F0C007AEDC2 /* MFMoney.m */,
 				8119DFEC17E06F00007AEDC2 /* MFPost.h */,
 				8119DFED17E06F00007AEDC2 /* MFPost.m */,
+				81D54BBA180F3D79002D3449 /* MFPostDetails.h */,
+				81D54BBB180F3D79002D3449 /* MFPostDetails.m */,
 				81233D5317F8DDDF00C27805 /* MFSize.h */,
 				81233D5417F8DDDF00C27805 /* MFSize.m */,
 				81233D5917F8DDF400C27805 /* MFType.h */,
@@ -995,6 +1003,8 @@
 			children = (
 				81B14B93180EFE9B0089D19F /* MFButton.h */,
 				81B14B94180EFE9B0089D19F /* MFButton.m */,
+				81D54BB7180F384B002D3449 /* MFCommentTableViewCell.h */,
+				81D54BB8180F384B002D3449 /* MFCommentTableViewCell.m */,
 				81D0966817FCCE330044BD06 /* MFConditionTableViewCell.h */,
 				81D0966917FCCE330044BD06 /* MFConditionTableViewCell.m */,
 				817723D817FDA877004A28CC /* MFForm.h */,
@@ -1640,6 +1650,7 @@
 				81B14B98180F035A0089D19F /* MFMediaGalleryController.m in Sources */,
 				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,
 				811082A717F8B299005CC8ED /* NSArray+Additions.m in Sources */,
+				81D54BBC180F3D79002D3449 /* MFPostDetails.m in Sources */,
 				8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */,
 				81233D6717F8E01A00C27805 /* MFDatabase+Size.m in Sources */,
 				81BC174717FC429E00DF7AD4 /* MFNewPostProgressView.m in Sources */,
@@ -1696,6 +1707,7 @@
 				8119DFE517E06DF0007AEDC2 /* MFWebUpload.m in Sources */,
 				812F4AE117DEFEE900454747 /* ASIDataCompressor.m in Sources */,
 				8119DFDC17E06DAA007AEDC2 /* MFWebSession.m in Sources */,
+				81D54BB9180F384B002D3449 /* MFCommentTableViewCell.m in Sources */,
 				811082B217F8B75C005CC8ED /* MFDatabase+Feed.m in Sources */,
 				81D54BB3180F28E7002D3449 /* MFListController.m in Sources */,
 				817723E017FDAAC9004A28CC /* MFFormLabel.m in Sources */,

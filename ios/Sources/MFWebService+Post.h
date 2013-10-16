@@ -7,6 +7,7 @@
 @interface MFWebService(Post)
 
 - (void)requestPostCreate:(MFMutablePost *)post target:(id)target usingBlock:(MFWebRequestBlock)block;
+- (void)requestPostDetails:(NSString *)identifier state:(NSString *)state limit:(NSInteger)limit target:(id)target usingBlock:(MFWebRequestBlock)block;
 - (void)requestPostEdit:(MFPost *)post changes:(MFPostChange)changes target:(id)target usingBlock:(MFWebRequestBlock)block;
 
 @end

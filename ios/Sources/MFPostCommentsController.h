@@ -4,7 +4,7 @@
 
 @class MFWebPost;
 
-@interface MFPostCommentsController : UIViewController
+@interface MFPostCommentsController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     @private
     MFWebPost *m_post;

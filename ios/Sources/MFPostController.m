@@ -1,5 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MBProgressHUD.h"
 #import "MFBrand.h"
 #import "MFCondition.h"
 #import "MFConditionController.h"
@@ -92,6 +93,10 @@
     [self.navigationController pushViewController:[[MFPostCommentsController alloc] initWithPost:m_post] animated:YES];
 }
 
+- (void)postDidChange:(NSNotification *)notification
+{
+}
+
 #pragma mark MFPostFooterViewDelegate
 
 - (void)headerView:(MFPostHeaderView *)headerView didSelectMedia:(NSString *)media
@@ -180,7 +185,7 @@
     [[[m_menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] activate:self];
 }
 
-#pragma mark UIView
+#pragma mark UIViewController
 
 - (void)loadView
 {
@@ -205,6 +210,23 @@
     self.view = tableView;
     
     headerView.post = m_post.post;
+    [m_post startLoading];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    [center addObserver:self selector:@selector(postDidChange:) name:MFWebPostDidChangeNotification object:m_post];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    [center removeObserver:self name:MFWebPostDidChangeNotification object:m_post];
+    [super viewWillDisappear:animated];
 }
 
 @end

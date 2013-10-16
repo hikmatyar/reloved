@@ -3,11 +3,12 @@
 #import "MFPostFooterViewDelegate.h"
 #import "MFPostHeaderViewDelegate.h"
 
-@class MFWebPost;
+@class MBProgressHUD, MFWebPost;
 
 @interface MFPostController : UIViewController <MFPostFooterViewDelegate, MFPostHeaderViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     @private
+    MBProgressHUD *m_hudView;
     NSArray *m_menu;
     MFWebPost *m_post;
 }

@@ -9,9 +9,20 @@
 #import "MFDatabase+Size.h"
 #import "MFDatabase+Type.h"
 #import "MFPost.h"
+#import "MFPostDetails.h"
 #import "MFSize.h"
 #import "MFType.h"
 #import "MFWebPost.h"
+#import "MFWebService+Post.h"
+
+NSString *MFWebPostChangesKey = @"changes";
+NSString *MFWebPostErrorKey = @"error";
+
+NSString *MFWebPostDidBeginLoadingNotification = @"MFWebPostDidBeginLoading";
+NSString *MFWebPostDidEndLoadingNotification = @"MFWebPostDidEndLoading";
+NSString *MFWebPostDidChangeNotification = @"MFWebPostDidChange";
+
+#define LOADING_LIMIT 100
 
 @implementation MFWebPost
 
@@ -20,7 +31,7 @@
     self = [super init];
     
     if(self) {
-        
+        m_identifier = identifier;
     }
     
     return self;
@@ -38,6 +49,8 @@
 }
 
 @synthesize post = m_post;
+@synthesize loading = m_loading;
+@synthesize comments = m_comments;
 
 @dynamic brand;
 
@@ -106,6 +119,35 @@
 - (void)setInsideCart:(BOOL)insideCart
 {
     // TODO:
+}
+
+- (void)startLoading
+{
+    if(!m_loading) {
+        m_loading = YES;
+        
+        [[MFWebService sharedService] requestPostDetails:m_identifier state:m_state limit:LOADING_LIMIT target:self usingBlock:^(id target, NSError *error, MFPostDetails *details) {
+            m_loading = NO;
+            [[NSNotificationCenter defaultCenter] postNotificationName:MFWebPostDidEndLoadingNotification object:self];
+        }];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:MFWebPostDidBeginLoadingNotification object:self];
+    }
+}
+
+- (void)stopLoading
+{
+    if(m_loading) {
+        [[MFWebService sharedService] cancelRequestsForTarget:self];
+        m_loading = NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:MFWebPostDidEndLoadingNotification object:self];
+    }
+}
+
+- (void)reloadData
+{
+    [self stopLoading];
+    [self startLoading];
 }
 
 @end
