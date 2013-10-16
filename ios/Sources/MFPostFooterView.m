@@ -47,6 +47,18 @@
     return (UIButton *)[self viewWithTag:TAG_RIGHTBUTTON];
 }
 
+@dynamic leftTitle;
+
+- (NSString *)leftTitle
+{
+    return [self.leftButton titleForState:UIControlStateNormal];
+}
+
+- (void)setLeftTitle:(NSString *)leftTitle
+{
+    [self.leftButton setTitle:leftTitle forState:UIControlStateNormal];
+}
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame

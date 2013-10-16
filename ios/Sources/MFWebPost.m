@@ -3,6 +3,7 @@
 #import "MFBrand.h"
 #import "MFColor.h"
 #import "MFCondition.h"
+#import "MFDatabase+Bookmark.h"
 #import "MFDatabase+Brand.h"
 #import "MFDatabase+Color.h"
 #import "MFDatabase+Size.h"
@@ -79,6 +80,32 @@
 - (NSArray *)types
 {
     return [[MFDatabase sharedDatabase] typesForIdentifiers:m_post.typeIds];
+}
+
+@dynamic saved;
+
+- (BOOL)isSaved
+{
+    return [[MFDatabase sharedDatabase] isBookmarkedForPost:m_post];
+}
+
+- (void)setSaved:(BOOL)saved
+{
+    [[MFDatabase sharedDatabase] setBookmarked:saved forPost:m_post];
+}
+
+@dynamic insideCart;
+
+- (BOOL)insideCart
+{
+    // TODO:
+    
+    return NO;
+}
+
+- (void)setInsideCart:(BOOL)insideCart
+{
+    // TODO:
 }
 
 @end

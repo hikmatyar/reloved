@@ -21,4 +21,7 @@
 @property (nonatomic, retain, readonly) MFSize *size;
 @property (nonatomic, retain, readonly) NSArray *types;
 
+@property (nonatomic, assign, getter = isSaved) BOOL saved;
+@property (nonatomic, assign) BOOL insideCart;
+
 @end

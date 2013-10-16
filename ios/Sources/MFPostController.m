@@ -107,6 +107,10 @@
 
 - (void)footerViewDidSelectSave:(MFPostFooterView *)footerView
 {
+    BOOL saved = !m_post.saved;
+    
+    m_post.saved = saved;
+    footerView.leftTitle = NSLocalizedString((saved) ? @"Post.Action.Unsave" : @"Post.Action.Save", nil);
 }
 
 - (void)footerViewDidSelectShare:(MFPostFooterView *)footerView
@@ -183,6 +187,7 @@
     
     headerView.delegate = self;
     footerView.delegate = self;
+    footerView.leftTitle = NSLocalizedString((m_post.saved) ? @"Post.Action.Unsave" : @"Post.Action.Save", nil);
     
     if([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         tableView.separatorInset = UIEdgeInsetsMake(0.0F, 0.0F, 0.0F, 0.0F);

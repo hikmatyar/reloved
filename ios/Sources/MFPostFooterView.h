@@ -16,4 +16,6 @@
 @property (nonatomic, retain, readonly) UIButton *leftButton;
 @property (nonatomic, retain, readonly) UIButton *rightButton;
 
+@property (nonatomic, retain) NSString *leftTitle;
+
 @end
