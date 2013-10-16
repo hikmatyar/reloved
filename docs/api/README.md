@@ -97,6 +97,8 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 	Returns:
 		{
 			"error": 0,
+			// Number of results
+			"results": 10,
 			// Cursor position for UI. 'start', 'middle' or 'end'
 			"cursor": "start",
 			// State that can be used with the next request
