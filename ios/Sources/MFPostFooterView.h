@@ -13,5 +13,7 @@
 + (CGFloat)preferredHeight;
 
 @property (nonatomic, assign) id <MFPostFooterViewDelegate> delegate;
+@property (nonatomic, retain, readonly) UIButton *leftButton;
+@property (nonatomic, retain, readonly) UIButton *rightButton;
 
 @end

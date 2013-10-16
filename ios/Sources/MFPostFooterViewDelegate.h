@@ -10,6 +10,5 @@
 
 - (void)footerViewDidSelectSave:(MFPostFooterView *)footerView;
 - (void)footerViewDidSelectShare:(MFPostFooterView *)footerView;
-- (void)footerViewDidSelectAddToCart:(MFPostFooterView *)footerView;
 
 @end
