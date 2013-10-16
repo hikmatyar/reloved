@@ -57,12 +57,11 @@
 
 - (IBAction)toggleCart:(id)sender
 {
-    
 }
 
 - (IBAction)sizeAndFit:(id)sender
 {
-    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Size-And-Fit" title:((MFMenuItem *)sender).title] animated:YES];
+    [self.navigationController pushViewController:[[MFWebController alloc] initWithContentsOfFile:@"Size-And-Fit" title:((MFMenuItem *)sender).title lines:[m_post.post.fit componentsSeparatedByString:@"\n"]] animated:YES];
 }
 
 - (IBAction)condition:(id)sender

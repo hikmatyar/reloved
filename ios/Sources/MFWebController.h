@@ -5,6 +5,7 @@
 @interface MFWebController : UIViewController
 {
     @private
+    NSArray *m_lines;
     NSString *m_path;
 }
 
@@ -12,7 +13,9 @@
 
 - (id)initWithContentsOfFile:(NSString *)path;
 - (id)initWithContentsOfFile:(NSString *)path title:(NSString *)title;
+- (id)initWithContentsOfFile:(NSString *)path title:(NSString *)title lines:(NSArray *)lines;
 
+@property (nonatomic, retain, readonly) NSArray *lines;
 @property (nonatomic, retain, readonly) NSString *path;
 
 @end
