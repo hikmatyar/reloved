@@ -9,6 +9,7 @@
 #import "MFMenu.h"
 #import "MFMenuItem.h"
 #import "MFPost.h"
+#import "MFPostCommentsController.h"
 #import "MFPostController.h"
 #import "MFPostFooterView.h"
 #import "MFPostHeaderView.h"
@@ -50,6 +51,8 @@
     return self;
 }
 
+@synthesize post = m_post;
+
 - (UITableView *)tableView
 {
     return (UITableView *)self.view;
@@ -86,6 +89,7 @@
 
 - (IBAction)comments:(id)sender
 {
+    [self.navigationController pushViewController:[[MFPostCommentsController alloc] initWithPost:m_post] animated:YES];
 }
 
 #pragma mark MFPostFooterViewDelegate

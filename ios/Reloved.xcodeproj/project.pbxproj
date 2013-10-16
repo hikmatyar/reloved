@@ -279,6 +279,7 @@
 		81D0967C17FCD46F0044BD06 /* MFNewPostController+Notes.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D0967B17FCD46F0044BD06 /* MFNewPostController+Notes.m */; };
 		81D54BB0180F2658002D3449 /* MFConditionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BAF180F2658002D3449 /* MFConditionController.m */; };
 		81D54BB3180F28E7002D3449 /* MFListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BB2180F28E7002D3449 /* MFListController.m */; };
+		81D54BB6180F337E002D3449 /* MFPostCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BB5180F337E002D3449 /* MFPostCommentsController.m */; };
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
@@ -727,6 +728,8 @@
 		81D54BAF180F2658002D3449 /* MFConditionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFConditionController.m; path = Sources/MFConditionController.m; sourceTree = SOURCE_ROOT; };
 		81D54BB1180F28E7002D3449 /* MFListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFListController.h; path = Sources/MFListController.h; sourceTree = SOURCE_ROOT; };
 		81D54BB2180F28E7002D3449 /* MFListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFListController.m; path = Sources/MFListController.m; sourceTree = SOURCE_ROOT; };
+		81D54BB4180F337E002D3449 /* MFPostCommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostCommentsController.h; path = Sources/MFPostCommentsController.h; sourceTree = SOURCE_ROOT; };
+		81D54BB5180F337E002D3449 /* MFPostCommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostCommentsController.m; path = Sources/MFPostCommentsController.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -860,6 +863,8 @@
 				81BC174417FB6E7700DF7AD4 /* MFOptionPickerControllerDelegate.h */,
 				8120C12F17DFA37100A1C3A9 /* MFPostController.h */,
 				8120C13017DFA37100A1C3A9 /* MFPostController.m */,
+				81D54BB4180F337E002D3449 /* MFPostCommentsController.h */,
+				81D54BB5180F337E002D3449 /* MFPostCommentsController.m */,
 				8120C16917DFBD1200A1C3A9 /* MFPreferences.h */,
 				8120C16A17DFBD1200A1C3A9 /* MFPreferences.m */,
 				8120C1C917E0684E00A1C3A9 /* MFProfileController.h */,
@@ -1602,6 +1607,7 @@
 				81233D6417F8E01000C27805 /* MFDatabase+Type.m in Sources */,
 				81D0966717FCCC270044BD06 /* MFNewPostController+Condition.m in Sources */,
 				817723DD17FDA9A1004A28CC /* MFFormTextView.m in Sources */,
+				81D54BB6180F337E002D3449 /* MFPostCommentsController.m in Sources */,
 				81B14B95180EFE9B0089D19F /* MFButton.m in Sources */,
 				812F4ABA17DEFD4800454747 /* MFApplicationDelegate.m in Sources */,
 				819E12B518057E79008D2D36 /* MFDatabase+Event.m in Sources */,

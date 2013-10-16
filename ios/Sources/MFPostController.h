@@ -14,4 +14,6 @@
 
 - (id)initWithPost:(MFWebPost *)post;
 
+@property (nonatomic, retain, readonly) MFWebPost *post;
+
 @end

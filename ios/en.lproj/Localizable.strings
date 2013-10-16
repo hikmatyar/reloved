@@ -140,6 +140,12 @@
 "Post.Label.ReturnsPolicy" = "Yes";
 "Post.Label.QAWithSeller" = "Q&A with Seller";
 
+/* Post Comments Controller */
+
+"PostComments.Action.Send" = "Send";
+"PostComments.Hint.Text" = "Add Comment";
+"PostComments.Title" = "Comments";
+
 /* Condition Controller */
 
 "Condition.Title" = "Condition";
