@@ -11,7 +11,7 @@
     
     do {
         superview = superview.superview;
-    } while (superview && ![superview isKindOfClass:[UITableView class]]);
+    } while(superview && ![superview isKindOfClass:[UITableView class]] && ![superview conformsToProtocol:@protocol(MFTableView)]);
     
     return ([superview conformsToProtocol:@protocol(MFTableView)]) ? (id <MFTableView>)superview : nil;
 }

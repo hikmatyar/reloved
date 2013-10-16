@@ -112,6 +112,7 @@
         
         imageView.clipsToBounds = YES;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.userInteractionEnabled = NO;
         
         textLabel.layer.borderColor = [UIColor themeSeparatorColor].CGColor;
         textLabel.layer.borderWidth = 1.0F;

@@ -6,4 +6,8 @@
 
 @protocol MFPostHeaderViewDelegate <NSObject>
 
+@optional
+
+- (void)headerView:(MFPostHeaderView *)headerView didSelectMedia:(NSString *)media;
+
 @end

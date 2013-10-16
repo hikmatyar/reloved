@@ -168,6 +168,8 @@
     tableView.delegate = self;
     tableView.rowHeight = 45.0F;
     self.view = tableView;
+    
+    headerView.post = m_post.post;
 }
 
 @end
