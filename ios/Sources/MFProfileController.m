@@ -1,5 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFCountry.h"
+#import "MFDatabase+Country.h"
 #import "MFForm.h"
 #import "MFFormAccessory.h"
 #import "MFFormButton.h"
@@ -33,12 +35,12 @@
 
 - (NSInteger)numberOfRowsInPickerField:(MFFormPickerField *)pickerField
 {
-    return 1;
+    return m_countries.count;
 }
 
 - (NSString *)pickerField:(MFFormPickerField *)pickerField titleForRow:(NSInteger)row
 {
-    return @"";
+    return ((MFCountry *)[m_countries objectAtIndex:row]).name;
 }
 
 #pragma mark MFFormPickerFieldDelegate
@@ -216,6 +218,8 @@
     self = [super init];
     
     if(self) {
+        m_countries = [[MFDatabase sharedDatabase].countries sortedArrayUsingSelector:@selector(compare:)];
+        
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Profile.Action.Cancel", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(cancel:)];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Profile.Action.Done", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(done:)];
         self.title = NSLocalizedString(@"Profile.Title", nil);
