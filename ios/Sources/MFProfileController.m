@@ -1,5 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MBProgressHUD.h"
 #import "MFCountry.h"
 #import "MFDatabase+Country.h"
 #import "MFForm.h"
@@ -11,8 +12,13 @@
 #import "MFFormTextField.h"
 #import "MFFormTextView.h"
 #import "MFProfileController.h"
+#import "MFWebService+User.h"
 #import "UIColor+Additions.h"
+#import "UIFont+Additions.h"
 
+#define ALERT_FORM 2000
+#define ALERT_LOAD 2001
+#define ALERT_SAVE 2002
 #define TAG_FORM 1000
 
 @implementation MFProfileController
@@ -20,6 +26,48 @@
 - (MFForm *)form
 {
     return (MFForm *)[self.view viewWithTag:TAG_FORM];
+}
+
+- (void)invalidate
+{
+    if(m_details) {
+        self.form.hidden = NO;
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        [m_hudView hide:NO];
+        m_hudView = nil;
+    } else {
+        self.form.hidden = YES;
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        
+        if(!m_hudView) {
+            m_hudView = [[MBProgressHUD alloc] initWithView:self.view];
+            m_hudView.labelText = NSLocalizedString(@"Profile.Label.Loading", nil);
+            m_hudView.labelFont = [UIFont themeBoldFontOfSize:16.0F];
+            m_hudView.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
+            m_hudView.removeFromSuperViewOnHide = YES;
+            [self.view addSubview:m_hudView];
+            [m_hudView show:NO];
+        }
+    }
+}
+
+- (void)loadData
+{
+    [[MFWebService sharedService] requestUserDetails:nil target:self usingBlock:^(id target, NSError *error, MFUserDetails *details) {
+        if(error) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Profile.Alert.LoadError.Title", nil)
+                                                                message:NSLocalizedString(@"Profile.Alert.LoadError.Message", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Profile.Alert.LoadError.Action.Close", nil)
+                                                      otherButtonTitles:NSLocalizedString(@"Profile.Alert.LoadError.Action.Retry", nil), nil];
+            
+            alertView.tag = ALERT_LOAD;
+            [alertView show];
+        } else {
+            m_details = details;
+            [self invalidate];
+        }
+    }];
 }
 
 - (IBAction)cancel:(id)sender
@@ -53,6 +101,25 @@
 
 - (void)pickerField:(MFFormPickerField *)pickerField didSelectRow:(NSInteger)row
 {
+}
+
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    switch(alertView.tag) {
+        case ALERT_LOAD:
+            if(alertView.cancelButtonIndex != buttonIndex) {
+                [self loadData];
+            } else {
+                [self cancel:nil];
+            }
+            break;
+        case ALERT_SAVE:
+            break;
+        case ALERT_FORM:
+            break;
+    }
 }
 
 #pragma mark UITextFieldDelegate
@@ -209,10 +276,17 @@
 {
     [super viewWillAppear:animated];
     [m_accessory activate];
+    [self invalidate];
+    
+    if(!m_details) {
+        [self loadData];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [[MFWebService sharedService] cancelRequestsForTarget:self];
+    
     [m_accessory deactivate];
     [super viewWillDisappear:animated];
 }

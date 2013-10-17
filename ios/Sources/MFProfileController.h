@@ -3,14 +3,15 @@
 #import "MFFormPickerFieldDataSource.h"
 #import "MFFormPickerFieldDelegate.h"
 
-@class MBProgressHUD, MFFormAccessory, MFForm;
+@class MBProgressHUD, MFFormAccessory, MFForm, MFUserDetails;
 
-@interface MFProfileController : UIViewController <MFFormPickerFieldDataSource, MFFormPickerFieldDelegate, UITextFieldDelegate, UITextViewDelegate>
+@interface MFProfileController : UIViewController <MFFormPickerFieldDataSource, MFFormPickerFieldDelegate, UIAlertViewDelegate, UITextFieldDelegate, UITextViewDelegate>
 {
     @private
     MFFormAccessory *m_accessory;
     NSArray *m_countries;
     MBProgressHUD *m_hudView;
+    MFUserDetails *m_details;
 }
 
 @end
