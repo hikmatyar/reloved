@@ -9,9 +9,9 @@
 #import "MFNewPostController+Notes.h"
 #import "MFNewPostController+TypeSizeAndFit.h"
 #import "MFNewPostPageView.h"
-#import "MFNewPostProgressView.h"
 #import "MFPageScrollView.h"
 #import "MFPost.h"
+#import "MFProgressView.h"
 #import "MFSideMenuContainerViewController.h"
 #import "MFWebService+Post.h"
 #import "MFWebUpload.h"
@@ -77,9 +77,9 @@
     return (MFPageScrollView *)[self.view viewWithTag:TAG_CONTENT_VIEW];
 }
 
-- (MFNewPostProgressView *)progressView
+- (MFProgressView *)progressView
 {
-    return (MFNewPostProgressView *)[self.view viewWithTag:TAG_PROGRESS_VIEW];
+    return (MFProgressView *)[self.view viewWithTag:TAG_PROGRESS_VIEW];
 }
 
 @synthesize post = m_post;
@@ -110,7 +110,7 @@
 
 - (IBAction)next:(id)sender
 {
-    MFNewPostProgressView *progressView = self.progressView;
+    MFProgressView *progressView = self.progressView;
     NSInteger index = progressView.selectedIndex;
     
     if(index != NSNotFound) {
@@ -148,9 +148,9 @@
     }
 }
 
-#pragma mark MFNewPostProgressViewDelegate
+#pragma mark MFProgressViewDelegate
 
-- (BOOL)progressView:(MFNewPostProgressView *)progressView shouldSelectItemAtIndex:(NSInteger)index
+- (BOOL)progressView:(MFProgressView *)progressView shouldSelectItemAtIndex:(NSInteger)index
 {
     NSInteger oldIndex = progressView.selectedIndex;
     
@@ -167,7 +167,7 @@
     return YES;
 }
 
-- (void)progressView:(MFNewPostProgressView *)progressView didSelectItemAtIndex:(NSInteger)index
+- (void)progressView:(MFProgressView *)progressView didSelectItemAtIndex:(NSInteger)index
 {
     if(index >= 0 && index < m_steps.count) {
         MFPageScrollView *contentView = self.contentView;
@@ -183,8 +183,8 @@
 - (void)loadView
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
-    MFNewPostProgressView *progressView = [[MFNewPostProgressView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFNewPostProgressView preferredHeight])];
-    MFPageScrollView *contentView = [[MFPageScrollView alloc] initWithFrame:CGRectMake(0.0F, [MFNewPostProgressView preferredHeight], 320.0F, 480.0F - [MFNewPostProgressView preferredHeight])];
+    MFProgressView *progressView = [[MFProgressView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFProgressView preferredHeight])];
+    MFPageScrollView *contentView = [[MFPageScrollView alloc] initWithFrame:CGRectMake(0.0F, [MFProgressView preferredHeight], 320.0F, 480.0F - [MFProgressView preferredHeight])];
     NSMutableArray *items = [NSMutableArray array];
     NSMutableArray *pages = [NSMutableArray array];
     

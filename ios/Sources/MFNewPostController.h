@@ -1,11 +1,11 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
-#import "MFNewPostProgressViewDelegate.h"
+#import "MFProgressViewDelegate.h"
 
 @class MBProgressHUD;
 @class MFMutablePost;
 
-@interface MFNewPostController : UIViewController <MFNewPostProgressViewDelegate>
+@interface MFNewPostController : UIViewController <MFProgressViewDelegate>
 {
     @private
     MBProgressHUD *m_hud;

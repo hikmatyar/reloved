@@ -1,12 +1,12 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFImageButton.h"
-#import "MFNewPostProgressView.h"
-#import "MFNewPostProgressViewDelegate.h"
+#import "MFProgressView.h"
+#import "MFProgressViewDelegate.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
-@implementation MFNewPostProgressView
+@implementation MFProgressView
 
 + (CGFloat)preferredHeight
 {

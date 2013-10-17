@@ -256,7 +256,7 @@
 		81B30E30180DC8E600FF414D /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B30E2E180DC8E600FF414D /* Checkmark@2x.png */; };
 		81B30E35180DE5AD00FF414D /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 81B30E33180DE5AD00FF414D /* base64.c */; };
 		81BC174317FB51CA00DF7AD4 /* MFOptionPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */; };
-		81BC174717FC429E00DF7AD4 /* MFNewPostProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC174617FC429E00DF7AD4 /* MFNewPostProgressView.m */; };
+		81BC174717FC429E00DF7AD4 /* MFProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BC174617FC429E00DF7AD4 /* MFProgressView.m */; };
 		81BC174B17FC528100DF7AD4 /* NewPost-Progress-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174917FC528100DF7AD4 /* NewPost-Progress-Selected.png */; };
 		81BC174C17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174A17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png */; };
 		81BC174F17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81BC174D17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png */; };
@@ -696,9 +696,9 @@
 		81BC174117FB51CA00DF7AD4 /* MFOptionPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFOptionPickerController.h; path = Sources/MFOptionPickerController.h; sourceTree = SOURCE_ROOT; };
 		81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFOptionPickerController.m; path = Sources/MFOptionPickerController.m; sourceTree = SOURCE_ROOT; };
 		81BC174417FB6E7700DF7AD4 /* MFOptionPickerControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFOptionPickerControllerDelegate.h; path = Sources/MFOptionPickerControllerDelegate.h; sourceTree = SOURCE_ROOT; };
-		81BC174517FC429E00DF7AD4 /* MFNewPostProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostProgressView.h; path = Sources/MFNewPostProgressView.h; sourceTree = SOURCE_ROOT; };
-		81BC174617FC429E00DF7AD4 /* MFNewPostProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostProgressView.m; path = Sources/MFNewPostProgressView.m; sourceTree = SOURCE_ROOT; };
-		81BC174817FC432900DF7AD4 /* MFNewPostProgressViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFNewPostProgressViewDelegate.h; path = Sources/MFNewPostProgressViewDelegate.h; sourceTree = SOURCE_ROOT; };
+		81BC174517FC429E00DF7AD4 /* MFProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFProgressView.h; path = Sources/MFProgressView.h; sourceTree = SOURCE_ROOT; };
+		81BC174617FC429E00DF7AD4 /* MFProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFProgressView.m; path = Sources/MFProgressView.m; sourceTree = SOURCE_ROOT; };
+		81BC174817FC432900DF7AD4 /* MFProgressViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFProgressViewDelegate.h; path = Sources/MFProgressViewDelegate.h; sourceTree = SOURCE_ROOT; };
 		81BC174917FC528100DF7AD4 /* NewPost-Progress-Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Selected.png"; path = "Images/NewPost-Progress-Selected.png"; sourceTree = "<group>"; };
 		81BC174A17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Selected@2x.png"; path = "Images/NewPost-Progress-Selected@2x.png"; sourceTree = "<group>"; };
 		81BC174D17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NewPost-Progress-Unselected.png"; path = "Images/NewPost-Progress-Unselected.png"; sourceTree = "<group>"; };
@@ -1053,9 +1053,6 @@
 				8141AB4318048E550087B740 /* MFNewPostPageView.m */,
 				8151359117FF4E3500140E11 /* MFNewPostPhotoView.h */,
 				8151359217FF4E3500140E11 /* MFNewPostPhotoView.m */,
-				81BC174517FC429E00DF7AD4 /* MFNewPostProgressView.h */,
-				81BC174617FC429E00DF7AD4 /* MFNewPostProgressView.m */,
-				81BC174817FC432900DF7AD4 /* MFNewPostProgressViewDelegate.h */,
 				81D0966217FCA6CD0044BD06 /* MFPageView.h */,
 				81D0966317FCA6CD0044BD06 /* MFPageView.m */,
 				81BC175217FCA55F00DF7AD4 /* MFPageScrollView.h */,
@@ -1070,6 +1067,9 @@
 				81B14B80180ECBAE0089D19F /* MFPostSectionView.m */,
 				81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */,
 				81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */,
+				81BC174517FC429E00DF7AD4 /* MFProgressView.h */,
+				81BC174617FC429E00DF7AD4 /* MFProgressView.m */,
+				81BC174817FC432900DF7AD4 /* MFProgressViewDelegate.h */,
 				8110829D17F8AF4A005CC8ED /* MFPullToLoadMoreView.h */,
 				8110829E17F8AF4A005CC8ED /* MFPullToLoadMoreView.m */,
 				811082A017F8B02E005CC8ED /* MFPullToLoadMoreViewDelegate.h */,
@@ -1672,7 +1672,7 @@
 				81D54BBC180F3D79002D3449 /* MFPostDetails.m in Sources */,
 				8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */,
 				81233D6717F8E01A00C27805 /* MFDatabase+Size.m in Sources */,
-				81BC174717FC429E00DF7AD4 /* MFNewPostProgressView.m in Sources */,
+				81BC174717FC429E00DF7AD4 /* MFProgressView.m in Sources */,
 				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
 				819E12AF18055956008D2D36 /* MFDatabase+State.m in Sources */,
 				811082CF17F8CA8E005CC8ED /* SQLConnection.m in Sources */,
