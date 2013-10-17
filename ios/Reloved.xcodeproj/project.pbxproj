@@ -294,6 +294,8 @@
 		81DE2D3417F5FCC4001D0ADF /* Disclosure-Indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81DE2D3217F5FCC4001D0ADF /* Disclosure-Indicator@2x.png */; };
 		81E529DC1810A316004D88F3 /* Comments-BubbleTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529DA1810A316004D88F3 /* Comments-BubbleTriangle.png */; };
 		81E529DD1810A316004D88F3 /* Comments-BubbleTriangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529DB1810A316004D88F3 /* Comments-BubbleTriangle@2x.png */; };
+		81E529E01810A388004D88F3 /* MFWebService+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529DF1810A388004D88F3 /* MFWebService+User.m */; };
+		81E529E31810A43A004D88F3 /* MFUserDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529E21810A43A004D88F3 /* MFUserDetails.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -763,6 +765,10 @@
 		81DE2D3217F5FCC4001D0ADF /* Disclosure-Indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Disclosure-Indicator@2x.png"; path = "Images/Disclosure-Indicator@2x.png"; sourceTree = "<group>"; };
 		81E529DA1810A316004D88F3 /* Comments-BubbleTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Comments-BubbleTriangle.png"; path = "Images/Comments-BubbleTriangle.png"; sourceTree = "<group>"; };
 		81E529DB1810A316004D88F3 /* Comments-BubbleTriangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Comments-BubbleTriangle@2x.png"; path = "Images/Comments-BubbleTriangle@2x.png"; sourceTree = "<group>"; };
+		81E529DE1810A388004D88F3 /* MFWebService+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFWebService+User.h"; path = "Sources/MFWebService+User.h"; sourceTree = SOURCE_ROOT; };
+		81E529DF1810A388004D88F3 /* MFWebService+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFWebService+User.m"; path = "Sources/MFWebService+User.m"; sourceTree = SOURCE_ROOT; };
+		81E529E11810A43A004D88F3 /* MFUserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFUserDetails.h; path = Sources/MFUserDetails.h; sourceTree = SOURCE_ROOT; };
+		81E529E21810A43A004D88F3 /* MFUserDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFUserDetails.m; path = Sources/MFUserDetails.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -993,6 +999,8 @@
 				81233D5A17F8DDF400C27805 /* MFType.m */,
 				81233D7417F8F1BC00C27805 /* MFUser.h */,
 				81233D7517F8F1BC00C27805 /* MFUser.m */,
+				81E529E11810A43A004D88F3 /* MFUserDetails.h */,
+				81E529E21810A43A004D88F3 /* MFUserDetails.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1120,6 +1128,8 @@
 				81136ABF180B5703009142AE /* MFWebService+Media.m */,
 				81136AB7180B5555009142AE /* MFWebService+Post.h */,
 				81136AB8180B5555009142AE /* MFWebService+Post.m */,
+				81E529DE1810A388004D88F3 /* MFWebService+User.h */,
+				81E529DF1810A388004D88F3 /* MFWebService+User.m */,
 				8119DFE917E06E25007AEDC2 /* MFWebServiceAuthenticationChallenge.h */,
 				8119DFEA17E06E33007AEDC2 /* MFWebServiceDelegate.h */,
 				8119DFEB17E06E44007AEDC2 /* MFWebServiceError.h */,
@@ -1666,6 +1676,7 @@
 				81136AC0180B5703009142AE /* MFWebService+Media.m in Sources */,
 				81DE2D3017F5F386001D0ADF /* MFHomeSectionView.m in Sources */,
 				8119DFF817E0A1E6007AEDC2 /* MFTracker.m in Sources */,
+				81E529E01810A388004D88F3 /* MFWebService+User.m in Sources */,
 				8119DFCA17E06BCC007AEDC2 /* MFImageView.m in Sources */,
 				81DE2D2D17F5F166001D0ADF /* MFSeparatorView.m in Sources */,
 				81D0967317FCD4470044BD06 /* MFNewPostController+Photos.m in Sources */,
@@ -1754,6 +1765,7 @@
 				81233D5B17F8DDF400C27805 /* MFType.m in Sources */,
 				8120C1D117E068EF00A1C3A9 /* MFRecentsController.m in Sources */,
 				8119DFD317E06D85007AEDC2 /* MFWebFeed.m in Sources */,
+				81E529E31810A43A004D88F3 /* MFUserDetails.m in Sources */,
 				8120C13E17DFA8F400A1C3A9 /* UIColor+Additions.m in Sources */,
 				812F4AE217DEFEE900454747 /* ASIDataDecompressor.m in Sources */,
 				8120C1C117E05C9F00A1C3A9 /* MFHomeFooterView.m in Sources */,
