@@ -4,11 +4,10 @@
 
 @class MBProgressHUD, MFFormAccessory, MFForm;
 
-@interface MFProfileController : UIViewController
+@interface MFProfileController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
 {
     @private
     MFFormAccessory *m_accessory;
-    MFForm *m_form;
     MBProgressHUD *m_hudView;
 }
 
