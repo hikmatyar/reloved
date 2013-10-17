@@ -234,4 +234,9 @@
     return [m_textField canResignFirstResponder];
 }
 
+- (BOOL)resignFirstResponder
+{
+    return [m_textField resignFirstResponder];
+}
+
 @end

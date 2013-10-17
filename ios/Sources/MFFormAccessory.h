@@ -26,6 +26,9 @@
 @property (nonatomic, retain) UIToolbar *toolbar;
 @property (nonatomic, assign, getter = isDoneEnabled) BOOL doneEnabled;
 
+- (void)selectPrev;
+- (void)selectNext;
+
 - (void)invalidate;
 - (void)activate;
 - (void)deactivate;

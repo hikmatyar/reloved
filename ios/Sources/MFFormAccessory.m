@@ -143,6 +143,16 @@
     }
 }
 
+- (void)selectPrev
+{
+    [self prev:nil];
+}
+
+- (void)selectNext
+{
+    [self next:nil];
+}
+
 - (IBAction)done:(id)sender
 {
     if([m_delegate respondsToSelector:@selector(accessoryDidTapDone:)]) {
