@@ -119,7 +119,7 @@
 /* Post Controller */
 
 "Post.Action.AddToCart" = "Add to Cart";
-"Post.Action.Comments" = "See 24 comments";
+"Post.Action.Comments" = "See comments";
 "Post.Action.Condition" = "Condition";
 "Post.Action.Material" = "Material";
 "Post.Action.ReturnsPolicy" = "Returns";
@@ -130,10 +130,10 @@
 "Post.Action.SizeAndFit" = "Size & Fit";
 "Post.Action.Unsave" = "Unsave";
 "Post.Alert.AddedToCart.Action.OK" = "OK";
-"Post.Alert.AddedToCart.Message" = "This dress has been added to your shopping cart. You can access shopping cart from the side navigation menu";
+"Post.Alert.AddedToCart.Message" = "This dress has been added to your cart. You can view your cart from the navigation menu";
 "Post.Alert.AddedToCart.Title" = "Added to Cart";
 "Post.Alert.RemovedFromCart.Action.OK" = "OK";
-"Post.Alert.RemovedFromCart.Message" = "This item has been removed from your shopping cart";
+"Post.Alert.RemovedFromCart.Message" = "This item has been removed from your cart";
 "Post.Alert.RemovedFromCart.Title" = "Removed from Cart";
 "Post.Alert.Saved.Action.OK" = "OK";
 "Post.Alert.Saved.Message" = "This dress has been saved to your home screen";
@@ -142,10 +142,10 @@
 "Post.Alert.Unsaved.Message" = "This dress has been unsaved from your home screen";
 "Post.Alert.Unsaved.Title" = "Unsaved Dress";
 "Post.Format.Comments" = "See %d comment";
-"Post.Format.Comments.None" = "No comments";
+"Post.Format.Comments.None" = "Be the first to comment!";
 "Post.Format.Comments.Plural" = "See %d comments";
-"Post.Format.Email.Subject" = "(TDB)";
-"Post.Format.Email.Body" = "(TDB)";
+"Post.Format.Email.Subject" = "Sharing a dress from Reloved App";
+"Post.Format.Email.Body" = "Hi there - I thought you might want to see this dress that I found on Reloved app.";
 "Post.Label.AboutThisDress" = "About This Dress";
 "Post.Label.ShippingAndReturns" = "Shipping & Returns";
 "Post.Label.ShippingInfo" = "3-5 days";
@@ -166,15 +166,15 @@
 "Profile.Alert.AddedToCart.Action.Retry" = "Retry";
 "Profile.Alert.AddedToCart.Message" = "Unable to save. Retry?";
 "Profile.Alert.AddedToCart.Title" = "Failed to save";
-"Profile.Hint.AddressLine" = "(TDB)";
-"Profile.Hint.Country" = "(TDB)";
-"Profile.Hint.Email" = "(TDB)";
+"Profile.Hint.AddressLine" = "Enter text here";
+"Profile.Hint.Country" = "";
+"Profile.Hint.Email" = "";
 "Profile.Hint.Footer" = "Your contact details are not visible to anyone other than yourself.\n\nWe need your contact details to keep you properly informed when you buy or sell dresses through us.\n ";
-"Profile.Hint.FullName" = "(TDB)";
-"Profile.Hint.City" = "(TDB)";
-"Profile.Hint.Phone" = "(TDB)";
-"Profile.Hint.Postcode" = "(TDB)";
-"Profile.Hint.Size" = "(TDB)";
+"Profile.Hint.FullName" = "";
+"Profile.Hint.City" = "";
+"Profile.Hint.Phone" = "+44..";
+"Profile.Hint.Postcode" = "";
+"Profile.Hint.Size" = "";
 "Profile.Label.AddressLine" = "Address Line";
 "Profile.Label.Country" = "Country";
 "Profile.Label.FullName" = "Full Name";
@@ -217,8 +217,8 @@
 /* Email */
 
 "Email.Error.Action.OK" = "OK";
-"Email.Error.Message" = "You need to configure your email client";
-"Email.Error.Title" = "Cannot open Mail";
+"Email.Error.Message" = "Please configure your email client";
+"Email.Error.Title" = "Sorry, we are unanble to open Mail";
 
 /* Conditions */
 
