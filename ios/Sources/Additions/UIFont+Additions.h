@@ -6,6 +6,7 @@
 
 + (UIFont *)themeFontOfSize:(CGFloat)size;
 + (UIFont *)themeBoldFontOfSize:(CGFloat)size;
++ (UIFont *)themeLightFontOfSize:(CGFloat)size;
 
 + (UIFont *)themeMenuTextFont;
 
