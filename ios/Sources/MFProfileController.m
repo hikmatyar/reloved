@@ -43,12 +43,52 @@
 
 #pragma mark MFFormPickerFieldDelegate
 
+- (void)pickerFieldDidBeginEditing:(MFFormPickerField *)pickerField
+{
+    [self.form scrollToView:pickerField animated:YES];
+    [m_accessory invalidate];
+}
+
+- (void)pickerField:(MFFormPickerField *)pickerField didSelectRow:(NSInteger)row
+{
+}
+
+#pragma mark UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self.form scrollToView:textField animated:YES];
+    [m_accessory invalidate];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return YES;
+}
+
+#pragma mark UITextViewDelegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [self.form scrollToView:textView animated:YES];
+    [m_accessory invalidate];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+}
+
 #pragma mark UIViewController
 
 - (void)loadView
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     MFForm *form = [[MFForm alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
+    NSMutableArray *fields = [NSMutableArray array];
     MFFormPickerField *pickerField;
     MFFormTextField *textField;
     MFFormTextView *textView;
@@ -64,6 +104,7 @@
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.FullName", nil);
     [form addSubview:textField];
+    [fields addObject:textField];
     
     label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
     label.text = NSLocalizedString(@"Profile.Label.AddressLine", nil);
@@ -73,6 +114,7 @@
     textView.delegate = self;
     textView.placeholder = NSLocalizedString(@"Profile.Hint.AddressLine", nil);
     [form addSubview:textView];
+    [fields addObject:textView];
     
     label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
     label.text = NSLocalizedString(@"Profile.Label.Country", nil);
@@ -83,6 +125,7 @@
     pickerField.delegate = self;
     pickerField.placeholder =NSLocalizedString(@"Profile.Hint.Country", nil);
     [form addSubview:pickerField];
+    [fields addObject:pickerField];
     
     label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
     label.text = NSLocalizedString(@"Profile.Label.City", nil);
@@ -93,6 +136,7 @@
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.City", nil);
     [form addSubview:textField];
+    [fields addObject:textField];
     
     label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
     label.text = NSLocalizedString(@"Profile.Label.Postcode", nil);
@@ -103,6 +147,7 @@
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Postcode", nil);
     [form addSubview:textField];
+    [fields addObject:textField];
     
     label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
     label.text = NSLocalizedString(@"Profile.Label.Phone", nil);
@@ -113,6 +158,7 @@
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Phone", nil);
     [form addSubview:textField];
+    [fields addObject:textField];
     
     label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
     label.text = NSLocalizedString(@"Profile.Label.Email", nil);
@@ -123,6 +169,7 @@
     textField.returnKeyType = UIReturnKeyDone;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Email", nil);
     [form addSubview:textField];
+    [fields addObject:textField];
     
     footer = [[MFFormFooter alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormFooter preferredHeight])];
     footer.lineBreakMode = NSLineBreakByWordWrapping;
@@ -139,6 +186,7 @@
     
     [m_accessory deactivate];
     m_accessory = [[MFFormAccessory alloc] initWithContext:form];
+    m_accessory.fields = fields;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -147,16 +195,11 @@
     [m_accessory activate];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [m_accessory deactivate];
-    [super viewDidDisappear:animated];
+    [super viewWillDisappear:animated];
 }
-
-#pragma mark UITextFieldDelegate
-
-
-#pragma mark UITextViewDelegate
 
 #pragma mark NSObject
 

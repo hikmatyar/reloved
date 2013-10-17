@@ -162,8 +162,6 @@
 
 "Profile.Action.Cancel" = "Cancel";
 "Profile.Action.Done" = "Done";
-"Profile.Action.Next" = "Next";
-"Profile.Action.Prev" = "Prev";
 "Profile.Alert.AddedToCart.Action.Close" = "Close";
 "Profile.Alert.AddedToCart.Action.Retry" = "Retry";
 "Profile.Alert.AddedToCart.Message" = "Unable to save. Retry?";
@@ -209,6 +207,12 @@
 "Reachability.Action.TryAgain" = "Please try Again";
 "Reachability.Message.NoConnection" = "Internet Connection is required";
 "Reachability.Title.NoConnection" = "No Connection";
+
+/* Form Toolbar */
+
+"Form.Action.Done" = "Done";
+"Form.Action.Next" = "Next";
+"Form.Action.Prev" = "Prev";
 
 /* Email */
 

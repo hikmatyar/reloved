@@ -1,6 +1,10 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFFormAccessory.h"
+#import "MFFormAccessoryDelegate.h"
+
+#define ITEM_PREV 0
+#define ITEM_NEXT 1
 
 @interface MFFormAccessory_Keyboard : NSObject
 {
@@ -80,6 +84,28 @@
     
     if(self) {
         m_context = context;
+        m_toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 44.0F)];
+        m_toolbar.barStyle = UIBarStyleBlackTranslucent;
+        
+        m_segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:
+                                                                        NSLocalizedString(@"Form.Action.Prev", nil),
+                                                                        NSLocalizedString(@"Form.Action.Next", nil), nil ]];
+        [m_segmentedControl addTarget:self action:@selector(prevOrNext:) forControlEvents:UIControlEventValueChanged];
+        m_segmentedControl.momentary = YES;
+        m_segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+        [m_segmentedControl setEnabled:NO forSegmentAtIndex:ITEM_PREV];
+        [m_segmentedControl setEnabled:NO forSegmentAtIndex:ITEM_NEXT];
+        m_segmentedControlItem = [[UIBarButtonItem alloc] initWithCustomView:m_segmentedControl];
+        
+        m_doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Form.Action.Done", nil)
+                                                        style:UIBarButtonItemStyleDone
+                                                       target:self
+                                                       action:@selector(done:)];
+        
+        m_toolbar.items = [NSArray arrayWithObjects:
+                           m_segmentedControlItem,
+                           [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           m_doneButton, nil];
         
         if(m_context) {
             [MFFormAccessory_Keyboard sharedInstance];
@@ -87,6 +113,133 @@
     }
     
     return self;
+}
+
+- (IBAction)prev:(id)sender
+{
+    UIResponder *firstResponder = self.firstResponder;
+    NSInteger index;
+    
+    if(firstResponder && (index = [m_fields indexOfObject:firstResponder]) != NSNotFound && index > 0) {
+        self.firstResponder = [m_fields objectAtIndex:index - 1];
+        
+        if([m_delegate respondsToSelector:@selector(accessoryDidTapPrev:)]) {
+            [m_delegate accessoryDidTapPrev:self];
+        }
+    }
+}
+
+- (IBAction)next:(id)sender
+{
+    UIResponder *firstResponder = self.firstResponder;
+    NSInteger index;
+    
+    if(firstResponder && (index = [m_fields indexOfObject:firstResponder]) != NSNotFound && index + 1 < m_fields.count) {
+        self.firstResponder = [m_fields objectAtIndex:index + 1];
+        
+        if([m_delegate respondsToSelector:@selector(accessoryDidTapNext:)]) {
+            [m_delegate accessoryDidTapNext:self];
+        }
+    }
+}
+
+- (IBAction)done:(id)sender
+{
+    if([m_delegate respondsToSelector:@selector(accessoryDidTapDone:)]) {
+        [m_delegate accessoryDidTapDone:self];
+    } else {
+        [self.firstResponder resignFirstResponder];
+    }
+}
+
+- (IBAction)prevOrNext:(id)sender
+{
+    switch(m_segmentedControl.selectedSegmentIndex) {
+        case ITEM_PREV:
+            [self prev:sender];
+            break;
+        case ITEM_NEXT:
+            [self next:sender];
+            break;
+    }
+}
+
+@dynamic fields;
+
+- (NSArray *)fields
+{
+    return m_fields;
+}
+
+- (void)setFields:(NSArray *)fields
+{
+    if(m_fields != fields) {
+        for(UIView *field in m_fields) {
+            if([field respondsToSelector:@selector(setInputAccessoryView:)]) {
+                [field performSelector:@selector(setInputAccessoryView:) withObject:nil];
+            }
+        }
+        
+        m_fields = fields;
+        
+        for(UIView *field in m_fields) {
+            if([field respondsToSelector:@selector(setInputAccessoryView:)]) {
+                [field performSelector:@selector(setInputAccessoryView:) withObject:m_toolbar];
+            }
+        }
+        
+        [self invalidate];
+    }
+}
+
+@synthesize delegate = m_delegate;
+@synthesize toolbar = m_toolbar;
+
+@dynamic firstResponder;
+
+- (UIResponder *)firstResponder
+{
+    for(UIResponder *field in m_fields) {
+        if([field isFirstResponder]) {
+            return field;
+        }
+    }
+    
+    return nil;
+}
+
+- (void)setFirstResponder:(UIResponder *)firstResponder
+{
+    if(firstResponder && [m_fields containsObject:firstResponder]) {
+        if(!firstResponder.isFirstResponder) {
+            [firstResponder becomeFirstResponder];
+        }
+        
+        [self invalidate];
+    }    
+}
+
+@dynamic doneEnabled;
+
+- (BOOL)isDoneEnabled
+{
+    return m_doneButton.enabled;
+}
+
+- (void)setDoneEnabled:(BOOL)doneEnabled
+{
+    m_doneButton.enabled = doneEnabled;
+}
+
+- (void)invalidate
+{
+    UIResponder *firstResponder = self.firstResponder;
+    NSInteger index;
+    
+    if(firstResponder && (index = [m_fields indexOfObject:firstResponder]) != NSNotFound) {
+        [m_segmentedControl setEnabled:(index > 0) ? YES : NO forSegmentAtIndex:ITEM_PREV];
+        [m_segmentedControl setEnabled:(index + 1 < m_fields.count) ? YES : NO forSegmentAtIndex:ITEM_NEXT];
+    }
 }
 
 - (void)activate

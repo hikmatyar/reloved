@@ -745,6 +745,7 @@
 		81D54BC4180F615A002D3449 /* MFFormPickerFieldDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFFormPickerFieldDelegate.h; path = Sources/MFFormPickerFieldDelegate.h; sourceTree = SOURCE_ROOT; };
 		81D54BC5180F6281002D3449 /* Picker-Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Picker-Arrow.png"; path = "Images/Picker-Arrow.png"; sourceTree = "<group>"; };
 		81D54BC6180F6281002D3449 /* Picker-Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Picker-Arrow@2x.png"; path = "Images/Picker-Arrow@2x.png"; sourceTree = "<group>"; };
+		81D54BC9180F65CB002D3449 /* MFFormAccessoryDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFFormAccessoryDelegate.h; path = Sources/MFFormAccessoryDelegate.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1020,6 +1021,7 @@
 				817723D917FDA877004A28CC /* MFForm.m */,
 				817723EA17FDADCC004A28CC /* MFFormAccessory.h */,
 				817723EB17FDADCC004A28CC /* MFFormAccessory.m */,
+				81D54BC9180F65CB002D3449 /* MFFormAccessoryDelegate.h */,
 				817723E117FDAAD8004A28CC /* MFFormButton.h */,
 				817723E217FDAAD8004A28CC /* MFFormButton.m */,
 				8141AB4518049DD70087B740 /* MFFormFooter.h */,
