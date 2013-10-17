@@ -162,10 +162,17 @@
 
 "Profile.Action.Cancel" = "Cancel";
 "Profile.Action.Done" = "Done";
-"Profile.Alert.AddedToCart.Action.Close" = "Close";
-"Profile.Alert.AddedToCart.Action.Retry" = "Retry";
-"Profile.Alert.AddedToCart.Message" = "Unable to save. Retry?";
-"Profile.Alert.AddedToCart.Title" = "Failed to save";
+"Profile.Alert.FormError.Action.OK" = "OK";
+"Profile.Alert.FormError.Message" = "'%@ is invalid";
+"Profile.Alert.FormError.Title" = "Failed to save";
+"Profile.Alert.LoadError.Action.Close" = "Close";
+"Profile.Alert.LoadError.Action.Retry" = "Retry";
+"Profile.Alert.LoadError.Message" = "Unable to load. Retry?";
+"Profile.Alert.LoadError.Title" = "Failed to load";
+"Profile.Alert.SaveError.Action.Close" = "Close";
+"Profile.Alert.SaveError.Action.Retry" = "Retry";
+"Profile.Alert.SaveError.Message" = "Unable to save. Retry?";
+"Profile.Alert.SaveError.Title" = "Failed to save";
 "Profile.Hint.AddressLine" = "Enter text here";
 "Profile.Hint.Country" = "---";
 "Profile.Hint.Email" = "";
