@@ -14,6 +14,12 @@
     return [UIFont fontWithName:@"HelveticaNeue-Bold" size:size];
 }
 
++ (UIFont *)themeLightFontOfSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"HelveticaNeue-Light" size:size];
+}
+
+
 + (UIFont *)themeMenuTextFont
 {
     return [self themeFontOfSize:24.0F];
