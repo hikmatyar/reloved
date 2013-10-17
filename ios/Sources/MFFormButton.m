@@ -11,6 +11,11 @@
     return 50.0F;
 }
 
++ (BOOL)hasDisclosureIndicator
+{
+    return YES;
+}
+
 @dynamic empty;
 
 - (BOOL)isEmpty
@@ -62,7 +67,6 @@
     self = [super initWithFrame:frame];
     
     if(self) {
-        UIImageView *disclosureView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width - 21.0F, roundf(0.5F * (frame.size.height - 17.0F)), 10.0F, 17.0F)];
         UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, frame.size.height - 1.0F, frame.size.width, 1.0F)];
         
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -73,9 +77,13 @@
         [self setTitleColor:[UIColor themeButtonTextColor] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor themeButtonTextHighlightColor] forState:UIControlStateHighlighted];
         
-        disclosureView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        disclosureView.image = [UIImage imageNamed:@"Disclosure-Indicator.png"];
-        [self addSubview:disclosureView];
+        if([self.class hasDisclosureIndicator]) {
+            UIImageView *disclosureView = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width - 21.0F, roundf(0.5F * (frame.size.height - 17.0F)), 10.0F, 17.0F)];
+            
+            disclosureView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+            disclosureView.image = [UIImage imageNamed:@"Disclosure-Indicator.png"];
+            [self addSubview:disclosureView];
+        }
         
         separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         separatorView.backgroundColor = [UIColor themeSeparatorBottomColor];

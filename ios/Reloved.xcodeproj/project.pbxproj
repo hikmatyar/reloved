@@ -282,6 +282,9 @@
 		81D54BB6180F337E002D3449 /* MFPostCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BB5180F337E002D3449 /* MFPostCommentsController.m */; };
 		81D54BB9180F384B002D3449 /* MFCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BB8180F384B002D3449 /* MFCommentTableViewCell.m */; };
 		81D54BBC180F3D79002D3449 /* MFPostDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BBB180F3D79002D3449 /* MFPostDetails.m */; };
+		81D54BC2180F6120002D3449 /* MFFormPickerField.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D54BC1180F6120002D3449 /* MFFormPickerField.m */; };
+		81D54BC7180F6281002D3449 /* Picker-Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 81D54BC5180F6281002D3449 /* Picker-Arrow.png */; };
+		81D54BC8180F6281002D3449 /* Picker-Arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81D54BC6180F6281002D3449 /* Picker-Arrow@2x.png */; };
 		81DE1CFC17F3920F00965401 /* UIPhotoGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */; };
 		81DE1CFD17F3920F00965401 /* UIPhotoGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CF917F3920F00965401 /* UIPhotoGalleryViewController.m */; };
 		81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81DE1CFB17F3920F00965401 /* UIPhotoItemView.m */; };
@@ -736,6 +739,12 @@
 		81D54BB8180F384B002D3449 /* MFCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCommentTableViewCell.m; path = Sources/MFCommentTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		81D54BBA180F3D79002D3449 /* MFPostDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostDetails.h; path = Sources/MFPostDetails.h; sourceTree = SOURCE_ROOT; };
 		81D54BBB180F3D79002D3449 /* MFPostDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostDetails.m; path = Sources/MFPostDetails.m; sourceTree = SOURCE_ROOT; };
+		81D54BC0180F6120002D3449 /* MFFormPickerField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFFormPickerField.h; path = Sources/MFFormPickerField.h; sourceTree = SOURCE_ROOT; };
+		81D54BC1180F6120002D3449 /* MFFormPickerField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFFormPickerField.m; path = Sources/MFFormPickerField.m; sourceTree = SOURCE_ROOT; };
+		81D54BC3180F614A002D3449 /* MFFormPickerFieldDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFFormPickerFieldDataSource.h; path = Sources/MFFormPickerFieldDataSource.h; sourceTree = SOURCE_ROOT; };
+		81D54BC4180F615A002D3449 /* MFFormPickerFieldDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFFormPickerFieldDelegate.h; path = Sources/MFFormPickerFieldDelegate.h; sourceTree = SOURCE_ROOT; };
+		81D54BC5180F6281002D3449 /* Picker-Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Picker-Arrow.png"; path = "Images/Picker-Arrow.png"; sourceTree = "<group>"; };
+		81D54BC6180F6281002D3449 /* Picker-Arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Picker-Arrow@2x.png"; path = "Images/Picker-Arrow@2x.png"; sourceTree = "<group>"; };
 		81DE1CF617F3920F00965401 /* UIPhotoGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryView.h; path = Sources/UIPhotoGallery/UIPhotoGalleryView.h; sourceTree = SOURCE_ROOT; };
 		81DE1CF717F3920F00965401 /* UIPhotoGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPhotoGalleryView.m; path = Sources/UIPhotoGallery/UIPhotoGalleryView.m; sourceTree = SOURCE_ROOT; };
 		81DE1CF817F3920F00965401 /* UIPhotoGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPhotoGalleryViewController.h; path = Sources/UIPhotoGallery/UIPhotoGalleryViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1017,6 +1026,10 @@
 				8141AB4618049DD70087B740 /* MFFormFooter.m */,
 				817723DE17FDAAC9004A28CC /* MFFormLabel.h */,
 				817723DF17FDAAC9004A28CC /* MFFormLabel.m */,
+				81D54BC0180F6120002D3449 /* MFFormPickerField.h */,
+				81D54BC1180F6120002D3449 /* MFFormPickerField.m */,
+				81D54BC3180F614A002D3449 /* MFFormPickerFieldDataSource.h */,
+				81D54BC4180F615A002D3449 /* MFFormPickerFieldDelegate.h */,
 				817723E717FDAB61004A28CC /* MFFormSeparator.h */,
 				817723E817FDAB61004A28CC /* MFFormSeparator.m */,
 				817723E417FDAAEC004A28CC /* MFFormTextField.h */,
@@ -1204,6 +1217,8 @@
 				8120C15D17DFB2F700A1C3A9 /* Navigation-Menu@2x.png */,
 				812ED33C180E8ED400ABB387 /* Photo-Placeholder.png */,
 				812ED33D180E8ED400ABB387 /* Photo-Placeholder@2x.png */,
+				81D54BC5180F6281002D3449 /* Picker-Arrow.png */,
+				81D54BC6180F6281002D3449 /* Picker-Arrow@2x.png */,
 				81B14B67180EC3A20089D19F /* Post-Comments.png */,
 				81B14B68180EC3A20089D19F /* Post-Comments@2x.png */,
 				81B14B69180EC3A20089D19F /* Post-Condition.png */,
@@ -1551,10 +1566,12 @@
 				81B14B74180EC3A20089D19F /* Post-Comments@2x.png in Resources */,
 				81B30E30180DC8E600FF414D /* Checkmark@2x.png in Resources */,
 				8120C1A517E0470300A1C3A9 /* Home-Security.png in Resources */,
+				81D54BC7180F6281002D3449 /* Picker-Arrow.png in Resources */,
 				812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */,
 				8120C19417E0470300A1C3A9 /* Home-Bookmarks@2x.png in Resources */,
 				8120C19D17E0470300A1C3A9 /* Home-History.png in Resources */,
 				81BC174C17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png in Resources */,
+				81D54BC8180F6281002D3449 /* Picker-Arrow@2x.png in Resources */,
 				8120C1A417E0470300A1C3A9 /* Home-ReturnsPolicy@2x.png in Resources */,
 				81BC174F17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png in Resources */,
 				8120C1A117E0470300A1C3A9 /* Home-Recents.png in Resources */,
@@ -1667,6 +1684,7 @@
 				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
 				81B27B2D17F6103700F9BC09 /* PKView.m in Sources */,
 				8119DFF417E09E58007AEDC2 /* MFWebCache.m in Sources */,
+				81D54BC2180F6120002D3449 /* MFFormPickerField.m in Sources */,
 				8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */,
 				8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */,
 				81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */,

@@ -5,6 +5,7 @@
 #import "MFFormButton.h"
 #import "MFFormFooter.h"
 #import "MFFormLabel.h"
+#import "MFFormPickerField.h"
 #import "MFFormTextField.h"
 #import "MFFormTextView.h"
 #import "MFProfileController.h"
@@ -28,12 +29,27 @@
 {
 }
 
+#pragma mark MFFormPickerFieldDataSource
+
+- (NSInteger)numberOfRowsInPickerField:(MFFormPickerField *)pickerField
+{
+    return 1;
+}
+
+- (NSString *)pickerField:(MFFormPickerField *)pickerField titleForRow:(NSInteger)row
+{
+    return @"";
+}
+
+#pragma mark MFFormPickerFieldDelegate
+
 #pragma mark UIViewController
 
 - (void)loadView
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     MFForm *form = [[MFForm alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
+    MFFormPickerField *pickerField;
     MFFormTextField *textField;
     MFFormTextView *textView;
     MFFormFooter *footer;
@@ -61,6 +77,12 @@
     label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
     label.text = NSLocalizedString(@"Profile.Label.Country", nil);
     [form addSubview:label];
+    
+    pickerField = [[MFFormPickerField alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormPickerField preferredHeight])];
+    pickerField.dataSource = self;
+    pickerField.delegate = self;
+    pickerField.placeholder =NSLocalizedString(@"Profile.Hint.Country", nil);
+    [form addSubview:pickerField];
     
     label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
     label.text = NSLocalizedString(@"Profile.Label.City", nil);
@@ -132,6 +154,7 @@
 }
 
 #pragma mark UITextFieldDelegate
+
 
 #pragma mark UITextViewDelegate
 
