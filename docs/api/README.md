@@ -348,6 +348,31 @@ API calls for retrieving posts and comments in various ways.
 
 API calls for updating personal information and posts.
 
+## Fetch User
+
+	/user/details
+	
+	Parameters:
+		[session]
+		INTEGER id [O] - User ID
+	
+	Returns:
+		{
+			"error": 0,
+			"size": 12,
+			"media": 34,
+			"email": "..",
+			"first_name": "..",
+			"last_name": "..",
+			"country": 13,
+			"city": "..",
+			"address: "..",
+			"zipcode": ".."
+		}
+	
+	Errors:
+		[standard]
+
 ## Update Info
 
 	/user/edit
