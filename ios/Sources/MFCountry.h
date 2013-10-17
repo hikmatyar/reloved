@@ -11,6 +11,7 @@
 }
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
+- (id)initWithName:(NSString *)name;
 
 @property (nonatomic, retain, readonly) NSDictionary *attributes;
 

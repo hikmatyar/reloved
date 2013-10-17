@@ -26,6 +26,17 @@
     return self;
 }
 
+- (id)initWithName:(NSString *)name
+{
+    self = [super init];
+    
+    if(self) {
+        m_name = name;
+    }
+    
+    return self;
+}
+
 @dynamic attributes;
 
 - (NSDictionary *)attributes
@@ -41,7 +52,11 @@
 
 - (NSComparisonResult)compare:(MFCountry *)country
 {
-    return [m_name compare:country.name];
+    // TODO: Maybe use preferred country from NSLocale object?
+    NSInteger gb1 = ([m_code isEqualToString:@"gb"]) ? 1 : 0;
+    NSInteger gb2 = ([country.code isEqualToString:@"gb"]) ? 1 : 0;
+    
+    return (gb1 > gb2) ? NSOrderedAscending : ((gb1 < gb2) ? NSOrderedDescending : [m_name compare:country.name]);
 }
 
 - (BOOL)isEqual:(MFCountry *)country

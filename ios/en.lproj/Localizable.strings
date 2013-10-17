@@ -167,7 +167,7 @@
 "Profile.Alert.AddedToCart.Message" = "Unable to save. Retry?";
 "Profile.Alert.AddedToCart.Title" = "Failed to save";
 "Profile.Hint.AddressLine" = "Enter text here";
-"Profile.Hint.Country" = "";
+"Profile.Hint.Country" = "---";
 "Profile.Hint.Email" = "";
 "Profile.Hint.Footer" = "Your contact details are not visible to anyone other than yourself.\n\nWe need your contact details to keep you properly informed when you buy or sell dresses through us.\n ";
 "Profile.Hint.FullName" = "";

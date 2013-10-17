@@ -218,7 +218,15 @@
     self = [super init];
     
     if(self) {
-        m_countries = [[MFDatabase sharedDatabase].countries sortedArrayUsingSelector:@selector(compare:)];
+        NSArray *countries = [[MFDatabase sharedDatabase].countries sortedArrayUsingSelector:@selector(compare:)];
+        
+        m_countries = [[NSMutableArray alloc] init];
+        
+        if(countries) {
+            [(NSMutableArray *)m_countries addObjectsFromArray:countries];
+        }
+        
+        [(NSMutableArray *)m_countries insertObject:[[MFCountry alloc] initWithName:NSLocalizedString(@"Profile.Hint.Country", nil)] atIndex:0];
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Profile.Action.Cancel", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(cancel:)];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Profile.Action.Done", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(done:)];
