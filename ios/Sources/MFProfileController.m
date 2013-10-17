@@ -103,6 +103,8 @@
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.FullName", nil);
+    textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
     [form addSubview:textField];
     [fields addObject:textField];
     
@@ -113,6 +115,7 @@
     textView = [[MFFormTextView alloc] initWithFrame:CGRectMake(10.0F, 220.0F, 300.0F, 2.0F * [MFFormLabel preferredHeight])];
     textView.delegate = self;
     textView.placeholder = NSLocalizedString(@"Profile.Hint.AddressLine", nil);
+    textView.autocorrectionType = UITextAutocorrectionTypeNo;
     [form addSubview:textView];
     [fields addObject:textView];
     
@@ -135,6 +138,7 @@
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.City", nil);
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
     [form addSubview:textField];
     [fields addObject:textField];
     
@@ -146,6 +150,7 @@
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Postcode", nil);
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
     [form addSubview:textField];
     [fields addObject:textField];
     
@@ -157,6 +162,7 @@
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Phone", nil);
+    textField.keyboardType = UIKeyboardTypePhonePad;
     [form addSubview:textField];
     [fields addObject:textField];
     
@@ -168,6 +174,8 @@
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Email", nil);
+    textField.keyboardType = UIKeyboardTypeEmailAddress;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
     [form addSubview:textField];
     [fields addObject:textField];
     
