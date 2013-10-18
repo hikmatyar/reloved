@@ -301,3 +301,7 @@
 "Condition.3.Comment1" = "This item is almost new, barely used";
 "Condition.3.Comment2" = "Used less than 10 times";
 "Condition.3.Comment3" = "Certified by the Reloved team";
+
+/* Currencies */
+
+"Currency.GBP" = "£";

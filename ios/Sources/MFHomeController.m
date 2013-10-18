@@ -26,6 +26,7 @@
 #import "MFType.h"
 #import "MFWebController.h"
 #import "MFWebFeed.h"
+#import "MFWebPost.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UITableView+Additions.h"
@@ -184,7 +185,11 @@
 
 - (void)headerViewDidSelectShopByFeatured:(MFHomeHeaderView *)headerView
 {
+    MFPost *post = [MFDatabase sharedDatabase].featuredPost;
     
+    if(post) {
+        [self.navigationController pushViewController:[[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithPost:post]] animated:YES];
+    }
 }
 
 #pragma mark MFOptionPickerController

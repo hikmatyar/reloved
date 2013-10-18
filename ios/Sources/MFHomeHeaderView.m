@@ -1,11 +1,13 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFBrand.h"
+#import "MFDatabase+Brand.h"
 #import "MFDatabase+State.h"
 #import "MFHomeHeaderView.h"
 #import "MFHomeHeaderViewDelegate.h"
 #import "MFImageButton.h"
 #import "MFImageView.h"
+#import "MFMoney.h"
 #import "MFPost.h"
 #import "UIButton+Additions.h"
 #import "UIColor+Additions.h"
@@ -45,8 +47,11 @@
 - (void)setPost:(MFPost *)post
 {
     if(m_post != post) {
+        MFBrand *brand = [[MFDatabase sharedDatabase] brandForIdentifier:post.brandId];
+        MFMoney *price = [[MFMoney alloc] initWithValue:post.price currency:post.currency];
+        
         m_post = post;
-        m_postLabel.text = post.title;
+        m_postLabel.text = (post) ? [NSString stringWithFormat:@"%@\n%@", ((brand.name) ? brand.name : post.title), price.localizedString] : @"";
         m_postImageView.URL = [[MFDatabase sharedDatabase] URLForMedia:post.mediaIds.firstObject size:kMFMediaSizeThumbnailLarge];
     }
 }
@@ -63,6 +68,7 @@
         UIView *topSeparatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 194.0F, frame.size.width, 1.0F)];
         UIView *bottomSeparatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, frame.size.height - 1.0F, frame.size.width, 1.0F)];
         UIImageView *disclosureIndicatorView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
+        UIButton *shopByFeaturedButton = [UIButton buttonWithType:UIButtonTypeCustom];
         
         topSeparatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         topSeparatorView.backgroundColor = [UIColor themeSeparatorTopColor];
@@ -102,6 +108,11 @@
         m_postImageView.layer.borderWidth = 1.0F;
         m_postImageView.placeholderImage = [UIImage imageNamed:@"Home-Featured-Placeholder.png"];
         [self addSubview:m_postImageView];
+        
+        shopByFeaturedButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        shopByFeaturedButton.frame = CGRectMake(10.0F, 9.0F, 300.0F, 184.0F);
+        [shopByFeaturedButton addTarget:self action:@selector(shopByFeatured:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:shopByFeaturedButton];
     }
     
     return self;

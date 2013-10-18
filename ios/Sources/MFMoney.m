@@ -35,10 +35,17 @@
 - (NSString *)localizedString
 {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    NSString *value;
     
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
     
-    return [formatter stringFromNumber:[NSNumber numberWithDouble:(double)m_value / 100.0]];
+    value = [formatter stringFromNumber:[NSNumber numberWithDouble:(double)m_value / 100.0]];
+    
+    if([m_currency isEqualToString:@"GBP"]) {
+        value = [NSLocalizedString(@"Currency.GBP", nil) stringByAppendingString:value];
+    }
+    
+    return value;
 }
 
 @dynamic stringValue;
