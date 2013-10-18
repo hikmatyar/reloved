@@ -1,12 +1,12 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFCheckoutController.h"
+#import "MFEventsController.h"
 #import "MFFeedController.h"
 #import "MFHomeController.h"
 #import "MFMenuController.h"
 #import "MFMenuItem.h"
 #import "MFNewPostController.h"
-#import "MFNewsController.h"
 #import "MFSearchController.h"
 #import "MFSideMenuContainerViewController.h"
 #import "UIColor+Additions.h"
@@ -48,7 +48,7 @@
 
 - (IBAction)news:(id)sender
 {
-    [self setViewControllerClass:[MFNewsController class]];
+    [self setViewControllerClass:[MFEventsController class]];
 }
 
 - (IBAction)cart:(id)sender

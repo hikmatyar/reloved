@@ -75,7 +75,7 @@
 		8120C15217DFAD8C00A1C3A9 /* Menu-Sell.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C14917DFAD8C00A1C3A9 /* Menu-Sell.png */; };
 		8120C15317DFAD8C00A1C3A9 /* Menu-Sell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C14A17DFAD8C00A1C3A9 /* Menu-Sell@2x.png */; };
 		8120C15517DFAD9600A1C3A9 /* Menu-Cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C15417DFAD9600A1C3A9 /* Menu-Cart.png */; };
-		8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C15717DFAF0B00A1C3A9 /* MFNewsController.m */; };
+		8120C15817DFAF0B00A1C3A9 /* MFEventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C15717DFAF0B00A1C3A9 /* MFEventsController.m */; };
 		8120C15B17DFAFA600A1C3A9 /* MFNewPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C15A17DFAFA600A1C3A9 /* MFNewPostController.m */; };
 		8120C15E17DFB2F700A1C3A9 /* Navigation-Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C15C17DFB2F700A1C3A9 /* Navigation-Menu.png */; };
 		8120C15F17DFB2F700A1C3A9 /* Navigation-Menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C15D17DFB2F700A1C3A9 /* Navigation-Menu@2x.png */; };
@@ -174,6 +174,7 @@
 		812F4AF317DF00FD00454747 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF217DF00FD00454747 /* libz.dylib */; };
 		812F4AF517DF011E00454747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF417DF011E00454747 /* SystemConfiguration.framework */; };
 		812F4AF917DF017F00454747 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF817DF017F00454747 /* MobileCoreServices.framework */; };
+		813FFCD818117FEF00E7FEA2 /* MFEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 813FFCD718117FEF00E7FEA2 /* MFEventTableViewCell.m */; };
 		8141AB3E180474070087B740 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB3D180474070087B740 /* UIViewController+Additions.m */; };
 		8141AB4118047B650087B740 /* NSFileManager+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4018047B650087B740 /* NSFileManager+Additions.m */; };
 		8141AB4418048E550087B740 /* MFNewPostPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4318048E550087B740 /* MFNewPostPageView.m */; };
@@ -427,8 +428,8 @@
 		8120C14917DFAD8C00A1C3A9 /* Menu-Sell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu-Sell.png"; path = "Images/Menu-Sell.png"; sourceTree = "<group>"; };
 		8120C14A17DFAD8C00A1C3A9 /* Menu-Sell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu-Sell@2x.png"; path = "Images/Menu-Sell@2x.png"; sourceTree = "<group>"; };
 		8120C15417DFAD9600A1C3A9 /* Menu-Cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Menu-Cart.png"; path = "Images/Menu-Cart.png"; sourceTree = "<group>"; };
-		8120C15617DFAF0B00A1C3A9 /* MFNewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewsController.h; path = Sources/MFNewsController.h; sourceTree = SOURCE_ROOT; };
-		8120C15717DFAF0B00A1C3A9 /* MFNewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewsController.m; path = Sources/MFNewsController.m; sourceTree = SOURCE_ROOT; };
+		8120C15617DFAF0B00A1C3A9 /* MFEventsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFEventsController.h; path = Sources/MFEventsController.h; sourceTree = SOURCE_ROOT; };
+		8120C15717DFAF0B00A1C3A9 /* MFEventsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFEventsController.m; path = Sources/MFEventsController.m; sourceTree = SOURCE_ROOT; };
 		8120C15917DFAFA600A1C3A9 /* MFNewPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostController.h; path = Sources/MFNewPostController.h; sourceTree = SOURCE_ROOT; };
 		8120C15A17DFAFA600A1C3A9 /* MFNewPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostController.m; path = Sources/MFNewPostController.m; sourceTree = SOURCE_ROOT; };
 		8120C15C17DFB2F700A1C3A9 /* Navigation-Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Menu.png"; path = "Images/Navigation-Menu.png"; sourceTree = "<group>"; };
@@ -581,6 +582,8 @@
 		812F4AF417DF011E00454747 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		812F4AF617DF015500454747 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		812F4AF817DF017F00454747 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		813FFCD618117FEF00E7FEA2 /* MFEventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFEventTableViewCell.h; path = Sources/MFEventTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		813FFCD718117FEF00E7FEA2 /* MFEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFEventTableViewCell.m; path = Sources/MFEventTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		8141AB3C180474070087B740 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Additions.h"; path = "Sources/Additions/UIViewController+Additions.h"; sourceTree = SOURCE_ROOT; };
 		8141AB3D180474070087B740 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Additions.m"; path = "Sources/Additions/UIViewController+Additions.m"; sourceTree = SOURCE_ROOT; };
 		8141AB3F18047B650087B740 /* NSFileManager+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Additions.h"; path = "Sources/Additions/NSFileManager+Additions.h"; sourceTree = SOURCE_ROOT; };
@@ -891,6 +894,8 @@
 				81D54BAF180F2658002D3449 /* MFConditionController.m */,
 				811082A817F8B302005CC8ED /* MFDelta.h */,
 				811082A917F8B302005CC8ED /* MFDelta.m */,
+				8120C15617DFAF0B00A1C3A9 /* MFEventsController.h */,
+				8120C15717DFAF0B00A1C3A9 /* MFEventsController.m */,
 				812F4ABB17DEFDB400454747 /* MFFeedController.h */,
 				812F4ABC17DEFDB400454747 /* MFFeedController.m */,
 				8120C1CC17E0685A00A1C3A9 /* MFHistoryController.h */,
@@ -921,8 +926,6 @@
 				81D0967B17FCD46F0044BD06 /* MFNewPostController+Notes.m */,
 				81D0967417FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.h */,
 				81D0967517FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m */,
-				8120C15617DFAF0B00A1C3A9 /* MFNewsController.h */,
-				8120C15717DFAF0B00A1C3A9 /* MFNewsController.m */,
 				81BC174117FB51CA00DF7AD4 /* MFOptionPickerController.h */,
 				81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */,
 				81BC174417FB6E7700DF7AD4 /* MFOptionPickerControllerDelegate.h */,
@@ -1072,6 +1075,8 @@
 				81D54BB8180F384B002D3449 /* MFCommentTableViewCell.m */,
 				81D0966817FCCE330044BD06 /* MFConditionTableViewCell.h */,
 				81D0966917FCCE330044BD06 /* MFConditionTableViewCell.m */,
+				813FFCD618117FEF00E7FEA2 /* MFEventTableViewCell.h */,
+				813FFCD718117FEF00E7FEA2 /* MFEventTableViewCell.m */,
 				817723D817FDA877004A28CC /* MFForm.h */,
 				817723D917FDA877004A28CC /* MFForm.m */,
 				817723EA17FDADCC004A28CC /* MFFormAccessory.h */,
@@ -1747,7 +1752,7 @@
 				8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */,
 				81233D6717F8E01A00C27805 /* MFDatabase+Size.m in Sources */,
 				81BC174717FC429E00DF7AD4 /* MFProgressView.m in Sources */,
-				8120C15817DFAF0B00A1C3A9 /* MFNewsController.m in Sources */,
+				8120C15817DFAF0B00A1C3A9 /* MFEventsController.m in Sources */,
 				819E12AF18055956008D2D36 /* MFDatabase+State.m in Sources */,
 				811082CF17F8CA8E005CC8ED /* SQLConnection.m in Sources */,
 				81B27B2717F6103700F9BC09 /* PKCard.m in Sources */,
@@ -1756,6 +1761,7 @@
 				8120C1C817E0681300A1C3A9 /* MFBookmarksController.m in Sources */,
 				811082BF17F8BD09005CC8ED /* MFDatabase+Post.m in Sources */,
 				81BC175417FCA55F00DF7AD4 /* MFPageScrollView.m in Sources */,
+				813FFCD818117FEF00E7FEA2 /* MFEventTableViewCell.m in Sources */,
 				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
 				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
 				81B27B2D17F6103700F9BC09 /* PKView.m in Sources */,

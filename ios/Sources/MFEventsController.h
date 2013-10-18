@@ -2,9 +2,10 @@
 
 #import "MFFeedController.h"
 
-@interface MFNewsController : MFFeedController
+@interface MFEventsController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     @private
+    NSArray *m_events;
 }
 
 - (IBAction)menu:(id)sender;

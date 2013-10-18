@@ -242,6 +242,15 @@
 "SearchResults.Label.NoData" = "No Results";
 "SearchResults.Title" = "Results";
 
+/* News Feed Controller */
+
+"Events.Format.Type.1" = "$LABEL";
+"Events.Format.Type.2" = "$TARGET purchased your dress. \"$LABEL\"";
+"Events.Format.Type.3" = "You made a comment. \"$LABEL\"";
+"Events.Format.Type.4" = "$TARGET left a comment. \"$LABEL\"";
+"Events.Label.NoData" = "No Events";
+"Events.Title" = "News Feed";
+
 /* Condition Controller */
 
 "Condition.Title" = "Condition";
