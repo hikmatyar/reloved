@@ -92,7 +92,7 @@ class BrowseHandler extends Handler {
 			});
 		});
 		
-    	if(globalState == null) {
+    	if(globalState == null || featured) {
     		this.cacheGlobals(globals);
     		async(function() { this.begin(ErrorCode.http_ok); });
     		this.writeGlobals(globals);
