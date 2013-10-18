@@ -62,7 +62,7 @@
 		8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13017DFA37100A1C3A9 /* MFPostController.m */; };
 		8120C13417DFA7AD00A1C3A9 /* MFHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */; };
 		8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13617DFA7C000A1C3A9 /* MFSearchController.m */; };
-		8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13917DFA82100A1C3A9 /* MFCartController.m */; };
+		8120C13A17DFA82100A1C3A9 /* MFCheckoutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13917DFA82100A1C3A9 /* MFCheckoutController.m */; };
 		8120C13E17DFA8F400A1C3A9 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */; };
 		8120C14117DFA90300A1C3A9 /* UIFont+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C14017DFA90300A1C3A9 /* UIFont+Additions.m */; };
 		8120C14B17DFAD8C00A1C3A9 /* Menu-Cart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8120C14217DFAD8C00A1C3A9 /* Menu-Cart@2x.png */; };
@@ -296,6 +296,16 @@
 		81E529DD1810A316004D88F3 /* Comments-BubbleTriangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529DB1810A316004D88F3 /* Comments-BubbleTriangle@2x.png */; };
 		81E529E01810A388004D88F3 /* MFWebService+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529DF1810A388004D88F3 /* MFWebService+User.m */; };
 		81E529E31810A43A004D88F3 /* MFUserDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529E21810A43A004D88F3 /* MFUserDetails.m */; };
+		81E529E71810CFE7004D88F3 /* MFCheckoutController+Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529E61810CFE7004D88F3 /* MFCheckoutController+Cart.m */; };
+		81E529EA1810CFF3004D88F3 /* MFCheckoutController+Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529E91810CFF3004D88F3 /* MFCheckoutController+Address.m */; };
+		81E529ED1810D028004D88F3 /* MFCheckoutController+Confirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529EC1810D028004D88F3 /* MFCheckoutController+Confirm.m */; };
+		81E529F01810D037004D88F3 /* MFCheckoutController+Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529EF1810D037004D88F3 /* MFCheckoutController+Payment.m */; };
+		81E529F31810D06F004D88F3 /* MFCheckoutController+Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529F21810D06F004D88F3 /* MFCheckoutController+Receipt.m */; };
+		81E529F61810D0A4004D88F3 /* MFCheckoutPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529F51810D0A4004D88F3 /* MFCheckoutPageView.m */; };
+		81E529F91810D58E004D88F3 /* Checkout-Progress-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529F71810D58E004D88F3 /* Checkout-Progress-Selected.png */; };
+		81E529FA1810D58E004D88F3 /* Checkout-Progress-Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529F81810D58E004D88F3 /* Checkout-Progress-Selected@2x.png */; };
+		81E529FD1810D69A004D88F3 /* Checkout-Progress-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529FB1810D69A004D88F3 /* Checkout-Progress-Unselected.png */; };
+		81E529FE1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529FC1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -400,8 +410,8 @@
 		8120C13317DFA7AD00A1C3A9 /* MFHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFHomeController.m; path = Sources/MFHomeController.m; sourceTree = SOURCE_ROOT; };
 		8120C13517DFA7C000A1C3A9 /* MFSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFSearchController.h; path = Sources/MFSearchController.h; sourceTree = SOURCE_ROOT; };
 		8120C13617DFA7C000A1C3A9 /* MFSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFSearchController.m; path = Sources/MFSearchController.m; sourceTree = SOURCE_ROOT; };
-		8120C13817DFA82100A1C3A9 /* MFCartController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCartController.h; path = Sources/MFCartController.h; sourceTree = SOURCE_ROOT; };
-		8120C13917DFA82100A1C3A9 /* MFCartController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCartController.m; path = Sources/MFCartController.m; sourceTree = SOURCE_ROOT; };
+		8120C13817DFA82100A1C3A9 /* MFCheckoutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCheckoutController.h; path = Sources/MFCheckoutController.h; sourceTree = SOURCE_ROOT; };
+		8120C13917DFA82100A1C3A9 /* MFCheckoutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCheckoutController.m; path = Sources/MFCheckoutController.m; sourceTree = SOURCE_ROOT; };
 		8120C13C17DFA8F400A1C3A9 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Additions.h"; path = "Sources/Additions/UIColor+Additions.h"; sourceTree = SOURCE_ROOT; };
 		8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Additions.m"; path = "Sources/Additions/UIColor+Additions.m"; sourceTree = SOURCE_ROOT; };
 		8120C13F17DFA90300A1C3A9 /* UIFont+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Additions.h"; path = "Sources/Additions/UIFont+Additions.h"; sourceTree = SOURCE_ROOT; };
@@ -769,6 +779,22 @@
 		81E529DF1810A388004D88F3 /* MFWebService+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFWebService+User.m"; path = "Sources/MFWebService+User.m"; sourceTree = SOURCE_ROOT; };
 		81E529E11810A43A004D88F3 /* MFUserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFUserDetails.h; path = Sources/MFUserDetails.h; sourceTree = SOURCE_ROOT; };
 		81E529E21810A43A004D88F3 /* MFUserDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFUserDetails.m; path = Sources/MFUserDetails.m; sourceTree = SOURCE_ROOT; };
+		81E529E51810CFE7004D88F3 /* MFCheckoutController+Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFCheckoutController+Cart.h"; path = "Sources/MFCheckoutController+Cart.h"; sourceTree = SOURCE_ROOT; };
+		81E529E61810CFE7004D88F3 /* MFCheckoutController+Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFCheckoutController+Cart.m"; path = "Sources/MFCheckoutController+Cart.m"; sourceTree = SOURCE_ROOT; };
+		81E529E81810CFF3004D88F3 /* MFCheckoutController+Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFCheckoutController+Address.h"; path = "Sources/MFCheckoutController+Address.h"; sourceTree = SOURCE_ROOT; };
+		81E529E91810CFF3004D88F3 /* MFCheckoutController+Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFCheckoutController+Address.m"; path = "Sources/MFCheckoutController+Address.m"; sourceTree = SOURCE_ROOT; };
+		81E529EB1810D028004D88F3 /* MFCheckoutController+Confirm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFCheckoutController+Confirm.h"; path = "Sources/MFCheckoutController+Confirm.h"; sourceTree = SOURCE_ROOT; };
+		81E529EC1810D028004D88F3 /* MFCheckoutController+Confirm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFCheckoutController+Confirm.m"; path = "Sources/MFCheckoutController+Confirm.m"; sourceTree = SOURCE_ROOT; };
+		81E529EE1810D037004D88F3 /* MFCheckoutController+Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFCheckoutController+Payment.h"; path = "Sources/MFCheckoutController+Payment.h"; sourceTree = SOURCE_ROOT; };
+		81E529EF1810D037004D88F3 /* MFCheckoutController+Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFCheckoutController+Payment.m"; path = "Sources/MFCheckoutController+Payment.m"; sourceTree = SOURCE_ROOT; };
+		81E529F11810D06F004D88F3 /* MFCheckoutController+Receipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFCheckoutController+Receipt.h"; path = "Sources/MFCheckoutController+Receipt.h"; sourceTree = SOURCE_ROOT; };
+		81E529F21810D06F004D88F3 /* MFCheckoutController+Receipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFCheckoutController+Receipt.m"; path = "Sources/MFCheckoutController+Receipt.m"; sourceTree = SOURCE_ROOT; };
+		81E529F41810D0A4004D88F3 /* MFCheckoutPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCheckoutPageView.h; path = Sources/MFCheckoutPageView.h; sourceTree = SOURCE_ROOT; };
+		81E529F51810D0A4004D88F3 /* MFCheckoutPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCheckoutPageView.m; path = Sources/MFCheckoutPageView.m; sourceTree = SOURCE_ROOT; };
+		81E529F71810D58E004D88F3 /* Checkout-Progress-Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Progress-Selected.png"; path = "Images/Checkout-Progress-Selected.png"; sourceTree = "<group>"; };
+		81E529F81810D58E004D88F3 /* Checkout-Progress-Selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Progress-Selected@2x.png"; path = "Images/Checkout-Progress-Selected@2x.png"; sourceTree = "<group>"; };
+		81E529FB1810D69A004D88F3 /* Checkout-Progress-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Progress-Unselected.png"; path = "Images/Checkout-Progress-Unselected.png"; sourceTree = "<group>"; };
+		81E529FC1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Progress-Unselected@2x.png"; path = "Images/Checkout-Progress-Unselected@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -846,8 +872,18 @@
 				8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */,
 				81233D8017F8F9C800C27805 /* MFBrowseFilterController.h */,
 				81233D8117F8F9C800C27805 /* MFBrowseFilterController.m */,
-				8120C13817DFA82100A1C3A9 /* MFCartController.h */,
-				8120C13917DFA82100A1C3A9 /* MFCartController.m */,
+				8120C13817DFA82100A1C3A9 /* MFCheckoutController.h */,
+				8120C13917DFA82100A1C3A9 /* MFCheckoutController.m */,
+				81E529E81810CFF3004D88F3 /* MFCheckoutController+Address.h */,
+				81E529E91810CFF3004D88F3 /* MFCheckoutController+Address.m */,
+				81E529E51810CFE7004D88F3 /* MFCheckoutController+Cart.h */,
+				81E529E61810CFE7004D88F3 /* MFCheckoutController+Cart.m */,
+				81E529EB1810D028004D88F3 /* MFCheckoutController+Confirm.h */,
+				81E529EC1810D028004D88F3 /* MFCheckoutController+Confirm.m */,
+				81E529EE1810D037004D88F3 /* MFCheckoutController+Payment.h */,
+				81E529EF1810D037004D88F3 /* MFCheckoutController+Payment.m */,
+				81E529F11810D06F004D88F3 /* MFCheckoutController+Receipt.h */,
+				81E529F21810D06F004D88F3 /* MFCheckoutController+Receipt.m */,
 				81D54BAE180F2658002D3449 /* MFConditionController.h */,
 				81D54BAF180F2658002D3449 /* MFConditionController.m */,
 				811082A817F8B302005CC8ED /* MFDelta.h */,
@@ -1025,6 +1061,8 @@
 			children = (
 				81B14B93180EFE9B0089D19F /* MFButton.h */,
 				81B14B94180EFE9B0089D19F /* MFButton.m */,
+				81E529F41810D0A4004D88F3 /* MFCheckoutPageView.h */,
+				81E529F51810D0A4004D88F3 /* MFCheckoutPageView.m */,
 				81D54BB7180F384B002D3449 /* MFCommentTableViewCell.h */,
 				81D54BB8180F384B002D3449 /* MFCommentTableViewCell.m */,
 				81D0966817FCCE330044BD06 /* MFConditionTableViewCell.h */,
@@ -1166,6 +1204,10 @@
 				81136ACF180C549B009142AE /* Cartoon3@2x.jpg */,
 				81B30E2D180DC8E600FF414D /* Checkmark.png */,
 				81B30E2E180DC8E600FF414D /* Checkmark@2x.png */,
+				81E529F71810D58E004D88F3 /* Checkout-Progress-Selected.png */,
+				81E529F81810D58E004D88F3 /* Checkout-Progress-Selected@2x.png */,
+				81E529FB1810D69A004D88F3 /* Checkout-Progress-Unselected.png */,
+				81E529FC1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png */,
 				81E529DA1810A316004D88F3 /* Comments-BubbleTriangle.png */,
 				81E529DB1810A316004D88F3 /* Comments-BubbleTriangle@2x.png */,
 				812F4AAF17DEFD0300454747 /* Default-568h@2x.png */,
@@ -1509,7 +1551,9 @@
 			files = (
 				8120C14D17DFAD8C00A1C3A9 /* Menu-Home@2x.png in Resources */,
 				81B14B78180EC3A20089D19F /* Post-Material@2x.png in Resources */,
+				81E529FA1810D58E004D88F3 /* Checkout-Progress-Selected@2x.png in Resources */,
 				81B14B8E180ED3C80089D19F /* User-Placeholder.png in Resources */,
+				81E529FE1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png in Resources */,
 				81C5A21A180996EA000427A9 /* NewPost-Photos-Placeholder@2x.png in Resources */,
 				81B14B8F180ED3C80089D19F /* User-Placeholder@2x.png in Resources */,
 				81B27B5617F6107100F9BC09 /* placeholder@2x.png in Resources */,
@@ -1566,6 +1610,7 @@
 				81B27B5117F6107100F9BC09 /* jcb.png in Resources */,
 				8120C15117DFAD8C00A1C3A9 /* Menu-Search@2x.png in Resources */,
 				81136AD5180C549B009142AE /* Cartoon3@2x.jpg in Resources */,
+				81E529FD1810D69A004D88F3 /* Checkout-Progress-Unselected.png in Resources */,
 				81C5A219180996EA000427A9 /* NewPost-Photos-Placeholder.png in Resources */,
 				81B14B7D180EC3A20089D19F /* Post-SizeAndFit.png in Resources */,
 				8120C16317DFB48600A1C3A9 /* Navigation-Filter@2x.png in Resources */,
@@ -1578,6 +1623,7 @@
 				81B27B5417F6107100F9BC09 /* mastercard@2x.png in Resources */,
 				812ED33E180E8ED400ABB387 /* Photo-Placeholder.png in Resources */,
 				81B27B4B17F6107100F9BC09 /* cvc.png in Resources */,
+				81E529F91810D58E004D88F3 /* Checkout-Progress-Selected.png in Resources */,
 				812F4AED17DF003800454747 /* Icon114.png in Resources */,
 				8120C1A617E0470300A1C3A9 /* Home-Security@2x.png in Resources */,
 				81B14B75180EC3A20089D19F /* Post-Condition.png in Resources */,
@@ -1640,6 +1686,7 @@
 			files = (
 				8141AB4418048E550087B740 /* MFNewPostPageView.m in Sources */,
 				819E12B218057E68008D2D36 /* MFEvent.m in Sources */,
+				81E529F01810D037004D88F3 /* MFCheckoutController+Payment.m in Sources */,
 				81D0967617FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m in Sources */,
 				818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */,
 				81233D7F17F8F28700C27805 /* MFDatabase+Brand.m in Sources */,
@@ -1662,6 +1709,7 @@
 				812F4AE617DEFEE900454747 /* ASIInputStream.m in Sources */,
 				817723E917FDAB61004A28CC /* MFFormSeparator.m in Sources */,
 				812F4ACA17DEFE9C00454747 /* MBProgressHUD.m in Sources */,
+				81E529F61810D0A4004D88F3 /* MFCheckoutPageView.m in Sources */,
 				8141AB4118047B650087B740 /* NSFileManager+Additions.m in Sources */,
 				81B30E35180DE5AD00FF414D /* base64.c in Sources */,
 				81233D8517F912B000C27805 /* MFSectionHeaderView.m in Sources */,
@@ -1688,6 +1736,7 @@
 				81B14B98180F035A0089D19F /* MFMediaGalleryController.m in Sources */,
 				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,
 				811082A717F8B299005CC8ED /* NSArray+Additions.m in Sources */,
+				81E529F31810D06F004D88F3 /* MFCheckoutController+Receipt.m in Sources */,
 				81D54BBC180F3D79002D3449 /* MFPostDetails.m in Sources */,
 				8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */,
 				81233D6717F8E01A00C27805 /* MFDatabase+Size.m in Sources */,
@@ -1707,7 +1756,7 @@
 				8119DFF417E09E58007AEDC2 /* MFWebCache.m in Sources */,
 				81D54BC2180F6120002D3449 /* MFFormPickerField.m in Sources */,
 				8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */,
-				8120C13A17DFA82100A1C3A9 /* MFCartController.m in Sources */,
+				8120C13A17DFA82100A1C3A9 /* MFCheckoutController.m in Sources */,
 				81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */,
 				81B27B2817F6103700F9BC09 /* PKCardCVC.m in Sources */,
 				8120C1CB17E0684E00A1C3A9 /* MFProfileController.m in Sources */,
@@ -1733,6 +1782,7 @@
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				81B27B1317F60F3700F9BC09 /* StripeError.m in Sources */,
 				81D54BB0180F2658002D3449 /* MFConditionController.m in Sources */,
+				81E529ED1810D028004D88F3 /* MFCheckoutController+Confirm.m in Sources */,
 				81B14B81180ECBAE0089D19F /* MFPostSectionView.m in Sources */,
 				811082BC17F8BC57005CC8ED /* MFDatabase+Currency.m in Sources */,
 				81BC174317FB51CA00DF7AD4 /* MFOptionPickerController.m in Sources */,
@@ -1751,6 +1801,7 @@
 				81D54BB3180F28E7002D3449 /* MFListController.m in Sources */,
 				817723E017FDAAC9004A28CC /* MFFormLabel.m in Sources */,
 				81233D6117F8E00500C27805 /* MFDatabase+Color.m in Sources */,
+				81E529EA1810CFF3004D88F3 /* MFCheckoutController+Address.m in Sources */,
 				8120C16B17DFBD1200A1C3A9 /* MFPreferences.m in Sources */,
 				81136AC9180C527F009142AE /* MFComment.m in Sources */,
 				8110829F17F8AF4A005CC8ED /* MFPullToLoadMoreView.m in Sources */,
@@ -1788,6 +1839,7 @@
 				8120C17717E03CC700A1C3A9 /* MFMenuItem.m in Sources */,
 				81B27B2B17F6103700F9BC09 /* PKTextField.m in Sources */,
 				8119DFCD17E06BDB007AEDC2 /* MFTableView.m in Sources */,
+				81E529E71810CFE7004D88F3 /* MFCheckoutController+Cart.m in Sources */,
 				81233D7617F8F1BC00C27805 /* MFUser.m in Sources */,
 				81D0966A17FCCE330044BD06 /* MFConditionTableViewCell.m in Sources */,
 				812F4AC717DEFE9400454747 /* Reachability.m in Sources */,

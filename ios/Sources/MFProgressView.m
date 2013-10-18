@@ -13,6 +13,18 @@
     return 60.0F;
 }
 
+- (id)initWithFrame:(CGRect)frame style:(MFProgressViewStyle)style
+{
+    self = [super initWithFrame:frame];
+    
+    if(self) {
+        m_selectedIndex = NSNotFound;
+        m_style = style;
+    }
+    
+    return self;
+}
+
 @synthesize delegate = m_delegate;
 
 @dynamic items;
@@ -54,10 +66,21 @@
                 [button setTitleColor:[UIColor themeProgressTextSelectedColor] forState:UIControlStateSelected];
                 [button setTitleColor:[UIColor themeProgressTextSelectedColor] forState:UIControlStateSelected | UIControlStateHighlighted];
                 [button addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
-                [button setImage:[UIImage imageNamed:@"NewPost-Progress-Unselected.png"] forState:UIControlStateNormal];
                 [button setTitle:item forState:UIControlStateNormal];
-                [button setImage:[UIImage imageNamed:@"NewPost-Progress-Selected.png"] forState:UIControlStateSelected];
-                [button setImage:[UIImage imageNamed:@"NewPost-Progress-Selected.png"] forState:UIControlStateSelected | UIControlStateHighlighted];
+                
+                switch(m_style) {
+                    case kMFProgressViewStyleDefault:
+                        [button setImage:[UIImage imageNamed:@"NewPost-Progress-Unselected.png"] forState:UIControlStateNormal];
+                        [button setImage:[UIImage imageNamed:@"NewPost-Progress-Selected.png"] forState:UIControlStateSelected];
+                        [button setImage:[UIImage imageNamed:@"NewPost-Progress-Selected.png"] forState:UIControlStateSelected | UIControlStateHighlighted];
+                        break;
+                    case kMFProgressViewStyleCheckout:
+                        [button setImage:[UIImage imageNamed:@"Checkout-Progress-Unselected.png"] forState:UIControlStateNormal];
+                        [button setImage:[UIImage imageNamed:@"Checkout-Progress-Selected.png"] forState:UIControlStateSelected];
+                        [button setImage:[UIImage imageNamed:@"Checkout-Progress-Selected.png"] forState:UIControlStateSelected | UIControlStateHighlighted];
+                        break;
+                }
+                
                 [button setTitle:item.uppercaseString forState:UIControlStateSelected];
                 [button setTitle:item.uppercaseString forState:UIControlStateSelected | UIControlStateHighlighted];
                 cellRect.origin.x += cellRect.size.width;
@@ -122,13 +145,7 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
-    
-    if(self) {
-        m_selectedIndex = NSNotFound;
-    }
-    
-    return self;
+    return [self initWithFrame:frame style:kMFProgressViewStyleDefault];
 }
 
 @end

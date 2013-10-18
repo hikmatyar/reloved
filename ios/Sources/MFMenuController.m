@@ -1,6 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
-#import "MFCartController.h"
+#import "MFCheckoutController.h"
 #import "MFFeedController.h"
 #import "MFHomeController.h"
 #import "MFMenuController.h"
@@ -53,7 +53,7 @@
 
 - (IBAction)cart:(id)sender
 {
-    [self setViewControllerClass:[MFCartController class]];
+    [self setViewControllerClass:[MFCheckoutController class]];
 }
 
 - (IBAction)sell:(id)sender

@@ -194,6 +194,21 @@
 "Profile.Label.Saving" = "Saving data...";
 "Profile.Title" = "My Profile";
 
+/* Checkout Controller */
+
+"Checkout.Action.Address" = "Address";
+"Checkout.Action.Cart" = "Cart";
+"Checkout.Action.Confirm" = "Confirm";
+"Checkout.Action.Done" = "Done";
+"Checkout.Action.Next" = "Next";
+"Checkout.Action.Payment" = "Pay";
+"Checkout.Action.Receipt" = "Receipt";
+"Checkout.Title.Address" = "Address";
+"Checkout.Title.Cart" = "Cart";
+"Checkout.Title.Payment" = "Pay";
+"Checkout.Title.Confirm" = "Confirm";
+"Checkout.Title.Receipt" = "Receipt";
+
 /* Condition Controller */
 
 "Condition.Title" = "Condition";
