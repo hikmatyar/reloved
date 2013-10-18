@@ -236,6 +236,10 @@
 "SearchByType.Label.SelectAll" = "All Dress Types";
 "SearchByType.Title" = "Select Dress Type";
 
+"SearchResults.Action.Back" = "Search";
+"SearchResults.Label.NoData" = "No Results";
+"SearchResults.Title" = "Results";
+
 /* Condition Controller */
 
 "Condition.Title" = "Condition";

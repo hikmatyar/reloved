@@ -18,8 +18,10 @@
 #import "MFSearchController.h"
 #import "MFSeparatorView.h"
 #import "MFSideMenuContainerViewController.h"
+#import "MFTableView.h"
 #import "MFType.h"
 #import "MFWebController.h"
+#import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UIViewController+Additions.h"
@@ -119,17 +121,6 @@
     } else {
         
     }
-    
-    /*
-    "SearchByColor.Action.Search" = "See Results";
-"SearchByColor.Header" = "Select up to 5 colors below";
-"SearchByColor.Label.SelectAll" = "All Colors";
-"SearchByColor.Title" = "Select Colors";
-
-"SearchByType.Action.Search" = "See Results";
-"SearchByType.Header" = "Select up to 5 dress types below";
-"SearchByType.Label.SelectAll" = "All Dress Types";
-"SearchByType.Title" = "Select Dress Type";*/
 }
 
 - (void)headerViewDidSelectShopByDress:(MFHomeHeaderView *)headerView
@@ -189,13 +180,14 @@
     }
 }
 
-- (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller
+- (void)optionPickerControllerDidComplete:(MFOptionPickerController *)picker
 {
-    if(controller.userInfo == [MFType class]) {
+    MFFeedController *controller = [[MFFeedController alloc] initWithFeed:[[MFWebFeed alloc] initWithFilters:picker.selectedItems.allObjects]];
     
-    } else {
-    
-    }
+    picker.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SearchResults.Action.Back", nil) style:UIBarButtonItemStylePlain target:nil action:NULL];
+    controller.title = NSLocalizedString(@"SearchResults.Title", nil);
+    controller.tableView.placeholder = NSLocalizedString(@"SearchResults.Label.NoData", nil);
+    [picker.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark UITableViewDataSource

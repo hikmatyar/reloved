@@ -39,6 +39,7 @@ extern NSString *MFWebFeedDidChangeNotification;
 + (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind filters:(NSArray *)filters;
 
 - (id)initWithIdentifier:(NSString *)identifier;
+- (id)initWithFilters:(NSArray *)filters;
 
 @property (nonatomic, assign, readonly, getter = isLocal) BOOL local;
 @property (nonatomic, assign, readonly, getter = isAtEnd) BOOL atEnd;

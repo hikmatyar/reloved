@@ -335,8 +335,8 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    if([m_delegate respondsToSelector:@selector(optionPickerControllerDidComplete:)]) {
-        [m_delegate optionPickerControllerDidComplete:self];
+    if([m_delegate respondsToSelector:@selector(optionPickerControllerDidClose:)]) {
+        [m_delegate optionPickerControllerDidClose:self];
     }
     
     [super viewWillDisappear:animated];

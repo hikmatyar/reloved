@@ -10,6 +10,7 @@
 
 - (BOOL)optionPickerController:(MFOptionPickerController *)controller mustSelectItem:(id)item;
 - (void)optionPickerControllerDidChange:(MFOptionPickerController *)controller atItem:(id)item;
+- (void)optionPickerControllerDidClose:(MFOptionPickerController *)controller;
 - (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller;
 
 @end

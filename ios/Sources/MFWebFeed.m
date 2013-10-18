@@ -18,6 +18,7 @@
 #import "MFDelta.h"
 #import "MFFeed.h"
 #import "MFPost.h"
+#import "MFSize.h"
 #import "MFType.h"
 #import "MFWebFeed.h"
 #import "MFWebService.h"
@@ -67,20 +68,35 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     return sharedFeeds;
 }
 
-+ (MFWebFeed *)sharedFeedWithIdentifier:(NSString *)identifier filters:(NSArray *)filters
++ (NSString *)resolveIdentifier:(NSString *)identifier filters:(NSArray *)filters
 {
-    NSMutableDictionary *feeds = [self sharedFeeds];
-    MFWebFeed *feed;
-    
     if(filters.count > 0) {
         NSMutableArray *colors = [[NSMutableArray alloc] init];
+        NSMutableArray *sizes = [[NSMutableArray alloc] init];
         NSMutableArray *types = [[NSMutableArray alloc] init];
+        NSMutableArray *tags = [[NSMutableArray alloc] init];
         
         for(id filter in filters) {
             if([filter isKindOfClass:[MFType class]]) {
-                [types addObject:((MFType *)filter).identifier];
+                NSString *identifier = ((MFType *)filter).identifier;
+                
+                if(identifier) {
+                    [types addObject:identifier];
+                }
             } else if([filter isKindOfClass:[MFColor class]]) {
-                [colors addObject:((MFColor *)filter).identifier];
+                NSString *identifier = ((MFColor *)filter).identifier;
+                
+                if(identifier) {
+                    [colors addObject:identifier];
+                }
+            } else if([filter isKindOfClass:[MFSize class]]) {
+                NSString *identifier = ((MFSize *)filter).identifier;
+                
+                if(identifier) {
+                    [sizes addObject:identifier];
+                }
+            } else if([filter isKindOfClass:[NSString class]]) {
+                [tags addObject:[filter stringByReplacingOccurrencesOfString:@"+" withString:@","]];
             }
         }
         
@@ -91,8 +107,25 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         if(types.count > 0) {
             identifier = [identifier stringByAppendingFormat:@"+type,%@", [types componentsJoinedByString:@","]];
         }
+        
+        if(sizes.count > 0) {
+            identifier = [identifier stringByAppendingFormat:@"+size,%@", [sizes componentsJoinedByString:@","]];
+        }
+        
+        if(tags.count > 0) {
+            identifier = [identifier stringByAppendingFormat:@"+tag,%@", [tags componentsJoinedByString:@","]];
+        }
     }
     
+    return identifier;
+}
+
++ (MFWebFeed *)sharedFeedWithIdentifier:(NSString *)identifier filters:(NSArray *)filters
+{
+    NSMutableDictionary *feeds = [self sharedFeeds];
+    MFWebFeed *feed;
+    
+    identifier = [self resolveIdentifier:identifier filters:filters];
     feed = [feeds objectForKey:identifier];
     
     if(!feed) {
@@ -478,6 +511,11 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     }
     
     return self;
+}
+
+- (id)initWithFilters:(NSArray *)filters
+{
+    return [self initWithIdentifier:[self.class resolveIdentifier:FEED_ALL filters:filters]];
 }
 
 @synthesize identifier = m_identifier;
