@@ -1,6 +1,8 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFBrowseFilterController.h"
+#import "MFColor.h"
+#import "MFDatabase+Color.h"
 #import "MFDatabase+Size.h"
 #import "MFDatabase+Type.h"
 #import "MFPreferences.h"
@@ -33,14 +35,24 @@
     
     if(self) {
         MFPreferences *preferences = [MFPreferences sharedPreferences];
+        NSArray *excludeColors = preferences.excludeColors;
         NSArray *excludeSizes = preferences.excludeSizes;
         NSArray *excludeTypes = preferences.excludeTypes;
         MFDatabase *database = [MFDatabase sharedDatabase];
-        NSInteger sizeIndex = 0, typeIndex = 0;
+        NSInteger colorIndex = 0, sizeIndex = 0, typeIndex = 0;
         
+        m_excludeColors = [[NSMutableSet alloc] init];
         m_excludeSizes = [[NSMutableSet alloc] init];
         m_excludeTypes = [[NSMutableSet alloc] init];
         m_category = category;
+        
+        for(MFColor *color in database.colors) {
+            if([excludeColors containsObject:color.identifier]) {
+                [m_excludeColors addObject:[NSNumber numberWithInteger:colorIndex]];
+            }
+            
+            colorIndex++;
+        }
         
         for(MFSize *size in database.sizes) {
             if([excludeSizes containsObject:size.identifier]) {
@@ -70,9 +82,12 @@
 {
     switch(self.categoryPicker.selectedSegmentIndex) {
         case 0:
-            m_category = kMFBrowseFilterControllerCategorySize;
+            m_category = kMFBrowseFilterControllerCategoryColor;
             break;
         case 1:
+            m_category = kMFBrowseFilterControllerCategorySize;
+            break;
+        case 2:
             m_category = kMFBrowseFilterControllerCategoryType;
             break;
     }
@@ -83,6 +98,10 @@
 - (IBAction)selectAll:(id)sender
 {
     switch(m_category) {
+        case kMFBrowseFilterControllerCategoryColor:
+            [m_excludeColors removeAllObjects];
+            [self.tableView reloadData];
+            break;
         case kMFBrowseFilterControllerCategorySize:
             [m_excludeSizes removeAllObjects];
             [self.tableView reloadData];
@@ -109,6 +128,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch(m_category) {
+        case kMFBrowseFilterControllerCategoryColor:
+            return [MFDatabase sharedDatabase].colors.count;
         case kMFBrowseFilterControllerCategorySize:
             return [MFDatabase sharedDatabase].sizes.count;
         case kMFBrowseFilterControllerCategoryType:
@@ -133,6 +154,12 @@
     }
     
     switch(m_category) {
+        case kMFBrowseFilterControllerCategoryColor: {
+            MFColor *color = [[MFDatabase sharedDatabase].colors objectAtIndex:indexPath.row];
+            
+            cell.textLabel.text = color.name;
+            cell.accessoryType = ([m_excludeColors containsObject:[NSNumber numberWithInteger:indexPath.row]]) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;
+            } break;
         case kMFBrowseFilterControllerCategorySize: {
             MFSize *size = [[MFDatabase sharedDatabase].sizes objectAtIndex:indexPath.row];
             
@@ -162,6 +189,9 @@
     NSString *title = nil;
     
     switch(m_category) {
+        case kMFBrowseFilterControllerCategoryColor:
+            title = NSLocalizedString(@"Browse.Label.Color", nil);
+            break;
         case kMFBrowseFilterControllerCategorySize:
             title = NSLocalizedString(@"Browse.Label.Size", nil);
             break;
@@ -181,6 +211,9 @@
     BOOL selected = NO;
     
     switch(m_category) {
+        case kMFBrowseFilterControllerCategoryColor: {
+            excludeSet = m_excludeColors;
+            } break;
         case kMFBrowseFilterControllerCategorySize: {
             excludeSet = m_excludeSizes;
             } break;
@@ -212,12 +245,14 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F) style:UITableViewStylePlain];
     UISegmentedControl *categoryPicker = [[UISegmentedControl alloc] initWithItems:
         [NSArray arrayWithObjects:
+            NSLocalizedString(@"Browse.Action.Color", nil),
             NSLocalizedString(@"Browse.Action.Size", nil),
             NSLocalizedString(@"Browse.Action.Type", nil), nil]];
     UIView *categoryView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 42.0F)];
     
-    [categoryPicker setWidth:100.0F forSegmentAtIndex:0];
-    [categoryPicker setWidth:100.0F forSegmentAtIndex:1];
+    [categoryPicker setWidth:70.0F forSegmentAtIndex:0];
+    [categoryPicker setWidth:70.0F forSegmentAtIndex:1];
+    [categoryPicker setWidth:70.0F forSegmentAtIndex:2];
     categoryPicker.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     categoryPicker.center = CGPointMake(160.0F, 20.0F);
     categoryPicker.tag = TAG_CATEGORY_PICKER;
@@ -225,11 +260,14 @@
     [categoryView addSubview:categoryPicker];
     
     switch(m_category) {
-        case kMFBrowseFilterControllerCategorySize:
+        case kMFBrowseFilterControllerCategoryColor:
             categoryPicker.selectedSegmentIndex = 0;
             break;
-        case kMFBrowseFilterControllerCategoryType:
+        case kMFBrowseFilterControllerCategorySize:
             categoryPicker.selectedSegmentIndex = 1;
+            break;
+        case kMFBrowseFilterControllerCategoryType:
+            categoryPicker.selectedSegmentIndex = 2;
             break;
     }
     
@@ -249,6 +287,7 @@
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     
     [super viewWillAppear:animated];
+    [center addObserver:self selector:@selector(dataDidChange:) name:MFDatabaseDidChangeColorsNotification object:nil];
     [center addObserver:self selector:@selector(dataDidChange:) name:MFDatabaseDidChangeSizesNotification object:nil];
     [center addObserver:self selector:@selector(dataDidChange:) name:MFDatabaseDidChangeTypesNotification object:nil];
 }
@@ -257,11 +296,23 @@
 {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     MFPreferences *preferences = [MFPreferences sharedPreferences];
+    NSMutableArray *excludeColors = [NSMutableArray array];
     NSMutableArray *excludeSizes = [NSMutableArray array];
     NSMutableArray *excludeTypes = [NSMutableArray array];
     MFDatabase *database = [MFDatabase sharedDatabase];
+    NSArray *colors = database.colors;
     NSArray *sizes = database.sizes;
     NSArray *types = database.types;
+    
+    for(NSNumber *row in m_excludeColors) {
+        NSInteger index = row.integerValue;
+        
+        if(index >= 0 && index < colors.count) {
+            MFColor *color = [colors objectAtIndex:index];
+            
+            [excludeColors addObject:color.identifier];
+        }
+    }
     
     for(NSNumber *row in m_excludeSizes) {
         NSInteger index = row.integerValue;
@@ -283,13 +334,16 @@
         }
     }
     
+    [excludeColors sortedArrayUsingSelector:@selector(compare:)];
     [excludeSizes sortedArrayUsingSelector:@selector(compare:)];
     [excludeTypes sortedArrayUsingSelector:@selector(compare:)];
     
     preferences.category = m_category;
+    preferences.excludeColors = (excludeColors.count > 0) ? excludeColors : nil;
     preferences.excludeSizes = (excludeSizes.count > 0) ? excludeSizes : nil;
     preferences.excludeTypes = (excludeTypes.count > 0) ? excludeTypes : nil;
     
+    [center removeObserver:self name:MFDatabaseDidChangeColorsNotification object:nil];
     [center removeObserver:self name:MFDatabaseDidChangeSizesNotification object:nil];
     [center removeObserver:self name:MFDatabaseDidChangeTypesNotification object:nil];
     [super viewWillDisappear:animated];

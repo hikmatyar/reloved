@@ -4,6 +4,7 @@
 
 #define KEY_BOOKMARKS @"bookmarks"
 #define KEY_CATEGORY @"category"
+#define KEY_EXCLUDE_COLORS @"excludeColors"
 #define KEY_EXCLUDE_SIZES @"excludeSizes"
 #define KEY_EXCLUDE_TYPES @"excludeTypes"
 
@@ -51,6 +52,21 @@
     }
 }
 
+@dynamic excludeColors;
+
+- (NSArray *)excludeColors
+{
+    return m_excludeColors;
+}
+
+- (void)setExcludeColors:(NSArray *)excludeColors
+{
+    if(!MFEqual(m_excludeColors, excludeColors)) {
+        m_excludeColors = excludeColors;
+        [[NSUserDefaults standardUserDefaults] setObject:m_excludeColors forKey:KEY_EXCLUDE_COLORS];
+    }
+}
+
 @dynamic excludeSizes;
 
 - (NSArray *)excludeSizes
@@ -92,6 +108,7 @@
         
         m_bookmarks = [defaults arrayForKey:KEY_BOOKMARKS];
         m_category = [defaults integerForKey:KEY_CATEGORY];
+        m_excludeColors = [defaults arrayForKey:KEY_EXCLUDE_COLORS];
         m_excludeSizes = [defaults arrayForKey:KEY_EXCLUDE_SIZES];
         m_excludeTypes = [defaults arrayForKey:KEY_EXCLUDE_TYPES];
     }

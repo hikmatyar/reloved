@@ -3,17 +3,19 @@
 #import <UIKit/UIKit.h>
 
 typedef enum _MFBrowseFilterControllerCategory {
-    kMFBrowseFilterControllerCategorySize = 0,
+    kMFBrowseFilterControllerCategoryColor = 0,
+    kMFBrowseFilterControllerCategorySize,
     kMFBrowseFilterControllerCategoryType
 } MFBrowseFilterControllerCategory;
 
-#define kMFBrowseFilterControllerCategoryMin kMFBrowseFilterControllerCategorySize
+#define kMFBrowseFilterControllerCategoryMin kMFBrowseFilterControllerCategoryColor
 #define kMFBrowseFilterControllerCategoryMax kMFBrowseFilterControllerCategoryType
 
 @interface MFBrowseFilterController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     @private
     MFBrowseFilterControllerCategory m_category;
+    NSMutableSet *m_excludeColors;
     NSMutableSet *m_excludeSizes;
     NSMutableSet *m_excludeTypes;
 }

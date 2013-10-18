@@ -7,6 +7,7 @@
     @private
     NSArray *m_bookmarks;
     NSInteger m_category;
+    NSArray *m_excludeColors;
     NSArray *m_excludeSizes;
     NSArray *m_excludeTypes;
 }
@@ -15,6 +16,7 @@
 
 @property (nonatomic, retain) NSArray *bookmarks;
 @property (nonatomic, assign) NSInteger category;
+@property (nonatomic, retain) NSArray *excludeColors;
 @property (nonatomic, retain) NSArray *excludeSizes;
 @property (nonatomic, retain) NSArray *excludeTypes;
 
