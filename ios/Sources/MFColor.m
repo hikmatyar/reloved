@@ -24,6 +24,17 @@
     return self;
 }
 
+- (id)initWithName:(NSString *)name
+{
+    self = [super init];
+    
+    if(self) {
+        m_name = name;
+    }
+    
+    return self;
+}
+
 @dynamic attributes;
 
 - (NSDictionary *)attributes

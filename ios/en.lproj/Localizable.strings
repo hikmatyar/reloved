@@ -224,6 +224,18 @@
 "Recents.Label.NoData" = "No History";
 "Recents.Title" = "Recently Viewed";
 
+/* Search Controller */
+
+"SearchByColor.Action.Search" = "See Results";
+"SearchByColor.Label.Header" = "Select up to 5 colors below";
+"SearchByColor.Label.SelectAll" = "All Colors";
+"SearchByColor.Title" = "Select Colors";
+
+"SearchByType.Action.Search" = "See Results";
+"SearchByType.Label.Header" = "Select up to 5 dress types below";
+"SearchByType.Label.SelectAll" = "All Dress Types";
+"SearchByType.Title" = "Select Dress Type";
+
 /* Condition Controller */
 
 "Condition.Title" = "Condition";

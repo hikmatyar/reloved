@@ -8,7 +8,8 @@
 
 @optional
 
-- (void)optionPickerControllerDidChange:(MFOptionPickerController *)controller;
+- (BOOL)optionPickerController:(MFOptionPickerController *)controller mustSelectItem:(id)item;
+- (void)optionPickerControllerDidChange:(MFOptionPickerController *)controller atItem:(id)item;
 - (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller;
 
 @end

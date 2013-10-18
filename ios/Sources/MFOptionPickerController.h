@@ -19,6 +19,8 @@
     id m_userInfo;
 }
 
+- (IBAction)complete:(id)sender;
+
 @property (nonatomic, assign) BOOL allowsEmptySelection;
 @property (nonatomic, assign) BOOL allowsMultipleSelection;
 @property (nonatomic, assign) BOOL allowsSearch;

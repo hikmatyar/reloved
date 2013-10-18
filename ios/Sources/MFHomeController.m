@@ -2,6 +2,9 @@
 
 #import "MFBookmarksController.h"
 #import "MFBrowseController.h"
+#import "MFColor.h"
+#import "MFDatabase+Color.h"
+#import "MFDatabase+Type.h"
 #import "MFHistoryController.h"
 #import "MFHomeController.h"
 #import "MFHomeFooterView.h"
@@ -9,10 +12,13 @@
 #import "MFHomeSectionView.h"
 #import "MFMenu.h"
 #import "MFMenuItem.h"
+#import "MFOptionPickerController.h"
 #import "MFProfileController.h"
 #import "MFRecentsController.h"
+#import "MFSearchController.h"
 #import "MFSeparatorView.h"
 #import "MFSideMenuContainerViewController.h"
+#import "MFType.h"
 #import "MFWebController.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -92,14 +98,104 @@
 
 - (void)headerViewDidSelectShopByColor:(MFHomeHeaderView *)headerView
 {
+    NSArray *colors = [MFDatabase sharedDatabase].colors;
+    
+    if(colors.count > 0) {
+        MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+        NSMutableArray *colors_ = [[NSMutableArray alloc] initWithArray:colors];
+        
+        [colors_ insertObject:[[MFColor alloc] initWithName:NSLocalizedString(@"SearchByColor.Label.SelectAll", nil)] atIndex:0];
+        
+        controller.allowsMultipleSelection = YES;
+        controller.maximumSelectedItems = 5;
+        controller.delegate = self;
+        controller.sectionHeaderTitle = NSLocalizedString(@"SearchByColor.Label.Header", nil);
+        controller.items = colors_;
+        controller.selectedItem = colors_.firstObject;
+        controller.userInfo = [MFColor class];
+        controller.title = NSLocalizedString(@"SearchByColor.Title", nil);
+        controller.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SearchByColor.Action.Search", nil) style:UIBarButtonItemStyleBordered target:controller action:@selector(complete:)];
+        [self.navigationController pushViewController:controller animated:YES];
+    } else {
+        
+    }
+    
+    /*
+    "SearchByColor.Action.Search" = "See Results";
+"SearchByColor.Header" = "Select up to 5 colors below";
+"SearchByColor.Label.SelectAll" = "All Colors";
+"SearchByColor.Title" = "Select Colors";
+
+"SearchByType.Action.Search" = "See Results";
+"SearchByType.Header" = "Select up to 5 dress types below";
+"SearchByType.Label.SelectAll" = "All Dress Types";
+"SearchByType.Title" = "Select Dress Type";*/
 }
 
 - (void)headerViewDidSelectShopByDress:(MFHomeHeaderView *)headerView
 {
+    NSArray *types = [MFDatabase sharedDatabase].types;
+    
+    if(types.count > 0) {
+        MFOptionPickerController *controller = [[MFOptionPickerController alloc] init];
+        NSMutableArray *types_ = [[NSMutableArray alloc] initWithArray:types];
+        
+        [types_ insertObject:[[MFType alloc] initWithName:NSLocalizedString(@"SearchByType.Label.SelectAll", nil)] atIndex:0];
+        
+        controller.allowsMultipleSelection = YES;
+        controller.maximumSelectedItems = 5;
+        controller.delegate = self;
+        controller.sectionHeaderTitle = NSLocalizedString(@"SearchByType.Label.Header", nil);
+        controller.items = types_;
+        controller.selectedItem = types_.firstObject;
+        controller.userInfo = [MFType class];
+        controller.title = NSLocalizedString(@"SearchByType.Title", nil);
+        controller.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SearchByType.Action.Search", nil) style:UIBarButtonItemStyleBordered target:controller action:@selector(complete:)];
+        [self.navigationController pushViewController:controller animated:YES];
+    } else {
+        
+    }
 }
 
 - (void)headerViewDidSelectShopByFeatured:(MFHomeHeaderView *)headerView
 {
+}
+
+#pragma mark MFOptionPickerController
+
+- (BOOL)optionPickerController:(MFOptionPickerController *)controller mustSelectItem:(id)item
+{
+    return (controller.items.firstObject == item) ? YES : NO;
+}
+
+- (void)optionPickerControllerDidChange:(MFOptionPickerController *)controller atItem:(id)item
+{
+    NSSet *selectedItems = controller.selectedItems;
+    NSArray *items = controller.items;
+    id wildcard = items.firstObject;
+    
+    if(item == wildcard) {
+        controller.selectedItem = wildcard;
+    } else if([selectedItems containsObject:wildcard]) {
+        NSMutableSet *selectedItems_ = [[NSMutableSet alloc] init];
+        
+        for(id selectedItem in selectedItems) {
+            if(selectedItem != wildcard) {
+                [selectedItems_ addObject:selectedItem];
+            }
+        }
+        
+        controller.selectedItems = selectedItems_;
+    }
+}
+
+- (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller
+{
+    if(controller.userInfo == [MFType class]) {
+    
+    } else {
+    
+    }
 }
 
 #pragma mark UITableViewDataSource

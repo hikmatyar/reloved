@@ -192,6 +192,13 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
 @synthesize userInfo = m_userInfo;
 @synthesize maximumSelectedItems = m_maximumSelectedItems;
 
+- (IBAction)complete:(id)sender
+{
+    if([m_delegate respondsToSelector:@selector(optionPickerControllerDidComplete:)]) {
+        [m_delegate optionPickerControllerDidComplete:self];
+    }
+}
+
 #pragma mark UISearchBarDelegate
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -292,14 +299,16 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
             cell.accessoryType = UITableViewCellAccessoryNone;
             changed = YES;
         }
-    } else if(m_maximumSelectedItems == 0 || m_selectedIndices.count < m_maximumSelectedItems) {
+    } else if(m_maximumSelectedItems == 0 || m_selectedIndices.count < m_maximumSelectedItems ||
+             ([m_delegate respondsToSelector:@selector(optionPickerController: mustSelectItem:)] &&
+              [m_delegate optionPickerController:self mustSelectItem:item])) {
         [m_selectedIndices addIndex:index];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         changed = YES;
     }
     
-    if(changed && [m_delegate respondsToSelector:@selector(optionPickerControllerDidChange:)]) {
-        [m_delegate optionPickerControllerDidChange:self];
+    if(changed && [m_delegate respondsToSelector:@selector(optionPickerControllerDidChange: atItem:)]) {
+        [m_delegate optionPickerControllerDidChange:self atItem:item];
     }
 }
 
