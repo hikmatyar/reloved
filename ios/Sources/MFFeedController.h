@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class MFPullToLoadMoreView, MFWebFeed;
+@class MFPullToLoadMoreView, MFTableView, MFWebFeed;
 
 @interface MFFeedController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
@@ -17,7 +17,7 @@
 - (id)initWithFeed:(MFWebFeed *)feed;
 
 @property (nonatomic, retain) MFWebFeed *feed;
-@property (nonatomic, retain, readonly) UITableView *tableView;
+@property (nonatomic, retain, readonly) MFTableView *tableView;
 
 - (void)feedDidChange;
 

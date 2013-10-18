@@ -209,6 +209,11 @@
 "Checkout.Title.Confirm" = "Confirm";
 "Checkout.Title.Receipt" = "Receipt";
 
+/* Bookmarks Controller */
+
+"Bookmarks.Label.NoData" = "No Saved Items";
+"Bookmarks.Title" = "Saved Items";
+
 /* Condition Controller */
 
 "Condition.Title" = "Condition";

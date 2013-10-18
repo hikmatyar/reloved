@@ -51,9 +51,9 @@
 
 @dynamic tableView;
 
-- (UITableView *)tableView
+- (MFTableView *)tableView
 {
-    return (UITableView *)[self.view viewWithTag:TAG_TABLEVIEW];
+    return (MFTableView *)[self.view viewWithTag:TAG_TABLEVIEW];
 }
 
 - (MFPullToRefreshView *)pullToRefreshView

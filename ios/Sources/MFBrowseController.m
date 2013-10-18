@@ -2,6 +2,7 @@
 
 #import "MFBrowseController.h"
 #import "MFBrowseFilterController.h"
+#import "MFTableView.h"
 #import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
