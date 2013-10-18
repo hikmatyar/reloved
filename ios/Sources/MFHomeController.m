@@ -2,6 +2,7 @@
 
 #import "MFBookmarksController.h"
 #import "MFBrowseController.h"
+#import "MFBrowseFilterController.h"
 #import "MFColor.h"
 #import "MFDatabase+Color.h"
 #import "MFDatabase+Type.h"
@@ -13,6 +14,7 @@
 #import "MFMenu.h"
 #import "MFMenuItem.h"
 #import "MFOptionPickerController.h"
+#import "MFPostController.h"
 #import "MFProfileController.h"
 #import "MFRecentsController.h"
 #import "MFSearchController.h"
@@ -107,6 +109,13 @@
 
 - (void)headerViewDidSelectShopByColor:(MFHomeHeaderView *)headerView
 {
+#if 1
+    MFBrowseFilterController *controller = [[MFBrowseFilterController alloc] initWithCategory:kMFBrowseFilterControllerCategoryColor];
+    
+    [self presentNavigableViewController:controller animated:YES completion:^() {
+        [self.navigationController pushViewController:[[MFBrowseController alloc] initWithScope:kMFBrowseControllerScopeAll] animated:NO];
+    }];
+#else
     NSArray *colors = [MFDatabase sharedDatabase].colors;
     
     if(colors.count > 0) {
@@ -125,13 +134,19 @@
         controller.title = NSLocalizedString(@"SearchByColor.Title", nil);
         controller.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SearchByColor.Action.Search", nil) style:UIBarButtonItemStyleBordered target:controller action:@selector(complete:)];
         [self.navigationController pushViewController:controller animated:YES];
-    } else {
-        
     }
+#endif
 }
 
 - (void)headerViewDidSelectShopByDress:(MFHomeHeaderView *)headerView
 {
+#if 1
+    MFBrowseFilterController *controller = [[MFBrowseFilterController alloc] initWithCategory:kMFBrowseFilterControllerCategoryType];
+    
+    [self presentNavigableViewController:controller animated:YES completion:^() {
+        [self.navigationController pushViewController:[[MFBrowseController alloc] initWithScope:kMFBrowseControllerScopeAll] animated:NO];
+    }];
+#else
     NSArray *types = [MFDatabase sharedDatabase].types;
     
     if(types.count > 0) {
@@ -150,9 +165,8 @@
         controller.title = NSLocalizedString(@"SearchByType.Title", nil);
         controller.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SearchByType.Action.Search", nil) style:UIBarButtonItemStyleBordered target:controller action:@selector(complete:)];
         [self.navigationController pushViewController:controller animated:YES];
-    } else {
-        
     }
+#endif
 }
 
 - (void)headerViewDidSelectShopByFeatured:(MFHomeHeaderView *)headerView
