@@ -248,6 +248,13 @@
     return ([object isKindOfClass:[NSDictionary class]]) ? [[self alloc] initWithAttributes:(NSDictionary *)object] : nil;
 }
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(MFPost *)post
+{
+    return [post.identifier isEqualToString:m_identifier];
+}
+
 @end
 
 #pragma mark -

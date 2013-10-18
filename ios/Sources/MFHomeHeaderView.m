@@ -1,10 +1,12 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFBrand.h"
+#import "MFDatabase+State.h"
 #import "MFHomeHeaderView.h"
 #import "MFHomeHeaderViewDelegate.h"
 #import "MFImageButton.h"
 #import "MFImageView.h"
-#import "MFMenuItem.h"
+#import "MFPost.h"
 #import "UIButton+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -33,18 +35,19 @@
 
 @synthesize delegate = m_delegate;
 
-@dynamic item;
+@dynamic post;
 
-- (MFMenuItem *)item
+- (MFPost *)post
 {
-    return m_item;
+    return m_post;
 }
 
-- (void)setItem:(MFMenuItem *)item
+- (void)setPost:(MFPost *)post
 {
-    if(m_item != item) {
-        m_item = item;
-        m_itemLabel.text = item.title;
+    if(m_post != post) {
+        m_post = post;
+        m_postLabel.text = post.title;
+        m_postImageView.URL = [[MFDatabase sharedDatabase] URLForMedia:post.mediaIds.firstObject size:kMFMediaSizeThumbnailLarge];
     }
 }
 
@@ -85,21 +88,20 @@
         shopByDressButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
         [self addSubview:shopByDressButton];
         
-        m_itemLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0F, 162.0F, 300.0F, 31.0F)];
-        m_itemLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
-        m_itemLabel.backgroundColor = [UIColor clearColor];
-        m_itemLabel.font = [UIFont themeFontOfSize:12.0F];
-        m_itemLabel.textAlignment = NSTextAlignmentCenter;
-        m_itemLabel.text = @"GUCCI\n180";
-        m_itemLabel.numberOfLines = 0;
-        [self addSubview:m_itemLabel];
+        m_postLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0F, 162.0F, 300.0F, 31.0F)];
+        m_postLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
+        m_postLabel.backgroundColor = [UIColor clearColor];
+        m_postLabel.font = [UIFont themeFontOfSize:12.0F];
+        m_postLabel.textAlignment = NSTextAlignmentCenter;
+        m_postLabel.numberOfLines = 0;
+        [self addSubview:m_postLabel];
         
-        m_itemImageView = [[MFImageView alloc] initWithFrame:CGRectMake(78.0F, 9.0F, 164.0F, 152.0F)];
-        m_itemImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
-        m_itemImageView.layer.borderColor = [UIColor themeImageBorderColor].CGColor;
-        m_itemImageView.layer.borderWidth = 1.0F;
-        m_itemImageView.placeholderImage = [UIImage imageNamed:@"Home-Featured-Placeholder.png"];
-        [self addSubview:m_itemImageView];
+        m_postImageView = [[MFImageView alloc] initWithFrame:CGRectMake(78.0F, 9.0F, 164.0F, 152.0F)];
+        m_postImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
+        m_postImageView.layer.borderColor = [UIColor themeImageBorderColor].CGColor;
+        m_postImageView.layer.borderWidth = 1.0F;
+        m_postImageView.placeholderImage = [UIImage imageNamed:@"Home-Featured-Placeholder.png"];
+        [self addSubview:m_postImageView];
     }
     
     return self;

@@ -39,6 +39,7 @@ NSString *MFWebFeedDidChangeNotification = @"MFWebFeedDidChange";
 #define FEED_BOOKMARKS @"bookmarks"
 #define FEED_HISTORY @"history"
 #define FEED_RECENTS @"recents"
+#define FEED_FEATURED @"featured"
 
 #define LOADING_DELAY 0.3
 #define LOADING_LIMIT 2
@@ -148,6 +149,18 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     return sharedBookmarksFeed;
 }
 
++ (MFWebFeed *)sharedFeaturedFeed
+{
+    __strong static MFWebFeed *sharedFeaturedFeed = nil;
+    static dispatch_once_t loaded = 0;
+    
+    dispatch_once(&loaded, ^{
+        sharedFeaturedFeed = [[self alloc] initWithIdentifier:FEED_FEATURED];
+    });
+    
+    return sharedFeaturedFeed;
+}
+
 + (MFWebFeed *)sharedHistoryFeed
 {
     __strong static MFWebFeed *sharedHistoryFeed = nil;
@@ -174,14 +187,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 + (MFWebFeed *)sharedFeed
 {
-    __strong static MFWebFeed *sharedFeed = nil;
-    static dispatch_once_t loaded = 0;
-    
-    dispatch_once(&loaded, ^{
-        sharedFeed = [[self alloc] initWithIdentifier:nil];
-    });
-    
-    return sharedFeed;
+    return [self sharedFeedOfKind:kMFWebFeedKindFeatured];
 }
 
 + (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind
@@ -200,6 +206,8 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
             return [self sharedFeedWithIdentifier:FEED_ONLY_EDITORIAL filters:nil];
         case kMFWebFeedKindBookmarks:
             return [self sharedBookmarksFeed];
+        case kMFWebFeedKindFeatured:
+            return [self sharedFeaturedFeed];
         case kMFWebFeedKindHistory:
             return [self sharedHistoryFeed];
         case kMFWebFeedKindRecents:
@@ -566,6 +574,10 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     
     if([m_identifier isEqualToString:FEED_BOOKMARKS]) {
         return kMFWebFeedKindBookmarks;
+    }
+    
+    if([m_identifier isEqualToString:FEED_FEATURED]) {
+        return kMFWebFeedKindFeatured;
     }
     
     if([m_identifier isEqualToString:FEED_HISTORY]) {

@@ -5,6 +5,7 @@
 #import "MFBrowseFilterController.h"
 #import "MFColor.h"
 #import "MFDatabase+Color.h"
+#import "MFDatabase+Post.h"
 #import "MFDatabase+Type.h"
 #import "MFHistoryController.h"
 #import "MFHomeController.h"
@@ -38,6 +39,11 @@
 - (MFTableView *)tableView
 {
     return (MFTableView *)self.view;
+}
+
+- (MFHomeHeaderView *)headerView
+{
+    return (MFHomeHeaderView *)self.tableView.tableHeaderView;
 }
 
 - (IBAction)browseEditorial:(id)sender
@@ -103,6 +109,13 @@
 - (IBAction)menu:(id)sender
 {
     [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+}
+
+- (void)feedDidChange:(NSNotification *)notification
+{
+    if([MFWebFeed sharedFeed] == notification.object) {
+        self.headerView.post = [MFDatabase sharedDatabase].featuredPost;
+    }
 }
 
 #pragma mark MFHomeHeaderViewDelegate
@@ -292,6 +305,14 @@
 {
     [super viewWillAppear:animated];
     [self.tableView clearSelection];
+    self.headerView.post = [MFDatabase sharedDatabase].featuredPost;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedDidChange:) name:MFWebFeedDidChangeNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MFWebFeedDidChangeNotification object:nil];
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark NSObject

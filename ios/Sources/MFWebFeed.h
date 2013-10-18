@@ -8,6 +8,7 @@ typedef enum _MFWebFeedKind {
     kMFWebFeedKindOnlyNew,
     kMFWebFeedKindOnlyEditorial,
     kMFWebFeedKindBookmarks,
+    kMFWebFeedKindFeatured,
     kMFWebFeedKindRecents,
     kMFWebFeedKindHistory
 } MFWebFeedKind;

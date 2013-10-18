@@ -14,6 +14,7 @@ extern NSString *MFDatabaseDidChangeFeedsNotification;
 + (NSTimeInterval)feedExpiresRecents;
 + (NSString *)feedIdentifierBookmarks;
 + (NSString *)feedIdentifierHistory;
++ (NSString *)feedIdentifierFeatured;
 + (NSString *)feedIdentifierRecents;
 
 - (MFFeed *)feedForIdentifier:(NSString *)identifier ttl:(NSTimeInterval *)ttl;

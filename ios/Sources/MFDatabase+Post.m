@@ -87,6 +87,16 @@ NSString *MFDatabaseDidChangePostsNotification = @"MFDatabaseDidChangePosts";
     }
 }
 
+- (MFPost *)featuredPost
+{
+    return [self postsForFeed:[MFDatabase feedIdentifierFeatured]].firstObject;
+}
+
+- (void)setFeaturedPost:(MFPost *)featuredPost
+{
+    [self setPosts:(featuredPost) ? [NSArray arrayWithObject:featuredPost] : nil forFeed:[MFDatabase feedIdentifierFeatured]];
+}
+
 - (MFPost *)postForIdentifier:(NSString *)identifier
 {
     for(MFPost *post in self.posts) {
