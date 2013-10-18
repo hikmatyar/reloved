@@ -339,8 +339,9 @@ typedef PostAttributes_Create = {
 	editorial : String
 }
 
-private class PostFeed {
+class PostFeed {
 	public static inline var identifier_all = 'all';
+	public static inline var identifier_featured = 'featured';
     public static inline var identifier_only_editorial = 'only_editorial';
     public static inline var identifier_only_new = 'only_new';
     public static inline var identifier_history = 'history';
@@ -360,7 +361,8 @@ private class PostFeed {
         			this.id = PostFeed.identifier_all;
         		} else if(part == PostFeed.identifier_only_editorial ||
         				  part == PostFeed.identifier_only_new ||
-        				  part == PostFeed.identifier_history) {
+        				  part == PostFeed.identifier_history ||
+        				  part == PostFeed.identifier_featured) {
         			this.id = part;
         		} else {
         			var ids = new Array<DataIdentifier>();
@@ -502,10 +504,16 @@ class Post {
         });
     }
     
+    public static function findFeatured(limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+    	Data.query('SELECT * FROM posts WHERE status = 2 AND editorial IS NOT NULL ORDER BY modified DESC LIMIT ?', [ limit ], function(err, result : Array<Post>) {
+            fn(err, result);
+        });
+    }
+    
     public static function findForward(userId : DataIdentifier, identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
     	var feed = new PostFeed(identifier);
     	var order = (feed.id == PostFeed.identifier_all) ? 'created' : 'modified';
-    	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial <> NULL' : '';
+    	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial IS NOT NULL' : '';
     	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (1,2,3,4) ' : ' = 2';
     	var fcriteria = '';
     	var ftables = '';
@@ -538,7 +546,7 @@ class Post {
     public static function findBackward(userId : DataIdentifier, identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
     	var feed = new PostFeed(identifier);
     	var order = (feed.id == PostFeed.identifier_only_new) ? 'created' : 'modified';
-    	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial <> NULL' : '';
+    	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial IS NOT NULL' : '';
     	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (1,2,3,4) ' : ' = 2';
     	var fcriteria = '';
     	var ftables = '';

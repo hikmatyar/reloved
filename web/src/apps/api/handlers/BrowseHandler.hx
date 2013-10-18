@@ -79,6 +79,7 @@ class BrowseHandler extends Handler {
     	var globalState = this.feedGlobals();
     	var identifier = this.feedIdentifier();
     	var range = (state != null) ? { min: state.min, max: state.max } : null;
+    	var featured = (identifier == PostFeed.identifier_featured) ? true : false;
     	
     	async(function(sync) {
 			Event.findAll(this.user().id, globalState, function(err, events) {
@@ -129,15 +130,19 @@ class BrowseHandler extends Handler {
                 }
             };
             
-            if(state != null) {
-                if(forward) {
-                    Post.findForward(this.user().id, identifier, state.max, limit, writePostFields);
-                } else {
-                    Post.findBackward(this.user().id, identifier, state.min, limit, writePostFields);
-                }
+            if(featured) {
+            	Post.findFeatured(1, writePostFields);
             } else {
-                Post.findForward(this.user().id, identifier, null, limit, writePostFields);
-            }
+				if(state != null) {
+					if(forward) {
+						Post.findForward(this.user().id, identifier, state.max, limit, writePostFields);
+					} else {
+						Post.findBackward(this.user().id, identifier, state.min, limit, writePostFields);
+					}
+				} else {
+					Post.findForward(this.user().id, identifier, null, limit, writePostFields);
+				}
+			}
         });
         
         async(function(sync, posts : Array<Post>) {
@@ -182,7 +187,9 @@ class BrowseHandler extends Handler {
                 
                 this.write('],\n');
                 
-                if(range == null) {
+                if(featured) {
+                	this.write(' "cursor": "end", \n');
+                } else if(range == null) {
                     this.write(' "cursor": "start", \n');
                 } else if(posts.length == limit) {
                     this.write(' "cursor": "middle", \n');
