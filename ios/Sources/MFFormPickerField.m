@@ -78,6 +78,7 @@
     if(m_selectedRow != selectedRow) {
         m_selectedRow = selectedRow;
         [m_pickerView selectRow:m_selectedRow inComponent:0 animated:NO];
+        [self setTitle:[m_dataSource pickerField:self titleForRow:selectedRow] forState:UIControlStateNormal];
     }
 }
 

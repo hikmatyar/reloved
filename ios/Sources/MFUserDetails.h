@@ -20,6 +20,8 @@
 - (id)initWithAttributes:(NSDictionary *)attributes;
 
 @property (nonatomic, retain, readonly) NSDictionary *attributes;
+@property (nonatomic, assign, readonly, getter = isEmpty) BOOL empty;
+@property (nonatomic, retain, readonly) NSString *fullName;
 
 @property (nonatomic, retain, readonly) NSString *sizeId;
 @property (nonatomic, retain, readonly) NSString *mediaId;

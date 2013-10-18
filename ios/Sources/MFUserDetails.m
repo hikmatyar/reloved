@@ -53,6 +53,20 @@
     return attributes;
 }
 
+@dynamic empty;
+
+- (BOOL)isEmpty
+{
+    return (self.attributes.count == 0) ? YES : NO;
+}
+
+@dynamic fullName;
+
+- (NSString *)fullName
+{
+    return (m_firstName.length > 0 && m_lastName.length > 0) ? [NSString stringWithFormat:@"%@ %@", m_firstName, m_lastName] : ((m_firstName.length > 0) ? m_firstName : m_lastName);
+}
+
 @synthesize sizeId = m_sizeId;
 @synthesize mediaId = m_mediaId;
 @synthesize email = m_email;

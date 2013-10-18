@@ -49,6 +49,12 @@
     m_placeholderLabel.font = font;
 }
 
+- (void)setText:(NSString *)text
+{
+    super.text = text;
+    [self textDidChange_:nil];
+}
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame

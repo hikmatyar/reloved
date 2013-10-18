@@ -75,6 +75,28 @@
 - (void)invalidate
 {
     if(m_details) {
+        NSString *countryId = m_details.countryId;
+        
+        self.emailField.text = m_details.email;
+        self.phoneField.text = m_details.phone;
+        self.fullNameField.text = m_details.fullName;
+        self.cityField.text = m_details.city;
+        self.addressField.text = m_details.address;
+        self.zipcodeField.text = m_details.zipcode;
+        
+        if(countryId) {
+            for(NSInteger i = 0, c = m_countries.count; i < c; i++) {
+                MFCountry *country = [m_countries objectAtIndex:i];
+                
+                if([country.identifier isEqualToString:countryId]) {
+                    self.countryField.selectedRow = i;
+                    break;
+                }
+            }
+        } else {
+            self.countryField.selectedRow = 0;
+        }
+        
         self.form.hidden = NO;
         self.navigationItem.rightBarButtonItem.enabled = YES;
         [m_hudView hide:NO];
@@ -114,6 +136,24 @@
     }];
 }
 
+- (void)saveData:(MFUserDetails *)details
+{
+    [[MFWebService sharedService] requestUserEdit:details target:self usingBlock:^(id target, NSError *error, id result) {
+        if(error) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Profile.Alert.SaveError.Title", nil)
+                                                                message:NSLocalizedString(@"Profile.Alert.SaveError.Message", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Profile.Alert.SaveError.Action.Close", nil)
+                                                      otherButtonTitles:NSLocalizedString(@"Profile.Alert.SaveError.Action.Retry", nil), nil];
+            
+            alertView.tag = ALERT_SAVE;
+            [alertView show];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:NULL];
+        }
+    }];
+}
+
 - (IBAction)cancel:(id)sender
 {
     [[MFWebService sharedService] cancelRequestsForTarget:self];
@@ -135,10 +175,10 @@
     NSString *error = nil;
     
     // Form validation
-    if(email.length == 0) {
-        error = NSLocalizedString(@"Profile.Label.Email", nil);
-    } else if(firstName.length == 0) {
+    if(firstName.length == 0) {
         error = NSLocalizedString(@"Profile.Label.FullName", nil);
+    } else if(email.length == 0) {
+        error = NSLocalizedString(@"Profile.Label.Email", nil);
     }
     
     if(error) {
@@ -186,6 +226,12 @@
         details.zipcode = zipcode;
     }
     
+    // Do nothing if there are no changes
+    if(details.empty) {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+        return;
+    }
+    
     // Post changes
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
@@ -198,20 +244,7 @@
         [m_hudView show:YES];
     }
     
-    [[MFWebService sharedService] requestUserEdit:details target:self usingBlock:^(id target, NSError *error, id result) {
-        if(error) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Profile.Alert.SaveError.Title", nil)
-                                                                message:NSLocalizedString(@"Profile.Alert.SaveError.Message", nil)
-                                                               delegate:self
-                                                      cancelButtonTitle:NSLocalizedString(@"Profile.Alert.SaveError.Action.Close", nil)
-                                                      otherButtonTitles:NSLocalizedString(@"Profile.Alert.SaveError.Action.Retry", nil), nil];
-            
-            alertView.tag = ALERT_SAVE;
-            [alertView show];
-        } else {
-            [self dismissViewControllerAnimated:YES completion:NULL];
-        }
-    }];
+    [self saveData:details];
 }
 
 #pragma mark MFFormPickerFieldDataSource
@@ -256,6 +289,9 @@
             }
             break;
         case ALERT_SAVE:
+            if(alertView.cancelButtonIndex != buttonIndex) {
+                [self done:nil];
+            }
             break;
         case ALERT_FORM:
             break;
@@ -332,7 +368,7 @@
     textView.delegate = self;
     textView.placeholder = NSLocalizedString(@"Profile.Hint.AddressLine", nil);
     textView.autocorrectionType = UITextAutocorrectionTypeNo;
-    textField.tag = TAG_FIELD_ADDRESS;
+    textView.tag = TAG_FIELD_ADDRESS;
     [form addSubview:textView];
     [fields addObject:textView];
     
