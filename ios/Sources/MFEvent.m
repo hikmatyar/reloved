@@ -54,4 +54,11 @@
 @synthesize meta = m_meta;
 @synthesize type = m_type;
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(MFEvent *)event
+{
+    return [event.identifier isEqualToString:m_identifier];
+}
+
 @end

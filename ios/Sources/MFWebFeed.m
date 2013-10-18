@@ -174,14 +174,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 + (MFWebFeed *)sharedFeed
 {
-    __strong static MFWebFeed *sharedFeed = nil;
-    static dispatch_once_t loaded = 0;
-    
-    dispatch_once(&loaded, ^{
-        sharedFeed = [[self alloc] initWithIdentifier:nil];
-    });
-    
-    return sharedFeed;
+    return [self sharedFeedOfKind:kMFWebFeedKindOnlyEditorial];
 }
 
 + (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind

@@ -1,10 +1,12 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFDatabase+Event.h"
 #import "MFEvent.h"
 #import "MFEventTableViewCell.h"
 #import "MFEventsController.h"
 #import "MFTableView.h"
 #import "MFSideMenuContainerViewController.h"
+#import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
@@ -27,6 +29,17 @@
 
 - (IBAction)refresh:(id)sender
 {
+    [[MFWebFeed sharedFeed] loadForward];
+}
+
+- (void)databaseEventsDidChange:(NSNotification *)notification
+{
+    NSArray *events = [MFDatabase sharedDatabase].events;
+    
+    if(!MFEqual(m_events, events)) {
+        m_events = events;
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark UITableViewDataSource
@@ -54,6 +67,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    MFEvent *event = [m_events objectAtIndex:indexPath.row];
+    NSString *link = event.link;
+    
+    if(link) {
+        
+    }
 }
 
 #pragma mark UIViewController
@@ -76,6 +95,19 @@
     view.backgroundColor = [UIColor themeBackgroundColor];
     [view addSubview:tableView];
     self.view = view;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(databaseEventsDidChange:) name:MFDatabaseDidChangeEventsNotification object:[MFDatabase sharedDatabase]];
+    [self databaseEventsDidChange:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MFDatabaseDidChangeEventsNotification object:[MFDatabase sharedDatabase]];
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark NSObject
