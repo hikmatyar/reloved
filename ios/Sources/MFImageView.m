@@ -70,6 +70,24 @@
 @synthesize activityIndicatorView = m_activityIndicatorView;
 @synthesize completedBlock = m_completedBlock;
 
+@dynamic placeholderImage;
+
+- (UIImage *)placeholderImage
+{
+    return m_placeholderImage;
+}
+
+- (void)setPlaceholderImage:(UIImage *)placeholderImage
+{
+    if(m_placeholderImage != placeholderImage) {
+        if(self.image == m_placeholderImage) {
+            self.image = placeholderImage;
+        }
+        
+        m_placeholderImage = placeholderImage;
+    }
+}
+
 @dynamic URL;
 
 - (NSURL *)URL
@@ -84,7 +102,7 @@
         
         m_URL = URL;
         m_resource = nil;
-        self.image = nil;
+        self.image = m_placeholderImage;
         
         if(m_URL) {
             [self startLoading];
@@ -120,7 +138,7 @@
 - (void)didMoveToWindow
 {
     if(self.window) {
-        if(m_URL && !self.image) {
+        if(m_URL && self.image == m_placeholderImage) {
             [self startLoading];
         }
     } else {

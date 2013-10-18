@@ -12,11 +12,14 @@ typedef void (^MFImageViewCompletedBlock)(UIImage *image, NSError *error);
     UIActivityIndicatorView *m_activityIndicatorView;
     MFImageViewCompletedBlock m_completedBlock;
     MFWebResource *m_resource;
+    UIImage *m_placeholderImage;
     NSURL *m_URL;
 }
 
 @property (nonatomic, retain, readonly) UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, copy) MFImageViewCompletedBlock completedBlock;
+@property (nonatomic, retain) UIImage *placeholderImage;
+
 @property (nonatomic, retain) NSURL *URL;
 - (void)loadURL:(NSURL *)URL completed:(MFImageViewCompletedBlock)block;
 
