@@ -177,6 +177,8 @@
 		813FFCD818117FEF00E7FEA2 /* MFEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 813FFCD718117FEF00E7FEA2 /* MFEventTableViewCell.m */; };
 		813FFCDB1811A3DC00E7FEA2 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 813FFCDA1811A3DC00E7FEA2 /* UIImage+Additions.m */; };
 		813FFCDE1811A6F200E7FEA2 /* UITableView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 813FFCDD1811A6F200E7FEA2 /* UITableView+Additions.m */; };
+		813FFCE11811B5EA00E7FEA2 /* Home-Featured-Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 813FFCDF1811B5EA00E7FEA2 /* Home-Featured-Placeholder.png */; };
+		813FFCE21811B5EA00E7FEA2 /* Home-Featured-Placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 813FFCE01811B5EA00E7FEA2 /* Home-Featured-Placeholder@2x.png */; };
 		8141AB3E180474070087B740 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB3D180474070087B740 /* UIViewController+Additions.m */; };
 		8141AB4118047B650087B740 /* NSFileManager+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4018047B650087B740 /* NSFileManager+Additions.m */; };
 		8141AB4418048E550087B740 /* MFNewPostPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4318048E550087B740 /* MFNewPostPageView.m */; };
@@ -590,6 +592,8 @@
 		813FFCDA1811A3DC00E7FEA2 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Additions.m"; path = "Sources/Additions/UIImage+Additions.m"; sourceTree = SOURCE_ROOT; };
 		813FFCDC1811A6F200E7FEA2 /* UITableView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+Additions.h"; path = "Sources/Additions/UITableView+Additions.h"; sourceTree = SOURCE_ROOT; };
 		813FFCDD1811A6F200E7FEA2 /* UITableView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+Additions.m"; path = "Sources/Additions/UITableView+Additions.m"; sourceTree = SOURCE_ROOT; };
+		813FFCDF1811B5EA00E7FEA2 /* Home-Featured-Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-Featured-Placeholder.png"; path = "Images/Home-Featured-Placeholder.png"; sourceTree = "<group>"; };
+		813FFCE01811B5EA00E7FEA2 /* Home-Featured-Placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Home-Featured-Placeholder@2x.png"; path = "Images/Home-Featured-Placeholder@2x.png"; sourceTree = "<group>"; };
 		8141AB3C180474070087B740 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Additions.h"; path = "Sources/Additions/UIViewController+Additions.h"; sourceTree = SOURCE_ROOT; };
 		8141AB3D180474070087B740 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Additions.m"; path = "Sources/Additions/UIViewController+Additions.m"; sourceTree = SOURCE_ROOT; };
 		8141AB3F18047B650087B740 /* NSFileManager+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Additions.h"; path = "Sources/Additions/NSFileManager+Additions.h"; sourceTree = SOURCE_ROOT; };
@@ -1243,6 +1247,8 @@
 				8120C18217E0470300A1C3A9 /* Home-BrowseNew@2x.png */,
 				8120C1C217E05D7500A1C3A9 /* Home-Checkmark.png */,
 				8120C1C317E05D7500A1C3A9 /* Home-Checkmark@2x.png */,
+				813FFCDF1811B5EA00E7FEA2 /* Home-Featured-Placeholder.png */,
+				813FFCE01811B5EA00E7FEA2 /* Home-Featured-Placeholder@2x.png */,
 				8120C18317E0470300A1C3A9 /* Home-Guarantee.png */,
 				8120C18417E0470300A1C3A9 /* Home-Guarantee@2x.png */,
 				8120C18517E0470300A1C3A9 /* Home-History.png */,
@@ -1571,6 +1577,7 @@
 			files = (
 				8120C14D17DFAD8C00A1C3A9 /* Menu-Home@2x.png in Resources */,
 				81B14B78180EC3A20089D19F /* Post-Material@2x.png in Resources */,
+				813FFCE21811B5EA00E7FEA2 /* Home-Featured-Placeholder@2x.png in Resources */,
 				81E529FA1810D58E004D88F3 /* Checkout-Progress-Selected@2x.png in Resources */,
 				81B14B8E180ED3C80089D19F /* User-Placeholder.png in Resources */,
 				81E529FE1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png in Resources */,
@@ -1607,6 +1614,7 @@
 				81B27B4A17F6107100F9BC09 /* cvc-amex@2x.png in Resources */,
 				81C5A2161809969C000427A9 /* NewPost-Photos-X@2x.png in Resources */,
 				81B30E2F180DC8E600FF414D /* Checkmark.png in Resources */,
+				813FFCE11811B5EA00E7FEA2 /* Home-Featured-Placeholder.png in Resources */,
 				81B27B4917F6107100F9BC09 /* cvc-amex.png in Resources */,
 				81136AD4180C549B009142AE /* Cartoon3.jpg in Resources */,
 				81B27B3217F6106800F9BC09 /* gradient@2x.png in Resources */,

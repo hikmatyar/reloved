@@ -3,6 +3,7 @@
 #import "MFHomeHeaderView.h"
 #import "MFHomeHeaderViewDelegate.h"
 #import "MFImageButton.h"
+#import "MFImageView.h"
 #import "MFMenuItem.h"
 #import "UIButton+Additions.h"
 #import "UIColor+Additions.h"
@@ -93,9 +94,11 @@
         m_itemLabel.numberOfLines = 0;
         [self addSubview:m_itemLabel];
         
-        m_itemImageView = [[UIImageView alloc] initWithFrame:CGRectMake(78.0F, 9.0F, 164.0F, 152.0F)];
+        m_itemImageView = [[MFImageView alloc] initWithFrame:CGRectMake(78.0F, 9.0F, 164.0F, 152.0F)];
         m_itemImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
-        m_itemImageView.backgroundColor = [UIColor grayColor];
+        m_itemImageView.layer.borderColor = [UIColor themeImageBorderColor].CGColor;
+        m_itemImageView.layer.borderWidth = 1.0F;
+        m_itemImageView.placeholderImage = [UIImage imageNamed:@"Home-Featured-Placeholder.png"];
         [self addSubview:m_itemImageView];
     }
     

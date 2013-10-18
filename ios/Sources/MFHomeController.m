@@ -171,6 +171,7 @@
 
 - (void)headerViewDidSelectShopByFeatured:(MFHomeHeaderView *)headerView
 {
+    
 }
 
 #pragma mark MFOptionPickerController
