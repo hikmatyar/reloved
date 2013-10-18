@@ -12,7 +12,9 @@
 #import "MFFormTextField.h"
 #import "MFFormTextView.h"
 #import "MFProfileController.h"
+#import "MFUserDetails.h"
 #import "MFWebService+User.h"
+#import "NSString+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
@@ -20,12 +22,54 @@
 #define ALERT_LOAD 2001
 #define ALERT_SAVE 2002
 #define TAG_FORM 1000
+#define TAG_FIELD_EMAIL 4000
+#define TAG_FIELD_PHONE 4001
+#define TAG_FIELD_FULLNAME 4002
+#define TAG_FIELD_COUNTRY 4003
+#define TAG_FIELD_CITY 4004
+#define TAG_FIELD_ADDRESS 4005
+#define TAG_FIELD_ZIPCODE 4006
 
 @implementation MFProfileController
 
 - (MFForm *)form
 {
     return (MFForm *)[self.view viewWithTag:TAG_FORM];
+}
+
+- (MFFormTextField *)fullNameField
+{
+    return (MFFormTextField *)[self.view viewWithTag:TAG_FIELD_FULLNAME];
+}
+
+- (MFFormTextField *)cityField
+{
+    return (MFFormTextField *)[self.view viewWithTag:TAG_FIELD_CITY];
+}
+
+- (MFFormTextView *)addressField
+{
+    return (MFFormTextView *)[self.view viewWithTag:TAG_FIELD_ADDRESS];
+}
+
+- (MFFormPickerField *)countryField
+{
+    return (MFFormPickerField *)[self.view viewWithTag:TAG_FIELD_COUNTRY];
+}
+
+- (MFFormTextField *)emailField
+{
+    return (MFFormTextField *)[self.view viewWithTag:TAG_FIELD_EMAIL];
+}
+
+- (MFFormTextField *)phoneField
+{
+    return (MFFormTextField *)[self.view viewWithTag:TAG_FIELD_PHONE];
+}
+
+- (MFFormTextField *)zipcodeField
+{
+    return (MFFormTextField *)[self.view viewWithTag:TAG_FIELD_ZIPCODE];
 }
 
 - (void)invalidate
@@ -72,11 +116,102 @@
 
 - (IBAction)cancel:(id)sender
 {
+    [[MFWebService sharedService] cancelRequestsForTarget:self];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (IBAction)done:(id)sender
 {
+    MFMutableUserDetails *details = [[MFMutableUserDetails alloc] init];
+    NSString *email = self.emailField.text.stringByTrimmingWhitespace;
+    NSString *phone = self.phoneField.text.stringByTrimmingWhitespace;
+    NSArray *fullName = [self.fullNameField.text.stringByTrimmingWhitespace componentsSeparatedByString:@" "];
+    NSString *firstName = fullName.firstObject;
+    NSString *lastName = (fullName.count > 1) ? [[fullName subarrayWithRange:NSMakeRange(1, fullName.count - 1)] componentsJoinedByString:@" "] : @"";
+    NSString *countryId = ((MFCountry *)self.countryField.selectedData).identifier;
+    NSString *city = self.cityField.text.stringByTrimmingWhitespace;
+    NSString *address = self.addressField.text.stringByTrimmingWhitespace;
+    NSString *zipcode = self.zipcodeField.text.stringByTrimmingWhitespace;
+    NSString *error = nil;
+    
+    // Form validation
+    if(email.length == 0) {
+        error = NSLocalizedString(@"Profile.Label.Email", nil);
+    } else if(firstName.length == 0) {
+        error = NSLocalizedString(@"Profile.Label.FullName", nil);
+    }
+    
+    if(error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Profile.Alert.FormError.Title", nil)
+                                                                message:[NSString stringWithFormat:NSLocalizedString(@"Profile.Alert.FormError.Message", nil), error]
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Profile.Alert.FormError.Action.OK", nil)
+                                                      otherButtonTitles:nil];
+        
+        alertView.tag = ALERT_FORM;
+        [alertView show];
+        return;
+    }
+    
+    // Create change-set
+    if(email && ![m_details.email isEqualToString:email]) {
+        details.email = email;
+    }
+    
+    if(phone && ![m_details.phone isEqualToString:phone]) {
+        details.phone = phone;
+    }
+    
+    if(firstName && ![m_details.firstName isEqualToString:firstName]) {
+        details.firstName = firstName;
+    }
+    
+    if(lastName && ![m_details.lastName isEqualToString:lastName]) {
+        details.lastName = lastName;
+    }
+    
+    if(countryId && ![m_details.countryId isEqualToString:countryId]) {
+        details.countryId = countryId;
+    }
+    
+    if(city && ![m_details.city isEqualToString:city]) {
+        details.city = city;
+    }
+    
+    if(address && ![m_details.address isEqualToString:address]) {
+        details.address = address;
+    }
+    
+    if(zipcode && ![m_details.zipcode isEqualToString:zipcode]) {
+        details.zipcode = zipcode;
+    }
+    
+    // Post changes
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    if(!m_hudView) {
+        m_hudView = [[MBProgressHUD alloc] initWithView:self.view];
+        m_hudView.labelText = NSLocalizedString(@"Profile.Label.Saving", nil);
+        m_hudView.labelFont = [UIFont themeBoldFontOfSize:16.0F];
+        m_hudView.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
+        [self.view addSubview:m_hudView];
+        [m_hudView show:YES];
+    }
+    
+    [[MFWebService sharedService] requestUserEdit:details target:self usingBlock:^(id target, NSError *error, id result) {
+        if(error) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Profile.Alert.SaveError.Title", nil)
+                                                                message:NSLocalizedString(@"Profile.Alert.SaveError.Message", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Profile.Alert.SaveError.Action.Close", nil)
+                                                      otherButtonTitles:NSLocalizedString(@"Profile.Alert.SaveError.Action.Retry", nil), nil];
+            
+            alertView.tag = ALERT_SAVE;
+            [alertView show];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:NULL];
+        }
+    }];
 }
 
 #pragma mark MFFormPickerFieldDataSource
@@ -89,6 +224,11 @@
 - (NSString *)pickerField:(MFFormPickerField *)pickerField titleForRow:(NSInteger)row
 {
     return ((MFCountry *)[m_countries objectAtIndex:row]).name;
+}
+
+- (id)pickerField:(MFFormPickerField *)pickerField dataForRow:(NSInteger)row
+{
+    return [m_countries objectAtIndex:row];
 }
 
 #pragma mark MFFormPickerFieldDelegate
@@ -180,6 +320,7 @@
     textField.placeholder = NSLocalizedString(@"Profile.Hint.FullName", nil);
     textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.tag = TAG_FIELD_FULLNAME;
     [form addSubview:textField];
     [fields addObject:textField];
     
@@ -191,6 +332,7 @@
     textView.delegate = self;
     textView.placeholder = NSLocalizedString(@"Profile.Hint.AddressLine", nil);
     textView.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.tag = TAG_FIELD_ADDRESS;
     [form addSubview:textView];
     [fields addObject:textView];
     
@@ -202,6 +344,7 @@
     pickerField.dataSource = self;
     pickerField.delegate = self;
     pickerField.placeholder =NSLocalizedString(@"Profile.Hint.Country", nil);
+    pickerField.tag = TAG_FIELD_COUNTRY;
     [form addSubview:pickerField];
     [fields addObject:pickerField];
     
@@ -214,6 +357,7 @@
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.City", nil);
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.tag = TAG_FIELD_CITY;
     [form addSubview:textField];
     [fields addObject:textField];
     
@@ -226,6 +370,7 @@
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Postcode", nil);
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.tag = TAG_FIELD_ZIPCODE;
     [form addSubview:textField];
     [fields addObject:textField];
     
@@ -238,6 +383,7 @@
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Phone", nil);
     textField.keyboardType = UIKeyboardTypePhonePad;
+    textField.tag = TAG_FIELD_PHONE;
     [form addSubview:textField];
     [fields addObject:textField];
     
@@ -251,6 +397,7 @@
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Email", nil);
     textField.keyboardType = UIKeyboardTypeEmailAddress;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.tag = TAG_FIELD_EMAIL;
     [form addSubview:textField];
     [fields addObject:textField];
     

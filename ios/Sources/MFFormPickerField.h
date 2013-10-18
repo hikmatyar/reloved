@@ -22,6 +22,7 @@
 @property (nonatomic, retain) UIView *inputAccessoryView;
 @property (nonatomic, retain) NSString *placeholder;
 @property (nonatomic, assign) NSInteger selectedRow;
+@property (nonatomic, retain, readonly) id selectedData;
 @property (nonatomic, retain) UIColor *textColor;
 
 - (void)reloadData;

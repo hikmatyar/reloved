@@ -11,4 +11,8 @@
 - (NSInteger)numberOfRowsInPickerField:(MFFormPickerField *)pickerField;
 - (NSString *)pickerField:(MFFormPickerField *)pickerField titleForRow:(NSInteger)row;
 
+@optional
+
+- (id)pickerField:(MFFormPickerField *)pickerField dataForRow:(NSInteger)row;
+
 @end

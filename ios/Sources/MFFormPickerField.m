@@ -81,6 +81,14 @@
     }
 }
 
+@dynamic selectedData;
+
+- (id)selectedData
+{
+    return ([m_dataSource respondsToSelector:@selector(pickerField: dataForRow:)] && m_selectedRow != NSNotFound && m_selectedRow >= 0 && m_selectedRow < [m_dataSource numberOfRowsInPickerField:self])
+        ? [m_dataSource pickerField:self dataForRow:m_selectedRow] : nil;
+}
+
 @dynamic textColor;
 
 - (UIColor *)textColor
