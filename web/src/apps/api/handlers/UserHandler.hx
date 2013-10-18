@@ -8,6 +8,16 @@ import models.User;
 using apps.api.mixins.UserMixins;
 
 class UserHandler extends Handler {
+	public function details() {
+		User.findExtended(this.user().id, function(err, user) {
+			if(user != null) {
+				this.render(user.json());
+			} else {
+				this.exit((err == null) ? ErrorCode.none : ErrorCode.unknown);
+			}
+		});
+	}
+	
     public function edit() {
     	var attributes : UserAttributes = { };
     	var sizeId = this.userSizeIdentifier();

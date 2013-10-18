@@ -162,6 +162,9 @@ class BrowseHandler extends Handler {
                 }
             }
             
+            // TODO: Use a real value here?!
+            this.write(' "results": 10, \n');
+            
             if(posts != null && posts.length > 0) {
                 this.write(' "posts": [');
                 

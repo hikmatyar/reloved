@@ -390,7 +390,7 @@ class PostHandler extends Handler {
     	var delimiter = '';
     	
     	if(posts != null) {
-			this.write(', "posts": ["');
+			this.write(', "posts": [');
 			
 			for(post in posts) {
 				this.write(delimiter);
@@ -406,7 +406,7 @@ class PostHandler extends Handler {
     	var delimiter = '';
     	
     	if(comments != null) {
-			this.write(', "comments": ["');
+			this.write(', "comments": [');
 			
 			for(comment in comments) {
 				this.write(delimiter);
@@ -422,7 +422,7 @@ class PostHandler extends Handler {
     	var delimiter = '';
     	
     	if(users != null) {
-			this.write(', "users": ["');
+			this.write(', "users": [');
 			
 			delimiter = '';
 			

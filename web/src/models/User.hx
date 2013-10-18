@@ -4,6 +4,7 @@ package models;
 
 import js.Node;
 import saffron.Data;
+import saffron.tools.JSON;
 
 using mixins.StringMixins;
 
@@ -150,6 +151,12 @@ class User {
         });
     }
     
+    public static function findExtended(id : DataIdentifier, fn : DataError -> User -> Void) : Void {
+    	Data.query('SELECT * FROM users WHERE id = ?', [ id ], function(err, result : User) {
+        	fn(err, result);
+        });
+    }
+    
     public static function findForSession(userId : String, session : String, fn : DataError -> User -> Void) : Void {
         Data.query('SELECT users.id AS id, user_sessions.code AS session FROM users LEFT JOIN user_sessions ON users.id = user_id WHERE users.id = ? AND user_sessions.code = ? AND CURRENT_TIMESTAMP < user_sessions.expires', [ userId, session ], function(err, result : User) { fn(err, result); });
     }
@@ -189,5 +196,53 @@ class User {
         this.city = row.city;
         this.address = row.address;
         this.zipcode = row.zipcode;
+    }
+    
+    public function json() : String {
+        var json : Dynamic = {
+            id: this.id
+        };
+        
+        if(this.sizeId != null) {
+        	json.size = this.sizeId;
+        }
+        
+        if(this.mediaId != null) {
+        	json.media = this.mediaId;
+        }
+        
+        if(this.email != null) {
+        	json.email = this.email;
+        }
+        
+        if(this.phone != null) {
+        	json.phone = this.phone;
+        }
+        
+        if(this.firstName != null) {
+        	json.firstName = this.firstName;
+        }
+        
+        if(this.lastName != null) {
+        	json.lastName = this.lastName;
+        }
+        
+        if(this.countryId != null) {
+        	json.country = this.countryId;
+        }
+        
+        if(this.city != null) {
+        	json.city = this.city;
+        }
+        
+        if(this.address != null) {
+        	json.address = this.address;
+        }
+        
+        if(this.zipcode != null) {
+        	json.zipcode = this.zipcode;
+        }
+        
+        return JSON.stringify(json);
     }
 }

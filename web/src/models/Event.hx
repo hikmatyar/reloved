@@ -17,8 +17,9 @@ private typedef EventRow = {
 
 class Event {
 	public static inline var type_unknown = 0;
-    public static inline var type_comment = 1;
-    public static inline var type_purchase = 2;
+    public static inline var type_purchase = 1;
+    public static inline var type_comment = 2;
+    public static inline var type_commented = 3;
     
     public var id(default, null) : DataIdentifier;
     public var userId(default, null) : DataIdentifier;
