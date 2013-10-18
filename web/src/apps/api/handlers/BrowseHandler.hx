@@ -131,12 +131,12 @@ class BrowseHandler extends Handler {
             
             if(state != null) {
                 if(forward) {
-                    Post.findForward(identifier, state.max, limit, writePostFields);
+                    Post.findForward(this.user().id, identifier, state.max, limit, writePostFields);
                 } else {
-                    Post.findBackward(identifier, state.min, limit, writePostFields);
+                    Post.findBackward(this.user().id, identifier, state.min, limit, writePostFields);
                 }
             } else {
-                Post.findForward(identifier, null, limit, writePostFields);
+                Post.findForward(this.user().id, identifier, null, limit, writePostFields);
             }
         });
         

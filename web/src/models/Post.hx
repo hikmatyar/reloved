@@ -343,6 +343,7 @@ private class PostFeed {
 	public static inline var identifier_all = 'all';
     public static inline var identifier_only_editorial = 'only_editorial';
     public static inline var identifier_only_new = 'only_new';
+    public static inline var identifier_history = 'history';
     
     private static inline var prefix_color = 'color';
     private static inline var prefix_type = 'type';
@@ -358,7 +359,8 @@ private class PostFeed {
         		   part == PostFeed.identifier_all) {
         			this.id = PostFeed.identifier_all;
         		} else if(part == PostFeed.identifier_only_editorial ||
-        				  part == PostFeed.identifier_only_new) {
+        				  part == PostFeed.identifier_only_new ||
+        				  part == PostFeed.identifier_history) {
         			this.id = part;
         		} else {
         			var ids = new Array<DataIdentifier>();
@@ -500,52 +502,62 @@ class Post {
         });
     }
     
-    public static function findForward(identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+    public static function findForward(userId : DataIdentifier, identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
     	var feed = new PostFeed(identifier);
     	var order = (feed.id == PostFeed.identifier_all) ? 'created' : 'modified';
     	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial <> NULL' : '';
+    	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (1,2,3,4) ' : ' = 2';
     	var fcriteria = '';
     	var ftables = '';
     	
-    	if(feed.colors != null) {
-    		ftables = ' INNER JOIN post_colors ON post_colors.post_id = posts.id ';
-    		fcriteria = ' AND post_colors.color_id IN (' + feed.colors.join(',') + ')';
-    	}
-    	
-    	if(feed.types != null) {
-    		ftables = ftables + ' INNER JOIN post_types ON post_types.post_id = posts.id ';
-    		fcriteria = fcriteria + ' AND post_types.type_id IN (' + feed.types.join(',') + ')';
-    	}
-    	
+    	if(feed.id == PostFeed.identifier_history) {
+    		fcriteria = ' AND user_id = ' + userId + ' ';
+    	} else {
+			if(feed.colors != null) {
+				ftables = ' INNER JOIN post_colors ON post_colors.post_id = posts.id ';
+				fcriteria = ' AND post_colors.color_id IN (' + feed.colors.join(',') + ')';
+			}
+		
+			if(feed.types != null) {
+				ftables = ftables + ' INNER JOIN post_types ON post_types.post_id = posts.id ';
+				fcriteria = fcriteria + ' AND post_types.type_id IN (' + feed.types.join(',') + ')';
+			}
+		}
+		    	
         if(timestamp != null) {
-            Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status = 2 AND ' + order + ' > ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' ASC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
+            Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' AND ' + order + ' > ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' ASC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
                 fn(err, result);
             });
         } else {
-            Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status = 2 ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ limit ], function(err, result : Array<Post>) {
+            Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ limit ], function(err, result : Array<Post>) {
                 fn(err, result);
             });
         }
     }
     
-    public static function findBackward(identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+    public static function findBackward(userId : DataIdentifier, identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
     	var feed = new PostFeed(identifier);
     	var order = (feed.id == PostFeed.identifier_only_new) ? 'created' : 'modified';
     	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial <> NULL' : '';
+    	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (1,2,3,4) ' : ' = 2';
     	var fcriteria = '';
     	var ftables = '';
     	
-    	if(feed.colors != null) {
-    		ftables = ' INNER JOIN post_colors ON post_colors.post_id = posts.id ';
-    		fcriteria = ' AND post_colors.color_id IN (' + feed.colors.join(',') + ')';
+    	if(feed.id == PostFeed.identifier_history) {
+    		fcriteria = ' AND user_id = ' + userId + ' ';
+    	} else {
+			if(feed.colors != null) {
+				ftables = ' INNER JOIN post_colors ON post_colors.post_id = posts.id ';
+				fcriteria = ' AND post_colors.color_id IN (' + feed.colors.join(',') + ')';
+			}
+		
+			if(feed.types != null) {
+				ftables = ftables + ' INNER JOIN post_types ON post_types.post_id = posts.id ';
+				fcriteria = fcriteria + ' AND post_types.type_id IN (' + feed.types.join(',') + ')';
+			}
     	}
     	
-    	if(feed.types != null) {
-    		ftables = ftables + ' INNER JOIN post_types ON post_types.post_id = posts.id ';
-    		fcriteria = fcriteria + ' AND post_types.type_id IN (' + feed.types.join(',') + ')';
-    	}
-    	
-        Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status = 2 AND ' + order + ' < ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
+        Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' AND ' + order + ' < ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
             fn(err, result);
         });
     }
