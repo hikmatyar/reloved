@@ -1,7 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
-#import <UIKit/UIKit.h>
+#import "MFFeedController.h"
 
-@interface MFHistoryController : UIViewController
+@interface MFHistoryController : MFFeedController
 
 @end

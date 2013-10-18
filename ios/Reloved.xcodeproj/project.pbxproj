@@ -306,6 +306,7 @@
 		81E529FA1810D58E004D88F3 /* Checkout-Progress-Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529F81810D58E004D88F3 /* Checkout-Progress-Selected@2x.png */; };
 		81E529FD1810D69A004D88F3 /* Checkout-Progress-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529FB1810D69A004D88F3 /* Checkout-Progress-Unselected.png */; };
 		81E529FE1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529FC1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png */; };
+		81E52A011810DC26004D88F3 /* MFDatabase+Recents.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E52A001810DC26004D88F3 /* MFDatabase+Recents.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -795,6 +796,8 @@
 		81E529F81810D58E004D88F3 /* Checkout-Progress-Selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Progress-Selected@2x.png"; path = "Images/Checkout-Progress-Selected@2x.png"; sourceTree = "<group>"; };
 		81E529FB1810D69A004D88F3 /* Checkout-Progress-Unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Progress-Unselected.png"; path = "Images/Checkout-Progress-Unselected.png"; sourceTree = "<group>"; };
 		81E529FC1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Progress-Unselected@2x.png"; path = "Images/Checkout-Progress-Unselected@2x.png"; sourceTree = "<group>"; };
+		81E529FF1810DC26004D88F3 /* MFDatabase+Recents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFDatabase+Recents.h"; path = "Sources/MFDatabase+Recents.h"; sourceTree = SOURCE_ROOT; };
+		81E52A001810DC26004D88F3 /* MFDatabase+Recents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Recents.m"; path = "Sources/MFDatabase+Recents.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -988,6 +991,8 @@
 				819E12B418057E79008D2D36 /* MFDatabase+Event.m */,
 				811082B017F8B75C005CC8ED /* MFDatabase+Feed.h */,
 				811082B117F8B75C005CC8ED /* MFDatabase+Feed.m */,
+				81E529FF1810DC26004D88F3 /* MFDatabase+Recents.h */,
+				81E52A001810DC26004D88F3 /* MFDatabase+Recents.m */,
 				811082BD17F8BD09005CC8ED /* MFDatabase+Post.h */,
 				811082BE17F8BD09005CC8ED /* MFDatabase+Post.m */,
 				819E12AD18055956008D2D36 /* MFDatabase+State.h */,
@@ -1688,6 +1693,7 @@
 				819E12B218057E68008D2D36 /* MFEvent.m in Sources */,
 				81E529F01810D037004D88F3 /* MFCheckoutController+Payment.m in Sources */,
 				81D0967617FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m in Sources */,
+				81E52A011810DC26004D88F3 /* MFDatabase+Recents.m in Sources */,
 				818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */,
 				81233D7F17F8F28700C27805 /* MFDatabase+Brand.m in Sources */,
 				8120C15B17DFAFA600A1C3A9 /* MFNewPostController.m in Sources */,

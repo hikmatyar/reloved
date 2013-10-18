@@ -214,6 +214,16 @@
 "Bookmarks.Label.NoData" = "No Saved Items";
 "Bookmarks.Title" = "Saved Items";
 
+/* History Controller */
+
+"History.Label.NoData" = "No Listed Items";
+"History.Title" = "My Listed Items";
+
+/* Recents Controller */
+
+"Recents.Label.NoData" = "No History";
+"Recents.Title" = "Recently Viewed";
+
 /* Condition Controller */
 
 "Condition.Title" = "Condition";

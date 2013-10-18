@@ -2,6 +2,7 @@
 
 #import "MFFeed.h"
 #import "MFFeedController.h"
+#import "MFDatabase+Recents.h"
 #import "MFDelta.h"
 #import "MFPost.h"
 #import "MFPostController.h"
@@ -35,7 +36,7 @@
     if(self) {
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         
-        if(feed && feed.kind != kMFWebFeedKindBookmarks) {
+        if(feed && !feed.local) {
             m_pullToLoadMoreView = [[MFPullToLoadMoreView alloc] initWithFrame:CGRectMake(0.0F, 30.0F, 320.0F, 52.0F)];
             m_pullToLoadMoreView.delegate = (id <MFPullToLoadMoreViewDelegate>)self;
         }
@@ -85,6 +86,11 @@
             [m_feed loadForward];
         }
     }
+}
+
+- (void)addRecentPost:(MFPost *)post
+{
+    [[MFDatabase sharedDatabase] addRecentPost:post];
 }
 
 - (void)applicationWillResignActive:(NSNotification *)notification
@@ -246,7 +252,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MFPostController *controller = [[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithPost:[m_posts objectAtIndex:indexPath.row]]];
+    MFPost *post = [m_posts objectAtIndex:indexPath.row];
+    MFPostController *controller = [[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithPost:post]];
+    
+    if(!m_feed.local) {
+        [self addRecentPost:post];
+    }
     
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -268,7 +279,7 @@
     MFTableView *tableView = [[MFTableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F) style:UITableViewStylePlain];
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     
-    if(m_feed.kind != kMFWebFeedKindBookmarks) {
+    if(!m_feed.local) {
         MFPullToRefreshView *pullToRefreshView = [[MFPullToRefreshView alloc] initWithTableView:tableView];
         
         pullToRefreshView.delegate = (id <MFPullToRefreshViewDelegate>)self;

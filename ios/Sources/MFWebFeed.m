@@ -11,6 +11,7 @@
 #import "MFDatabase+Event.h"
 #import "MFDatabase+Feed.h"
 #import "MFDatabase+Post.h"
+#import "MFDatabase+Recents.h"
 #import "MFDatabase+Size.h"
 #import "MFDatabase+State.h"
 #import "MFDatabase+Type.h"
@@ -35,6 +36,8 @@ NSString *MFWebFeedDidChangeNotification = @"MFWebFeedDidChange";
 #define FEED_ONLY_NEW @"only_new"
 #define FEED_ONLY_EDITORIAL @"only_editorial"
 #define FEED_BOOKMARKS @"bookmarks"
+#define FEED_HISTORY @"history"
+#define FEED_RECENTS @"recents"
 
 #define LOADING_DELAY 0.3
 #define LOADING_LIMIT 2
@@ -112,6 +115,30 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     return sharedBookmarksFeed;
 }
 
++ (MFWebFeed *)sharedHistoryFeed
+{
+    __strong static MFWebFeed *sharedHistoryFeed = nil;
+    static dispatch_once_t loaded = 0;
+    
+    dispatch_once(&loaded, ^{
+        sharedHistoryFeed = [[self alloc] initWithIdentifier:FEED_HISTORY];
+    });
+    
+    return sharedHistoryFeed;
+}
+
++ (MFWebFeed *)sharedRecentsFeed
+{
+    __strong static MFWebFeed *sharedRecentsFeed = nil;
+    static dispatch_once_t loaded = 0;
+    
+    dispatch_once(&loaded, ^{
+        sharedRecentsFeed = [[self alloc] initWithIdentifier:FEED_RECENTS];
+    });
+    
+    return sharedRecentsFeed;
+}
+
 + (MFWebFeed *)sharedFeed
 {
     __strong static MFWebFeed *sharedFeed = nil;
@@ -140,6 +167,10 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
             return [self sharedFeedWithIdentifier:FEED_ONLY_EDITORIAL filters:nil];
         case kMFWebFeedKindBookmarks:
             return [self sharedBookmarksFeed];
+        case kMFWebFeedKindHistory:
+            return [self sharedHistoryFeed];
+        case kMFWebFeedKindRecents:
+            return [self sharedRecentsFeed];
         default:
             break;
     }
@@ -176,7 +207,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         if(m_feed.offset != posts.count) {
             m_feed = [[MFFeed alloc] initWithFeed:m_feed offset:posts.count];
         }
-    } else {
+    } else if(![m_identifier isEqualToString:FEED_RECENTS]) {
         [posts sortUsingComparator:^NSComparisonResult (MFPost *post1, MFPost *post2) {
             NSDate *date1 = post1.date;
             NSDate *date2 = post2.date;
@@ -436,6 +467,8 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         
         if([identifier isEqualToString:FEED_BOOKMARKS]) {
             [notificationCenter addObserver:self selector:@selector(databaseBookmarksDidChange:) name:MFDatabaseDidChangeBookmarksNotification object:[MFDatabase sharedDatabase]];
+        } else if([identifier isEqualToString:FEED_RECENTS]) {
+            [notificationCenter addObserver:self selector:@selector(databaseRecentsDidChange:) name:MFDatabaseDidChangeRecentsNotification object:[MFDatabase sharedDatabase]];
         } else {
             [notificationCenter addObserver:self selector:@selector(applicationDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:[UIApplication sharedApplication]];
             [notificationCenter addObserver:self selector:@selector(databaseFeedsDidChange:) name:MFDatabaseDidChangeFeedsNotification object:[MFDatabase sharedDatabase]];
@@ -449,6 +482,13 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 @synthesize identifier = m_identifier;
 
+@dynamic local;
+
+- (BOOL)isLocal
+{
+    return ([m_identifier isEqualToString:FEED_BOOKMARKS] || [m_identifier isEqualToString:FEED_RECENTS]) ? YES : NO;
+}
+
 @dynamic atEnd;
 
 - (BOOL)isAtEnd
@@ -460,7 +500,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 - (NSArray *)posts
 {
-    return [m_posts subarrayWithRange:NSMakeRange(0, m_feed.offset)];
+    return (self.local) ? m_posts : [m_posts subarrayWithRange:NSMakeRange(0, m_feed.offset)];
 }
 
 @dynamic numberOfResults;
@@ -488,6 +528,14 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     
     if([m_identifier isEqualToString:FEED_BOOKMARKS]) {
         return kMFWebFeedKindBookmarks;
+    }
+    
+    if([m_identifier isEqualToString:FEED_HISTORY]) {
+        return kMFWebFeedKindHistory;
+    }
+    
+    if([m_identifier isEqualToString:FEED_RECENTS]) {
+        return kMFWebFeedKindRecents;
     }
     
     return kMFWebFeedKindUnknown;
@@ -525,7 +573,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
             m_loadingForward = NO;
             [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(nil, error)];
         }];
-    } else if(!m_loadingForward && ![m_identifier isEqualToString:FEED_BOOKMARKS]) {
+    } else if(!m_loadingForward && !self.local) {
         NSString *state = m_feed.state;
         
         m_loadingForward = YES;
@@ -594,7 +642,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 - (void)reloadData
 {
-    if(![m_identifier isEqualToString:FEED_BOOKMARKS]) {
+    if(!self.local) {
         [[MFWebService sharedService] cancelRequestsForTarget:self];
         
         m_loadingBackward = NO;
@@ -612,7 +660,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 - (void)invalidateData
 {
-    if(![m_identifier isEqualToString:FEED_BOOKMARKS]) {
+    if(!self.local) {
         NSTimeInterval delta = fabs(m_ttl - [NSDate timeIntervalSinceReferenceDate]);
         
         if(delta > 30.0F * 60.0F) { // 30 minutes
@@ -635,6 +683,18 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         
         if(!changes || [changes containsObject:self.identifier]) {
             [self reloadData];
+        }
+    }
+}
+
+- (void)databaseRecentsDidChange:(NSNotification *)notification
+{
+    if(m_editing == 0) {
+        NSArray *posts = [self fetchPosts];
+        
+        if(!MFEqual(m_posts, posts)) {
+            m_posts = posts;
+            [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self];
         }
     }
 }

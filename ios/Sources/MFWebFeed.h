@@ -7,7 +7,9 @@ typedef enum _MFWebFeedKind {
     kMFWebFeedKindAll,
     kMFWebFeedKindOnlyNew,
     kMFWebFeedKindOnlyEditorial,
-    kMFWebFeedKindBookmarks
+    kMFWebFeedKindBookmarks,
+    kMFWebFeedKindRecents,
+    kMFWebFeedKindHistory
 } MFWebFeedKind;
 
 extern NSString *MFWebFeedChangesKey;
@@ -38,6 +40,7 @@ extern NSString *MFWebFeedDidChangeNotification;
 
 - (id)initWithIdentifier:(NSString *)identifier;
 
+@property (nonatomic, assign, readonly, getter = isLocal) BOOL local;
 @property (nonatomic, assign, readonly, getter = isAtEnd) BOOL atEnd;
 @property (nonatomic, assign, readonly, getter = isLoading) BOOL loading;
 @property (nonatomic, assign, readonly, getter = isLoadingForward) BOOL loadingForward;

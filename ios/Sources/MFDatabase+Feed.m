@@ -12,8 +12,10 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
 
 #define FEED_EXPIRES 24.0F * 60.0F * 60.0F
 #define FEED_EXPIRES_HISTORY 24.0F * 60.0F * 60.0F * 7.0F
+#define FEED_EXPIRES_RECENTS 24.0F * 60.0F * 60.0F * 3.0F
 #define FEED_BOOKMARKS @"bookmarks"
 #define FEED_HISTORY @"history"
+#define FEED_RECENTS @"recents"
 
 #define TABLE_FEED @"feeds"
 
@@ -59,6 +61,11 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
     return FEED_EXPIRES_HISTORY;
 }
 
++ (NSTimeInterval)feedExpiresRecents
+{
+    return FEED_EXPIRES_RECENTS;
+}
+
 + (NSString *)feedIdentifierBookmarks
 {
     return FEED_BOOKMARKS;
@@ -67,6 +74,11 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
 + (NSString *)feedIdentifierHistory
 {
     return FEED_HISTORY;
+}
+
++ (NSString *)feedIdentifierRecents
+{
+    return FEED_RECENTS;
 }
 
 - (void)attach_proxy_feeds
@@ -80,7 +92,13 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
     NSDictionary *attributes = [[m_store objectForKey:identifier inTable:TABLE_FEED ttl:ttl] objectFromJSONData];
     
     if(ttl && attributes) {
-        *ttl = ([identifier isEqualToString:FEED_HISTORY]) ? *ttl - FEED_EXPIRES_HISTORY : *ttl - FEED_EXPIRES;
+        if([identifier isEqualToString:FEED_HISTORY]) {
+            *ttl = *ttl - FEED_EXPIRES_HISTORY;
+        } else if([identifier isEqualToString:FEED_RECENTS]) {
+            *ttl = *ttl - FEED_EXPIRES_RECENTS;
+        } else {
+            *ttl = *ttl - FEED_EXPIRES;
+        }
     }
     
     return ([attributes isKindOfClass:[NSDictionary class]]) ? [[MFFeed alloc] initWithAttributes:attributes] : nil;
@@ -90,7 +108,13 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
 {
     NSTimeInterval expires = [NSDate timeIntervalSinceReferenceDate];
     
-    expires += ([identifier isEqualToString:FEED_HISTORY]) ? FEED_EXPIRES_HISTORY : FEED_EXPIRES;
+    if([identifier isEqualToString:FEED_HISTORY]) {
+        expires += FEED_EXPIRES_HISTORY;
+    } else if([identifier isEqualToString:FEED_RECENTS]) {
+        expires += FEED_EXPIRES_RECENTS;
+    } else {
+        expires += FEED_EXPIRES;
+    }
     
     [m_store setObject:(feed) ? [feed.attributes JSONData] : nil
                expires:expires
@@ -98,7 +122,13 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
                inTable:TABLE_FEED];
     
     if(ttl && [m_store objectForKey:identifier inTable:TABLE_FEED ttl:ttl]) {
-        *ttl = ([identifier isEqualToString:FEED_HISTORY]) ? *ttl - FEED_EXPIRES_HISTORY : *ttl - FEED_EXPIRES;
+        if([identifier isEqualToString:FEED_HISTORY]) {
+            *ttl = *ttl - FEED_EXPIRES_HISTORY;
+        } else if([identifier isEqualToString:FEED_RECENTS]) {
+            *ttl = *ttl - FEED_EXPIRES_RECENTS;
+        } else {
+            *ttl = *ttl - FEED_EXPIRES;
+        }
     }
     
     [self addUpdate:MFDatabaseDidChangeFeedsNotification change:identifier];
@@ -120,6 +150,16 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
 - (void)addPosts:(NSArray *)posts forFeed:(NSString *)identifier
 {
     for(MFPost *post in posts) {
+        [m_store associateKey:identifier inTable:TABLE_FEED withKey:post.identifier inTable:[self.class postTableName]];
+    }
+    
+    [self addUpdate:MFDatabaseDidChangeFeedsNotification change:identifier];
+}
+
+- (void)replacePosts:(NSArray *)posts forFeed:(NSString *)identifier
+{
+    for(MFPost *post in posts) {
+        [m_store dissociateKey:identifier inTable:TABLE_FEED withKey:post.identifier inTable:[self.class postTableName]];
         [m_store associateKey:identifier inTable:TABLE_FEED withKey:post.identifier inTable:[self.class postTableName]];
     }
     
