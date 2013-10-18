@@ -220,11 +220,11 @@ class User {
         }
         
         if(this.firstName != null) {
-        	json.firstName = this.firstName;
+        	json.first_name = this.firstName;
         }
         
         if(this.lastName != null) {
-        	json.lastName = this.lastName;
+        	json.last_name = this.lastName;
         }
         
         if(this.countryId != null) {
