@@ -2,9 +2,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MFSearchController : UIViewController
+@class MFFormAccessory;
+
+@interface MFSearchController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     @private
+    MFFormAccessory *m_accessory;
 }
 
 - (IBAction)menu:(id)sender;
