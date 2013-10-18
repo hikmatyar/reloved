@@ -16,6 +16,7 @@
 #define CELL_IDENTIFIER2 @"cell2"
 
 #define TAG_CATEGORY_PICKER 1000
+#define NO_COLOR 1
 
 @implementation MFBrowseFilterController
 
@@ -82,13 +83,13 @@
 {
     switch(self.categoryPicker.selectedSegmentIndex) {
         case 0:
-            m_category = kMFBrowseFilterControllerCategoryColor;
-            break;
-        case 1:
             m_category = kMFBrowseFilterControllerCategorySize;
             break;
-        case 2:
+        case 1:
             m_category = kMFBrowseFilterControllerCategoryType;
+            break;
+        case 2:
+            m_category = kMFBrowseFilterControllerCategoryColor;
             break;
     }
     
@@ -245,14 +246,23 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F) style:UITableViewStylePlain];
     UISegmentedControl *categoryPicker = [[UISegmentedControl alloc] initWithItems:
         [NSArray arrayWithObjects:
-            NSLocalizedString(@"Browse.Action.Color", nil),
             NSLocalizedString(@"Browse.Action.Size", nil),
-            NSLocalizedString(@"Browse.Action.Type", nil), nil]];
+            NSLocalizedString(@"Browse.Action.Type", nil),
+#if !NO_COLOR
+            NSLocalizedString(@"Browse.Action.Color", nil),
+#endif
+            nil]];
     UIView *categoryView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 42.0F)];
     
+#if NO_COLOR
+    [categoryPicker setWidth:100.0F forSegmentAtIndex:0];
+    [categoryPicker setWidth:100.0F forSegmentAtIndex:1];
+#else
     [categoryPicker setWidth:70.0F forSegmentAtIndex:0];
     [categoryPicker setWidth:70.0F forSegmentAtIndex:1];
     [categoryPicker setWidth:70.0F forSegmentAtIndex:2];
+#endif
+    
     categoryPicker.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     categoryPicker.center = CGPointMake(160.0F, 20.0F);
     categoryPicker.tag = TAG_CATEGORY_PICKER;
@@ -260,13 +270,13 @@
     [categoryView addSubview:categoryPicker];
     
     switch(m_category) {
-        case kMFBrowseFilterControllerCategoryColor:
+        case kMFBrowseFilterControllerCategorySize:
             categoryPicker.selectedSegmentIndex = 0;
             break;
-        case kMFBrowseFilterControllerCategorySize:
+        case kMFBrowseFilterControllerCategoryType:
             categoryPicker.selectedSegmentIndex = 1;
             break;
-        case kMFBrowseFilterControllerCategoryType:
+        case kMFBrowseFilterControllerCategoryColor:
             categoryPicker.selectedSegmentIndex = 2;
             break;
     }

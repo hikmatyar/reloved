@@ -3,9 +3,9 @@
 #import <UIKit/UIKit.h>
 
 typedef enum _MFBrowseFilterControllerCategory {
-    kMFBrowseFilterControllerCategoryColor = 0,
-    kMFBrowseFilterControllerCategorySize,
-    kMFBrowseFilterControllerCategoryType
+    kMFBrowseFilterControllerCategorySize = 0,
+    kMFBrowseFilterControllerCategoryType,
+    kMFBrowseFilterControllerCategoryColor
 } MFBrowseFilterControllerCategory;
 
 #define kMFBrowseFilterControllerCategoryMin kMFBrowseFilterControllerCategoryColor
