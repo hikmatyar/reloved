@@ -18,6 +18,7 @@
 #import "NSDictionary+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UITableView+Additions.h"
 
 #define CELL_IDENTIFIER @"cell"
 
@@ -313,11 +314,7 @@
         m_pullToLoadMoreView.hidden = (m_atEnd) ? YES : NO;
         [tableView reloadData];
     } else {
-        NSIndexPath *selection = tableView.indexPathForSelectedRow;
-        
-        if(selection) {
-            [tableView deselectRowAtIndexPath:selection animated:NO];
-        }
+        [tableView clearSelection];
     }
     
     [notificationCenter addObserver:self selector:@selector(feedDidBeginLoading:) name:MFWebFeedDidBeginLoadingNotification object:nil];

@@ -18,6 +18,15 @@
 
 - (void)invalidateColors:(BOOL)state
 {
+    if(state) {
+        if(m_backgroundHighlightColor) {
+            self.backgroundColor = m_backgroundHighlightColor;
+        }
+    } else {
+        if(m_backgroundNormalColor) {
+            self.backgroundColor = m_backgroundNormalColor;
+        }
+    }
 }
 
 - (UIImage *)imageForURL:(NSURL *)URL
@@ -41,6 +50,9 @@
 - (void)prepareForDisplay
 {
 }
+
+@synthesize backgroundNormalColor = m_backgroundNormalColor;
+@synthesize backgroundHighlightColor = m_backgroundHighlightColor;
 
 #pragma mark UITableViewCell
 

@@ -175,6 +175,8 @@
 		812F4AF517DF011E00454747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF417DF011E00454747 /* SystemConfiguration.framework */; };
 		812F4AF917DF017F00454747 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF817DF017F00454747 /* MobileCoreServices.framework */; };
 		813FFCD818117FEF00E7FEA2 /* MFEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 813FFCD718117FEF00E7FEA2 /* MFEventTableViewCell.m */; };
+		813FFCDB1811A3DC00E7FEA2 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 813FFCDA1811A3DC00E7FEA2 /* UIImage+Additions.m */; };
+		813FFCDE1811A6F200E7FEA2 /* UITableView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 813FFCDD1811A6F200E7FEA2 /* UITableView+Additions.m */; };
 		8141AB3E180474070087B740 /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB3D180474070087B740 /* UIViewController+Additions.m */; };
 		8141AB4118047B650087B740 /* NSFileManager+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4018047B650087B740 /* NSFileManager+Additions.m */; };
 		8141AB4418048E550087B740 /* MFNewPostPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4318048E550087B740 /* MFNewPostPageView.m */; };
@@ -584,6 +586,10 @@
 		812F4AF817DF017F00454747 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		813FFCD618117FEF00E7FEA2 /* MFEventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFEventTableViewCell.h; path = Sources/MFEventTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		813FFCD718117FEF00E7FEA2 /* MFEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFEventTableViewCell.m; path = Sources/MFEventTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		813FFCD91811A3DC00E7FEA2 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Additions.h"; path = "Sources/Additions/UIImage+Additions.h"; sourceTree = SOURCE_ROOT; };
+		813FFCDA1811A3DC00E7FEA2 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Additions.m"; path = "Sources/Additions/UIImage+Additions.m"; sourceTree = SOURCE_ROOT; };
+		813FFCDC1811A6F200E7FEA2 /* UITableView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+Additions.h"; path = "Sources/Additions/UITableView+Additions.h"; sourceTree = SOURCE_ROOT; };
+		813FFCDD1811A6F200E7FEA2 /* UITableView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+Additions.m"; path = "Sources/Additions/UITableView+Additions.m"; sourceTree = SOURCE_ROOT; };
 		8141AB3C180474070087B740 /* UIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+Additions.h"; path = "Sources/Additions/UIViewController+Additions.h"; sourceTree = SOURCE_ROOT; };
 		8141AB3D180474070087B740 /* UIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+Additions.m"; path = "Sources/Additions/UIViewController+Additions.m"; sourceTree = SOURCE_ROOT; };
 		8141AB3F18047B650087B740 /* NSFileManager+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+Additions.h"; path = "Sources/Additions/NSFileManager+Additions.h"; sourceTree = SOURCE_ROOT; };
@@ -1332,6 +1338,10 @@
 				8120C13D17DFA8F400A1C3A9 /* UIColor+Additions.m */,
 				8120C13F17DFA90300A1C3A9 /* UIFont+Additions.h */,
 				8120C14017DFA90300A1C3A9 /* UIFont+Additions.m */,
+				813FFCD91811A3DC00E7FEA2 /* UIImage+Additions.h */,
+				813FFCDA1811A3DC00E7FEA2 /* UIImage+Additions.m */,
+				813FFCDC1811A6F200E7FEA2 /* UITableView+Additions.h */,
+				813FFCDD1811A6F200E7FEA2 /* UITableView+Additions.m */,
 				8141AB3C180474070087B740 /* UIViewController+Additions.h */,
 				8141AB3D180474070087B740 /* UIViewController+Additions.m */,
 			);
@@ -1763,6 +1773,7 @@
 				81BC175417FCA55F00DF7AD4 /* MFPageScrollView.m in Sources */,
 				813FFCD818117FEF00E7FEA2 /* MFEventTableViewCell.m in Sources */,
 				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
+				813FFCDB1811A3DC00E7FEA2 /* UIImage+Additions.m in Sources */,
 				8120C13717DFA7C000A1C3A9 /* MFSearchController.m in Sources */,
 				81B27B2D17F6103700F9BC09 /* PKView.m in Sources */,
 				8119DFF417E09E58007AEDC2 /* MFWebCache.m in Sources */,
@@ -1838,6 +1849,7 @@
 				817723E617FDAAEC004A28CC /* MFFormTextField.m in Sources */,
 				817723E317FDAAD8004A28CC /* MFFormButton.m in Sources */,
 				81B27B1117F60F3700F9BC09 /* STPView.m in Sources */,
+				813FFCDE1811A6F200E7FEA2 /* UITableView+Additions.m in Sources */,
 				812F4AE717DEFEE900454747 /* ASINetworkQueue.m in Sources */,
 				811082D217F8CA8E005CC8ED /* SQLObjectStore.m in Sources */,
 				81B14B84180ECC3E0089D19F /* MFPostHeaderView.m in Sources */,

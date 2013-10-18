@@ -19,17 +19,24 @@
 #import "MFSeparatorView.h"
 #import "MFSideMenuContainerViewController.h"
 #import "MFTableView.h"
+#import "MFTableViewCell.h"
 #import "MFType.h"
 #import "MFWebController.h"
 #import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UITableView+Additions.h"
 #import "UIViewController+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
 
 #define CELL_IDENTIFIER @"cell"
 
 @implementation MFHomeController
+
+- (MFTableView *)tableView
+{
+    return (MFTableView *)self.view;
+}
 
 - (IBAction)browseEditorial:(id)sender
 {
@@ -205,12 +212,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MFMenuItem *item = [[m_menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+    MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     
     if(!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
+        cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
+        cell.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
         cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
     }
     
@@ -262,6 +271,12 @@
     tableView.delegate = self;
     tableView.rowHeight = 45.0F;
     self.view = tableView;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView clearSelection];
 }
 
 #pragma mark NSObject

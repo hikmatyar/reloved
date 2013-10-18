@@ -143,6 +143,8 @@
         textLabel.numberOfLines = 0;
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
+        self.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
     }
     
     return self;

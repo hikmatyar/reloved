@@ -7,6 +7,7 @@
 + (UIColor *)colorWithString:(NSString *)str;
 
 + (UIColor *)themeBackgroundColor;
++ (UIColor *)themeBackgroundHighlightColor;
 + (UIColor *)themeSeparatorColor;
 + (UIColor *)themeTextColor;
 + (UIColor *)themeTextAlternativeColor;

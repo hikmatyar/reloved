@@ -29,6 +29,11 @@
     return [self colorWithString:@"#eeeeee"];
 }
 
++ (UIColor *)themeBackgroundHighlightColor
+{
+    return [self colorWithString:@"#f5f5f5"];
+}
+
 + (UIColor *)themeSeparatorColor
 {
     return [self colorWithString:@"#d8d8d8"];
@@ -61,7 +66,7 @@
 
 + (UIColor *)themeButtonBackgroundHighlightColor
 {
-    return [self colorWithString:@"#eeeeee"];
+    return [self colorWithString:@"#f5f5f5"];
 }
 
 + (UIColor *)themeButtonBorderColor

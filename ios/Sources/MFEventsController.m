@@ -9,6 +9,7 @@
 #import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UITableView+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
 
 #define CELL_IDENTIFIER @"cell"
@@ -102,6 +103,7 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(databaseEventsDidChange:) name:MFDatabaseDidChangeEventsNotification object:[MFDatabase sharedDatabase]];
     [self databaseEventsDidChange:nil];
+    [self.tableView clearSelection];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

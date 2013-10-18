@@ -16,11 +16,13 @@
 #import "MFPostHeaderView.h"
 #import "MFPostSectionView.h"
 #import "MFSize.h"
+#import "MFTableViewCell.h"
 #import "MFWebPost.h"
 #import "MFWebController.h"
 #import "UIApplication+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UITableView+Additions.h"
 
 #define CELL_IDENTIFIER @"cell"
 
@@ -183,14 +185,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MFMenuItem *item = [[m_menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+    MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     
     if(!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_IDENTIFIER];
+        cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_IDENTIFIER];
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
         cell.detailTextLabel.font = [UIFont themeFontOfSize:13.0F];
+        cell.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
+        cell.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
     }
     
     cell.imageView.image = (item.image) ? [UIImage imageNamed:item.image] : nil;
@@ -255,6 +259,7 @@
     
     [center addObserver:self selector:@selector(postDidChange:) name:MFWebPostDidChangeNotification object:m_post];
     [super viewWillAppear:animated];
+    [self.tableView clearSelection];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
