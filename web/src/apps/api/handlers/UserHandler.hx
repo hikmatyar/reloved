@@ -11,7 +11,8 @@ class UserHandler extends Handler {
 	public function details() {
 		User.findExtended(this.user().id, function(err, user) {
 			if(user != null) {
-				this.render(user.json());
+				this.begin(ErrorCode.http_ok);
+				this.end(user.json());
 			} else {
 				this.exit((err == null) ? ErrorCode.none : ErrorCode.unknown);
 			}

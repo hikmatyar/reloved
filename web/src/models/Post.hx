@@ -722,28 +722,6 @@ class Post {
     	}
     }
     
-    /*
-    "id": 1,
-					"user": 10,
-					"status": 1,
-					"date": "2013-12-30T12:00:00.000Z",
-					"mod": "2013-12-30T12:00:00.000Z",
-					"brand": 1,
-					"colors": [ 1 ],
-					"condition": 1,
-					"types": [ 1 ],
-					"size": 1,
-					"materials": "...",
-					"price": 12345,
-					"price_o": 23456,
-					"currency": "GBP",
-					"title": "...",
-					"fit": "...",
-					"notes": "...",
-					"media": [ 1 ],
-					// Optional
-					"editorial": "..."*/
-	
     public function json() : String {
         var json : Dynamic = {
             id: this.id,

@@ -222,7 +222,8 @@ class PostHandler extends Handler {
 				Post.cacheRelationsForPosts([ result.post ], function(err) {
 					if(err == null) {
 						result.post.publish();
-						this.render(result.post.json());
+						this.begin(ErrorCode.http_ok);
+						this.end(result.post.json());
 					} else {
 						this.exit(ErrorCode.unknown, 'relations');
 					}
@@ -277,7 +278,8 @@ class PostHandler extends Handler {
 				Post.cacheRelationsForPosts([ result.post ], function(err) {
 					if(err == null) {
 						result.post.publish();
-						this.render(result.post.json());
+						this.begin(ErrorCode.http_ok);
+						this.end(result.post.json());
 					} else {
 						this.exit(ErrorCode.unknown, 'edit');
 					}
