@@ -300,6 +300,11 @@
 
 #pragma mark UITextFieldDelegate
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return ([textField isKindOfClass:[MFFormTextField class]]) ? [(MFFormTextField *)textField shouldChangeCharactersInRange:range replacementString:string] : YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self.form scrollToView:textField animated:YES];
@@ -322,6 +327,11 @@
 }
 
 #pragma mark UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return ([textView isKindOfClass:[MFFormTextView class]]) ? [(MFFormTextView *)textView shouldChangeCharactersInRange:range replacementString:text] : YES;
+}
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
@@ -356,6 +366,7 @@
     textField.placeholder = NSLocalizedString(@"Profile.Hint.FullName", nil);
     textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.maxTextLength = 256;
     textField.tag = TAG_FIELD_FULLNAME;
     [form addSubview:textField];
     [fields addObject:textField];
@@ -369,6 +380,7 @@
     textView.placeholder = NSLocalizedString(@"Profile.Hint.AddressLine", nil);
     textView.autocorrectionType = UITextAutocorrectionTypeNo;
     textView.tag = TAG_FIELD_ADDRESS;
+    textView.maxTextLength = 128;
     [form addSubview:textView];
     [fields addObject:textView];
     
@@ -379,7 +391,7 @@
     pickerField = [[MFFormPickerField alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormPickerField preferredHeight])];
     pickerField.dataSource = self;
     pickerField.delegate = self;
-    pickerField.placeholder =NSLocalizedString(@"Profile.Hint.Country", nil);
+    pickerField.placeholder = NSLocalizedString(@"Profile.Hint.Country", nil);
     pickerField.tag = TAG_FIELD_COUNTRY;
     [form addSubview:pickerField];
     [fields addObject:pickerField];
@@ -394,6 +406,7 @@
     textField.placeholder = NSLocalizedString(@"Profile.Hint.City", nil);
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.tag = TAG_FIELD_CITY;
+    textField.maxTextLength = 64;
     [form addSubview:textField];
     [fields addObject:textField];
     
@@ -407,6 +420,7 @@
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Postcode", nil);
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.tag = TAG_FIELD_ZIPCODE;
+    textField.maxTextLength = 16;
     [form addSubview:textField];
     [fields addObject:textField];
     
@@ -419,6 +433,7 @@
     textField.returnKeyType = UIReturnKeyNext;
     textField.placeholder = NSLocalizedString(@"Profile.Hint.Phone", nil);
     textField.keyboardType = UIKeyboardTypePhonePad;
+    textField.maxTextLength = 128;
     textField.tag = TAG_FIELD_PHONE;
     [form addSubview:textField];
     [fields addObject:textField];
@@ -434,6 +449,7 @@
     textField.keyboardType = UIKeyboardTypeEmailAddress;
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.tag = TAG_FIELD_EMAIL;
+    textField.maxTextLength = 128;
     [form addSubview:textField];
     [fields addObject:textField];
     

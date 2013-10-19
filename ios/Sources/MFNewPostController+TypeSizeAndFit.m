@@ -110,6 +110,7 @@
         
         m_fitDescriptionTextView = [[MFFormTextView alloc] initWithFrame:CGRectMake(10.0F, 220.0F, 300.0F, 100.0F)];
         m_fitDescriptionTextView.delegate = self;
+        m_fitDescriptionTextView.maxTextLength = 200;
         m_fitDescriptionTextView.placeholder = NSLocalizedString(@"NewPost.Hint.Fit", nil);
         [m_form addSubview:m_fitDescriptionTextView];
         
@@ -190,6 +191,11 @@
 }
 
 #pragma mark UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return ([textView isKindOfClass:[MFFormTextView class]]) ? [(MFFormTextView *)textView shouldChangeCharactersInRange:range replacementString:text] : YES;
+}
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {

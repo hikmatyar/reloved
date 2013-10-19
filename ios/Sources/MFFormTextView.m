@@ -41,6 +41,13 @@
     m_placeholderLabel.textColor = placeholderColor;
 }
 
+@synthesize maxTextLength = m_maxTextLength;
+
+- (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return (m_maxTextLength == 0 || (self.text.length + string.length - range.length) < m_maxTextLength) ? YES : NO;
+}
+
 #pragma mark UITextView
 
 - (void)setFont:(UIFont *)font

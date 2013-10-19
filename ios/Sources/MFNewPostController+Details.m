@@ -89,6 +89,7 @@
         m_materialsTextField.delegate = self;
         m_materialsTextField.returnKeyType = UIReturnKeyDone;
         m_materialsTextField.placeholder = NSLocalizedString(@"NewPost.Hint.Materials", nil);
+        m_materialsTextField.maxTextLength = 200;
         [m_form addSubview:m_materialsTextField];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
@@ -187,6 +188,11 @@
 }
 
 #pragma mark UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return ([textField isKindOfClass:[MFFormTextField class]]) ? [(MFFormTextField *)textField shouldChangeCharactersInRange:range replacementString:string] : YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

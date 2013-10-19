@@ -11,6 +11,9 @@
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
+#define SUBJECT_RANGE 100
+#define NOTES_RANGE 100
+
 @interface MFNewPostController_Notes : MFNewPostPageView <UITextFieldDelegate, UITextViewDelegate>
 {
     @private
@@ -45,6 +48,7 @@
         m_subjectTextField = [[MFFormTextField alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormTextField preferredHeight])];
         m_subjectTextField.delegate = self;
         m_subjectTextField.returnKeyType = UIReturnKeyNext;
+        m_subjectTextField.maxTextLength = 128;
         m_subjectTextField.placeholder = NSLocalizedString(@"NewPost.Hint.Subject", nil);
         [m_form addSubview:m_subjectTextField];
         
@@ -54,6 +58,7 @@
         
         m_notesTextView = [[MFFormTextView alloc] initWithFrame:CGRectMake(10.0F, 220.0F, 300.0F, 100.0F)];
         m_notesTextView.delegate = self;
+        m_notesTextView.maxTextLength = 400;
         m_notesTextView.placeholder = NSLocalizedString(@"NewPost.Hint.SellersNote", nil);
         [m_form addSubview:m_notesTextView];
         
@@ -66,7 +71,7 @@
 - (BOOL)canContinue
 {
     if(!m_canContinue) {
-        m_canContinue = (m_subjectTextField.text.length > 0 && m_notesTextView.text.length > 0) ? YES : NO;
+        m_canContinue = (m_subjectTextField.text.length >= (m_subjectTextField.maxTextLength - SUBJECT_RANGE) && m_notesTextView.text.length >= (m_notesTextView.maxTextLength - NOTES_RANGE)) ? YES : NO;
     }
     
     return m_canContinue;
@@ -108,6 +113,11 @@
     return NO;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    return ([textField isKindOfClass:[MFFormTextField class]]) ? [(MFFormTextField *)textField shouldChangeCharactersInRange:range replacementString:string] : YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [m_form scrollToView:textField animated:YES];
@@ -119,6 +129,11 @@
 }
 
 #pragma mark UITextViewDelegate
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    return ([textView isKindOfClass:[MFFormTextView class]]) ? [(MFFormTextView *)textView shouldChangeCharactersInRange:range replacementString:text] : YES;
+}
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
