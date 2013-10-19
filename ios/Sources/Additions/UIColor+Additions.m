@@ -144,6 +144,11 @@
     return [self colorWithString:@"#dcdcdc"];
 }
 
++ (UIColor *)themeMenuBackgroundHighlightColor
+{
+    return [self colorWithString:@"#ececec"];
+}
+
 + (UIColor *)themeMenuSeparatorColor
 {
     return [self colorWithString:@"#dabfa3"];

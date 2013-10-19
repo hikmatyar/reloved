@@ -9,8 +9,11 @@
 #import "MFNewPostController.h"
 #import "MFSearchController.h"
 #import "MFSideMenuContainerViewController.h"
+#import "MFTableViewCell.h"
+#import "NSDictionary+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UITableView+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
 
 #define CELL_IDENTIFIER @"cell"
@@ -61,6 +64,15 @@
     [self setViewControllerClass:[MFNewPostController class]];
 }
 
+- (void)menuStateDidChange:(NSNotification *)notification
+{
+    MFSideMenuStateEvent event = [notification.userInfo integerForKey:@"eventType"];
+    
+    if(event == MFSideMenuStateEventMenuDidClose) {
+        [self.tableView clearSelection];
+    }
+}
+
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -71,14 +83,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MFMenuItem *item = [m_menu objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+    MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
     
     if(!cell) {
         UIView *separatorView;
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
+        cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.backgroundColor = [UIColor themeMenuBackgroundColor];
+        cell.backgroundNormalColor = [UIColor themeMenuBackgroundColor];
+        cell.backgroundHighlightColor = [UIColor themeMenuBackgroundHighlightColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.textColor = [UIColor themeMenuTextColor];
         cell.textLabel.font = [UIFont themeBoldFontOfSize:18.0F];
@@ -123,14 +136,15 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    UITableView *tableView = self.tableView;
-    NSIndexPath *selection = tableView.indexPathForSelectedRow;
-    
-    if(selection) {
-        [tableView deselectRowAtIndexPath:selection animated:NO];
-    }
-    
     [super viewWillAppear:animated];
+    [self.tableView clearSelection];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(menuStateDidChange:) name:MFSideMenuStateNotificationEvent object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MFSideMenuStateNotificationEvent object:nil];
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark NSObject
@@ -146,6 +160,8 @@
                   MENU_ITEM(NSLocalizedString(@"Menu.Action.News", nil), @selector(news:), @"Menu-News.png"),
                   MENU_ITEM(NSLocalizedString(@"Menu.Action.Cart", nil), @selector(cart:), @"Menu-Cart.png"),
                   MENU_ITEM(NSLocalizedString(@"Menu.Action.Sell", nil), @selector(sell:), @"Menu-Sell.png"), nil];
+        
+        
     }
     
     return self;

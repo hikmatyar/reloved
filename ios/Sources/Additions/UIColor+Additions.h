@@ -36,6 +36,7 @@
 + (UIColor *)themeSeparatorBottomColor;
 
 + (UIColor *)themeMenuBackgroundColor;
++ (UIColor *)themeMenuBackgroundHighlightColor;
 + (UIColor *)themeMenuSeparatorColor;
 + (UIColor *)themeMenuTextColor;
 
