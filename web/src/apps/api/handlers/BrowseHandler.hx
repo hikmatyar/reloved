@@ -190,6 +190,7 @@ class BrowseHandler extends Handler {
                 if(featured) {
                 	this.write(' "cursor": "end", \n');
                 	state = null;
+                	range = null;
                 } else if(range == null) {
                     this.write(' "cursor": "start", \n');
                 } else if(posts.length == limit) {
