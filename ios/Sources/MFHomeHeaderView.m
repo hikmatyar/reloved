@@ -22,7 +22,7 @@
 
 - (void)invalidatePost
 {
-    if(!m_selectedPost || [m_posts containsObject:m_selectedPost]) {
+    if(!m_selectedPost || ![m_posts containsObject:m_selectedPost]) {
         m_selectedPost = m_posts.firstObject;
     }
     
