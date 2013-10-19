@@ -203,14 +203,14 @@ class BrowseHandler extends Handler {
             }
             
             if(Config.media_prefix != null) {
-                this.write(' "prefix": "' + Config.media_prefix + '", \n');
+                this.write(' "prefix": "' + Config.media_prefix + '" \n');
             }
             
             if(range != null) {
                 Post.findChanges(range.min, range.max, function(err, changes) {
                     if(changes != null && changes.length > 0) {
                         delimiter = '';
-                        this.write(' "delta": [');
+                        this.write(', "delta": [');
                         
                         for(change in changes) {
                             this.write(delimiter);
@@ -230,7 +230,7 @@ class BrowseHandler extends Handler {
         
         async(function(sync, success : Bool) {
             if(success && state != null) {
-                this.write(' "state": ' + state.json() + '\n');
+                this.write(', "state": ' + state.json() + '\n');
             }
             
             this.end('}');
