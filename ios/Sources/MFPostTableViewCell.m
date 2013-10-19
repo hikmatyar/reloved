@@ -137,7 +137,8 @@
         textLabel.layer.borderColor = [UIColor themeSeparatorColor].CGColor;
         textLabel.layer.borderWidth = 1.0F;
         textLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
-        textLabel.backgroundColor = [UIColor lightGrayColor];
+        textLabel.backgroundColor = [UIColor themeTextBackgroundColor];
+        textLabel.textColor = [UIColor themeTextColor];
         textLabel.font = [UIFont themeFontOfSize:14.0F];
         textLabel.textAlignment = NSTextAlignmentCenter;
         textLabel.numberOfLines = 0;
@@ -159,7 +160,7 @@
     [super layoutSubviews];
     
     self.imageView.frame = CGRectMake(10.0F, 0.0F, 300.0F, 285.0F);
-    self.textLabel.frame = CGRectMake(10.0F, 290.0F, 300.0F, 180.0F);
+    self.textLabel.frame = CGRectMake(10.0F, 290.0F, 300.0F, 150.0F);
 }
 
 @end

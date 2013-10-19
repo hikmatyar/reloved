@@ -117,7 +117,7 @@
     self.imageView.frame = CGRectMake(10.0F, 0.0F, 300.0F, 285.0F);
     m_imageButton.frame = self.imageView.frame;
     m_scrollView.frame = CGRectMake(0.0F, 296.0F, 320.0F, 40.0F);
-    self.textLabel.frame = CGRectMake(10.0F, 290.0F + 56.0F, 300.0F, 180.0F);
+    self.textLabel.frame = CGRectMake(10.0F, 290.0F + 56.0F, 300.0F, 150.0F);
 }
 
 @end
