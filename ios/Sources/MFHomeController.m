@@ -115,7 +115,7 @@
 - (void)feedDidChange:(NSNotification *)notification
 {
     if([MFWebFeed sharedFeed] == notification.object) {
-        self.headerView.post = [MFDatabase sharedDatabase].featuredPost;
+        self.headerView.posts = [MFDatabase sharedDatabase].featuredPosts;
     }
 }
 
@@ -169,7 +169,7 @@
 
 - (void)headerViewDidSelectShopByFeatured:(MFHomeHeaderView *)headerView
 {
-    MFPost *post = [MFDatabase sharedDatabase].featuredPost;
+    MFPost *post = headerView.selectedPost;
     
     if(post) {
         [self.navigationController pushViewController:[[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithPost:post]] animated:YES];
@@ -294,7 +294,7 @@
 {
     [super viewWillAppear:animated];
     [self.tableView clearSelection];
-    self.headerView.post = [MFDatabase sharedDatabase].featuredPost;
+    self.headerView.posts = [MFDatabase sharedDatabase].featuredPosts;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedDidChange:) name:MFWebFeedDidChangeNotification object:nil];
 }
 

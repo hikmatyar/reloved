@@ -9,14 +9,18 @@
 {
     @private
     __unsafe_unretained id <MFHomeHeaderViewDelegate> m_delegate;
-    MFPost *m_post;
+    NSArray *m_posts;
+    MFPost *m_selectedPost;
     MFImageView *m_postImageView;
     UILabel *m_postLabel;
+    UIButton *m_prevButton;
+    UIButton *m_nextButton;
 }
 
 + (CGFloat)preferredHeight;
 
 @property (nonatomic, assign) id <MFHomeHeaderViewDelegate> delegate;
-@property (nonatomic, retain) MFPost *post;
+@property (nonatomic, retain) NSArray *posts;
+@property (nonatomic, retain, readonly) MFPost *selectedPost;
 
 @end
