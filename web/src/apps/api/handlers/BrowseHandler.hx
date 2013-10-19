@@ -131,7 +131,7 @@ class BrowseHandler extends Handler {
             };
             
             if(featured) {
-            	Post.findFeatured(1, writePostFields);
+            	Post.findFeatured(5, writePostFields);
             } else {
 				if(state != null) {
 					if(forward) {
@@ -189,6 +189,7 @@ class BrowseHandler extends Handler {
                 
                 if(featured) {
                 	this.write(' "cursor": "end", \n');
+                	state = null;
                 } else if(range == null) {
                     this.write(' "cursor": "start", \n');
                 } else if(posts.length == limit) {
