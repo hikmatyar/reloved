@@ -12,6 +12,9 @@
 #import "MFWebService.h"
 #import "UIColor+Additions.h"
 
+#define THUMBNAIL_PADDING 6.0F
+#define THUMBNAIL_HEIGHT 40.0F
+
 @interface UITableViewCell(Extensions)
 
 - (void)prepareForDisplay;
@@ -53,12 +56,12 @@
 
 + (CGFloat)preferredHeight
 {
-    return [super preferredHeight] + 56.0F;
+    return [super preferredHeight] + THUMBNAIL_HEIGHT + THUMBNAIL_PADDING + 6.0F;
 }
 
 - (void)setPost:(MFPost *)post
 {
-    CGRect thumbnailRect = CGRectMake(10.0F, 0.0F, 40.0F, 40.0F);
+    CGRect thumbnailRect = CGRectMake(10.0F, 0.0F, THUMBNAIL_HEIGHT, THUMBNAIL_HEIGHT);
     MFDatabase *database = [MFDatabase sharedDatabase];
     
     super.post = post;
@@ -83,7 +86,7 @@
         [imageButton addTarget:self action:@selector(thumbnail:) forControlEvents:UIControlEventTouchUpInside];
         [m_scrollView addSubview:imageButton];
         
-        thumbnailRect.origin.x += thumbnailRect.size.width + 10.0F;
+        thumbnailRect.origin.x += thumbnailRect.size.width + THUMBNAIL_PADDING;
     }
     
     m_scrollView.contentSize = CGSizeMake(thumbnailRect.origin.x, thumbnailRect.origin.y + thumbnailRect.size.height);
@@ -96,7 +99,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if(self) {
-        m_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 100.0F, 40.0F)];
+        m_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 100.0F, THUMBNAIL_HEIGHT)];
         m_scrollView.directionalLockEnabled = YES;
         m_scrollView.showsVerticalScrollIndicator = NO;
         [self addSubview:m_scrollView];
@@ -116,8 +119,8 @@
     
     self.imageView.frame = CGRectMake(10.0F, 0.0F, 300.0F, 285.0F);
     m_imageButton.frame = self.imageView.frame;
-    m_scrollView.frame = CGRectMake(0.0F, 296.0F, 320.0F, 40.0F);
-    self.textLabel.frame = CGRectMake(10.0F, 290.0F + 56.0F, 300.0F, 150.0F);
+    m_scrollView.frame = CGRectMake(0.0F, 296.0F, 320.0F, THUMBNAIL_HEIGHT);
+    self.textLabel.frame = CGRectMake(10.0F, 290.0F + THUMBNAIL_HEIGHT + THUMBNAIL_PADDING + 6.0F, 300.0F, 150.0F);
 }
 
 @end
