@@ -37,6 +37,17 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>reloved</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>uk.co.relovedapp.Reloved</string>
+		</dict>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

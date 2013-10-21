@@ -11,6 +11,7 @@
 #import "MFWebServiceAuthenticationChallenge.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UINavigationController+Additions.h"
 
 @implementation MFApplicationDelegate
 
@@ -58,6 +59,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSURL *url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
     MFSideMenuContainerViewController *controller = [MFSideMenuContainerViewController
         containerWithCenterViewController:[[UINavigationController alloc] initWithRootViewController:[[MFHomeController alloc] init]]
         leftMenuViewController:[[MFMenuController alloc] init]
@@ -82,6 +84,10 @@
     [MFWebController preload];
     [[MFWebFeed sharedFeed] loadForward];
     
+    if(url) {
+        [controller.centerViewController pushLink:url animated:NO];
+    }
+    
     return YES;
 }
 
@@ -91,6 +97,13 @@
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    UIViewController *controller = m_window.rootViewController;
+    
+    return ([controller isKindOfClass:[MFSideMenuContainerViewController class]]) ? [((MFSideMenuContainerViewController *)controller).centerViewController pushLink:url animated:NO] : NO;
 }
 
 @end

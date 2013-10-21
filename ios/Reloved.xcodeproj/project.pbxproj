@@ -174,6 +174,7 @@
 		812F4AF317DF00FD00454747 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF217DF00FD00454747 /* libz.dylib */; };
 		812F4AF517DF011E00454747 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF417DF011E00454747 /* SystemConfiguration.framework */; };
 		812F4AF917DF017F00454747 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F4AF817DF017F00454747 /* MobileCoreServices.framework */; };
+		813510FE181585D0009B47DF /* UINavigationController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 813510FD181585D0009B47DF /* UINavigationController+Additions.m */; };
 		813FFCD818117FEF00E7FEA2 /* MFEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 813FFCD718117FEF00E7FEA2 /* MFEventTableViewCell.m */; };
 		813FFCDB1811A3DC00E7FEA2 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 813FFCDA1811A3DC00E7FEA2 /* UIImage+Additions.m */; };
 		813FFCDE1811A6F200E7FEA2 /* UITableView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 813FFCDD1811A6F200E7FEA2 /* UITableView+Additions.m */; };
@@ -590,6 +591,8 @@
 		812F4AF417DF011E00454747 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		812F4AF617DF015500454747 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		812F4AF817DF017F00454747 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		813510FC181585D0009B47DF /* UINavigationController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Additions.h"; path = "Sources/Additions/UINavigationController+Additions.h"; sourceTree = SOURCE_ROOT; };
+		813510FD181585D0009B47DF /* UINavigationController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Additions.m"; path = "Sources/Additions/UINavigationController+Additions.m"; sourceTree = SOURCE_ROOT; };
 		813FFCD618117FEF00E7FEA2 /* MFEventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFEventTableViewCell.h; path = Sources/MFEventTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		813FFCD718117FEF00E7FEA2 /* MFEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFEventTableViewCell.m; path = Sources/MFEventTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		813FFCD91811A3DC00E7FEA2 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Additions.h"; path = "Sources/Additions/UIImage+Additions.h"; sourceTree = SOURCE_ROOT; };
@@ -1358,6 +1361,8 @@
 				8120C14017DFA90300A1C3A9 /* UIFont+Additions.m */,
 				813FFCD91811A3DC00E7FEA2 /* UIImage+Additions.h */,
 				813FFCDA1811A3DC00E7FEA2 /* UIImage+Additions.m */,
+				813510FC181585D0009B47DF /* UINavigationController+Additions.h */,
+				813510FD181585D0009B47DF /* UINavigationController+Additions.m */,
 				813FFCDC1811A6F200E7FEA2 /* UITableView+Additions.h */,
 				813FFCDD1811A6F200E7FEA2 /* UITableView+Additions.m */,
 				8141AB3C180474070087B740 /* UIViewController+Additions.h */,
@@ -1789,6 +1794,7 @@
 				8120C15817DFAF0B00A1C3A9 /* MFEventsController.m in Sources */,
 				819E12AF18055956008D2D36 /* MFDatabase+State.m in Sources */,
 				811082CF17F8CA8E005CC8ED /* SQLConnection.m in Sources */,
+				813510FE181585D0009B47DF /* UINavigationController+Additions.m in Sources */,
 				81B27B2717F6103700F9BC09 /* PKCard.m in Sources */,
 				8120C1BD17E053A100A1C3A9 /* UIButton+Additions.m in Sources */,
 				81B14B87180ECC4A0089D19F /* MFPostFooterView.m in Sources */,
