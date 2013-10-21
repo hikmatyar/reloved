@@ -47,8 +47,9 @@
                 MENU_SECTION(NSLocalizedString(@"Post.Label.ShippingAndReturns", nil),
                     MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.ShippingInfo", nil), NSLocalizedString(@"Post.Label.ShippingInfo", nil), @selector(shippingInfo:), @"Post-ShippingInfo.png"),
                     MENU_ITEM_SUB(NSLocalizedString(@"Post.Action.ReturnsPolicy", nil), NSLocalizedString(@"Post.Label.ReturnsPolicy", nil), @selector(returnsPolicy:), @"Post-Returns.png")),
-                MENU_SECTION(NSLocalizedString(@"Post.Label.QAWithSeller", nil),
-                    MENU_ITEM(NSLocalizedString(@"Post.Action.Comments", nil), @selector(comments:), @"Post-Comments.png")), nil];
+                //MENU_SECTION(NSLocalizedString(@"Post.Label.QAWithSeller", nil),
+                //    MENU_ITEM(NSLocalizedString(@"Post.Action.Comments", nil), @selector(comments:), @"Post-Comments.png")),
+                nil];
     }
     
     return self;
