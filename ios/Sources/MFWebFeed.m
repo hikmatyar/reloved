@@ -674,6 +674,8 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
             m_loadingForward = NO;
             [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(nil, error)];
         }];
+    } else if(self.local) {
+        [self reloadPosts];
     }
 }
 
