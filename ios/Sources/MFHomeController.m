@@ -173,8 +173,7 @@
     MFPost *post = headerView.selectedPost;
     
     if(post) {
-        //[self.navigationController pushViewController:[[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithPost:post]] animated:YES];
-        [self.navigationController pushViewController:[[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithIdentifier:post.identifier]] animated:YES];
+        [self.navigationController pushViewController:[[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithPost:post]] animated:YES];
     }
 }
 
