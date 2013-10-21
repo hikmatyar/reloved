@@ -4,6 +4,7 @@
 #import "MFDatabase.h"
 #import "MFDatabase+Brand.h"
 #import "MFDatabase+Bookmark.h"
+#import "MFDatabase+Cart.h"
 #import "MFDatabase+Color.h"
 #import "MFDatabase+Country.h"
 #import "MFDatabase+Currency.h"
@@ -37,6 +38,7 @@ NSString *MFWebFeedDidChangeNotification = @"MFWebFeedDidChange";
 #define FEED_ONLY_NEW @"only_new"
 #define FEED_ONLY_EDITORIAL @"only_editorial"
 #define FEED_BOOKMARKS @"bookmarks"
+#define FEED_CART @"cart"
 #define FEED_HISTORY @"history"
 #define FEED_RECENTS @"recents"
 #define FEED_FEATURED @"featured"
@@ -149,6 +151,18 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     return sharedBookmarksFeed;
 }
 
++ (MFWebFeed *)sharedCartFeed
+{
+    __strong static MFWebFeed *sharedCartFeed = nil;
+    static dispatch_once_t loaded = 0;
+    
+    dispatch_once(&loaded, ^{
+        sharedCartFeed = [[self alloc] initWithIdentifier:FEED_CART];
+    });
+    
+    return sharedCartFeed;
+}
+
 + (MFWebFeed *)sharedFeaturedFeed
 {
     __strong static MFWebFeed *sharedFeaturedFeed = nil;
@@ -199,13 +213,15 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 {
     switch(kind) {
         case kMFWebFeedKindAll:
-            return [self sharedFeedWithIdentifier:FEED_ALL filters:nil];
+            return [self sharedFeedWithIdentifier:FEED_ALL filters:filters];
         case kMFWebFeedKindOnlyNew:
-            return [self sharedFeedWithIdentifier:FEED_ONLY_NEW filters:nil];
+            return [self sharedFeedWithIdentifier:FEED_ONLY_NEW filters:filters];
         case kMFWebFeedKindOnlyEditorial:
             return [self sharedFeedWithIdentifier:FEED_ONLY_EDITORIAL filters:nil];
         case kMFWebFeedKindBookmarks:
             return [self sharedBookmarksFeed];
+        case kMFWebFeedKindCart:
+            return [self sharedCartFeed];
         case kMFWebFeedKindFeatured:
             return [self sharedFeaturedFeed];
         case kMFWebFeedKindHistory:
@@ -508,6 +524,8 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         
         if([identifier isEqualToString:FEED_BOOKMARKS]) {
             [notificationCenter addObserver:self selector:@selector(databaseBookmarksDidChange:) name:MFDatabaseDidChangeBookmarksNotification object:[MFDatabase sharedDatabase]];
+        } else if([identifier isEqualToString:FEED_CART]) {
+            [notificationCenter addObserver:self selector:@selector(databaseCartDidChange:) name:MFDatabaseDidChangeCartNotification object:[MFDatabase sharedDatabase]];
         } else if([identifier isEqualToString:FEED_RECENTS]) {
             [notificationCenter addObserver:self selector:@selector(databaseRecentsDidChange:) name:MFDatabaseDidChangeRecentsNotification object:[MFDatabase sharedDatabase]];
         } else {
@@ -532,7 +550,9 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 - (BOOL)isLocal
 {
-    return ([m_identifier isEqualToString:FEED_BOOKMARKS] || [m_identifier isEqualToString:FEED_RECENTS]) ? YES : NO;
+    return ([m_identifier isEqualToString:FEED_BOOKMARKS] ||
+            [m_identifier isEqualToString:FEED_CART] ||
+            [m_identifier isEqualToString:FEED_RECENTS]) ? YES : NO;
 }
 
 @dynamic atEnd;
@@ -574,6 +594,10 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     
     if([m_identifier isEqualToString:FEED_BOOKMARKS]) {
         return kMFWebFeedKindBookmarks;
+    }
+    
+    if([m_identifier isEqualToString:FEED_CART]) {
+        return kMFWebFeedKindCart;
     }
     
     if([m_identifier isEqualToString:FEED_FEATURED]) {
@@ -690,6 +714,48 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     }
 }
 
+- (void)reloadPosts
+{
+    if(!m_loadingForward && m_identifier) {
+        NSMutableArray *postIds = [[NSMutableArray alloc] init];
+        NSDate *lastModification = nil;
+        
+        for(MFPost *post in self.posts) {
+            NSDate *date = post.modified;
+            
+            [postIds addObject:post.identifier];
+            lastModification = (lastModification) ? [lastModification laterDate:date] : date;
+        }
+        
+        if(lastModification) {
+            m_loadingForward = YES;
+            
+            [[MFWebService sharedService] requestPosts:postIds lastModification:lastModification target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
+                BOOL changed = NO;
+                
+                if(feed) {
+                    if(feed.posts.count > 0) {
+                        MFDatabase *database = [MFDatabase sharedDatabase];
+                        
+                        for(MFPost *post in feed.posts) {
+                            [database setPost:post forIdentifier:post.identifier];
+                        }
+                        
+                        [database addPosts:feed.posts forFeed:m_identifier];
+                        changed = YES;
+                    }
+                }
+                
+                if(changed) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(nil, nil)];
+                }
+                
+                m_loadingForward = NO;
+            }];
+        }
+    }
+}
+
 - (void)reloadData
 {
     if(!self.local) {
@@ -705,6 +771,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         [self loadForward];
     } else {
         [self loadState];
+        [self reloadPosts];
     }
 }
 
@@ -718,6 +785,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         }
     } else {
         [self loadState];
+        [self reloadPosts];
     }
 }
 
@@ -750,6 +818,18 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 }
 
 - (void)databaseBookmarksDidChange:(NSNotification *)notification
+{
+    if(m_editing == 0) {
+        NSArray *posts = [self fetchPosts];
+        
+        if(!MFEqual(m_posts, posts)) {
+            m_posts = posts;
+            [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self];
+        }
+    }
+}
+
+- (void)databaseCartDidChange:(NSNotification *)notification
 {
     if(m_editing == 0) {
         NSArray *posts = [self fetchPosts];

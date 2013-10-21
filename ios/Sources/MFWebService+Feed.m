@@ -2,6 +2,7 @@
 
 #import "MFFeed.h"
 #import "MFWebService+Feed.h"
+#import "NSDate+Additions.h"
 
 @implementation MFWebService(Feed)
 
@@ -32,6 +33,21 @@
                                                                   (identifier) ? identifier : [NSNull null], @"id",
                                                                   (globals) ? globals : [NSNull null], @"globals",
                                                                   state, @"state", nil]];
+    
+    request.block = block;
+    request.transform = [MFFeed class];
+    [self addRequest:request];
+}
+
+- (void)requestPosts:(NSArray *)postIds lastModification:(NSDate *)lastModification target:(id)target usingBlock:(MFWebRequestBlock)block
+{
+    MFWebRequest *request = [[MFWebRequest alloc] initWithService:self
+                                                             mode:kMFWebRequestModeJsonPost
+                                                           target:target
+                                                             path:@"/post/list"
+                                                       parameters:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                  postIds, @"ids",
+                                                                  (lastModification) ? lastModification.datetimeString : [NSNull null], @"mod", nil]];
     
     request.block = block;
     request.transform = [MFFeed class];
