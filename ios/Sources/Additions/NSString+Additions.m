@@ -55,6 +55,16 @@
 	return hexString;
 }
 
+@dynamic stringByReplacingSpecialHTMLCharacters;
+
+- (NSString *)stringByReplacingSpecialHTMLCharacters
+{
+    return [[[self
+        stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]
+            stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"]
+                stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"];
+}
+
 @dynamic stringByTrimmingWhitespace;
 
 - (NSString *)stringByTrimmingWhitespace
