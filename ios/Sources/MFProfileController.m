@@ -99,20 +99,20 @@
         
         self.form.hidden = NO;
         self.navigationItem.rightBarButtonItem.enabled = YES;
-        [m_hudView hide:NO];
-        m_hudView = nil;
+        [m_hud hide:NO];
+        m_hud = nil;
     } else {
         self.form.hidden = YES;
         self.navigationItem.rightBarButtonItem.enabled = NO;
         
-        if(!m_hudView) {
-            m_hudView = [[MBProgressHUD alloc] initWithView:self.view];
-            m_hudView.labelText = NSLocalizedString(@"Profile.Label.Loading", nil);
-            m_hudView.labelFont = [UIFont themeBoldFontOfSize:16.0F];
-            m_hudView.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
-            m_hudView.removeFromSuperViewOnHide = YES;
-            [self.view addSubview:m_hudView];
-            [m_hudView show:NO];
+        if(!m_hud) {
+            m_hud = [[MBProgressHUD alloc] initWithView:self.view];
+            m_hud.labelText = NSLocalizedString(@"Profile.Label.Loading", nil);
+            m_hud.labelFont = [UIFont themeBoldFontOfSize:16.0F];
+            m_hud.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
+            m_hud.removeFromSuperViewOnHide = YES;
+            [self.view addSubview:m_hud];
+            [m_hud show:NO];
         }
     }
 }
@@ -235,13 +235,13 @@
     // Post changes
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
-    if(!m_hudView) {
-        m_hudView = [[MBProgressHUD alloc] initWithView:self.view];
-        m_hudView.labelText = NSLocalizedString(@"Profile.Label.Saving", nil);
-        m_hudView.labelFont = [UIFont themeBoldFontOfSize:16.0F];
-        m_hudView.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
-        [self.view addSubview:m_hudView];
-        [m_hudView show:YES];
+    if(!m_hud) {
+        m_hud = [[MBProgressHUD alloc] initWithView:self.view];
+        m_hud.labelText = NSLocalizedString(@"Profile.Label.Saving", nil);
+        m_hud.labelFont = [UIFont themeBoldFontOfSize:16.0F];
+        m_hud.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
+        [self.view addSubview:m_hud];
+        [m_hud show:YES];
     }
     
     [self saveData:details];

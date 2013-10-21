@@ -10,7 +10,7 @@
     @private
     MFFormAccessory *m_accessory;
     NSArray *m_countries;
-    MBProgressHUD *m_hudView;
+    MBProgressHUD *m_hud;
     MFUserDetails *m_details;
 }
 

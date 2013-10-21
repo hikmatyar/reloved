@@ -189,14 +189,14 @@
 
 - (void)postDidBeginLoading:(NSNotification *)notification
 {
-    if(!m_hudView) {
-        m_hudView = [[MBProgressHUD alloc] initWithView:self.view];
-        m_hudView.labelText = NSLocalizedString(@"Post.Label.Loading", nil);
-        m_hudView.labelFont = [UIFont themeBoldFontOfSize:16.0F];
-        m_hudView.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
-        m_hudView.removeFromSuperViewOnHide = YES;
-        [self.view addSubview:m_hudView];
-        [m_hudView show:NO];
+    if(!m_hud) {
+        m_hud = [[MBProgressHUD alloc] initWithView:self.view];
+        m_hud.labelText = NSLocalizedString(@"Post.Label.Loading", nil);
+        m_hud.labelFont = [UIFont themeBoldFontOfSize:16.0F];
+        m_hud.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
+        m_hud.removeFromSuperViewOnHide = YES;
+        [self.view addSubview:m_hud];
+        [m_hud show:NO];
     }
 }
 
@@ -216,7 +216,7 @@
     } else {
         UITableView *tableView = self.tableView;
         
-        if(m_hudView) {
+        if(m_hud) {
             NSString *message = nil;
             
             switch(m_post.post.status) {
@@ -242,8 +242,8 @@
                 
                 alertView.tag = ALERT_OPEN;
                 [alertView show];
-                [m_hudView hide:NO];
-                m_hudView = nil;
+                [m_hud hide:NO];
+                m_hud = nil;
                 return;
             }
         }
@@ -253,8 +253,8 @@
             [tableView reloadData];
         }
         
-        [m_hudView hide:YES];
-        m_hudView = nil;
+        [m_hud hide:YES];
+        m_hud = nil;
     }
 }
 
@@ -328,16 +328,16 @@
     if(actionSheet.cancelButtonIndex != buttonIndex) {
         [m_post stopLoading];
         
-        if(!m_hudView) {
-            m_hudView = [[MBProgressHUD alloc] initWithView:self.view];
-            m_hudView.labelFont = [UIFont themeBoldFontOfSize:16.0F];
-            m_hudView.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
-            m_hudView.removeFromSuperViewOnHide = YES;
-            [self.view addSubview:m_hudView];
+        if(!m_hud) {
+            m_hud = [[MBProgressHUD alloc] initWithView:self.view];
+            m_hud.labelFont = [UIFont themeBoldFontOfSize:16.0F];
+            m_hud.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
+            m_hud.removeFromSuperViewOnHide = YES;
+            [self.view addSubview:m_hud];
         }
         
-        m_hudView.labelText = NSLocalizedString(@"Post.Label.Deleting", nil);
-        [m_hudView show:YES];
+        m_hud.labelText = NSLocalizedString(@"Post.Label.Deleting", nil);
+        [m_hud show:YES];
         [m_post delete];
     }
 }
@@ -358,8 +358,8 @@
             if(alertView.cancelButtonIndex != buttonIndex) {
                 [m_post delete];
             } else {
-                [m_hudView hide:YES];
-                m_hudView = nil;
+                [m_hud hide:YES];
+                m_hud = nil;
             }
             break;
         case ALERT_OPEN:

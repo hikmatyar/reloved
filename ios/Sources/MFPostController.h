@@ -8,7 +8,7 @@
 @interface MFPostController : UIViewController <MFPostFooterViewDelegate, MFPostHeaderViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     @private
-    MBProgressHUD *m_hudView;
+    MBProgressHUD *m_hud;
     NSArray *m_menu;
     MFWebPost *m_post;
 }
