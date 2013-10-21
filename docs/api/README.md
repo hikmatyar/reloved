@@ -228,6 +228,7 @@ API calls for retrieving posts and comments in various ways.
 	Parameters:
 		[session]
 		ARRAY<INTEGER> ids [R] - List of Post IDs
+		mod [O] - Most recent modification date. Only includes changes if included
 	
 	Returns:
 		{
