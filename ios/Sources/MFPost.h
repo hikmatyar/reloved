@@ -80,6 +80,8 @@ typedef enum _MFPostStatus {
 }
 
 @property (nonatomic, retain) NSArray *imagePaths;
+@property (nonatomic, assign) MFPostStatus status;
+@property (nonatomic, retain) NSString *identifier;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *sizeId;
 @property (nonatomic, retain) NSString *brandId;

@@ -277,6 +277,20 @@
     m_sizeId = sizeId;
 }
 
+@dynamic status;
+
+- (void)setStatus:(MFPostStatus)status
+{
+    m_status = status;
+}
+
+@dynamic identifier;
+
+- (void)setIdentifier:(NSString *)identifier
+{
+    m_identifier = identifier;
+}
+
 @dynamic brandId;
 
 - (void)setBrandId:(NSString *)brandId

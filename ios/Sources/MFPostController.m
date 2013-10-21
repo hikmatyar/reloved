@@ -30,19 +30,29 @@
 
 #define ALERT_LOAD 10
 #define ALERT_OPEN 11
+#define ALERT_DELETE 12
+#define ALERT_DELETED 13
 
 @implementation MFPostController
+
+- (void)invalidateNavigation
+{
+    if(m_post.loaded) {
+        self.title = m_post.brand.name;
+        
+        if(m_post.mine) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(edit:)];
+        } else {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((m_post.insideCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+        }
+    }
+}
 
 - (id)initWithPost:(MFWebPost *)post
 {
     self = [super init];
     
     if(self) {
-        MFBrand *brand = post.brand;
-        
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((post.insideCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
-        self.title = brand.name;
-        
         m_post = post;
         m_menu = [[NSArray alloc] initWithObjects:
                 MENU_SECTION(NSLocalizedString(@"Post.Label.AboutThisDress", nil),
@@ -55,6 +65,8 @@
                 //MENU_SECTION(NSLocalizedString(@"Post.Label.QAWithSeller", nil),
                 //    MENU_ITEM(NSLocalizedString(@"Post.Action.Comments", nil), @selector(comments:), @"Post-Comments.png")),
                 nil];
+        
+        [self invalidateNavigation];
     }
     
     return self;
@@ -70,6 +82,17 @@
 - (MFPostHeaderView *)headerView
 {
     return (MFPostHeaderView *)self.tableView.tableHeaderView;
+}
+
+- (IBAction)edit:(id)sender
+{
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedString(@"Post.Action.Cancel" , nil)
+                                         destructiveButtonTitle:NSLocalizedString(@"Post.Action.Delete" , nil)
+                                              otherButtonTitles:nil];
+    
+    [sheet showInView:self.view];
 }
 
 - (IBAction)toggleCart:(id)sender
@@ -134,7 +157,32 @@
     
     if(tableView.hidden) {
         self.headerView.post = m_post.post;
-        self.title = m_post.brand.name;
+        [self invalidateNavigation];
+    }
+}
+
+- (void)postDidDelete:(NSNotification *)notification
+{
+    NSError *error = [notification.userInfo objectForKey:MFWebPostErrorKey];
+    
+    if(error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.DeleteError.Title", nil)
+                                                                message:NSLocalizedString(@"Post.Alert.DeleteError.Message", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Post.Alert.DeleteError.Action.Close", nil)
+                                                      otherButtonTitles:NSLocalizedString(@"Post.Alert.DeleteError.Action.Retry", nil), nil];
+        
+        alertView.tag = ALERT_DELETE;
+        [alertView show];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.Deleted.Title", nil)
+                                                                message:NSLocalizedString(@"Post.Alert.Deleted.Message", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Post.Alert.Deleted.Action.OK", nil)
+                                                      otherButtonTitles:nil];
+        
+        alertView.tag = ALERT_DELETED;
+        [alertView show];
     }
 }
 
@@ -272,6 +320,27 @@
                                             body:body];
 }
 
+#pragma mark UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(actionSheet.cancelButtonIndex != buttonIndex) {
+        [m_post stopLoading];
+        
+        if(!m_hudView) {
+            m_hudView = [[MBProgressHUD alloc] initWithView:self.view];
+            m_hudView.labelFont = [UIFont themeBoldFontOfSize:16.0F];
+            m_hudView.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
+            m_hudView.removeFromSuperViewOnHide = YES;
+            [self.view addSubview:m_hudView];
+        }
+        
+        m_hudView.labelText = NSLocalizedString(@"Post.Label.Deleting", nil);
+        [m_hudView show:YES];
+        [m_post delete];
+    }
+}
+
 #pragma mark UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -284,7 +353,16 @@
                 [self.navigationController popViewControllerAnimated:YES];
             }
             break;
+        case ALERT_DELETE:
+            if(alertView.cancelButtonIndex != buttonIndex) {
+                [m_post delete];
+            } else {
+                [m_hudView hide:YES];
+                m_hudView = nil;
+            }
+            break;
         case ALERT_OPEN:
+        case ALERT_DELETED:
             [self.navigationController popViewControllerAnimated:YES];
             break;
     }
@@ -392,6 +470,7 @@
     [center addObserver:self selector:@selector(postDidBeginLoading:) name:MFWebPostDidBeginLoadingNotification object:m_post];
     [center addObserver:self selector:@selector(postDidEndLoading:) name:MFWebPostDidEndLoadingNotification object:m_post];
     [center addObserver:self selector:@selector(postDidChange:) name:MFWebPostDidChangeNotification object:m_post];
+    [center addObserver:self selector:@selector(postDidDelete:) name:MFWebPostDidDeleteNotification object:m_post];
     [super viewWillAppear:animated];
     [self.tableView clearSelection];
 }
@@ -403,6 +482,7 @@
     [center removeObserver:self name:MFWebPostDidBeginLoadingNotification object:m_post];
     [center removeObserver:self name:MFWebPostDidEndLoadingNotification object:m_post];
     [center removeObserver:self name:MFWebPostDidChangeNotification object:m_post];
+    [center removeObserver:self name:MFWebPostDidDeleteNotification object:m_post];
     [super viewWillDisappear:animated];
 }
 

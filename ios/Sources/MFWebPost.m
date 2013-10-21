@@ -22,6 +22,7 @@ NSString *MFWebPostErrorKey = @"error";
 NSString *MFWebPostDidBeginLoadingNotification = @"MFWebPostDidBeginLoading";
 NSString *MFWebPostDidEndLoadingNotification = @"MFWebPostDidEndLoading";
 NSString *MFWebPostDidChangeNotification = @"MFWebPostDidChange";
+NSString *MFWebPostDidDeleteNotification = @"MFWebPostDidDelete";
 
 #define LOADING_LIMIT 100
 
@@ -191,6 +192,22 @@ static inline NSDictionary *MFWebPostGetUserInfo(NSArray *changes, NSError *erro
 {
     [self stopLoading];
     [self startLoading];
+}
+
+- (void)delete
+{
+    MFMutablePost *post = [[MFMutablePost alloc] init];
+    
+    post.identifier = m_identifier;
+    post.status = kMFPostStatusUnlisted;
+    
+    [[MFWebService sharedService] requestPostEdit:post changes:kMFPostChangeStatus target:self usingBlock:^(id target, NSError *error, id result) {
+        if(!error) {
+            m_post = nil;
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:MFWebPostDidDeleteNotification object:self userInfo:MFWebPostGetUserInfo(nil, error)];
+    }];
 }
 
 @end

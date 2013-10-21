@@ -5,7 +5,7 @@
 
 @class MBProgressHUD, MFWebPost;
 
-@interface MFPostController : UIViewController <MFPostFooterViewDelegate, MFPostHeaderViewDelegate, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface MFPostController : UIViewController <MFPostFooterViewDelegate, MFPostHeaderViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     @private
     MBProgressHUD *m_hudView;

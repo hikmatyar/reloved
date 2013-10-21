@@ -121,8 +121,10 @@
 /* Post Controller */
 
 "Post.Action.AddToCart" = "Add to Cart";
+"Post.Action.Cancel" = "Cancel";
 "Post.Action.Comments" = "See comments";
 "Post.Action.Condition" = "Condition";
+"Post.Action.Delete" = "Delete";
 "Post.Action.Material" = "Material";
 "Post.Action.ReturnsPolicy" = "Returns";
 "Post.Action.RemoveFromCart" = "Remove from Cart";
@@ -134,6 +136,13 @@
 "Post.Alert.AddedToCart.Action.OK" = "OK";
 "Post.Alert.AddedToCart.Message" = "This dress has been added to your cart. You can view your cart from the navigation menu";
 "Post.Alert.AddedToCart.Title" = "Added to Cart";
+"Post.Alert.DeleteError.Action.Close" = "Close";
+"Post.Alert.DeleteError.Action.Retry" = "Retry";
+"Post.Alert.DeleteError.Message" = "Unable to delete. Retry?";
+"Post.Alert.DeleteError.Title" = "Failed to delete";
+"Post.Alert.Deleted.Action.OK" = "OK";
+"Post.Alert.Deleted.Message" = "This dress has been deleted from the system";
+"Post.Alert.Deleted.Title" = "Deleted Dress";
 "Post.Alert.LoadError.Action.Close" = "Close";
 "Post.Alert.LoadError.Action.Retry" = "Retry";
 "Post.Alert.LoadError.Message" = "Unable to load. Retry?";
@@ -158,6 +167,7 @@
 "Post.Format.Email.Subject" = "Sharing a %%BRAND%% dress from Reloved App";
 "Post.Format.Email.Body" = "Hi there - I thought you might want to see this dress that I found on Reloved app. <a href=\"%%LINK%%\">Open Link</a>";
 "Post.Label.AboutThisDress" = "About This Dress";
+"Post.Label.Deleting" = "Deleting...";
 "Post.Label.Loading" = "Loading data...";
 "Post.Label.ShippingAndReturns" = "Shipping & Returns";
 "Post.Label.ShippingInfo" = "3-5 days";

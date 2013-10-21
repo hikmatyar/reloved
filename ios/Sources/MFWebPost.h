@@ -10,6 +10,7 @@ extern NSString *MFWebPostErrorKey;
 extern NSString *MFWebPostDidBeginLoadingNotification;
 extern NSString *MFWebPostDidEndLoadingNotification;
 extern NSString *MFWebPostDidChangeNotification;
+extern NSString *MFWebPostDidDeleteNotification;
 
 @interface MFWebPost : NSObject
 {
@@ -41,5 +42,6 @@ extern NSString *MFWebPostDidChangeNotification;
 - (void)startLoading;
 - (void)stopLoading;
 - (void)reloadData;
+- (void)delete;
 
 @end
