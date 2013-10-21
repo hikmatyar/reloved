@@ -218,7 +218,7 @@ class BrowseHandler extends Handler {
                             delimiter = ',';
                         }
                         
-                        this.write('],\n');
+                        this.write(']\n');
                     }
                     
                     sync(true);
