@@ -26,6 +26,11 @@
 
 #define CELL_IDENTIFIER @"cell"
 
+#define TAG_TABLEVIEW 1000
+
+#define ALERT_LOAD 10
+#define ALERT_OPEN 11
+
 @implementation MFPostController
 
 - (id)initWithPost:(MFWebPost *)post
@@ -59,7 +64,12 @@
 
 - (UITableView *)tableView
 {
-    return (UITableView *)self.view;
+    return (UITableView *)[self.view viewWithTag:TAG_TABLEVIEW];
+}
+
+- (MFPostHeaderView *)headerView
+{
+    return (MFPostHeaderView *)self.tableView.tableHeaderView;
 }
 
 - (IBAction)toggleCart:(id)sender
@@ -120,6 +130,83 @@
 
 - (void)postDidChange:(NSNotification *)notification
 {
+    UITableView *tableView = self.tableView;
+    
+    if(tableView.hidden) {
+        self.headerView.post = m_post.post;
+        self.title = m_post.brand.name;
+    }
+}
+
+- (void)postDidBeginLoading:(NSNotification *)notification
+{
+    if(!m_hudView) {
+        m_hudView = [[MBProgressHUD alloc] initWithView:self.view];
+        m_hudView.labelText = NSLocalizedString(@"Post.Label.Loading", nil);
+        m_hudView.labelFont = [UIFont themeBoldFontOfSize:16.0F];
+        m_hudView.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
+        m_hudView.removeFromSuperViewOnHide = YES;
+        [self.view addSubview:m_hudView];
+        [m_hudView show:NO];
+    }
+}
+
+- (void)postDidEndLoading:(NSNotification *)notification
+{
+    NSError *error = [notification.userInfo objectForKey:MFWebPostErrorKey];
+    
+    if(error) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.LoadError.Title", nil)
+                                                                message:NSLocalizedString(@"Post.Alert.LoadError.Message", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Post.Alert.LoadError.Action.Close", nil)
+                                                      otherButtonTitles:NSLocalizedString(@"Post.Alert.LoadError.Action.Retry", nil), nil];
+        
+        alertView.tag = ALERT_LOAD;
+        [alertView show];
+    } else {
+        UITableView *tableView = self.tableView;
+        
+        if(m_hudView) {
+            NSString *message = nil;
+            
+            switch(m_post.post.status) {
+                case kMFPostStatusDeleted:
+                    message = NSLocalizedString(@"Post.Alert.OpenError.Message.Deleted", nil);
+                    break;
+                case kMFPostStatusUnlisted:
+                case kMFPostStatusUnlistedBought:
+                    if(!m_post.mine) {
+                        message = NSLocalizedString(@"Post.Alert.OpenError.Message.Expired", nil);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
+            if(message) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.OpenError.Title", nil)
+                                                                message:message
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Post.Alert.OpenError.Action.OK", nil)
+                                                      otherButtonTitles:nil];
+                
+                alertView.tag = ALERT_OPEN;
+                [alertView show];
+                [m_hudView hide:NO];
+                m_hudView = nil;
+                return;
+            }
+        }
+        
+        if(tableView.hidden) {
+            tableView.hidden = NO;
+            [tableView reloadData];
+        }
+        
+        [m_hudView hide:YES];
+        m_hudView = nil;
+    }
 }
 
 #pragma mark MFPostFooterViewDelegate
@@ -169,6 +256,24 @@
     [[UIApplication sharedApplication] sendEmail:nil
                                          subject:[NSString stringWithFormat:NSLocalizedString(@"Post.Format.Email.Subject", nil)]
                                             body:[NSString stringWithFormat:NSLocalizedString(@"Post.Format.Email.Body", nil)]];
+}
+
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    switch(alertView.tag) {
+        case ALERT_LOAD:
+            if(alertView.cancelButtonIndex != buttonIndex) {
+                [m_post startLoading];
+            } else {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            break;
+        case ALERT_OPEN:
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+    }
 }
 
 #pragma mark UITableViewDataSource
@@ -233,6 +338,9 @@
     MFPostHeaderView *headerView = [[MFPostHeaderView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFPostHeaderView preferredHeight])];
     MFPostFooterView *footerView = [[MFPostFooterView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFPostFooterView preferredHeight])];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
+    
+    view.backgroundColor = [UIColor themeBackgroundColor];
     
     headerView.delegate = self;
     footerView.delegate = self;
@@ -242,15 +350,24 @@
         tableView.separatorInset = UIEdgeInsetsMake(0.0F, 0.0F, 0.0F, 0.0F);
     }
     
+    tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     tableView.backgroundColor = [UIColor themeBackgroundColor];
     tableView.tableHeaderView = headerView;
     tableView.tableFooterView = footerView;
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.rowHeight = 45.0F;
-    self.view = tableView;
+    tableView.tag = TAG_TABLEVIEW;
+    [view addSubview:tableView];
     
-    headerView.post = m_post.post;
+    self.view = view;
+    
+    if(m_post.loaded) {
+        headerView.post = m_post.post;
+    } else {
+        tableView.hidden = YES;
+    }
+    
     [m_post startLoading];
 }
 
@@ -258,6 +375,8 @@
 {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     
+    [center addObserver:self selector:@selector(postDidBeginLoading:) name:MFWebPostDidBeginLoadingNotification object:m_post];
+    [center addObserver:self selector:@selector(postDidEndLoading:) name:MFWebPostDidEndLoadingNotification object:m_post];
     [center addObserver:self selector:@selector(postDidChange:) name:MFWebPostDidChangeNotification object:m_post];
     [super viewWillAppear:animated];
     [self.tableView clearSelection];
@@ -267,8 +386,15 @@
 {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     
+    [center removeObserver:self name:MFWebPostDidBeginLoadingNotification object:m_post];
+    [center removeObserver:self name:MFWebPostDidEndLoadingNotification object:m_post];
     [center removeObserver:self name:MFWebPostDidChangeNotification object:m_post];
     [super viewWillDisappear:animated];
+}
+
+- (void)dealloc
+{
+    [m_post stopLoading];
 }
 
 @end

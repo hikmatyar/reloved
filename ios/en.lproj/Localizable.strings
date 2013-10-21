@@ -134,6 +134,15 @@
 "Post.Alert.AddedToCart.Action.OK" = "OK";
 "Post.Alert.AddedToCart.Message" = "This dress has been added to your cart. You can view your cart from the navigation menu";
 "Post.Alert.AddedToCart.Title" = "Added to Cart";
+"Post.Alert.LoadError.Action.Close" = "Close";
+"Post.Alert.LoadError.Action.Retry" = "Retry";
+"Post.Alert.LoadError.Message" = "Unable to load. Retry?";
+"Post.Alert.LoadError.Title" = "Failed to load";
+"Post.Alert.OpenError.Action.OK" = "OK";
+"Post.Alert.OpenError.Message.Deleted" = "The post has been deleted";
+"Post.Alert.OpenError.Message.Invalid" = "The post is invalid";
+"Post.Alert.OpenError.Message.Expired" = "The post has expired";
+"Post.Alert.OpenError.Title" = "Unable to open post";
 "Post.Alert.RemovedFromCart.Action.OK" = "OK";
 "Post.Alert.RemovedFromCart.Message" = "This item has been removed from your cart";
 "Post.Alert.RemovedFromCart.Title" = "Removed from Cart";
@@ -149,6 +158,7 @@
 "Post.Format.Email.Subject" = "Sharing a dress from Reloved App";
 "Post.Format.Email.Body" = "Hi there - I thought you might want to see this dress that I found on Reloved app.";
 "Post.Label.AboutThisDress" = "About This Dress";
+"Post.Label.Loading" = "Loading data...";
 "Post.Label.ShippingAndReturns" = "Shipping & Returns";
 "Post.Label.ShippingInfo" = "3-5 days";
 "Post.Label.ReturnsPolicy" = "Yes";

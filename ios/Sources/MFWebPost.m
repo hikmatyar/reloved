@@ -14,6 +14,7 @@
 #import "MFType.h"
 #import "MFWebPost.h"
 #import "MFWebService+Post.h"
+#import "MFWebSession.h"
 
 NSString *MFWebPostChangesKey = @"changes";
 NSString *MFWebPostErrorKey = @"error";
@@ -23,6 +24,17 @@ NSString *MFWebPostDidEndLoadingNotification = @"MFWebPostDidEndLoading";
 NSString *MFWebPostDidChangeNotification = @"MFWebPostDidChange";
 
 #define LOADING_LIMIT 100
+
+static inline NSDictionary *MFWebPostGetUserInfo(NSArray *changes, NSError *error) {
+    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+    
+    [userInfo setValue:error forKey:MFWebPostErrorKey];
+    [userInfo setValue:changes forKey:MFWebPostChangesKey];
+    
+    return userInfo;
+}
+
+#pragma mark -
 
 @implementation MFWebPost
 
@@ -95,6 +107,20 @@ NSString *MFWebPostDidChangeNotification = @"MFWebPostDidChange";
     return [[MFDatabase sharedDatabase] typesForIdentifiers:m_post.typeIds];
 }
 
+@dynamic loaded;
+
+- (BOOL)isLoaded
+{
+    return (m_post) ? YES : NO;
+}
+
+@dynamic mine;
+
+- (BOOL)isMine
+{
+    return (m_post) ? [[MFWebService sharedService].session.userId isEqualToString:m_post.userId] : NO;
+}
+
 @dynamic saved;
 
 - (BOOL)isSaved
@@ -128,7 +154,24 @@ NSString *MFWebPostDidChangeNotification = @"MFWebPostDidChange";
         
         [[MFWebService sharedService] requestPostDetails:m_identifier state:m_state limit:LOADING_LIMIT target:self usingBlock:^(id target, NSError *error, MFPostDetails *details) {
             m_loading = NO;
-            [[NSNotificationCenter defaultCenter] postNotificationName:MFWebPostDidEndLoadingNotification object:self];
+            
+            if(!error && details) {
+                if(!m_post) {
+                    m_post = details.post;
+                }
+                
+                if(details.comments) {
+                    m_comments = details.comments;
+                }
+                
+                if(details.state) {
+                    m_state = details.state;
+                }
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:MFWebPostDidChangeNotification object:self userInfo:MFWebPostGetUserInfo(nil, nil)];
+            }
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:MFWebPostDidEndLoadingNotification object:self userInfo:MFWebPostGetUserInfo(nil, error)];
         }];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:MFWebPostDidBeginLoadingNotification object:self];
@@ -140,7 +183,7 @@ NSString *MFWebPostDidChangeNotification = @"MFWebPostDidChange";
     if(m_loading) {
         [[MFWebService sharedService] cancelRequestsForTarget:self];
         m_loading = NO;
-        [[NSNotificationCenter defaultCenter] postNotificationName:MFWebPostDidEndLoadingNotification object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:MFWebPostDidEndLoadingNotification object:self userInfo:MFWebPostGetUserInfo(nil, nil)];
     }
 }
 

@@ -65,6 +65,7 @@
     MFDatabase *database = [MFDatabase sharedDatabase];
     
     super.post = post;
+    [self setNeedsLayout];
     
     for(UIView *view in m_scrollView.subviews) {
         if([view isKindOfClass:[MFImageView class]]) {

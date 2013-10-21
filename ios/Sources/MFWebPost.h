@@ -33,6 +33,8 @@ extern NSString *MFWebPostDidChangeNotification;
 @property (nonatomic, retain, readonly) NSArray *types;
 @property (nonatomic, assign, readonly, getter = isLoading) BOOL loading;
 
+@property (nonatomic, assign, getter = isMine) BOOL mine;
+@property (nonatomic, assign, getter = isLoaded) BOOL loaded;
 @property (nonatomic, assign, getter = isSaved) BOOL saved;
 @property (nonatomic, assign) BOOL insideCart;
 
