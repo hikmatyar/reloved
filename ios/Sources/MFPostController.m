@@ -253,9 +253,23 @@
 
 - (void)footerViewDidSelectShare:(MFPostFooterView *)footerView
 {
+    MFPost *post = m_post.post;
+    MFBrand *brand = m_post.brand;
+    NSString *subject = NSLocalizedString(@"Post.Format.Email.Subject", nil);
+    NSString *body = NSLocalizedString(@"Post.Format.Email.Body", nil);
+    NSString *link = [NSString stringWithFormat:@"http://relovedapp.co.uk/post/%@", post.identifier];
+    
+    subject = [subject stringByReplacingOccurrencesOfString:@"%%BRAND%%" withString:(brand) ? brand.name : @"???"];
+    subject = [subject stringByReplacingOccurrencesOfString:@"%%TITLE%%" withString:post.title];
+    
+    body = [body stringByReplacingOccurrencesOfString:@"%%BRAND%%" withString:(brand) ? brand.name : @"???"];
+    body = [body stringByReplacingOccurrencesOfString:@"%%TITLE%%" withString:post.title];
+    body = [body stringByReplacingOccurrencesOfString:@"%%NOTES%%" withString:post.notes];
+    body = [body stringByReplacingOccurrencesOfString:@"%%LINK%%" withString:link];
+    
     [[UIApplication sharedApplication] sendEmail:nil
-                                         subject:[NSString stringWithFormat:NSLocalizedString(@"Post.Format.Email.Subject", nil)]
-                                            body:[NSString stringWithFormat:NSLocalizedString(@"Post.Format.Email.Body", nil)]];
+                                         subject:subject
+                                            body:body];
 }
 
 #pragma mark UIAlertViewDelegate

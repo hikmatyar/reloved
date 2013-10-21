@@ -19,7 +19,7 @@
         picker.subject = subject;
         
         if(body) {
-            [picker setMessageBody:body isHTML:NO];
+            [picker setMessageBody:body isHTML:YES];
         }
         
         if(email) {
