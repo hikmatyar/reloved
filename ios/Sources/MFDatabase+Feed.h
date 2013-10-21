@@ -13,6 +13,7 @@ extern NSString *MFDatabaseDidChangeFeedsNotification;
 + (NSTimeInterval)feedExpiresHistory;
 + (NSTimeInterval)feedExpiresRecents;
 + (NSString *)feedIdentifierBookmarks;
++ (NSString *)feedIdentifierCart;
 + (NSString *)feedIdentifierHistory;
 + (NSString *)feedIdentifierFeatured;
 + (NSString *)feedIdentifierRecents;

@@ -186,6 +186,8 @@
 		8141AB4718049DD70087B740 /* MFFormFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8141AB4618049DD70087B740 /* MFFormFooter.m */; };
 		8151359317FF4E3500140E11 /* MFNewPostPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8151359217FF4E3500140E11 /* MFNewPostPhotoView.m */; };
 		81689E0B17E32124003D243E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 81689E0917E32124003D243E /* InfoPlist.strings */; };
+		817139F71815CD5D00CF8805 /* MFDatabase+Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 817139F61815CD5D00CF8805 /* MFDatabase+Cart.m */; };
+		817139FA1815D11300CF8805 /* MFCart.m in Sources */ = {isa = PBXBuildFile; fileRef = 817139F91815D11300CF8805 /* MFCart.m */; };
 		817723DA17FDA877004A28CC /* MFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723D917FDA877004A28CC /* MFForm.m */; };
 		817723DD17FDA9A1004A28CC /* MFFormTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723DC17FDA9A1004A28CC /* MFFormTextView.m */; };
 		817723E017FDAAC9004A28CC /* MFFormLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723DF17FDAAC9004A28CC /* MFFormLabel.m */; };
@@ -612,6 +614,10 @@
 		8151359117FF4E3500140E11 /* MFNewPostPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNewPostPhotoView.h; path = Sources/MFNewPostPhotoView.h; sourceTree = SOURCE_ROOT; };
 		8151359217FF4E3500140E11 /* MFNewPostPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNewPostPhotoView.m; path = Sources/MFNewPostPhotoView.m; sourceTree = SOURCE_ROOT; };
 		81689E0A17E32124003D243E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		817139F51815CD5D00CF8805 /* MFDatabase+Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFDatabase+Cart.h"; path = "Sources/MFDatabase+Cart.h"; sourceTree = SOURCE_ROOT; };
+		817139F61815CD5D00CF8805 /* MFDatabase+Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Cart.m"; path = "Sources/MFDatabase+Cart.m"; sourceTree = SOURCE_ROOT; };
+		817139F81815D11300CF8805 /* MFCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCart.h; path = Sources/MFCart.h; sourceTree = SOURCE_ROOT; };
+		817139F91815D11300CF8805 /* MFCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCart.m; path = Sources/MFCart.m; sourceTree = SOURCE_ROOT; };
 		817723D817FDA877004A28CC /* MFForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFForm.h; path = Sources/MFForm.h; sourceTree = SOURCE_ROOT; };
 		817723D917FDA877004A28CC /* MFForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFForm.m; path = Sources/MFForm.m; sourceTree = SOURCE_ROOT; };
 		817723DB17FDA9A1004A28CC /* MFFormTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFFormTextView.h; path = Sources/MFFormTextView.h; sourceTree = SOURCE_ROOT; };
@@ -1003,6 +1009,8 @@
 				81233D7E17F8F28700C27805 /* MFDatabase+Brand.m */,
 				811082C017F8BE8A005CC8ED /* MFDatabase+Bookmark.h */,
 				811082C117F8BE8A005CC8ED /* MFDatabase+Bookmark.m */,
+				817139F51815CD5D00CF8805 /* MFDatabase+Cart.h */,
+				817139F61815CD5D00CF8805 /* MFDatabase+Cart.m */,
 				81233D5F17F8E00500C27805 /* MFDatabase+Color.h */,
 				81233D6017F8E00500C27805 /* MFDatabase+Color.m */,
 				81233D7A17F8F27C00C27805 /* MFDatabase+Country.h */,
@@ -1034,6 +1042,8 @@
 			children = (
 				81233D6B17F8F17E00C27805 /* MFBrand.h */,
 				81233D6C17F8F17E00C27805 /* MFBrand.m */,
+				817139F81815D11300CF8805 /* MFCart.h */,
+				817139F91815D11300CF8805 /* MFCart.m */,
 				81233D5617F8DDEA00C27805 /* MFColor.h */,
 				81233D5717F8DDEA00C27805 /* MFColor.m */,
 				81136AC7180C527F009142AE /* MFComment.h */,
@@ -1801,6 +1811,7 @@
 				8120C1C817E0681300A1C3A9 /* MFBookmarksController.m in Sources */,
 				811082BF17F8BD09005CC8ED /* MFDatabase+Post.m in Sources */,
 				81BC175417FCA55F00DF7AD4 /* MFPageScrollView.m in Sources */,
+				817139FA1815D11300CF8805 /* MFCart.m in Sources */,
 				813FFCD818117FEF00E7FEA2 /* MFEventTableViewCell.m in Sources */,
 				8120C13117DFA37100A1C3A9 /* MFPostController.m in Sources */,
 				813FFCDB1811A3DC00E7FEA2 /* UIImage+Additions.m in Sources */,
@@ -1901,6 +1912,7 @@
 				81D0967917FCD45E0044BD06 /* MFNewPostController+Price.m in Sources */,
 				81B27B2917F6103700F9BC09 /* PKCardExpiry.m in Sources */,
 				811082AA17F8B302005CC8ED /* MFDelta.m in Sources */,
+				817139F71815CD5D00CF8805 /* MFDatabase+Cart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

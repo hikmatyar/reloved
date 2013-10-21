@@ -1,5 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFCart.h"
 #import "MFCheckoutController.h"
 #import "MFCheckoutController+Address.h"
 #import "MFCheckoutController+Cart.h"
@@ -7,7 +8,9 @@
 #import "MFCheckoutController+Payment.h"
 #import "MFCheckoutController+Receipt.h"
 #import "MFCheckoutPageView.h"
+#import "MFDatabase+Cart.h"
 #import "MFPageScrollView.h"
+#import "MFPost.h"
 #import "MFProgressView.h"
 #import "MFSideMenuContainerViewController.h"
 #import "UIColor+Additions.h"
@@ -66,6 +69,8 @@
 #pragma mark -
 
 @implementation MFCheckoutController
+
+@synthesize cart = m_cart;
 
 - (MFPageScrollView *)contentView
 {
@@ -190,6 +195,11 @@
     [self invalidateNavigation];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     m_stepIndex = self.progressView.selectedIndex;
@@ -203,6 +213,7 @@
     self = [super init];
     
     if(self) {
+        m_cart = [[MFMutableCart alloc] init];
         m_stepIndex = 0;
         m_steps = [[NSArray alloc] initWithObjects:
             STEP_ITEM(NSLocalizedString(@"Checkout.Action.Cart", nil), NSLocalizedString(@"Checkout.Title.Cart", nil), [self createCartPageView]),

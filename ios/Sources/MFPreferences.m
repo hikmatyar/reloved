@@ -3,6 +3,7 @@
 #import "MFPreferences.h"
 
 #define KEY_BOOKMARKS @"bookmarks"
+#define KEY_CART @"cart"
 #define KEY_CATEGORY @"category"
 #define KEY_EXCLUDE_COLORS @"excludeColors"
 #define KEY_EXCLUDE_SIZES @"excludeSizes"
@@ -34,6 +35,21 @@
     if(!MFEqual(m_bookmarks, bookmarks)) {
         m_bookmarks = bookmarks;
         [[NSUserDefaults standardUserDefaults] setObject:m_bookmarks forKey:KEY_BOOKMARKS];
+    }
+}
+
+@dynamic cart;
+
+- (NSArray *)cart
+{
+    return m_cart;
+}
+
+- (void)setCart:(NSArray *)cart
+{
+    if(!MFEqual(m_cart, cart)) {
+        m_cart = cart;
+        [[NSUserDefaults standardUserDefaults] setObject:m_cart forKey:KEY_CART];
     }
 }
 
@@ -107,6 +123,7 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         m_bookmarks = [defaults arrayForKey:KEY_BOOKMARKS];
+        m_cart = [defaults arrayForKey:KEY_CART];
         m_category = [defaults integerForKey:KEY_CATEGORY];
         m_excludeColors = [defaults arrayForKey:KEY_EXCLUDE_COLORS];
         m_excludeSizes = [defaults arrayForKey:KEY_EXCLUDE_SIZES];

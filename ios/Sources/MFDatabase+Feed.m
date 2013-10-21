@@ -14,6 +14,7 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
 #define FEED_EXPIRES_HISTORY 24.0F * 60.0F * 60.0F * 7.0F
 #define FEED_EXPIRES_RECENTS 24.0F * 60.0F * 60.0F * 3.0F
 #define FEED_BOOKMARKS @"bookmarks"
+#define FEED_CART @"cart"
 #define FEED_FEATURED @"featured"
 #define FEED_HISTORY @"history"
 #define FEED_RECENTS @"recents"
@@ -70,6 +71,11 @@ NSString *MFDatabaseDidChangeFeedsNotification = @"MFDatabaseDidChangeFeeds";
 + (NSString *)feedIdentifierBookmarks
 {
     return FEED_BOOKMARKS;
+}
+
++ (NSString *)feedIdentifierCart
+{
+    return FEED_CART;
 }
 
 + (NSString *)feedIdentifierHistory
