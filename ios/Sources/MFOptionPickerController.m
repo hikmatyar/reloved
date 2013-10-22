@@ -213,7 +213,7 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    return (m_allowsSearch) ? m_index : nil;
+    return (m_allowsSearch || m_items.count > 100) ? m_index : nil;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

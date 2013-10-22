@@ -59,6 +59,16 @@
     return [self colorWithString:@"#ffffff"];
 }
 
++ (UIColor *)themeButtonActionColor
+{
+    return [self colorWithString:@"#336699"];
+}
+
++ (UIColor *)themeButtonActionHighlightColor
+{
+    return [self colorWithString:@"#4477aa"];
+}
+
 + (UIColor *)themeButtonBackgroundColor
 {
     return [self colorWithString:@"#ffffff"];

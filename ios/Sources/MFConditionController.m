@@ -35,6 +35,7 @@
     
     if(!cell) {
         cell = [[MFConditionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
+        cell.userInteractionEnabled = NO;
     }
     
     cell.text = m_condition.title;
@@ -56,6 +57,8 @@
 {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     
+    tableView.allowsSelection = NO;
+    tableView.allowsMultipleSelection = NO;
     tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     tableView.dataSource = self;
     tableView.delegate = self;

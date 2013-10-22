@@ -68,14 +68,14 @@
     if(self) {
         UIButton *button;
         
-        button = [UIButton themeButtonWithFrame:CGRectInset(CGRectMake(0.0F, PADDING_TOP, floorf(1.0F / 2.0F * frame.size.width), frame.size.height - PADDING_TOP), PADDING, PADDING)];
+        button = [UIButton themeActionWithFrame:CGRectInset(CGRectMake(0.0F, PADDING_TOP, floorf(1.0F / 2.0F * frame.size.width), frame.size.height - PADDING_TOP), PADDING, PADDING)];
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         button.tag = TAG_LEFTBUTTON;
         [button addTarget:self action:@selector(leftButton:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitle:NSLocalizedString(@"Post.Action.Save", nil) forState:UIControlStateNormal];
         [self addSubview:button];
         
-        button = [UIButton themeButtonWithFrame:CGRectInset(CGRectMake(floorf(1.0F / 2.0F * frame.size.width), PADDING_TOP, floorf(1.0F / 2.0F * frame.size.width), frame.size.height - PADDING_TOP), PADDING, PADDING)];
+        button = [UIButton themeActionWithFrame:CGRectInset(CGRectMake(floorf(1.0F / 2.0F * frame.size.width), PADDING_TOP, floorf(1.0F / 2.0F * frame.size.width), frame.size.height - PADDING_TOP), PADDING, PADDING)];
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         button.tag = TAG_RIGHTBUTTON;
         [button addTarget:self action:@selector(rightButton:) forControlEvents:UIControlEventTouchUpInside];

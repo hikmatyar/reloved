@@ -4,6 +4,7 @@
 
 @interface UIButton(Additions)
 
++ (UIButton *)themeActionWithFrame:(CGRect)frame;
 + (UIButton *)themeButtonWithFrame:(CGRect)frame;
 
 @end

@@ -81,7 +81,7 @@
         self.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Checkmark.png"]];
         self.accessoryView.hidden = YES;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.textLabel.font = [UIFont themeBoldFontOfSize:20.0F];
+        self.textLabel.font = [UIFont themeBoldFontOfSize:15.0F];
         self.textLabel.textColor = [UIColor themeTextColor];
         
         m_commentsView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 100.0F)];
