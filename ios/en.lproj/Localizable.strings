@@ -225,6 +225,7 @@
 "Checkout.Action.Next" = "Next";
 "Checkout.Action.Payment" = "Pay";
 "Checkout.Action.Receipt" = "Receipt";
+"Checkout.Label.NoData" = "Empty Cart";
 "Checkout.Title.Address" = "Address";
 "Checkout.Title.Cart" = "Cart";
 "Checkout.Title.Payment" = "Pay";

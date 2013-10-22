@@ -13,12 +13,14 @@
 #import "MFPost.h"
 #import "MFProgressView.h"
 #import "MFSideMenuContainerViewController.h"
+#import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
 
 #define TAG_PROGRESS_VIEW 1000
 #define TAG_CONTENT_VIEW 1001
+#define TAG_EMPTY_VIEW 1002
 
 #define STEP_ITEM(l, t, p) [[MFCheckoutController_Step alloc] initWithLabel:l title:t page:p]
 
@@ -82,6 +84,11 @@
     return (MFProgressView *)[self.view viewWithTag:TAG_PROGRESS_VIEW];
 }
 
+- (UIView *)emptyView
+{
+    return [self.view viewWithTag:TAG_EMPTY_VIEW];
+}
+
 - (IBAction)menu:(id)sender
 {
     [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
@@ -112,21 +119,61 @@
 
 - (void)invalidateNavigation
 {
-    NSInteger index = self.progressView.selectedIndex;
+    BOOL empty = (m_cart.postIds.count == 0) ? YES : NO;
     
-    if(index != NSNotFound && index < m_steps.count) {
+    if(empty) {
         UIBarButtonItem *item = (UIBarButtonItem *)self.navigationItem.rightBarButtonItem;
         
-        self.navigationItem.title = ((MFCheckoutController_Step *)[m_steps objectAtIndex:index]).title;
+        self.navigationItem.title = NSLocalizedString(@"Checkout.Title.Cart", nil);
         
-        if(index + 1 >= m_steps.count) {
-            item.title = NSLocalizedString(@"Checkout.Action.Done", nil);
-            item.enabled = YES;
-            item.style = UIBarButtonItemStyleDone;
-        } else {
-            item.title = NSLocalizedString(@"Checkout.Action.Next", nil);
-            item.enabled = [(MFCheckoutController_Step *)[m_steps objectAtIndex:index] canContinue];
-            item.style = UIBarButtonItemStylePlain;
+        item.title = @"";
+        item.enabled = NO;
+        item.style = UIBarButtonItemStylePlain;
+    } else {
+        NSInteger index = self.progressView.selectedIndex;
+        
+        if(index != NSNotFound && index < m_steps.count) {
+            UIBarButtonItem *item = (UIBarButtonItem *)self.navigationItem.rightBarButtonItem;
+            
+            self.navigationItem.title = ((MFCheckoutController_Step *)[m_steps objectAtIndex:index]).title;
+            
+            if(index + 1 >= m_steps.count) {
+                item.title = NSLocalizedString(@"Checkout.Action.Done", nil);
+                item.enabled = YES;
+                item.style = UIBarButtonItemStyleDone;
+            } else {
+                item.title = NSLocalizedString(@"Checkout.Action.Next", nil);
+                item.enabled = [(MFCheckoutController_Step *)[m_steps objectAtIndex:index] canContinue];
+                item.style = UIBarButtonItemStylePlain;
+            }
+        }
+    }
+}
+
+- (void)feedDidChange:(NSNotification *)notification
+{
+    MFWebFeed *feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindCart];
+    
+    if(!notification || notification.object == feed) {
+        NSMutableArray *postIds = [NSMutableArray array];
+        NSArray *posts = feed.posts;
+        
+        for(MFPost *post in posts) {
+            [postIds addObject:post.identifier];
+        }
+        
+        if(!MFEqual(m_cart.postIds, postIds)) {
+            m_cart.postIds = postIds;
+            
+            if(postIds.count > 0) {
+                self.progressView.hidden = NO;
+                self.contentView.hidden = NO;
+                self.emptyView.hidden = YES;
+            } else {
+                self.progressView.hidden = YES;
+                self.contentView.hidden = YES;
+                self.emptyView.hidden = NO;
+            }
         }
     }
 }
@@ -168,8 +215,10 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     MFProgressView *progressView = [[MFProgressView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFProgressView preferredHeight]) style:kMFProgressViewStyleCheckout];
     MFPageScrollView *contentView = [[MFPageScrollView alloc] initWithFrame:CGRectMake(0.0F, [MFProgressView preferredHeight], 320.0F, 480.0F - [MFProgressView preferredHeight])];
+    UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     NSMutableArray *items = [NSMutableArray array];
     NSMutableArray *pages = [NSMutableArray array];
+    UILabel *label;
     
     for(MFCheckoutController_Step *step in m_steps) {
         [items addObject:step.label];
@@ -189,19 +238,36 @@
     contentView.selectedPage = [pages objectAtIndex:m_stepIndex];
     [view addSubview:contentView];
     
+    label = [[UILabel alloc] initWithFrame:CGRectMake(0.0F, 220.0F, 320.0F, 22.0F)];
+    label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont themeFontOfSize:18.0F];
+    label.text = NSLocalizedString(@"Checkout.Label.NoData", nil);
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor themeTextAlternativeColor];
+    [emptyView addSubview:label];
+    
+    emptyView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    emptyView.hidden = YES;
+    emptyView.tag = TAG_EMPTY_VIEW;
+    [view addSubview:emptyView];
+    
     view.backgroundColor = [UIColor themeBackgroundColor];
     
     self.view = view;
-    [self invalidateNavigation];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedDidChange:) name:MFWebFeedDidChangeNotification object:nil];
+    [self feedDidChange:nil];
+    [self invalidateNavigation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MFWebFeedDidChangeNotification object:nil];
     m_stepIndex = self.progressView.selectedIndex;
     [super viewWillDisappear:animated];
 }
