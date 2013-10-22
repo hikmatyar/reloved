@@ -244,7 +244,6 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0 -  cancelled, 1 - pending, 2 - declined, 3 - accepted, 4 - completed',
-  `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `delivery_id` int(11) NOT NULL,
   `service_fee` int(11) NOT NULL DEFAULT '0',
@@ -265,6 +264,13 @@ CREATE TABLE `orders` (
   `zipcode` varchar(16) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+DROP TABLE IF EXISTS `order_posts`;
+CREATE TABLE `order_posts` (
+  `order_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  UNIQUE KEY `order_id_post_id` (`order_id`,`post_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `queue`;
 CREATE TABLE `queue` (

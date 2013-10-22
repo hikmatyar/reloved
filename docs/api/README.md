@@ -476,9 +476,7 @@ and potentially update countries, deliveries and posts.
 			"deliveries": [
 				{ "id": 1, "country": "GB", "name": "Normal delivery", "price": 10000, "currency": "GBP" },
 				{ "id": 1, "country": "*", "name": "EU delivery", "price": 20000, "currency": "GBP" }
-			],
-			// 0 - invalid, 1 - ok
-			"status": 1
+			]
 		}
 	
 	Errors:
