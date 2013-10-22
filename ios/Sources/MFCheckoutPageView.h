@@ -12,6 +12,7 @@
 
 - (id)initWithFrame:(CGRect)frame controller:(MFCheckoutController *)controller;
 
+- (void)cartDidChange;
 - (BOOL)canContinue;
 
 @end

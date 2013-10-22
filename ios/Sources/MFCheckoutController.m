@@ -119,7 +119,7 @@
 
 - (void)invalidateNavigation
 {
-    BOOL empty = (m_cart.postIds.count == 0) ? YES : NO;
+    BOOL empty = NO;//(m_cart.postIds.count == 0) ? YES : NO;
     
     if(empty) {
         UIBarButtonItem *item = (UIBarButtonItem *)self.navigationItem.rightBarButtonItem;
@@ -174,6 +174,10 @@
                 self.contentView.hidden = YES;
                 self.emptyView.hidden = NO;
             }
+        }
+        
+        for(MFCheckoutController_Step *step in m_steps) {
+            [step.page cartDidChange];
         }
     }
 }

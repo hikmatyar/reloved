@@ -188,6 +188,9 @@
 		81689E0B17E32124003D243E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 81689E0917E32124003D243E /* InfoPlist.strings */; };
 		817139F71815CD5D00CF8805 /* MFDatabase+Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 817139F61815CD5D00CF8805 /* MFDatabase+Cart.m */; };
 		817139FA1815D11300CF8805 /* MFCart.m in Sources */ = {isa = PBXBuildFile; fileRef = 817139F91815D11300CF8805 /* MFCart.m */; };
+		817340BB1816F2210068C3EB /* MFPostEditableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 817340BA1816F2210068C3EB /* MFPostEditableTableViewCell.m */; };
+		817340BE1816F3850068C3EB /* Thumbnail-Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 817340BC1816F3850068C3EB /* Thumbnail-Placeholder.png */; };
+		817340BF1816F3850068C3EB /* Thumbnail-Placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 817340BD1816F3850068C3EB /* Thumbnail-Placeholder@2x.png */; };
 		817723DA17FDA877004A28CC /* MFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723D917FDA877004A28CC /* MFForm.m */; };
 		817723DD17FDA9A1004A28CC /* MFFormTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723DC17FDA9A1004A28CC /* MFFormTextView.m */; };
 		817723E017FDAAC9004A28CC /* MFFormLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 817723DF17FDAAC9004A28CC /* MFFormLabel.m */; };
@@ -618,6 +621,10 @@
 		817139F61815CD5D00CF8805 /* MFDatabase+Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Cart.m"; path = "Sources/MFDatabase+Cart.m"; sourceTree = SOURCE_ROOT; };
 		817139F81815D11300CF8805 /* MFCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCart.h; path = Sources/MFCart.h; sourceTree = SOURCE_ROOT; };
 		817139F91815D11300CF8805 /* MFCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCart.m; path = Sources/MFCart.m; sourceTree = SOURCE_ROOT; };
+		817340B91816F2210068C3EB /* MFPostEditableTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostEditableTableViewCell.h; path = Sources/MFPostEditableTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		817340BA1816F2210068C3EB /* MFPostEditableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostEditableTableViewCell.m; path = Sources/MFPostEditableTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		817340BC1816F3850068C3EB /* Thumbnail-Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Thumbnail-Placeholder.png"; path = "Images/Thumbnail-Placeholder.png"; sourceTree = "<group>"; };
+		817340BD1816F3850068C3EB /* Thumbnail-Placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Thumbnail-Placeholder@2x.png"; path = "Images/Thumbnail-Placeholder@2x.png"; sourceTree = "<group>"; };
 		817723D817FDA877004A28CC /* MFForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFForm.h; path = Sources/MFForm.h; sourceTree = SOURCE_ROOT; };
 		817723D917FDA877004A28CC /* MFForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFForm.m; path = Sources/MFForm.m; sourceTree = SOURCE_ROOT; };
 		817723DB17FDA9A1004A28CC /* MFFormTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFFormTextView.h; path = Sources/MFFormTextView.h; sourceTree = SOURCE_ROOT; };
@@ -1158,6 +1165,8 @@
 				81B14B80180ECBAE0089D19F /* MFPostSectionView.m */,
 				81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */,
 				81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */,
+				817340B91816F2210068C3EB /* MFPostEditableTableViewCell.h */,
+				817340BA1816F2210068C3EB /* MFPostEditableTableViewCell.m */,
 				81BC174517FC429E00DF7AD4 /* MFProgressView.h */,
 				81BC174617FC429E00DF7AD4 /* MFProgressView.m */,
 				81BC174817FC432900DF7AD4 /* MFProgressViewDelegate.h */,
@@ -1340,6 +1349,8 @@
 				81BD882E18121FF000549748 /* Prev-Indicator@2x.png */,
 				811082A117F8B0E1005CC8ED /* PullToRefresh-Arrow.png */,
 				811082A217F8B0E1005CC8ED /* PullToRefresh-Arrow@2x.png */,
+				817340BC1816F3850068C3EB /* Thumbnail-Placeholder.png */,
+				817340BD1816F3850068C3EB /* Thumbnail-Placeholder@2x.png */,
 				81B14B8C180ED3C80089D19F /* User-Placeholder.png */,
 				81B14B8D180ED3C80089D19F /* User-Placeholder@2x.png */,
 			);
@@ -1646,6 +1657,7 @@
 				81B27B4917F6107100F9BC09 /* cvc-amex.png in Resources */,
 				81136AD4180C549B009142AE /* Cartoon3.jpg in Resources */,
 				81B27B3217F6106800F9BC09 /* gradient@2x.png in Resources */,
+				817340BE1816F3850068C3EB /* Thumbnail-Placeholder.png in Resources */,
 				8120C1AB17E049B400A1C3A9 /* Navigation-Logo.png in Resources */,
 				81B27B4717F6107100F9BC09 /* amex.png in Resources */,
 				81DE2D3417F5FCC4001D0ADF /* Disclosure-Indicator@2x.png in Resources */,
@@ -1654,6 +1666,7 @@
 				8120C1C417E05D7500A1C3A9 /* Home-Checkmark.png in Resources */,
 				81B27B5517F6107100F9BC09 /* placeholder.png in Resources */,
 				8120C15217DFAD8C00A1C3A9 /* Menu-Sell.png in Resources */,
+				817340BF1816F3850068C3EB /* Thumbnail-Placeholder@2x.png in Resources */,
 				8120C19E17E0470300A1C3A9 /* Home-History@2x.png in Resources */,
 				81B27B4E17F6107100F9BC09 /* diners@2x.png in Resources */,
 				81B14B7A180EC3A20089D19F /* Post-Returns@2x.png in Resources */,
@@ -1754,6 +1767,7 @@
 				819E12B818058340008D2D36 /* NSDate+Additions.m in Sources */,
 				81233D5817F8DDEA00C27805 /* MFColor.m in Sources */,
 				81136AB9180B5555009142AE /* MFWebService+Post.m in Sources */,
+				817340BB1816F2210068C3EB /* MFPostEditableTableViewCell.m in Sources */,
 				811082AF17F8B66D005CC8ED /* MFDatabase.m in Sources */,
 				81136ABC180B563D009142AE /* NSData+Additions.m in Sources */,
 				8119DFE817E06E0B007AEDC2 /* MFWebAuthorization.m in Sources */,

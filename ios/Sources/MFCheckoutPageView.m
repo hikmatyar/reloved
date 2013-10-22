@@ -16,6 +16,10 @@
     return self;
 }
 
+- (void)cartDidChange
+{
+}
+
 - (BOOL)canContinue
 {
     return YES;

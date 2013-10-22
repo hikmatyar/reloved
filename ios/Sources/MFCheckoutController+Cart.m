@@ -9,6 +9,19 @@
 
 @implementation MFCheckoutController_Cart
 
+#pragma mark MFNewPostPageView
+
+- (id)initWithFrame:(CGRect)frame controller:(MFCheckoutController *)controller
+{
+    self = [super initWithFrame:frame controller:controller];
+    
+    if(self) {
+        
+    }
+    
+    return self;
+}
+
 @end
 
 #pragma mark -
