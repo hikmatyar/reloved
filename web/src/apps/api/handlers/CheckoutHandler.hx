@@ -16,20 +16,32 @@ class CheckoutHandler extends Handler {
     	if(postIds != null && postIds.length > 0) {
 			Post.findAllForIdentifiers(postIds, function(err, posts) {
 				if(posts != null && posts.length > 0) {
-					// Quickly validate posts
-					for(post in posts) {
-						if(post.status != Post.status_listed) {
-							this.exit(ErrorCode.invalid_parameter);
-							return;
-						}
-					}
-					
 					Post.cacheRelationsForPosts(posts, function(err) {
 						if(err != null) {
 							this.exit(ErrorCode.unknown, 'posts_cache');
 							return;
 						}
 						
+						for(post in posts) {
+							if(post.status != Post.status_listed) {
+								var delimiter = '';
+    							
+    							this.begin(ErrorCode.http_ok);
+								this.write('{ "error": ' + ErrorCode.invalid_parameter);
+								this.write(', "posts": [');
+								
+								for(post_ in posts) {
+									this.write(delimiter);
+									this.write(post_.json());
+									delimiter = ',';
+								}
+								
+								this.write(']');
+								this.end('}');
+								return;
+							}
+						}
+												
 						User.find(this.user().id, function(err, user) {
 							var delimiter = '';
     						
@@ -39,7 +51,7 @@ class CheckoutHandler extends Handler {
 							}
 							
 							this.begin(ErrorCode.http_ok);
-							this.write('{ "error": 0"');
+							this.write('{ "error": ' + ErrorCode.none);
 							
 							this.write(', "user": ' + user.json());
 							this.write(', "fees": { "GBP": 500 }');
