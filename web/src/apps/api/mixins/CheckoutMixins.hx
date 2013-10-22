@@ -2,13 +2,26 @@
 
 package apps.api.mixins;
 
+import saffron.Data;
+
 class CheckoutMixins {
 	public static inline function checkoutIdentifier(handler : Handler) : Int {
         return Std.parseInt(handler.request.body.order);
     }
     
-    public static inline function checkoutPostIdentifier(handler : Handler) : Int {
-        return Std.parseInt(handler.request.body.post);
+    public static inline function checkoutPostIdentifiers(handler : Handler) : Array<DataIdentifier> {
+        var _ids : String = handler.request.body.ids;
+    	var ids : Array<DataIdentifier> = null;
+    	
+    	if(_ids != null && _ids.length > 0) {
+    		ids = new Array<DataIdentifier>();
+        	
+        	for(_id in _ids.split(',')) {
+        		ids.push(Std.parseInt(_id));
+        	}
+        }
+        	
+        return ids;
     }
     
     public static inline function checkoutDeliveryIdentifier(handler : Handler) : Int {

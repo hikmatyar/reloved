@@ -6,7 +6,6 @@ import saffron.Data;
 import saffron.tools.JSON;
 
 typedef OrderAttributes_Create = {
-	var post_id : DataIdentifier;
     var user_id : DataIdentifier;
     var delivery_id : DataIdentifier;
     var country_id : DataIdentifier;
@@ -32,7 +31,6 @@ typedef OrderAttributes_Update = {
 private typedef OrderRow = {
     var id : DataIdentifier;
     var status : Int;
-    var post_id : DataIdentifier;
     var user_id : DataIdentifier;
     var delivery_id : DataIdentifier;
     var service_fee : Int;
@@ -53,6 +51,46 @@ private typedef OrderRow = {
     var zipcode : String;
 }
 
+private typedef OrderPostRow = {
+    var order_id : DataIdentifier;
+    var post_id : DataIdentifier;
+}
+
+class OrderPost {
+	public var orderId(default, null) : DataIdentifier;
+    public var postId(default, null) : DataIdentifier;
+    
+    public static function findAllForOrder(orderId : DataIdentifier, fn : DataError -> Array<OrderPost> -> Void) : Void {
+        Data.query('SELECT * FROM order_posts WHERE order_id = ?', [ orderId ], function(err, result : Array<OrderPost>) {
+            fn(err, result);
+        });
+    }
+    
+    public static function create(orderId : DataIdentifier, postIds : Array<DataIdentifier>, fn : DataError -> Void) : Void {
+        var values : Array<Dynamic> = new Array<Dynamic>();
+        
+        for(postId in postIds) {
+        	values.push([ orderId, postId ]); 
+        }
+        
+        Data.query('INSERT INTO order_posts (order_id, post_id) VALUES ?', [ values ], function(err, result) {
+        	fn(err);
+        });
+    }
+    
+    private function new(row : OrderPostRow) {
+        this.orderId = row.order_id;
+        this.postId = row.post_id;
+    }
+    
+    public function json() : String {
+        return JSON.stringify({
+            id: this.orderId,
+            post: this.postId
+        });
+    }
+}
+
 class Order {
 	public static inline var status_cancelled = 0;
     public static inline var status_pending = 1;
@@ -62,7 +100,6 @@ class Order {
     
     public var id(default, null) : DataIdentifier;
     public var status(default, null) : Int;
-    public var postId(default, null) : DataIdentifier;
     public var userId(default, null) : DataIdentifier;
     public var deliveryId(default, null) : DataIdentifier;
     public var countryId(default, null) : DataIdentifier;
@@ -119,7 +156,6 @@ class Order {
     private function new(row : OrderRow) {
         this.id = row.id;
         this.status = row.status;
-        this.postId = row.post_id;
         this.userId = row.user_id;
         this.deliveryId = row.delivery_id;
         this.serviceFee = row.service_fee;
@@ -149,8 +185,7 @@ class Order {
     public function json() : String {
         return JSON.stringify({
         	id: this.id,
-        	status: this.status,
-        	post: this.postId
+        	status: this.status
         });
     }
 }
