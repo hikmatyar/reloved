@@ -119,7 +119,7 @@
 
 - (void)invalidateNavigation
 {
-    BOOL empty = NO;//(m_cart.postIds.count == 0) ? YES : NO;
+    BOOL empty = (m_cart.postIds.count == 0) ? YES : NO;
     
     if(empty) {
         UIBarButtonItem *item = (UIBarButtonItem *)self.navigationItem.rightBarButtonItem;
@@ -165,7 +165,7 @@
         if(!MFEqual(m_cart.postIds, postIds)) {
             m_cart.postIds = postIds;
             
-            if(postIds.count > 0) {
+            if(postIds.count == 0) {
                 self.progressView.hidden = NO;
                 self.contentView.hidden = NO;
                 self.emptyView.hidden = YES;

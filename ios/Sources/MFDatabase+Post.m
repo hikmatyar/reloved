@@ -97,6 +97,23 @@ NSString *MFDatabaseDidChangePostsNotification = @"MFDatabaseDidChangePosts";
     [self setPosts:featuredPosts forFeed:[MFDatabase feedIdentifierFeatured]];
 }
 
+- (NSArray *)postsForIdentifiers:(NSArray *)identifiers
+{
+    NSMutableArray *posts = nil;
+    
+    for(MFPost *post in self.posts) {
+        if([identifiers containsObject:post.identifier]) {
+            if(!posts) {
+                posts = [NSMutableArray array];
+            }
+            
+            [posts addObject:post];
+        }
+    }
+    
+    return posts;
+}
+
 - (MFPost *)postForIdentifier:(NSString *)identifier
 {
     for(MFPost *post in self.posts) {

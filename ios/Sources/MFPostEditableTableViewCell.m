@@ -123,6 +123,7 @@
         detailTextLabel.textColor = [UIColor themeTextColor];
         detailTextLabel.textAlignment = NSTextAlignmentLeft;
         
+        self.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
         self.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];

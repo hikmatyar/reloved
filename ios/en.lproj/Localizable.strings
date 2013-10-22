@@ -222,9 +222,14 @@
 "Checkout.Action.Cart" = "Cart";
 "Checkout.Action.Confirm" = "Confirm";
 "Checkout.Action.Done" = "Done";
+"Checkout.Action.Edit" = "Edit";
 "Checkout.Action.Next" = "Next";
 "Checkout.Action.Payment" = "Pay";
 "Checkout.Action.Receipt" = "Receipt";
+"Checkout.Format.NumberOfItems" = "%d item in your cart";
+"Checkout.Format.NumberOfItems.Plural" = "%d items in your cart";
+"Checkout.Format.Total" = "Total %@";
+"Checkout.Hint.Total" = "(Excludes shipping and other fees)";
 "Checkout.Label.NoData" = "Empty Cart";
 "Checkout.Title.Address" = "Address";
 "Checkout.Title.Cart" = "Cart";

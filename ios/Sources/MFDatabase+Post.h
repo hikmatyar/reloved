@@ -12,6 +12,7 @@ extern NSString *MFDatabaseDidChangePostsNotification;
 
 @property (nonatomic, copy) NSArray *posts;
 @property (nonatomic, copy) NSArray *featuredPosts;
+- (NSArray *)postsForIdentifiers:(NSArray *)identifiers;
 - (MFPost *)postForIdentifier:(NSString *)identifier;
 - (void)setPost:(MFPost *)post forIdentifier:(NSString *)identifier;
 
