@@ -442,7 +442,8 @@ API calls for updating personal information and posts.
 
 # Checkout
 
-TDB:
+The checkout process starts with /checkout call that is used to pre-fill shipping and transation info, validate posts
+and potentially update countries, deliveries and posts.
 
 ## Checkout
 
@@ -450,7 +451,46 @@ TDB:
 	
 	Parameters:
 		[session]
-		INTEGER post [R] - Post ID
+		ARRAY<INTEGER> ids [R] - List of post IDs
+		STRING mod [O] - Last modification date (as an hint)
+	
+	Returns:
+		{
+			"error": 0,
+			"user": {
+				"address": "..."
+			}
+			"fees": {
+				"GBP": 500
+			},
+			// Posts in question
+			"posts": [
+				// Post data
+			],
+			// All the possible countries. Only included if state is missing/invalid.
+			"countries": [
+				{ "id": 1, "code": "GB", "name": "Great Britain" },
+				{ "id": 1, "code": "DE", "name": "Germany" },
+			],
+			// All the possible delivery methods. Only included if state is missing/invalid. '*' is wildcard.
+			"deliveries": [
+				{ "id": 1, "country": "GB", "name": "Normal delivery", "price": 10000, "currency": "GBP" },
+				{ "id": 1, "country": "*", "name": "EU delivery", "price": 20000, "currency": "GBP" }
+			],
+			// 0 - invalid, 1 - ok
+			"status": 1
+		}
+	
+	Errors:
+		[standard]
+	
+## Checkout Commit
+
+	/checkout/commit
+	
+	Parameters:
+		[session]
+		ARRAY<INTEGER> ids [R] - List of post IDs
 		INTEGER delivery [R] - Delivery ID
 		STRING stripe [R] - Stripe ID
 		INTEGER price [R] - The price that the user accepted (should equal to post.price)
