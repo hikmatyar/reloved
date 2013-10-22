@@ -5,6 +5,7 @@
 #import "MFCondition.h"
 #import "MFDatabase+Bookmark.h"
 #import "MFDatabase+Brand.h"
+#import "MFDatabase+Cart.h"
 #import "MFDatabase+Color.h"
 #import "MFDatabase+Size.h"
 #import "MFDatabase+Type.h"
@@ -134,18 +135,25 @@ static inline NSDictionary *MFWebPostGetUserInfo(NSArray *changes, NSError *erro
     [[MFDatabase sharedDatabase] setBookmarked:saved forPost:m_post];
 }
 
-@dynamic insideCart;
+@dynamic includedInCart;
 
-- (BOOL)insideCart
+- (BOOL)includedInCart
 {
-    // TODO:
+    MFPost *post = m_post;
     
-    return NO;
+    if(!post) {
+        post = [[MFMutablePost alloc] init];
+        ((MFMutablePost *)post).identifier = m_identifier;
+    }
+    
+    return [[MFDatabase sharedDatabase] includedInCartForPost:post];
 }
 
-- (void)setInsideCart:(BOOL)insideCart
+- (void)setIncludedInCart:(BOOL)includedInCart
 {
-    // TODO:
+    if(m_post) {
+        [[MFDatabase sharedDatabase] includeInCart:includedInCart forPost:m_post];
+    }
 }
 
 - (void)startLoading

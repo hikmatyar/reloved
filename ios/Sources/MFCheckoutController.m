@@ -165,7 +165,7 @@
         if(!MFEqual(m_cart.postIds, postIds)) {
             m_cart.postIds = postIds;
             
-            if(postIds.count == 0) {
+            if(postIds.count > 0) {
                 self.progressView.hidden = NO;
                 self.contentView.hidden = NO;
                 self.emptyView.hidden = YES;

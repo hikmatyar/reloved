@@ -44,7 +44,7 @@
         if(m_post.mine) {
             self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(edit:)];
         } else {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((m_post.insideCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((m_post.includedInCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
         }
     }
 }
@@ -98,12 +98,12 @@
 
 - (IBAction)toggleCart:(id)sender
 {
-    BOOL insideCart = !m_post.insideCart;
+    BOOL includedInCart = !m_post.includedInCart;
     
-    m_post.insideCart = insideCart;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((insideCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+    m_post.includedInCart = includedInCart;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((includedInCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
     
-    if(insideCart) {
+    if(includedInCart) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.AddedToCart.Title", nil)
                                                             message:NSLocalizedString(@"Post.Alert.AddedToCart.Message", nil)
                                                            delegate:nil

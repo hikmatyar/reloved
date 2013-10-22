@@ -37,7 +37,7 @@ extern NSString *MFWebPostDidDeleteNotification;
 @property (nonatomic, assign, getter = isMine) BOOL mine;
 @property (nonatomic, assign, getter = isLoaded) BOOL loaded;
 @property (nonatomic, assign, getter = isSaved) BOOL saved;
-@property (nonatomic, assign) BOOL insideCart;
+@property (nonatomic, assign) BOOL includedInCart;
 
 - (void)startLoading;
 - (void)stopLoading;

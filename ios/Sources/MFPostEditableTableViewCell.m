@@ -46,8 +46,8 @@
         [str beginEditing];
         [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", brand] attributes:
             [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeBoldFontOfSize:14.0F], NSFontAttributeName, nil]]];
-        [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"'%@'\n", title] attributes:
-            [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], NSFontAttributeName, nil]]];
+        [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", title] attributes:
+            [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:12.0F], NSFontAttributeName, nil]]];
         [str endEditing];
         self.textLabel.attributedText = str;
         
@@ -55,13 +55,12 @@
         [str beginEditing];
         [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", price.localizedString] attributes:
             [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeBoldFontOfSize:14.0F], NSFontAttributeName, nil]]];
-        [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"'%@'\n", size] attributes:
-            [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], NSFontAttributeName, nil]]];
+        [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", size] attributes:
+            [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:12.0F], NSFontAttributeName, nil]]];
         [str endEditing];
         self.detailTextLabel.attributedText = str;
         
         m_post = post;
-        self.textLabel.attributedText = str;
         
         if(self.superview) {
             [self prepareForDisplay];
