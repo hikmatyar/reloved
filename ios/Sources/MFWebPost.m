@@ -152,7 +152,8 @@ static inline NSDictionary *MFWebPostGetUserInfo(NSArray *changes, NSError *erro
 - (void)setIncludedInCart:(BOOL)includedInCart
 {
     if(m_post) {
-        [[MFDatabase sharedDatabase] includeInCart:includedInCart forPost:m_post];
+        [MFDatabase sharedDatabase].cart = (includedInCart) ? [NSArray arrayWithObject:m_post] : nil;
+        //[[MFDatabase sharedDatabase] includeInCart:includedInCart forPost:m_post];
     }
 }
 
