@@ -61,7 +61,7 @@
 
 - (BOOL)isEqual:(MFCountry *)country
 {
-    return ([m_identifier isEqualToString:country.identifier] && [m_name isEqualToString:country.name] && [m_code isEqualToString:country.code]) ? YES : NO;
+    return (MFEqual(m_identifier, country.identifier) && MFEqual(m_name, country.name) && MFEqual(m_code, country.code)) ? YES : NO;
 }
 
 @end
