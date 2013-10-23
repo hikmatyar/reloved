@@ -507,7 +507,8 @@ and potentially update countries, deliveries and posts.
 		{
 			"error": 0,
 			"id": 123,
-			"post": 10,
+			"posts": [ 10 ],
+			"date": "2013-12-30T12:00:00.000Z",
 			// 0 - cancelled, 1 - pending, 2 - declined, 3 - accepted, 4 - completed
 			"status": 1
 		}
@@ -527,9 +528,9 @@ and potentially update countries, deliveries and posts.
 		{
 			"error": 0,
 			"id": 123,
-			"order": 123,
-			"post": 10,
-			// 
+			"posts": [ 10 ],
+			"date": "2013-12-30T12:00:00.000Z",
+			// 0 - cancelled, 1 - pending, 2 - declined, 3 - accepted, 4 - completed
 			"status": 1
 		}
 	
