@@ -482,9 +482,9 @@ and potentially update countries, deliveries and posts.
 	Errors:
 		[standard]
 	
-## Checkout Commit
+## Create Order
 
-	/checkout/commit
+	/order/create
 	
 	Parameters:
 		[session]
@@ -516,9 +516,9 @@ and potentially update countries, deliveries and posts.
 	Errors:
 		[standard]
 
-## Checkout Status
+## Order Status
 
-	/checkout/status
+	/order/status
 	
 	Parameters:
 		[session]
