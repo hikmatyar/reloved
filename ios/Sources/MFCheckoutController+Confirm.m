@@ -25,6 +25,7 @@
 #define CELL_SUMMARY @"summary"
 #define CELL_SUMMARY_PLUS_HELP @"summary_help"
 #define CELL_PAYMENT @"payment"
+#define CELL_SHIPPING @"shipping"
 
 @interface MFCheckoutController_Confirm : MFCheckoutPageView <UITableViewDataSource, UITableViewDelegate>
 {
@@ -81,7 +82,7 @@
         case SECTION_PAYMENT:
             return 1;
         case SECTION_SHIPPING:
-            return 0;
+            return 1;
         case SECTION_DELIVERY:
             return 0;
     }
@@ -131,10 +132,11 @@
             
             if(!cell) {
                 cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_PAYMENT];
-                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
+                //cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
-                cell.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
+                cell.backgroundColor = [UIColor themeButtonBackgroundColor];
+                //cell.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
+                //cell.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
                 cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
             }
             
@@ -143,7 +145,21 @@
             return cell;
         } break;
         case SECTION_SHIPPING: {
+            MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_SHIPPING];
             
+            if(!cell) {
+                cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_SHIPPING];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.backgroundColor = [UIColor themeButtonBackgroundColor];
+                cell.textLabel.font = [UIFont themeBoldFontOfSize:13.0F];
+                cell.detailTextLabel.font = [UIFont themeFontOfSize:13.0F];
+                cell.detailTextLabel.numberOfLines = 0;
+            }
+            
+            cell.textLabel.text = @"Samreen Ghani";
+            cell.detailTextLabel.text = @"Flat 505, 7 Garden Walk\nLondon ABCDE E\nUnited Kingdom"; // TODO:
+            
+            return cell;
         } break;
         case SECTION_DELIVERY: {
             
@@ -157,6 +173,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    switch(indexPath.section) {
+        case SECTION_SHIPPING:
+            return 3.0F * 26.0F;
+    }
+    
     return 26.0F;
 }
 
