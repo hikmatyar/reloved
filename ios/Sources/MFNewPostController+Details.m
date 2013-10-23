@@ -9,6 +9,7 @@
 #import "MFFormButton.h"
 #import "MFFormLabel.h"
 #import "MFFormTextField.h"
+#import "MFFormTextView.h"
 #import "MFNewPostController+Details.h"
 #import "MFNewPostPageView.h"
 #import "MFOptionPickerController.h"
@@ -19,14 +20,14 @@
 #import "UIFont+Additions.h"
 #import "UIViewController+Additions.h"
 
-@interface MFNewPostController_Details : MFNewPostPageView <MFOptionPickerControllerDelegate, UITextFieldDelegate>
+@interface MFNewPostController_Details : MFNewPostPageView <MFOptionPickerControllerDelegate, UITextViewDelegate>
 {
     @private
     MFFormAccessory *m_accessory;
     BOOL m_canContinue;
     MFFormButton *m_brandButton;
     MFFormButton *m_colorsButton;
-    MFFormTextField *m_materialsTextField;
+    MFFormTextView *m_materialsTextView;
     MFForm *m_form;
 }
 
@@ -85,12 +86,12 @@
         label.text = NSLocalizedString(@"NewPost.Label.Materials", nil);
         [m_form addSubview:label];
         
-        m_materialsTextField = [[MFFormTextField alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormTextField preferredHeight])];
-        m_materialsTextField.delegate = self;
-        m_materialsTextField.returnKeyType = UIReturnKeyDone;
-        m_materialsTextField.placeholder = NSLocalizedString(@"NewPost.Hint.Materials", nil);
-        m_materialsTextField.maxTextLength = 200;
-        [m_form addSubview:m_materialsTextField];
+        m_materialsTextView = [[MFFormTextView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 1.5F * [MFFormTextField preferredHeight])];
+        m_materialsTextView.delegate = self;
+        //m_materialsTextView.returnKeyType = UIReturnKeyDone;
+        m_materialsTextView.placeholder = NSLocalizedString(@"NewPost.Hint.Materials", nil);
+        m_materialsTextView.maxTextLength = 200;
+        [m_form addSubview:m_materialsTextView];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
         label.text = NSLocalizedString(@"NewPost.Label.Colors", nil);
@@ -121,7 +122,7 @@
 - (BOOL)canContinue
 {
     if(!m_canContinue) {
-        m_canContinue = (m_materialsTextField.text.length > 0 && !m_brandButton.empty && !m_colorsButton.empty) ? YES : NO;
+        m_canContinue = (m_materialsTextView.text.length > 0 && !m_brandButton.empty && !m_colorsButton.empty) ? YES : NO;
     }
     
     return m_canContinue;
@@ -129,12 +130,12 @@
 
 - (void)saveState
 {
-    m_controller.post.materials = m_materialsTextField.text;
+    m_controller.post.materials = m_materialsTextView.text;
 }
 
 #pragma mark MFOptionPickerControllerDelegate
 
-- (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller
+- (void)optionPickerControllerDidClose:(MFOptionPickerController *)controller
 {
     NSMutableArray *colorIdentifiers = nil;
     NSMutableString *colorTitle = nil;
@@ -182,31 +183,29 @@
 
 - (void)pageWillDisappear
 {
-    [m_materialsTextField resignFirstResponder];
+    [m_materialsTextView resignFirstResponder];
     //[m_accessory deactivate];
     [super pageWillDisappear];
 }
 
-#pragma mark UITextFieldDelegate
+#pragma mark UITextViewDelegate
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    return ([textField isKindOfClass:[MFFormTextField class]]) ? [(MFFormTextField *)textField shouldChangeCharactersInRange:range replacementString:string] : YES;
+    return ([textView isKindOfClass:[MFFormTextView class]]) ? [(MFFormTextView *)textView shouldChangeCharactersInRange:range replacementString:text] : YES;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [m_materialsTextField resignFirstResponder];
-    
-    return NO;
+    [m_form scrollToView:textView animated:YES];
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField
+- (void)textViewDidEndEditing:(UITextView *)textView
 {
-    [m_form scrollToView:textField animated:YES];
+    [m_controller invalidateNavigation];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (void)textViewDidChange:(UITextView *)textView
 {
     [m_controller invalidateNavigation];
 }

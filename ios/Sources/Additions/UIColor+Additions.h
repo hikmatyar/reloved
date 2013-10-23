@@ -42,4 +42,8 @@
 + (UIColor *)themeMenuSeparatorColor;
 + (UIColor *)themeMenuTextColor;
 
++ (UIColor *)themeSectionIndexBackgroundColor;
++ (UIColor *)themeSectionIndexColor;
++ (UIColor *)themeSectionIndexTrackingBackgroundColor;
+
 @end

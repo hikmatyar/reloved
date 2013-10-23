@@ -169,4 +169,19 @@
     return [self colorWithString:@"#000000"];
 }
 
++ (UIColor *)themeSectionIndexBackgroundColor
+{
+    return nil;
+}
+
++ (UIColor *)themeSectionIndexColor
+{
+    return nil;
+}
+
++ (UIColor *)themeSectionIndexTrackingBackgroundColor
+{
+    return nil;
+}
+
 @end

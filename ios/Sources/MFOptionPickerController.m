@@ -136,7 +136,7 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
         m_items = items;
         
         if(items.count > 0) {
-            NSCharacterSet *chars = [NSCharacterSet alphanumericCharacterSet];
+            NSCharacterSet *chars = [NSCharacterSet letterCharacterSet];
             NSMutableArray *sections = [[NSMutableArray alloc] init];
             NSMutableArray *index = [[NSMutableArray alloc] init];
             NSMutableArray *section = nil;
@@ -329,6 +329,9 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
     tableView.backgroundColor = [UIColor themeBackgroundColor];
     tableView.separatorColor = [UIColor themeSeparatorColor];
     tableView.allowsMultipleSelection = NO;
+    tableView.sectionIndexBackgroundColor = [UIColor themeSectionIndexBackgroundColor];
+    tableView.sectionIndexColor = [UIColor themeSectionIndexColor];
+    tableView.sectionIndexTrackingBackgroundColor = [UIColor themeSectionIndexTrackingBackgroundColor];
     
     self.view = tableView;
 }

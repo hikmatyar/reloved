@@ -137,7 +137,7 @@
 
 #pragma mark MFOptionPickerControllerDelegate
 
-- (void)optionPickerControllerDidComplete:(MFOptionPickerController *)controller
+- (void)optionPickerControllerDidClose:(MFOptionPickerController *)controller
 {
     NSMutableArray *typeIdentifiers = nil;
     NSMutableString *typeTitle = nil;
