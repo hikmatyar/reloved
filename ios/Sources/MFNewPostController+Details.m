@@ -83,17 +83,6 @@
         [self addSubview:m_form];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
-        label.text = NSLocalizedString(@"NewPost.Label.Materials", nil);
-        [m_form addSubview:label];
-        
-        m_materialsTextView = [[MFFormTextView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 1.5F * [MFFormTextField preferredHeight])];
-        m_materialsTextView.delegate = self;
-        //m_materialsTextView.returnKeyType = UIReturnKeyDone;
-        m_materialsTextView.placeholder = NSLocalizedString(@"NewPost.Hint.Materials", nil);
-        m_materialsTextView.maxTextLength = 200;
-        [m_form addSubview:m_materialsTextView];
-        
-        label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
         label.text = NSLocalizedString(@"NewPost.Label.Colors", nil);
         [m_form addSubview:label];
         
@@ -112,6 +101,17 @@
         [m_brandButton addTarget:self action:@selector(brand:) forControlEvents:UIControlEventTouchUpInside];
         [m_brandButton setTitle:nil forState:UIControlStateNormal];
         [m_form addSubview:m_brandButton];
+        
+        label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
+        label.text = NSLocalizedString(@"NewPost.Label.Materials", nil);
+        [m_form addSubview:label];
+        
+        m_materialsTextView = [[MFFormTextView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 1.5F * [MFFormTextField preferredHeight])];
+        m_materialsTextView.delegate = self;
+        //m_materialsTextView.returnKeyType = UIReturnKeyDone;
+        m_materialsTextView.placeholder = NSLocalizedString(@"NewPost.Hint.Materials", nil);
+        m_materialsTextView.maxTextLength = 200;
+        [m_form addSubview:m_materialsTextView];
         
         m_accessory = [[MFFormAccessory alloc] initWithContext:m_form];
     }
