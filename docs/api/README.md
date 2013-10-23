@@ -531,7 +531,8 @@ and potentially update countries, deliveries and posts.
 			"posts": [ 10 ],
 			"date": "2013-12-30T12:00:00.000Z",
 			// 0 - cancelled, 1 - pending, 2 - declined, 3 - accepted, 4 - completed
-			"status": 1
+			"status": 3,
+			"notice": { "message": "Custom message to the user", "title": "Thank You", "subject": "..." }
 		}
 	
 	Errors:
