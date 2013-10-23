@@ -4,6 +4,17 @@
 
 @implementation MFCart
 
+@dynamic attributes;
+
+- (NSDictionary *)attributes
+{
+    NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
+    
+    
+    
+    return attributes;
+}
+
 @synthesize postIds = m_postIds;
 
 @end

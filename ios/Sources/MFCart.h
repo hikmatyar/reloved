@@ -8,6 +8,8 @@
     NSArray *m_postIds;
 }
 
+@property (nonatomic, retain, readonly) NSDictionary *attributes;
+
 @property (nonatomic, retain, readonly) NSArray *postIds;
 
 @end
