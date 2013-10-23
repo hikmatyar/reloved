@@ -2,7 +2,12 @@
 
 #import "MFBrowseController.h"
 #import "MFBrowseFilterController.h"
+#import "MFDatabase+Size.h"
+#import "MFDatabase+Type.h"
+#import "MFPreferences.h"
+#import "MFSize.h"
 #import "MFTableView.h"
+#import "MFType.h"
 #import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -14,8 +19,36 @@
 
 - (NSArray *)filters
 {
-    // TODO:
-    return nil;
+    MFPreferences *preferences = [MFPreferences sharedPreferences];
+    MFDatabase *database = [MFDatabase sharedDatabase];
+    NSMutableArray *filters = nil;
+    NSArray *excludeSet;
+    
+    if((excludeSet = preferences.excludeSizes) != nil && excludeSet.count > 0) {
+        for(MFSize *size in database.sizes) {
+            if(![excludeSet containsObject:size.identifier]) {
+                if(!filters) {
+                    filters = [[NSMutableArray alloc] init];
+                }
+                
+                [filters addObject:size];
+            }
+        }
+    }
+    
+    if((excludeSet = preferences.excludeTypes) != nil && excludeSet.count > 0) {
+        for(MFType *type in database.types) {
+            if(![excludeSet containsObject:type.identifier]) {
+                if(!filters) {
+                    filters = [[NSMutableArray alloc] init];
+                }
+                
+                [filters addObject:type];
+            }
+        }
+    }
+    
+    return filters;
 }
 
 - (MFWebFeed *)feedForScope:(MFBrowseControllerScope)scope

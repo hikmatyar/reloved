@@ -516,6 +516,8 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 {
     self = [super init];
     
+    MFDebug(@"New Feed: %@", identifier);
+    
     if(self) {
         NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
         
