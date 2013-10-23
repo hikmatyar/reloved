@@ -28,7 +28,7 @@
     MFWebRequest *request = [[MFWebRequest alloc] initWithService:self
                                                              mode:kMFWebRequestModeJsonPost
                                                            target:target
-                                                             path:@"/checkout/commit"
+                                                             path:@"/order/create"
                                                        parameters:cart.attributes];
     
     request.block = block;
@@ -41,7 +41,7 @@
     MFWebRequest *request = [[MFWebRequest alloc] initWithService:self
                                                              mode:kMFWebRequestModeJsonPost
                                                            target:target
-                                                             path:@"/checkout/status"
+                                                             path:@"/order/status"
                                                        parameters:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                   orderId, @"id", nil]];
     
