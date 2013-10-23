@@ -3,6 +3,9 @@
 #import "MFCart.h"
 #import "MFCheckoutController+Confirm.h"
 #import "MFCheckoutPageView.h"
+#import "MFDatabase+Post.h"
+#import "MFPost.h"
+#import "MFPostEditableTableViewCell.h"
 #import "MFSectionHeaderView.h"
 #import "MFTableView.h"
 #import "MFTableViewCell.h"
@@ -21,6 +24,7 @@
 
 #define CELL_SUMMARY @"summary"
 #define CELL_SUMMARY_PLUS_HELP @"summary_help"
+#define CELL_PAYMENT @"payment"
 
 @interface MFCheckoutController_Confirm : MFCheckoutPageView <UITableViewDataSource, UITableViewDelegate>
 {
@@ -75,7 +79,7 @@
         case SECTION_SUMMARY:
             return 4;
         case SECTION_PAYMENT:
-            return 0;
+            return 1;
         case SECTION_SHIPPING:
             return 0;
         case SECTION_DELIVERY:
@@ -123,7 +127,20 @@
             return cell;
         } break;
         case SECTION_PAYMENT: {
+            MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_PAYMENT];
             
+            if(!cell) {
+                cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_PAYMENT];
+                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
+                cell.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
+                cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
+            }
+            
+            cell.textLabel.text = @"Visa ****-1234"; // TODO:
+            
+            return cell;
         } break;
         case SECTION_SHIPPING: {
             
