@@ -5,14 +5,17 @@
 #import "MFCheckoutPageView.h"
 #import "MFDatabase+Post.h"
 #import "MFPost.h"
+#import "MFPostController.h"
 #import "MFPostEditableTableViewCell.h"
 #import "MFSectionHeaderView.h"
 #import "MFTableView.h"
 #import "MFTableViewCell.h"
 #import "MFWebController.h"
+#import "MFWebPost.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UITableView+Additions.h"
+#import "UIView+Additions.h"
 
 #define SECTION_SUMMARY 0
 #define SECTION_SUMMARY_ROW_ITEMS 0
@@ -55,6 +58,12 @@
         m_tableView.dataSource = self;
         m_tableView.delegate = self;
         m_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        m_tableView.tableFooterView = [UIView themeSeparatorView];
+        
+        if([m_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+            m_tableView.separatorInset = UIEdgeInsetsMake(0.0F, 0.0F, 0.0F, 0.0F);
+        }
+        
         [self addSubview:m_tableView];
     }
     
@@ -91,7 +100,7 @@
         case SECTION_SHIPPING:
             return 1;
         case SECTION_POSTS:
-            return 0;
+            return m_controller.cart.postIds.count;
         case SECTION_DELIVERY:
             return 1;
     }
@@ -181,7 +190,16 @@
             return cell;
         } break;
         case SECTION_POSTS: {
+            MFPost *post = [[MFDatabase sharedDatabase] postForIdentifier:[m_controller.cart.postIds objectAtIndex:indexPath.row]];
+            MFPostEditableTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_POSTS];
             
+            if(!cell) {
+                cell = [[MFPostEditableTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_POSTS];
+            }
+            
+            cell.post = post;
+            
+            return cell;
         } break;
         case SECTION_DELIVERY: {
             MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_DELIVERY];
@@ -221,7 +239,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return (section != SECTION_DELIVERY) ? [MFSectionHeaderView preferredHeight] : 0.0F;
+    return (section != SECTION_DELIVERY) ? [MFSectionHeaderView preferredHeight] : 1.0F;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -235,6 +253,8 @@
             return [[MFSectionHeaderView alloc] initWithTitle:NSLocalizedString(@"Checkout.Label.ShippingInfo", nil)];
         case SECTION_POSTS:
             return [[MFSectionHeaderView alloc] initWithTitle:NSLocalizedString(@"Checkout.Label.DeliveryDetails", nil)];
+        case SECTION_DELIVERY:
+            return [UIView themeSeparatorView];
     }
     
     return nil;
@@ -261,8 +281,15 @@
             break;
         case SECTION_SHIPPING:
             break;
-        case SECTION_POSTS:
-            break;
+        case SECTION_POSTS: {
+            MFPost *post = [[MFDatabase sharedDatabase] postForIdentifier:[m_controller.cart.postIds objectAtIndex:indexPath.row]];
+            
+            if(post) {
+                MFPostController *controller = [[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithPost:post] userInteractionEnabled:NO];
+                
+                [m_controller.navigationController pushViewController:controller animated:YES];
+            }
+        } break;
         case SECTION_DELIVERY:
             [m_controller.navigationController pushViewController:
                         [[MFWebController alloc] initWithContentsOfFile:@"Shipping-Info"
