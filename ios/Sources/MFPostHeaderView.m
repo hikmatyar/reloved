@@ -28,6 +28,7 @@
     @private
     UIScrollView *m_scrollView;
     UIButton *m_imageButton;
+    NSMutableArray *m_thumbnailViews;
 }
 
 @property (nonatomic, retain, readonly) UIButton *imageButton;
@@ -35,6 +36,17 @@
 @end
 
 @implementation MFPostTableViewCell_Header
+
+- (void)invalidateSelection
+{
+    NSInteger index = self.selectedImageIndex;
+    
+    for(NSInteger i = 0, c = m_thumbnailViews.count; i < c; i++) {
+        MFImageView *thumbnailView = [m_thumbnailViews objectAtIndex:i];
+        
+        thumbnailView.layer.borderColor = (index == i) ? [UIColor themeButtonBorderSelectedColor].CGColor : [UIColor themeButtonBorderColor].CGColor;
+    }
+}
 
 - (IBAction)thumbnail:(MFButton *)sender
 {
@@ -46,6 +58,7 @@
         
         if(index != NSNotFound) {
             self.selectedImageIndex = index;
+            [self invalidateSelection];
         }
     }
 }
@@ -73,12 +86,14 @@
         }
     }
     
+    [m_thumbnailViews removeAllObjects];
+    
     for(NSString *mediaId in post.mediaIds) {
         MFImageView *imageView = [[MFImageView alloc] initWithFrame:thumbnailRect];
         MFButton *imageButton = [MFButton buttonWithType:UIButtonTypeCustom];
         
         imageView.layer.borderWidth = 1.0F;
-        imageView.layer.borderColor = [UIColor themeImageBorderColor].CGColor;
+        imageView.layer.borderColor = [UIColor themeButtonBorderColor].CGColor;
         imageView.URL = [database URLForMedia:mediaId size:kMFMediaSizeThumbnailSmall];
         [m_scrollView addSubview:imageView];
         
@@ -86,11 +101,13 @@
         imageButton.frame = thumbnailRect;
         [imageButton addTarget:self action:@selector(thumbnail:) forControlEvents:UIControlEventTouchUpInside];
         [m_scrollView addSubview:imageButton];
+        [m_thumbnailViews addObject:imageView];
         
         thumbnailRect.origin.x += thumbnailRect.size.width + THUMBNAIL_PADDING;
     }
     
     m_scrollView.contentSize = CGSizeMake(thumbnailRect.origin.x, thumbnailRect.origin.y + thumbnailRect.size.height);
+    [self invalidateSelection];
 }
 
 #pragma mark UITableViewCell
@@ -100,6 +117,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if(self) {
+        m_thumbnailViews = [[NSMutableArray alloc] init];
+        
         m_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 100.0F, THUMBNAIL_HEIGHT)];
         m_scrollView.directionalLockEnabled = YES;
         m_scrollView.showsVerticalScrollIndicator = NO;
