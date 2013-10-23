@@ -128,6 +128,8 @@
 		8120C1CE17E0685A00A1C3A9 /* MFHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1CD17E0685A00A1C3A9 /* MFHistoryController.m */; };
 		8120C1D117E068EF00A1C3A9 /* MFRecentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1D017E068EF00A1C3A9 /* MFRecentsController.m */; };
 		8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */; };
+		8121BC591817ED5300396B1F /* MFCheckout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8121BC581817ED5300396B1F /* MFCheckout.m */; };
+		8121BC5C1817F1BD00396B1F /* MFOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8121BC5B1817F1BD00396B1F /* MFOrder.m */; };
 		81233D4C17F8CD7900C27805 /* MFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */; };
 		81233D4F17F8CEA500C27805 /* MFWebPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4E17F8CEA500C27805 /* MFWebPost.m */; };
 		81233D5517F8DDDF00C27805 /* MFSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D5417F8DDDF00C27805 /* MFSize.m */; };
@@ -512,6 +514,10 @@
 		8120C1D017E068EF00A1C3A9 /* MFRecentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFRecentsController.m; path = Sources/MFRecentsController.m; sourceTree = SOURCE_ROOT; };
 		8120C1D217E0698F00A1C3A9 /* MFBrowseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFBrowseController.h; path = Sources/MFBrowseController.h; sourceTree = SOURCE_ROOT; };
 		8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFBrowseController.m; path = Sources/MFBrowseController.m; sourceTree = SOURCE_ROOT; };
+		8121BC571817ED5300396B1F /* MFCheckout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCheckout.h; path = Sources/MFCheckout.h; sourceTree = SOURCE_ROOT; };
+		8121BC581817ED5300396B1F /* MFCheckout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCheckout.m; path = Sources/MFCheckout.m; sourceTree = SOURCE_ROOT; };
+		8121BC5A1817F1BD00396B1F /* MFOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFOrder.h; path = Sources/MFOrder.h; sourceTree = SOURCE_ROOT; };
+		8121BC5B1817F1BD00396B1F /* MFOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFOrder.m; path = Sources/MFOrder.m; sourceTree = SOURCE_ROOT; };
 		81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostTableViewCell.h; path = Sources/MFPostTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostTableViewCell.m; path = Sources/MFPostTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		81233D4D17F8CEA500C27805 /* MFWebPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebPost.h; path = Sources/MFWebPost.h; sourceTree = SOURCE_ROOT; };
@@ -1051,6 +1057,8 @@
 				81233D6C17F8F17E00C27805 /* MFBrand.m */,
 				817139F81815D11300CF8805 /* MFCart.h */,
 				817139F91815D11300CF8805 /* MFCart.m */,
+				8121BC571817ED5300396B1F /* MFCheckout.h */,
+				8121BC581817ED5300396B1F /* MFCheckout.m */,
 				81233D5617F8DDEA00C27805 /* MFColor.h */,
 				81233D5717F8DDEA00C27805 /* MFColor.m */,
 				81136AC7180C527F009142AE /* MFComment.h */,
@@ -1071,6 +1079,8 @@
 				81136AC2180B5A8E009142AE /* MFMedia.m */,
 				8119DFEF17E06F0C007AEDC2 /* MFMoney.h */,
 				8119DFF017E06F0C007AEDC2 /* MFMoney.m */,
+				8121BC5A1817F1BD00396B1F /* MFOrder.h */,
+				8121BC5B1817F1BD00396B1F /* MFOrder.m */,
 				8119DFEC17E06F00007AEDC2 /* MFPost.h */,
 				8119DFED17E06F00007AEDC2 /* MFPost.m */,
 				81D54BBA180F3D79002D3449 /* MFPostDetails.h */,
@@ -1833,6 +1843,7 @@
 				81B27B2D17F6103700F9BC09 /* PKView.m in Sources */,
 				8119DFF417E09E58007AEDC2 /* MFWebCache.m in Sources */,
 				81D54BC2180F6120002D3449 /* MFFormPickerField.m in Sources */,
+				8121BC5C1817F1BD00396B1F /* MFOrder.m in Sources */,
 				8119DFD017E06BE8007AEDC2 /* MFTableViewCell.m in Sources */,
 				8120C13A17DFA82100A1C3A9 /* MFCheckoutController.m in Sources */,
 				81DE1CFE17F3920F00965401 /* UIPhotoItemView.m in Sources */,
@@ -1900,6 +1911,7 @@
 				8120C1C117E05C9F00A1C3A9 /* MFHomeFooterView.m in Sources */,
 				81B27B1017F60F3700F9BC09 /* STPToken.m in Sources */,
 				8120C17117DFBFA700A1C3A9 /* NSString+Additions.m in Sources */,
+				8121BC591817ED5300396B1F /* MFCheckout.m in Sources */,
 				812F4ABD17DEFDB400454747 /* MFFeedController.m in Sources */,
 				817723E617FDAAEC004A28CC /* MFFormTextField.m in Sources */,
 				817723E317FDAAD8004A28CC /* MFFormButton.m in Sources */,
