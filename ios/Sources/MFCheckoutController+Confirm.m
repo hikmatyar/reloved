@@ -12,6 +12,7 @@
 #import "MFWebController.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UITableView+Additions.h"
 
 #define SECTION_SUMMARY 0
 #define SECTION_SUMMARY_ROW_ITEMS 0
@@ -20,13 +21,16 @@
 #define SECTION_SUMMARY_ROW_TOTAL 3
 #define SECTION_PAYMENT 1
 #define SECTION_SHIPPING 2
-#define SECTION_DELIVERY 3
+#define SECTION_POSTS 3
+#define SECTION_DELIVERY 4
 
 #define CELL_SUMMARY @"summary"
 #define CELL_SUMMARY_PLUS_HELP @"summary_help"
 #define CELL_SUMMARY_PLUS_SEPARATOR @"summary_separator"
 #define CELL_PAYMENT @"payment"
 #define CELL_SHIPPING @"shipping"
+#define CELL_POSTS @"post"
+#define CELL_DELIVERY @"delivery"
 
 @interface MFCheckoutController_Confirm : MFCheckoutPageView <UITableViewDataSource, UITableViewDelegate>
 {
@@ -67,13 +71,14 @@
 - (void)pageWillAppear
 {
     [super pageWillAppear];
+    [m_tableView clearSelection];
 }
 
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -85,8 +90,10 @@
             return 1;
         case SECTION_SHIPPING:
             return 1;
-        case SECTION_DELIVERY:
+        case SECTION_POSTS:
             return 0;
+        case SECTION_DELIVERY:
+            return 1;
     }
     
     return 0;
@@ -173,8 +180,23 @@
             
             return cell;
         } break;
-        case SECTION_DELIVERY: {
+        case SECTION_POSTS: {
             
+        } break;
+        case SECTION_DELIVERY: {
+            MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_DELIVERY];
+            
+            if(!cell) {
+                cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_DELIVERY];
+                cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
+                cell.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
+                cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
+                cell.textLabel.text = NSLocalizedString(@"Checkout.Action.Delivery", nil);
+            }
+            
+            return cell;
         } break;
     }
     
@@ -188,6 +210,10 @@
     switch(indexPath.section) {
         case SECTION_SHIPPING:
             return 3.0F * 26.0F;
+        case SECTION_POSTS:
+            return [MFPostEditableTableViewCell preferredHeight];
+        case SECTION_DELIVERY:
+            return 45.0F;
     }
     
     return 26.0F;
@@ -195,7 +221,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return [MFSectionHeaderView preferredHeight];
+    return (section != SECTION_DELIVERY) ? [MFSectionHeaderView preferredHeight] : 0.0F;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -207,7 +233,7 @@
             return [[MFSectionHeaderView alloc] initWithTitle:NSLocalizedString(@"Checkout.Label.PaymentMethod", nil)];
         case SECTION_SHIPPING:
             return [[MFSectionHeaderView alloc] initWithTitle:NSLocalizedString(@"Checkout.Label.ShippingInfo", nil)];
-        case SECTION_DELIVERY:
+        case SECTION_POSTS:
             return [[MFSectionHeaderView alloc] initWithTitle:NSLocalizedString(@"Checkout.Label.DeliveryDetails", nil)];
     }
     
@@ -235,7 +261,12 @@
             break;
         case SECTION_SHIPPING:
             break;
+        case SECTION_POSTS:
+            break;
         case SECTION_DELIVERY:
+            [m_controller.navigationController pushViewController:
+                        [[MFWebController alloc] initWithContentsOfFile:@"Shipping-Info"
+                                                                  title:NSLocalizedString(@"Checkout.Label.DeliveryDetails", nil)] animated:YES];
             break;
     }
 }
