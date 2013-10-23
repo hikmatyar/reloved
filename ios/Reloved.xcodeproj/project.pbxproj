@@ -132,6 +132,10 @@
 		8121BC5C1817F1BD00396B1F /* MFOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8121BC5B1817F1BD00396B1F /* MFOrder.m */; };
 		8121BC5F1818058300396B1F /* MFNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8121BC5E1818058300396B1F /* MFNotice.m */; };
 		8121BC62181823C300396B1F /* MFNoticeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8121BC61181823C300396B1F /* MFNoticeController.m */; };
+		8121BC67181835CA00396B1F /* Checkout-Help.png in Resources */ = {isa = PBXBuildFile; fileRef = 8121BC63181835CA00396B1F /* Checkout-Help.png */; };
+		8121BC68181835CA00396B1F /* Checkout-Help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8121BC64181835CA00396B1F /* Checkout-Help@2x.png */; };
+		8121BC69181835CA00396B1F /* Checkout-NoHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 8121BC65181835CA00396B1F /* Checkout-NoHelp.png */; };
+		8121BC6A181835CA00396B1F /* Checkout-NoHelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8121BC66181835CA00396B1F /* Checkout-NoHelp@2x.png */; };
 		81233D4C17F8CD7900C27805 /* MFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */; };
 		81233D4F17F8CEA500C27805 /* MFWebPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4E17F8CEA500C27805 /* MFWebPost.m */; };
 		81233D5517F8DDDF00C27805 /* MFSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D5417F8DDDF00C27805 /* MFSize.m */; };
@@ -524,6 +528,10 @@
 		8121BC5E1818058300396B1F /* MFNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNotice.m; path = Sources/MFNotice.m; sourceTree = SOURCE_ROOT; };
 		8121BC60181823C300396B1F /* MFNoticeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNoticeController.h; path = Sources/MFNoticeController.h; sourceTree = SOURCE_ROOT; };
 		8121BC61181823C300396B1F /* MFNoticeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNoticeController.m; path = Sources/MFNoticeController.m; sourceTree = SOURCE_ROOT; };
+		8121BC63181835CA00396B1F /* Checkout-Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Help.png"; path = "Images/Checkout-Help.png"; sourceTree = "<group>"; };
+		8121BC64181835CA00396B1F /* Checkout-Help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Help@2x.png"; path = "Images/Checkout-Help@2x.png"; sourceTree = "<group>"; };
+		8121BC65181835CA00396B1F /* Checkout-NoHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-NoHelp.png"; path = "Images/Checkout-NoHelp.png"; sourceTree = "<group>"; };
+		8121BC66181835CA00396B1F /* Checkout-NoHelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-NoHelp@2x.png"; path = "Images/Checkout-NoHelp@2x.png"; sourceTree = "<group>"; };
 		81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostTableViewCell.h; path = Sources/MFPostTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostTableViewCell.m; path = Sources/MFPostTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		81233D4D17F8CEA500C27805 /* MFWebPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebPost.h; path = Sources/MFWebPost.h; sourceTree = SOURCE_ROOT; };
@@ -1274,6 +1282,10 @@
 				81136ACF180C549B009142AE /* Cartoon3@2x.jpg */,
 				81B30E2D180DC8E600FF414D /* Checkmark.png */,
 				81B30E2E180DC8E600FF414D /* Checkmark@2x.png */,
+				8121BC63181835CA00396B1F /* Checkout-Help.png */,
+				8121BC64181835CA00396B1F /* Checkout-Help@2x.png */,
+				8121BC65181835CA00396B1F /* Checkout-NoHelp.png */,
+				8121BC66181835CA00396B1F /* Checkout-NoHelp@2x.png */,
 				81E529F71810D58E004D88F3 /* Checkout-Progress-Selected.png */,
 				81E529F81810D58E004D88F3 /* Checkout-Progress-Selected@2x.png */,
 				81E529FB1810D69A004D88F3 /* Checkout-Progress-Unselected.png */,
@@ -1657,6 +1669,7 @@
 				8120C19117E0470300A1C3A9 /* Home-About.png in Resources */,
 				8120C1BA17E0532E00A1C3A9 /* Home-ShopByColor@2x.png in Resources */,
 				8120C1C517E05D7500A1C3A9 /* Home-Checkmark@2x.png in Resources */,
+				8121BC6A181835CA00396B1F /* Checkout-NoHelp@2x.png in Resources */,
 				81B27B5217F6107100F9BC09 /* jcb@2x.png in Resources */,
 				8120C16217DFB48600A1C3A9 /* Navigation-Filter.png in Resources */,
 				8120C15517DFAD9600A1C3A9 /* Menu-Cart.png in Resources */,
@@ -1680,6 +1693,7 @@
 				817340BE1816F3850068C3EB /* Thumbnail-Placeholder.png in Resources */,
 				8120C1AB17E049B400A1C3A9 /* Navigation-Logo.png in Resources */,
 				81B27B4717F6107100F9BC09 /* amex.png in Resources */,
+				8121BC69181835CA00396B1F /* Checkout-NoHelp.png in Resources */,
 				81DE2D3417F5FCC4001D0ADF /* Disclosure-Indicator@2x.png in Resources */,
 				8120C19617E0470300A1C3A9 /* Home-BrowseAll@2x.png in Resources */,
 				81E529DC1810A316004D88F3 /* Comments-BubbleTriangle.png in Resources */,
@@ -1725,6 +1739,7 @@
 				812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */,
 				8120C19417E0470300A1C3A9 /* Home-Bookmarks@2x.png in Resources */,
 				8120C19D17E0470300A1C3A9 /* Home-History.png in Resources */,
+				8121BC67181835CA00396B1F /* Checkout-Help.png in Resources */,
 				81BC174C17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png in Resources */,
 				81D54BC8180F6281002D3449 /* Picker-Arrow@2x.png in Resources */,
 				8120C1A417E0470300A1C3A9 /* Home-ReturnsPolicy@2x.png in Resources */,
@@ -1738,6 +1753,7 @@
 				8110829817F8809F005CC8ED /* Blue-Dot.png in Resources */,
 				81BD883018121FF000549748 /* Next-Indicator@2x.png in Resources */,
 				8120C14F17DFAD8C00A1C3A9 /* Menu-News@2x.png in Resources */,
+				8121BC68181835CA00396B1F /* Checkout-Help@2x.png in Resources */,
 				81B27B5017F6107100F9BC09 /* discover@2x.png in Resources */,
 				81136AD3180C549B009142AE /* Cartoon2@2x.jpg in Resources */,
 				8120C1B717E0532500A1C3A9 /* Home-ShopByDress.png in Resources */,
