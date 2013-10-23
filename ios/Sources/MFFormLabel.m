@@ -13,6 +13,29 @@
 
 @synthesize edgeInsets = m_edgeInsets;
 
+- (void)setText:(NSString *)text hint:(NSString *)hint
+{
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] init];
+    
+    [str beginEditing];
+    
+    if(text) {
+        [str appendAttributedString:[[NSAttributedString alloc] initWithString:text attributes:
+            [NSDictionary dictionaryWithObjectsAndKeys:[UIColor themeTextColor], NSForegroundColorAttributeName, nil]]];
+    }
+    
+    if(hint) {
+        [str appendAttributedString:[[NSAttributedString alloc] initWithString:hint attributes:
+            [NSDictionary dictionaryWithObjectsAndKeys:
+                [UIColor themeTextAlternativeColor], NSForegroundColorAttributeName,
+                [UIFont themeFontOfSize:13.0F], NSFontAttributeName, nil]]];
+    }
+    
+    [str endEditing];
+    
+    self.attributedText = str;
+}
+
 #pragma mark UIView
 
 - (id)initWithFrame:(CGRect)frame

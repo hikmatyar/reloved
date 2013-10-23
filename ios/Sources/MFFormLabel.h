@@ -11,5 +11,6 @@
 + (CGFloat)preferredHeight;
 
 @property (nonatomic, assign) UIEdgeInsets edgeInsets;
+- (void)setText:(NSString *)text hint:(NSString *)hint;
 
 @end
