@@ -264,6 +264,14 @@
 - (void)pageWillDisappear
 {
     [super pageWillDisappear];
+    
+    [m_fullNameTextField resignFirstResponder];
+    [m_addressTextView resignFirstResponder];
+    [m_cityTextField resignFirstResponder];
+    [m_zipCodeTextField resignFirstResponder];
+    [m_phoneTextField resignFirstResponder];
+    [m_emailTextField resignFirstResponder];
+    [m_countryPickerField resignFirstResponder];
 }
 
 @end
