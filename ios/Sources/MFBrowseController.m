@@ -12,21 +12,29 @@
 
 @implementation MFBrowseController
 
-- (id)initWithScope:(MFBrowseControllerScope)scope
+- (NSArray *)filters
 {
-    MFWebFeed *feed = nil;
-    
+    // TODO:
+    return nil;
+}
+
+- (MFWebFeed *)feedForScope:(MFBrowseControllerScope)scope
+{
     switch(scope) {
         case kMFBrowseControllerScopeEditorial:
-            feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyEditorial];
-            break;
+            return [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyEditorial filters:self.filters];
         case kMFBrowseControllerScopeNew:
-            feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyNew];
-            break;
+            return [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyNew filters:self.filters];
         case kMFBrowseControllerScopeAll:
-            feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindAll];
-            break;
+            return [MFWebFeed sharedFeedOfKind:kMFWebFeedKindAll filters:self.filters];
     }
+    
+    return nil;
+}
+
+- (id)initWithScope:(MFBrowseControllerScope)scope
+{
+    MFWebFeed *feed = [self feedForScope:scope];
     
     self = [self initWithFeed:feed];
     
@@ -66,22 +74,19 @@
 {
     if(m_scope != scope) {
         UISegmentedControl *scopePicker = self.scopePicker;
+        MFWebFeed *feed = [self feedForScope:scope];
         NSInteger selectedIndex;
-        MFWebFeed *feed = nil;
         
         m_scope = scope;
         
         switch(m_scope) {
             case kMFBrowseControllerScopeEditorial:
-                feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyEditorial];
                 selectedIndex = 0;
                 break;
             case kMFBrowseControllerScopeNew:
-                feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyNew];
                 selectedIndex = 1;
                 break;
             case kMFBrowseControllerScopeAll:
-                feed = [MFWebFeed sharedFeedOfKind:kMFWebFeedKindAll];
                 selectedIndex = 2;
                 break;
         }
@@ -96,7 +101,7 @@
 
 - (IBAction)filter:(id)sender
 {
-    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:[[MFBrowseFilterController alloc] init]];
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:[[MFBrowseFilterController alloc] initWithDelegate:self]];
  
     controller.navigationBar.translucent = self.navigationController.navigationBar.translucent;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -124,6 +129,13 @@
 {
     [self updateScopeLabel:self.feed.numberOfResults];
     [super feedDidChange];
+}
+
+#pragma mark MFBrowseFilterControllerDelegate
+
+- (void)filterControllerDidClose:(MFBrowseFilterController *)controller
+{
+    self.feed = [self feedForScope:m_scope];
 }
 
 #pragma mark UIViewController

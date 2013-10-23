@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFBrowseFilterController.h"
+#import "MFBrowseFilterControllerDelegate.h"
 #import "MFColor.h"
 #import "MFDatabase+Color.h"
 #import "MFDatabase+Size.h"
@@ -78,6 +79,19 @@
     
     return self;
 }
+
+- (id)initWithDelegate:(id <MFBrowseFilterControllerDelegate>)delegate
+{
+    self = [self init];
+    
+    if(self) {
+        m_delegate = delegate;
+    }
+    
+    return self;
+}
+
+@synthesize delegate = m_delegate;
 
 - (IBAction)category:(id)sender
 {
@@ -356,6 +370,11 @@
     [center removeObserver:self name:MFDatabaseDidChangeColorsNotification object:nil];
     [center removeObserver:self name:MFDatabaseDidChangeSizesNotification object:nil];
     [center removeObserver:self name:MFDatabaseDidChangeTypesNotification object:nil];
+    
+    if([m_delegate respondsToSelector:@selector(filterControllerDidClose:)]) {
+        [m_delegate filterControllerDidClose:self];
+    }
+    
     [super viewWillDisappear:animated];
 }
 

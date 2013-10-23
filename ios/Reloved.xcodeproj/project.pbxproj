@@ -538,6 +538,7 @@
 		8121BC6C18184A9300396B1F /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Additions.m"; path = "Sources/Additions/UIView+Additions.m"; sourceTree = SOURCE_ROOT; };
 		8121BC6E181874C700396B1F /* MFFormContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFFormContainer.h; path = Sources/MFFormContainer.h; sourceTree = SOURCE_ROOT; };
 		8121BC6F181874C700396B1F /* MFFormContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFFormContainer.m; path = Sources/MFFormContainer.m; sourceTree = SOURCE_ROOT; };
+		8121BC7418187EC200396B1F /* MFBrowseFilterControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MFBrowseFilterControllerDelegate.h; path = Sources/MFBrowseFilterControllerDelegate.h; sourceTree = SOURCE_ROOT; };
 		81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostTableViewCell.h; path = Sources/MFPostTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostTableViewCell.m; path = Sources/MFPostTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		81233D4D17F8CEA500C27805 /* MFWebPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebPost.h; path = Sources/MFWebPost.h; sourceTree = SOURCE_ROOT; };
@@ -938,6 +939,7 @@
 				8120C1D317E0698F00A1C3A9 /* MFBrowseController.m */,
 				81233D8017F8F9C800C27805 /* MFBrowseFilterController.h */,
 				81233D8117F8F9C800C27805 /* MFBrowseFilterController.m */,
+				8121BC7418187EC200396B1F /* MFBrowseFilterControllerDelegate.h */,
 				8120C13817DFA82100A1C3A9 /* MFCheckoutController.h */,
 				8120C13917DFA82100A1C3A9 /* MFCheckoutController.m */,
 				81E529E81810CFF3004D88F3 /* MFCheckoutController+Address.h */,
