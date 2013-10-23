@@ -24,6 +24,7 @@
 
 #define CELL_SUMMARY @"summary"
 #define CELL_SUMMARY_PLUS_HELP @"summary_help"
+#define CELL_SUMMARY_PLUS_SEPARATOR @"summary_separator"
 #define CELL_PAYMENT @"payment"
 #define CELL_SHIPPING @"shipping"
 
@@ -46,6 +47,7 @@
     if(self) {
         m_tableView = [[MFTableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
         m_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        m_tableView.backgroundColor = [UIColor themeBackgroundColor];
         m_tableView.dataSource = self;
         m_tableView.delegate = self;
         m_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -94,16 +96,26 @@
 {
     switch(indexPath.section) {
         case SECTION_SUMMARY: {
+            BOOL withSeparator = (indexPath.row == SECTION_SUMMARY_ROW_TOTAL) ? YES : NO;
             BOOL withHelp = (indexPath.row == SECTION_SUMMARY_ROW_SHIPPING || indexPath.row == SECTION_SUMMARY_ROW_FEE) ? YES : NO;
-            MFTableViewCell *cell = (MFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:(withHelp) ? CELL_SUMMARY_PLUS_HELP : CELL_SUMMARY];
+            NSString *identifier = (withHelp) ? CELL_SUMMARY_PLUS_HELP : ((withSeparator) ? CELL_SUMMARY_PLUS_SEPARATOR : CELL_SUMMARY);
+            MFTableViewCell *cell = (MFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
             
             if(!cell) {
-                cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:(withHelp) ? CELL_SUMMARY_PLUS_HELP : CELL_SUMMARY];
+                cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
                 cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:(withHelp) ? @"Checkout-Help.png" : @"Checkout-NoHelp.png"]];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
                 cell.detailTextLabel.font = [UIFont themeFontOfSize:13.0F];
                 cell.backgroundColor = [UIColor themeButtonBackgroundColor];
+                
+                if(withSeparator) {
+                    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 1.0F)];
+                    
+                    separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+                    separatorView.backgroundColor = [UIColor themeSeparatorColor];
+                    [cell.contentView addSubview:separatorView];
+                }
             }
             
             switch(indexPath.row) {
