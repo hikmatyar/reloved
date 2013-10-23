@@ -35,3 +35,9 @@
 #pragma mark External Services
 
 #define GOOGLE_ANALYTICS @"UA-43966613-1"
+
+#ifdef DEBUG
+#define STRIPE_KEY @"pk_live_zz9Sz900PnHxzucR0zQHrRkL"
+#else
+#define STRIPE_KEY @"pk_test_cenZA7S6bA2HRrw6LXhHxfrm"
+#endif
