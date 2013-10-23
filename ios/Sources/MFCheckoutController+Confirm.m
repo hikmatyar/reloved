@@ -272,7 +272,7 @@
                     break;
                 case SECTION_SUMMARY_ROW_SHIPPING:
                     [m_controller.navigationController pushViewController:
-                        [[MFWebController alloc] initWithContentsOfFile:@"Shipping-Info"
+                        [[MFWebController alloc] initWithContentsOfFile:@"Shipping-And-Packing"
                                                                   title:NSLocalizedString(@"Checkout.Label.ShippingAndPacking", nil)] animated:YES];
                     break;
             }
