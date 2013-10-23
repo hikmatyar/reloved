@@ -27,6 +27,7 @@
     UILabel *m_headerLabel;
     MFTableView *m_tableView;
     UILabel *m_footerLabel;
+    BOOL m_updating;
 }
 
 @end
@@ -35,7 +36,13 @@
 
 - (IBAction)action:(id)sender
 {
-    
+    if(m_tableView.editing) {
+        m_actionButton.selected = NO;
+        [m_tableView setEditing:NO animated:YES];
+    } else {
+        m_actionButton.selected = YES;
+        [m_tableView setEditing:YES animated:YES];
+    }
 }
 
 #pragma mark MFCheckoutPageView
@@ -126,7 +133,22 @@
     
     m_headerLabel.text = [NSString stringWithFormat:NSLocalizedString((posts.count == 1) ? @"Checkout.Format.NumberOfItems" : @"Checkout.Format.NumberOfItems.Plural", nil), count];
     m_footerLabel.attributedText = footer;
-    [m_tableView reloadData];
+    
+    if(!m_updating) {
+        [m_tableView reloadData];
+    }
+}
+
+#pragma mark MFPageView
+
+- (void)pageWillAppear
+{
+    [super pageWillAppear];
+    
+    if(m_tableView.editing) {
+        m_actionButton.selected = NO;
+        [m_tableView setEditing:NO animated:NO];
+    }
 }
 
 #pragma mark UITableViewDataSource
@@ -150,7 +172,39 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(editingStyle == UITableViewCellEditingStyleDelete) {
+        MFPost *post = [[MFDatabase sharedDatabase] postForIdentifier:[m_controller.cart.postIds objectAtIndex:indexPath.row]];
+        
+        m_updating = YES;
+        [[[MFWebPost alloc] initWithPost:post] setIncludedInCart:NO];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        m_updating = NO;
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    return YES;
+}
+
 #pragma mark UITableViewDelegate
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NSLocalizedString(@"Checkout.Action.Remove", nil);
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    return UITableViewCellEditingStyleDelete;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

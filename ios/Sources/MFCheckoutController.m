@@ -12,10 +12,13 @@
 #import "MFPageScrollView.h"
 #import "MFPost.h"
 #import "MFProgressView.h"
+#import "MFNotice.h"
+#import "MFNoticeController.h"
 #import "MFSideMenuContainerViewController.h"
 #import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UIViewController+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
 
 #define TAG_PROGRESS_VIEW 1000
@@ -179,6 +182,8 @@
         for(MFCheckoutController_Step *step in m_steps) {
             [step.page cartDidChange];
         }
+        
+        [self invalidateNavigation];
     }
 }
 
@@ -266,7 +271,6 @@
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedDidChange:) name:MFWebFeedDidChangeNotification object:nil];
     [self feedDidChange:nil];
-    [self invalidateNavigation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -287,8 +291,8 @@
         m_stepIndex = 0;
         m_steps = [[NSArray alloc] initWithObjects:
             STEP_ITEM(NSLocalizedString(@"Checkout.Action.Cart", nil), NSLocalizedString(@"Checkout.Title.Cart", nil), [self createCartPageView]),
-            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Address", nil), NSLocalizedString(@"Checkout.Title.Address", nil), [self createAddressPageView]),
-            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Payment", nil), NSLocalizedString(@"Checkout.Title.Payment", nil), [self createPaymentPageView]),
+            //STEP_ITEM(NSLocalizedString(@"Checkout.Action.Address", nil), NSLocalizedString(@"Checkout.Title.Address", nil), [self createAddressPageView]),
+            //STEP_ITEM(NSLocalizedString(@"Checkout.Action.Payment", nil), NSLocalizedString(@"Checkout.Title.Payment", nil), [self createPaymentPageView]),
             STEP_ITEM(NSLocalizedString(@"Checkout.Action.Confirm", nil), NSLocalizedString(@"Checkout.Title.Confirm", nil), [self createConfirmPageView]),
             STEP_ITEM(NSLocalizedString(@"Checkout.Action.Receipt", nil), NSLocalizedString(@"Checkout.Title.Receipt", nil), [self createReceiptPageView]), nil];
         
