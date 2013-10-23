@@ -164,8 +164,8 @@
         
         footer = [[MFFormFooter alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormFooter preferredHeight])];
         footer.lineBreakMode = NSLineBreakByWordWrapping;
-        footer.text = NSLocalizedString(@"Checkout.Hint.Footer", nil);
-        [footer sizeToFit];
+        footer.text = NSLocalizedString(@"Checkout.Hint.Shipping", nil);
+        //[footer sizeToFit];
         [m_form addSubview:footer];
         
         m_form.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
