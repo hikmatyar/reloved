@@ -41,19 +41,29 @@
     if(m_post.loaded) {
         self.title = m_post.brand.name;
         
-        if(m_post.mine) {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(edit:)];
+        if(m_userInteractionEnabled) {
+            if(m_post.mine) {
+                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(edit:)];
+            } else {
+                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((m_post.includedInCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+            }
         } else {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((m_post.includedInCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+            self.navigationItem.rightBarButtonItem = nil;
         }
     }
 }
 
 - (id)initWithPost:(MFWebPost *)post
 {
+    return [self initWithPost:post userInteractionEnabled:YES];
+}
+
+- (id)initWithPost:(MFWebPost *)post userInteractionEnabled:(BOOL)userInteractionEnabled
+{
     self = [super init];
     
     if(self) {
+        m_userInteractionEnabled = userInteractionEnabled;
         m_post = post;
         m_menu = [[NSArray alloc] initWithObjects:
                 MENU_SECTION(NSLocalizedString(@"Post.Label.AboutThisDress", nil),
@@ -73,6 +83,7 @@
     return self;
 }
 
+@synthesize userInteractionEnabled = m_userInteractionEnabled;
 @synthesize post = m_post;
 
 - (UITableView *)tableView
@@ -429,15 +440,12 @@
 - (void)loadView
 {
     MFPostHeaderView *headerView = [[MFPostHeaderView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFPostHeaderView preferredHeight])];
-    MFPostFooterView *footerView = [[MFPostFooterView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFPostFooterView preferredHeight])];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     
     view.backgroundColor = [UIColor themeBackgroundColor];
     
     headerView.delegate = self;
-    footerView.delegate = self;
-    footerView.leftTitle = NSLocalizedString((m_post.saved) ? @"Post.Action.Unsave" : @"Post.Action.Save", nil);
     
     if([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         tableView.separatorInset = UIEdgeInsetsMake(0.0F, 0.0F, 0.0F, 0.0F);
@@ -446,7 +454,16 @@
     tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     tableView.backgroundColor = [UIColor themeBackgroundColor];
     tableView.tableHeaderView = headerView;
-    tableView.tableFooterView = footerView;
+    
+    if(m_userInteractionEnabled) {
+        MFPostFooterView *footerView = [[MFPostFooterView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFPostFooterView preferredHeight])];
+        
+        footerView.delegate = self;
+        footerView.leftTitle = NSLocalizedString((m_post.saved) ? @"Post.Action.Unsave" : @"Post.Action.Save", nil);
+        
+        tableView.tableFooterView = footerView;
+    }
+    
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.rowHeight = 45.0F;
