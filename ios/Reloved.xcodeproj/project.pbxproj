@@ -136,6 +136,7 @@
 		8121BC68181835CA00396B1F /* Checkout-Help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8121BC64181835CA00396B1F /* Checkout-Help@2x.png */; };
 		8121BC69181835CA00396B1F /* Checkout-NoHelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 8121BC65181835CA00396B1F /* Checkout-NoHelp.png */; };
 		8121BC6A181835CA00396B1F /* Checkout-NoHelp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8121BC66181835CA00396B1F /* Checkout-NoHelp@2x.png */; };
+		8121BC6D18184A9300396B1F /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8121BC6C18184A9300396B1F /* UIView+Additions.m */; };
 		81233D4C17F8CD7900C27805 /* MFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */; };
 		81233D4F17F8CEA500C27805 /* MFWebPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4E17F8CEA500C27805 /* MFWebPost.m */; };
 		81233D5517F8DDDF00C27805 /* MFSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D5417F8DDDF00C27805 /* MFSize.m */; };
@@ -532,6 +533,8 @@
 		8121BC64181835CA00396B1F /* Checkout-Help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Help@2x.png"; path = "Images/Checkout-Help@2x.png"; sourceTree = "<group>"; };
 		8121BC65181835CA00396B1F /* Checkout-NoHelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-NoHelp.png"; path = "Images/Checkout-NoHelp.png"; sourceTree = "<group>"; };
 		8121BC66181835CA00396B1F /* Checkout-NoHelp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-NoHelp@2x.png"; path = "Images/Checkout-NoHelp@2x.png"; sourceTree = "<group>"; };
+		8121BC6B18184A9300396B1F /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Additions.h"; path = "Sources/Additions/UIView+Additions.h"; sourceTree = SOURCE_ROOT; };
+		8121BC6C18184A9300396B1F /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Additions.m"; path = "Sources/Additions/UIView+Additions.m"; sourceTree = SOURCE_ROOT; };
 		81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostTableViewCell.h; path = Sources/MFPostTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostTableViewCell.m; path = Sources/MFPostTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		81233D4D17F8CEA500C27805 /* MFWebPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebPost.h; path = Sources/MFWebPost.h; sourceTree = SOURCE_ROOT; };
@@ -1418,6 +1421,8 @@
 				813510FD181585D0009B47DF /* UINavigationController+Additions.m */,
 				813FFCDC1811A6F200E7FEA2 /* UITableView+Additions.h */,
 				813FFCDD1811A6F200E7FEA2 /* UITableView+Additions.m */,
+				8121BC6B18184A9300396B1F /* UIView+Additions.h */,
+				8121BC6C18184A9300396B1F /* UIView+Additions.m */,
 				8141AB3C180474070087B740 /* UIViewController+Additions.h */,
 				8141AB3D180474070087B740 /* UIViewController+Additions.m */,
 			);
@@ -1824,6 +1829,7 @@
 				81B30E35180DE5AD00FF414D /* base64.c in Sources */,
 				81233D8517F912B000C27805 /* MFSectionHeaderView.m in Sources */,
 				811082C517F8C805005CC8ED /* MFWebService+Feed.m in Sources */,
+				8121BC6D18184A9300396B1F /* UIView+Additions.m in Sources */,
 				812F4AE317DEFEE900454747 /* ASIDownloadCache.m in Sources */,
 				81D0967C17FCD46F0044BD06 /* MFNewPostController+Notes.m in Sources */,
 				81B27B0F17F60F3700F9BC09 /* STPCard.m in Sources */,
