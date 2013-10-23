@@ -131,6 +131,7 @@
 		8121BC591817ED5300396B1F /* MFCheckout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8121BC581817ED5300396B1F /* MFCheckout.m */; };
 		8121BC5C1817F1BD00396B1F /* MFOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8121BC5B1817F1BD00396B1F /* MFOrder.m */; };
 		8121BC5F1818058300396B1F /* MFNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8121BC5E1818058300396B1F /* MFNotice.m */; };
+		8121BC62181823C300396B1F /* MFNoticeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8121BC61181823C300396B1F /* MFNoticeController.m */; };
 		81233D4C17F8CD7900C27805 /* MFPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */; };
 		81233D4F17F8CEA500C27805 /* MFWebPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D4E17F8CEA500C27805 /* MFWebPost.m */; };
 		81233D5517F8DDDF00C27805 /* MFSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 81233D5417F8DDDF00C27805 /* MFSize.m */; };
@@ -521,6 +522,8 @@
 		8121BC5B1817F1BD00396B1F /* MFOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFOrder.m; path = Sources/MFOrder.m; sourceTree = SOURCE_ROOT; };
 		8121BC5D1818058300396B1F /* MFNotice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNotice.h; path = Sources/MFNotice.h; sourceTree = SOURCE_ROOT; };
 		8121BC5E1818058300396B1F /* MFNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNotice.m; path = Sources/MFNotice.m; sourceTree = SOURCE_ROOT; };
+		8121BC60181823C300396B1F /* MFNoticeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFNoticeController.h; path = Sources/MFNoticeController.h; sourceTree = SOURCE_ROOT; };
+		8121BC61181823C300396B1F /* MFNoticeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFNoticeController.m; path = Sources/MFNoticeController.m; sourceTree = SOURCE_ROOT; };
 		81233D4A17F8CD7900C27805 /* MFPostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFPostTableViewCell.h; path = Sources/MFPostTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		81233D4B17F8CD7900C27805 /* MFPostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFPostTableViewCell.m; path = Sources/MFPostTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		81233D4D17F8CEA500C27805 /* MFWebPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFWebPost.h; path = Sources/MFWebPost.h; sourceTree = SOURCE_ROOT; };
@@ -969,6 +972,8 @@
 				81D0967B17FCD46F0044BD06 /* MFNewPostController+Notes.m */,
 				81D0967417FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.h */,
 				81D0967517FCD4540044BD06 /* MFNewPostController+TypeSizeAndFit.m */,
+				8121BC60181823C300396B1F /* MFNoticeController.h */,
+				8121BC61181823C300396B1F /* MFNoticeController.m */,
 				81BC174117FB51CA00DF7AD4 /* MFOptionPickerController.h */,
 				81BC174217FB51CA00DF7AD4 /* MFOptionPickerController.m */,
 				81BC174417FB6E7700DF7AD4 /* MFOptionPickerControllerDelegate.h */,
@@ -1859,6 +1864,7 @@
 				8120C1B217E0520E00A1C3A9 /* MFHomeHeaderView.m in Sources */,
 				81233D5517F8DDDF00C27805 /* MFSize.m in Sources */,
 				8120C16E17DFBF1200A1C3A9 /* NSDictionary+Additions.m in Sources */,
+				8121BC62181823C300396B1F /* MFNoticeController.m in Sources */,
 				8141AB4718049DD70087B740 /* MFFormFooter.m in Sources */,
 				81233D7917F8F27100C27805 /* MFDatabase+Delivery.m in Sources */,
 				8120C17417E03CB900A1C3A9 /* MFMenu.m in Sources */,

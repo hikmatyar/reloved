@@ -26,6 +26,19 @@
     return self;
 }
 
+- (id)initWithMessage:(NSString *)message title:(NSString *)title subject:(NSString *)subject
+{
+    self = [super init];
+    
+    if(self) {
+        m_message = message;
+        m_title = title;
+        m_subject = subject;
+    }
+    
+    return self;
+}
+
 @dynamic attributes;
 
 - (NSDictionary *)attributes

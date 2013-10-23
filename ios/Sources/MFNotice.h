@@ -11,6 +11,7 @@
 }
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
+- (id)initWithMessage:(NSString *)message title:(NSString *)title subject:(NSString *)subject;
 
 @property (nonatomic, retain, readonly) NSDictionary *attributes;
 
