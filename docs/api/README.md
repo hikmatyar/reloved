@@ -494,6 +494,7 @@ and potentially update countries, deliveries and posts.
 		INTEGER price [R] - The price that the user accepted (should equal to post.price)
 		STRING amount [R] - The amount that the user accepted (should be equal to post.price + delivery fee)
 		STRING currency [R] - The currency that the user accepted (should equal to post.currency)
+		STRING fee [R] - Transaction fee value
 		STRING email [R]
 		STRING phone [R]
 		STRING first_name [R]
