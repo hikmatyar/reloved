@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFWebController.h"
+#import "UIApplication+Additions.h"
 
 @interface MFWebController_Delegate : NSObject <UIWebViewDelegate>
 
@@ -12,7 +13,20 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    return YES;
+    NSURL *URL = request.URL;
+    NSString *scheme = URL.scheme;
+    
+    if([scheme isEqualToString:@"file"]) {
+        return YES;
+    } else {
+        if([scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"] || [scheme isEqualToString:@"tel"]) {
+            [[UIApplication sharedApplication] openURL:URL];
+        } else if([scheme isEqualToString:@"mailto"]) {
+            [[UIApplication sharedApplication] sendEmail:URL.resourceSpecifier];
+        }
+    }
+    
+    return NO;
 }
 
 @end
