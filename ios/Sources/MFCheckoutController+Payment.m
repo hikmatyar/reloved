@@ -1,5 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFCart.h"
 #import "MFCheckoutController+Payment.h"
 #import "MFCheckoutPageView.h"
 #import "MFForm.h"
@@ -7,6 +8,7 @@
 #import "MFFormContainer.h"
 #import "MFFormFooter.h"
 #import "MFFormLabel.h"
+#import "PKCard.h"
 #import "STPView.h"
 
 @interface MFCheckoutController_Payment : MFCheckoutPageView <STPViewDelegate>
@@ -42,6 +44,7 @@
         m_container = [[MFFormContainer alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 62.0F)];
         
         m_stripeView = [[STPView alloc] initWithFrame:CGRectMake(15.0F, 7.0F, 290.0F, 55.0F) andKey:STRIPE_KEY];
+        m_stripeView.delegate = self;
         [m_form addSubview:m_container];
         
         footer = [[MFFormFooter alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormFooter preferredHeight])];
@@ -57,6 +60,11 @@
     }
     
     return self;
+}
+
+- (BOOL)canContinue
+{
+    return YES;//m_canContinue;
 }
 
 #pragma mark MFPageView
@@ -83,7 +91,8 @@
 
 - (void)stripeView:(STPView *)view withCard:(PKCard *)card isValid:(BOOL)valid
 {
-    NSLog(@"123");
+    m_controller.cart.card = card;
+    m_canContinue = valid;
 }
 
 @end
