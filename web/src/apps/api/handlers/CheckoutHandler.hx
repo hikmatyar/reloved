@@ -93,6 +93,7 @@ class CheckoutHandler extends Handler {
     	var city = this.checkoutCity();
     	var address = this.checkoutAddress();
     	var zipCode = this.checkoutZipCode();
+    	var userId = this.user().id;
     	
     	if(postIds != null && postIds.length > 0 && deliveryId != 0 && stripeToken != null &&
     	   price > 0 && amount != null && currency != null && countryId != 0 &&
@@ -100,7 +101,7 @@ class CheckoutHandler extends Handler {
     	   firstName != null && lastName != null &&
     	   city != null && address != null && zipCode != null) {
     		Order.create({
-    			user_id: this.user().id,
+    			user_id: userId,
     			delivery_id: deliveryId, stripe_token: stripeToken,
     			price: price, amount: amount, currency: currency, country_id: countryId,
     			email: email, phone: phone,
@@ -116,6 +117,58 @@ class CheckoutHandler extends Handler {
     					
     					order.publish();
     					this.renderOrder(order, postIds);
+    					
+    					// Try to fill empty user fields
+    					User.findExtended(userId, function(err, user) {
+    						if(user != null) {
+    							var attributes : UserAttributes = { };
+    							var found = false;
+    							
+    							if(user.email == null) {
+    								attributes.email = email;
+    								found = true;
+    							}
+    							
+    							if(user.phone == null) {
+    								attributes.phone = phone;
+    								found = true;
+    							}
+    							
+    							if(user.firstName == null) {
+    								attributes.first_name = firstName;
+    								found = true;
+    							}
+    							
+    							if(user.lastName == null) {
+    								attributes.last_name = lastName;
+    								found = true;
+    							}
+    							
+    							if(user.countryId == null) {
+    								attributes.country_id = countryId;
+    								found = true;
+    							}
+    							
+    							if(user.city == null) {
+    								attributes.city = city;
+    								found = true;
+    							}
+    							
+    							if(user.address == null) {
+    								attributes.address = address;
+    								found = true;
+    							}
+    							
+    							if(user.zipcode == null) {
+    								attributes.zipcode = zipCode;
+    								found = true;
+    							}
+    							
+    							if(found) {
+    								User.update(userId, attributes, function(err) { });
+    							}
+    						}
+    					});
     				});
     			} else {
     				this.exit(ErrorCode.unknown, 'order');
