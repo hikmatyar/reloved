@@ -1,5 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MBProgressHUD.h"
 #import "MFCart.h"
 #import "MFCheckoutController.h"
 #import "MFCheckoutController+Address.h"
@@ -21,24 +22,29 @@
 #import "UIViewController+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
 
+#define ALERT_ABORT 1
+#define ALERT_ABORT_MENU 2
+
 #define TAG_PROGRESS_VIEW 1000
 #define TAG_CONTENT_VIEW 1001
 #define TAG_EMPTY_VIEW 1002
 
-#define STEP_ITEM(l, t, p) [[MFCheckoutController_Step alloc] initWithLabel:l title:t page:p]
+#define STEP_ITEM(l, t, p, f) [[MFCheckoutController_Step alloc] initWithLabel:l title:t page:p abort:f]
 
 @interface MFCheckoutController_Step : NSObject
 {
     @private
+    BOOL m_abort;
     NSString *m_label;
     NSString *m_title;
     MFCheckoutPageView *m_page;
 }
 
-- (id)initWithLabel:(NSString *)label title:(NSString *)title page:(MFCheckoutPageView *)page;
+- (id)initWithLabel:(NSString *)label title:(NSString *)title page:(MFCheckoutPageView *)page abort:(BOOL)abort;
 
+@property (nonatomic, assign, readonly) BOOL abort;
 @property (nonatomic, retain, readonly) NSString *label;
-@property (nonatomic, retain, readonly) MFCheckoutPageView *page;
+@property (nonatomic, retain) MFCheckoutPageView *page;
 @property (nonatomic, retain, readonly) NSString *title;
 
 - (BOOL)canContinue;
@@ -47,11 +53,12 @@
 
 @implementation MFCheckoutController_Step
 
-- (id)initWithLabel:(NSString *)label title:(NSString *)title page:(MFCheckoutPageView *)page
+- (id)initWithLabel:(NSString *)label title:(NSString *)title page:(MFCheckoutPageView *)page abort:(BOOL)abort
 {
     self = [super init];
     
     if(self) {
+        m_abort = abort;
         m_label = label;
         m_title = title;
         m_page = (page) ? page : [[MFCheckoutPageView alloc] initWithFrame:CGRectZero controller:nil];
@@ -60,6 +67,7 @@
     return self;
 }
 
+@synthesize abort = m_abort;
 @synthesize label = m_label;
 @synthesize page = m_page;
 @synthesize title = m_title;
@@ -92,9 +100,27 @@
     return [self.view viewWithTag:TAG_EMPTY_VIEW];
 }
 
+- (void)confirmAbort:(BOOL)menu
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.ConfirmAbort.Title", nil)
+                                                            message:NSLocalizedString(@"Checkout.Alert.ConfirmAbort.Message", nil)
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.ConfirmAbort.Action.No", nil)
+                                                  otherButtonTitles:NSLocalizedString(@"Checkout.Alert.ConfirmAbort.Action.Yes", nil), nil];
+    
+    alertView.tag = (menu) ? ALERT_ABORT_MENU : ALERT_ABORT;
+    [alertView show];
+}
+
 - (IBAction)menu:(id)sender
 {
-    [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+    NSInteger index = self.progressView.selectedIndex;
+    
+    if(index > 0) {
+        [self confirmAbort:YES];
+    } else {
+        [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+    }
 }
 
 - (IBAction)done:(id)sender
@@ -193,13 +219,19 @@
 {
     NSInteger oldIndex = progressView.selectedIndex;
     
-    if(oldIndex != NSNotFound && index > oldIndex) {
-        for(NSInteger i = oldIndex, c = index; i < c; i++) {
-            MFCheckoutController_Step *step = [m_steps objectAtIndex:i];
-            
-            if(![step canContinue]) {
-                return NO;
+    if(oldIndex != NSNotFound) {
+        if(index > oldIndex) {
+            for(NSInteger i = oldIndex, c = index; i < c; i++) {
+                MFCheckoutController_Step *step = [m_steps objectAtIndex:i];
+                
+                if(![step canContinue]) {
+                    return NO;
+                }
             }
+        } else if(((MFCheckoutController_Step *)[m_steps objectAtIndex:oldIndex]).abort) {
+            [self confirmAbort:NO];
+            
+            return NO;
         }
     }
     
@@ -212,8 +244,47 @@
         MFPageScrollView *contentView = self.contentView;
         MFCheckoutController_Step *step = [m_steps objectAtIndex:index];
         
-        [contentView setSelectedPage:step.page animated:YES];
+        [contentView setSelectedPage:step.page animated:(progressView) ? YES : NO];
         [self invalidateNavigation];
+    }
+}
+
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    switch(alertView.tag) {
+        case ALERT_ABORT_MENU:
+            if(buttonIndex != alertView.cancelButtonIndex) {
+                [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+            }
+        case ALERT_ABORT:
+            if(buttonIndex != alertView.cancelButtonIndex) {
+                NSMutableArray *pages = [[NSMutableArray alloc] init];
+                MFProgressView *progressView = self.progressView;
+                MFPageScrollView *contentView = self.contentView;
+                
+                m_cart = [[MFMutableCart alloc] init];
+                
+                progressView.selectedIndex = 0;
+                [self progressView:nil didSelectItemAtIndex:0];
+                
+                [pages addObject:((MFCheckoutController_Step *)[m_steps objectAtIndex:0]).page];
+                
+                for(NSInteger i = 1, c = m_steps.count; i < c; i++) {
+                    MFCheckoutController_Step *step = [m_steps objectAtIndex:i];
+                    MFCheckoutPageView *page = [step.page createFreshView];
+                    
+                    step.page = page;
+                    [pages addObject:page];
+                }
+                
+                contentView.selectedPage = 0;
+                contentView.pages = pages;
+                
+                [self feedDidChange:nil];
+            }
+            break;
     }
 }
 
@@ -290,11 +361,11 @@
         m_cart = [[MFMutableCart alloc] init];
         m_stepIndex = 0;
         m_steps = [[NSArray alloc] initWithObjects:
-            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Cart", nil), NSLocalizedString(@"Checkout.Title.Cart", nil), [self createCartPageView]),
-            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Address", nil), NSLocalizedString(@"Checkout.Title.Address", nil), [self createAddressPageView]),
-            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Payment", nil), NSLocalizedString(@"Checkout.Title.Payment", nil), [self createPaymentPageView]),
-            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Confirm", nil), NSLocalizedString(@"Checkout.Title.Confirm", nil), [self createConfirmPageView]),
-            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Receipt", nil), NSLocalizedString(@"Checkout.Title.Receipt", nil), [self createReceiptPageView]), nil];
+            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Cart", nil), NSLocalizedString(@"Checkout.Title.Cart", nil), [self createCartPageView], NO),
+            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Address", nil), NSLocalizedString(@"Checkout.Title.Address", nil), [self createAddressPageView], NO),
+            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Payment", nil), NSLocalizedString(@"Checkout.Title.Payment", nil), [self createPaymentPageView], NO),
+            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Confirm", nil), NSLocalizedString(@"Checkout.Title.Confirm", nil), [self createConfirmPageView], NO),
+            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Receipt", nil), NSLocalizedString(@"Checkout.Title.Receipt", nil), [self createReceiptPageView], NO), nil];
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Checkout.Action.Next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(next:)];

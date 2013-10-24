@@ -5,7 +5,7 @@
 @class MBProgressHUD;
 @class MFMutableCart;
 
-@interface MFCheckoutController : UIViewController <MFProgressViewDelegate>
+@interface MFCheckoutController : UIViewController <UIAlertViewDelegate, MFProgressViewDelegate>
 {
     @private
     MFMutableCart *m_cart;

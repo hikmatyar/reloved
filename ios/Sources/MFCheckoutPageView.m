@@ -16,6 +16,16 @@
     return self;
 }
 
+- (MFCheckoutPageView *)createFreshView
+{
+    MFCheckoutPageView *view = [[self.class alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F) controller:m_controller];
+    
+    view.autoresizingMask = self.autoresizingMask;
+    view.frame = self.frame;
+    
+    return view;
+}
+
 - (void)cartDidChange
 {
 }

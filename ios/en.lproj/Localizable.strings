@@ -230,6 +230,10 @@
 "Checkout.Action.Payment" = "Pay";
 "Checkout.Action.Receipt" = "Receipt";
 "Checkout.Action.Remove" = "Remove";
+"Checkout.Alert.ConfirmAbort.Action.No" = "No";
+"Checkout.Alert.ConfirmAbort.Action.Yes" = "Yes";
+"Checkout.Alert.ConfirmAbort.Message" = "Do you want to cancel the checkout process?";
+"Checkout.Alert.ConfirmAbort.Title" = "Leave checkout?";
 "Checkout.Format.NumberOfItems" = "%d item in your cart";
 "Checkout.Format.NumberOfItems.Plural" = "%d items in your cart";
 "Checkout.Format.Total" = "Total %@";
