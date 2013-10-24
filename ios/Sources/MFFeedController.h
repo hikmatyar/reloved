@@ -11,6 +11,7 @@
     BOOL m_autoRefresh;
     MFWebFeed *m_feed;
     NSArray *m_posts;
+    BOOL m_updating;
     MFPullToLoadMoreView *m_pullToLoadMoreView;
 }
 

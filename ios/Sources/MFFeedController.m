@@ -102,7 +102,7 @@
 - (void)feedDidBeginLoading:(NSNotification *)notification
 {
     if(m_feed.loadingForward) {
-        [self.pullToRefreshView startLoading];
+        [self.pullToRefreshView startLoading:!m_updating];
     }
     
     if(m_feed.loadingBackward) {
@@ -324,7 +324,9 @@
     [super viewWillAppear:animated];
     
     if(m_autoRefresh) {
+        m_updating = YES;
         [m_feed loadForward];
+        m_updating = NO;
         m_autoRefresh = NO;
     }
 }
