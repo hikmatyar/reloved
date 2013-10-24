@@ -75,6 +75,8 @@ class CheckoutHandler extends Handler {
 					this.exit(ErrorCode.invalid_parameter);
 				}
 			});
+		} else {
+			this.exit(ErrorCode.missing_parameter);
 		}
 	}
 	
