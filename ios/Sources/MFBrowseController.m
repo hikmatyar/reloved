@@ -214,6 +214,7 @@
     
     [super loadView];
     self.tableView.tableHeaderView = scopeView;
+    [self updateScopeLabel:self.feed.numberOfResults];
 }
 
 #pragma mark NSObject
