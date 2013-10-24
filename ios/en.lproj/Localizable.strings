@@ -241,6 +241,16 @@
 "Checkout.Alert.StartingErrorBadItems.Action.OK" = "OK";
 "Checkout.Alert.StartingErrorBadItems.Message" = "Unable to checkout items in cart.";
 "Checkout.Alert.StartingErrorBadItems.Title" = "Checkout Error";
+"Checkout.Alert.OrderingError.Action.Close" = "Close";
+"Checkout.Alert.OrderingError.Action.Retry" = "Retry";
+"Checkout.Alert.OrderingError.Message" = "Unable to purchase. Retry?";
+"Checkout.Alert.OrderingError.Title" = "Checkout Error";
+"Checkout.Alert.OrderingErrorDeclined.Action.OK" = "OK";
+"Checkout.Alert.OrderingErrorDeclined.Message" = "The purchase was unsuccessful";
+"Checkout.Alert.OrderingErrorDeclined.Title" = "Checkout Error";
+"Checkout.Alert.ValidationError.Message" = "One or more input fields are not valid";
+"Checkout.Alert.ValidationError.Title" = "Unable to Purchase";
+"Checkout.Alert.ValidationError.Action.OK" = "OK";
 "Checkout.Format.NumberOfItems" = "%d item in your cart";
 "Checkout.Format.NumberOfItems.Plural" = "%d items in your cart";
 "Checkout.Format.Total" = "Total %@";
@@ -256,6 +266,10 @@
 "Checkout.Hint.Shipping" = "Please double-check for errors. We ship to UK and EU only.";
 "Checkout.HUD.Starting.Message" = "Connecting to the server...";
 "Checkout.HUD.Starting.Title" = "Checkout";
+"Checkout.HUD.Ordering.Message1" = "Sending payment data";
+"Checkout.HUD.Ordering.Message2" = "Sending purchase request";
+"Checkout.HUD.Ordering.Message3" = "Waiting for server-side confirmation";
+"Checkout.HUD.Ordering.Title" = "Ordering";
 "Checkout.Label.NoData" = "Empty Cart";
 "Checkout.Label.AddressLine" = "Address Line";
 "Checkout.Label.Items" = "Items";

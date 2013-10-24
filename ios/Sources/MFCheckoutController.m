@@ -8,7 +8,6 @@
 #import "MFCheckoutController+Cart.h"
 #import "MFCheckoutController+Confirm.h"
 #import "MFCheckoutController+Payment.h"
-#import "MFCheckoutController+Receipt.h"
 #import "MFCheckoutPageView.h"
 #import "MFCountry.h"
 #import "MFCurrency.h"
@@ -37,7 +36,8 @@
 #define ALERT_ABORT 1
 #define ALERT_ABORT_MENU 2
 #define ALERT_STARTING 3
-#define ALERT_GENERIC 4
+#define ALERT_ORDERING 4
+#define ALERT_GENERIC 5
 
 #define TAG_PROGRESS_VIEW 1000
 #define TAG_CONTENT_VIEW 1001
@@ -198,6 +198,36 @@
     }];
 }
 
+- (void)requestOrder
+{
+    [[MFWebService sharedService] requestOrderCreate:m_cart target:self usingBlock:^(id target, NSError *error, MFOrder *order) {
+        // Error handling
+        if(error && [error.domain isEqualToString:MFWebServiceErrorDomain] && error.code == kMFWebServiceErrorParameterInvalid) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.OrderingErrorDeclined.Title", nil)
+                                                                message:NSLocalizedString(@"Checkout.Alert.OrderingErrorDeclined.Message", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.OrderingErrorDeclined.Action.OK", nil)
+                                                      otherButtonTitles:nil];
+            
+            alertView.tag = ALERT_GENERIC;
+            
+            [alertView show];
+        } else if(error || !order) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.OrderingError.Title", nil)
+                                                                message:NSLocalizedString(@"Checkout.Alert.OrderingError.Message", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.OrderingError.Action.Close", nil)
+                                                      otherButtonTitles:NSLocalizedString(@"Checkout.Alert.OrderingError.Action.Retry", nil), nil];
+            
+            alertView.tag = ALERT_ORDERING;
+            [alertView show];
+        // Things look well
+        } else {
+            
+        }
+    }];
+}
+
 - (void)confirmAbort:(BOOL)menu
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.ConfirmAbort.Title", nil)
@@ -223,6 +253,26 @@
 
 - (IBAction)done:(id)sender
 {
+    if([m_cart isReadyToSubmit]) {
+        if(!m_hud) {
+            m_hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            m_hud.dimBackground = YES;
+            m_hud.labelText = NSLocalizedString(@"Checkout.HUD.Ordering.Title", nil);
+            m_hud.detailsLabelText = NSLocalizedString(@"Checkout.HUD.Ordering.Message1", nil);
+            m_hud.minShowTime = 0.5F;
+            [self.view addSubview:m_hud];
+            [m_hud show:YES];
+            [self requestOrder];
+        }
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.ValidationError.Title", nil)
+                                                            message:NSLocalizedString(@"Checkout.Alert.ValidationError.Message", nil)
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.ValidationError.Action.OK", nil)
+                                                  otherButtonTitles:nil];
+        
+        [alertView show];
+    }
 }
 
 - (IBAction)next:(id)sender
@@ -426,6 +476,8 @@
         [pages addObject:step.page];
     }
     
+    [items addObject:NSLocalizedString(@"Checkout.Action.Receipt", nil)];
+    
     progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     progressView.delegate = self;
     progressView.items = items;
@@ -496,8 +548,7 @@
             STEP_ITEM(NSLocalizedString(@"Checkout.Action.Cart", nil), NSLocalizedString(@"Checkout.Title.Cart", nil), [self createCartPageView], NO),
             STEP_ITEM(NSLocalizedString(@"Checkout.Action.Address", nil), NSLocalizedString(@"Checkout.Title.Address", nil), [self createAddressPageView], NO),
             STEP_ITEM(NSLocalizedString(@"Checkout.Action.Payment", nil), NSLocalizedString(@"Checkout.Title.Payment", nil), [self createPaymentPageView], NO),
-            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Confirm", nil), NSLocalizedString(@"Checkout.Title.Confirm", nil), [self createConfirmPageView], NO),
-            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Receipt", nil), NSLocalizedString(@"Checkout.Title.Receipt", nil), [self createReceiptPageView], NO), nil];
+            STEP_ITEM(NSLocalizedString(@"Checkout.Action.Confirm", nil), NSLocalizedString(@"Checkout.Title.Confirm", nil), [self createConfirmPageView], NO), nil];
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Checkout.Action.Next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(next:)];

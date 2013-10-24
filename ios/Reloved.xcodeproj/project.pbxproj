@@ -325,7 +325,6 @@
 		81E529EA1810CFF3004D88F3 /* MFCheckoutController+Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529E91810CFF3004D88F3 /* MFCheckoutController+Address.m */; };
 		81E529ED1810D028004D88F3 /* MFCheckoutController+Confirm.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529EC1810D028004D88F3 /* MFCheckoutController+Confirm.m */; };
 		81E529F01810D037004D88F3 /* MFCheckoutController+Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529EF1810D037004D88F3 /* MFCheckoutController+Payment.m */; };
-		81E529F31810D06F004D88F3 /* MFCheckoutController+Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529F21810D06F004D88F3 /* MFCheckoutController+Receipt.m */; };
 		81E529F61810D0A4004D88F3 /* MFCheckoutPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E529F51810D0A4004D88F3 /* MFCheckoutPageView.m */; };
 		81E529F91810D58E004D88F3 /* Checkout-Progress-Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529F71810D58E004D88F3 /* Checkout-Progress-Selected.png */; };
 		81E529FA1810D58E004D88F3 /* Checkout-Progress-Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529F81810D58E004D88F3 /* Checkout-Progress-Selected@2x.png */; };
@@ -852,8 +851,6 @@
 		81E529EC1810D028004D88F3 /* MFCheckoutController+Confirm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFCheckoutController+Confirm.m"; path = "Sources/MFCheckoutController+Confirm.m"; sourceTree = SOURCE_ROOT; };
 		81E529EE1810D037004D88F3 /* MFCheckoutController+Payment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFCheckoutController+Payment.h"; path = "Sources/MFCheckoutController+Payment.h"; sourceTree = SOURCE_ROOT; };
 		81E529EF1810D037004D88F3 /* MFCheckoutController+Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFCheckoutController+Payment.m"; path = "Sources/MFCheckoutController+Payment.m"; sourceTree = SOURCE_ROOT; };
-		81E529F11810D06F004D88F3 /* MFCheckoutController+Receipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFCheckoutController+Receipt.h"; path = "Sources/MFCheckoutController+Receipt.h"; sourceTree = SOURCE_ROOT; };
-		81E529F21810D06F004D88F3 /* MFCheckoutController+Receipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFCheckoutController+Receipt.m"; path = "Sources/MFCheckoutController+Receipt.m"; sourceTree = SOURCE_ROOT; };
 		81E529F41810D0A4004D88F3 /* MFCheckoutPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFCheckoutPageView.h; path = Sources/MFCheckoutPageView.h; sourceTree = SOURCE_ROOT; };
 		81E529F51810D0A4004D88F3 /* MFCheckoutPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFCheckoutPageView.m; path = Sources/MFCheckoutPageView.m; sourceTree = SOURCE_ROOT; };
 		81E529F71810D58E004D88F3 /* Checkout-Progress-Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Progress-Selected.png"; path = "Images/Checkout-Progress-Selected.png"; sourceTree = "<group>"; };
@@ -950,8 +947,6 @@
 				81E529EC1810D028004D88F3 /* MFCheckoutController+Confirm.m */,
 				81E529EE1810D037004D88F3 /* MFCheckoutController+Payment.h */,
 				81E529EF1810D037004D88F3 /* MFCheckoutController+Payment.m */,
-				81E529F11810D06F004D88F3 /* MFCheckoutController+Receipt.h */,
-				81E529F21810D06F004D88F3 /* MFCheckoutController+Receipt.m */,
 				81D54BAE180F2658002D3449 /* MFConditionController.h */,
 				81D54BAF180F2658002D3449 /* MFConditionController.m */,
 				811082A817F8B302005CC8ED /* MFDelta.h */,
@@ -1859,7 +1854,6 @@
 				81B14B98180F035A0089D19F /* MFMediaGalleryController.m in Sources */,
 				8120C1D417E0698F00A1C3A9 /* MFBrowseController.m in Sources */,
 				811082A717F8B299005CC8ED /* NSArray+Additions.m in Sources */,
-				81E529F31810D06F004D88F3 /* MFCheckoutController+Receipt.m in Sources */,
 				81D54BBC180F3D79002D3449 /* MFPostDetails.m in Sources */,
 				8119DFDF17E06DB6007AEDC2 /* MFWebService.m in Sources */,
 				81233D6717F8E01A00C27805 /* MFDatabase+Size.m in Sources */,
