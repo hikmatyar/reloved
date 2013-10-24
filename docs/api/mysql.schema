@@ -222,11 +222,12 @@ CREATE TABLE `currencies` (
 
 DROP TABLE IF EXISTS `deliveries`;
 CREATE TABLE `deliveries` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `countryId` int(11) DEFAULT NULL,
+  `country_id` int(11) DEFAULT NULL,
   `price` int(11) NOT NULL,
-  `currency` varchar(3) NOT NULL
+  `currency` varchar(3) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `events`;
