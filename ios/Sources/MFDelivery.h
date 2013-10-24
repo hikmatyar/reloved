@@ -7,6 +7,7 @@
     @private
     NSString *m_identifier;
     NSString *m_name;
+    NSString *m_countryId;
     NSInteger m_price;
     NSString *m_currency;
 }
@@ -18,6 +19,7 @@
 @property (nonatomic, retain, readonly) NSString *identifier;
 @property (nonatomic, retain, readonly) NSString *name;
 @property (nonatomic, assign, readonly) NSInteger price;
+@property (nonatomic, retain, readonly) NSString *countryId;
 @property (nonatomic, retain, readonly) NSString *currency;
 
 @end

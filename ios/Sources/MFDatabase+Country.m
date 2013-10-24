@@ -47,4 +47,15 @@ NSString *MFDatabaseDidChangeCountriesNotification = @"MFDatabaseDidChangeCountr
     }
 }
 
+- (MFCountry *)countryForIdentifier:(NSString *)identifier
+{
+    for(MFCountry *country in self.countries) {
+        if([identifier isEqualToString:country.identifier]) {
+            return country;
+        }
+    }
+    
+    return nil;
+}
+
 @end

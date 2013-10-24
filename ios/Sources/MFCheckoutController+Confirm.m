@@ -3,7 +3,10 @@
 #import "MFCart.h"
 #import "MFCheckoutController+Confirm.h"
 #import "MFCheckoutPageView.h"
+#import "MFCountry.h"
+#import "MFDatabase+Country.h"
 #import "MFDatabase+Post.h"
+#import "MFMoney.h"
 #import "MFPost.h"
 #import "MFPostController.h"
 #import "MFPostEditableTableViewCell.h"
@@ -174,6 +177,8 @@
         } break;
         case SECTION_SHIPPING: {
             MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_SHIPPING];
+            MFCart *cart = m_controller.cart;
+            MFCountry *country = [[MFDatabase sharedDatabase] countryForIdentifier:cart.countryId];
             
             if(!cell) {
                 cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_SHIPPING];
@@ -184,8 +189,12 @@
                 cell.detailTextLabel.numberOfLines = 0;
             }
             
-            cell.textLabel.text = @"Samreen Ghani";
-            cell.detailTextLabel.text = @"Flat 505, 7 Garden Walk\nLondon ABCDE E\nUnited Kingdom"; // TODO:
+            cell.textLabel.text = cart.fullName;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@ %@\n%@",
+                ((cart.address) ? cart.address : @""),
+                ((cart.city) ? cart.city : @""),
+                ((cart.zipcode) ? cart.zipcode : @""),
+                ((country) ? country.name : @"")];
             
             return cell;
         } break;

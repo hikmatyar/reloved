@@ -9,5 +9,6 @@ extern NSString *MFDatabaseDidChangeCountriesNotification;
 @interface MFDatabase(Country)
 
 @property (nonatomic, copy) NSArray *countries;
+- (MFCountry *)countryForIdentifier:(NSString *)identifier;
 
 @end

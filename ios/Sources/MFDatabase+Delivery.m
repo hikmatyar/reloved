@@ -47,4 +47,32 @@ NSString *MFDatabaseDidChangeDeliveriesNotification = @"MFDatabaseDidChangeDeliv
     }
 }
 
+- (MFDelivery *)deliveryForIdentifier:(NSString *)identifier
+{
+    for(MFDelivery *delivery in self.deliveries) {
+        if([identifier isEqualToString:delivery.identifier]) {
+            return delivery;
+        }
+    }
+    
+    return nil;
+}
+
+- (MFDelivery *)deliveryForCountryId:(NSString *)countryId
+{
+    MFDelivery *fallback = nil;
+    
+    for(MFDelivery *delivery in self.deliveries) {
+        NSString *_countryId = delivery.countryId;
+        
+        if(!_countryId) {
+            fallback = delivery;
+        } else if([countryId isEqualToString:_countryId]) {
+            return delivery;
+        }
+    }
+    
+    return fallback;
+}
+
 @end

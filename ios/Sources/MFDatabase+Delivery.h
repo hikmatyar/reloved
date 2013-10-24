@@ -9,5 +9,7 @@ extern NSString *MFDatabaseDidChangeDeliveriesNotification;
 @interface MFDatabase(Delivery)
 
 @property (nonatomic, copy) NSArray *deliveries;
+- (MFDelivery *)deliveryForIdentifier:(NSString *)identifier;
+- (MFDelivery *)deliveryForCountryId:(NSString *)countryId;
 
 @end
