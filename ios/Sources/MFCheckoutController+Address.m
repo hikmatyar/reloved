@@ -107,6 +107,8 @@
     if(cart.countryId) {
         MFDelivery *delivery = [[MFDatabase sharedDatabase] deliveryForCountryId:cart.countryId];
         
+        cart.deliveryId = delivery.identifier;
+        
         if(delivery) {
             amount += delivery.price;
         }

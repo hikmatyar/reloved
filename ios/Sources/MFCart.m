@@ -61,6 +61,7 @@
 }
 
 @synthesize card = m_card;
+@synthesize currency = m_currency;
 @synthesize postIds = m_postIds;
 @synthesize email = m_email;
 @synthesize phone = m_phone;

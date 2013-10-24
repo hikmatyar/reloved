@@ -86,7 +86,7 @@
 - (void)pageWillAppear
 {
     [super pageWillAppear];
-    [m_tableView clearSelection];
+    [m_tableView reloadData];
 }
 
 #pragma mark UITableViewDataSource
@@ -149,7 +149,7 @@
                     cell.detailTextLabel.text = money.localizedString;
                     break;
                 case SECTION_SUMMARY_ROW_SHIPPING:
-                    money = [[MFMoney alloc] initWithValue:cart.amount - cart.price currency:cart.currency];
+                    money = [[MFMoney alloc] initWithValue:cart.amount - cart.price - cart.transactionFee currency:cart.currency];
                     cell.textLabel.text = NSLocalizedString(@"Checkout.Label.ShippingAndPacking", nil);
                     cell.detailTextLabel.text = money.localizedString;
                     break;
