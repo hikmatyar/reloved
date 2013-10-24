@@ -23,6 +23,7 @@
     NSString *m_zipcode;
     NSArray *m_postIds;
     NSString *m_stripeToken;
+    NSString *m_orderId;
 }
 
 @property (nonatomic, retain, readonly) NSDictionary *attributes;
@@ -45,6 +46,7 @@
 @property (nonatomic, retain, readonly) NSString *address;
 @property (nonatomic, retain, readonly) NSString *zipcode;
 @property (nonatomic, retain, readonly) NSString *stripeToken;
+@property (nonatomic, retain, readonly) NSString *orderId;
 
 - (BOOL)isReadyToSubmit;
 
@@ -68,5 +70,6 @@
 @property (nonatomic, retain) NSString *address;
 @property (nonatomic, retain) NSString *zipcode;
 @property (nonatomic, retain) NSString *stripeToken;
+@property (nonatomic, retain) NSString *orderId;
 
 @end

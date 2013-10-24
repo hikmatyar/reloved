@@ -76,6 +76,7 @@
 @synthesize address = m_address;
 @synthesize zipcode = m_zipcode;
 @synthesize stripeToken = m_stripeToken;
+@synthesize orderId = m_orderId;
 
 - (BOOL)isReadyToSubmit
 {
@@ -92,17 +93,29 @@
 
 - (void)setCard:(PKCard *)card
 {
-    m_card = card;
+    if(!MFEqual(m_card, card)) {
+        m_card = card;
+        m_stripeToken = nil;
+        m_orderId = nil;
+    }
 }
 
 - (void)setPostIds:(NSArray *)postIds
 {
-    m_postIds = postIds;
+    if(!MFEqual(m_postIds, postIds)) {
+        m_postIds = postIds;
+        m_stripeToken = nil;
+        m_orderId = nil;
+    }
 }
 
 - (void)setDeliveryId:(NSString *)deliveryId
 {
-    m_deliveryId = deliveryId;
+    if(!MFEqual(m_deliveryId, deliveryId)) {
+        m_deliveryId = deliveryId;
+        m_stripeToken = nil;
+        m_orderId = nil;
+    }
 }
 
 - (void)setCurrency:(NSString *)currency
@@ -147,7 +160,11 @@
 
 - (void)setCountryId:(NSString *)countryId
 {
-    m_countryId = countryId;
+    if(!MFEqual(m_countryId, countryId)) {
+        m_countryId = countryId;
+        m_stripeToken = nil;
+        m_orderId = nil;
+    }
 }
 
 - (void)setCity:(NSString *)city
@@ -168,6 +185,11 @@
 - (void)setStripeToken:(NSString *)stripeToken
 {
     m_stripeToken = stripeToken;
+}
+
+- (void)setOrderId:(NSString *)orderId
+{
+    m_orderId = orderId;
 }
 
 @end
