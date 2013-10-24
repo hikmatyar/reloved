@@ -102,6 +102,8 @@
     if(!m_hud) {
         m_hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].windows.lastObject animated:YES];
         m_hud.dimBackground = YES;
+        m_hud.labelFont = [UIFont themeBoldFontOfSize:16.0F];
+        m_hud.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
         m_hud.labelText = NSLocalizedString(@"PostAdd.PostingHUD.Title", nil);
         m_hud.detailsLabelText = NSLocalizedString(@"PostAdd.PostingHUD.Message", nil);
         m_hud.minShowTime = 1.0F;

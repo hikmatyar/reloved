@@ -139,6 +139,11 @@
     }
 }
 
+- (BOOL)canContinue
+{
+    return (m_controller.cart.postIds.count > 0) ? YES : NO;
+}
+
 #pragma mark MFPageView
 
 - (void)pageWillAppear

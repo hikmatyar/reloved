@@ -2,6 +2,7 @@
 
 #import "MBProgressHUD.h"
 #import "MFCart.h"
+#import "MFCheckout.h"
 #import "MFCheckoutController.h"
 #import "MFCheckoutController+Address.h"
 #import "MFCheckoutController+Cart.h"
@@ -9,14 +10,25 @@
 #import "MFCheckoutController+Payment.h"
 #import "MFCheckoutController+Receipt.h"
 #import "MFCheckoutPageView.h"
+#import "MFCountry.h"
+#import "MFCurrency.h"
 #import "MFDatabase+Cart.h"
+#import "MFDatabase+Country.h"
+#import "MFDatabase+Delivery.h"
+#import "MFDatabase+Post.h"
+#import "MFDelivery.h"
+#import "MFOrder.h"
 #import "MFPageScrollView.h"
 #import "MFPost.h"
 #import "MFProgressView.h"
+#import "MFMoney.h"
 #import "MFNotice.h"
 #import "MFNoticeController.h"
 #import "MFSideMenuContainerViewController.h"
+#import "MFUserDetails.h"
 #import "MFWebFeed.h"
+#import "MFWebServiceError.h"
+#import "MFWebService+Checkout.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UIViewController+Additions.h"
@@ -24,6 +36,8 @@
 
 #define ALERT_ABORT 1
 #define ALERT_ABORT_MENU 2
+#define ALERT_STARTING 3
+#define ALERT_GENERIC 4
 
 #define TAG_PROGRESS_VIEW 1000
 #define TAG_CONTENT_VIEW 1001
@@ -100,6 +114,90 @@
     return [self.view viewWithTag:TAG_EMPTY_VIEW];
 }
 
+- (void)requestCheckout
+{
+    MFDatabase *database = [MFDatabase sharedDatabase];
+    NSDate *lastModification = nil;
+    
+    for(MFPost *post in [database postsForIdentifiers:m_cart.postIds]) {
+        lastModification = (lastModification) ? [post.modified laterDate:lastModification] : post.modified;
+    }
+    
+    [[MFWebService sharedService] requestCheckout:m_cart.postIds lastModification:lastModification target:self usingBlock:^(id target, NSError *error, MFCheckout *checkout) {
+        // Allow to update global state
+        if(checkout.posts > 0) {
+            [database beginUpdates];
+            
+            for(MFPost *post in checkout.posts) {
+                [database setPost:post forIdentifier:post.identifier];
+            }
+            
+            [database endUpdates];
+        }
+        
+        if(checkout.countries) {
+            database.countries = checkout.countries;
+        }
+        
+        if(checkout.deliveries) {
+            database.deliveries = checkout.deliveries;
+        }
+        
+        // Error handling
+        if(error && [error.domain isEqualToString:MFWebServiceErrorDomain] && error.code == kMFWebServiceErrorParameterInvalid) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.StartingErrorBadItems.Title", nil)
+                                                                message:NSLocalizedString(@"Checkout.Alert.StartingErrorBadItems.Message", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.StartingErrorBadItems.Action.OK", nil)
+                                                      otherButtonTitles:nil];
+            
+            alertView.tag = ALERT_GENERIC;
+            
+            [alertView show];
+        } else if(error || !checkout) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.StartingError.Title", nil)
+                                                                message:NSLocalizedString(@"Checkout.Alert.StartingError.Message", nil)
+                                                               delegate:self
+                                                      cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.StartingError.Action.Close", nil)
+                                                      otherButtonTitles:NSLocalizedString(@"Checkout.Alert.StartingError.Action.Retry", nil), nil];
+            
+            alertView.tag = ALERT_STARTING;
+            [alertView show];
+        // Things look well
+        } else {
+            MFUserDetails *details = checkout.user;
+            MFCurrency *currency = [MFCurrency gbp]; // TODO: Not correct
+            __weak MFCheckoutController *controller = self;
+            NSInteger price = 0;
+            
+            m_cart.firstName = details.firstName;
+            m_cart.lastName = details.lastName;
+            m_cart.countryId = details.countryId;
+            m_cart.city = details.city;
+            m_cart.address = details.address;
+            m_cart.zipcode = details.zipcode;
+            m_cart.email = details.email;
+            m_cart.phone = details.phone;
+            
+            for(MFPost *post in [database postsForIdentifiers:m_cart.postIds]) {
+                price += post.price;
+            }
+            
+            m_cart.price = price;
+            m_cart.transactionFee = [checkout feeForCurrency:currency.code].value;
+            m_cart.amount = price + m_cart.transactionFee;
+            m_cart.currency = currency.code;
+            
+            m_hud.completionBlock = ^() {
+                [controller next:nil];
+            };
+            
+            [m_hud hide:YES];
+            m_hud = nil;
+        }
+    }];
+}
+
 - (void)confirmAbort:(BOOL)menu
 {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.ConfirmAbort.Title", nil)
@@ -136,7 +234,18 @@
         if(index + 1 < m_steps.count) {
             index += 1;
             
-            if([self progressView:progressView shouldSelectItemAtIndex:index]) {
+            if(index > 0 && m_cart.empty && m_cart.postIds.count > 0) {
+                if(!m_hud) {
+                    m_hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    m_hud.dimBackground = YES;
+                    m_hud.labelText = NSLocalizedString(@"Checkout.HUD.Starting.Title", nil);
+                    m_hud.detailsLabelText = NSLocalizedString(@"Checkout.HUD.Starting.Message", nil);
+                    m_hud.minShowTime = 1.0F;
+                    [self.view addSubview:m_hud];
+                    [m_hud show:YES];
+                    [self requestCheckout];
+                }
+            } else if([self progressView:progressView shouldSelectItemAtIndex:index]) {
                 progressView.selectedIndex = index;
                 [self progressView:progressView didSelectItemAtIndex:index];
             }
@@ -224,7 +333,7 @@
             for(NSInteger i = oldIndex, c = index; i < c; i++) {
                 MFCheckoutController_Step *step = [m_steps objectAtIndex:i];
                 
-                if(![step canContinue]) {
+                if(![step canContinue] || (i == 0 && m_cart.empty)) {
                     return NO;
                 }
             }
@@ -284,6 +393,18 @@
                 
                 [self feedDidChange:nil];
             }
+            break;
+        case ALERT_STARTING:
+            if(buttonIndex != alertView.cancelButtonIndex) {
+                [self requestCheckout];
+            } else {
+                [m_hud hide:YES];
+                m_hud = nil;
+            }
+            break;
+        case ALERT_GENERIC:
+            [m_hud hide:YES];
+            m_hud = nil;
             break;
     }
 }
@@ -347,8 +468,19 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MFWebFeedDidChangeNotification object:nil];
+    [[MFWebService sharedService] cancelRequestsForTarget:self];
     m_stepIndex = self.progressView.selectedIndex;
     [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    if(m_hud) {
+        [m_hud removeFromSuperview];
+        m_hud = nil;
+    }
+    
+    [super viewDidDisappear:animated];
 }
 
 #pragma mark NSObject

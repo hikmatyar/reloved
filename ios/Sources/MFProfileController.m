@@ -107,6 +107,7 @@
         
         if(!m_hud) {
             m_hud = [[MBProgressHUD alloc] initWithView:self.view];
+            m_hud.dimBackground = YES;
             m_hud.labelText = NSLocalizedString(@"Profile.Label.Loading", nil);
             m_hud.labelFont = [UIFont themeBoldFontOfSize:16.0F];
             m_hud.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];

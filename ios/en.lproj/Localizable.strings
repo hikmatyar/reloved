@@ -234,6 +234,13 @@
 "Checkout.Alert.ConfirmAbort.Action.Yes" = "Yes";
 "Checkout.Alert.ConfirmAbort.Message" = "Do you want to cancel the checkout process?";
 "Checkout.Alert.ConfirmAbort.Title" = "Leave checkout?";
+"Checkout.Alert.StartingError.Action.Close" = "Close";
+"Checkout.Alert.StartingError.Action.Retry" = "Retry";
+"Checkout.Alert.StartingError.Message" = "Unable to checkout. Retry?";
+"Checkout.Alert.StartingError.Title" = "Checkout Error";
+"Checkout.Alert.StartingErrorBadItems.Action.OK" = "OK";
+"Checkout.Alert.StartingErrorBadItems.Message" = "Unable to checkout items in cart.";
+"Checkout.Alert.StartingErrorBadItems.Title" = "Checkout Error";
 "Checkout.Format.NumberOfItems" = "%d item in your cart";
 "Checkout.Format.NumberOfItems.Plural" = "%d items in your cart";
 "Checkout.Format.Total" = "Total %@";
@@ -247,6 +254,8 @@
 "Checkout.Hint.Phone" = "(optional)";
 "Checkout.Hint.Postcode" = "";
 "Checkout.Hint.Shipping" = "Please double-check for errors. We ship to UK and EU only.";
+"Checkout.HUD.Starting.Message" = "Connecting to the server...";
+"Checkout.HUD.Starting.Title" = "Checkout";
 "Checkout.Label.NoData" = "Empty Cart";
 "Checkout.Label.AddressLine" = "Address Line";
 "Checkout.Label.Items" = "Items";
