@@ -510,6 +510,36 @@ class Post {
         });
     }
     
+    public static function findNumberOfPosts(userId : DataIdentifier, identifier : String, fn : DataError -> Int -> Void) : Void {
+    	var feed = new PostFeed(identifier);
+    	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial IS NOT NULL' : '';
+    	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (1,2,3,4) ' : ' = 2';
+    	var fcriteria = '';
+    	var ftables = '';
+    	
+    	if(feed.id == PostFeed.identifier_history) {
+    		fcriteria = ' AND user_id = ' + userId + ' ';
+    	} else {
+			if(feed.colors != null) {
+				ftables = ' INNER JOIN post_colors ON post_colors.post_id = posts.id ';
+				fcriteria = ' AND post_colors.color_id IN (' + feed.colors.join(',') + ')';
+			}
+		
+			if(feed.types != null) {
+				ftables = ftables + ' INNER JOIN post_types ON post_types.post_id = posts.id ';
+				fcriteria = fcriteria + ' AND post_types.type_id IN (' + feed.types.join(',') + ')';
+			}
+		}
+		
+		Data.query('SELECT COUNT(*) AS count FROM posts ' + ftables + ' WHERE status ' + fstatus + editorial + fcriteria, function(err, result) {
+            if(err == null && result != null && result.length > 0) {
+            	fn(err, result[0].count);
+            } else {
+            	fn(err, 0);
+            }
+        });
+    }
+    
     public static function findForward(userId : DataIdentifier, identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
     	var feed = new PostFeed(identifier);
     	var order = (feed.id == PostFeed.identifier_all) ? 'created' : 'modified';

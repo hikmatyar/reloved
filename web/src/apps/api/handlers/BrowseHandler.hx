@@ -156,6 +156,17 @@ class BrowseHandler extends Handler {
         });
     	
     	async(function(sync, posts : Array<Post>) {
+    		Post.findNumberOfPosts(this.user().id, identifier, function(err, results) {
+    			if(err == null) {
+    				this.write(' "results": ' + results + ', \n');
+    				sync(posts);
+    			} else {
+    				this.end('"error": ' + ErrorCode.unknown + '}');
+    			}
+    		});
+    	});
+    	
+    	async(function(sync, posts : Array<Post>) {
             var delimiter = '';
             
             if(state == null) {
@@ -166,9 +177,6 @@ class BrowseHandler extends Handler {
                     state.max = state.min;
                 }
             }
-            
-            // TODO: Use a real value here?!
-            this.write(' "results": 10, \n');
             
             if(posts != null && posts.length > 0) {
                 this.write(' "posts": [');
