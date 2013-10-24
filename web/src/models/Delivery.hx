@@ -8,7 +8,7 @@ import saffron.tools.JSON;
 private typedef DeliveryRow = {
     var id : DataIdentifier;
     var name : String;
-    var country : String;
+    var country_id : DataIdentifier;
     var price : Int;
     var currency : String;
 }
@@ -16,7 +16,7 @@ private typedef DeliveryRow = {
 class Delivery {
     public var id(default, null) : DataIdentifier;
     public var name(default, null) : String;
-    public var country(default, null) : String;
+    public var countryId(default, null) : DataIdentifier;
     public var price(default, null) : Int;
     public var currency(default, null) : String;
     
@@ -35,12 +35,12 @@ class Delivery {
     private function new(row : DeliveryRow) {
         this.id = row.id;
         this.name = row.name;
-        this.country = row.country;
+        this.countryId = row.country_id;
         this.price = row.price;
         this.currency = row.currency;
     }
     
     public function json() : String {
-        return JSON.stringify({ id: this.id, name: this.name, country: this.country, price: this.price, currency: this.currency });
+        return JSON.stringify({ id: this.id, name: this.name, country: this.countryId, price: this.price, currency: this.currency });
     }
 }
