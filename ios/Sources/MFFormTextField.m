@@ -61,11 +61,30 @@
     self.leftView = leftView;
 }
 
+@synthesize allowedCharacterSet = m_allowedCharacterSet;
 @synthesize maxTextLength = m_maxTextLength;
 
 - (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    return (m_maxTextLength == 0 || (self.text.length + string.length - range.length) < m_maxTextLength) ? YES : NO;
+    NSString *text = self.text;
+    NSInteger length1 = text.length;
+    NSInteger length2 = string.length;
+    
+    if(m_allowedCharacterSet) {
+        for(NSInteger index = 0; index < length1; index++) {
+            if(![m_allowedCharacterSet characterIsMember:[text characterAtIndex:index]]) {
+                return NO;
+            }
+        }
+        
+        for(NSInteger index = 0; index < length2; index++) {
+            if(![m_allowedCharacterSet characterIsMember:[string characterAtIndex:index]]) {
+                return NO;
+            }
+        }
+    }
+    
+    return (m_maxTextLength == 0 || (length1 + length2 - range.length) <= m_maxTextLength) ? YES : NO;
 }
 
 #pragma mark UIView
