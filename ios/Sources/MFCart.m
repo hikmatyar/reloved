@@ -95,7 +95,6 @@
 {
     if(!MFEqual(m_card, card)) {
         m_card = card;
-        m_stripeToken = nil;
         m_orderId = nil;
     }
 }
@@ -104,7 +103,6 @@
 {
     if(!MFEqual(m_postIds, postIds)) {
         m_postIds = postIds;
-        m_stripeToken = nil;
         m_orderId = nil;
     }
 }
@@ -113,7 +111,6 @@
 {
     if(!MFEqual(m_deliveryId, deliveryId)) {
         m_deliveryId = deliveryId;
-        m_stripeToken = nil;
         m_orderId = nil;
     }
 }
@@ -162,7 +159,6 @@
 {
     if(!MFEqual(m_countryId, countryId)) {
         m_countryId = countryId;
-        m_stripeToken = nil;
         m_orderId = nil;
     }
 }
