@@ -247,6 +247,9 @@
 "Checkout.Alert.StartingErrorBadItems.Action.OK" = "OK";
 "Checkout.Alert.StartingErrorBadItems.Message" = "Unable to checkout items in cart.";
 "Checkout.Alert.StartingErrorBadItems.Title" = "Checkout Error";
+"Checkout.Alert.Ordered.Action.OK" = "OK";
+"Checkout.Alert.Ordered.Message" = "The purchase was successful";
+"Checkout.Alert.Ordered.Title" = "Purchase Complete";
 "Checkout.Alert.OrderingError.Action.Close" = "Close";
 "Checkout.Alert.OrderingError.Action.Retry" = "Retry";
 "Checkout.Alert.OrderingError.Message" = "Unable to purchase. Retry?";
@@ -257,6 +260,10 @@
 "Checkout.Alert.OrderingErrorDeclined.Action.OK" = "OK";
 "Checkout.Alert.OrderingErrorDeclined.Message" = "The purchase was unsuccessful";
 "Checkout.Alert.OrderingErrorDeclined.Title" = "Checkout Error";
+"Checkout.Alert.OrderingErrorPayment.Action.Close" = "Close";
+"Checkout.Alert.OrderingErrorPayment.Action.Retry" = "Retry";
+"Checkout.Alert.OrderingErrorPayment.Message" = "Unable to send payment info to Stripe. Retry?";
+"Checkout.Alert.OrderingErrorPayment.Title" = "Checkout Error";
 "Checkout.Alert.ValidationError.Message" = "One or more input fields are not valid";
 "Checkout.Alert.ValidationError.Title" = "Unable to Purchase";
 "Checkout.Alert.ValidationError.Action.OK" = "OK";

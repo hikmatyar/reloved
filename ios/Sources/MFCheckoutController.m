@@ -28,6 +28,9 @@
 #import "MFWebFeed.h"
 #import "MFWebServiceError.h"
 #import "MFWebService+Checkout.h"
+#import "PKCard.h"
+#import "STPCard.h"
+#import "Stripe.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UIViewController+Additions.h"
@@ -114,6 +117,33 @@
     return [self.view viewWithTag:TAG_EMPTY_VIEW];
 }
 
+- (void)clearCart
+{
+    NSMutableArray *pages = [[NSMutableArray alloc] init];
+    MFProgressView *progressView = self.progressView;
+    MFPageScrollView *contentView = self.contentView;
+    
+    m_cart = [[MFMutableCart alloc] init];
+    
+    progressView.selectedIndex = 0;
+    [self progressView:nil didSelectItemAtIndex:0];
+    
+    [pages addObject:((MFCheckoutController_Step *)[m_steps objectAtIndex:0]).page];
+    
+    for(NSInteger i = 1, c = m_steps.count; i < c; i++) {
+        MFCheckoutController_Step *step = [m_steps objectAtIndex:i];
+        MFCheckoutPageView *page = [step.page createFreshView];
+        
+        step.page = page;
+        [pages addObject:page];
+    }
+    
+    contentView.selectedPage = 0;
+    contentView.pages = pages;
+    
+    [self feedDidChange:nil];
+}
+
 - (void)requestCheckout
 {
     MFDatabase *database = [MFDatabase sharedDatabase];
@@ -198,8 +228,42 @@
     }];
 }
 
-- (void)requestOrder
+- (void)requestOrderPayment
 {
+    PKCard *card = m_cart.card;
+    
+    m_hud.detailsLabelText = NSLocalizedString(@"Checkout.HUD.Ordering.Message1", nil);
+    
+    if(card) {
+        STPCard *scard = [[STPCard alloc] init];
+        
+        scard.number = card.number;
+        scard.expMonth = card.expMonth;
+        scard.expYear = card.expYear;
+        scard.cvc = card.cvc;
+        
+        [Stripe createTokenWithCard:scard publishableKey:STRIPE_KEY completion:^(STPToken *token, NSError *error) {
+            if(error) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.OrderingErrorPayment.Title", nil)
+                                                                    message:NSLocalizedString(@"Checkout.Alert.OrderingErrorPayment.Message", nil)
+                                                                   delegate:self
+                                                          cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.OrderingErrorPayment.Action.Close", nil)
+                                                          otherButtonTitles:NSLocalizedString(@"Checkout.Alert.OrderingErrorPayment.Action.Retry", nil), nil];
+                
+                alertView.tag = ALERT_ORDERING;
+                [alertView show];
+            } else {
+                m_cart.stripeToken = token.tokenId;
+                [self requestOrderCreate];
+            }
+        }];
+    }
+}
+
+- (void)requestOrderCreate
+{
+    m_hud.detailsLabelText = NSLocalizedString(@"Checkout.HUD.Ordering.Message2", nil);
+    
     [[MFWebService sharedService] requestOrderCreate:m_cart target:self usingBlock:^(id target, NSError *error, MFOrder *order) {
         // Error handling
         if(error && [error.domain isEqualToString:MFWebServiceErrorDomain] && error.code == kMFWebServiceErrorParameterInvalid) {
@@ -223,9 +287,97 @@
             [alertView show];
         // Things look well
         } else {
-            
+            m_cart.orderId = order.identifier;
+            [self requestOrderResult];
         }
     }];
+}
+
+- (void)requestOrderResult
+{
+    if(m_hud && m_cart.orderId) {
+        m_hud.detailsLabelText = NSLocalizedString(@"Checkout.HUD.Ordering.Message3", nil);
+        
+        [[MFWebService sharedService] requestOrderStatus:m_cart.orderId target:self usingBlock:^(id target, NSError *error, MFOrder *order) {
+            if(error || !order) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.OrderingError.Title", nil)
+                                                                    message:NSLocalizedString(@"Checkout.Alert.OrderingError.Message", nil)
+                                                                   delegate:self
+                                                          cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.OrderingError.Action.Close", nil)
+                                                          otherButtonTitles:NSLocalizedString(@"Checkout.Alert.OrderingError.Action.Retry", nil), nil];
+                
+                alertView.tag = ALERT_ORDERING;
+                [alertView show];
+            } else {
+                MFNotice *notice = order.notice;
+                
+                switch(order.status) {
+                    case kMFOrderStatusPending:
+                        [self performSelector:@selector(requestOrderResult) withObject:nil afterDelay:1.0F];
+                        break;
+                    case kMFOrderStatusAccepted:
+                    case kMFOrderStatusCompleted:
+                        if(notice) {
+                            [self presentNavigableViewController:[[MFNoticeController alloc] initWithNotice:notice] animated:YES completion:NULL];
+                        } else {
+                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.Ordered.Title", nil)
+                                                                                message:NSLocalizedString(@"Checkout.Alert.Ordered.Message", nil)
+                                                                               delegate:self
+                                                                      cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.Ordered.Action.OK", nil)
+                                                                      otherButtonTitles:nil];
+                            
+                            alertView.tag = ALERT_GENERIC;
+                            [alertView show];
+                        }
+                        
+                        [MFDatabase sharedDatabase].cart = nil;
+                        [self clearCart];
+                        break;
+                    case kMFOrderStatusCancelled:
+                    case kMFOrderStatusDeclined:
+                    default:
+                        if(notice) {
+                            [self presentNavigableViewController:[[MFNoticeController alloc] initWithNotice:notice] animated:YES completion:NULL];
+                        } else {
+                            if(order.status == kMFOrderStatusCancelled) {
+                                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.OrderingErrorCancelled.Title", nil)
+                                                                                    message:NSLocalizedString(@"Checkout.Alert.OrderingErrorCancelled.Message", nil)
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.OrderingErrorCancelled.Action.OK", nil)
+                                                                          otherButtonTitles:nil];
+                                
+                                alertView.tag = ALERT_GENERIC;
+                                [alertView show];
+                            } else {
+                                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.OrderingErrorDeclined.Title", nil)
+                                                                                    message:NSLocalizedString(@"Checkout.Alert.OrderingErrorDeclined.Message", nil)
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:NSLocalizedString(@"Checkout.Alert.OrderingErrorDeclined.Action.OK", nil)
+                                                                          otherButtonTitles:nil];
+                                
+                                alertView.tag = ALERT_GENERIC;
+                                [alertView show];
+                            }
+                        }
+                        
+                        [MFDatabase sharedDatabase].cart = nil;
+                        [self clearCart];
+                        break;
+                }
+            }
+        }];
+    }
+}
+
+- (void)requestOrder
+{
+    if(m_cart.orderId) {
+        [self requestOrderResult];
+    } else if(m_cart.stripeToken) {
+        [self requestOrderCreate];
+    } else {
+        [self requestOrderPayment];
+    }
 }
 
 - (void)confirmAbort:(BOOL)menu
@@ -419,34 +571,20 @@
             }
         case ALERT_ABORT:
             if(buttonIndex != alertView.cancelButtonIndex) {
-                NSMutableArray *pages = [[NSMutableArray alloc] init];
-                MFProgressView *progressView = self.progressView;
-                MFPageScrollView *contentView = self.contentView;
-                
-                m_cart = [[MFMutableCart alloc] init];
-                
-                progressView.selectedIndex = 0;
-                [self progressView:nil didSelectItemAtIndex:0];
-                
-                [pages addObject:((MFCheckoutController_Step *)[m_steps objectAtIndex:0]).page];
-                
-                for(NSInteger i = 1, c = m_steps.count; i < c; i++) {
-                    MFCheckoutController_Step *step = [m_steps objectAtIndex:i];
-                    MFCheckoutPageView *page = [step.page createFreshView];
-                    
-                    step.page = page;
-                    [pages addObject:page];
-                }
-                
-                contentView.selectedPage = 0;
-                contentView.pages = pages;
-                
-                [self feedDidChange:nil];
+                [self clearCart];
             }
             break;
         case ALERT_STARTING:
             if(buttonIndex != alertView.cancelButtonIndex) {
                 [self requestCheckout];
+            } else {
+                [m_hud hide:YES];
+                m_hud = nil;
+            }
+            break;
+        case ALERT_ORDERING:
+            if(buttonIndex != alertView.cancelButtonIndex) {
+                [self requestOrder];
             } else {
                 [m_hud hide:YES];
                 m_hud = nil;
