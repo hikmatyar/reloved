@@ -70,6 +70,10 @@
                 }
             }
         }
+        
+        m_countries = countries;
+        m_deliveries = deliveries;
+        m_posts = posts;
     }
     
     return self;
