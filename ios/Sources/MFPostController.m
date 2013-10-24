@@ -42,10 +42,15 @@
         self.title = m_post.brand.name;
         
         if(m_userInteractionEnabled) {
-            if(m_post.mine) {
-                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(edit:)];
+            if(m_post.post.status == kMFPostStatusListed) {
+                if(m_post.mine) {
+                    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(edit:)];
+                } else {
+                    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((m_post.includedInCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+                }
             } else {
-                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((m_post.includedInCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Post.Label.Unavailable", nil) style:UIBarButtonItemStyleBordered target:nil action:NULL];
+                self.navigationItem.rightBarButtonItem.enabled = NO;
             }
         } else {
             self.navigationItem.rightBarButtonItem = nil;
