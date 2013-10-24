@@ -99,7 +99,7 @@
         
         self.form.hidden = NO;
         self.navigationItem.rightBarButtonItem.enabled = YES;
-        [m_hud hide:NO];
+        [m_hud hide:YES];
         m_hud = nil;
     } else {
         self.form.hidden = YES;
@@ -108,6 +108,7 @@
         if(!m_hud) {
             m_hud = [[MBProgressHUD alloc] initWithView:self.view];
             m_hud.dimBackground = YES;
+            m_hud.minShowTime = 0.5F;
             m_hud.labelText = NSLocalizedString(@"Profile.Label.Loading", nil);
             m_hud.labelFont = [UIFont themeBoldFontOfSize:16.0F];
             m_hud.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
