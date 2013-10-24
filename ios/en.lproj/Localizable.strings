@@ -61,10 +61,13 @@
 "NewPost.Action.Replace" = "Replace";
 "NewPost.Action.SellersNote" = "Note";
 "NewPost.Action.TypeSizeFit" = "Size";
+"NewPost.Alert.PostingError.Action.Close" = "Close";
+"NewPost.Alert.PostingError.Action.Retry" = "Retry";
+"NewPost.Alert.PostingError.Message" = "Unable to post. Retry?";
+"NewPost.Alert.PostingError.Title" = "Unable to post";
 "NewPost.Hint.Brand" = "Select Brand";
 "NewPost.Hint.Colors" = "Select Color(s)";
 "NewPost.Hint.Fit" = "e.g. 'True to size' or 'Buy 1 size smaller.'";
-"NewPost.Hint.GBP" = "£";
 "NewPost.Hint.Materials" = "e.g. Exterior is 100% cotton, lining is 91% cotton 9% silk";
 "NewPost.Hint.Photo.1.Picker" = "Take Front View Picture";
 "NewPost.Hint.Photo.1.Large" = "Take Front View Picture";
@@ -97,6 +100,9 @@
 "NewPost.Hint.Size" = "Select UK size/equivalent";
 "NewPost.Hint.Subject" = "Post Subject";
 "NewPost.Hint.Type" = "Select dress type";
+"NewPost.HUD.Posting.Message1" = "Uploading photos";
+"NewPost.HUD.Posting.Message2" = "Sending data";
+"NewPost.HUD.Posting.Title" = "Posting";
 "NewPost.Label.Brand" = "Brand";
 "NewPost.Label.Colors" = "Color(s)";
 "NewPost.Label.Fit" = "Fit Description";
@@ -245,6 +251,9 @@
 "Checkout.Alert.OrderingError.Action.Retry" = "Retry";
 "Checkout.Alert.OrderingError.Message" = "Unable to purchase. Retry?";
 "Checkout.Alert.OrderingError.Title" = "Checkout Error";
+"Checkout.Alert.OrderingErrorCancelled.Action.OK" = "OK";
+"Checkout.Alert.OrderingErrorCancelled.Message" = "The order was cancelled";
+"Checkout.Alert.OrderingErrorCancelled.Title" = "Checkout Error";
 "Checkout.Alert.OrderingErrorDeclined.Action.OK" = "OK";
 "Checkout.Alert.OrderingErrorDeclined.Message" = "The purchase was unsuccessful";
 "Checkout.Alert.OrderingErrorDeclined.Title" = "Checkout Error";
