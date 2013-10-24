@@ -38,6 +38,14 @@
         NSURL *oldURL = [database URLForMedia:m_post.mediaIds.firstObject size:kMFMediaSizeThumbnailSmall];
         NSURL *newURL = [database URLForMedia:post.mediaIds.firstObject size:kMFMediaSizeThumbnailSmall];
         
+        if(post.status == kMFPostStatusListed) {
+            self.textLabel.textColor = [UIColor themeTextColor];
+            self.detailTextLabel.textColor = [UIColor themeTextColor];
+        } else {
+            self.textLabel.textColor = [UIColor themeTextAlternativeColor];
+            self.detailTextLabel.textColor = [UIColor themeTextAlternativeColor];
+        }
+        
         if(!oldURL || !MFEqual(oldURL, newURL)) {
             self.imageView.image = nil;
             self.imageView.tag = -1;
