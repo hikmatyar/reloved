@@ -32,6 +32,8 @@
 
 @implementation MFProfileController
 
+@synthesize allowsEmptyFields = m_allowsEmptyFields;
+
 - (MFForm *)form
 {
     return (MFForm *)[self.view viewWithTag:TAG_FORM];
@@ -174,25 +176,28 @@
     NSString *city = self.cityField.text.stringByTrimmingWhitespace;
     NSString *address = self.addressField.text.stringByTrimmingWhitespace;
     NSString *zipcode = self.zipcodeField.text.stringByTrimmingWhitespace;
-    NSString *error = nil;
     
     // Form validation
-    if(firstName.length == 0) {
-        error = NSLocalizedString(@"Profile.Label.FullName", nil);
-    } else if(email.length == 0) {
-        error = NSLocalizedString(@"Profile.Label.Email", nil);
-    }
-    
-    if(error) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Profile.Alert.FormError.Title", nil)
-                                                                message:[NSString stringWithFormat:NSLocalizedString(@"Profile.Alert.FormError.Message", nil), error]
-                                                               delegate:self
-                                                      cancelButtonTitle:NSLocalizedString(@"Profile.Alert.FormError.Action.OK", nil)
-                                                      otherButtonTitles:nil];
+    if(!m_allowsEmptyFields) {
+        NSString *error = nil;
         
-        alertView.tag = ALERT_FORM;
-        [alertView show];
-        return;
+        if(firstName.length == 0) {
+            error = NSLocalizedString(@"Profile.Label.FullName", nil);
+        } else if(email.length == 0) {
+            error = NSLocalizedString(@"Profile.Label.Email", nil);
+        }
+        
+        if(error) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Profile.Alert.FormError.Title", nil)
+                                                                    message:[NSString stringWithFormat:NSLocalizedString(@"Profile.Alert.FormError.Message", nil), error]
+                                                                   delegate:self
+                                                          cancelButtonTitle:NSLocalizedString(@"Profile.Alert.FormError.Action.OK", nil)
+                                                          otherButtonTitles:nil];
+            
+            alertView.tag = ALERT_FORM;
+            [alertView show];
+            return;
+        }
     }
     
     // Create change-set
@@ -503,6 +508,7 @@
         NSArray *countries = [[MFDatabase sharedDatabase].countries sortedArrayUsingSelector:@selector(compare:)];
         
         m_countries = [[NSMutableArray alloc] init];
+        m_allowsEmptyFields = YES;
         
         if(countries) {
             [(NSMutableArray *)m_countries addObjectsFromArray:countries];

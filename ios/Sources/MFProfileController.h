@@ -9,9 +9,12 @@
 {
     @private
     MFFormAccessory *m_accessory;
+    BOOL m_allowsEmptyFields;
     NSArray *m_countries;
     MBProgressHUD *m_hud;
     MFUserDetails *m_details;
 }
+
+@property (nonatomic, assign) BOOL allowsEmptyFields;
 
 @end
