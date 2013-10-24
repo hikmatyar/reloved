@@ -249,7 +249,7 @@ CREATE TABLE `orders` (
   `delivery_id` int(11) NOT NULL,
   `service_fee` int(11) NOT NULL DEFAULT '0',
   `price` int(11) NOT NULL,
-  `amount` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `amount` int(11) NOT NULL,
   `currency` varchar(40) COLLATE utf8_bin DEFAULT NULL,
   `stripeToken` varchar(64) COLLATE utf8_bin NOT NULL,
   `stripeError` varchar(64) COLLATE utf8_bin DEFAULT NULL,
