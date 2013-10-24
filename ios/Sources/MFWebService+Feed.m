@@ -46,7 +46,7 @@
                                                            target:target
                                                              path:@"/post/list"
                                                        parameters:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                  postIds, @"ids",
+                                                                  [postIds componentsJoinedByString:@","], @"ids",
                                                                   (lastModification) ? lastModification.datetimeString : [NSNull null], @"mod", nil]];
     
     request.block = block;
