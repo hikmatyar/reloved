@@ -240,7 +240,7 @@
                     m_hud.dimBackground = YES;
                     m_hud.labelText = NSLocalizedString(@"Checkout.HUD.Starting.Title", nil);
                     m_hud.detailsLabelText = NSLocalizedString(@"Checkout.HUD.Starting.Message", nil);
-                    m_hud.minShowTime = 1.0F;
+                    m_hud.minShowTime = 0.5F;
                     [self.view addSubview:m_hud];
                     [m_hud show:YES];
                     [self requestCheckout];

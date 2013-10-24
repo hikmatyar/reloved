@@ -1,5 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFCart.h"
 #import "MFCheckoutController+Address.h"
 #import "MFCheckoutPageView.h"
 #import "MFCountry.h"
@@ -13,6 +14,7 @@
 #import "MFFormPickerFieldDelegate.h"
 #import "MFFormTextField.h"
 #import "MFFormTextView.h"
+#import "NSString+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
@@ -55,6 +57,49 @@
         [m_countryPickerField reloadData];
         m_countryPickerField.selectedRow = (index != NSNotFound) ? index : 0;
     }
+}
+
+- (void)loadState
+{
+    MFMutableCart *cart = m_controller.cart;
+    NSString *countryId = cart.countryId;
+    
+    m_emailTextField.text = cart.email;
+    m_phoneTextField.text = cart.phone;
+    m_fullNameTextField.text = cart.fullName;
+    m_cityTextField.text = cart.city;
+    m_addressTextView.text = cart.address;
+    m_zipCodeTextField.text = cart.zipcode;
+    
+    if(countryId) {
+        for(NSInteger i = 0, c = m_countries.count; i < c; i++) {
+            MFCountry *country = [m_countries objectAtIndex:i];
+            
+            if([country.identifier isEqualToString:countryId]) {
+                m_countryPickerField.selectedRow = i;
+                break;
+            }
+        }
+    } else {
+        m_countryPickerField.selectedRow = 0;
+    }
+}
+
+- (void)saveState
+{
+    NSArray *fullName = [m_fullNameTextField.text.stringByTrimmingWhitespace componentsSeparatedByString:@" "];
+    NSString *firstName = fullName.firstObject;
+    NSString *lastName = (fullName.count > 1) ? [[fullName subarrayWithRange:NSMakeRange(1, fullName.count - 1)] componentsJoinedByString:@" "] : @"";
+    MFMutableCart *cart = m_controller.cart;
+    
+    cart.firstName = firstName;
+    cart.lastName = lastName;
+    cart.address = m_addressTextView.text.stringByTrimmingWhitespace;
+    cart.city = m_cityTextField.text.stringByTrimmingWhitespace;
+    cart.zipcode = m_zipCodeTextField.text.stringByTrimmingWhitespace;
+    cart.phone = m_phoneTextField.text.stringByTrimmingWhitespace;
+    cart.email = m_emailTextField.text.stringByTrimmingWhitespace;
+    cart.countryId = ((MFCountry *)m_countryPickerField.selectedData).identifier;
 }
 
 #pragma mark MFCheckoutPageView
@@ -258,12 +303,14 @@
 {
     [super pageWillAppear];
     [self invalidateCountries];
+    [self loadState];
     [m_accessory activate];
 }
 
 - (void)pageWillDisappear
 {
     [super pageWillDisappear];
+    [self saveState];
     
     [m_fullNameTextField resignFirstResponder];
     [m_addressTextView resignFirstResponder];
