@@ -6,11 +6,14 @@ import js.Node;
 import models.Order;
 import models.Post;
 import models.Queue;
+import saffron.tools.Stripe;
 
 class Processor extends Task {
+	private var stripe : Stripe;
 	
     public function new() {
         super('Processor', 1000);
+        this.stripe = Stripe.create(Config.stripe_key);
     }
     
     private function onOrderCleanup(order : Order, posts : Array<Post>, status : Int) : Void {
@@ -98,12 +101,23 @@ class Processor extends Task {
 							
 							if(order.stripeToken == null) {
 								this.error('order missing stripe token ');
-								Order.update(order.id, { status: Order.status_declined }, function(err) { });
+								this.onOrderCleanup(order, posts, Order.status_declined);
 								Queue.delete(queue.id, function(err) { sync(); });
 								return;
 							}
 							
-							// TODO: Stripe charge here!
+							this.stripe.charges.create({
+								amount: order.amount,
+								currency: order.currency,
+								description: 'Order #' + order.id
+							}).then(function(result) {
+								this.onOrderCleanup(order, posts, Order.status_accepted);
+								Queue.delete(queue.id, function(err) { sync(); });
+							}, function(err) {
+								this.error('stripe declined payment (' + order.id + ')');
+								this.onOrderCleanup(order, posts, Order.status_declined);
+								Queue.delete(queue.id, function(err) { sync(); });
+							});
 						});
 					} else {
 						Queue.delete(queue.id, function(err) {
