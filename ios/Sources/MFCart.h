@@ -2,9 +2,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class PKCard;
+
 @interface MFCart : NSObject
 {
     @protected
+    PKCard *m_card;
     NSString *m_email;
     NSString *m_phone;
     NSString *m_currency;
@@ -25,6 +28,7 @@
 @property (nonatomic, retain, readonly) NSDictionary *attributes;
 
 @property (nonatomic, assign, readonly, getter = isEmpty) BOOL empty;
+@property (nonatomic, retain, readonly) PKCard *card;
 @property (nonatomic, retain, readonly) NSArray *postIds;
 @property (nonatomic, retain, readonly) NSString *deliveryId;
 @property (nonatomic, retain, readonly) NSString *currency;
@@ -42,10 +46,13 @@
 @property (nonatomic, retain, readonly) NSString *zipcode;
 @property (nonatomic, retain, readonly) NSString *stripeToken;
 
+- (BOOL)isReadyToSubmit;
+
 @end
 
 @interface MFMutableCart : MFCart
 
+@property (nonatomic, retain) PKCard *card;
 @property (nonatomic, retain) NSArray *postIds;
 @property (nonatomic, retain) NSString *email;
 @property (nonatomic, retain) NSString *phone;

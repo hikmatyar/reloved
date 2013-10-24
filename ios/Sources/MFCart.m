@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFCart.h"
+#import "PKCard.h"
 
 #define KEY_DELIVERY @"delivery"
 #define KEY_STRIPE @"stripe"
@@ -59,6 +60,7 @@
     return (m_firstName.length > 0 && m_lastName.length > 0) ? [NSString stringWithFormat:@"%@ %@", m_firstName, m_lastName] : ((m_firstName.length > 0) ? m_firstName : m_lastName);
 }
 
+@synthesize card = m_card;
 @synthesize postIds = m_postIds;
 @synthesize email = m_email;
 @synthesize phone = m_phone;
@@ -74,11 +76,23 @@
 @synthesize zipcode = m_zipcode;
 @synthesize stripeToken = m_stripeToken;
 
+- (BOOL)isReadyToSubmit
+{
+    return (m_postIds.count > 0 && m_card && m_email.length > 0 && m_countryId &&
+            m_firstName.length > 0 &&
+            m_city.length > 0 && m_address.length > 0 && m_deliveryId && m_zipcode.length > 0) ? YES : NO;
+}
+
 @end
 
 #pragma mark -
 
 @implementation MFMutableCart
+
+- (void)setCard:(PKCard *)card
+{
+    m_card = card;
+}
 
 - (void)setPostIds:(NSArray *)postIds
 {
