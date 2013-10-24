@@ -55,7 +55,7 @@
         m_priceTextField.placeholder = NSLocalizedString(@"NewPost.Hint.PriceNew", nil);
         m_priceTextField.allowedCharacterSet = [NSCharacterSet decimalDigitCharacterSet];
         m_priceTextField.maxTextLength = 5;
-        m_priceTextField.leftText = NSLocalizedString(@"NewPost.Hint.GBP", nil);
+        m_priceTextField.leftText = NSLocalizedString(@"Currency.GBP", nil);
         [m_form addSubview:m_priceTextField];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
@@ -71,7 +71,7 @@
         m_priceOriginalTextField.placeholder = NSLocalizedString(@"NewPost.Hint.PriceOriginal", nil);
         m_priceOriginalTextField.allowedCharacterSet = [NSCharacterSet decimalDigitCharacterSet];
         m_priceOriginalTextField.maxTextLength = 5;
-        m_priceOriginalTextField.leftText = NSLocalizedString(@"NewPost.Hint.GBP", nil);
+        m_priceOriginalTextField.leftText = NSLocalizedString(@"Currency.GBP", nil);
         [m_form addSubview:m_priceOriginalTextField];
         
         footer = [[MFFormFooter alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
