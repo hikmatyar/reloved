@@ -42,7 +42,7 @@
         self.title = m_post.brand.name;
         
         if(m_userInteractionEnabled) {
-            if(m_post.post.status == kMFPostStatusListed) {
+            if(m_post.post.status == kMFPostStatusListed || m_post.includedInCart) {
                 if(m_post.mine) {
                     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(edit:)];
                 } else {
@@ -117,7 +117,14 @@
     BOOL includedInCart = !m_post.includedInCart;
     
     m_post.includedInCart = includedInCart;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((includedInCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+    
+    if(m_post.post.status == kMFPostStatusListed) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString((includedInCart) ? @"Post.Action.RemoveFromCart" : @"Post.Action.AddToCart", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(toggleCart:)];
+    } else {
+        includedInCart = NO;
+        m_post.includedInCart = NO;
+        [self invalidateNavigation];
+    }
     
     if(includedInCart) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.AddedToCart.Title", nil)
