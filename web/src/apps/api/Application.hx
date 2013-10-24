@@ -52,7 +52,8 @@ class Application {
         server.post('/logout', LogoutHandler);
         server.post('/browse', BrowseHandler, auth_required);
         server.post('/globals', BrowseHandler.globals, auth_required);
-        server.post('/checkout/:action', CheckoutHandler, auth_required);
+        server.post('/checkout', CheckoutHandler.index, auth_required);
+        server.post('/order/:action{create,status}', CheckoutHandler, auth_required);
         server.post('/user/:action{details,edit}', UserHandler, auth_required);
         server.post('/user/post/:action{create,edit}', PostHandler, auth_required);
         server.post('/post/:action{search,list,states,details,comment,comments}', PostHandler, auth_required);

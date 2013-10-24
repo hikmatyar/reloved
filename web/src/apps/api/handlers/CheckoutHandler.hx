@@ -6,6 +6,8 @@ import js.Node;
 import models.Order;
 import models.Post;
 import models.User;
+import saffron.Data;
+import saffron.tools.JSON;
 
 using apps.api.mixins.CheckoutMixins;
 
@@ -76,7 +78,7 @@ class CheckoutHandler extends Handler {
 		}
 	}
 	
-    public function commit() {
+    public function create() {
     	var postIds = this.checkoutPostIdentifiers();
     	var deliveryId = this.checkoutDeliveryIdentifier();
     	var stripeToken = this.checkoutStripeToken();
@@ -113,8 +115,7 @@ class CheckoutHandler extends Handler {
     					}
     					
     					order.publish();
-    					this.begin(ErrorCode.http_ok);
-    					this.end(order.json());
+    					this.renderOrder(order, postIds);
     				});
     			} else {
     				this.exit(ErrorCode.unknown, 'order');
@@ -131,8 +132,22 @@ class CheckoutHandler extends Handler {
     	if(orderId != 0) {
     		Order.find(orderId, function(err, order) {
     			if(order != null && order.userId == this.user().id) {
-    				this.begin(ErrorCode.http_ok);
-    				this.end(order.json());
+    				OrderPost.findAllForOrder(orderId, function(err, orderPosts) {
+    					var postIds = new Array<DataIdentifier>();
+    					
+    					if(err != null) {
+    						this.exit(ErrorCode.unknown, 'order_posts');
+    						return;
+    					}
+    					
+    					if(orderPosts != null) {
+    						for(orderPost in orderPosts) {
+    							postIds.push(orderPost.postId);
+    						}
+    					}
+    					
+    					this.renderOrder(order, postIds);
+    				});
     			} else if(err != null) {
     				this.exit(ErrorCode.unknown, 'order');
     			} else {
@@ -142,5 +157,47 @@ class CheckoutHandler extends Handler {
     	} else {
     		this.exit(ErrorCode.missing_parameter, 'order');
     	}
+    }
+    
+    private function renderOrder(order : Order, postIds : Array<DataIdentifier>) : Void {
+    	this.begin(ErrorCode.http_ok);
+    	this.write('{ "id": ' + order.id);
+    	this.write(', "status": ' + order.status);
+    	this.write(', "date": "' + new saffron.tools.Date(order.created * 1000).toISOString() + '"');
+    	
+    	if(postIds != null) {
+    		var delimiter = '';
+    		
+			this.write(', "posts": [');
+		
+			for(postId in postIds) {
+				this.write(delimiter);
+				this.write('' + postId);
+				delimiter = ',';
+			}
+			
+			this.write(']');
+    	}
+    	
+    	if(order.status == Order.status_declined) {
+    		this.write(', "notice": { "title": "Payment declined", "message": "The payment was not processed :(" }');
+    	} else if(order.status == Order.status_accepted || order.status == Order.status_completed) {
+    		this.write(', "notice": { "title": "Thank You"');
+    		this.write(', "subject": "Your order has been placed"');
+    		this.write(', "message": ' + JSON.stringify(
+    			'An e-mail confirmation has been sent to you.\n' +
+    			'Order Status:\n' +
+    			//'Delivery estimate Jan 15, 2013' +
+    			'To be shipped by Royal Mail\n\n' +
+    			'Shipped to:\n\n' +
+    			order.firstName + ' ' + order.lastName + '\n' +
+    			order.address + '\n' +
+    			order.city + ', ' + order.zipcode + '\n' +
+    			// FIXME: Quick hack 28 countryId
+    			((order.countryId == 28) ? 'United Kingdom' : '')));
+    		this.write('}');
+    	}
+    	
+    	this.end('}');
     }
 }
