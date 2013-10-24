@@ -44,7 +44,7 @@ class CheckoutHandler extends Handler {
 							}
 						}
 												
-						User.find(this.user().id, function(err, user) {
+						User.findExtended(this.user().id, function(err, user) {
 							var delimiter = '';
     						
 							if(err != null) {
