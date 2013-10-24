@@ -16,6 +16,7 @@
 #define KEY_CITY @"city"
 #define KEY_ADDRESS @"address"
 #define KEY_ZIPCODE @"zipcode"
+#define KEY_POSTS @"ids"
 
 @implementation MFCart
 
@@ -39,6 +40,7 @@
     [attributes setValue:m_city forKey:KEY_CITY];
     [attributes setValue:m_address forKey:KEY_ADDRESS];
     [attributes setValue:m_zipcode forKey:KEY_ZIPCODE];
+    [attributes setValue:m_postIds forKey:KEY_POSTS];
     
     return attributes;
 }
@@ -47,7 +49,7 @@
 
 - (BOOL)isEmpty
 {
-    return (self.attributes.count == 0) ? YES : NO;
+    return (!m_currency || m_postIds.count == 0) ? YES : NO;
 }
 
 @dynamic fullName;
