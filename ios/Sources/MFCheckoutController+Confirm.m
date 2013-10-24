@@ -5,6 +5,7 @@
 #import "MFCheckoutPageView.h"
 #import "MFCountry.h"
 #import "MFDatabase+Country.h"
+#import "MFDatabase+Delivery.h"
 #import "MFDatabase+Post.h"
 #import "MFMoney.h"
 #import "MFPost.h"
@@ -15,6 +16,8 @@
 #import "MFTableViewCell.h"
 #import "MFWebController.h"
 #import "MFWebPost.h"
+#import "PKCard.h"
+#import "PKCardNumber.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 #import "UITableView+Additions.h"
@@ -119,6 +122,8 @@
             BOOL withHelp = (indexPath.row == SECTION_SUMMARY_ROW_SHIPPING || indexPath.row == SECTION_SUMMARY_ROW_FEE) ? YES : NO;
             NSString *identifier = (withHelp) ? CELL_SUMMARY_PLUS_HELP : ((withSeparator) ? CELL_SUMMARY_PLUS_SEPARATOR : CELL_SUMMARY);
             MFTableViewCell *cell = (MFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+            MFCart *cart = m_controller.cart;
+            MFMoney *money;
             
             if(!cell) {
                 cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
@@ -139,20 +144,24 @@
             
             switch(indexPath.row) {
                 case SECTION_SUMMARY_ROW_ITEMS:
+                    money = [[MFMoney alloc] initWithValue:cart.price currency:cart.currency];
                     cell.textLabel.text = NSLocalizedString(@"Checkout.Label.Items", nil);
-                    cell.detailTextLabel.text = @"123";
+                    cell.detailTextLabel.text = money.localizedString;
                     break;
                 case SECTION_SUMMARY_ROW_SHIPPING:
+                    money = [[MFMoney alloc] initWithValue:cart.amount - cart.price currency:cart.currency];
                     cell.textLabel.text = NSLocalizedString(@"Checkout.Label.ShippingAndPacking", nil);
-                    cell.detailTextLabel.text = @"1";
+                    cell.detailTextLabel.text = money.localizedString;
                     break;
                 case SECTION_SUMMARY_ROW_FEE:
+                    money = [[MFMoney alloc] initWithValue:cart.transactionFee currency:cart.currency];
                     cell.textLabel.text = NSLocalizedString(@"Checkout.Label.TransactionFee", nil);
-                    cell.detailTextLabel.text = @"123";
+                    cell.detailTextLabel.text = money.localizedString;
                     break;
                 case SECTION_SUMMARY_ROW_TOTAL:
+                    money = [[MFMoney alloc] initWithValue:cart.amount currency:cart.currency];
                     cell.textLabel.text = NSLocalizedString(@"Checkout.Label.Total", nil);
-                    cell.detailTextLabel.text = @"1234";
+                    cell.detailTextLabel.text = money.localizedString;
                     break;
             }
             
@@ -160,6 +169,7 @@
         } break;
         case SECTION_PAYMENT: {
             MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_PAYMENT];
+            PKCard *card = m_controller.cart.card;
             
             if(!cell) {
                 cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_PAYMENT];
@@ -171,7 +181,38 @@
                 cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
             }
             
-            cell.textLabel.text = @"Visa ****-1234"; // TODO:
+            if(card.number.length > 0) {
+                PKCardNumber *number = [[PKCardNumber alloc] initWithString:card.number];
+                NSString *cardType = @"";
+                
+                switch(number.cardType) {
+                    case PKCardTypeVisa:
+                        cardType = NSLocalizedString(@"Card.Visa", nil);
+                        break;
+                    case PKCardTypeMasterCard:
+                        cardType = NSLocalizedString(@"Card.MasterCard", nil);
+                        break;
+                    case PKCardTypeAmex:
+                        cardType = NSLocalizedString(@"Card.Amex", nil);
+                        break;
+                    case PKCardTypeDiscover:
+                        cardType = NSLocalizedString(@"Card.Discover", nil);
+                        break;
+                    case PKCardTypeJCB:
+                        cardType = NSLocalizedString(@"Card.JCB", nil);
+                        break;
+                    case PKCardTypeDinersClub:
+                        cardType = NSLocalizedString(@"Card.DinersClub", nil);
+                        break;
+                    case PKCardTypeUnknown:
+                    default:
+                        break;
+                }
+                
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ ****-%@", cardType, card.last4];
+            } else {
+                cell.textLabel.text = @"";
+            }
             
             return cell;
         } break;

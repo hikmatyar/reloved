@@ -374,3 +374,12 @@
 /* Currencies */
 
 "Currency.GBP" = "£";
+
+/* Card types */
+
+"Card.Visa" = "Visa";
+"Card.MasterCard" = "MasterCard";
+"Card.Amex" = "Amex";
+"Card.Discover" = "Discover";
+"Card.JCB" = "JCB";
+"Card.DinersClub" = "Diners Club";

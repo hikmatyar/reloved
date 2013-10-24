@@ -5,6 +5,8 @@
 #import "MFCheckoutPageView.h"
 #import "MFCountry.h"
 #import "MFDatabase+Country.h"
+#import "MFDatabase+Delivery.h"
+#import "MFDelivery.h"
 #import "MFForm.h"
 #import "MFFormAccessory.h"
 #import "MFFormFooter.h"
@@ -91,6 +93,7 @@
     NSString *firstName = fullName.firstObject;
     NSString *lastName = (fullName.count > 1) ? [[fullName subarrayWithRange:NSMakeRange(1, fullName.count - 1)] componentsJoinedByString:@" "] : @"";
     MFMutableCart *cart = m_controller.cart;
+    NSInteger amount = cart.price + cart.transactionFee;
     
     cart.firstName = firstName;
     cart.lastName = lastName;
@@ -100,6 +103,16 @@
     cart.phone = m_phoneTextField.text.stringByTrimmingWhitespace;
     cart.email = m_emailTextField.text.stringByTrimmingWhitespace;
     cart.countryId = ((MFCountry *)m_countryPickerField.selectedData).identifier;
+    
+    if(cart.countryId) {
+        MFDelivery *delivery = [[MFDatabase sharedDatabase] deliveryForCountryId:cart.countryId];
+        
+        if(delivery) {
+            amount += delivery.price;
+        }
+    }
+    
+    cart.amount = amount;
 }
 
 #pragma mark MFCheckoutPageView
