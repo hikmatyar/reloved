@@ -224,7 +224,7 @@ DROP TABLE IF EXISTS `deliveries`;
 CREATE TABLE `deliveries` (
   `id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
-  `country` varchar(2) NOT NULL,
+  `countryId` int(11) DEFAULT NULL,
   `price` int(11) NOT NULL,
   `currency` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
