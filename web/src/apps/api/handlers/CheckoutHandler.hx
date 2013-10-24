@@ -98,7 +98,7 @@ class CheckoutHandler extends Handler {
     	var userId = this.user().id;
     	
     	if(postIds != null && postIds.length > 0 && deliveryId != 0 && stripeToken != null &&
-    	   price > 0 && amount != null && currency != null && countryId != 0 &&
+    	   price > 0 && amount > 0 && currency != null && countryId != 0 &&
     	   email != null && phone != null &&
     	   firstName != null && lastName != null &&
     	   city != null && address != null && zipCode != null) {

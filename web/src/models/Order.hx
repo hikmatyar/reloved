@@ -10,7 +10,7 @@ typedef OrderAttributes_Create = {
     var delivery_id : DataIdentifier;
     var country_id : DataIdentifier;
     var price : Int;
-    var amount : String;
+    var amount : Int;
     var currency : String;
     var stripe_token : String;
     var email : String;
@@ -35,7 +35,7 @@ private typedef OrderRow = {
     var delivery_id : DataIdentifier;
     var service_fee : Int;
     var price : Int;
-    var amount : String;
+    var amount : Int;
     var currency : String;
     var stripe_token : String;
     var stripe_error : String;
@@ -105,7 +105,7 @@ class Order {
     public var countryId(default, null) : DataIdentifier;
     public var serviceFee(default, null) : Int;
     public var price(default, null) : Int;
-    public var amount(default, null) : String;
+    public var amount(default, null) : Int;
     public var currency(default, null) : String;
     public var stripeToken(default, null) : String;
     public var stripeError(default, null) : String;

@@ -36,8 +36,8 @@ class CheckoutMixins {
         return Std.parseInt(handler.request.body.price);
     }
     
-    public static inline function checkoutAmount(handler : Handler) : String {
-        return handler.request.body.amount;
+    public static inline function checkoutAmount(handler : Handler) : Int {
+        return Std.parseInt(handler.request.body.amount);
     }
     
     public static inline function checkoutCurrency(handler : Handler) : String {

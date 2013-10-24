@@ -23,6 +23,14 @@ class Config {
     public static inline var port_admin = 3001;
     public static inline var session_length = 60;
     public static inline var session_length_http = 3600;
+    public static inline var transaction_fee = 500;
+    public static inline var transaction_currency = 'GBP';
+    
+#if debug
+    public static inline var stripe_key = 'sk_test_b0IZZ3VL4Rwsmh8tUd8IH6ey';
+#else
+	public static inline var stripe_key = '';
+#end
     
     public static function mysql_adapter() : DataAdapter {
         return MySQL.createConnectionFromPool({
