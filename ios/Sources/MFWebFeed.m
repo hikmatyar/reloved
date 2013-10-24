@@ -306,7 +306,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         
         if(m_feed.offset > m_posts.count) {
             MFError(@"Inconsistent internal db (%d > %d", m_feed.offset, m_posts.count);
-            m_feed = [[MFFeed alloc] initWithState:m_feed.state cursor:m_feed.cursor offset:m_posts.count];
+            m_feed = [[MFFeed alloc] initWithState:m_feed.state cursor:m_feed.cursor offset:m_posts.count count:m_feed.count];
         }
         
         [self endEditing];

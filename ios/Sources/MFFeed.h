@@ -31,7 +31,7 @@ typedef enum _MFFeedCursor {
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 - (id)initWithFeed:(MFFeed *)feed offset:(NSInteger)offset;
-- (id)initWithState:(NSString *)state cursor:(MFFeedCursor)cursor offset:(NSInteger)offset;
+- (id)initWithState:(NSString *)state cursor:(MFFeedCursor)cursor offset:(NSInteger)offset count:(NSInteger)count;
 
 @property (nonatomic, retain, readonly) NSDictionary *attributes;
 

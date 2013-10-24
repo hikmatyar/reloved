@@ -198,10 +198,10 @@
 
 - (id)initWithFeed:(MFFeed *)feed offset:(NSInteger)offset
 {
-    return [self initWithState:feed.state cursor:feed.cursor offset:offset];
+    return [self initWithState:feed.state cursor:feed.cursor offset:offset count:feed.count];
 }
 
-- (id)initWithState:(NSString *)state cursor:(MFFeedCursor)cursor offset:(NSInteger)offset
+- (id)initWithState:(NSString *)state cursor:(MFFeedCursor)cursor offset:(NSInteger)offset count:(NSInteger)count
 {
     self = [super init];
     
@@ -209,6 +209,7 @@
         m_state = state;
         m_cursor = cursor;
         m_offset = offset;
+        m_count = count;
     }
     
     return self;
