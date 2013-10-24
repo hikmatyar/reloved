@@ -53,6 +53,8 @@
         m_priceTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         m_priceTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         m_priceTextField.placeholder = NSLocalizedString(@"NewPost.Hint.PriceNew", nil);
+        m_priceTextField.allowedCharacterSet = [NSCharacterSet decimalDigitCharacterSet];
+        m_priceTextField.maxTextLength = 5;
         m_priceTextField.leftText = NSLocalizedString(@"NewPost.Hint.GBP", nil);
         [m_form addSubview:m_priceTextField];
         
@@ -67,6 +69,8 @@
         m_priceOriginalTextField.autocorrectionType = UITextAutocorrectionTypeNo;
         m_priceOriginalTextField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         m_priceOriginalTextField.placeholder = NSLocalizedString(@"NewPost.Hint.PriceOriginal", nil);
+        m_priceOriginalTextField.allowedCharacterSet = [NSCharacterSet decimalDigitCharacterSet];
+        m_priceOriginalTextField.maxTextLength = 5;
         m_priceOriginalTextField.leftText = NSLocalizedString(@"NewPost.Hint.GBP", nil);
         [m_form addSubview:m_priceOriginalTextField];
         
@@ -83,7 +87,7 @@
 - (BOOL)canContinue
 {
     if(!m_canContinue) {
-        m_canContinue = (m_priceTextField.text.length > 0 && m_priceOriginalTextField.text.length > 0) ? YES : NO;
+        m_canContinue = (m_priceTextField.text.integerValue > 0 && m_priceOriginalTextField.text.integerValue > 0) ? YES : NO;
     }
     
     return m_canContinue;
@@ -122,6 +126,13 @@
 
 #pragma mark UITextFieldDelegate
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [m_controller invalidateNavigation];
+    
+    return ([textField isKindOfClass:[MFFormTextField class]]) ? [(MFFormTextField *)textField shouldChangeCharactersInRange:range replacementString:string] : YES;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if(textField == m_priceTextField) {
@@ -141,13 +152,6 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [m_controller invalidateNavigation];
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    [m_controller invalidateNavigation];
-    
-    return YES;
 }
 
 @end
