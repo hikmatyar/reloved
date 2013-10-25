@@ -539,7 +539,7 @@ class Post {
 			fstatus = fstatus + ' AND size_id IN (' + feed.sizes.join(',') + ') ';
 		}
 		
-		Data.query('SELECT COUNT(*) AS count FROM posts ' + ftables + ' WHERE status ' + fstatus + editorial + fcriteria, function(err, result) {
+		Data.query('SELECT DISTINCT COUNT(*) AS count FROM posts ' + ftables + ' WHERE status ' + fstatus + editorial + fcriteria, function(err, result) {
             if(err == null && result != null && result.length > 0) {
             	fn(err, result[0].count);
             } else {
