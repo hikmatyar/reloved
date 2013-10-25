@@ -121,6 +121,7 @@
 "NewPost.Label.Materials" = "Materials";
 "NewPost.Label.Note" = "Seller's Note";
 "NewPost.Label.Price" = "Sale Price";
+"NewPost.Label.Price.Extra" = " (Minimum sale price is £30)";
 "NewPost.Label.OriginalPrice" = "Original Price";
 "NewPost.Label.Size" = "Size";
 "NewPost.Label.Subject" = "Post Subject";

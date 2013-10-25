@@ -20,6 +20,8 @@
         
         m_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
         m_imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        m_imageView.contentMode = UIViewContentModeScaleAspectFill;
+        m_imageView.clipsToBounds = YES;
         m_imageView.layer.borderColor = [UIColor themeButtonBorderColor].CGColor;
         m_imageView.layer.borderWidth = 1.0F;
         [self addSubview:m_imageView];

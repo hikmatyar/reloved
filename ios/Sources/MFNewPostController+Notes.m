@@ -1,5 +1,11 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFBrand.h"
+#import "MFColor.h"
+#import "MFType.h"
+#import "MFDatabase+Brand.h"
+#import "MFDatabase+Color.h"
+#import "MFDatabase+Type.h"
 #import "MFForm.h"
 #import "MFFormAccessory.h"
 #import "MFFormLabel.h"
@@ -8,6 +14,7 @@
 #import "MFNewPostController+Notes.h"
 #import "MFNewPostPageView.h"
 #import "MFPost.h"
+#import "NSString+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
@@ -77,6 +84,35 @@
     return m_canContinue;
 }
 
+- (void)submitting
+{
+    MFMutablePost *post = m_controller.post;
+    MFDatabase *database = [MFDatabase sharedDatabase];
+    NSMutableSet *tags = [[NSMutableSet alloc] init];
+    MFBrand *brand = [database brandForIdentifier:post.brandId];
+    
+    for(NSString *tag in post.notes.allTags) {
+        [tags addObject:tag];
+    }
+    
+    if(brand) {
+        [tags addObject:brand.name.lowercaseString];
+    }
+    
+    for(MFColor *color in [database colorsForIdentifiers:post.colorIds]) {
+        [tags addObject:color.name.lowercaseString];
+    }
+    
+    for(MFType *type in [database typesForIdentifiers:post.typeIds]) {
+        [tags addObject:type.name.lowercaseString];
+    }
+    
+    post.tags = tags.allObjects;
+    
+    [m_subjectTextField resignFirstResponder];
+    [m_notesTextView resignFirstResponder];
+}
+
 - (void)saveState
 {
     m_controller.post.title = m_subjectTextField.text;
@@ -115,6 +151,8 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    [m_controller invalidateNavigation];
+    
     return ([textField isKindOfClass:[MFFormTextField class]]) ? [(MFFormTextField *)textField shouldChangeCharactersInRange:range replacementString:string] : YES;
 }
 
@@ -132,6 +170,8 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    [m_controller invalidateNavigation];
+    
     return ([textView isKindOfClass:[MFFormTextView class]]) ? [(MFFormTextView *)textView shouldChangeCharactersInRange:range replacementString:text] : YES;
 }
 

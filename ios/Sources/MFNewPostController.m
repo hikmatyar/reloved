@@ -144,9 +144,9 @@
 - (void)showPost:(MFPost *)post
 {
     if(post && post.status == kMFPostStatusListed) {
-        MFPostController *controller = [[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithPost:post]];
+        MFPostController *controller = [[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithPost:post] userInteractionEnabled:NO];
         
-        controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NewPost.Action.Close", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(dismiss:)];
+        //controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NewPost.Action.Close", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(dismiss:)];
         [m_hud hide:NO];
         m_hud = nil;
         [self clearPost];
@@ -264,7 +264,7 @@
 {
     
     if(!m_hud) {
-        m_hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].windows.lastObject animated:YES];
+        m_hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         m_hud.dimBackground = YES;
         m_hud.labelFont = [UIFont themeBoldFontOfSize:16.0F];
         m_hud.detailsLabelFont = [UIFont themeBoldFontOfSize:12.0F];
@@ -312,13 +312,13 @@
         
         self.navigationItem.title = ((MFNewPostController_Step *)[m_steps objectAtIndex:index]).title;
         
+        item.enabled = [(MFNewPostController_Step *)[m_steps objectAtIndex:index] canContinue];
+        
         if(index + 1 >= m_steps.count) {
             item.title = NSLocalizedString(@"NewPost.Action.Done", nil);
-            item.enabled = YES;
             item.style = UIBarButtonItemStyleDone;
         } else {
             item.title = NSLocalizedString(@"NewPost.Action.Next", nil);
-            item.enabled = [(MFNewPostController_Step *)[m_steps objectAtIndex:index] canContinue];
             item.style = UIBarButtonItemStylePlain;
         }
     }

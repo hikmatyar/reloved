@@ -388,7 +388,11 @@
             break;
         case ALERT_OPEN:
         case ALERT_DELETED:
-            [self.navigationController popViewControllerAnimated:YES];
+            if(self.navigationController.viewControllers.firstObject != self) {
+                [self.navigationController popViewControllerAnimated:YES];
+            } else {
+                [self dismissViewControllerAnimated:YES completion:NULL];
+            }
             break;
     }
 }

@@ -43,7 +43,8 @@
         [self addSubview:m_form];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
-        label.text = NSLocalizedString(@"NewPost.Label.Price", nil);
+        //label.text = NSLocalizedString(@"NewPost.Label.Price", nil);
+        [label setText:NSLocalizedString(@"NewPost.Label.Price", nil) hint:NSLocalizedString(@"NewPost.Label.Price.Extra", nil)];
         [m_form addSubview:label];
         
         m_priceTextField = [[MFFormTextField alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormTextField preferredHeight])];
@@ -87,7 +88,7 @@
 - (BOOL)canContinue
 {
     if(!m_canContinue) {
-        m_canContinue = (m_priceTextField.text.integerValue > 0 && m_priceOriginalTextField.text.integerValue > 0) ? YES : NO;
+        m_canContinue = (m_priceTextField.text.integerValue >= 30 && m_priceOriginalTextField.text.integerValue > 0) ? YES : NO;
     }
     
     return m_canContinue;
