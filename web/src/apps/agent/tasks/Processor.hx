@@ -22,7 +22,7 @@ class Processor extends Task {
     	
     	if(posts != null) {
 			for(post in posts) {
-				if(post.status == Post.status_listed_pending_purchase) {
+				if(post.status == Post.status_listed || post.status == Post.status_listed_pending_purchase) {
 					Post.update(post.id, {
 						status: (status == Order.status_accepted) ? Post.status_listed_bought : Post.status_listed
 					}, function(err) { });
@@ -107,10 +107,16 @@ class Processor extends Task {
 								return;
 							}
 							
-							this.stripe.charges.create({
-								amount: order.amount,
-								currency: order.currency,
-								description: 'Order #' + order.id
+							this.stripe.customers.create({
+								card: order.stripeToken,
+								email: order.email
+							}).then(function(customer : StripeCustomer) {
+								return this.stripe.charges.create({
+									amount: order.amount,
+									currency: order.currency,
+									customer: customer.id,
+									description: 'Order #' + order.id
+								});
 							}).then(function(result) {
 								this.onOrderCleanup(order, posts, Order.status_accepted, null);
 								Queue.delete(queue.id, function(err) { sync(); });
