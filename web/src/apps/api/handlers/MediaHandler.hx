@@ -5,6 +5,7 @@ package apps.api.handlers;
 import js.Node;
 import models.Media;
 import models.User;
+import saffron.tools.Formidable;
 import saffron.tools.JSON;
 
 using StringTools;
@@ -23,7 +24,7 @@ class MediaHandler extends Handler {
     private function writeMediaUploaded(media : Media) : Void {
         Media.update(media.id, { status: Media.status_uploaded }, function(err, result) {
             if(err == null) {
-                this.render(JSON.stringify({ error: ErrorCode.none, status: Media.status_uploaded, size: media.fileSize }));
+                this.render({ error: ErrorCode.none, status: Media.status_uploaded, size: media.fileSize });
             } else {
                 this.exit(ErrorCode.unknown);
             }
@@ -79,8 +80,8 @@ class MediaHandler extends Handler {
     public function upload() : Void {
         var id = this.mediaIdentifier();
         var offset = this.mediaFileOffset();
-        // TODO: Check connect-form
-        var file = this.request.files.data;
+        var files : Array<FormidableFile> = this.request.files.data;
+        var file = (files != null && files.length > 0) ? files[0] : null;
         var user = this.user();
         
         if(id != 0 && user != null && file != null && file.size > 0) {
