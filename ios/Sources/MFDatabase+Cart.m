@@ -35,6 +35,8 @@ NSString *MFDatabaseDidChangeCartNotification = @"MFDatabaseDidChangeCart";
         [self setPosts:nil forFeed:[self.class feedIdentifierCart]];
         [MFPreferences sharedPreferences].cart = nil;
     }
+    
+    [self addUpdate:MFDatabaseDidChangeCartNotification change:nil];
 }
 
 - (BOOL)includedInCartForPost:(MFPost *)post

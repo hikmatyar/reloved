@@ -238,6 +238,21 @@
     return self;
 }
 
+- (BOOL)canContinue
+{
+    if(!m_canContinue) {
+        m_canContinue = (
+            ((MFCountry *)m_countryPickerField.selectedData).identifier != nil &&
+            m_emailTextField.text.stringByTrimmingWhitespace.length > 0 &&
+            m_zipCodeTextField.text.stringByTrimmingWhitespace.length > 0 &&
+            m_cityTextField.text.stringByTrimmingWhitespace.length > 0 &&
+            m_fullNameTextField.text.stringByTrimmingWhitespace.length > 0 &&
+            m_addressTextView.text.stringByTrimmingWhitespace.length > 0) ? YES : NO;
+    }
+    
+    return m_canContinue;
+}
+
 #pragma mark MFFormPickerFieldDataSource
 
 - (NSInteger)numberOfRowsInPickerField:(MFFormPickerField *)pickerField
@@ -265,12 +280,15 @@
 
 - (void)pickerField:(MFFormPickerField *)pickerField didSelectRow:(NSInteger)row
 {
+    [m_controller invalidateNavigation];
 }
 
 #pragma mark UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    [m_controller invalidateNavigation];
+    
     return ([textField isKindOfClass:[MFFormTextField class]]) ? [(MFFormTextField *)textField shouldChangeCharactersInRange:range replacementString:string] : YES;
 }
 
@@ -282,6 +300,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    [m_controller invalidateNavigation];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -299,6 +318,8 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    [m_controller invalidateNavigation];
+    
     return ([textView isKindOfClass:[MFFormTextView class]]) ? [(MFFormTextView *)textView shouldChangeCharactersInRange:range replacementString:text] : YES;
 }
 
@@ -310,6 +331,7 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
+    [m_controller invalidateNavigation];
 }
 
 #pragma mark MFPageView

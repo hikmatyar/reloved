@@ -64,7 +64,7 @@
 
 - (BOOL)canContinue
 {
-    return YES;//m_canContinue;
+    return m_canContinue;
 }
 
 #pragma mark MFPageView
@@ -93,6 +93,7 @@
 {
     m_controller.cart.card = card;
     m_canContinue = valid;
+    [m_controller invalidateNavigation];
 }
 
 @end

@@ -41,7 +41,7 @@
     [attributes setValue:m_city forKey:KEY_CITY];
     [attributes setValue:m_address forKey:KEY_ADDRESS];
     [attributes setValue:m_zipcode forKey:KEY_ZIPCODE];
-    [attributes setValue:m_postIds forKey:KEY_POSTS];
+    [attributes setValue:[m_postIds componentsJoinedByString:@","] forKey:KEY_POSTS];
     
     return attributes;
 }
