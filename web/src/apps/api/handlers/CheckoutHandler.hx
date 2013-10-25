@@ -56,7 +56,7 @@ class CheckoutHandler extends Handler {
 							this.write('{ "error": ' + ErrorCode.none);
 							
 							this.write(', "user": ' + user.json());
-							this.write(', "fees": { "GBP": 500 }');
+							this.write(', "fees": { "' + Config.transaction_currency + '": ' + Config.transaction_fee + ' }');
 							this.write(', "posts": [');
 							
 							for(post in posts) {
