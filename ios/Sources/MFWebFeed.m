@@ -44,7 +44,7 @@ NSString *MFWebFeedDidChangeNotification = @"MFWebFeedDidChange";
 #define FEED_FEATURED @"featured"
 
 #define LOADING_DELAY 0.3
-#define LOADING_LIMIT 2
+#define LOADING_LIMIT 5
 
 static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *error) {
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
