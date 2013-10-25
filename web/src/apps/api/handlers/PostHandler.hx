@@ -170,10 +170,10 @@ class PostHandler extends Handler {
 					editorial: (editorial != null && editorial.length > 0) ? editorial : null
 				}, function(err, post) {
 					if(err != null) {
+						this.exit(ErrorCode.unknown, 'post');
+					} else {
 						result.post = post;
 						sync();
-					} else {
-						this.exit(ErrorCode.unknown, 'post');
 					}
 				});
 			});
