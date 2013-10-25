@@ -73,7 +73,7 @@ class BrowseHandler extends Handler {
     
     public function index() : Void {
     	var globals : BrowseHandlerGlobals = { };
-    	var forward = (this.feedDirection() != BrowseHandler.direction_forward) ? true : false;
+    	var forward = (this.feedDirection() == BrowseHandler.direction_forward) ? true : false;
     	var limit = this.feedLimit();
     	var state = this.feedState();
     	var globalState = this.feedGlobals();
@@ -199,7 +199,7 @@ class BrowseHandler extends Handler {
                 	this.write(' "cursor": "end", \n');
                 	state = null;
                 	range = null;
-                } else if(range == null) {
+                } else if(range == null && posts.length == limit) {
                     this.write(' "cursor": "start", \n');
                 } else if(posts.length == limit) {
                     this.write(' "cursor": "middle", \n');

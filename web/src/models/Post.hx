@@ -347,10 +347,12 @@ class PostFeed {
     public static inline var identifier_history = 'history';
     
     private static inline var prefix_color = 'color';
+    private static inline var prefix_size = 'size';
     private static inline var prefix_type = 'type';
     
     public var id(default, null) : String;
     public var colors(default, null) : Array<DataIdentifier>;
+    public var sizes(default, null) : Array<DataIdentifier>;
     public var types(default, null) : Array<DataIdentifier>;
     
     public function new(str : String) {
@@ -381,6 +383,8 @@ class PostFeed {
         					this.colors = ids;
         				} else if(mode == PostFeed.prefix_type) {
         					this.types = ids;
+        				} else if(mode == PostFeed.prefix_size) {
+        					this.sizes = ids;
         				}
         			}
         		}
@@ -531,6 +535,10 @@ class Post {
 			}
 		}
 		
+		if(feed.sizes != null) {
+			fstatus = fstatus + ' AND size_id IN (' + feed.sizes.join(',') + ') ';
+		}
+		
 		Data.query('SELECT COUNT(*) AS count FROM posts ' + ftables + ' WHERE status ' + fstatus + editorial + fcriteria, function(err, result) {
             if(err == null && result != null && result.length > 0) {
             	fn(err, result[0].count);
@@ -561,13 +569,17 @@ class Post {
 				fcriteria = fcriteria + ' AND post_types.type_id IN (' + feed.types.join(',') + ')';
 			}
 		}
+		
+		if(feed.sizes != null) {
+			fstatus = fstatus + ' AND size_id IN (' + feed.sizes.join(',') + ') ';
+		}
 		    	
         if(timestamp != null) {
-            Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' AND ' + order + ' > ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' ASC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
+            Data.query('SELECT DISTINCT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' AND ' + order + ' > ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' ASC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
                 fn(err, result);
             });
         } else {
-            Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ limit ], function(err, result : Array<Post>) {
+            Data.query('SELECT DISTINCT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ limit ], function(err, result : Array<Post>) {
                 fn(err, result);
             });
         }
@@ -595,7 +607,11 @@ class Post {
 			}
     	}
     	
-        Data.query('SELECT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' AND ' + order + ' < ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
+    	if(feed.sizes != null) {
+			fstatus = fstatus + ' AND size_id IN (' + feed.sizes.join(',') + ') ';
+		}
+		
+        Data.query('SELECT DISTINCT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' AND ' + order + ' < ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
             fn(err, result);
         });
     }
