@@ -139,6 +139,7 @@
     
     contentView.selectedPage = 0;
     contentView.pages = pages;
+    [self invalidateNavigation];
 }
 
 - (void)showPost:(MFPost *)post

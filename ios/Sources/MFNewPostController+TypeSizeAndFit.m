@@ -124,7 +124,7 @@
 - (BOOL)canContinue
 {
     if(!m_canContinue) {
-        m_canContinue = YES;//(m_fitDescriptionTextView.text.length > 0 && !m_typeButton.empty && !m_sizeButton.empty) ? YES : NO;
+        m_canContinue = (m_fitDescriptionTextView.text.length > 0 && !m_typeButton.empty && !m_sizeButton.empty) ? YES : NO;
     }
     
     return m_canContinue;

@@ -199,7 +199,7 @@
 - (BOOL)canContinue
 {
     if(!m_canContinue) {
-        m_canContinue = YES;//(m_imagePaths.count >= THUMBNAIL_MIN) ? YES : NO;
+        m_canContinue = (m_imagePaths.count >= THUMBNAIL_MIN) ? YES : NO;
     }
     
     return m_canContinue;
