@@ -51,6 +51,7 @@
 /* New Post Controller */
 
 "NewPost.Action.Cancel" = "Cancel";
+"NewPost.Action.Close" = "Close";
 "NewPost.Action.Condition" = "Condition";
 "NewPost.Action.Details" = "Brand";
 "NewPost.Action.Done" = "Done";
@@ -61,10 +62,20 @@
 "NewPost.Action.Replace" = "Replace";
 "NewPost.Action.SellersNote" = "Note";
 "NewPost.Action.TypeSizeFit" = "Size";
+"NewPost.Alert.ImageError.Action.OK" = "OK";
+"NewPost.Alert.ImageError.Message" = "Unable to post, because of image corruption error.";
+"NewPost.Alert.ImageError.Title" = "Unable to post";
 "NewPost.Alert.PostingError.Action.Close" = "Close";
 "NewPost.Alert.PostingError.Action.Retry" = "Retry";
 "NewPost.Alert.PostingError.Message" = "Unable to post. Retry?";
 "NewPost.Alert.PostingError.Title" = "Unable to post";
+"NewPost.Alert.Posted.Action.OK" = "OK";
+"NewPost.Alert.Posted.Message" = "Post was posted";
+"NewPost.Alert.Posted.Title" = "Post was posted";
+"NewPost.Alert.UploadingError.Action.Close" = "Close";
+"NewPost.Alert.UploadingError.Action.Retry" = "Retry";
+"NewPost.Alert.UploadingError.Message" = "Unable to upload. Retry?";
+"NewPost.Alert.UploadingError.Title" = "Unable to upload";
 "NewPost.Hint.Brand" = "Select Brand";
 "NewPost.Hint.Colors" = "Select Color(s)";
 "NewPost.Hint.Fit" = "e.g. 'True to size' or 'Buy 1 size smaller.'";
@@ -100,8 +111,9 @@
 "NewPost.Hint.Size" = "Select UK size/equivalent";
 "NewPost.Hint.Subject" = "Post Subject";
 "NewPost.Hint.Type" = "Select dress type";
-"NewPost.HUD.Posting.Message1" = "Uploading photos";
+"NewPost.HUD.Posting.Message1" = "Uploading photo (%d/%d)";
 "NewPost.HUD.Posting.Message2" = "Sending data";
+"NewPost.HUD.Posting.Message3" = "Waiting for server response";
 "NewPost.HUD.Posting.Title" = "Posting";
 "NewPost.Label.Brand" = "Brand";
 "NewPost.Label.Colors" = "Color(s)";

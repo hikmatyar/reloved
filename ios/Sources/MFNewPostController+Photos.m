@@ -207,7 +207,7 @@
 
 - (void)submitting
 {
-    [m_imagePaths removeAllObjects];
+    //[m_imagePaths removeAllObjects];
 }
 
 #pragma mark MFPageView

@@ -5,13 +5,15 @@
 @class MBProgressHUD;
 @class MFMutablePost;
 
-@interface MFNewPostController : UIViewController <MFProgressViewDelegate>
+@interface MFNewPostController : UIViewController <UIAlertViewDelegate, MFProgressViewDelegate>
 {
     @private
     MBProgressHUD *m_hud;
     NSArray *m_steps;
     NSInteger m_stepIndex;
     MFMutablePost *m_post;
+    NSMutableDictionary *m_photos;
+    NSInteger m_resubmitCounter;
 }
 
 @property (nonatomic, retain, readonly) MFMutablePost *post;

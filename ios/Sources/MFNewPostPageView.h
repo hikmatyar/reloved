@@ -12,6 +12,7 @@
 
 - (id)initWithFrame:(CGRect)frame controller:(MFNewPostController *)controller;
 
+- (MFNewPostPageView *)createFreshView;
 - (BOOL)canContinue;
 - (void)saveState;
 - (void)submitting;
