@@ -517,7 +517,7 @@ class Post {
     public static function findNumberOfPosts(userId : DataIdentifier, identifier : String, fn : DataError -> Int -> Void) : Void {
     	var feed = new PostFeed(identifier);
     	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial IS NOT NULL' : '';
-    	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (1,2,3,4) ' : ' = 2';
+    	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (2,3,4) ' : ' = 2';
     	var fcriteria = '';
     	var ftables = '';
     	
@@ -552,7 +552,7 @@ class Post {
     	var feed = new PostFeed(identifier);
     	var order = (feed.id == PostFeed.identifier_all) ? 'created' : 'modified';
     	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial IS NOT NULL' : '';
-    	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (1,2,3,4) ' : ' = 2';
+    	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (2,3,4) ' : ' = 2';
     	var fcriteria = '';
     	var ftables = '';
     	
@@ -589,7 +589,7 @@ class Post {
     	var feed = new PostFeed(identifier);
     	var order = (feed.id == PostFeed.identifier_only_new) ? 'created' : 'modified';
     	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial IS NOT NULL' : '';
-    	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (1,2,3,4) ' : ' = 2';
+    	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (2,3,4) ' : ' = 2';
     	var fcriteria = '';
     	var ftables = '';
     	

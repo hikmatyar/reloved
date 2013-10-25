@@ -6,7 +6,7 @@ import saffron.Data;
 
 class CheckoutMixins {
 	public static inline function checkoutIdentifier(handler : Handler) : Int {
-        return Std.parseInt(handler.request.body.order);
+        return Std.parseInt(handler.request.body.id);
     }
     
     public static inline function checkoutPostIdentifiers(handler : Handler) : Array<DataIdentifier> {
@@ -41,7 +41,7 @@ class CheckoutMixins {
     }
     
     public static inline function checkoutCurrency(handler : Handler) : String {
-        return handler.request.body.stripe;
+        return handler.request.body.currency;
     }
     
     public static inline function checkoutCountryIdentifier(handler : Handler) : Int {

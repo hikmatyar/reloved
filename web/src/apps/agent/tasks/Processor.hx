@@ -16,8 +16,9 @@ class Processor extends Task {
         this.stripe = Stripe.create(Config.stripe_key);
     }
     
-    private function onOrderCleanup(order : Order, posts : Array<Post>, status : Int) : Void {
-    	Order.update(order.id, { status: Order.status_declined }, function(err) { });
+    private function onOrderCleanup(order : Order, posts : Array<Post>, status : Int, error : String) : Void {
+    	Order.update(order.id, (error != null) ?
+    		{ stripe_error: error, status: status } : { status: status }, function(err) { });
     	
     	if(posts != null) {
 			for(post in posts) {
@@ -80,28 +81,28 @@ class Processor extends Task {
 							for(post in posts) {
 								price += post.price;
 								
-								if(post.status != Post.status_listed_pending_purchase) {
+								if(post.status != Post.status_listed && post.status != Post.status_listed_pending_purchase) {
 									mismatch = true;
 								}
 							}
 							
 							if(mismatch) {
 								this.error('order post status mismatch ' + err);
-								this.onOrderCleanup(order, posts, Order.status_declined);
+								this.onOrderCleanup(order, posts, Order.status_declined, 'reloved: post status');
 								Queue.delete(queue.id, function(err) { sync(); });
 								return;
 							}
 							
 							if(order.price != price || order.serviceFee < 0 || order.amount < order.price) {
 								this.error('order price mismatch ' + err);
-								this.onOrderCleanup(order, posts, Order.status_declined);
+								this.onOrderCleanup(order, posts, Order.status_declined, 'reloved: price mismatch');
 								Queue.delete(queue.id, function(err) { sync(); });
 								return;
 							}
 							
 							if(order.stripeToken == null) {
 								this.error('order missing stripe token ');
-								this.onOrderCleanup(order, posts, Order.status_declined);
+								this.onOrderCleanup(order, posts, Order.status_declined, 'reloved: no stripe token');
 								Queue.delete(queue.id, function(err) { sync(); });
 								return;
 							}
@@ -111,11 +112,11 @@ class Processor extends Task {
 								currency: order.currency,
 								description: 'Order #' + order.id
 							}).then(function(result) {
-								this.onOrderCleanup(order, posts, Order.status_accepted);
+								this.onOrderCleanup(order, posts, Order.status_accepted, null);
 								Queue.delete(queue.id, function(err) { sync(); });
 							}, function(err) {
 								this.error('stripe declined payment (' + order.id + ')');
-								this.onOrderCleanup(order, posts, Order.status_declined);
+								this.onOrderCleanup(order, posts, Order.status_declined, '' + err);
 								Queue.delete(queue.id, function(err) { sync(); });
 							});
 						});
