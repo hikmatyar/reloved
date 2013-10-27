@@ -48,12 +48,9 @@
             [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeBoldFontOfSize:14.0F], NSFontAttributeName, nil]]];
         [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"'%@'\n", title] attributes:
             [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], NSFontAttributeName, nil]]];
-        [str appendAttributedString:[[NSAttributedString alloc] initWithString:
-            (priceOriginal.value > price.value) ?
-                [NSString stringWithFormat:NSLocalizedString(@"Post.Format.DiscountOver0", nil),
-                    (int)roundf(100.0F * (1.0F - (float)price.value / (float)priceOriginal.value))] : NSLocalizedString(@"Post.Format.DiscountEquals0", nil) attributes:
+        [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@ ", priceOriginal.localizedString] attributes:
             [NSDictionary dictionaryWithObjectsAndKeys:
-                //[NSNumber numberWithInteger:NSUnderlineStyleThick], NSStrikethroughStyleAttributeName,
+                [NSNumber numberWithInteger:NSUnderlineStyleThick], NSStrikethroughStyleAttributeName,
                 [UIColor themeTextAlternativeColor], NSForegroundColorAttributeName, nil]]];
         [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@\n", price.localizedString] attributes:
             [NSDictionary dictionaryWithObjectsAndKeys:
@@ -63,6 +60,7 @@
             [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:12.0F], NSFontAttributeName, nil]]];
         [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", desc] attributes:
             [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], NSFontAttributeName, nil]]];
+        [str appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\n\n\n\n\n\n\n\n\n" attributes:nil]];
         [str endEditing];
         
         m_post = post;
