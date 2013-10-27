@@ -29,6 +29,7 @@ extern NSString *MFWebPostDidDeleteNotification;
 @property (nonatomic, retain, readonly) NSArray *colors;
 @property (nonatomic, retain, readonly) MFCondition *condition;
 @property (nonatomic, retain, readonly) NSArray *comments;
+@property (nonatomic, retain, readonly) NSString *identifier;
 @property (nonatomic, retain, readonly) MFPost *post;
 @property (nonatomic, retain, readonly) MFSize *size;
 @property (nonatomic, retain, readonly) NSArray *types;

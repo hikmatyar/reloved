@@ -42,6 +42,10 @@
 #define ALERT_ORDERING 4
 #define ALERT_GENERIC 5
 
+#define EVENT_CATEGORY @"checkout"
+#define EVENT_ACTION_BEGIN @"begin"
+#define EVENT_ACTION_END @"end"
+
 #define TAG_PROGRESS_VIEW 1000
 #define TAG_CONTENT_VIEW 1001
 #define TAG_EMPTY_VIEW 1002
@@ -377,6 +381,8 @@
                         [self clearCart];
                         break;
                 }
+                
+                LOG_EVENT(EVENT_CATEGORY, EVENT_ACTION_END);
             }
         }];
     }
@@ -659,6 +665,8 @@
     view.backgroundColor = [UIColor themeBackgroundColor];
     
     self.view = view;
+    
+    LOG_EVENT(EVENT_CATEGORY, EVENT_ACTION_BEGIN);
 }
 
 - (void)viewWillAppear:(BOOL)animated

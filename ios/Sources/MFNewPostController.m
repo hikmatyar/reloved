@@ -99,6 +99,10 @@
 
 #pragma mark -
 
+#define EVENT_CATEGORY @"post_create"
+#define EVENT_ACTION_BEGIN @"begin"
+#define EVENT_ACTION_END @"end"
+
 @implementation MFNewPostController
 
 - (MFPageScrollView *)contentView
@@ -152,6 +156,8 @@
         m_hud = nil;
         [self clearPost];
         [self presentNavigableViewController:controller animated:YES completion:NULL];
+        
+        LOG_EVENT(EVENT_CATEGORY, EVENT_ACTION_END);
     } else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"NewPost.Alert.Posted.Title", nil)
                                                             message:NSLocalizedString(@"NewPost.Alert.Posted.Message", nil)
@@ -263,7 +269,6 @@
 
 - (IBAction)post:(id)sender
 {
-    
     if(!m_hud) {
         m_hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         m_hud.dimBackground = YES;
@@ -450,6 +455,8 @@
     
     self.view = view;
     [self invalidateNavigation];
+    
+    LOG_EVENT(EVENT_CATEGORY, EVENT_ACTION_BEGIN);
 }
 
 - (void)viewWillDisappear:(BOOL)animated

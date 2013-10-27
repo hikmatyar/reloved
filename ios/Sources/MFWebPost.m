@@ -95,6 +95,8 @@ static inline NSDictionary *MFWebPostGetUserInfo(NSArray *changes, NSError *erro
     return nil;
 }
 
+@synthesize identifier = m_identifier;
+
 @dynamic size;
 
 - (MFSize *)size

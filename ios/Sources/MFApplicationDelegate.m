@@ -13,6 +13,9 @@
 #import "UIFont+Additions.h"
 #import "UINavigationController+Additions.h"
 
+#define EVENT_CATEGORY @"application"
+#define EVENT_ACTION_LAUNCH @"launch"
+
 @implementation MFApplicationDelegate
 
 @synthesize window = m_window;
@@ -86,6 +89,8 @@
     if(url) {
         [controller.centerViewController pushLink:url animated:NO];
     }
+    
+    LOG_EVENT(EVENT_CATEGORY, EVENT_ACTION_LAUNCH);
     
     return YES;
 }

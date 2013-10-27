@@ -34,6 +34,9 @@
 #define ALERT_DELETE 12
 #define ALERT_DELETED 13
 
+#define EVENT_CATEGORY @"post_details"
+#define EVENT_ACTION_VIEW @"view"
+
 @implementation MFPostController
 
 - (void)invalidateNavigation
@@ -496,6 +499,8 @@
     }
     
     [m_post startLoading];
+    
+    LOG_EVENT_DETAILED(EVENT_CATEGORY, EVENT_ACTION_VIEW, m_post.identifier, 0);
 }
 
 - (void)viewWillAppear:(BOOL)animated
