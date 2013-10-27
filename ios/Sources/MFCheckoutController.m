@@ -174,7 +174,8 @@
         }
         
         // Error handling
-        if(error && [error.domain isEqualToString:MFWebServiceErrorDomain] && error.code == kMFWebServiceErrorParameterInvalid) {
+        if((checkout && checkout.status != kMFCheckoutStatusValid) ||
+           (error && [error.domain isEqualToString:MFWebServiceErrorDomain] && error.code == kMFWebServiceErrorParameterInvalid)) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Checkout.Alert.StartingErrorBadItems.Title", nil)
                                                                 message:NSLocalizedString(@"Checkout.Alert.StartingErrorBadItems.Message", nil)
                                                                delegate:self

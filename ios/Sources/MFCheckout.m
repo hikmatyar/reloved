@@ -13,6 +13,7 @@
 #define KEY_FEES @"fees"
 #define KEY_POSTS @"posts"
 #define KEY_USER @"user"
+#define KEY_STATUS @"status"
 
 @implementation MFCheckout
 
@@ -28,6 +29,7 @@
         
         m_user = [[MFUserDetails alloc] initWithAttributes:[attributes dictionaryForKey:KEY_USER]];
         m_fees = [attributes dictionaryForKey:KEY_FEES];
+        m_status = [attributes integerForKey:KEY_STATUS];
         
         for(NSDictionary *json in [attributes arrayForKey:KEY_POSTS]) {
             if([json isKindOfClass:klass]) {
@@ -87,6 +89,7 @@
     
     [attributes setValue:m_user.attributes forKey:KEY_USER];
     [attributes setValue:m_fees forKey:KEY_FEES];
+    [attributes setValue:[NSNumber numberWithInteger:m_status] forKey:KEY_STATUS];
     
     if(m_countries) {
         NSMutableArray *countries = [[NSMutableArray alloc] init];
@@ -126,6 +129,7 @@
     return (currency) ? [[MFMoney alloc] initWithValue:[m_fees numberForKey:currency].integerValue currency:currency] : nil;
 }
 
+@synthesize status = m_status;
 @synthesize countries = m_countries;
 @synthesize deliveries = m_deliveries;
 @synthesize posts = m_posts;

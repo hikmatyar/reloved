@@ -4,6 +4,11 @@
 
 @class MFMoney, MFUserDetails;
 
+typedef enum _MFCheckoutStatus {
+    kMFCheckoutStatusInvalid = 0,
+    kMFCheckoutStatusValid = 1
+} MFCheckoutStatus;
+
 @interface MFCheckout : NSObject <MFWebRequestTransform>
 {
     @private
@@ -22,6 +27,7 @@
 @property (nonatomic, retain, readonly) NSArray *countries;
 @property (nonatomic, retain, readonly) NSArray *deliveries;
 @property (nonatomic, retain, readonly) NSArray *posts;
+@property (nonatomic, assign, readonly) MFCheckoutStatus status;
 @property (nonatomic, retain, readonly) MFUserDetails *user;
 
 @end
