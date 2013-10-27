@@ -17,7 +17,7 @@ typedef enum _MFPostStatus {
     kMFPostStatusUnlistedBought = 5
 } MFPostStatus;
 
-@interface MFPost : NSObject <MFWebRequestTransform>
+@interface MFPost : NSObject <NSCopying, NSMutableCopying, MFWebRequestTransform>
 {
     @protected
     NSDate *m_date;
@@ -47,6 +47,7 @@ typedef enum _MFPostStatus {
 @property (nonatomic, retain, readonly) NSDictionary *attributes;
 - (NSDictionary *)attributesForChanges:(MFPostChange)changes;
 
+@property (nonatomic, retain, readonly) NSString *csum;
 @property (nonatomic, assign, readonly, getter = isActive) BOOL active;
 @property (nonatomic, retain, readonly) NSDate *date;
 @property (nonatomic, retain, readonly) NSDate *modified;
@@ -68,8 +69,6 @@ typedef enum _MFPostStatus {
 @property (nonatomic, retain, readonly) NSString *fit;
 @property (nonatomic, retain, readonly) NSString *notes;
 @property (nonatomic, retain, readonly) NSArray *tags;
-
-- (BOOL)update:(NSDictionary *)changes;
 
 @end
 
@@ -97,5 +96,7 @@ typedef enum _MFPostStatus {
 @property (nonatomic, retain) NSString *fit;
 @property (nonatomic, retain) NSString *notes;
 @property (nonatomic, retain) NSArray *tags;
+
+- (BOOL)update:(NSDictionary *)changes;
 
 @end

@@ -1,5 +1,6 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "JSONKit.h"
 #import "MFPost.h"
 #import "NSDate+Additions.h"
 #import "NSDictionary+Additions.h"
@@ -60,6 +61,13 @@
     }
     
     return self;
+}
+
+@dynamic csum;
+
+- (NSString *)csum
+{
+    return self.attributes.JSONString.sha1Value;
 }
 
 @dynamic attributes;
@@ -131,114 +139,28 @@
 @synthesize notes = m_notes;
 @synthesize tags = m_tags;
 
-- (BOOL)update:(NSDictionary *)changes
+- (void)copyFields:(MFPost *)post
 {
-    BOOL changed = NO;
-    NSString *str;
-    NSNumber *num;
-    NSArray *arr;
-    
-    if((str = [changes identifierForKey:KEY_IDENTIFIER]) != nil && !MFEqual(m_identifier, str)) {
-        m_identifier = str;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_USER]) != nil && !MFEqual(m_userId, str)) {
-        m_userId = str;
-        changed = YES;
-    }
-    
-    if((num = [changes numberForKey:KEY_STATUS]) != nil && num.integerValue != m_status) {
-        m_status = num.integerValue;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_DATE]) != nil && !MFEqual(m_date.datetimeString, str)) {
-        m_date = str.datetimeValue;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_MODIFIED]) != nil && !MFEqual(m_modified.datetimeString, str)) {
-        m_modified = str.datetimeValue;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_BRAND]) != nil && !MFEqual(m_brandId, str)) {
-        m_brandId = str;
-        changed = YES;
-    }
-    
-    if((arr = [changes arrayOfIdentifiersForKey:KEY_COLOR]) != nil && !MFEqual(m_colorIds, arr)) {
-        m_colorIds = arr;
-        changed = YES;
-    }
-    
-    if((arr = [changes arrayOfIdentifiersForKey:KEY_MEDIA]) != nil && !MFEqual(m_mediaIds, arr)) {
-        m_mediaIds = arr;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_CONDITION]) != nil && !MFEqual(m_conditionId, str)) {
-        m_conditionId = str;
-        changed = YES;
-    }
-    
-    if((arr = [changes arrayOfIdentifiersForKey:KEY_TYPES]) != nil && !MFEqual(m_typeIds, arr)) {
-        m_typeIds = arr;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_SIZE]) != nil && !MFEqual(m_sizeId, str)) {
-        m_sizeId = str;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_MATERIALS]) != nil && !MFEqual(m_materials, str)) {
-        m_materials = str;
-        changed = YES;
-    }
-    
-    if((num = [changes numberForKey:KEY_PRICE]) != nil && num.integerValue != m_price) {
-        m_price = num.integerValue;
-        changed = YES;
-    }
-    
-    if((num = [changes numberForKey:KEY_PRICE_ORIGINAL]) != nil && num.integerValue != m_priceOriginal) {
-        m_priceOriginal = num.integerValue;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_CURRENCY]) != nil && !MFEqual(m_currency, str)) {
-        m_currency = str;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_TITLE]) != nil && !MFEqual(m_title, str)) {
-        m_title = str;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_FIT]) != nil && !MFEqual(m_fit, str)) {
-        m_fit = str;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_NOTES]) != nil && !MFEqual(m_notes, str)) {
-        m_notes = str;
-        changed = YES;
-    }
-    
-    if((str = [changes identifierForKey:KEY_EDITORIAL]) != nil && !MFEqual(m_editorial, str)) {
-        m_editorial = str;
-        changed = YES;
-    }
-    
-    if((arr = [changes arrayForKey:KEY_TAGS]) != nil && !MFEqual(m_tags, arr)) {
-        m_tags = arr;
-        changed = YES;
-    }
-    
-    return changed;
+    post->m_date = m_date;
+    post->m_modified = m_modified;
+    post->m_identifier = m_identifier;
+    post->m_status = m_status;
+    post->m_title = m_title;
+    post->m_userId = m_userId;
+    post->m_sizeId = m_sizeId;
+    post->m_brandId = m_brandId;
+    post->m_conditionId = m_conditionId;
+    post->m_typeIds = m_typeIds;
+    post->m_colorIds = m_colorIds;
+    post->m_mediaIds = m_mediaIds;
+    post->m_price = m_price;
+    post->m_priceOriginal = m_priceOriginal;
+    post->m_currency = m_currency;
+    post->m_materials = m_materials;
+    post->m_editorial = m_editorial;
+    post->m_fit = m_fit;
+    post->m_notes = m_notes;
+    post->m_tags = m_tags;
 }
 
 #pragma mark MFWebRequestTransform
@@ -248,11 +170,56 @@
     return ([object isKindOfClass:[NSDictionary class]]) ? [[self alloc] initWithAttributes:(NSDictionary *)object] : nil;
 }
 
+#pragma mark NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    MFMutablePost *post = ([self.class isSubclassOfClass:[MFMutablePost class]]) ? [[self.class allocWithZone:zone] init] : [[MFMutablePost allocWithZone:zone] init];
+    
+    if(post) {
+        [self copyFields:post];
+    }
+    
+    return post;
+}
+
+#pragma mark NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    MFPost *post = [[self.class allocWithZone:zone] init];
+    
+    if(post) {
+        [self copyFields:post];
+    }
+    
+    return post;
+}
+
 #pragma mark NSObject
 
 - (BOOL)isEqual:(MFPost *)post
 {
-    return [post.identifier isEqualToString:m_identifier];
+    return (MFEqual(post.identifier, m_identifier) &&
+            post.status == m_status &&
+            post.price == m_price &&
+            post.priceOriginal == m_priceOriginal &&
+            MFEqual(post.date, m_date) &&
+            MFEqual(post.modified, m_modified) &&
+            MFEqual(post.title, m_title) &&
+            MFEqual(post.userId, m_userId) &&
+            MFEqual(post.sizeId, m_sizeId) &&
+            MFEqual(post.brandId, m_brandId) &&
+            MFEqual(post.conditionId, m_conditionId) &&
+            MFEqual(post.typeIds, m_typeIds) &&
+            MFEqual(post.colorIds, m_colorIds) &&
+            MFEqual(post.mediaIds, m_mediaIds) &&
+            MFEqual(post.currency, m_currency) &&
+            MFEqual(post.materials, m_materials) &&
+            MFEqual(post.editorial, m_editorial) &&
+            MFEqual(post.fit, m_fit) &&
+            MFEqual(post.notes, m_notes) &&
+            MFEqual(post.tags, m_tags)) ? YES : NO;
 }
 
 @end
@@ -380,6 +347,129 @@
 - (void)setTags:(NSArray *)tags
 {
     m_tags = tags;
+}
+
+- (BOOL)update:(NSDictionary *)changes
+{
+    BOOL changed = NO;
+    NSString *str;
+    NSNumber *num;
+    NSArray *arr;
+    
+    if((str = [changes identifierForKey:KEY_IDENTIFIER]) != nil && !MFEqual(m_identifier, str)) {
+        m_identifier = str;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_USER]) != nil && !MFEqual(m_userId, str)) {
+        m_userId = str;
+        changed = YES;
+    }
+    
+    if((num = [changes numberForKey:KEY_STATUS]) != nil && num.integerValue != m_status) {
+        m_status = num.integerValue;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_DATE]) != nil && !MFEqual(m_date.datetimeString, str)) {
+        m_date = str.datetimeValue;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_MODIFIED]) != nil && !MFEqual(m_modified.datetimeString, str)) {
+        m_modified = str.datetimeValue;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_BRAND]) != nil && !MFEqual(m_brandId, str)) {
+        m_brandId = str;
+        changed = YES;
+    }
+    
+    if((arr = [changes arrayOfIdentifiersForKey:KEY_COLOR]) != nil && !MFEqual(m_colorIds, arr)) {
+        m_colorIds = arr;
+        changed = YES;
+    }
+    
+    if((arr = [changes arrayOfIdentifiersForKey:KEY_MEDIA]) != nil && !MFEqual(m_mediaIds, arr)) {
+        m_mediaIds = arr;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_CONDITION]) != nil && !MFEqual(m_conditionId, str)) {
+        m_conditionId = str;
+        changed = YES;
+    }
+    
+    if((arr = [changes arrayOfIdentifiersForKey:KEY_TYPES]) != nil && !MFEqual(m_typeIds, arr)) {
+        m_typeIds = arr;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_SIZE]) != nil && !MFEqual(m_sizeId, str)) {
+        m_sizeId = str;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_MATERIALS]) != nil && !MFEqual(m_materials, str)) {
+        m_materials = str;
+        changed = YES;
+    }
+    
+    if((num = [changes numberForKey:KEY_PRICE]) != nil && num.integerValue != m_price) {
+        m_price = num.integerValue;
+        changed = YES;
+    }
+    
+    if((num = [changes numberForKey:KEY_PRICE_ORIGINAL]) != nil && num.integerValue != m_priceOriginal) {
+        m_priceOriginal = num.integerValue;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_CURRENCY]) != nil && !MFEqual(m_currency, str)) {
+        m_currency = str;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_TITLE]) != nil && !MFEqual(m_title, str)) {
+        m_title = str;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_FIT]) != nil && !MFEqual(m_fit, str)) {
+        m_fit = str;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_NOTES]) != nil && !MFEqual(m_notes, str)) {
+        m_notes = str;
+        changed = YES;
+    }
+    
+    if((str = [changes identifierForKey:KEY_EDITORIAL]) != nil && !MFEqual(m_editorial, str)) {
+        m_editorial = str;
+        changed = YES;
+    }
+    
+    if((arr = [changes arrayForKey:KEY_TAGS]) != nil && !MFEqual(m_tags, arr)) {
+        m_tags = arr;
+        changed = YES;
+    }
+    
+    return changed;
+}
+
+#pragma mark NSMutableCopying
+
+- (id)mutableCopyWithZone:(NSZone *)zone
+{
+    MFMutablePost *post = [super mutableCopyWithZone:zone];
+    
+    if(post) {
+        post->m_imagePaths = m_imagePaths;
+    }
+    
+    return post;
 }
 
 #pragma mark NSObject

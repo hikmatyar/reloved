@@ -437,14 +437,17 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
             for(NSDictionary *change in feed.changes) {
                 NSString *identifier = [change identifierForKey:@"id"];
                 MFPost *post = (identifier) ? [map objectForKey:identifier] : nil;
+                MFMutablePost *_post;
                 
                 if(!post && identifier) {
                     MFError(@"Inconsistent internal db (p=%@)", identifier);
                     post = [database postForIdentifier:identifier];
                 }
                 
-                if([post update:change]) {
-                    [changes addObject:post];
+                _post = [post mutableCopy];
+                
+                if([_post update:change]) {
+                    [changes addObject:_post];
                     changed = YES;
                     cposts = YES;
                 }
