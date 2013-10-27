@@ -107,10 +107,10 @@
 "NewPost.Hint.PriceNew" = "";
 "NewPost.Hint.PriceOriginal" = "";
 "NewPost.Hint.Price" = "We ask for this so as to illustrate savings (vs. buying new) to potential buyers";
-"NewPost.Hint.SellersNote" = "e.g. A chique and wearable daytime option. Constructed from pure silk, it has sultry spagetti strps, cross back detail and a relaxed silhoutte.";
+"NewPost.Hint.SellersNote" = "A chique and wearable daytime option. Constructed from pure silk, it has sultry spagetti straps, cross back detail and a relaxed silhoutte.";
 "NewPost.Hint.Size" = "Select UK size or equivalent";
-"NewPost.Hint.Subject" = "Post Subject";
-"NewPost.Hint.Type" = "Select dress type";
+"NewPost.Hint.Subject" = "Cool Orange Stretch-Jersey Dress";
+"NewPost.Hint.Type" = "Select dress type(s)";
 "NewPost.HUD.Posting.Message1" = "Uploading photo (%d/%d)";
 "NewPost.HUD.Posting.Message2" = "Sending data";
 "NewPost.HUD.Posting.Message3" = "Waiting for server response";
