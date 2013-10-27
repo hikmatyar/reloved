@@ -9,6 +9,7 @@
     @private
     BOOL m_atEnd;
     BOOL m_autoRefresh;
+    BOOL m_showResults;
     MFWebFeed *m_feed;
     NSArray *m_posts;
     BOOL m_updating;
@@ -18,6 +19,7 @@
 - (id)initWithFeed:(MFWebFeed *)feed;
 
 @property (nonatomic, retain) MFWebFeed *feed;
+@property (nonatomic, assign) BOOL showResults;
 @property (nonatomic, retain, readonly) MFTableView *tableView;
 
 - (void)feedDidChange;
