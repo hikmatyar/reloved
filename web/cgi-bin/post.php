@@ -3,7 +3,7 @@
 /* Config */
 
 define('MF_MYSQL_HOST', 'localhost');
-define('MF_MYSQL_USER', '');
+define('MF_MYSQL_USER', 'www');
 define('MF_MYSQL_PASS', '');
 define('MF_MYSQL_NAME', 'reloved');
 
@@ -70,6 +70,7 @@ class MF_Post {
 	public $brandId = null;
 	public $brandName = null;
 	public $sizeId = null;
+	public $sizeName = null;
 	public $condition = null;
 	public $materials = null;
 	public $price = null;
@@ -84,8 +85,9 @@ class MF_Post {
 	
 	public static function find($id) {
 		$query = MF_DB::query(
-			'SELECT posts.*, brands.name AS brand_name FROM posts '.
+			'SELECT DISTINCT posts.*, brands.name AS brand_name, sizes.name AS size_name FROM posts '.
 				'LEFT JOIN brands ON brands.id = posts.brand_id '.
+				'LEFT JOIN sizes ON sizes.id = posts.size_id '.
 				'WHERE posts.id = ? AND posts.status IN (2)', $id);
 		$result = null;
 		
@@ -106,6 +108,7 @@ class MF_Post {
 		$post->brandId = intval($row['brand_id']);
 		$post->brandName = $row['brand_name'];
 		$post->sizeId = intval($row['size_id']);
+		$post->sizeName = $row['size_name'];
 		$post->condition = intval($row['condition']);
 		$post->materials = $row['materials'];
 		$post->price = intval($row['price']);
@@ -145,55 +148,155 @@ if($post != null) {
 	header('HTTP/1.1 404 Not Found');
 	exit();
 }
-
 ?>
-
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width" />
+		<meta name="apple-itunes-app" content="app-id=myAppStoreID, app-argument=reloved:post/<?php echo $post->id; ?>" />
 		<title><?php echo htmlspecialchars($post->brandName); ?></title>
 		<style type="text/css"><!--
 			* {
+				color: #FFF;
     			font-family: 'HelveticaNeue';
     			font-size: 14px;
 			}
 			
+			a {
+				text-decoration: none;
+			}
+			
+			body {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.text {
+				vertical-align: middle;
+				height: 40px;
+				line-height: 22px;
+			}
+			
+			div.container {
+				width: 100%;
+				max-width: 640px;
+				margin: 50px auto 0px auto;
+			}
+			
+			div.envelope {
+				position: absolute;
+				width: 320px;
+				height: 368px;
+				overflow: hidden;
+			}
+			
+			div.envelope .background {
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				height: 184px;
+				background-image: url('/img/Envelope-Lower.png');
+				background-size: 100%;
+				background-position: center bottom;
+				background-repeat: no-repeat;
+			}
+			
+			div.envelope .contents {
+				position: absolute;
+				left: 32px;
+				right: 32px;
+				bottom: 0px;
+				top: 0px;
+				background: #FFF;
+			}
+			
+			div.envelope .button1 {
+				background: #989898;
+				position: absolute;
+				top: 46px;
+				left: 0px;
+				right: 50%;
+				height: 46px;
+				padding: 3px 3px 3px 6px;
+				border-right: 1px solid #FFF;
+			}
+			
+			div.envelope .button2 {
+				background: #989898;
+				position: absolute;
+				top: 46px;
+				left: 50%;
+				right: 0px;
+				height: 46px;
+				padding: 3px 3px 3px 14px;
+			}
+			
+			div.envelope .image {
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				top: 92px;
+			}
+			
+			div.envelope .foreground {
+				background-image: url('/img/Envelope-Top.png');
+				background-position: center bottom;
+				background-size: 100%;
+				background-repeat: no-repeat;
+				position: absolute;
+				left: 0px;
+				right: 0px;
+				bottom: -1px;
+				height: 105px;
+			}
+			
+			body {
+				background: #eeeeee;
+			}
+			
 			img {
 				width: 100%;
-				max-width: 640;
+			}
+			
+			/* Retina */
+			@media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    			div.envelope .background {
+					background-image: url('/img/Envelope-Lower@2x.png');
+				}
+				
+				div.envelope .foreground {
+					background-image: url('/img/Envelope-Top@2x.png');
+				}
 			}
 		--></style>
 	</head>
 	<body>
-		<h1><?php echo htmlspecialchars($post->brandName); ?></h1>
-<?php if(strlen($post->editorial) > 1) { ?>
-		<fieldset>
-			<legend>Reloved notes</legend>
-			<?php echo htmlspecialchars($post->editorial); ?></h1>
-		</fieldset>
+		<div class="container">
+			<div class="envelope">
+				<div class="background"></div>
+				<div class="contents">
+					<div class="image">
+<?php if(count($media) > 0) { ?>
+						<img src="http://api.relovedapp.co.uk/media/download/<?php echo $media[0]; ?>?size=i2" width="100%" alt="" />
 <?php } ?>
-		<fieldset>
-			<legend>Title</legend>
-			<?php echo htmlspecialchars($post->title); ?></h1>
-		</fieldset>
-		<fieldset>
-			<legend>Materials</legend>
-			<?php echo htmlspecialchars($post->materials); ?></h1>
-		</fieldset>
-		<fieldset>
-			<legend>Price</legend>
-			<?php echo htmlspecialchars($post->price / 100).' '.htmlspecialchars($post->currency); ?></h1>
-		</fieldset>
-		<fieldset>
-			<legend>Fit</legend>
-			<?php echo htmlspecialchars($post->fit); ?></h1>
-		</fieldset>
-		<fieldset>
-			<legend>Notes</legend>
-			<?php echo htmlspecialchars($post->notes); ?></h1>
-		</fieldset>
-<?php foreach($media as $m_) { ?>
-		<img src="http://api.relovedapp.co.uk/media/download/<?php echo $m_; ?>?l=t4" alt="" />
-<?php } ?>
+					</div>
+					<div class="button1">
+						<div class="text">
+							<strong><?php echo str_replace(' ', '&nbsp', htmlspecialchars($post->brandName)); ?></strong><br />
+							<?php echo str_replace(' ', '&nbsp', 'UK '.htmlspecialchars($post->sizeName).' / &pound;'.htmlspecialchars($post->price / 100)); ?>
+						</div>
+					</div>
+					<div class="button2">
+						<div class="text">
+							<a href="reloved://post/<?php echo $post->id; ?>">
+								<strong>See details</strong><br />
+								Opens in App
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="foreground"></div>
+			</div>
+		</div>
 	</body>
 </html>
