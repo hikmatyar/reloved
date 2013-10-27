@@ -480,8 +480,10 @@ class Post {
     public static function findChanges(min : Int, max : Int, fn : DataError -> Array<PostChange> -> Void) : Void {
         Data.query('SELECT DISTINCT posts.id, posts.status, post_log.delta AS delta FROM post_log INNER JOIN posts ON post_log.post_id = posts.id WHERE post_log.created > ? AND posts.created >= ? AND posts.created <= ?', [ max, min, max ], function(err, result) {
         	if(err == null && result != null && result.length > 0) {
+        		var postIds : Array<DataIdentifier> = null;
                 var changes = new Array<PostChange>();
-                var cache : Dynamic = { };
+                var postsCache : Dynamic = { };
+        		var cache : Dynamic = { };
                 
                 for(row in result.rows()) {
                     var change : PostChange = cache[row.id];
@@ -494,14 +496,47 @@ class Post {
                     
                     if((row.delta & Post.delta_status) != 0) {
                         change.status = row.status;
-                    } else if((row.delta & Post.delta_media) != 0 ||
-                    		  (row.delta & Post.delta_contents) != 0 ||
-                    		  (row.delta & Post.delta_comments) != 0) {
-                        // Do nothing?
+                    }
+                    
+                    if((row.delta & Post.delta_media) != 0 ||
+                       (row.delta & Post.delta_contents) != 0 ||
+                 	   (row.delta & Post.delta_comments) != 0) {
+                   		if(postIds == null) {
+                   			postIds = new Array<DataIdentifier>();
+                   		}
+                   		
+                   		if(postsCache[row.id] == null) {
+                   			postIds.push(row.id);
+                   			postsCache[row.id] = true;
+                   		}
                     }
                 }
                 
-                fn(null, changes);
+                if(postIds != null) {
+                	Post.findAllForIdentifiers(postIds, function(err, posts) {
+                		if(err != null) {
+                			fn(err, null);
+                			return;
+                		}
+                		
+                		Post.cacheRelationsForPosts(posts, function(err) {
+                			if(err != null) {
+								fn(err, null);
+								return;
+							}
+							
+							if(posts != null) {
+								for(post in posts) {
+									post.jsonRaw(cache[post.id]);
+								}
+							}
+							
+							fn(null, changes);
+                		});
+                	});
+                } else {
+                	fn(null, changes);
+                }
             } else {
                 fn(err, null);
             }   			
@@ -794,25 +829,28 @@ class Post {
     	}
     }
     
-    public function json() : String {
-        var json : Dynamic = {
-            id: this.id,
-            user: this.userId,
-            status: this.status,
-            brand: this.brandId,
-            size: this.sizeId,
-            condition: this.condition,
-            title: this.title,
-            materials: this.materials,
-            notes: this.notes,
-            fit: this.fit,
-            price: this.price,
-            price_o: this.priceOriginal,
-            currency: this.currency,
-            date: new saffron.tools.Date(this.created * 1000).toISOString(),
-            mod: new saffron.tools.Date(this.modified * 1000).toISOString()
-        };
-        var arr : Array<DataIdentifier>;
+    private function jsonRaw(json : Dynamic) : Dynamic {
+    	var arr : Array<DataIdentifier>;
+        
+    	if(json == null) {
+    		json = { };
+    	}
+    	
+    	json.id = this.id;
+    	json.user = this.userId;
+    	json.status = this.status;
+    	json.brand = this.brandId;
+    	json.size = this.sizeId;
+    	json.condition = this.condition;
+    	json.title = this.title;
+    	json.materials = this.materials;
+    	json.notes = this.notes;
+    	json.fit = this.fit;
+    	json.price = this.price;
+    	json.price_o = this.priceOriginal;
+    	json.currency = this.currency;
+    	json.date = new saffron.tools.Date(this.created * 1000).toISOString();
+    	json.mod = new saffron.tools.Date(this.modified * 1000).toISOString();
         
         if(this.editorial != null) {
         	json.editorial = this.editorial;
@@ -858,6 +896,10 @@ class Post {
         	json.tags = tags;
         }
         
-        return JSON.stringify(json);
+        return json;
+    }
+    
+    public function json() : String {
+        return JSON.stringify(this.jsonRaw(null));
     }
 }

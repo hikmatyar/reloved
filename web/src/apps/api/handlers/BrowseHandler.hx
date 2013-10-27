@@ -218,7 +218,7 @@ class BrowseHandler extends Handler {
                 Post.findChanges(range.min, range.max, function(err, changes) {
                     if(changes != null && changes.length > 0) {
                         delimiter = '';
-                        this.write(', "delta": [');
+                        this.write(', "changes": [');
                         
                         for(change in changes) {
                             this.write(delimiter);
