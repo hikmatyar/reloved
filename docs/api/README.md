@@ -223,8 +223,6 @@ API calls for retrieving posts and comments in various ways.
 
 ## Post List
 
-## Post List
-
 	/post/list
 	
 	Parameters:
