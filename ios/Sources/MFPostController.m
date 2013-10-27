@@ -36,6 +36,8 @@
 
 #define EVENT_CATEGORY @"post_details"
 #define EVENT_ACTION_VIEW @"view"
+#define EVENT_ACTION_SAVE @"save"
+#define EVENT_ACTION_SHARE @"share"
 
 @implementation MFPostController
 
@@ -316,6 +318,8 @@
                                                   otherButtonTitles:NSLocalizedString(@"Post.Alert.Saved.Action.OK", nil), nil];
         
         [alertView show];
+        
+        LOG_EVENT_DETAILED(EVENT_CATEGORY, EVENT_ACTION_SAVE, m_post.identifier, 1);
     } else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Post.Alert.Unsaved.Title", nil)
                                                             message:NSLocalizedString(@"Post.Alert.Unsaved.Message", nil)
@@ -324,6 +328,8 @@
                                                   otherButtonTitles:NSLocalizedString(@"Post.Alert.Unsaved.Action.OK", nil), nil];
         
         [alertView show];
+        
+        LOG_EVENT_DETAILED(EVENT_CATEGORY, EVENT_ACTION_SAVE, m_post.identifier, 0);
     }
 }
 
@@ -346,6 +352,8 @@
     [[UIApplication sharedApplication] sendEmail:nil
                                          subject:subject
                                             body:body];
+    
+    LOG_EVENT_DETAILED(EVENT_CATEGORY, EVENT_ACTION_SHARE, m_post.identifier, 0);
 }
 
 #pragma mark UIActionSheetDelegate
