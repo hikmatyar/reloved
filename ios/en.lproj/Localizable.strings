@@ -194,7 +194,7 @@
 "Post.Label.ShippingInfo" = "3-5 days";
 "Post.Label.ReturnsPolicy" = "Yes";
 "Post.Label.QAWithSeller" = "Q&A with Seller";
-"Post.Label.Unavailable" = "Unavailable";
+"Post.Label.Unavailable" = "Sold Out";
 
 /* Post Comments Controller */
 
