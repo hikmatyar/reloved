@@ -33,7 +33,7 @@
 "Home.Action.ShippingInfo" = "Shipping Information";
 "Home.Action.ShopByColor" = "Shop by Color";
 "Home.Action.ShopByDress" = "Shop by Dress Type";
-"Home.Label.Copyright" = "© 2013, Reloved London";
+"Home.Label.Copyright" = "© 2013, Reloved.";
 "Home.Label.CustomerCare" = "Customer Care";
 "Home.Label.Footer" = "We check every item that ships";
 "Home.Label.MyAccount" = "My Account";
@@ -107,7 +107,7 @@
 "NewPost.Hint.PriceNew" = "";
 "NewPost.Hint.PriceOriginal" = "";
 "NewPost.Hint.Price" = "We ask for this so as to illustrate savings (vs. buying new) to potential buyers";
-"NewPost.Hint.SellersNote" = "A chique and wearable daytime option. Constructed from pure silk, it has sultry spagetti strps, cross back detail and a relaxed silhoutte.";
+"NewPost.Hint.SellersNote" = "e.g. A chique and wearable daytime option. Constructed from pure silk, it has sultry spagetti strps, cross back detail and a relaxed silhoutte.";
 "NewPost.Hint.Size" = "Select UK size or equivalent";
 "NewPost.Hint.Subject" = "Post Subject";
 "NewPost.Hint.Type" = "Select dress type";
@@ -293,7 +293,7 @@
 "Checkout.Hint.CardExpiry" = "MM/YY";
 "Checkout.Hint.CardCVC" = "CVC";
 "Checkout.Hint.CardCVC.Extra" = " (3 digit code on back of card)";
-"Checkout.Hint.Country" = "---";
+"Checkout.Hint.Country" = "Select your country";
 "Checkout.Hint.Email" = "";
 "Checkout.Hint.FullName" = "";
 "Checkout.Hint.City" = "";
@@ -407,8 +407,8 @@
 /* Email */
 
 "Email.Error.Action.OK" = "OK";
-"Email.Error.Message" = "Please configure your email client";
-"Email.Error.Title" = "Sorry, we are unanble to open Mail";
+"Email.Error.Message" = "Please check your Mail settings.";
+"Email.Error.Title" = "Mail Error";
 
 /* Conditions */
 
