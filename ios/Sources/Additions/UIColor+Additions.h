@@ -12,6 +12,7 @@
 + (UIColor *)themeTextColor;
 + (UIColor *)themeTextAlternativeColor;
 + (UIColor *)themeTextBackgroundColor;
++ (UIColor *)themeTextDisabledColor;
 
 + (UIColor *)themeBorderColor;
 + (UIColor *)themeButtonActionColor;

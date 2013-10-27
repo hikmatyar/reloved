@@ -54,6 +54,11 @@
     return [self colorWithString:@"#ffffff"];
 }
 
++ (UIColor *)themeTextDisabledColor
+{
+    return [self colorWithString:@"#999999"];
+}
+
 + (UIColor *)themeBorderColor
 {
     return [self colorWithString:@"#ffffff"];

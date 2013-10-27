@@ -42,8 +42,8 @@
             self.textLabel.textColor = [UIColor themeTextColor];
             self.detailTextLabel.textColor = [UIColor themeTextColor];
         } else {
-            self.textLabel.textColor = [UIColor themeTextAlternativeColor];
-            self.detailTextLabel.textColor = [UIColor themeTextAlternativeColor];
+            self.textLabel.textColor = [UIColor themeTextDisabledColor];
+            self.detailTextLabel.textColor = [UIColor themeTextDisabledColor];
         }
         
         if(!oldURL || !MFEqual(oldURL, newURL)) {
