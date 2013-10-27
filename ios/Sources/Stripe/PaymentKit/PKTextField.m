@@ -36,6 +36,7 @@
 - (void)drawRect:(CGRect)rect {
     if(self.text.length == 0 || [self.text isEqualToString:kPKTextFieldSpaceChar]) {
         CGRect placeholderRect = self.bounds;
+        placeholderRect.origin.x += self.leftView.frame.size.width;
         placeholderRect.origin.y += 0.5;
         [super drawPlaceholderInRect:placeholderRect];
     }
