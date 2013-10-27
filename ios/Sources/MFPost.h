@@ -98,5 +98,6 @@ typedef enum _MFPostStatus {
 @property (nonatomic, retain) NSArray *tags;
 
 - (BOOL)update:(NSDictionary *)changes;
+- (BOOL)updateStatus:(MFPostStatus)status;
 
 @end

@@ -349,6 +349,17 @@
     m_tags = tags;
 }
 
+- (BOOL)updateStatus:(MFPostStatus)status
+{
+    if(m_status != status) {
+        m_status = status;
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (BOOL)update:(NSDictionary *)changes
 {
     BOOL changed = NO;

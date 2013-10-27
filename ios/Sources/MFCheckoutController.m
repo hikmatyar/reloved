@@ -310,7 +310,9 @@
                 alertView.tag = ALERT_ORDERING;
                 [alertView show];
             } else {
+                MFDatabase *database = [MFDatabase sharedDatabase];
                 MFNotice *notice = order.notice;
+                NSArray *posts;
                 
                 switch(order.status) {
                     case kMFOrderStatusPending:
@@ -318,6 +320,8 @@
                         break;
                     case kMFOrderStatusAccepted:
                     case kMFOrderStatusCompleted:
+                        posts = database.cart;
+                        
                         if(notice) {
                             [self presentNavigableViewController:[[MFNoticeController alloc] initWithNotice:notice] animated:YES completion:NULL];
                         } else {
@@ -331,8 +335,16 @@
                             [alertView show];
                         }
                         
-                        [MFDatabase sharedDatabase].cart = nil;
+                        database.cart = nil;
                         [self clearCart];
+                        
+                        for(MFPost *post in posts) {
+                            MFMutablePost *_post = [posts mutableCopy];
+                            
+                            if([_post updateStatus:kMFPostStatusListedBought]) {
+                                [database setPost:_post forIdentifier:_post.identifier];
+                            }
+                        }
                         break;
                     case kMFOrderStatusCancelled:
                     case kMFOrderStatusDeclined:
@@ -361,7 +373,7 @@
                             }
                         }
                         
-                        [MFDatabase sharedDatabase].cart = nil;
+                        database.cart = nil;
                         [self clearCart];
                         break;
                 }
