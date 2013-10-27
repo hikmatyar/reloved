@@ -249,9 +249,10 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 {
     MFDatabase *database = [MFDatabase sharedDatabase];
     NSMutableArray *posts = [[NSMutableArray alloc] init];
+    BOOL local = self.local;
     
     for(MFPost *post in [database postsForFeed:m_identifier]) {
-        if(post.active) {
+        if(local || post.active) {
             [posts addObject:post];
         }
     }
@@ -571,7 +572,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 - (NSArray *)posts
 {
-    return (self.local) ? m_posts : [m_posts subarrayWithRange:NSMakeRange(0, m_feed.offset)];
+    return (self.local || m_feed.offset >= m_posts.count) ? m_posts : [m_posts subarrayWithRange:NSMakeRange(0, m_feed.offset)];
 }
 
 @dynamic numberOfResults;
