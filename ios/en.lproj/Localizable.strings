@@ -180,6 +180,8 @@
 "Post.Alert.Unsaved.Action.OK" = "OK";
 "Post.Alert.Unsaved.Message" = "This dress has been unsaved from your home screen";
 "Post.Alert.Unsaved.Title" = "Unsaved Dress";
+"Post.Format.DiscountEquals0" = "Brand New";
+"Post.Format.DiscountOver0" = "%d%% off";
 "Post.Format.Comments" = "See %d comment";
 "Post.Format.Comments.None" = "Be the first to comment!";
 "Post.Format.Comments.Plural" = "See %d comments";

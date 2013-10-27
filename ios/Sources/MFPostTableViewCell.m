@@ -48,7 +48,10 @@
             [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeBoldFontOfSize:14.0F], NSFontAttributeName, nil]]];
         [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"'%@'\n", title] attributes:
             [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], NSFontAttributeName, nil]]];
-        [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@ ", priceOriginal.localizedString] attributes:
+        [str appendAttributedString:[[NSAttributedString alloc] initWithString:
+            (priceOriginal.value > price.value) ?
+                [NSString stringWithFormat:NSLocalizedString(@"Post.Format.DiscountOver0", nil),
+                    (int)roundf(100.0F * (1.0F - (float)price.value / (float)priceOriginal.value))] : NSLocalizedString(@"Post.Format.DiscountEquals0", nil) attributes:
             [NSDictionary dictionaryWithObjectsAndKeys:
                 //[NSNumber numberWithInteger:NSUnderlineStyleThick], NSStrikethroughStyleAttributeName,
                 [UIColor themeTextAlternativeColor], NSForegroundColorAttributeName, nil]]];

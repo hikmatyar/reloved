@@ -88,7 +88,7 @@
 - (BOOL)canContinue
 {
     if(!m_canContinue) {
-        m_canContinue = (m_priceTextField.text.integerValue >= 30 && m_priceOriginalTextField.text.integerValue > 0) ? YES : NO;
+        m_canContinue = (m_priceTextField.text.integerValue >= 30 && m_priceOriginalTextField.text.integerValue > 0 && m_priceOriginalTextField.text.integerValue >= m_priceTextField.text.integerValue) ? YES : NO;
     }
     
     return m_canContinue;
