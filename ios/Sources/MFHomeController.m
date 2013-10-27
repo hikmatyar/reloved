@@ -213,6 +213,7 @@
     MFFeedController *controller = [[MFFeedController alloc] initWithFeed:[[MFWebFeed alloc] initWithFilters:picker.selectedItems.allObjects]];
     
     picker.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SearchResults.Action.Back", nil) style:UIBarButtonItemStylePlain target:nil action:NULL];
+    controller.showResults = YES;
     controller.title = NSLocalizedString(@"SearchResults.Title", nil);
     controller.tableView.placeholder = NSLocalizedString(@"SearchResults.Label.NoData", nil);
     [picker.navigationController pushViewController:controller animated:YES];

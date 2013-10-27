@@ -24,6 +24,7 @@
 
 #define TAG_TABLEVIEW 2000
 #define TAG_PULLTOREFRESH 2001
+#define TAG_RESULTS_LABEL 2053
 
 #define SECTION_POSTS 0
 #define SECTION_MORE 1
@@ -67,6 +68,19 @@
 {
     return m_pullToLoadMoreView;
 }
+
+- (UILabel *)resultsLabel
+{
+    return (UILabel *)[self.tableView.tableHeaderView viewWithTag:TAG_RESULTS_LABEL];
+}
+
+- (void)updateResultsLabel:(NSInteger)value
+{
+    self.resultsLabel.text = [NSString stringWithFormat:
+        NSLocalizedString((value > 1) ? @"Browse.Format.Results.Plural" : ((value == 1) ? @"Browse.Format.Results" : @"Browse.Format.Results.None"), nil), value];
+}
+
+@synthesize showResults = m_showResults;
 
 @dynamic feed;
 
@@ -200,6 +214,9 @@
 
 - (void)feedDidChange
 {
+    if(m_showResults) {
+        [self updateResultsLabel:self.feed.numberOfResults];
+    }
 }
 
 #pragma mark MFPullToLoadMoreViewDelegate
@@ -280,6 +297,24 @@
     MFTableView *tableView = [[MFTableView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F) style:UITableViewStylePlain];
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
     
+    if(m_showResults) {
+        UIView *resultsView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 22.0F)];
+        UILabel *resultsLabel = [[UILabel alloc] initWithFrame:CGRectMake(-1.0F, 0.0F, 322.0F, 22.0F)];
+        
+        resultsLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        resultsLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+        resultsLabel.font = [UIFont themeFontOfSize:11.0F];
+        resultsLabel.layer.borderColor = [UIColor themeSeparatorColor].CGColor;
+        resultsLabel.layer.borderWidth = 1.0F;
+        resultsLabel.tag = TAG_RESULTS_LABEL;
+        resultsLabel.textAlignment = NSTextAlignmentCenter;
+        resultsLabel.textColor = [UIColor themeTextAlternativeColor];
+        resultsLabel.text = NSLocalizedString(@"Browse.Format.Results.None", nil);
+        [resultsView addSubview:resultsLabel];
+        
+        tableView.tableHeaderView = resultsView;
+    }
+    
     if(!m_feed.local) {
         MFPullToRefreshView *pullToRefreshView = [[MFPullToRefreshView alloc] initWithTableView:tableView];
         
@@ -299,6 +334,10 @@
     
     [view addSubview:tableView];
     self.view = tableView;
+    
+    if(m_showResults) {
+        [self updateResultsLabel:self.feed.numberOfResults];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
