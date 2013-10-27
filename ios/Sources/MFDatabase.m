@@ -151,10 +151,7 @@ NSString *MFDatabaseDidChangeNotification = @"MFDatabaseDidChange";
         [self attach_proxy_posts];
         [self attach_proxy_state];
         
-#if DEBUG
-        // FIXME: Temporary
-        [self removeAllObjects];
-#endif
+        [m_store removeAllObjects];
     }
     
     return self;

@@ -100,11 +100,9 @@
         self.textColor = [UIColor themeInputTextColor];
         self.leftView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 17.0F, 20.0F)];
         self.leftViewMode = UITextFieldViewModeAlways;
-        
     }
     
     return self;
 }
-
 
 @end

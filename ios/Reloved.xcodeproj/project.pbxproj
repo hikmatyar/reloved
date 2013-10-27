@@ -31,6 +31,7 @@
 		811082D117F8CA8E005CC8ED /* SQLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 811082CC17F8CA8E005CC8ED /* SQLObject.m */; };
 		811082D217F8CA8E005CC8ED /* SQLObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 811082CE17F8CA8E005CC8ED /* SQLObjectStore.m */; };
 		811082D417F8CAEF005CC8ED /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 811082D317F8CAEF005CC8ED /* libsqlite3.dylib */; };
+		8111C0B2181DA80D0071C3CF /* MFFormPKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8111C0B1181DA80C0071C3CF /* MFFormPKTextField.m */; };
 		81136AB9180B5555009142AE /* MFWebService+Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136AB8180B5555009142AE /* MFWebService+Post.m */; };
 		81136ABC180B563D009142AE /* NSData+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136ABB180B563D009142AE /* NSData+Additions.m */; };
 		81136AC0180B5703009142AE /* MFWebService+Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136ABF180B5703009142AE /* MFWebService+Media.m */; };
@@ -377,6 +378,8 @@
 		811082CD17F8CA8E005CC8ED /* SQLObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLObjectStore.h; path = Sources/SQLKit/SQLObjectStore.h; sourceTree = SOURCE_ROOT; };
 		811082CE17F8CA8E005CC8ED /* SQLObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SQLObjectStore.m; path = Sources/SQLKit/SQLObjectStore.m; sourceTree = SOURCE_ROOT; };
 		811082D317F8CAEF005CC8ED /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		8111C0B0181DA80C0071C3CF /* MFFormPKTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFFormPKTextField.h; path = Sources/MFFormPKTextField.h; sourceTree = SOURCE_ROOT; };
+		8111C0B1181DA80C0071C3CF /* MFFormPKTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFFormPKTextField.m; path = Sources/MFFormPKTextField.m; sourceTree = SOURCE_ROOT; };
 		81136AB7180B5555009142AE /* MFWebService+Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFWebService+Post.h"; path = "Sources/MFWebService+Post.h"; sourceTree = SOURCE_ROOT; };
 		81136AB8180B5555009142AE /* MFWebService+Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFWebService+Post.m"; path = "Sources/MFWebService+Post.m"; sourceTree = SOURCE_ROOT; };
 		81136ABA180B563D009142AE /* NSData+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Additions.h"; path = "Sources/Additions/NSData+Additions.h"; sourceTree = SOURCE_ROOT; };
@@ -1163,6 +1166,8 @@
 				81D54BC1180F6120002D3449 /* MFFormPickerField.m */,
 				81D54BC3180F614A002D3449 /* MFFormPickerFieldDataSource.h */,
 				81D54BC4180F615A002D3449 /* MFFormPickerFieldDelegate.h */,
+				8111C0B0181DA80C0071C3CF /* MFFormPKTextField.h */,
+				8111C0B1181DA80C0071C3CF /* MFFormPKTextField.m */,
 				817723E717FDAB61004A28CC /* MFFormSeparator.h */,
 				817723E817FDAB61004A28CC /* MFFormSeparator.m */,
 				817723E417FDAAEC004A28CC /* MFFormTextField.h */,
@@ -1903,6 +1908,7 @@
 				81D0967017FCD43D0044BD06 /* MFNewPostController+Details.m in Sources */,
 				81136AC6180C51E6009142AE /* MFWebService+Checkout.m in Sources */,
 				8121BC70181874C700396B1F /* MFFormContainer.m in Sources */,
+				8111C0B2181DA80D0071C3CF /* MFFormPKTextField.m in Sources */,
 				818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */,
 				81B27B1317F60F3700F9BC09 /* StripeError.m in Sources */,
 				81D54BB0180F2658002D3449 /* MFConditionController.m in Sources */,

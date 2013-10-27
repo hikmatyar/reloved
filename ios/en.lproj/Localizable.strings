@@ -286,6 +286,11 @@
 "Checkout.Hint.Total" = "Excludes shipping and other fees";
 "Checkout.Hint.AddressLine" = "Enter text here";
 "Checkout.Hint.Card" = "We do not store your data!";
+"Checkout.Hint.CardHolder" = "";
+"Checkout.Hint.CardNumber" = "1234 5678 9012 3456";
+"Checkout.Hint.CardExpiry" = "MM/YY";
+"Checkout.Hint.CardCVC" = "CVC";
+"Checkout.Hint.CardCVC.Extra" = " (3 digit code on back of card)";
 "Checkout.Hint.Country" = "---";
 "Checkout.Hint.Email" = "";
 "Checkout.Hint.FullName" = "";
@@ -304,6 +309,10 @@
 "Checkout.Label.Items" = "Items";
 "Checkout.Label.Card" = "Credit Card";
 "Checkout.Label.Card.Extra" = " (powered by Stripe)";
+"Checkout.Label.CardHolder" = "Name on card";
+"Checkout.Label.CardNumber" = "Card Number";
+"Checkout.Label.CardExpiry" = "Expiration Date";
+"Checkout.Label.CardCVC" = "CVC";
 "Checkout.Label.Country" = "Country";
 "Checkout.Label.DeliveryDetails" = "Delivery Details";
 "Checkout.Label.FullName" = "Full Name";
