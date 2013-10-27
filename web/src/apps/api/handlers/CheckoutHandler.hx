@@ -12,6 +12,9 @@ import saffron.tools.JSON;
 using apps.api.mixins.CheckoutMixins;
 
 class CheckoutHandler extends Handler {
+	public static inline var checkout_status_invalid = 0;
+	public static inline var checkout_status_valid = 1;
+	
 	public function index() {
 		var postIds = this.checkoutPostIdentifiers();
     	
@@ -29,7 +32,7 @@ class CheckoutHandler extends Handler {
 								var delimiter = '';
     							
     							this.begin(ErrorCode.http_ok);
-								this.write('{ "error": ' + ErrorCode.invalid_parameter);
+								this.write('{ "status": ' + CheckoutHandler.checkout_status_invalid);
 								this.write(', "posts": [');
 								
 								for(post_ in posts) {
@@ -53,7 +56,7 @@ class CheckoutHandler extends Handler {
 							}
 							
 							this.begin(ErrorCode.http_ok);
-							this.write('{ "error": ' + ErrorCode.none);
+							this.write('{ "status": ' + CheckoutHandler.checkout_status_valid);
 							
 							this.write(', "user": ' + user.json());
 							this.write(', "fees": { "' + Config.transaction_currency + '": ' + Config.transaction_fee + ' }');
