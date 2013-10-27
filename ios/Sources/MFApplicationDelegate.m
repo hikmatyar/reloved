@@ -82,7 +82,6 @@
     [m_window makeKeyAndVisible];
     
     [MFWebController preload];
-    [[MFWebFeed sharedFeed] loadForward];
     
     if(url) {
         [controller.centerViewController pushLink:url animated:NO];
@@ -93,6 +92,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    [[MFWebFeed sharedFeed] loadForward];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

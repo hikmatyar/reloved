@@ -4,6 +4,7 @@
 #import "MFBrowseController.h"
 #import "MFBrowseFilterController.h"
 #import "MFColor.h"
+#import "MFDatabase+Brand.h"
 #import "MFDatabase+Color.h"
 #import "MFDatabase+Post.h"
 #import "MFDatabase+Type.h"
@@ -174,6 +175,8 @@
     
     if(post) {
         [self.navigationController pushViewController:[[MFPostController alloc] initWithPost:[[MFWebPost alloc] initWithPost:post]] animated:YES];
+    } else if([MFDatabase sharedDatabase].brands.count == 0) {
+        [[MFWebFeed sharedFeed] loadForward];
     }
 }
 
