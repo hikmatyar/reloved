@@ -29,8 +29,8 @@ private typedef BrowseHandlerGlobals = {
 }
 
 class BrowseHandler extends Handler {
-	public static inline var direction_forward = 'future';
-    public static inline var direction_backward = 'past';
+	public static inline var direction_forward = 'forward';
+    public static inline var direction_backward = 'backward';
     
     public function globals() : Void {
     	var globalState = this.feedGlobalsAlternative();
