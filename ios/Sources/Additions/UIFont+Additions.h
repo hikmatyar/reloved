@@ -8,6 +8,7 @@
 + (UIFont *)themeBoldFontOfSize:(CGFloat)size;
 + (UIFont *)themeLightFontOfSize:(CGFloat)size;
 
-+ (UIFont *)themeMenuTextFont;
++ (UIFont *)themeSmallFont;
++ (UIFont *)themeNormalFont;
 
 @end
