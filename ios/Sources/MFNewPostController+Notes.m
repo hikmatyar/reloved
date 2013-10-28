@@ -18,8 +18,8 @@
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
-#define SUBJECT_MIN 20
-#define NOTES_MIN 60
+#define SUBJECT_MIN 1
+#define NOTES_MIN 1
 
 @interface MFNewPostController_Notes : MFNewPostPageView <UITextFieldDelegate, UITextViewDelegate>
 {
