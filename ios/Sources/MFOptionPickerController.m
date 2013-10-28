@@ -329,7 +329,11 @@ static inline NSString *MFOptionPickerControllerGetItemTitle(id item) {
     tableView.backgroundColor = [UIColor themeBackgroundColor];
     tableView.separatorColor = [UIColor themeSeparatorColor];
     tableView.allowsMultipleSelection = NO;
-    tableView.sectionIndexBackgroundColor = [UIColor themeSectionIndexBackgroundColor];
+    
+    if([tableView respondsToSelector:@selector(setSectionIndexBackgroundColor:)]) {
+        tableView.sectionIndexBackgroundColor = [UIColor themeSectionIndexBackgroundColor];
+    }
+    
     tableView.sectionIndexColor = [UIColor themeSectionIndexColor];
     tableView.sectionIndexTrackingBackgroundColor = [UIColor themeSectionIndexTrackingBackgroundColor];
     
