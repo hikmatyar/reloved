@@ -123,7 +123,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     return identifier;
 }
 
-+ (MFWebFeed *)sharedFeedWithIdentifier:(NSString *)identifier filters:(NSArray *)filters
++ (MFWebFeed *)sharedFeedWithIdentifier:(NSString *)identifier filters:(NSArray *)filters cache:(BOOL)cache
 {
     NSMutableDictionary *feeds = [self sharedFeeds];
     MFWebFeed *feed;
@@ -133,7 +133,10 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     
     if(!feed) {
         feed = [[MFWebFeed alloc] initWithIdentifier:identifier];
-        [feeds setObject:feed forKey:identifier];
+        
+        if(cache) {
+            [feeds setObject:feed forKey:identifier];
+        }
     }
     
     return feed;
@@ -206,18 +209,18 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 
 + (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind
 {
-    return [self sharedFeedOfKind:kind filters:nil];
+    return [self sharedFeedOfKind:kind filters:nil cache:YES];
 }
 
-+ (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind filters:(NSArray *)filters
++ (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind filters:(NSArray *)filters cache:(BOOL)cache
 {
     switch(kind) {
         case kMFWebFeedKindAll:
-            return [self sharedFeedWithIdentifier:FEED_ALL filters:filters];
+            return [self sharedFeedWithIdentifier:FEED_ALL filters:filters cache:cache];
         case kMFWebFeedKindOnlyNew:
-            return [self sharedFeedWithIdentifier:FEED_ONLY_NEW filters:filters];
+            return [self sharedFeedWithIdentifier:FEED_ONLY_NEW filters:filters cache:cache];
         case kMFWebFeedKindOnlyEditorial:
-            return [self sharedFeedWithIdentifier:FEED_ONLY_EDITORIAL filters:nil];
+            return [self sharedFeedWithIdentifier:FEED_ONLY_EDITORIAL filters:nil cache:cache];
         case kMFWebFeedKindBookmarks:
             return [self sharedBookmarksFeed];
         case kMFWebFeedKindCart:

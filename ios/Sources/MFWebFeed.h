@@ -38,7 +38,7 @@ extern NSString *MFWebFeedDidChangeNotification;
 
 + (MFWebFeed *)sharedFeed;
 + (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind;
-+ (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind filters:(NSArray *)filters;
++ (MFWebFeed *)sharedFeedOfKind:(MFWebFeedKind)kind filters:(NSArray *)filters cache:(BOOL)cache;
 
 - (id)initWithIdentifier:(NSString *)identifier;
 - (id)initWithFilters:(NSArray *)filters;

@@ -55,11 +55,11 @@
 {
     switch(scope) {
         case kMFBrowseControllerScopeEditorial:
-            return [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyEditorial filters:self.filters];
+            return [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyEditorial filters:self.filters cache:YES];
         case kMFBrowseControllerScopeNew:
-            return [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyNew filters:self.filters];
+            return [MFWebFeed sharedFeedOfKind:kMFWebFeedKindOnlyNew filters:self.filters cache:YES];
         case kMFBrowseControllerScopeAll:
-            return [MFWebFeed sharedFeedOfKind:kMFWebFeedKindAll filters:self.filters];
+            return [MFWebFeed sharedFeedOfKind:kMFWebFeedKindAll filters:self.filters cache:YES];
     }
     
     return nil;
