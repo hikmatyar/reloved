@@ -194,7 +194,7 @@ if($post != null) {
 				left: 0px;
 				right: 0px;
 				bottom: 0px;
-				height: 184px;
+				height: 286px;
 				background-image: url('/img/Envelope-Lower.png');
 				background-size: 100%;
 				background-position: center bottom;
@@ -247,7 +247,7 @@ if($post != null) {
 				left: 0px;
 				right: 0px;
 				bottom: -1px;
-				height: 105px;
+				height: 170px;
 			}
 			
 			body {
