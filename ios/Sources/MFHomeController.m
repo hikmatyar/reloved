@@ -210,7 +210,8 @@
 
 - (void)optionPickerControllerDidComplete:(MFOptionPickerController *)picker
 {
-    MFFeedController *controller = [[MFFeedController alloc] initWithFeed:[[MFWebFeed alloc] initWithFilters:picker.selectedItems.allObjects]];
+    NSSet *filters = picker.selectedItems;
+    MFFeedController *controller = [[MFFeedController alloc] initWithFeed:(filters.count > 0) ? [[MFWebFeed alloc] initWithFilters:filters.allObjects] : [MFWebFeed sharedFeedOfKind:kMFWebFeedKindAll]];
     
     picker.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SearchResults.Action.Back", nil) style:UIBarButtonItemStylePlain target:nil action:NULL];
     controller.showResults = YES;
