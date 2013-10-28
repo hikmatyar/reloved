@@ -20,7 +20,7 @@
     if(self) {
         UIEdgeInsets edgeInsets = self.edgeInsets;
         
-        self.edgeInsets = UIEdgeInsetsMake(6.0F, edgeInsets.left, edgeInsets.bottom, edgeInsets.right);
+        self.edgeInsets = UIEdgeInsetsMake(3.0F, edgeInsets.left, edgeInsets.bottom, edgeInsets.right);
         self.font = [UIFont themeFontOfSize:14.0F];
         self.textColor = [UIColor themeTextAlternativeColor];
     }
