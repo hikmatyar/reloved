@@ -203,7 +203,7 @@
     
     scopeLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     scopeLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-    scopeLabel.font = [UIFont themeFontOfSize:11.0F];
+    scopeLabel.font = [UIFont themeFontOfSize:13.0F];
     scopeLabel.layer.borderColor = [UIColor themeSeparatorColor].CGColor;
     scopeLabel.layer.borderWidth = 1.0F;
     scopeLabel.tag = TAG_SCOPE_LABEL;

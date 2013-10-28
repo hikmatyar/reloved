@@ -14,7 +14,7 @@
 
 + (CGFloat)preferredHeight
 {
-    return 50.0F;
+    return 60.0F;
 }
 
 @synthesize delegate = m_delegate;

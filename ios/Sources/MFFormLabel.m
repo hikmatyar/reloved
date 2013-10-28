@@ -28,7 +28,7 @@
         [str appendAttributedString:[[NSAttributedString alloc] initWithString:hint attributes:
             [NSDictionary dictionaryWithObjectsAndKeys:
                 [UIColor themeTextAlternativeColor], NSForegroundColorAttributeName,
-                [UIFont themeFontOfSize:13.0F], NSFontAttributeName, nil]]];
+                [UIFont themeFontOfSize:14.0F], NSFontAttributeName, nil]]];
     }
     
     [str endEditing];

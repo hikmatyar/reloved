@@ -42,7 +42,7 @@
         [view addSubview:dotImageView];
         textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         textLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-        textLabel.font = [UIFont themeFontOfSize:13.0F];
+        textLabel.font = [UIFont themeFontOfSize:14.0F];
         textLabel.numberOfLines = 0;
         textLabel.text = comment;
         textLabel.textColor = [UIColor themeTextColor];

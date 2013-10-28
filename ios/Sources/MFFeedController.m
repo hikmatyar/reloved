@@ -303,7 +303,7 @@
         
         resultsLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         resultsLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
-        resultsLabel.font = [UIFont themeFontOfSize:11.0F];
+        resultsLabel.font = [UIFont themeFontOfSize:13.0F];
         resultsLabel.layer.borderColor = [UIColor themeSeparatorColor].CGColor;
         resultsLabel.layer.borderWidth = 1.0F;
         resultsLabel.tag = TAG_RESULTS_LABEL;

@@ -429,8 +429,8 @@
         cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CELL_IDENTIFIER];
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
-        cell.detailTextLabel.font = [UIFont themeFontOfSize:13.0F];
+        cell.textLabel.font = [UIFont themeFontOfSize:14.0F];
+        cell.detailTextLabel.font = [UIFont themeFontOfSize:14.0F];
         cell.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
         cell.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
     }

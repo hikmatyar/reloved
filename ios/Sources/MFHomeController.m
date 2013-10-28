@@ -243,7 +243,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
         cell.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
-        cell.textLabel.font = [UIFont themeFontOfSize:13.0F];
+        cell.textLabel.font = [UIFont themeFontOfSize:14.0F];
     }
     
     cell.imageView.image = (item.image) ? [UIImage imageNamed:item.image] : nil;

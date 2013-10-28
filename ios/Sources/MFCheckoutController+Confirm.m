@@ -225,8 +225,8 @@
                 cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CELL_SHIPPING];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.backgroundColor = [UIColor themeButtonBackgroundColor];
-                cell.textLabel.font = [UIFont themeBoldFontOfSize:13.0F];
-                cell.detailTextLabel.font = [UIFont themeFontOfSize:13.0F];
+                cell.textLabel.font = [UIFont themeBoldFontOfSize:14.0F];
+                cell.detailTextLabel.font = [UIFont themeFontOfSize:14.0F];
                 cell.detailTextLabel.numberOfLines = 0;
             }
             
