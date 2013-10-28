@@ -18,8 +18,8 @@
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
-#define SUBJECT_RANGE 100
-#define NOTES_RANGE 100
+#define SUBJECT_MIN 20
+#define NOTES_MIN 60
 
 @interface MFNewPostController_Notes : MFNewPostPageView <UITextFieldDelegate, UITextViewDelegate>
 {
@@ -78,7 +78,7 @@
 - (BOOL)canContinue
 {
     if(!m_canContinue) {
-        m_canContinue = (m_subjectTextField.text.length >= (m_subjectTextField.maxTextLength - SUBJECT_RANGE) && m_notesTextView.text.length >= (m_notesTextView.maxTextLength - NOTES_RANGE)) ? YES : NO;
+        m_canContinue = (m_subjectTextField.text.length >= SUBJECT_MIN && m_notesTextView.text.length >= NOTES_MIN) ? YES : NO;
     }
     
     return m_canContinue;
