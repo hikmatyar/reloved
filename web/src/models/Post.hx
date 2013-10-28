@@ -589,7 +589,7 @@ class Post {
     	if(posts != null && posts.length > 0) {
     		state = new State();
     		
-    		if(feed != null && feed.id == PostFeed.identifier_all) {
+    		if(feed != null && feed.id == PostFeed.identifier_only_new) {
 				state.min = posts[0].created;
 				state.max = state.min;
 			
