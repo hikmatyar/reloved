@@ -619,7 +619,7 @@ class Post {
     
     public static function findForward(userId : DataIdentifier, identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> State -> Void) : Void {
     	var feed = new PostFeed(identifier);
-    	var order = (feed.id == PostFeed.identifier_all) ? 'created' : 'modified';
+    	var order = (feed.id == PostFeed.identifier_only_new) ? 'created' : 'modified';
     	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial IS NOT NULL' : '';
     	var fstatus = (feed.id == PostFeed.identifier_history) ? ' IN (2,3,4) ' : ' = 2';
     	var fcriteria = '';
