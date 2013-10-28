@@ -62,6 +62,10 @@
 "NewPost.Action.Replace" = "Replace";
 "NewPost.Action.SellersNote" = "Notes";
 "NewPost.Action.TypeSizeFit" = "Size";
+"NewPost.Alert.ConfirmAbort.Action.No" = "No";
+"NewPost.Alert.ConfirmAbort.Action.Yes" = "Yes";
+"NewPost.Alert.ConfirmAbort.Message" = "Are you sure you want to terminate the post creation process?";
+"NewPost.Alert.ConfirmAbort.Title" = "Cancel new post?";
 "NewPost.Alert.ImageError.Action.OK" = "OK";
 "NewPost.Alert.ImageError.Message" = "Sorry, there's a problem with the images. Please try again.";
 "NewPost.Alert.ImageError.Title" = "Image Error";

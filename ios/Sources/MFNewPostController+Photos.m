@@ -196,6 +196,11 @@
     return self;
 }
 
+- (BOOL)isEmpty
+{
+    return (m_imagePaths.count == 0) ? YES : NO;
+}
+
 - (BOOL)canContinue
 {
     if(!m_canContinue) {

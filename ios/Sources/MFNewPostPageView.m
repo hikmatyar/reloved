@@ -26,6 +26,13 @@
     return view;
 }
 
+@dynamic empty;
+
+- (BOOL)isEmpty
+{
+    return NO;
+}
+
 - (BOOL)canContinue
 {
     return YES;

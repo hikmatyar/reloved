@@ -23,9 +23,10 @@
 #import "UIViewController+Additions.h"
 #import "UIViewController+MFSideMenuAdditions.h"
 
-#define ALERT_POSTING 1
-#define ALERT_GENERIC 2
-#define ALERT_GENERIC_CLEAR 3
+#define ALERT_ABORT 1
+#define ALERT_POSTING 2
+#define ALERT_GENERIC 3
+#define ALERT_GENERIC_CLEAR 4
 
 #define TAG_PROGRESS_VIEW 1000
 #define TAG_CONTENT_VIEW 1001
@@ -119,7 +120,13 @@
 
 - (IBAction)menu:(id)sender
 {
-    [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+    NSInteger index = self.progressView.selectedIndex;
+    
+    if(index > 0 || !((MFNewPostController_Step *)[m_steps objectAtIndex:0]).page.empty) {
+        [self confirmAbort];
+    } else {
+        [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+    }
 }
 
 - (void)clearPost
@@ -169,6 +176,18 @@
         
         [alertView show];
     }
+}
+
+- (void)confirmAbort
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"NewPost.Alert.ConfirmAbort.Title", nil)
+                                                        message:NSLocalizedString(@"NewPost.Alert.ConfirmAbort.Message", nil)
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedString(@"NewPost.Alert.ConfirmAbort.Action.No", nil)
+                                              otherButtonTitles:NSLocalizedString(@"NewPost.Alert.ConfirmAbort.Action.Yes", nil), nil];
+
+    alertView.tag = ALERT_ABORT;
+    [alertView show];
 }
 
 - (void)requestPostStatus
@@ -401,6 +420,12 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     switch(alertView.tag) {
+        case ALERT_ABORT:
+            if(buttonIndex != alertView.cancelButtonIndex) {
+                [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+                [self clearPost];
+            }
+            break;
         case ALERT_POSTING:
             if(buttonIndex != alertView.cancelButtonIndex) {
                 [self requestPost];

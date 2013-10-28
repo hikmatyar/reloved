@@ -12,6 +12,8 @@
 
 - (id)initWithFrame:(CGRect)frame controller:(MFNewPostController *)controller;
 
+@property (nonatomic, assign, readonly, getter = isEmpty) BOOL empty;
+
 - (MFNewPostPageView *)createFreshView;
 - (BOOL)canContinue;
 - (void)saveState;
