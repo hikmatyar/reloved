@@ -122,8 +122,20 @@ class BrowseHandler extends Handler {
     	});
     	
     	async(function(sync) {
-            var writePostFields = function(err : DataError, posts : Array<Post>) : Void {
+            var writePostFields = function(err : DataError, posts : Array<Post>, state_ : State) : Void {
                 if(err == null) {
+                	if(state == null) {
+						state = (state_ != null) ? state_ : new State();
+					} else if(state_ != null) {
+						if(state_.min < state.min) {
+							state.min = state_.min;
+						}
+						
+						if(state_.max > state.max) {
+							state.max = state_.max;
+						}
+					}
+					
                     sync(posts);
                 } else {
                     this.exit(ErrorCode.unknown, 'posts');
@@ -169,25 +181,10 @@ class BrowseHandler extends Handler {
     	async(function(sync, posts : Array<Post>) {
             var delimiter = '';
             
-            if(state == null) {
-                state = new State();
-            	
-            	if(posts != null && posts.length > 0) {
-                    state.min = posts[0].modified;
-                    state.max = state.min;
-                }
-            }
-            
             if(posts != null && posts.length > 0) {
                 this.write(' "posts": [');
                 
                 for(post in posts) {
-                    if(post.modified < state.min) {
-                        state.min = post.modified;
-                    } else if(post.modified > state.max) {
-                        state.max = post.modified;
-                    }
-                    
                     this.write(delimiter);
                     this.write(post.json());
                     delimiter = ',';

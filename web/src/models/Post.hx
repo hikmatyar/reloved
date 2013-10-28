@@ -543,9 +543,9 @@ class Post {
         });
     }
     
-    public static function findFeatured(limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+    public static function findFeatured(limit : Int, fn : DataError -> Array<Post> -> State -> Void) : Void {
     	Data.query('SELECT * FROM posts WHERE status = 2 AND editorial IS NOT NULL ORDER BY modified DESC LIMIT ?', [ limit ], function(err, result : Array<Post>) {
-            fn(err, result);
+            fn(err, result, Post.createState(null, result));
         });
     }
     
@@ -583,7 +583,41 @@ class Post {
         });
     }
     
-    public static function findForward(userId : DataIdentifier, identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+    private static function createState(feed : PostFeed, posts : Array<Post>) : State {
+    	var state = null;
+    	
+    	if(posts != null && posts.length > 0) {
+    		state = new State();
+    		
+    		if(feed != null && feed.id == PostFeed.identifier_all) {
+				state.min = posts[0].created;
+				state.max = state.min;
+			
+				for(post in posts) {
+					if(post.created < state.min) {
+						state.min = post.created;
+					} else if(post.created > state.max) {
+						state.max = post.created;
+					}
+				}
+			} else {
+				state.min = posts[0].modified;
+				state.max = state.min;
+				
+				for(post in posts) {
+					if(post.modified < state.min) {
+						state.min = post.modified;
+					} else if(post.modified > state.max) {
+						state.max = post.modified;
+					}
+				}
+			}
+    	}
+    	
+    	return state;
+    }
+    
+    public static function findForward(userId : DataIdentifier, identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> State -> Void) : Void {
     	var feed = new PostFeed(identifier);
     	var order = (feed.id == PostFeed.identifier_all) ? 'created' : 'modified';
     	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial IS NOT NULL' : '';
@@ -611,16 +645,16 @@ class Post {
 		    	
         if(timestamp != null) {
             Data.query('SELECT DISTINCT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' AND ' + order + ' > ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' ASC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
-                fn(err, result);
+                fn(err, result, Post.createState(feed, result));
             });
         } else {
             Data.query('SELECT DISTINCT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ limit ], function(err, result : Array<Post>) {
-                fn(err, result);
+                fn(err, result, Post.createState(feed, result));
             });
         }
     }
     
-    public static function findBackward(userId : DataIdentifier, identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> Void) : Void {
+    public static function findBackward(userId : DataIdentifier, identifier : String, timestamp : Int, limit : Int, fn : DataError -> Array<Post> -> State -> Void) : Void {
     	var feed = new PostFeed(identifier);
     	var order = (feed.id == PostFeed.identifier_only_new) ? 'created' : 'modified';
     	var editorial = (feed.id == PostFeed.identifier_only_editorial) ? ' AND editorial IS NOT NULL' : '';
@@ -647,7 +681,7 @@ class Post {
 		}
 		
         Data.query('SELECT DISTINCT posts.* FROM posts ' + ftables + ' WHERE status ' + fstatus + ' AND ' + order + ' < ? ' + editorial + fcriteria + ' ORDER BY ' + order + ' DESC LIMIT ?', [ timestamp, limit ], function(err, result : Array<Post>) {
-            fn(err, result);
+            fn(err, result, Post.createState(feed, result));
         });
     }
     
