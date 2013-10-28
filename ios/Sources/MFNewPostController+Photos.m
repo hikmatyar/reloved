@@ -19,6 +19,7 @@
     NSMutableDictionary *m_imagePaths;
     MFNewPostPhotoView *m_imageView;
     NSMutableArray *m_thumbnailViews;
+    UILabel *m_hintLabel;
     UILabel *m_cameraOverlayView;
     BOOL m_canContinue;
 }
@@ -145,6 +146,7 @@
     if(oldThumbnailView != newThumbnailView) {
         oldThumbnailView.selected = NO;
         newThumbnailView.selected = YES;
+        m_hintLabel.hidden = (newThumbnailView.imageIndex == 0 && !newThumbnailView.image) ? NO : YES;
         m_imageView.image = newThumbnailView.image;
         m_imageView.imageIndex = newThumbnailView.imageIndex;
     }
@@ -175,6 +177,17 @@
         m_imageView.imageIndex = 0;
         [m_imageView addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:m_imageView];
+        
+        m_hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0F, frame.size.height - thumbnailSize - 26.0F, frame.size.width, 24.0F)];
+        m_hintLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        m_hintLabel.backgroundColor = [UIColor clearColor];
+        m_hintLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+        m_hintLabel.font = [UIFont themeFontOfSize:15.0F];
+        m_hintLabel.numberOfLines = 0;
+        m_hintLabel.textColor = [UIColor themeTextAlternativeColor];
+        m_hintLabel.text = NSLocalizedString(@"NewPost.Hint.Photo", nil);
+        m_hintLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:m_hintLabel];
         
         for(NSInteger i = 0; i < THUMBNAIL_COUNT; i++, thumbnailRect.origin.x += THUMBNAIL_PADDING + thumbnailSize - 4.0F) {
             MFNewPostPhotoView *thumbnailView = [[MFNewPostPhotoView alloc] initWithFrame:thumbnailRect thumbnail:YES];
@@ -246,6 +259,7 @@
                 [[NSFileManager defaultManager] removeItemAtPath:value error:NULL];
                 [m_imagePaths removeObjectForKey:key];
                 ((MFNewPostPhotoView *)[m_thumbnailViews objectAtIndex:selectedImageIndex]).image = nil;
+                m_hintLabel.hidden = (selectedImageIndex == 0) ? NO : YES;
                 m_imageView.image = nil;
             } else {
                 m_cameraOverlayView = nil;
@@ -290,6 +304,7 @@
         }
         
         ((MFNewPostPhotoView *)[m_thumbnailViews objectAtIndex:selectedImageIndex]).image = image;
+        m_hintLabel.hidden = YES;
         m_imageView.image = image;
         
         if(selectedImageIndex + 1 < THUMBNAIL_MIN) {
@@ -298,12 +313,7 @@
             m_cameraOverlayView = nil;
         }
         
-        if(m_cameraOverlayView) {
-            [picker dismissViewControllerAnimated:NO completion:NULL];
-            [self selectImage:nil];
-        } else {
-            [picker dismissViewControllerAnimated:YES completion:NULL];
-        }
+        [picker dismissViewControllerAnimated:YES completion:NULL];
     }
 }
 

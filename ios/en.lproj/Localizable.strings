@@ -84,7 +84,8 @@
 "NewPost.Hint.Colors" = "Select Color(s)";
 "NewPost.Hint.Fit" = "Original tag size S. Fits true to size, take your normal size. Non stretchy fabric. Take next size down if you want a closer fit.";
 "NewPost.Hint.Materials" = "Slips on. Exterior 100% cotton, lining 91% cotton 9% silk. Specialist clean";
-"NewPost.Hint.Photo.1.Picker" = "Take Front View Picture";
+"NewPost.Hint.Photo" = "4 pictures minimum";
+"NewPost.Hint.Photo.1.Picker" = " Take Front View Picture";
 "NewPost.Hint.Photo.1.Large" = "Take Front View Picture";
 "NewPost.Hint.Photo.1.Small" = "Front View";
 "NewPost.Hint.Photo.2.Picker" = " Take Back View Picture";
