@@ -5,6 +5,7 @@
 #import "MFForm.h"
 #import "MFFormAccessory.h"
 #import "MFFormFooter.h"
+#import "MFFormHint.h"
 #import "MFFormLabel.h"
 #import "MFFormTextField.h"
 #import "MFMoney.h"
@@ -37,14 +38,14 @@
     if(self) {
         MFFormFooter *footer;
         MFFormLabel *label;
+        MFFormHint *hint;
         
         m_form = [[MFForm alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
         m_form.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:m_form];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
-        //label.text = NSLocalizedString(@"NewPost.Label.Price", nil);
-        [label setText:NSLocalizedString(@"NewPost.Label.Price", nil) hint:NSLocalizedString(@"NewPost.Label.Price.Extra", nil)];
+        label.text = NSLocalizedString(@"NewPost.Label.Price", nil);
         [m_form addSubview:label];
         
         m_priceTextField = [[MFFormTextField alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormTextField preferredHeight])];
@@ -58,6 +59,10 @@
         m_priceTextField.maxTextLength = 5;
         m_priceTextField.leftText = NSLocalizedString(@"Currency.GBP", nil);
         [m_form addSubview:m_priceTextField];
+        
+        hint = [[MFFormHint alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormHint preferredHeight])];
+        hint.text = NSLocalizedString(@"NewPost.Label.Price.Extra", nil);
+        [m_form addSubview:hint];
         
         label = [[MFFormLabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [MFFormLabel preferredHeight])];
         label.text = NSLocalizedString(@"NewPost.Label.OriginalPrice", nil);
