@@ -86,7 +86,7 @@
 
 + (UIColor *)themeButtonBackgroundHighlightColor
 {
-    return [self colorWithString:@"#f5f5f5"];
+    return [self colorWithString:@"#a0a0a0"];
 }
 
 + (UIColor *)themeButtonBorderColor
