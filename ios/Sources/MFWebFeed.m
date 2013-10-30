@@ -404,7 +404,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
             changed = YES;
         }
         
-        if(!MFEqual(m_feed.state, feed.state) || m_feed.cursor != feed.cursor) {
+        if(!MFEqual(m_feed.state, feed.state) || m_feed.cursor != feed.cursor || m_feed.count != feed.count) {
             m_feed = [[MFFeed alloc] initWithFeed:feed offset:m_feed.offset];
             changed = YES;
         }
