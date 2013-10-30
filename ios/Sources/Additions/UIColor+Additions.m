@@ -71,7 +71,7 @@
 
 + (UIColor *)themeButtonActionColor
 {
-    return [self colorWithString:@"#336699"];
+    return [self colorWithString:@"#0b6aff"];
 }
 
 + (UIColor *)themeButtonActionHighlightColor
