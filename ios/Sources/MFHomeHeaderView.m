@@ -38,6 +38,21 @@
     }
 }
 
+- (NSInteger)indexOfSelectedItem
+{
+    if(m_selectedPost) {
+        for(NSInteger i = 0, c = m_posts.count; i < c; i++) {
+            MFPost *post = [m_posts objectAtIndex:i];
+            
+            if(post == m_selectedPost || [post.identifier isEqualToString:m_selectedPost.identifier]) {
+                return i;
+            }
+        }
+    }
+    
+    return NSNotFound;
+}
+
 - (IBAction)shopByColor:(id)sender
 {
     [m_delegate headerViewDidSelectShopByColor:self];
@@ -56,7 +71,7 @@
 - (IBAction)prev:(id)sender
 {
     if(m_selectedPost) {
-        NSInteger index = [m_posts indexOfObjectIdenticalTo:m_selectedPost];
+        NSInteger index = [self indexOfSelectedItem];
         
         if(index != NSNotFound) {
             m_selectedPost = [m_posts objectAtIndex:(index > 0) ? index - 1 : m_posts.count - 1];
@@ -68,7 +83,7 @@
 - (IBAction)next:(id)sender
 {
     if(m_selectedPost) {
-        NSInteger index = [m_posts indexOfObjectIdenticalTo:m_selectedPost];
+        NSInteger index = [self indexOfSelectedItem];
         
         if(index != NSNotFound) {
             m_selectedPost = [m_posts objectAtIndex:(index + 1 < m_posts.count) ? index + 1 : 0];
@@ -128,7 +143,7 @@
         
         m_prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
         m_prevButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        m_prevButton.frame = CGRectMake(0.0F, 0.0F, 10.0F, 17.0F);
+        m_prevButton.frame = CGRectMake(0.0F, 0.0F, 20.0F, 24.0F);
         m_prevButton.center = CGPointMake(20.0F, 91.0F);
         m_prevButton.hidden = YES;
         [m_prevButton addTarget:self action:@selector(prev:) forControlEvents:UIControlEventTouchUpInside];
@@ -137,7 +152,7 @@
         
         m_nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
         m_nextButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        m_nextButton.frame = CGRectMake(0.0F, 0.0F, 10.0F, 17.0F);
+        m_nextButton.frame = CGRectMake(0.0F, 0.0F, 20.0F, 24.0F);
         m_nextButton.center = CGPointMake(frame.size.width - 20.0F, 91.0F);
         m_nextButton.hidden = YES;
         [m_nextButton addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
