@@ -143,7 +143,7 @@
         
         m_prevButton = [UIButton buttonWithType:UIButtonTypeCustom];
         m_prevButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        m_prevButton.frame = CGRectMake(0.0F, 0.0F, 20.0F, 24.0F);
+        m_prevButton.frame = CGRectMake(0.0F, 0.0F, 40.0F, 48.0F);
         m_prevButton.center = CGPointMake(20.0F, 91.0F);
         m_prevButton.hidden = YES;
         [m_prevButton addTarget:self action:@selector(prev:) forControlEvents:UIControlEventTouchUpInside];
@@ -152,7 +152,7 @@
         
         m_nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
         m_nextButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        m_nextButton.frame = CGRectMake(0.0F, 0.0F, 20.0F, 24.0F);
+        m_nextButton.frame = CGRectMake(0.0F, 0.0F, 40.0F, 48.0F);
         m_nextButton.center = CGPointMake(frame.size.width - 20.0F, 91.0F);
         m_nextButton.hidden = YES;
         [m_nextButton addTarget:self action:@selector(next:) forControlEvents:UIControlEventTouchUpInside];
