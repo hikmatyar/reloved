@@ -112,7 +112,7 @@
                 }
             }
         } else {
-            NSString *prefix = ASSOCIATE(@"", @"");
+            NSString *prefix = ASSOCIATE_TABLE;
             NSString *suffix = table2;
             
             for(NSString *table in m_tables) {
