@@ -23,6 +23,7 @@
 #define KEY_EVENTS @"events"
 #define KEY_PREFIX @"prefix"
 #define KEY_POSTS @"posts"
+#define KEY_RESET @"reset"
 #define KEY_SIZES @"sizes"
 #define KEY_STATE @"state"
 #define KEY_GLOBALS @"globals"
@@ -188,6 +189,7 @@
         m_deliveries = deliveries;
         m_events = events;
         m_sizes = sizes;
+        m_reset = [attributes numberForKey:KEY_RESET].boolValue;
         m_types = types;
         m_state = [attributes stringForKey:KEY_STATE];
         m_offset = [attributes integerForKey:KEY_OFFSET];
@@ -258,6 +260,7 @@
 @synthesize globals = m_globals;
 @synthesize posts = m_posts;
 @synthesize sizes = m_sizes;
+@synthesize reset = m_reset;
 @synthesize types = m_types;
 @synthesize state = m_state;
 

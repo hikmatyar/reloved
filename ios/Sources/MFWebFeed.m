@@ -341,6 +341,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         
         m_feed = [[MFFeed alloc] init];
         [database setFeed:m_feed forIdentifier:m_identifier ttl:&m_ttl];
+        [database setPosts:nil forFeed:m_identifier];
         m_posts = [[NSMutableArray alloc] init];
         
         [self endEditing];
@@ -669,7 +670,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
                 
                 [self beginEditing];
                 
-                if(!state) {
+                if(!state || feed.reset) {
                     didChange = [self clearState];
                 }
                 
