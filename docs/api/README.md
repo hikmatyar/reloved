@@ -104,6 +104,8 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 			"cursor": "start",
 			// State that can be used with the next request
 			"state": "eyJhIjowLCJiIjowfQ==",
+			// If true, then all the posts in client cache should be removed
+			"reset": true,
 			// Global state
 			"globals": "eyJhIjowLCJiIjowfQ==",
 			// Prefix for media resources. Possible redirect to a CDN on separate domain
