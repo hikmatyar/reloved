@@ -150,6 +150,8 @@ NSString *MFDatabaseDidChangeNotification = @"MFDatabaseDidChange";
         [self attach_proxy_feeds];
         [self attach_proxy_posts];
         [self attach_proxy_state];
+        
+        [self invalidateObjects];
     }
     
     return self;
