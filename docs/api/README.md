@@ -93,6 +93,7 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 		STRING globals [O=null] - Global state that is managed by the server
 		STRING direction [O=forward] - Browse 'forward' or 'backward'? Only used with the state parameter
 		INTEGER limit [O=100] - Maximum number of posts to return
+		INTEGER cc [O=-1] - Client count. The number of posts that the client has in its local cache for the feed. Used for QA.
 	
 	Returns:
 		{
