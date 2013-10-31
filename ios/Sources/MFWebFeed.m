@@ -662,7 +662,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         m_loadingForward = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidBeginLoadingNotification object:self userInfo:nil];
         
-        [[MFWebService sharedService] requestFeed:m_identifier forward:YES limit:LOADING_LIMIT state:state globals:[MFDatabase sharedDatabase].globalState target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
+        [[MFWebService sharedService] requestFeed:m_identifier clientCount:m_posts.count forward:YES limit:LOADING_LIMIT state:state globals:[MFDatabase sharedDatabase].globalState target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
             if(feed) {
                 NSArray *changes = nil;
                 BOOL didChange = NO;
@@ -709,7 +709,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         } else {
             NSString *state = m_feed.state;
             
-            [[MFWebService sharedService] requestFeed:m_identifier forward:NO limit:LOADING_LIMIT state:state globals:[MFDatabase sharedDatabase].globalState target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
+            [[MFWebService sharedService] requestFeed:m_identifier clientCount:m_posts.count forward:NO limit:LOADING_LIMIT state:state globals:[MFDatabase sharedDatabase].globalState target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
                 if(feed && MFEqual(m_feed.state, state)) {
                     NSArray *changes = [self mergeState:feed expand:LOADING_LIMIT];
                     
