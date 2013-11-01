@@ -57,6 +57,7 @@
     
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+        controller.showsCameraControls = NO;
         
         if(m_cameraOverlayView) {
             switch(self.selectedImageIndex) {
