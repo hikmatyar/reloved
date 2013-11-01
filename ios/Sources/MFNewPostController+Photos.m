@@ -54,6 +54,7 @@
     controller.delegate = self;
     controller.allowsEditing = YES;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    controller.showsCameraControls = NO;
     
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         controller.sourceType = UIImagePickerControllerSourceTypeCamera;
