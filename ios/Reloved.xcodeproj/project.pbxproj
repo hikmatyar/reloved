@@ -333,6 +333,12 @@
 		81E529FD1810D69A004D88F3 /* Checkout-Progress-Unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529FB1810D69A004D88F3 /* Checkout-Progress-Unselected.png */; };
 		81E529FE1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81E529FC1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png */; };
 		81E52A011810DC26004D88F3 /* MFDatabase+Recents.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E52A001810DC26004D88F3 /* MFDatabase+Recents.m */; };
+		81EB2B93182B0C740045F2A6 /* Post-Report.png in Resources */ = {isa = PBXBuildFile; fileRef = 81EB2B8D182B0C740045F2A6 /* Post-Report.png */; };
+		81EB2B94182B0C740045F2A6 /* Post-Report@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81EB2B8E182B0C740045F2A6 /* Post-Report@2x.png */; };
+		81EB2B95182B0C740045F2A6 /* Post-Save.png in Resources */ = {isa = PBXBuildFile; fileRef = 81EB2B8F182B0C740045F2A6 /* Post-Save.png */; };
+		81EB2B96182B0C740045F2A6 /* Post-Save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81EB2B90182B0C740045F2A6 /* Post-Save@2x.png */; };
+		81EB2B97182B0C740045F2A6 /* Post-Share.png in Resources */ = {isa = PBXBuildFile; fileRef = 81EB2B91182B0C740045F2A6 /* Post-Share.png */; };
+		81EB2B98182B0C740045F2A6 /* Post-Share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81EB2B92182B0C740045F2A6 /* Post-Share@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -865,6 +871,12 @@
 		81E529FC1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkout-Progress-Unselected@2x.png"; path = "Images/Checkout-Progress-Unselected@2x.png"; sourceTree = "<group>"; };
 		81E529FF1810DC26004D88F3 /* MFDatabase+Recents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFDatabase+Recents.h"; path = "Sources/MFDatabase+Recents.h"; sourceTree = SOURCE_ROOT; };
 		81E52A001810DC26004D88F3 /* MFDatabase+Recents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Recents.m"; path = "Sources/MFDatabase+Recents.m"; sourceTree = SOURCE_ROOT; };
+		81EB2B8D182B0C740045F2A6 /* Post-Report.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Report.png"; path = "Images/Post-Report.png"; sourceTree = "<group>"; };
+		81EB2B8E182B0C740045F2A6 /* Post-Report@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Report@2x.png"; path = "Images/Post-Report@2x.png"; sourceTree = "<group>"; };
+		81EB2B8F182B0C740045F2A6 /* Post-Save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Save.png"; path = "Images/Post-Save.png"; sourceTree = "<group>"; };
+		81EB2B90182B0C740045F2A6 /* Post-Save@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Save@2x.png"; path = "Images/Post-Save@2x.png"; sourceTree = "<group>"; };
+		81EB2B91182B0C740045F2A6 /* Post-Share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Share.png"; path = "Images/Post-Share.png"; sourceTree = "<group>"; };
+		81EB2B92182B0C740045F2A6 /* Post-Share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Share@2x.png"; path = "Images/Post-Share@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1392,6 +1404,12 @@
 				81B14B70180EC3A20089D19F /* Post-ShippingInfo@2x.png */,
 				81B14B71180EC3A20089D19F /* Post-SizeAndFit.png */,
 				81B14B72180EC3A20089D19F /* Post-SizeAndFit@2x.png */,
+				81EB2B8D182B0C740045F2A6 /* Post-Report.png */,
+				81EB2B8E182B0C740045F2A6 /* Post-Report@2x.png */,
+				81EB2B8F182B0C740045F2A6 /* Post-Save.png */,
+				81EB2B90182B0C740045F2A6 /* Post-Save@2x.png */,
+				81EB2B91182B0C740045F2A6 /* Post-Share.png */,
+				81EB2B92182B0C740045F2A6 /* Post-Share@2x.png */,
 				81BD882D18121FF000549748 /* Prev-Indicator.png */,
 				81BD882E18121FF000549748 /* Prev-Indicator@2x.png */,
 				811082A117F8B0E1005CC8ED /* PullToRefresh-Arrow.png */,
@@ -1671,6 +1689,7 @@
 				81C5A21A180996EA000427A9 /* NewPost-Photos-Placeholder@2x.png in Resources */,
 				81B14B8F180ED3C80089D19F /* User-Placeholder@2x.png in Resources */,
 				81B27B5617F6107100F9BC09 /* placeholder@2x.png in Resources */,
+				81EB2B97182B0C740045F2A6 /* Post-Share.png in Resources */,
 				81B27B5717F6107100F9BC09 /* visa.png in Resources */,
 				811082A417F8B0E1005CC8ED /* PullToRefresh-Arrow@2x.png in Resources */,
 				81B27B4817F6107100F9BC09 /* amex@2x.png in Resources */,
@@ -1696,6 +1715,7 @@
 				81136AD0180C549B009142AE /* Cartoon1.jpg in Resources */,
 				812F4AEC17DF003800454747 /* Icon57.png in Resources */,
 				8120C1A317E0470300A1C3A9 /* Home-ReturnsPolicy.png in Resources */,
+				81EB2B95182B0C740045F2A6 /* Post-Save.png in Resources */,
 				812F4AB417DEFD0300454747 /* Default@2x.png in Resources */,
 				8120C19917E0470300A1C3A9 /* Home-BrowseNew.png in Resources */,
 				81B14B7E180EC3A20089D19F /* Post-SizeAndFit@2x.png in Resources */,
@@ -1731,6 +1751,8 @@
 				8120C15117DFAD8C00A1C3A9 /* Menu-Search@2x.png in Resources */,
 				81136AD5180C549B009142AE /* Cartoon3@2x.jpg in Resources */,
 				81E529FD1810D69A004D88F3 /* Checkout-Progress-Unselected.png in Resources */,
+				81EB2B98182B0C740045F2A6 /* Post-Share@2x.png in Resources */,
+				81EB2B93182B0C740045F2A6 /* Post-Report.png in Resources */,
 				81C5A219180996EA000427A9 /* NewPost-Photos-Placeholder.png in Resources */,
 				81B14B7D180EC3A20089D19F /* Post-SizeAndFit.png in Resources */,
 				8120C16317DFB48600A1C3A9 /* Navigation-Filter@2x.png in Resources */,
@@ -1761,6 +1783,7 @@
 				81D54BC8180F6281002D3449 /* Picker-Arrow@2x.png in Resources */,
 				8120C1A417E0470300A1C3A9 /* Home-ReturnsPolicy@2x.png in Resources */,
 				81BC174F17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png in Resources */,
+				81EB2B96182B0C740045F2A6 /* Post-Save@2x.png in Resources */,
 				8120C1A117E0470300A1C3A9 /* Home-Recents.png in Resources */,
 				81136AD2180C549B009142AE /* Cartoon2.jpg in Resources */,
 				8120C15F17DFB2F700A1C3A9 /* Navigation-Menu@2x.png in Resources */,
@@ -1789,6 +1812,7 @@
 				812ED33F180E8ED400ABB387 /* Photo-Placeholder@2x.png in Resources */,
 				8120C19317E0470300A1C3A9 /* Home-Bookmarks.png in Resources */,
 				8120C1A817E0470300A1C3A9 /* Home-ShippingInfo@2x.png in Resources */,
+				81EB2B94182B0C740045F2A6 /* Post-Report@2x.png in Resources */,
 				8120C16817DFBC4500A1C3A9 /* Pages in Resources */,
 				8120C19217E0470300A1C3A9 /* Home-About@2x.png in Resources */,
 				8120C19817E0470300A1C3A9 /* Home-BrowseEditorial@2x.png in Resources */,
