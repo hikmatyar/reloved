@@ -8,6 +8,8 @@
 
 + (UIColor *)themeBackgroundColor;
 + (UIColor *)themeBackgroundHighlightColor;
++ (UIColor *)themeFeedBackgroundColor;
++ (UIColor *)themeFeedBackgroundHighlightColor;
 + (UIColor *)themeSeparatorColor;
 + (UIColor *)themeTextColor;
 + (UIColor *)themeTextAlternativeColor;
