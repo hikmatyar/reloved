@@ -38,6 +38,7 @@
 #define EVENT_ACTION_VIEW @"view"
 #define EVENT_ACTION_SAVE @"save"
 #define EVENT_ACTION_SHARE @"share"
+#define EVENT_ACTION_REPORT @"report"
 
 @implementation MFPostController
 
@@ -303,6 +304,30 @@
 
 #pragma mark MFPostFooterViewDelegate
 
+- (void)footerViewDidSelectReport:(MFPostFooterView *)footerView
+{
+    MFPost *post = m_post.post;
+    MFBrand *brand = m_post.brand;
+    NSString *subject = NSLocalizedString(@"Post.Format.ReportEmail.Subject", nil);
+    NSString *body = NSLocalizedString(@"Post.Format.ReportEmail.Body", nil);
+    NSString *link = [NSString stringWithFormat:@"http://relovedapp.co.uk/post/%@", post.identifier];
+    
+    subject = [subject stringByReplacingOccurrencesOfString:@"%%POSTID%%" withString:m_post.identifier];
+    subject = [subject stringByReplacingOccurrencesOfString:@"%%BRAND%%" withString:(brand) ? brand.name.stringByTrimmingWhitespace : @"???"];
+    subject = [subject stringByReplacingOccurrencesOfString:@"%%TITLE%%" withString:post.title.stringByTrimmingWhitespace];
+    
+    body = [body stringByReplacingOccurrencesOfString:@"%%BRAND%%" withString:(brand) ? brand.name.stringByTrimmingWhitespace : @"???"];
+    body = [body stringByReplacingOccurrencesOfString:@"%%TITLE%%" withString:post.title.stringByTrimmingWhitespace];
+    body = [body stringByReplacingOccurrencesOfString:@"%%NOTES%%" withString:post.notes.stringByTrimmingWhitespace];
+    body = [body stringByReplacingOccurrencesOfString:@"%%LINK%%" withString:link];
+    
+    [[UIApplication sharedApplication] sendEmail:ABUSE_EMAIL
+                                         subject:subject
+                                            body:body];
+    
+    LOG_EVENT_DETAILED(EVENT_CATEGORY, EVENT_ACTION_REPORT, m_post.identifier, 0);
+}
+
 - (void)footerViewDidSelectSave:(MFPostFooterView *)footerView
 {
     BOOL saved = !m_post.saved;
@@ -337,8 +362,8 @@
 {
     MFPost *post = m_post.post;
     MFBrand *brand = m_post.brand;
-    NSString *subject = NSLocalizedString(@"Post.Format.Email.Subject", nil);
-    NSString *body = NSLocalizedString(@"Post.Format.Email.Body", nil);
+    NSString *subject = NSLocalizedString(@"Post.Format.ShareEmail.Subject", nil);
+    NSString *body = NSLocalizedString(@"Post.Format.ShareEmail.Body", nil);
     NSString *link = [NSString stringWithFormat:@"http://relovedapp.co.uk/post/%@", post.identifier];
     
     subject = [subject stringByReplacingOccurrencesOfString:@"%%BRAND%%" withString:(brand) ? brand.name.stringByTrimmingWhitespace : @"???"];

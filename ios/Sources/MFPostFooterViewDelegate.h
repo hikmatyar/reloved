@@ -8,6 +8,7 @@
 
 @optional
 
+- (void)footerViewDidSelectReport:(MFPostFooterView *)footerView;
 - (void)footerViewDidSelectSave:(MFPostFooterView *)footerView;
 - (void)footerViewDidSelectShare:(MFPostFooterView *)footerView;
 
