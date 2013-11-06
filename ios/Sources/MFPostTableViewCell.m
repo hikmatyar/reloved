@@ -15,7 +15,7 @@
 
 + (CGFloat)preferredHeight
 {
-    return 450.0F;
+    return 456.0F;
 }
 
 @dynamic post;
@@ -137,15 +137,15 @@
         
         textLabel.layer.borderColor = [UIColor themeSeparatorColor].CGColor;
         textLabel.layer.borderWidth = 1.0F;
+        textLabel.layer.backgroundColor = [UIColor themeTextBackgroundColor].CGColor;
         textLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
-        textLabel.backgroundColor = [UIColor themeTextBackgroundColor];
         textLabel.textColor = [UIColor themeTextColor];
         textLabel.font = [UIFont themeFontOfSize:14.0F];
         textLabel.textAlignment = NSTextAlignmentCenter;
         textLabel.numberOfLines = 0;
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
+        self.backgroundNormalColor = [UIColor themeBackgroundColor];
         self.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
     }
     
