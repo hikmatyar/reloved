@@ -15,7 +15,7 @@
 
 + (CGFloat)preferredHeight
 {
-    return 456.0F;
+    return 458.0F;
 }
 
 @dynamic post;
