@@ -5,7 +5,7 @@
 #import "UIButton+Additions.h"
 
 #define PADDING_TOP 10.0F
-#define PADDING 3.0F
+#define PADDING 0.0F
 
 #define TAG_LEFTBUTTON 1
 #define TAG_MIDDLEBUTTON 2
@@ -15,7 +15,7 @@
 
 + (CGFloat)preferredHeight
 {
-    return 60.0F;
+    return 50.0F;
 }
 
 @synthesize delegate = m_delegate;
@@ -76,7 +76,7 @@
     if(self) {
         UIButton *button;
         
-        button = [UIButton themeActionWithFrame:CGRectInset(CGRectMake(0.0F, PADDING_TOP, floorf(1.0F / 3.0F * frame.size.width), frame.size.height - PADDING_TOP), PADDING, PADDING)];
+        button = [UIButton themeActionWithFrame:CGRectInset(CGRectMake(0.0F, PADDING_TOP, roundf(1.0F / 3.0F * frame.size.width), frame.size.height - PADDING_TOP), PADDING, PADDING)];
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         button.tag = TAG_LEFTBUTTON;
         [button addTarget:self action:@selector(leftButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -84,7 +84,7 @@
         [button setTitle:NSLocalizedString(@"Post.Action.Save", nil) forState:UIControlStateNormal];
         [self addSubview:button];
         
-        button = [UIButton themeActionWithFrame:CGRectInset(CGRectMake(floorf(1.0F / 3.0F * frame.size.width), PADDING_TOP, floorf(1.0F / 3.0F * frame.size.width), frame.size.height - PADDING_TOP), PADDING, PADDING)];
+        button = [UIButton themeActionWithFrame:CGRectInset(CGRectMake(roundf(1.0F / 3.0F * frame.size.width) - 1.0F, PADDING_TOP, roundf(1.0F / 3.0F * frame.size.width) + 1.0F, frame.size.height - PADDING_TOP), PADDING, PADDING)];
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         button.tag = TAG_MIDDLEBUTTON;
         [button addTarget:self action:@selector(middleButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -92,7 +92,7 @@
         [button setTitle:NSLocalizedString(@"Post.Action.Share", nil) forState:UIControlStateNormal];
         [self addSubview:button];
         
-        button = [UIButton themeActionWithFrame:CGRectInset(CGRectMake(floorf(2.0F / 3.0F * frame.size.width), PADDING_TOP, floorf(1.0F / 3.0F * frame.size.width), frame.size.height - PADDING_TOP), PADDING, PADDING)];
+        button = [UIButton themeActionWithFrame:CGRectInset(CGRectMake(roundf(2.0F / 3.0F * frame.size.width), PADDING_TOP, roundf(1.0F / 3.0F * frame.size.width), frame.size.height - PADDING_TOP), PADDING, PADDING)];
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         button.tag = TAG_RIGHTBUTTON;
         [button addTarget:self action:@selector(rightButton:) forControlEvents:UIControlEventTouchUpInside];
