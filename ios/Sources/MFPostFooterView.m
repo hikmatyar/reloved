@@ -72,6 +72,7 @@
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         button.tag = TAG_LEFTBUTTON;
         [button addTarget:self action:@selector(leftButton:) forControlEvents:UIControlEventTouchUpInside];
+        [button setImage:[UIImage imageNamed:@"Post-Save.png"] forState:UIControlStateNormal];
         [button setTitle:NSLocalizedString(@"Post.Action.Save", nil) forState:UIControlStateNormal];
         [self addSubview:button];
         
@@ -79,6 +80,7 @@
         button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         button.tag = TAG_RIGHTBUTTON;
         [button addTarget:self action:@selector(rightButton:) forControlEvents:UIControlEventTouchUpInside];
+        [button setImage:[UIImage imageNamed:@"Post-Share.png"] forState:UIControlStateNormal];
         [button setTitle:NSLocalizedString(@"Post.Action.Share", nil) forState:UIControlStateNormal];
         [self addSubview:button];
     }
