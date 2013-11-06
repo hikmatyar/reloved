@@ -36,12 +36,12 @@
 
 + (UIColor *)themeFeedBackgroundColor
 {
-    return [self colorWithString:@"#bfc7d9"];
+    return [self colorWithString:@"#eeeeee"];
 }
 
 + (UIColor *)themeFeedBackgroundHighlightColor
 {
-    return [self colorWithString:@"#9ea5b4"];
+    return [self colorWithString:@"#a0a0a0"];
 }
 
 + (UIColor *)themeSeparatorColor
