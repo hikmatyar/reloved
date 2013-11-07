@@ -33,11 +33,17 @@
         ((MFImageButton *)m_placeholder).textTopPadding = 3.0F;
         [m_placeholder setImage:[UIImage imageNamed:(m_thumbnail) ? @"NewPost-Photos-Thumbnail.png" : @"NewPost-Photos-Placeholder.png"] forState:UIControlStateNormal];
         [m_placeholder setTitleColor:[UIColor themeTextColor] forState:UIControlStateNormal];
+        
         [self addSubview:m_placeholder];
         
         m_button = [[UIButton alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
         m_button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:m_button];
+        
+        if(!m_thumbnail) {
+            [m_button addTarget:self action:@selector(tapBegin:) forControlEvents:UIControlEventTouchDown];
+            [m_button addTarget:self action:@selector(tapEnd:) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside | UIControlEventTouchCancel];
+        }
         
         if(thumbnail) {
             m_editButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -109,6 +115,20 @@
 - (void)removeTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
     [m_button removeTarget:target action:action forControlEvents:controlEvents];
+}
+
+- (IBAction)tapBegin:(id)sender
+{
+    if(!m_thumbnail && !m_placeholder.hidden) {
+        [m_placeholder setImage:[UIImage imageNamed:@"NewPost-Photos-Placeholder-Selected.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)tapEnd:(id)sender
+{
+    if(!m_thumbnail && !m_placeholder.hidden) {
+        [m_placeholder setImage:[UIImage imageNamed:@"NewPost-Photos-Placeholder.png"] forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark UIView
