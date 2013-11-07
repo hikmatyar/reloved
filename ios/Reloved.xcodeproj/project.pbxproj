@@ -31,6 +31,10 @@
 		811082D117F8CA8E005CC8ED /* SQLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 811082CC17F8CA8E005CC8ED /* SQLObject.m */; };
 		811082D217F8CA8E005CC8ED /* SQLObjectStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 811082CE17F8CA8E005CC8ED /* SQLObjectStore.m */; };
 		811082D417F8CAEF005CC8ED /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 811082D317F8CAEF005CC8ED /* libsqlite3.dylib */; };
+		81114780182BDB3500379C55 /* CameraButton-Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8111477C182BDB3500379C55 /* CameraButton-Pressed.png */; };
+		81114781182BDB3500379C55 /* CameraButton-Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8111477D182BDB3500379C55 /* CameraButton-Pressed@2x.png */; };
+		81114782182BDB3500379C55 /* CameraButton-Unpressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 8111477E182BDB3500379C55 /* CameraButton-Unpressed.png */; };
+		81114783182BDB3500379C55 /* CameraButton-Unpressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8111477F182BDB3500379C55 /* CameraButton-Unpressed@2x.png */; };
 		8111C0B2181DA80D0071C3CF /* MFFormPKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8111C0B1181DA80C0071C3CF /* MFFormPKTextField.m */; };
 		81136AB9180B5555009142AE /* MFWebService+Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136AB8180B5555009142AE /* MFWebService+Post.m */; };
 		81136ABC180B563D009142AE /* NSData+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 81136ABB180B563D009142AE /* NSData+Additions.m */; };
@@ -385,6 +389,10 @@
 		811082CD17F8CA8E005CC8ED /* SQLObjectStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLObjectStore.h; path = Sources/SQLKit/SQLObjectStore.h; sourceTree = SOURCE_ROOT; };
 		811082CE17F8CA8E005CC8ED /* SQLObjectStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SQLObjectStore.m; path = Sources/SQLKit/SQLObjectStore.m; sourceTree = SOURCE_ROOT; };
 		811082D317F8CAEF005CC8ED /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		8111477C182BDB3500379C55 /* CameraButton-Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CameraButton-Pressed.png"; path = "Images/CameraButton-Pressed.png"; sourceTree = "<group>"; };
+		8111477D182BDB3500379C55 /* CameraButton-Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CameraButton-Pressed@2x.png"; path = "Images/CameraButton-Pressed@2x.png"; sourceTree = "<group>"; };
+		8111477E182BDB3500379C55 /* CameraButton-Unpressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CameraButton-Unpressed.png"; path = "Images/CameraButton-Unpressed.png"; sourceTree = "<group>"; };
+		8111477F182BDB3500379C55 /* CameraButton-Unpressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CameraButton-Unpressed@2x.png"; path = "Images/CameraButton-Unpressed@2x.png"; sourceTree = "<group>"; };
 		8111C0B0181DA80C0071C3CF /* MFFormPKTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFFormPKTextField.h; path = Sources/MFFormPKTextField.h; sourceTree = SOURCE_ROOT; };
 		8111C0B1181DA80C0071C3CF /* MFFormPKTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFFormPKTextField.m; path = Sources/MFFormPKTextField.m; sourceTree = SOURCE_ROOT; };
 		81136AB7180B5555009142AE /* MFWebService+Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFWebService+Post.h"; path = "Sources/MFWebService+Post.h"; sourceTree = SOURCE_ROOT; };
@@ -1301,6 +1309,10 @@
 				81B27B2E17F6105F00F9BC09 /* Stripe */,
 				8110829617F8809F005CC8ED /* Blue-Dot.png */,
 				8110829717F8809F005CC8ED /* Blue-Dot@2x.png */,
+				8111477C182BDB3500379C55 /* CameraButton-Pressed.png */,
+				8111477D182BDB3500379C55 /* CameraButton-Pressed@2x.png */,
+				8111477E182BDB3500379C55 /* CameraButton-Unpressed.png */,
+				8111477F182BDB3500379C55 /* CameraButton-Unpressed@2x.png */,
 				81136ACA180C549B009142AE /* Cartoon1.jpg */,
 				81136ACB180C549B009142AE /* Cartoon1@2x.jpg */,
 				81136ACC180C549B009142AE /* Cartoon2.jpg */,
@@ -1686,6 +1698,7 @@
 				81E529FA1810D58E004D88F3 /* Checkout-Progress-Selected@2x.png in Resources */,
 				81B14B8E180ED3C80089D19F /* User-Placeholder.png in Resources */,
 				81E529FE1810D69A004D88F3 /* Checkout-Progress-Unselected@2x.png in Resources */,
+				81114782182BDB3500379C55 /* CameraButton-Unpressed.png in Resources */,
 				81C5A21A180996EA000427A9 /* NewPost-Photos-Placeholder@2x.png in Resources */,
 				81B14B8F180ED3C80089D19F /* User-Placeholder@2x.png in Resources */,
 				81B27B5617F6107100F9BC09 /* placeholder@2x.png in Resources */,
@@ -1723,6 +1736,7 @@
 				81B27B4A17F6107100F9BC09 /* cvc-amex@2x.png in Resources */,
 				81C5A2161809969C000427A9 /* NewPost-Photos-X@2x.png in Resources */,
 				81B30E2F180DC8E600FF414D /* Checkmark.png in Resources */,
+				81114781182BDB3500379C55 /* CameraButton-Pressed@2x.png in Resources */,
 				813FFCE11811B5EA00E7FEA2 /* Home-Featured-Placeholder.png in Resources */,
 				81B27B4917F6107100F9BC09 /* cvc-amex.png in Resources */,
 				81136AD4180C549B009142AE /* Cartoon3.jpg in Resources */,
@@ -1779,11 +1793,13 @@
 				8120C19417E0470300A1C3A9 /* Home-Bookmarks@2x.png in Resources */,
 				8120C19D17E0470300A1C3A9 /* Home-History.png in Resources */,
 				8121BC67181835CA00396B1F /* Checkout-Help.png in Resources */,
+				81114780182BDB3500379C55 /* CameraButton-Pressed.png in Resources */,
 				81BC174C17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png in Resources */,
 				81D54BC8180F6281002D3449 /* Picker-Arrow@2x.png in Resources */,
 				8120C1A417E0470300A1C3A9 /* Home-ReturnsPolicy@2x.png in Resources */,
 				81BC174F17FC52F200DF7AD4 /* NewPost-Progress-Unselected.png in Resources */,
 				81EB2B96182B0C740045F2A6 /* Post-Save@2x.png in Resources */,
+				81114783182BDB3500379C55 /* CameraButton-Unpressed@2x.png in Resources */,
 				8120C1A117E0470300A1C3A9 /* Home-Recents.png in Resources */,
 				81136AD2180C549B009142AE /* Cartoon2.jpg in Resources */,
 				8120C15F17DFB2F700A1C3A9 /* Navigation-Menu@2x.png in Resources */,

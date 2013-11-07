@@ -8,6 +8,33 @@
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
 
+@interface UIImagePickerController(Additions)
+
+- (IBAction)pickerTakePicture:(id)sender;
+- (IBAction)pickerClose:(id)sender;
+
+@end
+
+@implementation UIImagePickerController(Additions)
+
+- (IBAction)pickerTakePicture:(id)sender
+{
+    [self takePicture];
+}
+
+- (IBAction)pickerClose:(id)sender
+{
+    id <UINavigationControllerDelegate, UIImagePickerControllerDelegate> delegate = self.delegate;
+    
+    if([delegate respondsToSelector:@selector(imagePickerControllerDidCancel:)]) {
+        [delegate imagePickerControllerDidCancel:self];
+    }
+}
+
+@end
+
+#pragma mark -
+
 #define THUMBNAIL_MIN 4
 #define THUMBNAIL_COUNT 8
 #define THUMBNAIL_PADDING 10.0F
@@ -20,7 +47,7 @@
     MFNewPostPhotoView *m_imageView;
     NSMutableArray *m_thumbnailViews;
     UILabel *m_hintLabel;
-    UILabel *m_cameraOverlayView;
+    UILabel *m_cameraOverlayLabel;
     BOOL m_canContinue;
 }
 
@@ -56,42 +83,72 @@
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIView *cameraOverlayView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 480.0F)];
+        UIButton *button;
+        
+        cameraOverlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        
+        button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+        button.frame = CGRectMake(118.0F, 396.0F, 84.0F, 84.0F);
+        [button addTarget:controller action:@selector(pickerTakePicture:) forControlEvents:UIControlEventTouchUpInside];
+        [button setImage:[UIImage imageNamed:@"CameraButton-Unpressed.png"] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:@"CameraButton-Pressed.png"] forState:UIControlStateHighlighted];
+        [cameraOverlayView addSubview:button];
+        
+        button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+        button.backgroundColor = [UIColor clearColor];
+        button.frame = CGRectMake(10.0F, 423.0F, 60.0F, 30.0F);
+        button.layer.borderColor = [UIColor whiteColor].CGColor;
+        button.layer.borderWidth = 0.5F;
+        button.layer.cornerRadius = 10.0F;
+        button.titleLabel.font = [UIFont themeFontOfSize:14.0F];
+        [button addTarget:controller action:@selector(pickerClose:) forControlEvents:UIControlEventTouchUpInside];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [button setTitle:NSLocalizedString(@"NewPost.Action.Cancel", nil) forState:UIControlStateNormal];
+        [cameraOverlayView addSubview:button];
+        
         controller.sourceType = UIImagePickerControllerSourceTypeCamera;
         controller.showsCameraControls = NO;
         
-        if(m_cameraOverlayView) {
+        if(m_cameraOverlayLabel) {
+            [m_cameraOverlayLabel removeFromSuperview];
+            m_cameraOverlayLabel.frame = CGRectMake(10.0F, 20.0F, 310.0F, 40.0F);
+            [cameraOverlayView addSubview:m_cameraOverlayLabel];
+            
             switch(self.selectedImageIndex) {
                 case 0:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.1.Picker", nil);
+                    m_cameraOverlayLabel.text = NSLocalizedString(@"NewPost.Hint.Photo.1.Picker", nil);
                     break;
                 case 1:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.2.Picker", nil);
+                    m_cameraOverlayLabel.text = NSLocalizedString(@"NewPost.Hint.Photo.2.Picker", nil);
                     break;
                 case 2:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.3.Picker", nil);
+                    m_cameraOverlayLabel.text = NSLocalizedString(@"NewPost.Hint.Photo.3.Picker", nil);
                     break;
                 case 3:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.4.Picker", nil);
+                    m_cameraOverlayLabel.text = NSLocalizedString(@"NewPost.Hint.Photo.4.Picker", nil);
                     break;
                 case 4:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.5.Picker", nil);
+                    m_cameraOverlayLabel.text = NSLocalizedString(@"NewPost.Hint.Photo.5.Picker", nil);
                     break;
                 case 5:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.6.Picker", nil);
+                    m_cameraOverlayLabel.text = NSLocalizedString(@"NewPost.Hint.Photo.6.Picker", nil);
                     break;
                 case 6:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.7.Picker", nil);
+                    m_cameraOverlayLabel.text = NSLocalizedString(@"NewPost.Hint.Photo.7.Picker", nil);
                     break;
                 case 7:
-                    m_cameraOverlayView.text = NSLocalizedString(@"NewPost.Hint.Photo.8.Picker", nil);
+                    m_cameraOverlayLabel.text = NSLocalizedString(@"NewPost.Hint.Photo.8.Picker", nil);
                     break;
                 default:
-                    m_cameraOverlayView.text = @"";
+                    m_cameraOverlayLabel.text = @"";
                     break;
             }
-            
-            controller.cameraOverlayView = m_cameraOverlayView;
         }
+        
+        controller.cameraOverlayView = cameraOverlayView;
     } else {
         controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
@@ -168,10 +225,10 @@
         m_thumbnailViews = [[NSMutableArray alloc] init];
         m_imagePaths = [[NSMutableDictionary alloc] init];
         
-        m_cameraOverlayView = [[UILabel alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 40.0F)];
-        m_cameraOverlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        m_cameraOverlayView.backgroundColor = [UIColor clearColor];
-        m_cameraOverlayView.userInteractionEnabled = NO;
+        m_cameraOverlayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0F, 20.0F, 320.0F, 40.0F)];
+        m_cameraOverlayLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        m_cameraOverlayLabel.backgroundColor = [UIColor clearColor];
+        m_cameraOverlayLabel.userInteractionEnabled = NO;
         
         m_imageView = [[MFNewPostPhotoView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, frame.size.width, frame.size.height)];
         m_imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -263,7 +320,7 @@
                 m_hintLabel.hidden = (selectedImageIndex == 0) ? NO : YES;
                 m_imageView.image = nil;
             } else {
-                m_cameraOverlayView = nil;
+                m_cameraOverlayLabel = nil;
                 [self selectImage:nil];
             }
         }
@@ -311,7 +368,7 @@
         if(selectedImageIndex + 1 < THUMBNAIL_MIN) {
             [self selectThumbnail:[m_thumbnailViews objectAtIndex:selectedImageIndex + 1]];
         } else {
-            m_cameraOverlayView = nil;
+            m_cameraOverlayLabel = nil;
         }
         
         [picker dismissViewControllerAnimated:YES completion:NULL];
