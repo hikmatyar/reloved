@@ -14,6 +14,7 @@ typedef enum _MFWebFeedKind {
     kMFWebFeedKindHistory
 } MFWebFeedKind;
 
+extern NSString *MFWebFeedOldPostsKey;
 extern NSString *MFWebFeedChangesKey;
 extern NSString *MFWebFeedErrorKey;
 

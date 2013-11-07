@@ -27,6 +27,7 @@
 #import "NSArray+Additions.h"
 #import "NSDictionary+Additions.h"
 
+NSString *MFWebFeedOldPostsKey = @"oldposts";
 NSString *MFWebFeedChangesKey = @"changes";
 NSString *MFWebFeedErrorKey = @"error";
 
@@ -46,11 +47,12 @@ NSString *MFWebFeedDidChangeNotification = @"MFWebFeedDidChange";
 #define LOADING_DELAY 0.3
 #define LOADING_LIMIT 5
 
-static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *error) {
+static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *oldPosts, NSArray *changes, NSError *error) {
     NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
     
     [userInfo setValue:error forKey:MFWebFeedErrorKey];
     [userInfo setValue:changes forKey:MFWebFeedChangesKey];
+    [userInfo setValue:oldPosts forKey:MFWebFeedOldPostsKey];
     
     return userInfo;
 }
@@ -350,7 +352,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
     return changed;
 }
 
-- (NSArray *)mergeState:(MFFeed *)feed expand:(NSInteger)expand
+- (NSArray *)mergeState:(MFFeed *)feed expand:(NSInteger)expand oldPosts:(NSArray *)oldPosts
 {
     MFDatabase *database = [MFDatabase sharedDatabase];
     NSArray *filteredPosts1 = m_posts;
@@ -506,8 +508,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
             changed = YES;
         }
         
-        delta = [[filteredPosts1 subarrayWithRange:NSMakeRange(0, locationMarker)] deltaWithArray:[filteredPosts2 subarrayWithRange:NSMakeRange(0, offset)]
-                                                                                          changes:changes];
+        delta = [oldPosts deltaWithArray:[filteredPosts2 subarrayWithRange:NSMakeRange(0, offset)] changes:changes];
     }
     
     if(changed || locationMarker != m_feed.offset) {
@@ -638,6 +639,8 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 - (void)loadForward
 {
     if(!m_identifier && !m_loadingBackward) {
+        NSArray *oldPosts = self.posts;
+        
         m_loadingForward = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidBeginLoadingNotification object:self userInfo:nil];
         
@@ -647,17 +650,18 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
                 
                 [self beginEditing];
                 
-                if((changes = [self mergeState:feed expand:0]) != nil) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(nil, nil)];
+                if((changes = [self mergeState:feed expand:0 oldPosts:oldPosts]) != nil) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(oldPosts, nil, nil)];
                 }
                 
                 [self endEditing];
             }
             
             m_loadingForward = NO;
-            [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(nil, error)];
+            [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(oldPosts, nil, error)];
         }];
     } else if(!m_loadingForward && !self.local) {
+        NSArray *oldPosts = self.posts;
         NSString *state = m_feed.state;
         
         m_loadingForward = YES;
@@ -674,15 +678,15 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
                     didChange = [self clearState];
                 }
                 
-                if((changes = [self mergeState:feed expand:0]) != nil || didChange) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo((state) ? changes : nil, nil)];
+                if((changes = [self mergeState:feed expand:0 oldPosts:oldPosts]) != nil || didChange) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(oldPosts, (state) ? changes : nil, nil)];
                 }
                 
                 [self endEditing];
             }
             
             m_loadingForward = NO;
-            [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(nil, error)];
+            [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(oldPosts, nil, error)];
         }];
     } else if(self.local) {
         [self reloadPosts];
@@ -692,35 +696,37 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
 - (void)loadBackward
 {
     if(m_identifier && !m_loadingBackward && ![m_identifier isEqualToString:FEED_BOOKMARKS]) {
+        NSArray *oldPosts = self.posts;
+        
         m_loadingBackward = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidBeginLoadingNotification object:self userInfo:nil];
         
         if((m_feed.offset + LOADING_LIMIT < m_posts.count) || (m_feed.offset < m_posts.count && m_feed.cursor == kMFFeedCursorEnd)) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(LOADING_DELAY * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                NSArray *changes = [self mergeState:nil expand:LOADING_LIMIT];
+                NSArray *changes = [self mergeState:nil expand:LOADING_LIMIT oldPosts:oldPosts];
                 
                 if(changes.count > 0) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(changes, nil)];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(oldPosts, changes, nil)];
                 }
                 
                 m_loadingBackward = NO;
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(nil, nil)];
+                [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(oldPosts, nil, nil)];
             });
         } else {
             NSString *state = m_feed.state;
             
             [[MFWebService sharedService] requestFeed:m_identifier clientCount:m_posts.count forward:NO limit:LOADING_LIMIT state:state globals:[MFDatabase sharedDatabase].globalState target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
                 if(feed && MFEqual(m_feed.state, state)) {
-                    NSArray *changes = [self mergeState:feed expand:LOADING_LIMIT];
+                    NSArray *changes = [self mergeState:feed expand:LOADING_LIMIT oldPosts:oldPosts];
                     
                     if(changes.count > 0) {
-                        [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(changes, nil)];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(oldPosts, changes, nil)];
                     }
                 }
                 
                 m_loadingBackward = NO;
-                [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(nil, error)];
+                [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidEndLoadingNotification object:self userInfo:MFWebFeedGetUserInfo(oldPosts, nil, error)];
             }];
         }
     }
@@ -740,6 +746,8 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
         }
         
         if(lastModification) {
+            NSArray *oldPosts = self.posts;
+            
             m_loadingForward = YES;
             
             [[MFWebService sharedService] requestPosts:postIds lastModification:lastModification target:self usingBlock:^(id target, NSError *error, MFFeed *feed) {
@@ -759,7 +767,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *changes, NSError *erro
                 }
                 
                 if(changed) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(nil, nil)];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:MFWebFeedDidChangeNotification object:self userInfo:MFWebFeedGetUserInfo(oldPosts, nil, nil)];
                 }
                 
                 m_loadingForward = NO;
