@@ -138,7 +138,7 @@
                 UITableView *tableView = self.tableView;
                 
                 m_atEnd = m_feed.atEnd;
-                NSLog(@"big fuck u %d", m_atEnd);
+                
                 [tableView beginUpdates];
                 [tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_MORE] withRowAnimation:UITableViewRowAnimationFade];
                 [tableView endUpdates];
