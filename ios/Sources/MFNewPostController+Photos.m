@@ -7,6 +7,7 @@
 #import "NSFileManager+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UIImage+Additions.h"
 
 @interface UIImagePickerController(Additions)
 
@@ -34,6 +35,9 @@
 @end
 
 #pragma mark -
+
+#define IMAGE_QUALITY 1.0F
+#define IMAGE_MAX_SIZE CGSizeMake(640.0F, 1136.0F)
 
 #define THUMBNAIL_MIN 4
 #define THUMBNAIL_COUNT 8
@@ -339,9 +343,13 @@
     }
     
     if(image) {
+        image = [image scaledImageWithMaxSize:IMAGE_MAX_SIZE quality:1.0F];
+    }
+    
+    if(image) {
         NSNumber *key = [NSNumber numberWithInteger:selectedImageIndex];
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSData *data = UIImageJPEGRepresentation(image, 1.0);
+        NSData *data = UIImageJPEGRepresentation(image, IMAGE_QUALITY);
         NSString *value = [m_imagePaths objectForKey:key];
         
         if(value) {

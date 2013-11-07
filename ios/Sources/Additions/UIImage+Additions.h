@@ -6,4 +6,6 @@
 
 + (UIImage *)imageWithColor:(UIColor *)color;
 
+- (UIImage *)scaledImageWithMaxSize:(CGSize)maxSize quality:(CGFloat)quality;
+
 @end
