@@ -128,7 +128,7 @@
 "NewPost.Label.Price" = "Sale Price";
 "NewPost.Label.Price.Extra" = "Minimum sale price is £30";
 "NewPost.Label.OriginalPrice" = "Original Price";
-"NewPost.Label.Size" = "Size";
+"NewPost.Label.Size" = "UK Size";
 "NewPost.Label.Subject" = "Post Subject";
 "NewPost.Label.Type" = "Dress Type";
 "NewPost.Title.Brand" = "Select Brand";
@@ -138,7 +138,7 @@
 "NewPost.Title.Photos" = "Add Photos";
 "NewPost.Title.Price" = "Set Price";
 "NewPost.Title.SellersNote" = "Seller's Note";
-"NewPost.Title.Size" = "Select Size";
+"NewPost.Title.Size" = "Select UK Size";
 "NewPost.Title.Type" = "Select Dress Type";
 "NewPost.Title.TypeSizeFit" = "Type, Size & Fit";
 
@@ -241,7 +241,7 @@
 "Profile.Label.Email" = "Email";
 "Profile.Label.Phone" = "Telephone Number";
 "Profile.Label.Postcode" = "Postcode";
-"Profile.Label.Size" = "Your dress size";
+"Profile.Label.Size" = "Your UK dress size";
 "Profile.Label.Loading" = "Loading data...";
 "Profile.Label.Saving" = "Saving data...";
 "Profile.Title" = "My Profile";
