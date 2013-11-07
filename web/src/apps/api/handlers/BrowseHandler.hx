@@ -222,7 +222,7 @@ class BrowseHandler extends Handler {
                     this.write(' "cursor": "end", \n');
                 }
             } else {
-            	if(range == null || clientCount == serverCount) {
+            	if(range == null || clientCount == serverCount || serverCount == 0) {
             		this.write(' "cursor": "end", \n');
             	} else {
                 	this.write(' "cursor": "middle", \n');
