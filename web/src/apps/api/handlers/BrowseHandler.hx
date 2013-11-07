@@ -78,8 +78,22 @@ class BrowseHandler extends Handler {
     	var state = this.feedState();
     	var globalState = this.feedGlobals();
     	var identifier = this.feedIdentifier();
-    	var range = (state != null) ? { min: state.min, max: state.max } : null;
     	var featured = (identifier == PostFeed.identifier_featured) ? true : false;
+    	var range : Dynamic = null;
+    	var reset : Bool = false;
+    	
+    	if(state != null) {
+    		// Reset client state if older than 2 hours
+    		if(state.timestamp == null ||
+    		   Math.abs(state.timestamp - Math.round(new saffron.tools.Date().getTime() / 1000)) > 2 * 60 * 60) {
+    			state = null;
+    			reset = true;
+    		}
+    		
+    		if(state != null) {
+    			range = { min: state.min, max: state.max };
+    		}
+    	}
     	
     	async(function(sync) {
 			Event.findAll(this.user().id, globalState, function(err, events) {
@@ -126,6 +140,7 @@ class BrowseHandler extends Handler {
                 if(err == null) {
                 	if(state == null) {
 						state = (state_ != null) ? state_ : new State();
+						state.timestamp = Math.round(new saffron.tools.Date().getTime() / 1000);
 					} else if(state_ != null) {
 						if(state_.min < state.min) {
 							state.min = state_.min;
@@ -205,6 +220,10 @@ class BrowseHandler extends Handler {
                 }
             } else {
                 this.write(' "cursor": "end", \n');
+            }
+            
+            if(reset) {
+            	this.write(' "reset": true,');
             }
             
             if(Config.media_prefix != null) {
