@@ -100,9 +100,9 @@
         button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
         button.backgroundColor = [UIColor clearColor];
         button.frame = CGRectMake(10.0F, 423.0F, 60.0F, 30.0F);
-        button.layer.borderColor = [UIColor whiteColor].CGColor;
-        button.layer.borderWidth = 0.5F;
-        button.layer.cornerRadius = 10.0F;
+        //button.layer.borderColor = [UIColor whiteColor].CGColor;
+        //button.layer.borderWidth = 0.5F;
+        //button.layer.cornerRadius = 10.0F;
         button.titleLabel.font = [UIFont themeFontOfSize:14.0F];
         [button addTarget:controller action:@selector(pickerClose:) forControlEvents:UIControlEventTouchUpInside];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -320,7 +320,7 @@
                 m_hintLabel.hidden = (selectedImageIndex == 0) ? NO : YES;
                 m_imageView.image = nil;
             } else {
-                m_cameraOverlayLabel = nil;
+                //m_cameraOverlayLabel = nil;
                 [self selectImage:nil];
             }
         }
@@ -368,7 +368,7 @@
         if(selectedImageIndex + 1 < THUMBNAIL_MIN) {
             [self selectThumbnail:[m_thumbnailViews objectAtIndex:selectedImageIndex + 1]];
         } else {
-            m_cameraOverlayLabel = nil;
+            //m_cameraOverlayLabel = nil;
         }
         
         [picker dismissViewControllerAnimated:YES completion:NULL];
