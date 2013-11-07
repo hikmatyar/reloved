@@ -79,6 +79,8 @@ class BrowseHandler extends Handler {
     	var globalState = this.feedGlobals();
     	var identifier = this.feedIdentifier();
     	var featured = (identifier == PostFeed.identifier_featured) ? true : false;
+    	var clientCount = this.feedClientCount();
+    	var serverCount = 0;
     	var range : Dynamic = null;
     	var reset : Bool = false;
     	
@@ -185,6 +187,7 @@ class BrowseHandler extends Handler {
     	async(function(sync, posts : Array<Post>) {
     		Post.findNumberOfPosts(this.user().id, identifier, function(err, results) {
     			if(err == null) {
+    				serverCount = results;
     				this.write(' "results": ' + results + ', \n');
     				sync(posts);
     			} else {
@@ -211,15 +214,19 @@ class BrowseHandler extends Handler {
                 	this.write(' "cursor": "end", \n');
                 	state = null;
                 	range = null;
-                } else if(range == null && posts.length == limit) {
+                } else if(range == null && posts.length >= limit) {
                     this.write(' "cursor": "start", \n');
-                } else if(posts.length == limit) {
+                } else if(posts.length >= limit) {
                     this.write(' "cursor": "middle", \n');
                 } else {
                     this.write(' "cursor": "end", \n');
                 }
             } else {
-                this.write(' "cursor": "end", \n');
+            	if(range == null || clientCount == serverCount) {
+            		this.write(' "cursor": "end", \n');
+            	} else {
+                	this.write(' "cursor": "middle", \n');
+                }
             }
             
             if(reset) {
