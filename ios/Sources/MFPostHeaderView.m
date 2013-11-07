@@ -23,7 +23,7 @@
 
 #pragma mark -
 
-@interface MFPostTableViewCell_Header : MFPostTableViewCell
+@interface MFPostTableViewCell_Header : MFPostTableViewCell <UIGestureRecognizerDelegate>
 {
     @private
     UIScrollView *m_scrollView;
@@ -64,6 +64,18 @@
 }
 
 @synthesize imageButton = m_imageButton;
+
+- (void)swipeleft:(UISwipeGestureRecognizer*)gestureRecognizer
+{
+    NSInteger count = self.post.mediaIds.count;
+    
+    if(count > 1) {
+        NSInteger index = self.selectedImageIndex;
+        
+        self.selectedImageIndex = (index + 1 < count) ? index + 1 : 0;
+        [self invalidateSelection];
+    }
+}
 
 #pragma mark MFPostTableViewCell
 
@@ -110,6 +122,13 @@
     [self invalidateSelection];
 }
 
+#pragma mark UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIPanGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UISwipeGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
+
 #pragma mark UITableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -117,6 +136,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if(self) {
+        UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
+        
         m_thumbnailViews = [[NSMutableArray alloc] init];
         
         m_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 100.0F, THUMBNAIL_HEIGHT)];
@@ -126,6 +147,11 @@
         
         m_imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self addSubview:m_imageButton];
+        
+        swipe.direction = UISwipeGestureRecognizerDirectionLeft;
+        swipe.delegate = self;
+        swipe.cancelsTouchesInView = YES;
+        [m_imageButton addGestureRecognizer:swipe];
     }
     
     return self;
