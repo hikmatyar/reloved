@@ -96,7 +96,7 @@
         [button setImage:[UIImage imageNamed:@"CameraButton-Pressed.png"] forState:UIControlStateHighlighted];
         [cameraOverlayView addSubview:button];
         
-        button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
         button.backgroundColor = [UIColor clearColor];
         button.frame = CGRectMake(10.0F, 423.0F, 60.0F, 30.0F);
