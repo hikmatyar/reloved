@@ -72,8 +72,10 @@
     if(count > 1) {
         NSInteger index = self.selectedImageIndex;
         
-        self.selectedImageIndex = (index + 1 < count) ? index + 1 : 0;
-        [self invalidateSelection];
+        if(index + 1 < count) {
+            self.selectedImageIndex = index + 1;
+            [self invalidateSelection];
+        }
     }
 }
 
