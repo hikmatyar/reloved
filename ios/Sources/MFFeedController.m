@@ -159,9 +159,14 @@
 {
     if(!notification || m_feed == notification.object) {
         NSArray *changes = [notification.userInfo arrayForKey:MFWebFeedChangesKey];
+        NSArray *oldPosts = [notification.userInfo arrayForKey:MFWebFeedOldPostsKey];
         UITableView *tableView = self.tableView;
         BOOL atEnd = m_feed.atEnd;
         BOOL changeMore = (m_atEnd != atEnd) ? YES : NO;
+        
+        if(changes && !MFEqual(oldPosts, m_posts)) {
+            changes = nil;
+        }
         
         m_atEnd = atEnd;
         m_posts = m_feed.posts;

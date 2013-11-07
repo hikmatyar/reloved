@@ -11,6 +11,12 @@ class FeedMixins {
     	return handler.request.body.id;
     }
     
+    public static inline function feedClientCount(handler : Handler) : Int {
+        var cc = Std.parseInt(handler.request.body.cc);
+        
+        return (cc > 0) ? cc : 0;
+    }
+    
     public static inline function feedLimit(handler : Handler) : Int {
         var limit = Std.parseInt(handler.request.body.limit);
         
