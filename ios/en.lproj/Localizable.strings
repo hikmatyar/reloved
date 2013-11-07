@@ -74,8 +74,8 @@
 "NewPost.Alert.PostingError.Message" = "Sorry, there was a problem creating the post. Retry?";
 "NewPost.Alert.PostingError.Title" = "Unable to create post";
 "NewPost.Alert.Posted.Action.OK" = "OK";
-"NewPost.Alert.Posted.Message" = "Your post has been created. Share with your friends through the 'Share' button on your post's details page.";
-"NewPost.Alert.Posted.Title" = "Post created succcessfully";
+"NewPost.Alert.Posted.Message" = "Your post has been created. Share with your friends through the Share button on your post details page.";
+"NewPost.Alert.Posted.Title" = "Post created successfully";
 "NewPost.Alert.UploadingError.Action.Close" = "Close";
 "NewPost.Alert.UploadingError.Action.Retry" = "Retry";
 "NewPost.Alert.UploadingError.Message" = "Sorry we encountered a problem. Retry?";
