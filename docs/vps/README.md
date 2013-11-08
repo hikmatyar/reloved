@@ -160,6 +160,9 @@ Reloved Virtual Private Server Setup
     
     # Add the following
     AllowUsers www www-dev api
+    
+    # Add if running OpenSSH 6.2 and OpenSSH 6.3 (http://www.openssh.com/txt/gcmrekey.adv)
+    Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,blowfish-cbc,cast128-cbc,aes192-cbc,aes256-cbc
 
 ## Finally, restart the service
 
