@@ -4,7 +4,7 @@
 
 @implementation MFMenuItem
 
-- (id)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle image:(NSString *)image selector:(SEL)selector
+- (id)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle image:(NSString *)image selector:(SEL)selector highlight:(BOOL)highlight
 {
     self = [super init];
     
@@ -13,6 +13,7 @@
         m_selector = selector;
         m_title = title;
         m_subtitle = subtitle;
+        m_highlight = highlight;
     }
     
     return self;
@@ -20,6 +21,7 @@
 
 @synthesize image = m_image;
 @synthesize selector = m_selector;
+@synthesize highlight = m_highlight;
 @synthesize title = m_title;
 @synthesize subtitle = m_subtitle;
 

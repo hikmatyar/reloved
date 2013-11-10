@@ -36,6 +36,7 @@
 #import "UIViewController+MFSideMenuAdditions.h"
 
 #define CELL_IDENTIFIER @"cell"
+#define CELL_IDENTIFIER_HIGHLIGHT @"cell_highlight"
 
 @implementation MFHomeController
 
@@ -234,15 +235,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MFMenuItem *item = [[m_menu objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER];
+    NSString *identifier = (item.highlight) ? CELL_IDENTIFIER_HIGHLIGHT : CELL_IDENTIFIER;
+    MFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
     if(!cell) {
-        cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_IDENTIFIER];
+        cell = [[MFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Disclosure-Indicator.png"]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
-        cell.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
         cell.textLabel.font = [UIFont themeFontOfSize:14.0F];
+        
+        if(item.highlight) {
+            cell.textLabel.textColor = [UIColor themeButtonAltTextColor];
+            cell.backgroundNormalColor = [UIColor themeButtonAltBackgroundColor];
+            cell.backgroundHighlightColor = [UIColor themeButtonAltBackgroundHighlightColor];
+        } else {
+            cell.textLabel.textColor = [UIColor themeButtonTextColor];
+            cell.backgroundNormalColor = [UIColor themeButtonBackgroundColor];
+            cell.backgroundHighlightColor = [UIColor themeButtonBackgroundHighlightColor];
+        }
     }
     
     cell.imageView.image = (item.image) ? [UIImage imageNamed:item.image] : nil;
@@ -318,10 +328,10 @@
     if(self) {
         m_menu = [[NSArray alloc] initWithObjects:
                 MENU_SECTION(nil,
-                    MENU_ITEM(NSLocalizedString(@"Home.Action.BrowseEditorial", nil), @selector(browseEditorial:), @"Home-BrowseEditorial.png")),
+                    MENU_ITEM_ALT(NSLocalizedString(@"Home.Action.BrowseEditorial", nil), @selector(browseEditorial:), @"Home-BrowseEditorial.png")),
                 MENU_SECTION(@" ",
-                    MENU_ITEM(NSLocalizedString(@"Home.Action.BrowseNew", nil), @selector(browseNew:), @"Home-BrowseNew.png"),
-                    MENU_ITEM(NSLocalizedString(@"Home.Action.BrowseAll", nil), @selector(browseAll:), @"Home-BrowseAll.png")),
+                    MENU_ITEM_ALT(NSLocalizedString(@"Home.Action.BrowseNew", nil), @selector(browseNew:), @"Home-BrowseNew.png"),
+                    MENU_ITEM_ALT(NSLocalizedString(@"Home.Action.BrowseAll", nil), @selector(browseAll:), @"Home-BrowseAll.png")),
                 MENU_SECTION(NSLocalizedString(@"Home.Label.MyItems", nil),
                     MENU_ITEM(NSLocalizedString(@"Home.Action.Bookmarks", nil), @selector(bookmarks:), @"Home-Bookmarks.png"),
                     MENU_ITEM(NSLocalizedString(@"Home.Action.Recents", nil), @selector(recents:), @"Home-Recents.png")),

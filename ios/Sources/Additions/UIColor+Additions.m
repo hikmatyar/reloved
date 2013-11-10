@@ -89,6 +89,21 @@
     return [self colorWithString:@"#4477aa"];
 }
 
++ (UIColor *)themeButtonAltTextColor
+{
+    return [self colorWithString:@"#000000"];
+}
+
++ (UIColor *)themeButtonAltBackgroundColor
+{
+    return [self colorWithString:@"#ffdddd"];
+}
+
++ (UIColor *)themeButtonAltBackgroundHighlightColor
+{
+    return [self colorWithString:@"#b0a0a0"];
+}
+
 + (UIColor *)themeButtonBackgroundColor
 {
     return [self colorWithString:@"#ffffff"];

@@ -20,6 +20,9 @@
 + (UIColor *)themeBorderColor;
 + (UIColor *)themeButtonActionColor;
 + (UIColor *)themeButtonActionHighlightColor;
++ (UIColor *)themeButtonAltTextColor;
++ (UIColor *)themeButtonAltBackgroundColor;
++ (UIColor *)themeButtonAltBackgroundHighlightColor;
 + (UIColor *)themeButtonBackgroundColor;
 + (UIColor *)themeButtonBackgroundHighlightColor;
 + (UIColor *)themeButtonBorderColor;
