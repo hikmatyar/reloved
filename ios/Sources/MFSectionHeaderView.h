@@ -11,6 +11,7 @@
 + (CGFloat)preferredHeight;
 
 - (id)initWithTitle:(NSString *)title;
+- (id)initWithTitle:(NSString *)title backgroundColor:(UIColor *)backgroundColor;
 
 @property (nonatomic, retain) NSString *title;
 

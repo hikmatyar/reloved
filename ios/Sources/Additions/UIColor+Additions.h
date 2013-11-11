@@ -6,6 +6,8 @@
 
 + (UIColor *)colorWithString:(NSString *)str;
 
++ (UIColor *)themeHomeBackgroundColor;
+
 + (UIColor *)themeBackgroundColor;
 + (UIColor *)themeBackgroundHighlightColor;
 + (UIColor *)themeFeedBackgroundColor;

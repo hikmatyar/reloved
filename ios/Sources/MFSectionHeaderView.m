@@ -13,11 +13,20 @@
 
 - (id)initWithTitle:(NSString *)title
 {
+    return [self initWithTitle:title backgroundColor:nil];
+}
+
+- (id)initWithTitle:(NSString *)title backgroundColor:(UIColor *)backgroundColor
+{
     self = [self initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, [self.class preferredHeight])];
     
     if(self) {
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         self.title = title;
+        
+        if(backgroundColor) {
+            self.backgroundColor = backgroundColor;
+        }
     }
     
     return self;

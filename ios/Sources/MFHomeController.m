@@ -272,7 +272,7 @@
 {
     NSString *title = ((MFMenu *)[m_menu objectAtIndex:section]).title;
     
-    return (title) ? [[MFHomeSectionView alloc] initWithTitle:title] : nil;
+    return (title) ? [[MFHomeSectionView alloc] initWithTitle:title backgroundColor:[UIColor themeHomeBackgroundColor]] : nil;
 }
 
 #pragma mark UITableViewDelegate
@@ -296,7 +296,7 @@
         tableView.separatorInset = UIEdgeInsetsMake(0.0F, 0.0F, 0.0F, 0.0F);
     }
     
-    tableView.backgroundColor = [UIColor themeBackgroundColor];
+    tableView.backgroundColor = [UIColor themeHomeBackgroundColor];
     tableView.tableHeaderView = headerView;
     tableView.tableFooterView = footerView;
     tableView.dataSource = self;

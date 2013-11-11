@@ -24,6 +24,11 @@
     return [self colorWithRed:(float)red / 255.0F green:(float)green / 255.0F blue:(float)blue / 255.0F alpha:(float)alpha / 255.0F];
 }
 
++ (UIColor *)themeHomeBackgroundColor
+{
+    return [self colorWithString:@"#eeeeee"];
+}
+
 + (UIColor *)themeBackgroundColor
 {
     return [self colorWithString:@"#eeeeee"];
