@@ -27,10 +27,21 @@
     [parameters setValue:post.currency forKey:@"currency"];
     [parameters setValue:[post.tags componentsJoinedByString:@","] forKey:@"tags"];
     
-    [parameters setValue:post.email forKey:@"email"];
-    [parameters setValue:post.phone forKey:@"phone"];
-    [parameters setValue:post.firstName forKey:@"first_name"];
-    [parameters setValue:post.lastName forKey:@"last_name"];
+    if(post.email.length > 0) {
+        [parameters setValue:post.email forKey:@"email"];
+    }
+    
+    if(post.phone.length > 0) {
+        [parameters setValue:post.phone forKey:@"phone"];
+    }
+    
+    if(post.firstName.length > 0) {
+        [parameters setValue:post.firstName forKey:@"first_name"];
+    }
+    
+    if(post.lastName.length > 0) {
+        [parameters setValue:post.lastName forKey:@"last_name"];
+    }
     
     request = [[MFWebRequest alloc] initWithService:self
                                                mode:kMFWebRequestModeJsonPost
