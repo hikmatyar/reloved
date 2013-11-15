@@ -60,7 +60,7 @@ Performs a login or creates an account if possible (type=auto) and the account d
         STRING[40] hash [O] - Sha1 checksum of salt, type, public and private arguments
     
     Returns:
-        { "error": 0, "session": "12345678", "user": "1231" }
+        { "error": 0, "session": "12345678", "user": "1231", "contact": { "email": "", "phone": "", "first_name": "", "last_name": "" } }
     
     Errors:
         [standard]
@@ -421,6 +421,10 @@ API calls for updating personal information and posts.
 		INTEGER price_original [R] - Integer value with a price (105 = 1.05)
 		STRING[3] currency [R] - 3 letter currency code, such as 'GBP'
 		ARRAY<STRING> tags [R] - List of tag names
+		STRING email [O]
+		STRING phone [O]
+		STRING first_name [O]
+		STRING last_name [O]
 	
 	Returns:
 		{ "error": 0, "status": 2, "price": ... }
