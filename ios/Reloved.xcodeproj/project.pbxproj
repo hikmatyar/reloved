@@ -224,6 +224,7 @@
 		819E12B218057E68008D2D36 /* MFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12B118057E68008D2D36 /* MFEvent.m */; };
 		819E12B518057E79008D2D36 /* MFDatabase+Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12B418057E79008D2D36 /* MFDatabase+Event.m */; };
 		819E12B818058340008D2D36 /* NSDate+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12B718058340008D2D36 /* NSDate+Additions.m */; };
+		81A63A9B183600D1003BA561 /* MFNewPostController+Contacts.m in Sources */ = {isa = PBXBuildFile; fileRef = 81A63A9A183600D1003BA561 /* MFNewPostController+Contacts.m */; };
 		81B14B73180EC3A20089D19F /* Post-Comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B67180EC3A20089D19F /* Post-Comments.png */; };
 		81B14B74180EC3A20089D19F /* Post-Comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B68180EC3A20089D19F /* Post-Comments@2x.png */; };
 		81B14B75180EC3A20089D19F /* Post-Condition.png in Resources */ = {isa = PBXBuildFile; fileRef = 81B14B69180EC3A20089D19F /* Post-Condition.png */; };
@@ -706,6 +707,8 @@
 		819E12B418057E79008D2D36 /* MFDatabase+Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+Event.m"; path = "Sources/MFDatabase+Event.m"; sourceTree = SOURCE_ROOT; };
 		819E12B618058340008D2D36 /* NSDate+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+Additions.h"; path = "Sources/Additions/NSDate+Additions.h"; sourceTree = SOURCE_ROOT; };
 		819E12B718058340008D2D36 /* NSDate+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+Additions.m"; path = "Sources/Additions/NSDate+Additions.m"; sourceTree = SOURCE_ROOT; };
+		81A63A99183600D1003BA561 /* MFNewPostController+Contacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFNewPostController+Contacts.h"; path = "Sources/MFNewPostController+Contacts.h"; sourceTree = SOURCE_ROOT; };
+		81A63A9A183600D1003BA561 /* MFNewPostController+Contacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFNewPostController+Contacts.m"; path = "Sources/MFNewPostController+Contacts.m"; sourceTree = SOURCE_ROOT; };
 		81B14B67180EC3A20089D19F /* Post-Comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Comments.png"; path = "Images/Post-Comments.png"; sourceTree = "<group>"; };
 		81B14B68180EC3A20089D19F /* Post-Comments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Comments@2x.png"; path = "Images/Post-Comments@2x.png"; sourceTree = "<group>"; };
 		81B14B69180EC3A20089D19F /* Post-Condition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Post-Condition.png"; path = "Images/Post-Condition.png"; sourceTree = "<group>"; };
@@ -1001,6 +1004,8 @@
 				8120C17617E03CC700A1C3A9 /* MFMenuItem.m */,
 				8120C15917DFAFA600A1C3A9 /* MFNewPostController.h */,
 				8120C15A17DFAFA600A1C3A9 /* MFNewPostController.m */,
+				81A63A99183600D1003BA561 /* MFNewPostController+Contacts.h */,
+				81A63A9A183600D1003BA561 /* MFNewPostController+Contacts.m */,
 				81D0966517FCCC270044BD06 /* MFNewPostController+Condition.h */,
 				81D0966617FCCC270044BD06 /* MFNewPostController+Condition.m */,
 				81D0966E17FCD43D0044BD06 /* MFNewPostController+Details.h */,
@@ -2012,6 +2017,7 @@
 				817723E617FDAAEC004A28CC /* MFFormTextField.m in Sources */,
 				817723E317FDAAD8004A28CC /* MFFormButton.m in Sources */,
 				81B27B1117F60F3700F9BC09 /* STPView.m in Sources */,
+				81A63A9B183600D1003BA561 /* MFNewPostController+Contacts.m in Sources */,
 				813FFCDE1811A6F200E7FEA2 /* UITableView+Additions.m in Sources */,
 				812F4AE717DEFEE900454747 /* ASINetworkQueue.m in Sources */,
 				811082D217F8CA8E005CC8ED /* SQLObjectStore.m in Sources */,

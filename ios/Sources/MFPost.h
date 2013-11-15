@@ -76,6 +76,10 @@ typedef enum _MFPostStatus {
 {
     @protected
     NSArray *m_imagePaths;
+    NSString *m_email;
+    NSString *m_phone;
+    NSString *m_firstName;
+    NSString *m_lastName;
 }
 
 @property (nonatomic, retain) NSArray *imagePaths;
@@ -96,6 +100,12 @@ typedef enum _MFPostStatus {
 @property (nonatomic, retain) NSString *fit;
 @property (nonatomic, retain) NSString *notes;
 @property (nonatomic, retain) NSArray *tags;
+
+@property (nonatomic, retain) NSString *email;
+@property (nonatomic, retain) NSString *phone;
+@property (nonatomic, retain) NSString *firstName;
+@property (nonatomic, retain) NSString *lastName;
+@property (nonatomic, retain, readonly) NSString *fullName;
 
 - (BOOL)update:(NSDictionary *)changes;
 - (BOOL)updateStatus:(MFPostStatus)status;

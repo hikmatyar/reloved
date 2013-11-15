@@ -53,8 +53,9 @@
 "NewPost.Action.Cancel" = "Cancel";
 "NewPost.Action.Close" = "Close";
 "NewPost.Action.Condition" = "Condition";
+"NewPost.Action.Contacts" = "Contacts";
 "NewPost.Action.Details" = "Brand";
-"NewPost.Action.Done" = "Contacts";
+"NewPost.Action.Done" = "Done";
 "NewPost.Action.Next" = "Next";
 "NewPost.Action.Photos" = "Photos";
 "NewPost.Action.Price" = "Price";
@@ -116,6 +117,10 @@
 "NewPost.Hint.Size" = "Select UK size or equivalent";
 "NewPost.Hint.Subject" = "Cool Orange Stretch-Jersey Dress";
 "NewPost.Hint.Type" = "Select dress type(s)";
+"NewPost.Hint.Email" = "";
+"NewPost.Hint.FullName" = "";
+"NewPost.Hint.Phone" = "(optional)";
+"NewPost.Hint.Contacts" = "";
 "NewPost.HUD.Posting.Message1" = "Uploading photo (%d/%d)";
 "NewPost.HUD.Posting.Message2" = "Sending data";
 "NewPost.HUD.Posting.Message3" = "Waiting for server response";
@@ -131,9 +136,13 @@
 "NewPost.Label.Size" = "UK Size";
 "NewPost.Label.Subject" = "Post Subject";
 "NewPost.Label.Type" = "Dress Type";
+"NewPost.Label.FullName" = "Full Name";
+"NewPost.Label.Email" = "Email";
+"NewPost.Label.Phone" = "Telephone Number";
 "NewPost.Title.Brand" = "Select Brand";
 "NewPost.Title.Colors" = "Select Colors";
 "NewPost.Title.Condition" = "Condition";
+"NewPost.Title.Contacts" = "Contacts";
 "NewPost.Title.Details" = "Dress Details";
 "NewPost.Title.Photos" = "Add Photos";
 "NewPost.Title.Price" = "Set Price";

@@ -101,12 +101,12 @@
 
 + (UIColor *)themeButtonAltBackgroundColor
 {
-    return [self colorWithString:@"#ffdddd"];
+    return [self themeButtonBackgroundColor];
 }
 
 + (UIColor *)themeButtonAltBackgroundHighlightColor
 {
-    return [self colorWithString:@"#b0a0a0"];
+    return [self themeButtonBackgroundHighlightColor];
 }
 
 + (UIColor *)themeButtonBackgroundColor

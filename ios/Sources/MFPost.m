@@ -229,6 +229,17 @@
 @implementation MFMutablePost
 
 @synthesize imagePaths = m_imagePaths;
+@synthesize email = m_email;
+@synthesize phone = m_phone;
+@synthesize firstName = m_firstName;
+@synthesize lastName = m_lastName;
+
+@dynamic fullName;
+
+- (NSString *)fullName
+{
+    return (m_firstName.length > 0 && m_lastName.length > 0) ? [NSString stringWithFormat:@"%@ %@", m_firstName, m_lastName] : ((m_firstName.length > 0) ? m_firstName : m_lastName);
+}
 
 @dynamic title;
 
@@ -478,6 +489,10 @@
     
     if(post) {
         post->m_imagePaths = m_imagePaths;
+        post->m_firstName = m_firstName;
+        post->m_lastName = m_lastName;
+        post->m_email = m_email;
+        post->m_phone = m_phone;
     }
     
     return post;

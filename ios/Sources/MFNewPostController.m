@@ -3,6 +3,7 @@
 #import "MBProgressHUD.h"
 #import "MFNewPostController.h"
 #import "MFNewPostController+Condition.h"
+#import "MFNewPostController+Contacts.h"
 #import "MFNewPostController+Details.h"
 #import "MFNewPostController+Photos.h"
 #import "MFNewPostController+Price.h"
@@ -15,7 +16,9 @@
 #import "MFPostController.h"
 #import "MFProgressView.h"
 #import "MFSideMenuContainerViewController.h"
+#import "MFUserDetails.h"
 #import "MFWebPost.h"
+#import "MFWebSession.h"
 #import "MFWebService+Post.h"
 #import "MFWebUpload.h"
 #import "UIColor+Additions.h"
@@ -461,7 +464,7 @@
         [pages addObject:step.page];
     }
     
-    [items addObject:NSLocalizedString(@"NewPost.Action.Done", nil)];
+    //[items addObject:NSLocalizedString(@"NewPost.Action.Done", nil)];
     
     progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     progressView.delegate = self;
@@ -497,6 +500,7 @@
     self = [super init];
     
     if(self) {
+        MFUserDetails *contacts = [MFWebService sharedService].session.contacts;
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         
         m_photos = [[NSMutableDictionary alloc] init];
@@ -507,8 +511,16 @@
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Condition", nil), NSLocalizedString(@"NewPost.Title.Condition", nil), [self createConditionPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Details", nil), NSLocalizedString(@"NewPost.Title.Details", nil), [self createDetailsPageView]),
             STEP_ITEM(NSLocalizedString(@"NewPost.Action.Price", nil), NSLocalizedString(@"NewPost.Title.Price", nil), [self createPricePageView]),
-            STEP_ITEM(NSLocalizedString(@"NewPost.Action.SellersNote", nil), NSLocalizedString(@"NewPost.Title.SellersNote", nil), [self createNotesPageView]), nil];
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.SellersNote", nil), NSLocalizedString(@"NewPost.Title.SellersNote", nil), [self createNotesPageView]),
+            STEP_ITEM(NSLocalizedString(@"NewPost.Action.Contacts", nil), NSLocalizedString(@"NewPost.Title.Contacts", nil), [self createContactsPageView]), nil];
         m_post = [[MFMutablePost alloc] init];
+        
+        if(contacts) {
+            m_post.email = contacts.email;
+            m_post.phone = contacts.phone;
+            m_post.firstName = contacts.firstName;
+            m_post.lastName = contacts.lastName;
+        }
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NewPost.Action.Next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(next:)];
