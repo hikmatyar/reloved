@@ -145,4 +145,20 @@ class PostMixins {
     	
     	return tags;
     }
+    
+    public static inline function postEmail(handler : Handler) : String {
+        return handler.request.body.email;
+    }
+    
+    public static inline function postPhone(handler : Handler) : String {
+        return handler.request.body.phone;
+    }
+    
+    public static inline function postFirstName(handler : Handler) : String {
+        return handler.request.body.first_name;
+    }
+    
+    public static inline function postLastName(handler : Handler) : String {
+        return handler.request.body.last_name;
+    }
 }

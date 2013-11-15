@@ -116,7 +116,7 @@ class User {
     }
     
     public static function login(type : String, token : String, secret : String, application : String, sessionLength : Int, fn : DataError -> User -> Void) : Void {
-        Data.query('SELECT id, secret FROM users WHERE type = ? AND token = ?', [ type, token ], function(err, result) {
+        Data.query('SELECT id, secret, email, phone, first_name, last_name FROM users WHERE type = ? AND token = ?', [ type, token ], function(err, result) {
             if(err == null && result != null && result.length == 1) {
                 if(result[0].secret == (Config.mysql_salt + secret).sha1()) {
                     var user = new User(result[0]);

@@ -21,7 +21,27 @@ class LoginHandler extends Handler {
         
         var writeUser = function(err : DataError, user : User) {
             if(user != null) {
-                this.render({ 'session': user.session, 'user': user.id });
+            	var contact : Dynamic = null;
+            	
+            	if(user.firstName != null || user.lastName != null || user.email != null || user.phone != null) {
+            		if(user.firstName != null) {
+            			contact.first_name = user.firstName;
+            		}
+            		
+            		if(user.lastName != null) {
+            			contact.last_name = user.lastName;
+            		}
+            		
+            		if(user.email != null) {
+            			contact.email = user.email;
+            		}
+            		
+            		if(user.phone != null) {
+            			contact.phone = user.phone;
+            		}
+            	}
+            	
+                this.render({ 'session': user.session, 'user': user.id, 'contact': contact });
             } else if(err != null && err.fatal == false) {
                 this.exit(ErrorCode.access_denied);
             } else {

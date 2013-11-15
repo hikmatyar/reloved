@@ -5,6 +5,7 @@ package apps.api.handlers;
 import js.Node;
 import models.Event;
 import models.Post;
+import models.User;
 
 using apps.api.mixins.PostMixins;
 using apps.api.mixins.PostCommentMixins;
@@ -144,7 +145,41 @@ class PostHandler extends Handler {
 		var priceOriginal = this.postPriceOriginal();
 		var currency = this.postCurrency();
 		var tags = this.postTags();
-		
+		var email = this.postEmail();
+    	var phone = this.postPhone();
+    	var firstName = this.postFirstName();
+    	var lastName = this.postLastName();
+    	var user = this.user();
+    	
+    	if(email != null || phone != null || firstName != null || lastName != null) {
+    		var attributes : UserAttributes = { };
+    		var found = false;
+    		
+    		if(user.email != email) {
+				attributes.email = email;
+				found = true;
+			}
+			
+			if(user.phone != phone) {
+				attributes.phone = phone;
+				found = true;
+			}
+			
+			if(user.firstName != firstName) {
+				attributes.first_name = firstName;
+				found = true;
+			}
+			
+			if(user.lastName != lastName) {
+				attributes.last_name = lastName;
+				found = true;
+			}
+			
+			if(found) {
+				User.update(user.id, attributes, function(err) { });
+    		}
+    	}
+    	
 		if(conditionId != 0 && typeIds != null && sizeId != 0 && brandId != 0 &&
 		   colorIds != null && mediaIds != null && materials != null && title != null &&
 		   fit != null && notes != null && price > 0 && priceOriginal > 0 && currency != null &&
@@ -157,7 +192,7 @@ class PostHandler extends Handler {
 			async(function(sync) {
 				Post.create({
 					brand_id: brandId,
-					user_id: this.user().id,
+					user_id: user.id,
 					size_id: sizeId,
 					condition: conditionId,
 					materials: materials,
