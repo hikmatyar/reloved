@@ -41,7 +41,7 @@ class LoginHandler extends Handler {
             		}
             	}
             	
-                this.render({ 'session': user.session, 'user': user.id, 'contact': contact });
+                this.render({ 'session': user.session, 'user': user.id, 'contacts': contact });
             } else if(err != null && err.fatal == false) {
                 this.exit(ErrorCode.access_denied);
             } else {
