@@ -329,10 +329,7 @@
         m_menu = [[NSArray alloc] initWithObjects:
                 MENU_SECTION(nil,
                     MENU_ITEM_ALT(NSLocalizedString(@"Home.Action.BrowseEditorial", nil), @selector(browseEditorial:), @"Home-BrowseEditorial.png")),
-                MENU_SECTION(@" ",
-                    MENU_ITEM_ALT(NSLocalizedString(@"Home.Action.BrowseNew", nil), @selector(browseNew:), @"Home-BrowseNew.png"),
-                    MENU_ITEM_ALT(NSLocalizedString(@"Home.Action.BrowseAll", nil), @selector(browseAll:), @"Home-BrowseAll.png")),
-                MENU_SECTION(NSLocalizedString(@"Home.Label.MyItems", nil),
+                    MENU_SECTION(NSLocalizedString(@"Home.Label.MyItems", nil),
                     MENU_ITEM(NSLocalizedString(@"Home.Action.Bookmarks", nil), @selector(bookmarks:), @"Home-Bookmarks.png"),
                     MENU_ITEM(NSLocalizedString(@"Home.Action.Recents", nil), @selector(recents:), @"Home-Recents.png")),
                 MENU_SECTION(NSLocalizedString(@"Home.Label.MyAccount", nil),
