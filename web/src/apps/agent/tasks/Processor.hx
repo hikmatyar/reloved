@@ -112,8 +112,7 @@ class Processor extends Task {
 								email: order.email
 							}).then(function(customer : StripeCustomer) {
 								return this.stripe.charges.create({
-									amount: order.amount - order.serviceFee,
-									application_fee: order.serviceFee,
+									amount: order.amount,
 									currency: order.currency,
 									customer: customer.id,
 									description: 'Order #' + order.id
