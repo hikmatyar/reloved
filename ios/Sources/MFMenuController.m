@@ -158,8 +158,7 @@
                   MENU_ITEM(NSLocalizedString(@"Menu.Action.Home", nil), @selector(home:), @"Menu-Home.png"),
                   //MENU_ITEM(NSLocalizedString(@"Menu.Action.Search", nil), @selector(search:), @"Menu-Search.png"),
                   //MENU_ITEM(NSLocalizedString(@"Menu.Action.News", nil), @selector(news:), @"Menu-News.png"),
-                  MENU_ITEM(NSLocalizedString(@"Menu.Action.Cart", nil), @selector(cart:), @"Menu-Cart.png"),
-                  MENU_ITEM(NSLocalizedString(@"Menu.Action.Sell", nil), @selector(sell:), @"Menu-Sell.png"), nil];
+                  MENU_ITEM(NSLocalizedString(@"Menu.Action.Cart", nil), @selector(cart:), @"Menu-Cart.png"), nil];
         
         
     }

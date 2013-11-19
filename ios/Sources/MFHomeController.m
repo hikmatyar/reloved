@@ -331,15 +331,9 @@
                     MENU_ITEM_ALT(NSLocalizedString(@"Home.Action.BrowseEditorial", nil), @selector(browseEditorial:), @"Home-BrowseEditorial.png")),
                     MENU_SECTION(NSLocalizedString(@"Home.Label.MyItems", nil),
                     MENU_ITEM(NSLocalizedString(@"Home.Action.Bookmarks", nil), @selector(bookmarks:), @"Home-Bookmarks.png"),
-                    MENU_ITEM(NSLocalizedString(@"Home.Action.Recents", nil), @selector(recents:), @"Home-Recents.png")),
-                MENU_SECTION(NSLocalizedString(@"Home.Label.MyAccount", nil),
-                    MENU_ITEM(NSLocalizedString(@"Home.Action.Profile", nil), @selector(profile:), @"Home-Profile.png"),
                     MENU_ITEM(NSLocalizedString(@"Home.Action.History", nil), @selector(history:), @"Home-History.png")),
                 MENU_SECTION(NSLocalizedString(@"Home.Label.CustomerCare", nil),
                     MENU_ITEM(NSLocalizedString(@"Home.Action.Guarantee", nil), @selector(guarantee:), @"Home-Guarantee.png"),
-                    MENU_ITEM(NSLocalizedString(@"Home.Action.ReturnsPolicy", nil), @selector(returnsPolicy:), @"Home-ReturnsPolicy.png"),
-                    MENU_ITEM(NSLocalizedString(@"Home.Action.ShippingInfo", nil), @selector(shippingInfo:), @"Home-ShippingInfo.png"),
-                    MENU_ITEM(NSLocalizedString(@"Home.Action.Security", nil), @selector(security:), @"Home-Security.png"),
                     MENU_ITEM(NSLocalizedString(@"Home.Action.About", nil), @selector(about:), @"Home-About.png")), nil];
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Home.Title", nil) style:UIBarButtonItemStyleBordered target:nil action:NULL];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
