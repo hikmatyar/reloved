@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>2089CA01-8EB0-463C-A3BC-88786E56DD1A</string>
+	<string>D5E8AEE8-EDF9-45B6-B1DF-52AB44D4D916</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Reloved</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>EA6E8233-55B9-43A6-9E1B-2852F7F51FDD</key>
-		<string>https://github.com/hikmatyar/reloved</string>
+		<key>8B56DAE0-5EDF-4CA6-8E9F-4E48981C0C9F</key>
+		<string>ssh://github.com/hikmatyar/reloved.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ios/Reloved.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>EA6E8233-55B9-43A6-9E1B-2852F7F51FDD</key>
+		<key>8B56DAE0-5EDF-4CA6-8E9F-4E48981C0C9F</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/hikmatyar/reloved</string>
+	<string>ssh://github.com/hikmatyar/reloved.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>EA6E8233-55B9-43A6-9E1B-2852F7F51FDD</string>
+	<string>8B56DAE0-5EDF-4CA6-8E9F-4E48981C0C9F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>EA6E8233-55B9-43A6-9E1B-2852F7F51FDD</string>
+			<string>8B56DAE0-5EDF-4CA6-8E9F-4E48981C0C9F</string>
 			<key>IDESourceControlWCCName</key>
-			<string>reloved</string>
+			<string>Reloved</string>
 		</dict>
 	</array>
 </dict>
