@@ -24,6 +24,8 @@ class LoginHandler extends Handler {
             	var contact : Dynamic = null;
             	
             	if(user.firstName != null || user.lastName != null || user.email != null || user.phone != null) {
+            		contact = { };
+            		
             		if(user.firstName != null) {
             			contact.first_name = user.firstName;
             		}
