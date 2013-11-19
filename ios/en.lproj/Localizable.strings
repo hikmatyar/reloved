@@ -24,7 +24,7 @@
 "Home.Action.BrowseNew" = "Just In";
 "Home.Action.BrowseAll" = "View All";
 "Home.Action.BrowseEditorial" = "Browse";
-"Home.Action.Guarantee" = "Seller FAQs";
+"Home.Action.Guarantee" = "FAQs";
 "Home.Action.History" = "My Listed Items";
 "Home.Action.Profile" = "My Contact Details";
 "Home.Action.Recents" = "Recently Viewed";
@@ -294,7 +294,7 @@
 "Checkout.Alert.OrderingErrorDeclined.Title" = "Payment not processed";
 "Checkout.Alert.OrderingErrorPayment.Action.Close" = "Close";
 "Checkout.Alert.OrderingErrorPayment.Action.Retry" = "Retry";
-"Checkout.Alert.OrderingErrorPayment.Message" = "Sorry, we having trouble processing your payment. Retry?";
+"Checkout.Alert.OrderingErrorPayment.Message" = "Sorry, we are having trouble processing your payment. Retry?";
 "Checkout.Alert.OrderingErrorPayment.Title" = "Payment details incorrect";
 "Checkout.Alert.ValidationError.Message" = "One or more required fields are empty or incorrect. Please check and try again.";
 "Checkout.Alert.ValidationError.Title" = "Unable to purchase";
