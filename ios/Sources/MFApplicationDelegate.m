@@ -70,7 +70,7 @@
     
     // This is needed only because iOS 7.0 has a nasty rendering bug with tableviews without it. Relevant since iOS 7 june betas. Why wasn't it fixed in GM? Beats me! -- JP
     ((UINavigationController *)controller.centerViewController).navigationBar.translucent = NO;
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255/255 green:57/255 blue:42/255 alpha:1]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:209.0/255.0 green:46.0/255.0 blue:37.0/255.0 alpha:1.0]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     // Navigation title font
