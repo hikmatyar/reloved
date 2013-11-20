@@ -33,9 +33,9 @@
 "Home.Action.ShippingInfo" = "Shipping Information";
 "Home.Action.ShopByColor" = "Shop by Color";
 "Home.Action.ShopByDress" = "Shop by Dress Type";
-"Home.Label.Copyright" = "© 2013, Reloved.";
+"Home.Label.Copyright" = "";
 "Home.Label.CustomerCare" = "Customer Care";
-"Home.Label.Footer" = "We check every item that ships";
+"Home.Label.Footer" = "";
 "Home.Label.MyAccount" = "My Account";
 "Home.Label.MyItems" = "My Items";
 "Home.Title" = "Home";
