@@ -180,6 +180,7 @@
             NSLocalizedString(@"Browse.Action.ShowEditorial", nil),
             NSLocalizedString(@"Browse.Action.ShowNew", nil),
             NSLocalizedString(@"Browse.Action.ShowAll", nil), nil]];
+    [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:56.0/255.0 green:33.0/255.0 blue:153.0/255.0 alpha:1.0]];
     UIView *scopeView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 62.0F)];
     UILabel *scopeLabel = [[UILabel alloc] initWithFrame:CGRectMake(-1.0F, 40.0F, 322.0F, 22.0F)];
     
