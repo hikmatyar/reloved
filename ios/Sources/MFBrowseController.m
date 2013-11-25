@@ -173,10 +173,10 @@
             self.scope = kMFBrowseControllerScopeEditorial;
             break;
         case 1:
-            self.scope = kMFBrowseControllerScopeAll;
+            self.scope = kMFBrowseControllerScopeBookmarks; //kMFBrowseControllerScopeNew;
             break;
         case 2:
-            self.scope = kMFBrowseControllerScopeBookmarks; //kMFBrowseControllerScopeNew;
+            self.scope = kMFBrowseControllerScopeAll;
             break;
     }
 }
