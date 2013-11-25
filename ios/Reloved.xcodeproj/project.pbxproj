@@ -222,6 +222,8 @@
 		818F917617DF95F400D1A723 /* MFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917517DF95F400D1A723 /* MFMenuController.m */; };
 		819B31611844034300776BB9 /* Navigation-Sell.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B315F1844034300776BB9 /* Navigation-Sell.png */; };
 		819B31621844034300776BB9 /* Navigation-Sell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B31601844034300776BB9 /* Navigation-Sell@2x.png */; };
+		819B31651844159800776BB9 /* Navigation-Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B31631844159800776BB9 /* Navigation-Profile.png */; };
+		819B31661844159800776BB9 /* Navigation-Profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B31641844159800776BB9 /* Navigation-Profile@2x.png */; };
 		819E12AF18055956008D2D36 /* MFDatabase+State.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12AE18055956008D2D36 /* MFDatabase+State.m */; };
 		819E12B218057E68008D2D36 /* MFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12B118057E68008D2D36 /* MFEvent.m */; };
 		819E12B518057E79008D2D36 /* MFDatabase+Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12B418057E79008D2D36 /* MFDatabase+Event.m */; };
@@ -703,6 +705,8 @@
 		818F917517DF95F400D1A723 /* MFMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMenuController.m; path = Sources/MFMenuController.m; sourceTree = SOURCE_ROOT; };
 		819B315F1844034300776BB9 /* Navigation-Sell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Sell.png"; path = "Images/Navigation-Sell.png"; sourceTree = "<group>"; };
 		819B31601844034300776BB9 /* Navigation-Sell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Sell@2x.png"; path = "Images/Navigation-Sell@2x.png"; sourceTree = "<group>"; };
+		819B31631844159800776BB9 /* Navigation-Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Profile.png"; path = "Images/Navigation-Profile.png"; sourceTree = "<group>"; };
+		819B31641844159800776BB9 /* Navigation-Profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Profile@2x.png"; path = "Images/Navigation-Profile@2x.png"; sourceTree = "<group>"; };
 		819E12AD18055956008D2D36 /* MFDatabase+State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFDatabase+State.h"; path = "Sources/MFDatabase+State.h"; sourceTree = SOURCE_ROOT; };
 		819E12AE18055956008D2D36 /* MFDatabase+State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+State.m"; path = "Sources/MFDatabase+State.m"; sourceTree = SOURCE_ROOT; };
 		819E12B018057E68008D2D36 /* MFEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFEvent.h; path = Sources/MFEvent.h; sourceTree = SOURCE_ROOT; };
@@ -1413,6 +1417,8 @@
 				8120C1AA17E049B400A1C3A9 /* Navigation-Logo@2x.png */,
 				8120C15C17DFB2F700A1C3A9 /* Navigation-Menu.png */,
 				8120C15D17DFB2F700A1C3A9 /* Navigation-Menu@2x.png */,
+				819B31631844159800776BB9 /* Navigation-Profile.png */,
+				819B31641844159800776BB9 /* Navigation-Profile@2x.png */,
 				819B315F1844034300776BB9 /* Navigation-Sell.png */,
 				819B31601844034300776BB9 /* Navigation-Sell@2x.png */,
 				81BD882B18121FF000549748 /* Next-Indicator.png */,
@@ -1759,6 +1765,7 @@
 				81B27B4917F6107100F9BC09 /* cvc-amex.png in Resources */,
 				81136AD4180C549B009142AE /* Cartoon3.jpg in Resources */,
 				81B27B3217F6106800F9BC09 /* gradient@2x.png in Resources */,
+				819B31661844159800776BB9 /* Navigation-Profile@2x.png in Resources */,
 				817340BE1816F3850068C3EB /* Thumbnail-Placeholder.png in Resources */,
 				8120C1AB17E049B400A1C3A9 /* Navigation-Logo.png in Resources */,
 				81B27B4717F6107100F9BC09 /* amex.png in Resources */,
@@ -1812,6 +1819,7 @@
 				812F4AB217DEFD0300454747 /* Default-568h@2x.png in Resources */,
 				8120C19417E0470300A1C3A9 /* Home-Bookmarks@2x.png in Resources */,
 				8120C19D17E0470300A1C3A9 /* Home-History.png in Resources */,
+				819B31651844159800776BB9 /* Navigation-Profile.png in Resources */,
 				8121BC67181835CA00396B1F /* Checkout-Help.png in Resources */,
 				81114780182BDB3500379C55 /* CameraButton-Pressed.png in Resources */,
 				81BC174C17FC528100DF7AD4 /* NewPost-Progress-Selected@2x.png in Resources */,
