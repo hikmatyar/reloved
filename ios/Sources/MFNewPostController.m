@@ -128,7 +128,13 @@
     if(index > 0 || !((MFNewPostController_Step *)[m_steps objectAtIndex:0]).page.empty) {
         [self confirmAbort];
     } else {
-        [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+        MFSideMenuContainerViewController *controller = self.menuContainerViewController;
+        
+        if(controller) {
+            [controller toggleLeftSideMenuCompletion:NULL];
+        } else {
+            [self dismissViewControllerAnimated:YES completion:NULL];
+        }
     }
 }
 

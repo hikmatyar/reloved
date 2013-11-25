@@ -1,6 +1,7 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
 #import "MFApplicationDelegate.h"
+#import "MFBrowseController.h"
 #import "MFHomeController.h"
 #import "MFMenuController.h"
 #import "MFSideMenuContainerViewController.h"
@@ -64,7 +65,7 @@
 {
     NSURL *url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
     MFSideMenuContainerViewController *controller = [MFSideMenuContainerViewController
-        containerWithCenterViewController:[[UINavigationController alloc] initWithRootViewController:[[MFHomeController alloc] init]]
+        containerWithCenterViewController:[[UINavigationController alloc] initWithRootViewController:[[MFBrowseController alloc] init]]
         leftMenuViewController:[[MFMenuController alloc] init]
         rightMenuViewController:nil];
     

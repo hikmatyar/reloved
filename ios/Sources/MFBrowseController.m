@@ -4,13 +4,16 @@
 #import "MFBrowseFilterController.h"
 #import "MFDatabase+Size.h"
 #import "MFDatabase+Type.h"
+#import "MFNewPostController.h"
 #import "MFPreferences.h"
+#import "MFSideMenuContainerViewController.h"
 #import "MFSize.h"
 #import "MFTableView.h"
 #import "MFType.h"
 #import "MFWebFeed.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
+#import "UIViewController+MFSideMenuAdditions.h"
 
 #define TAG_SCOPE_LABEL 10000
 #define TAG_SCOPE_PICKER 10001
@@ -73,7 +76,10 @@
     
     if(self) {
         m_scope = scope;
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Filter"] style:UIBarButtonItemStyleBordered target:self action:@selector(filter:)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:
+            [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Filter"] style:UIBarButtonItemStyleBordered target:self action:@selector(filter:)],
+            [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Sell"] style:UIBarButtonItemStyleBordered target:self action:@selector(sell:)], nil];
         self.navigationItem.title = NSLocalizedString(@"Browse.Title", nil);
     }
     
@@ -132,9 +138,23 @@
     }
 }
 
+- (IBAction)menu:(id)sender
+{
+    [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+}
+
 - (IBAction)filter:(id)sender
 {
     UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:[[MFBrowseFilterController alloc] initWithDelegate:self]];
+ 
+    controller.navigationBar.translucent = self.navigationController.navigationBar.translucent;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:controller animated:YES completion:NULL];
+}
+
+- (IBAction)sell:(id)sender
+{
+    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:[[MFNewPostController alloc] init]];
  
     controller.navigationBar.translucent = self.navigationController.navigationBar.translucent;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

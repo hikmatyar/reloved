@@ -1,8 +1,11 @@
 /* Copyright (c) 2013 Meep Factory OU */
 
+#import "MFBookmarksController.h"
+#import "MFBrowseController.h"
 #import "MFCheckoutController.h"
 #import "MFEventsController.h"
 #import "MFFeedController.h"
+#import "MFHistoryController.h"
 #import "MFHomeController.h"
 #import "MFMenuController.h"
 #import "MFMenuItem.h"
@@ -10,6 +13,7 @@
 #import "MFSearchController.h"
 #import "MFSideMenuContainerViewController.h"
 #import "MFTableViewCell.h"
+#import "MFWebController.h"
 #import "NSDictionary+Additions.h"
 #import "UIColor+Additions.h"
 #import "UIFont+Additions.h"
@@ -17,6 +21,34 @@
 #import "UIViewController+MFSideMenuAdditions.h"
 
 #define CELL_IDENTIFIER @"cell"
+
+@interface MFMenuController_Quarantee : MFWebController
+
+@end
+
+@implementation MFMenuController_Quarantee
+
+- (IBAction)menu:(id)sender
+{
+    [self.menuContainerViewController toggleLeftSideMenuCompletion:NULL];
+}
+
+#pragma mark NSObject
+
+- (id)init
+{
+    self = [self initWithContentsOfFile:@"Guarantee" title:NSLocalizedString(@"Home.Action.Guarantee", nil)];
+    
+    if(self) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
+    }
+    
+    return self;
+}
+
+@end
+
+#pragma mark -
 
 @implementation MFMenuController
 
@@ -41,7 +73,7 @@
 
 - (IBAction)home:(id)sender
 {
-    [self setViewControllerClass:[MFHomeController class]];
+    [self setViewControllerClass:[MFBrowseController class]];
 }
 
 - (IBAction)search:(id)sender
@@ -59,9 +91,24 @@
     [self setViewControllerClass:[MFCheckoutController class]];
 }
 
+- (IBAction)bookmarks:(id)sender
+{
+    [self setViewControllerClass:[MFBookmarksController class]];
+}
+
+- (IBAction)history:(id)sender
+{
+    [self setViewControllerClass:[MFHistoryController class]];
+}
+
 - (IBAction)sell:(id)sender
 {
     [self setViewControllerClass:[MFNewPostController class]];
+}
+
+- (IBAction)guarantee:(id)sender
+{
+    [self setViewControllerClass:[MFMenuController_Quarantee class]];
 }
 
 - (void)menuStateDidChange:(NSNotification *)notification
@@ -158,8 +205,10 @@
                   MENU_ITEM(NSLocalizedString(@"Menu.Action.Home", nil), @selector(home:), @"Menu-Home.png"),
                   //MENU_ITEM(NSLocalizedString(@"Menu.Action.Search", nil), @selector(search:), @"Menu-Search.png"),
                   //MENU_ITEM(NSLocalizedString(@"Menu.Action.News", nil), @selector(news:), @"Menu-News.png"),
-                  MENU_ITEM(NSLocalizedString(@"Menu.Action.Cart", nil), @selector(cart:), @"Menu-Cart.png"), nil];
-        
+                  MENU_ITEM(NSLocalizedString(@"Home.Action.Bookmarks", nil), @selector(bookmarks:), @"Home-Bookmarks.png"),
+                  MENU_ITEM(NSLocalizedString(@"Home.Action.History", nil), @selector(history:), @"Home-History.png"),
+                  MENU_ITEM(NSLocalizedString(@"Menu.Action.Cart", nil), @selector(cart:), @"Menu-Cart.png"),
+                  MENU_ITEM(NSLocalizedString(@"Home.Action.Guarantee", nil), @selector(guarantee:), @"Home-Guarantee.png"), nil];
         
     }
     

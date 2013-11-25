@@ -220,6 +220,8 @@
 		818F917217DF958D00D1A723 /* MFSideMenuShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F916E17DF958D00D1A723 /* MFSideMenuShadow.m */; };
 		818F917317DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */; };
 		818F917617DF95F400D1A723 /* MFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818F917517DF95F400D1A723 /* MFMenuController.m */; };
+		819B31611844034300776BB9 /* Navigation-Sell.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B315F1844034300776BB9 /* Navigation-Sell.png */; };
+		819B31621844034300776BB9 /* Navigation-Sell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 819B31601844034300776BB9 /* Navigation-Sell@2x.png */; };
 		819E12AF18055956008D2D36 /* MFDatabase+State.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12AE18055956008D2D36 /* MFDatabase+State.m */; };
 		819E12B218057E68008D2D36 /* MFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12B118057E68008D2D36 /* MFEvent.m */; };
 		819E12B518057E79008D2D36 /* MFDatabase+Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 819E12B418057E79008D2D36 /* MFDatabase+Event.m */; };
@@ -699,6 +701,8 @@
 		818F917017DF958D00D1A723 /* UIViewController+MFSideMenuAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MFSideMenuAdditions.m"; path = "Sources/MFSideMenu/UIViewController+MFSideMenuAdditions.m"; sourceTree = SOURCE_ROOT; };
 		818F917417DF95F400D1A723 /* MFMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFMenuController.h; path = Sources/MFMenuController.h; sourceTree = SOURCE_ROOT; };
 		818F917517DF95F400D1A723 /* MFMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFMenuController.m; path = Sources/MFMenuController.m; sourceTree = SOURCE_ROOT; };
+		819B315F1844034300776BB9 /* Navigation-Sell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Sell.png"; path = "Images/Navigation-Sell.png"; sourceTree = "<group>"; };
+		819B31601844034300776BB9 /* Navigation-Sell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Navigation-Sell@2x.png"; path = "Images/Navigation-Sell@2x.png"; sourceTree = "<group>"; };
 		819E12AD18055956008D2D36 /* MFDatabase+State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MFDatabase+State.h"; path = "Sources/MFDatabase+State.h"; sourceTree = SOURCE_ROOT; };
 		819E12AE18055956008D2D36 /* MFDatabase+State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MFDatabase+State.m"; path = "Sources/MFDatabase+State.m"; sourceTree = SOURCE_ROOT; };
 		819E12B018057E68008D2D36 /* MFEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFEvent.h; path = Sources/MFEvent.h; sourceTree = SOURCE_ROOT; };
@@ -1409,6 +1413,8 @@
 				8120C1AA17E049B400A1C3A9 /* Navigation-Logo@2x.png */,
 				8120C15C17DFB2F700A1C3A9 /* Navigation-Menu.png */,
 				8120C15D17DFB2F700A1C3A9 /* Navigation-Menu@2x.png */,
+				819B315F1844034300776BB9 /* Navigation-Sell.png */,
+				819B31601844034300776BB9 /* Navigation-Sell@2x.png */,
 				81BD882B18121FF000549748 /* Next-Indicator.png */,
 				81BD882C18121FF000549748 /* Next-Indicator@2x.png */,
 				812ED33C180E8ED400ABB387 /* Photo-Placeholder.png */,
@@ -1784,6 +1790,7 @@
 				81B14B7D180EC3A20089D19F /* Post-SizeAndFit.png in Resources */,
 				8120C16317DFB48600A1C3A9 /* Navigation-Filter@2x.png in Resources */,
 				8120C19C17E0470300A1C3A9 /* Home-Guarantee@2x.png in Resources */,
+				819B31611844034300776BB9 /* Navigation-Sell.png in Resources */,
 				81B27B4C17F6107100F9BC09 /* cvc@2x.png in Resources */,
 				81B14B7C180EC3A20089D19F /* Post-ShippingInfo@2x.png in Resources */,
 				8120C15317DFAD8C00A1C3A9 /* Menu-Sell@2x.png in Resources */,
@@ -1837,6 +1844,7 @@
 				81B27B4F17F6107100F9BC09 /* discover.png in Resources */,
 				81C5A21D18099B52000427A9 /* NewPost-Photos-Thumbnail.png in Resources */,
 				812F4AB317DEFD0300454747 /* Default.png in Resources */,
+				819B31621844034300776BB9 /* Navigation-Sell@2x.png in Resources */,
 				81BC174B17FC528100DF7AD4 /* NewPost-Progress-Selected.png in Resources */,
 				812ED33F180E8ED400ABB387 /* Photo-Placeholder@2x.png in Resources */,
 				8120C19317E0470300A1C3A9 /* Home-Bookmarks.png in Resources */,
