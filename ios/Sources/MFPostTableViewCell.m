@@ -139,6 +139,7 @@
         textLabel.layer.borderWidth = 1.0F;
         textLabel.layer.backgroundColor = [UIColor themeTextBackgroundColor].CGColor;
         textLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines;
+        textLabel.backgroundColor = [UIColor themeTextBackgroundColor];
         textLabel.textColor = [UIColor themeTextColor];
         textLabel.font = [UIFont themeFontOfSize:14.0F];
         textLabel.textAlignment = NSTextAlignmentCenter;
