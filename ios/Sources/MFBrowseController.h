@@ -5,8 +5,9 @@
 
 typedef enum _MFBrowseControllerScope {
     kMFBrowseControllerScopeEditorial = 0,
-    kMFBrowseControllerScopeNew,
-    kMFBrowseControllerScopeAll
+    kMFBrowseControllerScopeBookmarks,
+    kMFBrowseControllerScopeAll,
+    kMFBrowseControllerScopeNew
 } MFBrowseControllerScope;
 
 @interface MFBrowseController : MFFeedController <MFBrowseFilterControllerDelegate>

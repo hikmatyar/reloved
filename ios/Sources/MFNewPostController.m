@@ -528,7 +528,9 @@
             m_post.lastName = contacts.lastName;
         }
         
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NewPost.Action.Cancel", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
+        //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NewPost.Action.Next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(next:)];
     
         [center addObserver:self selector:@selector(uploadDidComplete:) name:MFWebUploadDidCompleteNotification object:nil];

@@ -570,7 +570,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *oldPosts, NSArray *cha
 
 - (BOOL)isAtEnd
 {
-    return (m_feed.cursor == kMFFeedCursorEnd && m_feed.offset >= m_posts.count) ? YES : NO;
+    return ([m_identifier isEqualToString:FEED_BOOKMARKS] || (m_feed.cursor == kMFFeedCursorEnd && m_feed.offset >= m_posts.count)) ? YES : NO;
 }
 
 @dynamic posts;
@@ -584,7 +584,7 @@ static inline NSDictionary *MFWebFeedGetUserInfo(NSArray *oldPosts, NSArray *cha
 
 - (NSInteger)numberOfResults
 {
-    return m_feed.count;
+    return ([m_identifier isEqualToString:FEED_BOOKMARKS]) ? m_posts.count : m_feed.count;
 }
 
 @dynamic kind;
