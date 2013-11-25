@@ -85,6 +85,7 @@
             // [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Filter"] style:UIBarButtonItemStyleBordered target:self action:@selector(filter:)],
             [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Sell"] style:UIBarButtonItemStyleBordered target:self action:@selector(sell:)], nil];
         self.navigationItem.title = NSLocalizedString(@"Browse.Title", nil);
+        self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Navigation-Logo"]];
     }
     
     return self;
@@ -126,11 +127,11 @@
             case kMFBrowseControllerScopeEditorial:
                 selectedIndex = 0;
                 break;
-            case kMFBrowseControllerScopeNew:
-            case kMFBrowseControllerScopeBookmarks:
+            case kMFBrowseControllerScopeAll:
                 selectedIndex = 1;
                 break;
-            case kMFBrowseControllerScopeAll:
+            case kMFBrowseControllerScopeNew:
+            case kMFBrowseControllerScopeBookmarks:
                 selectedIndex = 2;
                 break;
         }
@@ -173,10 +174,10 @@
             self.scope = kMFBrowseControllerScopeEditorial;
             break;
         case 1:
-            self.scope = kMFBrowseControllerScopeBookmarks; //kMFBrowseControllerScopeNew;
+            self.scope = kMFBrowseControllerScopeAll;
             break;
         case 2:
-            self.scope = kMFBrowseControllerScopeAll;
+            self.scope = kMFBrowseControllerScopeBookmarks; //kMFBrowseControllerScopeNew;
             break;
     }
 }
@@ -203,9 +204,10 @@
     UISegmentedControl *scopePicker = [[UISegmentedControl alloc] initWithItems:
         [NSArray arrayWithObjects:
             NSLocalizedString(@"Browse.Action.ShowEditorial", nil),
+            NSLocalizedString(@"Browse.Action.ShowAll", nil),
             NSLocalizedString(@"Browse.Action.Bookmarks", nil),
             //NSLocalizedString(@"Browse.Action.ShowNew", nil),
-            NSLocalizedString(@"Browse.Action.ShowAll", nil), nil]];
+                nil]];
     [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:100.0/255.0 green:100.0/255.0 blue:100.0/255.0 alpha:1.0]];
     UIView *scopeView = [[UIView alloc] initWithFrame:CGRectMake(0.0F, 0.0F, 320.0F, 62.0F)];
     UILabel *scopeLabel = [[UILabel alloc] initWithFrame:CGRectMake(-1.0F, 40.0F, 322.0F, 22.0F)];
@@ -214,11 +216,11 @@
         case kMFBrowseControllerScopeEditorial:
             scopePicker.selectedSegmentIndex = 0;
             break;
-        case kMFBrowseControllerScopeBookmarks:
-        case kMFBrowseControllerScopeNew:
+        case kMFBrowseControllerScopeAll:
             scopePicker.selectedSegmentIndex = 1;
             break;
-        case kMFBrowseControllerScopeAll:
+        case kMFBrowseControllerScopeBookmarks:
+        case kMFBrowseControllerScopeNew:
             scopePicker.selectedSegmentIndex = 2;
             break;
     }
