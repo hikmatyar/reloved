@@ -145,7 +145,7 @@
 "NewPost.Title.Condition" = "Condition";
 "NewPost.Title.Contacts" = "Contacts";
 "NewPost.Title.Details" = "Dress Details";
-"NewPost.Title.Photos" = "Add Photos";
+"NewPost.Title.Photos" = "Start Selling";
 "NewPost.Title.Price" = "Set Price";
 "NewPost.Title.SellersNote" = "Seller's Note";
 "NewPost.Title.Size" = "Select UK Size";
@@ -347,7 +347,7 @@
 "Checkout.Label.TransactionFee" = "Transaction Fee";
 "Checkout.Label.Total" = "Total";
 "Checkout.Title.Address" = "Address";
-"Checkout.Title.Cart" = "Cart";
+"Checkout.Title.Cart" = "My Cart";
 "Checkout.Title.Payment" = "Pay";
 "Checkout.Title.Confirm" = "Confirm";
 "Checkout.Title.Receipt" = "Receipt";
