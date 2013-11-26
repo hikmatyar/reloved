@@ -15,7 +15,12 @@
 
 + (CGFloat)preferredHeight
 {
-    return 458.0F;
+    return 374.0F;
+}
+
++ (BOOL)preferredLongForm
+{
+    return NO;
 }
 
 @dynamic post;
@@ -56,10 +61,14 @@
             [NSDictionary dictionaryWithObjectsAndKeys:
                 [UIFont themeBoldFontOfSize:14.0F], NSFontAttributeName,
                 [UIColor blueColor], NSForegroundColorAttributeName, nil]]];
-        [str appendAttributedString:[[NSAttributedString alloc] initWithString:@"----------------\n" attributes:
-            [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:12.0F], NSFontAttributeName, nil]]];
-        [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", desc] attributes:
-            [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], NSFontAttributeName, nil]]];
+        
+        if([self.class preferredLongForm]) {
+            [str appendAttributedString:[[NSAttributedString alloc] initWithString:@"----------------\n" attributes:
+                [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:12.0F], NSFontAttributeName, nil]]];
+            [str appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n", desc] attributes:
+                [NSDictionary dictionaryWithObjectsAndKeys:[UIFont themeFontOfSize:14.0F], NSFontAttributeName, nil]]];
+        }
+        
         [str appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n\n\n\n\n\n\n\n\n\n" attributes:nil]];
         [str endEditing];
         
@@ -162,7 +171,7 @@
     [super layoutSubviews];
     
     self.imageView.frame = CGRectMake(10.0F, 0.0F, 300.0F, 285.0F);
-    self.textLabel.frame = CGRectMake(10.0F, 290.0F, 300.0F, 150.0F);
+    self.textLabel.frame = CGRectMake(10.0F, 290.0F, 300.0F, 65.0F);
 }
 
 @end

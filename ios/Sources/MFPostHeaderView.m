@@ -83,7 +83,12 @@
 
 + (CGFloat)preferredHeight
 {
-    return [super preferredHeight] + THUMBNAIL_HEIGHT + THUMBNAIL_PADDING;
+    return 458.0F + THUMBNAIL_HEIGHT + THUMBNAIL_PADDING;
+}
+
++ (BOOL)preferredLongForm
+{
+    return YES;
 }
 
 - (void)setPost:(MFPost *)post
