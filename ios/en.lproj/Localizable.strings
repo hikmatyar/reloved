@@ -26,7 +26,7 @@
 "Home.Action.BrowseAll" = "View All";
 "Home.Action.BrowseEditorial" = "Browse";
 "Home.Action.Guarantee" = "FAQs";
-"Home.Action.History" = "Listed Items";
+"Home.Action.History" = "My Account";
 "Home.Action.Profile" = "My Contact Details";
 "Home.Action.Recents" = "Recently Viewed";
 "Home.Action.ReturnsPolicy" = "Returns Policy";
@@ -360,7 +360,7 @@
 /* History Controller */
 
 "History.Label.NoData" = "No Listed Items";
-"History.Title" = "My Listed Items";
+"History.Title" = "My Account";
 
 /* Recents Controller */
 
