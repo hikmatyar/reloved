@@ -13,7 +13,7 @@
 "Browse.Format.Results" = "%d result";
 "Browse.Format.Results.None" = "No results";
 "Browse.Format.Results.Plural" = "%d results";
-"Browse.Label.Color" = "Dress Color";
+"Browse.Label.Color" = "Item Color";
 "Browse.Label.Size" = "UK Size";
 "Browse.Label.Type" = "Dress Type";
 "Browse.Title" = "Home";
@@ -33,7 +33,7 @@
 "Home.Action.Security" = "Payment Security";
 "Home.Action.ShippingInfo" = "Shipping Information";
 "Home.Action.ShopByColor" = "Shop by Color";
-"Home.Action.ShopByDress" = "Shop by Dress Type";
+"Home.Action.ShopByDress" = "Shop by Category";
 "Home.Label.Copyright" = "";
 "Home.Label.CustomerCare" = "Customer Care";
 "Home.Label.Footer" = "";
@@ -84,8 +84,8 @@
 "NewPost.Alert.UploadingError.Title" = "Unable to upload image";
 "NewPost.Hint.Brand" = "Select Brand";
 "NewPost.Hint.Colors" = "Select Color(s)";
-"NewPost.Hint.Fit" = "Original tag size S. Fits true to size, take your normal size. Non stretchy fabric. Take next size down if you want a closer fit.";
-"NewPost.Hint.Materials" = "Slips on. Exterior 100% cotton, lining 91% cotton 9% silk. Specialist clean";
+"NewPost.Hint.Fit" = "e.g. for a dress: Original tag size S. Fits true to size, take your normal size. Non stretchy fabric.";
+"NewPost.Hint.Materials" = "e.g. Exterior 100% cotton, lining 91% cotton 9% silk.";
 "NewPost.Hint.Photo" = "4 pictures minimum";
 "NewPost.Hint.Photo.1.Picker" = " Take Front View Picture";
 "NewPost.Hint.Photo.1.Large" = "Take Front View Picture";
@@ -117,7 +117,7 @@
 "NewPost.Hint.SellersNote" = "A chique and wearable daytime option. Constructed from pure silk, it has sultry spagetti straps, cross back detail and a relaxed silhoutte.";
 "NewPost.Hint.Size" = "Select UK size or equivalent";
 "NewPost.Hint.Subject" = "Cool Orange Stretch-Jersey Dress";
-"NewPost.Hint.Type" = "Select dress type(s)";
+"NewPost.Hint.Type" = "Select Category";
 "NewPost.Hint.Email" = "";
 "NewPost.Hint.FullName" = "";
 "NewPost.Hint.Phone" = "(optional)";
@@ -136,7 +136,7 @@
 "NewPost.Label.OriginalPrice" = "Original Price";
 "NewPost.Label.Size" = "UK Size";
 "NewPost.Label.Subject" = "Post Subject";
-"NewPost.Label.Type" = "Dress Type";
+"NewPost.Label.Type" = "Item Type";
 "NewPost.Label.FullName" = "Full Name";
 "NewPost.Label.Email" = "Email";
 "NewPost.Label.Phone" = "Telephone Number";
@@ -144,12 +144,12 @@
 "NewPost.Title.Colors" = "Select Colors";
 "NewPost.Title.Condition" = "Condition";
 "NewPost.Title.Contacts" = "Contacts";
-"NewPost.Title.Details" = "Dress Details";
+"NewPost.Title.Details" = "Item Details";
 "NewPost.Title.Photos" = "Start Selling";
 "NewPost.Title.Price" = "Set Price";
 "NewPost.Title.SellersNote" = "Seller's Note";
 "NewPost.Title.Size" = "Select UK Size";
-"NewPost.Title.Type" = "Select Dress Type";
+"NewPost.Title.Type" = "Select Category";
 "NewPost.Title.TypeSizeFit" = "Type, Size & Fit";
 
 /* Post Controller */
@@ -169,14 +169,14 @@
 "Post.Action.SizeAndFit" = "Size & Fit";
 "Post.Action.Unsave" = "Unsave";
 "Post.Alert.AddedToCart.Action.OK" = "OK";
-"Post.Alert.AddedToCart.Message" = "This dress has been added to your cart. You can view your cart from the navigation menu";
+"Post.Alert.AddedToCart.Message" = "This item has been added to your cart. You can view your cart from the navigation menu";
 "Post.Alert.AddedToCart.Title" = "Added to Cart";
 "Post.Alert.DeleteError.Action.Close" = "Close";
 "Post.Alert.DeleteError.Action.Retry" = "Retry";
 "Post.Alert.DeleteError.Message" = "Unable to delete. Retry?";
 "Post.Alert.DeleteError.Title" = "Failed to delete";
 "Post.Alert.Deleted.Action.OK" = "OK";
-"Post.Alert.Deleted.Message" = "This dress has been deleted from our records";
+"Post.Alert.Deleted.Message" = "This item has been deleted from our records";
 "Post.Alert.Deleted.Title" = "Post deleted successfully";
 "Post.Alert.LoadError.Action.Close" = "Close";
 "Post.Alert.LoadError.Action.Retry" = "Retry";
@@ -191,21 +191,21 @@
 "Post.Alert.RemovedFromCart.Message" = "This item has been removed from your cart";
 "Post.Alert.RemovedFromCart.Title" = "Removed from Cart";
 "Post.Alert.Saved.Action.OK" = "OK";
-"Post.Alert.Saved.Message" = "This dress has been saved to your home screen";
-"Post.Alert.Saved.Title" = "Saved Dress";
+"Post.Alert.Saved.Message" = "This item has been saved to your home screen";
+"Post.Alert.Saved.Title" = "Saved Item";
 "Post.Alert.Unsaved.Action.OK" = "OK";
-"Post.Alert.Unsaved.Message" = "This dress has been unsaved from your home screen";
-"Post.Alert.Unsaved.Title" = "Unsaved Dress";
+"Post.Alert.Unsaved.Message" = "This item has been unsaved from your home screen";
+"Post.Alert.Unsaved.Title" = "Unsaved Item";
 "Post.Format.DiscountEquals0" = "Brand New";
 "Post.Format.DiscountOver0" = "%d%% off";
 "Post.Format.Comments" = "See %d comment";
 "Post.Format.Comments.None" = "Be the first to comment!";
 "Post.Format.Comments.Plural" = "See %d comments";
-"Post.Format.ShareEmail.Subject" = "Sharing a %%BRAND%% dress from Reloved App";
-"Post.Format.ShareEmail.Body" = "Hi there - I thought you might want to see this dress that I found on Reloved app. <a href=\"%%LINK%%\">Open Link</a>";
+"Post.Format.ShareEmail.Subject" = "Sharing a %%BRAND%% item from Reloved App";
+"Post.Format.ShareEmail.Body" = "Hi there - I thought you might want to see this item that I found on Reloved app. <a href=\"%%LINK%%\">Open Link</a>";
 "Post.Format.ReportEmail.Subject" = "Post ID '%%POSTID%%' on Reloved";
 "Post.Format.ReportEmail.Body" = "I would like to report this post, my reasons are:\n";
-"Post.Label.AboutThisDress" = "About This Dress";
+"Post.Label.AboutThisDress" = "About This Item";
 "Post.Label.Deleting" = "Deleting...";
 "Post.Label.Loading" = "Loading data...";
 "Post.Label.ShippingAndReturns" = "Shipping & Returns";
@@ -376,8 +376,8 @@
 
 "SearchByType.Action.Search" = "See Results";
 "SearchByType.Label.Header" = "Select up to 5 dress types below";
-"SearchByType.Label.SelectAll" = "All Dress Types";
-"SearchByType.Title" = "Select Dress Type";
+"SearchByType.Label.SelectAll" = "All Categories";
+"SearchByType.Title" = "Select Category";
 
 "SearchResults.Action.Back" = "Search";
 "SearchResults.Action.Cancel" = "Cancel";
@@ -388,7 +388,7 @@
 /* News Feed Controller */
 
 "Events.Format.Type.1" = "$LABEL";
-"Events.Format.Type.2" = "$TARGET purchased your dress. \"$LABEL\"";
+"Events.Format.Type.2" = "$TARGET purchased your item. \"$LABEL\"";
 "Events.Format.Type.3" = "You made a comment. \"$LABEL\"";
 "Events.Format.Type.4" = "$TARGET left a comment. \"$LABEL\"";
 "Events.Label.NoData" = "No Events";

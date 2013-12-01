@@ -6,4 +6,6 @@ INSERT INTO `sizes` (`name`) VALUES
 ('Size 10'),
 ('Size 12'),
 ('Size 14'),
-('Size 16');
+('Size 16’),
+(‘Other’),
+(‘Not Applicable’);
