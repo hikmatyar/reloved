@@ -129,11 +129,13 @@ class PostUser {
 
 typedef PostCommentAttributes_Create = {
 	var message : String;
+	var emoticon_id : DataIdentifier;
 	var user_id : DataIdentifier;
 };
 
 typedef PostCommentAttributes_Update = {
 	?status : Int,
+	?emoticon_id : Int,
 	?message : String
 };
 
@@ -142,6 +144,7 @@ private typedef PostCommentRow = {
 	var status : Int;
     var post_id : DataIdentifier;
     var user_id : DataIdentifier;
+    var emoticon_id : DataIdentifier;
     var created : Int;
     var modified : Int;
     var message : String;

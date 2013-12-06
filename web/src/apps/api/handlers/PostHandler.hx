@@ -330,6 +330,7 @@ class PostHandler extends Handler {
     public function comment() {
     	var postId = this.postIdentifier();
     	var commentId = this.postCommentIdentifier();
+    	var emoticonId = this.postCommentEmoticonIdentifier();
     	var status = this.postCommentStatus();
     	var message = this.postCommentMessage();
     	
@@ -387,6 +388,10 @@ class PostHandler extends Handler {
 							attributes.message = message;
 						}
 						
+						if(emoticonId != 0) {
+							attributes.emoticon_id = emoticonId;
+						}
+						
 						PostComment.update(commentId, attributes, function(err) {
 							if(err == null) {
 								// Return all the comments!
@@ -404,7 +409,7 @@ class PostHandler extends Handler {
 			// Create
 			} else if(status == null && message != null) {
 				async(function() {
-					PostComment.create(postId, { user_id: this.user().id, message: message }, function(err, cid) {
+					PostComment.create(postId, { user_id: this.user().id, message: message, emoticon_id: (emoticonId != 0) ? emoticonId : null }, function(err, cid) {
 						if(err == null) {
 							Event.logComment(result.post.userId, result.post.id, cid);
 							
