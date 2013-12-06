@@ -114,6 +114,7 @@ CREATE TABLE `post_comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` int(11) NOT NULL COMMENT '0 - deleted, 1 - active, 2 - inactive',
   `post_id` int(11) NOT NULL,
+  `emoticon_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `created` int(11) NOT NULL,
   `modified` int(11) NOT NULL,
@@ -179,6 +180,13 @@ CREATE TABLE `sizes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `emoticons`;
+CREATE TABLE `emoticons` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `media_id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `types`;
 CREATE TABLE `types` (
