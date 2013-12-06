@@ -165,6 +165,9 @@ Returns a feed (potentially filtered) and settings that are stored server-side (
 					"editorial": "..."
 				}
 			],
+			"comments": [
+				{ "post": 12, "id": 1, "user": 10, "date": "2013-12-30T12:00:00.000Z", "mod": "2013-12-30T12:00:00.000Z", "message": "...", "emoticon": 1 }
+			],
 			"events": [
 				{ "id": 1, "type": 1, "date": "2013-12-30T12:00:00.000Z", "link": "post/123#10", "meta": [ "Someone" ] }
 			],
@@ -318,7 +321,7 @@ API calls for retrieving posts and comments in various ways.
 			// State that can be used with the next request
 			"state": "eyJhIjowLCJiIjowfQ==",
 			"comments": [
-				{ "id": 1, "user": 10, "date": "2013-12-30T12:00:00.000Z", "mod": "2013-12-30T12:00:00.000Z", "message": "..." }
+				{ "id": 1, "user": 10, "date": "2013-12-30T12:00:00.000Z", "mod": "2013-12-30T12:00:00.000Z", "message": "...", "emoticon": 1 }
 			],
 			"users": [
 				{ "id": 10, "name": "Abc", "media": 123 }
@@ -338,6 +341,7 @@ API calls for retrieving posts and comments in various ways.
 		INTEGER cid [O] - Comment ID (no ID means a new comment)
 		INTEGER status [O] - Status (1 - inactive, 2 - active)
 		STRING message [O] - Message
+		INTEGER emoticon [O] - Emoticon ID
 		
 		STRING state [O] - State
 		INTEGER limit [O=100] - Maximum number of comments to return
