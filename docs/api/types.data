@@ -1,6 +1,6 @@
 INSERT INTO `types` (`name`) VALUES
 (‘Dresses’),
-(‘Clothing’),
 (‘Bags’),
 (‘Shoes’),
-(‘Accessories’);
+(‘Accessories’)
+(‘Others’);
