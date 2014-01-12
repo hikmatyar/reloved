@@ -201,7 +201,7 @@
 "Post.Format.Comments" = "See %d comment";
 "Post.Format.Comments.None" = "Be the first to comment!";
 "Post.Format.Comments.Plural" = "See %d comments";
-"Post.Format.ShareEmail.Subject" = "Sharing a %%BRAND%% item from Reloved App";
+"Post.Format.ShareEmail.Subject" = "Sharing an item from Reloved App";
 "Post.Format.ShareEmail.Body" = "Hi there - I thought you might want to see this item that I found on Reloved app. <a href=\"%%LINK%%\">Open Link</a>";
 "Post.Format.ReportEmail.Subject" = "Post ID '%%POSTID%%' on Reloved";
 "Post.Format.ReportEmail.Body" = "I would like to report this post, my reasons are:\n";
@@ -238,7 +238,7 @@
 "Profile.Hint.AddressLine" = "Enter text here";
 "Profile.Hint.Country" = "Touch to select";
 "Profile.Hint.Email" = "";
-"Profile.Hint.Footer" = "Your contact details are not visible to anyone other than yourself.\n\nWe need your contact details to keep you properly informed when you buy or sell dresses through us.\n ";
+"Profile.Hint.Footer" = "Your contact details are not visible to anyone other than yourself.\n ";
 "Profile.Hint.FullName" = "";
 "Profile.Hint.City" = "";
 "Profile.Hint.Phone" = "Please include your country code";
