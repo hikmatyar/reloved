@@ -159,14 +159,14 @@
 "Post.Action.Comments" = "See comments";
 "Post.Action.Condition" = "Condition";
 "Post.Action.Delete" = "Delete";
-"Post.Action.Material" = "Material";
+"Post.Action.Material" = "Material & Care";
 "Post.Action.Report" = "Report";
 "Post.Action.ReturnsPolicy" = "Returns";
 "Post.Action.RemoveFromCart" = "Remove from Cart";
 "Post.Action.Save" = "Save";
 "Post.Action.Share" = "Share";
 "Post.Action.ShippingInfo" = "Shipping";
-"Post.Action.SizeAndFit" = "Size & Fit";
+"Post.Action.SizeAndFit" = "Size & Color";
 "Post.Action.Unsave" = "Unsave";
 "Post.Alert.AddedToCart.Action.OK" = "OK";
 "Post.Alert.AddedToCart.Message" = "This item has been added to your cart. You can view your cart from the navigation menu";
@@ -205,7 +205,7 @@
 "Post.Format.ShareEmail.Body" = "Hi there - I thought you might want to see this item that I found on Reloved app. <a href=\"%%LINK%%\">Open Link</a>";
 "Post.Format.ReportEmail.Subject" = "Post ID '%%POSTID%%' on Reloved";
 "Post.Format.ReportEmail.Body" = "I would like to report this post, my reasons are:\n";
-"Post.Label.AboutThisDress" = "About This Item";
+"Post.Label.AboutThisDress" = "Product Information";
 "Post.Label.Deleting" = "Deleting...";
 "Post.Label.Loading" = "Loading data...";
 "Post.Label.ShippingAndReturns" = "Shipping & Returns";
