@@ -81,10 +81,10 @@
     if(self) {
         m_scope = scope;
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Menu"] style:UIBarButtonItemStyleBordered target:self action:@selector(menu:)];
-        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:
+       // self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:
             // [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Filter"] style:UIBarButtonItemStyleBordered target:self action:@selector(filter:)],
-            [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Sell"] style:UIBarButtonItemStyleBordered target:self action:@selector(sell:)], nil];
-        self.navigationItem.title = NSLocalizedString(@"Browse.Title", nil);
+            // [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Sell"] style:UIBarButtonItemStyleBordered target:self action:@selector(sell:)], nil];
+        // self.navigationItem.title = [NSLocalizedString(@"Browse.Title", nil);
         self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Navigation-Logo"]];
     }
     
