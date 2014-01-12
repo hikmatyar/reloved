@@ -359,7 +359,7 @@
 
 /* History Controller */
 
-"History.Label.NoData" = "No Listed Items";
+"History.Label.NoData" = "No Purchased Items";
 "History.Title" = "My Account";
 
 /* Recents Controller */
