@@ -317,7 +317,7 @@
 "Checkout.Hint.City" = "";
 "Checkout.Hint.Phone" = "(optional)";
 "Checkout.Hint.Postcode" = "";
-"Checkout.Hint.Shipping" = "Please double-check for errors. We ship to UK and EU only.";
+"Checkout.Hint.Shipping" = "Please double-check for errors.";
 "Checkout.HUD.Starting.Message" = "Connecting to the server...";
 "Checkout.HUD.Starting.Title" = "Checkout";
 "Checkout.HUD.Ordering.Message1" = "Sending payment data";
