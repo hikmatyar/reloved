@@ -2,6 +2,7 @@ INSERT INTO `countries` (`code`, `name`) VALUES
 ('at', 'Austria'),
 ('be', 'Belgium'),
 ('bg', 'Bulgaria'),
+('hr', 'Canada’),
 ('hr', 'Croatia'),
 ('cy', 'Cyprus'),
 ('cz', 'Czech Republic'),
@@ -26,4 +27,5 @@ INSERT INTO `countries` (`code`, `name`) VALUES
 ('si', 'Slovenia'),
 ('es', 'Spain'),
 ('se', 'Sweden'),
+(‘us’, 'United States’);
 ('gb', 'United Kingdom');
