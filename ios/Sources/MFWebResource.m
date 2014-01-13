@@ -95,7 +95,7 @@
             m_timestamp = s.st_atimespec.tv_sec;
 		}
         
-        if(!m_URL || !m_filePath) {
+        if(!m_URL || !m_filePath || m_fileSize < 10) {
             return nil;
         }
     }
