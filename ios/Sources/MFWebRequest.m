@@ -34,6 +34,8 @@
         m_service = service;
         m_sign = sign;
         
+        self.queuePriority = NSOperationQueuePriorityLow;
+        
         // Workaround to iOS 6.0 POST caching bug
         [self setPostValue:[NSString stringWithFormat:@"%g", [NSDate timeIntervalSinceReferenceDate]] forKey:KEY_TIMESTAMP];
         
