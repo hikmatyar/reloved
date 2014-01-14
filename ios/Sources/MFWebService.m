@@ -10,7 +10,7 @@
 #import "MFWebSession.h"
 #import "MFWebUser.h"
 
-#define MAX_CONCURRENT 4
+#define MAX_CONCURRENT 1
 
 #if DEBUG
 //#define SERVICE_URL @"http://127.0.0.1:3000/"
