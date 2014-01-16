@@ -26,8 +26,8 @@
 #define SECTION_SUMMARY 0
 #define SECTION_SUMMARY_ROW_ITEMS 0
 #define SECTION_SUMMARY_ROW_SHIPPING 1
-#define SECTION_SUMMARY_ROW_FEE 2
-#define SECTION_SUMMARY_ROW_TOTAL 3
+#define SECTION_SUMMARY_ROW_TOTAL 2
+#define SECTION_SUMMARY_ROW_FEE 3
 #define SECTION_PAYMENT 1
 #define SECTION_SHIPPING 2
 #define SECTION_POSTS 3
@@ -100,7 +100,7 @@
 {
     switch(section) {
         case SECTION_SUMMARY:
-            return 4;
+            return 3;
         case SECTION_PAYMENT:
             return 1;
         case SECTION_SHIPPING:
