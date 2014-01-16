@@ -343,7 +343,7 @@
                         [self clearCart];
                         
                         for(MFPost *post in posts) {
-                            MFMutablePost *_post = [posts mutableCopy];
+                            MFMutablePost *_post = [post mutableCopy];
                             
                             if([_post updateStatus:kMFPostStatusListedBought]) {
                                 [database setPost:_post forIdentifier:_post.identifier];
