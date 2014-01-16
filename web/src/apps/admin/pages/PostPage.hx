@@ -28,6 +28,7 @@ class PostPage extends Page {
 	private static inline var template_error = 'post.error';
 	
     public function create() : Void {
+    	var templateId = Std.parseInt(this.request.query.tmpl);
     	var context : Dynamic = { };
     	
     	context.conditions = [
@@ -70,6 +71,40 @@ class PostPage extends Page {
 				sync();
 			});
     	});
+    	
+    	if(templateId != 0) {
+    		async(function(sync) {
+    			Post.find(templateId, function(err, post) {
+    				if(post != null) {
+    					Post.cacheRelationsForPosts([ post ], function(err) {
+    						var tags = post.getTags();
+    						
+							context.post = {
+								user: post.userId,
+								condition: post.condition,
+								types: post.getTypes(),
+								size: post.sizeId,
+								brand: post.brandId,
+								materials: post.materials.htmlEscape(true),
+								title: post.title.htmlEscape(true),
+								fit: post.fit.htmlEscape(true),
+								notes: post.notes.htmlEscape(true),
+								editorial: (post.editorial != null) ? post.editorial.htmlEscape(true) : '',
+								price: post.price / 100.0,
+								price_original: post.priceOriginal / 100.0,
+								currency: post.currency.htmlEscape(true),
+								tags: (tags != null) ? tags.join(',') : '',
+								colors: post.getColors()
+							};
+							
+							sync();
+						});
+    				} else {
+    					sync();
+    				}
+    			});
+    		});
+    	}
     	
     	async(function() {
     		this.render(context);

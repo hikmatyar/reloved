@@ -939,4 +939,46 @@ class Post {
     public function json() : String {
         return JSON.stringify(this.jsonRaw(null));
     }
+    
+    public function getColors() : Array<DataIdentifier> {
+    	var colors : Array<DataIdentifier> = null;
+    	
+    	if(this._colors != null) {
+        	colors = new Array<DataIdentifier>();
+        	
+        	for(color in this._colors) {
+        		colors.push(color.colorId);
+        	}
+        }
+        
+        return colors;
+    }
+    
+    public function getTypes() : Array<DataIdentifier> {
+    	var types : Array<DataIdentifier> = null;
+    	
+    	if(this._types != null) {
+        	types = new Array<DataIdentifier>();
+        	
+        	for(type in this._types) {
+        		types.push(type.typeId);
+        	}
+        }
+        
+    	return types;
+    }
+    
+    public function getTags() : Array<String> {
+    	var tags : Array<String> = null;
+    	
+    	if(this._tags != null) {
+        	tags = new Array<String>();
+        	
+        	for(tag in this._tags) {
+        		tags.push(tag.name);
+        	}
+        }
+        
+        return tags;
+    }
 }

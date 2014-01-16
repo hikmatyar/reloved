@@ -2,63 +2,63 @@
 <div class="eight columns">
 	<form action="/post/create" enctype="multipart/form-data" method="post">
 		<label for="title">{@localize str="post.label.title" /}</label>
-		<input type="text" id="title" name="title" required="required" />
+		<input type="text" id="title" name="title" required="required" {?post}value="{post.title}"{/post} />
 		<label for="user">{@localize str="post.label.user" /}</label>
 		<select id="user" name="user">
-			{#users}
-				<option value="{id}">{token}</option>
+			{#users user=post.user}
+				<option value="{id}" {@test a="{user}" b="{id}"}selected="selected"{/test}>{token}</option>
 			{/users}
 		</select>
 		<label for="brand">{@localize str="post.label.brand" /}</label>
 		<select id="brand" name="brand">
-			{#brands}
-				<option value="{id}">{name}</option>
+			{#brands brand=post.brand}
+				<option value="{id}" {@test a="{brand}" b="{id}"}selected="selected"{/test}>{name}</option>
 			{/brands}
 		</select>
 		<label for="types">{@localize str="post.label.type" /}</label>
 		<fieldset id="types" name="types">
-			{#types}
+			{#types type=post.types}
 				<label for="types_{id}"> 
-					<input type="checkbox" id="types_{id}" name="types[]" value="{id}" />
+					<input type="checkbox" id="types_{id}" name="types[]" value="{id}" {@test a="{id}" b="{type}" op="in"}checked="checked"{/test} />
 					<span>{name}</span>
 				</label>
 			{/types}
 		</fieldset>
 		<label for="size">{@localize str="post.label.size" /}</label>
 		<select id="size" name="size">
-			{#sizes}
-				<option value="{id}">{name}</option>
+			{#sizes size=post.size}
+				<option value="{id}" {@test a="{size}" b="{id}"}selected="selected"{/test}>{name}</option>
 			{/sizes}
 		</select>
 		<label for="colors">{@localize str="post.label.colors" /}</label>
 		<fieldset id="colors" name="colors">
-			{#colors}
-				<label for="colors_{id}"> 
-					<input type="checkbox" id="colors_{id}" name="colors[]" value="{id}" />
+			{#colors color=post.colors}
+				<label for="colors_{id}">
+					<input type="checkbox" id="colors_{id}" name="colors[]" value="{id}" {@test a="{id}" b="{color}" op="in"}checked="checked"{/test} />
 					<span>{name}</span>
 				</label>
 			{/colors}
 		</fieldset>
 		<label for="condition">{@localize str="post.label.condition" /}</label>
 		<select id="condition" name="condition">
-			{#conditions}
-				<option value="{id}">{name}</option>
+			{#conditions condition=post.condition}
+				<option value="{id}" {@test a="{condition}" b="{id}"}selected="selected"{/test}>{name}</option>
 			{/conditions}
 		</select>
 		<label for="price">{@localize str="post.label.price" /}</label>
-		<input type="text" id="price" name="price" required="required" />
+		<input type="text" id="price" name="price" required="required" {?post}value="{post.price}"{/post} />
 		<label for="price_original">{@localize str="post.label.price_original" /}</label>
-		<input type="text" id="price_original" name="price_original" required="required" />
+		<input type="text" id="price_original" name="price_original" required="required" {?post}value="{post.price_original}"{/post} />
 		<label for="currency">{@localize str="post.label.currency" /}</label>
-		<input type="text" id="currency" name="currency" required="required" value="GBP" />
+		<input type="text" id="currency" name="currency" required="required" value="{?post}{post.currency}{:else}GBP{/post}" />
 		<label for="tags">{@localize str="post.label.tags" /}</label>
-		<textarea id="tags" name="tags"></textarea>
+		<textarea id="tags" name="tags">{?post}{post.tags}{/post}</textarea>
 		<label for="materials">{@localize str="post.label.materials" /}</label>
-		<textarea id="materials" name="materials" required="required"></textarea>
+		<textarea id="materials" name="materials" required="required">{?post}{post.materials}{/post}</textarea>
 		<label for="fit">{@localize str="post.label.fit" /}</label>
-		<textarea id="fit" name="fit" required="required"></textarea>
+		<textarea id="fit" name="fit" required="required">{?post}{post.fit}{/post}</textarea>
 		<label for="notes">{@localize str="post.label.notes" /}</label>
-		<textarea id="notes" name="notes"></textarea>
+		<textarea id="notes" name="notes">{?post}{post.notes}{/post}</textarea>
 		<label for="upload">{@localize str="post.label.files" /}</label>
         <input type="file" id="upload" name="upload" multiple="multiple" required="required" />
         <hr />

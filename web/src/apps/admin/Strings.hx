@@ -15,6 +15,7 @@ class Strings {
         
         /* Posts page */
         'post.action.create': 'Add another one',
+        'post.action.clone': 'Use Post as Template',
         'post.action.update': 'Update',
         'post.action.submit': 'Create',
         'post.error.unknown': 'Something bad happened. Maybe forgot to attach files or select an user? Try again?!',
